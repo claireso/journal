@@ -3,14 +3,14 @@
 }
 
 .admin-list-photos {
-    > li {border-bottom:1px solid $border;
+    > li {border-bottom:1px solid $border; 
         display:table; width:100%;
 
         &:nth-child(even){background:adjust-lightness($bg,3);}
         &:hover {background:$highlight;}
     }
 
-    .picture,.text,.actions {display:table-cell; vertical-align:middle;}
+    .picture,.text,.actions {display:table-cell; vertical-align:middle; padding:20px;}
     .picture {width:150px;margin:0 10px 0 0;
         img {display:block;}
     }

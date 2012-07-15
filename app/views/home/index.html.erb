@@ -1,6 +1,7 @@
 <% @photos.each do |photo| %>
     <figure>
-       <%= image_tag photo.file.url(:optim) %>
+       <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="<%= photo.title%>" data-src="
+       <%= photo.file.url(:optim)%>" onload=lzld(this) onerror=lzld(this) />
         <figcaption>
             <h2><%= photo.title %></h2>
             <small><%= photo.camera %></small>
