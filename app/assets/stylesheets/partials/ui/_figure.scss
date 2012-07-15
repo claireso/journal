@@ -1,0 +1,6 @@
+figure {
+    padding:1.5em 0 0; margin:1.3em 0 0;
+    border-top:3px solid $border-color;
+    img { margin:0 0 1em; max-width:100%; display:block;}
+    small { color:adjust-lightness($font-color,40);} 
+}

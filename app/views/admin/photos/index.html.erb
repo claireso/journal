@@ -1,0 +1,23 @@
+<% content_for :header do %>
+  <h1>Admin photos</h1>
+<% end %>
+<ul class="admin-list-photos">
+    <% @photos.each do |photo| %>
+        <li>
+            <div class="picture">
+                <%= image_tag photo.file.url(:thumb) %>    
+            </div>
+            <div class="text">
+                <p>Title : <%= photo.title %><br />
+                   Camera : <%= photo.camera %></p>    
+            </div>
+            
+            <ul class="actions">
+                <li><%= link_to 'Show', admin_photo_path(photo) %> </li>
+                <li><%= link_to 'Edit', edit_admin_photo_path(photo) %> </li>
+                <li><%= link_to 'Destroy', admin_photo_path(photo), confirm: 'Are you sure?', method: :delete %></li>
+            </ul>      
+        </li>
+    <% end %>
+</ul>
+<p><%= link_to 'New', new_admin_photo_path, :class => "btn" %></p>

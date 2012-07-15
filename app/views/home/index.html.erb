@@ -1,0 +1,9 @@
+<% @photos.each do |photo| %>
+    <figure>
+       <%= image_tag photo.file.url(:optim) %>
+        <figcaption>
+            <h2><%= photo.title %></h2>
+            <small><%= photo.camera %></small>
+        </figcaption>
+    </figure>
+<% end %>

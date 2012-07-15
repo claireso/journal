@@ -1,0 +1,13 @@
+@include global-reset();
+@include reset-html5();
+body {
+    padding:2em; background:$bg; color:$font-color;
+    font-family:"Lucinda Grande", Arial, sans-serif;
+    > section { margin:0 auto; max-width:900px; width:80%;}
+}
+
+small {  font-size:.75em; font-style:italic; 
+    section > & {   display:block; text-align:right}
+}
+
+h2 { margin:0 0 .3em;font-size:1.2em; font-weight:bold;} 

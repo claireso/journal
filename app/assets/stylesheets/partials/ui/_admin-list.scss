@@ -1,0 +1,21 @@
+.menu {
+    
+}
+
+.admin-list-photos {
+    > li {border-bottom:1px solid $border;
+        display:table; width:100%;
+
+        &:nth-child(even){background:adjust-lightness($bg,3);}
+        &:hover {background:$highlight;}
+    }
+
+    .picture,.text,.actions {display:table-cell; vertical-align:middle;}
+    .picture {width:150px;margin:0 10px 0 0;
+        img {display:block;}
+    }
+    .actions {width:150px; font-size:13px; text-align:right;
+        li {margin-right:5px;display:inline-block;}
+    }
+    & + p { text-align:right; padding:10px;}
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Clairesophoto</title>
+  <%= stylesheet_link_tag    "admin", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <header>
+        <div>
+            <%= yield :header %>    
+        </div>
+        
+    </header>
+    <section>
+        <div>
+            <%= yield %></section>    
+        </div>
+</body>
+</html>
