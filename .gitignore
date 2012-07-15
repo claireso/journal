@@ -17,5 +17,8 @@
 #Ignore assets precompiled
 public/assets
 
+#Ignore uploads folder
+public/system
+
 #ignore login admin
 config/protect.rb
