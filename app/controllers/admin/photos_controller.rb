@@ -3,6 +3,15 @@ class Admin::PhotosController < ApplicationController
   http_basic_authenticate_with :name => NAME, :password => PASSWORD
   
   layout "admin"
+
+  before_filter :update_projects_cache , :only => [:create, :update, :destroy]
+
+  #custom function
+  def update_projects_cache
+    expire_page :controller => "/home", :action => "index"
+  end
+
+
   def index
     @photos = Photo.all
   end
