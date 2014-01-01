@@ -10,4 +10,9 @@ small {  font-size:.75em; font-style:italic;
     section > & {   display:block; text-align:right}
 }
 
-h2 { margin:0 0 .3em;font-size:1.2em; font-weight:bold;} 
+h2 { margin:0 0 .3em;font-size:1.2em; font-weight:bold;}
+
+
+@media only screen and (max-width: 900px) {
+    body > section { width:100%;}
+}
