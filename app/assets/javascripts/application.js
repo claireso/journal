@@ -12,5 +12,5 @@
 //
 // require jquery
 // require jquery_ujs
-//= require lazyload.min
+// require lazyload.min
 //= require_directory .

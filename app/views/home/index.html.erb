@@ -1,10 +1,22 @@
 <% @photos.each do |photo| %>
     <figure>
-       <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="<%= photo.title%>" data-src="
-       <%= photo.file.url(:optim)%>" onload=lzld(this) onerror=lzld(this) />
+       <img src="<%= photo.file.url(:optim)%>" alt="<%= photo.title%>" data-src="
+       <%= photo.file.url(:optim)%>" />
         <figcaption>
             <h2><%= photo.title %></h2>
             <small><%= photo.camera %></small>
         </figcaption>
     </figure>
+<% end %>
+
+<% if @total > 1 %>
+    <div class="pager">
+        <% if @page > 1%>
+            <a href="/page/<%= @page - 1 %>">&laquo;</a>
+        <% end %>
+
+        <% if @page < @total %>
+            <a href="/page/<%= @page + 1 %>">&raquo;</a>
+        <% end %>
+        </div>
 <% end %>

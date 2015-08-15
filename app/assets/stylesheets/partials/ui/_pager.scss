@@ -1,0 +1,18 @@
+.pager {
+    margin: 2rem 0 0;
+    text-align: center;
+
+    a {
+        color:$font-color;
+        text-decoration: none;
+        display: inline-block;
+        padding: .8rem 1rem;
+        border: 1px solid $border-color;
+        margin: 0 .2rem;
+
+        &:hover,
+        &:focus {
+            border-color: darken($border-color, 5);
+        }
+    }
+}
