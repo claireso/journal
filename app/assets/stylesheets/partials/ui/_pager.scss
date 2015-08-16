@@ -14,5 +14,21 @@
         &:focus {
             border-color: darken($border-color, 5);
         }
+
+        &:first-child {
+            margin-right: 0;
+        }
+
+        &:last-child {
+            margin-left: 0;
+        }
+
+        &:nth-child(2) {
+            margin-right:.5rem;
+        }
+
+        &:nth-child(3) {
+            margin-left:.5rem;
+        }
     }
 }

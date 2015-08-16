@@ -12,11 +12,13 @@
 <% if @total > 1 %>
     <div class="pager">
         <% if @page > 1%>
-            <a href="/page/<%= @page - 1 %>">&laquo;</a>
+            <a title="Première page" href="/">&laquo;</a>
+            <a title="Page précédente" href="/page/<%= @page - 1 %>">&lsaquo;</a>
         <% end %>
 
         <% if @page < @total %>
-            <a href="/page/<%= @page + 1 %>">&raquo;</a>
+            <a title="Page suivante" href="/page/<%= @page + 1 %>">&rsaquo;</a>
+            <a title="Dernière page" href="/page/<%= @total %>">&raquo;</a>
         <% end %>
         </div>
 <% end %>
