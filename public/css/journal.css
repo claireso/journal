@@ -1,0 +1,93 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 12px;
+}
+
+main {
+  max-width: 1315px;
+  padding: 0 40px;
+}
+
+figure {
+  display: flex;
+  margin: 85px 0;
+  padding: 0 85px;
+  color: #333;
+}
+
+figure + figure {
+  margin-top: 200px;
+}
+
+.figure-left {
+  justify-content: flex-start;
+}
+
+.figure-center {
+  justify-content: center;
+}
+
+.figure-right {
+  justify-content: flex-end;
+}
+
+
+figure img {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 10px;
+}
+
+figcaption {
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 150ms ease-out;
+}
+
+img:hover + figcaption {
+  opacity: 1;
+}
+
+figcaption span {
+  color: #c7c7c7;
+  font-style: italic;
+  display: block;
+  font-size: 10px;
+  margin: 4px 0 0;
+}
+
+.pager {
+  margin: 0 0 85px;
+  text-align: center;
+}
+
+.pager li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.pager__item {
+  display: inline-block;
+  border: 1px solid #e2dfdf;
+  padding: 10px 12px 11px;
+  width: 42px;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  will-change: border-color;
+  transition: border-color 150ms ease-out;
+}
+
+.pager__item:hover {
+  border-color: #bfbcbc;
+}
