@@ -10,7 +10,7 @@ const Photo = props => {
       <div>
         <img src={ props.src }  width={ width } height={ height } />
         <figcaption>
-          { props.title  }
+          { props.title }
 
           { props.description &&
             <span> { props.description } </span>
