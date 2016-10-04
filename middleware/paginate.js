@@ -1,6 +1,6 @@
 const data = require('../app/data/photos');
 
-const PER_PAGE = 2;
+const PER_PAGE = 10;
 const TOTAL = data.length;
 const TOTAL_PAGES = Math.ceil( TOTAL / PER_PAGE );
 
