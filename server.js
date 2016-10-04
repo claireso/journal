@@ -26,8 +26,10 @@ const renderView = (req, res) => {
 
 
 app.get('/', paginate, renderView);
-app.get('/page/:page', paginate, renderView);
+app.get(/^\/page\/(\d+)$/, paginate, renderView);
+app.get('*', function(req, res){
+  res.redirect('/');
+});
 
 
 app.listen(3000, () => {});
-

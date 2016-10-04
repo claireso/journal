@@ -5,9 +5,16 @@ const TOTAL = data.length;
 const TOTAL_PAGES = Math.ceil( TOTAL / PER_PAGE );
 
 const paginate = (req, res, next) => {
-  const page = +req.params.page || 1;
+  const page = +req.params[0] || 1;
   const start = (page - 1) * PER_PAGE;
   const end = start + PER_PAGE;
+
+  if (page > TOTAL_PAGES) {
+    res.redirect('/');
+    return;
+  }
+
+
   req.photos = data.slice(start, end);
 
   req.pager = {};
