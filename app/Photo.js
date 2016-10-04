@@ -2,8 +2,8 @@ import React from 'react';
 
 const Photo = props => {
   const cls = 'figure-' + props.position;
-  const width = props.portrait ? 385 : 810;
-  const height = props.portrait ? 578 :  540;
+  const width = props.portrait ? 385 : props.square ? 578 : 810;
+  const height = props.portrait || props.square ? 578 :  540;
 
   return (
     <figure className={ cls }>
