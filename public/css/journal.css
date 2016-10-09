@@ -92,15 +92,4 @@ figcaption span {
   figure + figure {
     margin-top: 200px;
   }
-
-  figcaption {
-    opacity: 0;
-    will-change: opacity;
-    transition: opacity 150ms ease-out;
-  }
-
-  img:hover + figcaption {
-    opacity: 1;
-  }
-
 }
