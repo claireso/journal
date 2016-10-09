@@ -14,18 +14,14 @@ body {
 
 main {
   max-width: 1315px;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
 figure {
   display: flex;
-  margin: 85px 0;
-  padding: 0 85px;
+  margin: 40px 0;
+  padding: 0 20px;
   color: #333;
-}
-
-figure + figure {
-  margin-top: 200px;
 }
 
 .figure-left {
@@ -45,16 +41,7 @@ figure img {
   display: block;
   max-width: 100%;
   margin: 0 0 10px;
-}
-
-figcaption {
-  opacity: 0;
-  will-change: opacity;
-  transition: opacity 150ms ease-out;
-}
-
-img:hover + figcaption {
-  opacity: 1;
+  height: auto;
 }
 
 figcaption span {
@@ -90,4 +77,30 @@ figcaption span {
 
 .pager__item:hover {
   border-color: #bfbcbc;
+}
+
+@media (min-width: 800px) {
+  main {
+    padding: 0 40px;
+  }
+
+  figure {
+    margin: 85px 0;
+    padding: 0 85px;
+  }
+
+  figure + figure {
+    margin-top: 200px;
+  }
+
+  figcaption {
+    opacity: 0;
+    will-change: opacity;
+    transition: opacity 150ms ease-out;
+  }
+
+  img:hover + figcaption {
+    opacity: 1;
+  }
+
 }
