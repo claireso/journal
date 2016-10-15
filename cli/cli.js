@@ -5,9 +5,6 @@ const argv = require('minimist')(process.argv);
 const sourceFile = path.resolve('./app/data/photos.json');
 const targetFile = path.resolve('./app/data/tmp-photos.json');
 
-// TODO: check if file exists
-const data = require(sourceFile);
-
 const {
   title,
   description,
@@ -17,22 +14,42 @@ const {
   square,
 } = argv;
 
-const newData = [
-  {
-    "title": title || "",
-    "description": description || "",
-    "src": src || "",
-    "position": position || "",
-    "portrait": portrait || false,
-    "square": square || false,
-  },
-  ...data
-];
+const entry = {
+  title: title !== undefined ? title : '',
+  description: description !== undefined ? description : '',
+  src: src !== undefined ? src : '',
+  position: position !== undefined ? position : '',
+  portrait: portrait !== undefined ? !!portrait : false,
+  square: square !== undefined ? !!square : false,
+}
 
-const createTempFile = () => {
+//get data
+const getData = () => {
   return new Promise((resolve, reject) => {
-    console.log('create new file');
-    fs.writeFile(targetFile, JSON.stringify(newData), (err) => {
+    fs.readFile(sourceFile, 'utf8', (err, data) => {
+      if (err) {
+        if (err.code === 'ENOENT') {
+          // file does not exist
+          resolve([]);
+        }
+        reject(err);
+        return;
+      }
+
+      try {
+        data = JSON.parse(data);
+        Array.isArray(data) ? resolve(data) : resolve([]);
+      } catch(err) {
+        reject(err)
+      }
+    });
+  });
+}
+
+const createTmpFile = (data) => {
+  //create new file with data and entry
+  return new Promise((resolve, reject) => {
+    fs.writeFile(targetFile, JSON.stringify([entry, ...data]), (err) => {
       if (err) {
         reject(err);
         return;
@@ -40,24 +57,11 @@ const createTempFile = () => {
       resolve();
     });
   });
-};
 
-const deleteSourceFile = () => {
-  return new Promise((resolve, reject) => {
-    console.log('delete source file');
-    fs.unlink(sourceFile, (err) => {
-      if (err) {
-        reject(err);
-        return;
-      };
-      resolve();
-    });
-  });
-};
+}
 
 const renameFile = () => {
   return new Promise((resolve, reject) => {
-    console.log('rename new file');
     fs.rename(targetFile, sourceFile, (err) => {
       if (err) {
         reject(err);
@@ -68,13 +72,16 @@ const renameFile = () => {
   });
 };
 
-createTempFile()
-  .then(deleteSourceFile)
+getData()
+  .then(createTmpFile)
   .then(renameFile)
   .then(() => {
-    console.log('done!')
+    console.log('New photo was added successfully:');
+    console.log(entry);
+
   })
-  .catch((err) => {
-    console.log('error!');
+  .catch((err)=> {
+    console.log('Something wrong happened');
     console.log(err);
   });
+
