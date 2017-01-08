@@ -9,3 +9,8 @@ html(lang="fr")
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400, 700")
     link(rel="stylesheet" href="/css/journal.css")
   body!=content
+
+    script.
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      };
