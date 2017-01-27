@@ -1,3 +1,4 @@
 node_modules
 app/data/photos.json
 public/img/
+public/sw-toolbox.js
