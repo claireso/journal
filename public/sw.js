@@ -14,7 +14,6 @@
 
   importScripts('./sw-toolbox.js');
 
-  global.toolbox.options.debug = true;
   global.toolbox.options.cache = {name: CACHE_NAME_ASSETS};
 
   // precache assets

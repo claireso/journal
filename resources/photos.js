@@ -13,7 +13,6 @@ const getPage = (page = 1, perPage = PER_PAGE) => {
       return;
     }
 
-    console.log("pass here")
     page = parseInt(page , 10);
 
     const start = (page - 1) * perPage;
@@ -40,34 +39,6 @@ const getPage = (page = 1, perPage = PER_PAGE) => {
 
   });
 };
-
-/*const paginate = (req, res, next) => {
-  const page = +req.params[0] || 1;
-  const start = (page - 1) * PER_PAGE;
-  const end = start + PER_PAGE;
-
-  if (page > TOTAL_PAGES) {
-    res.redirect('/');
-    return;
-  }
-
-
-  req.photos = data.slice(start, end);
-
-  req.pager = {};
-
-  if (page < TOTAL_PAGES) {
-    req.pager.next = page + 1;
-    req.pager.last = TOTAL_PAGES;
-  }
-
-  if (page > 1) {
-    req.pager.prev = page - 1;
-    req.pager.first = 1;
-  }
-
-  next();
-}*/
 
 module.exports = {
   getPage,
