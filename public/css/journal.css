@@ -15,6 +15,7 @@ body {
 main {
   max-width: 1315px;
   padding: 0 20px;
+  margin: 0 auto;
 }
 
 figure {
