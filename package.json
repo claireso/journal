@@ -4,7 +4,8 @@
   "description": "My personal photos website",
   "main": "server.js",
   "scripts": {
-    "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public"
+    "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
+    "pm2": "pm2"
   },
   "repository": {
     "type": "git",
