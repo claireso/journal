@@ -1,0 +1,6 @@
+{
+  "name": "Claire’s journal",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
