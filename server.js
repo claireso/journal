@@ -4,8 +4,10 @@ const express = require('express');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 
+const admin = require('./routes/admin');
 const ReactApp = require('./app/App');
 const Photos = require('./resources/photos');
+const db = require('./db');
 
 const app = express();
 
@@ -28,6 +30,8 @@ const renderPage = (req, res, next) => {
 app.get('/', renderPage);
 
 app.get('/page/:page', renderPage);
+
+app.use('/admin', admin);
 
 app.get('*', function(req, res){
   res.redirect('/');
