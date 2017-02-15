@@ -7,7 +7,6 @@ const ReactDOMServer = require('react-dom/server');
 const admin = require('./routes/admin');
 const ReactApp = require('./app/App');
 const Photos = require('./resources/photos');
-const db = require('./db');
 
 const app = express();
 

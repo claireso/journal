@@ -1,1 +1,8 @@
 h1 List photos
+
+ul
+  each photo in photos
+    li
+      img(src="/img/" + photo.name, width=800)
+      p= photo.title
+      p= photo.description
