@@ -1,4 +1,5 @@
 node_modules
+npm-debug.log
 app/data/photos.json
 public/img/
 public/sw-toolbox.js
