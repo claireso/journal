@@ -23,4 +23,21 @@ router.get('/photos/new', function(req, res) {
   res.render('admin/photos/new');
 });
 
+router.post('/photos/new', function(req, res, next) {
+  const photo = req.body;
+
+  connect().then((client) => {
+    client
+      .query(
+        queries.insert_photo(),
+        [photo.title, photo.description, '100.jpg', 'center', false, false]
+      )
+      .then(response => {
+        // res.render('admin/photos/list', {
+        //   photos: response.rows,
+        // });
+      });
+  });
+});
+
 module.exports = router;

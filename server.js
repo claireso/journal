@@ -1,6 +1,8 @@
 require("babel-register");
 
 const express = require('express');
+const bodyParser = require('body-parser');
+const multer = require('multer');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 
@@ -10,7 +12,12 @@ const Photos = require('./resources/photos');
 
 const app = express();
 
+const upload = multer();
+
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.set('view engine', 'pug');
 app.set('views', './views');
 
