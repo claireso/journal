@@ -6,11 +6,12 @@ const queries = require('../db/queries');
 
 const upload = multer({ dest: './public/img' });
 
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   res.render('admin/admin');
 });
 
-router.get('/photos', function(req, res) {
+// ALL PHOTOS
+router.get('/photos', (req, res) => {
   connect().then((client) => {
     client
       .query(queries.get_photos())
@@ -18,15 +19,17 @@ router.get('/photos', function(req, res) {
         res.render('admin/photos/list', {
           photos: response.rows,
         });
+        client.end();
       });
   });
 });
 
-router.get('/photos/new', function(req, res) {
+// NEW PHOTO
+router.get('/photos/new', (req, res) => {
   res.render('admin/photos/new');
 });
 
-router.post('/photos/new', upload.single('file'), function(req, res, next) {
+router.post('/photos/new', upload.single('file'), (req, res) => {
   const photo = req.body;
   const filename = req.file && req.file.filename;
 
@@ -38,6 +41,25 @@ router.post('/photos/new', upload.single('file'), function(req, res, next) {
       )
       .then(response => {
         res.redirect('/admin/photos');
+        client.end();
+      });
+  });
+});
+
+// EDIT PHOTO
+router.get('/photos/:id/edit', (req, res) => {
+  const { id } = req.params;
+
+  connect().then((client) => {
+    client
+      .query(
+        queries.find_photo(id),
+      )
+      .then(response => {
+        res.render('admin/photos/edit', {
+          photo: response.rows[0],
+        });
+        client.end();
       });
   });
 });

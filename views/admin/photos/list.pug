@@ -6,3 +6,5 @@ ul
       img(src="/img/" + photo.name, width=800)
       p= photo.title
       p= photo.description
+      p
+        a(href="/admin/photos/" + photo.id + "/edit") Edit
