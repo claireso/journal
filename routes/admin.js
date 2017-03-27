@@ -64,4 +64,22 @@ router.get('/photos/:id/edit', (req, res) => {
   });
 });
 
+// DELETE PHOTO
+router.get('/photos/:id/delete', (req, res) => {
+  const { id } = req.params;
+
+  connect().then((client) => {
+    client
+      .query(
+        queries.delete_photo(id),
+      )
+      .then(response => {
+        console.log(response);
+        // TODO: delete file
+        res.redirect('/admin/photos');
+        client.end();
+      });
+  });
+});
+
 module.exports = router;

@@ -12,8 +12,12 @@ const insert_photo = () =>
 const find_photo = (id = '', fields = '*') =>
   `SELECT ${ fields } FROM photos WHERE id=${ id }`
 
+const delete_photo = (id = '') =>
+  `DELETE FROM photos WHERE id=${ id }`
+
 module.exports = {
   get_photos,
   insert_photo,
   find_photo,
+  delete_photo,
 }

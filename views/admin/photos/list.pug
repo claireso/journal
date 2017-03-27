@@ -3,8 +3,10 @@ h1 List photos
 ul
   each photo in photos
     li
-      img(src="/img/" + photo.name, width=800)
+      img(src="/img/" + photo.name, width=300)
       p= photo.title
       p= photo.description
       p
         a(href="/admin/photos/" + photo.id + "/edit") Edit
+        br
+        a(href="/admin/photos/" + photo.id + "/delete") Delete
