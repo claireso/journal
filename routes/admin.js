@@ -53,6 +53,10 @@ router.get('/photos/:id/edit', (req, res) => {
     })
 })
 
+router.post('/photos/:id/edit', (req, res) => {
+  console.log('edit photo')
+})
+
 // DELETE PHOTO
 router.get('/photos/:id/delete', (req, res) => {
   const { id } = req.params
