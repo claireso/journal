@@ -1,0 +1,11 @@
+{
+  "db": {
+    "user": "",
+    "database": "",
+    "password": "",
+    "host": "",
+    "port": ,
+    "max": 10,
+    "idleTimeoutMillis": 30000,
+  }
+}
