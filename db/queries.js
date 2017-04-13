@@ -9,6 +9,9 @@ const insert_photo = () =>
     ($1, $2, $3, $4, $5, $6)
   `
 
+const update_photo = (id = '', fields) =>
+  `UPDATE photos SET ${ fields } WHERE id=${ id }`
+
 const find_photo = (id = '', fields = '*') =>
   `SELECT ${ fields } FROM photos WHERE id=${ id }`
 
@@ -18,6 +21,7 @@ const delete_photo = (id = '') =>
 module.exports = {
   get_photos,
   insert_photo,
+  update_photo,
   find_photo,
   delete_photo,
 }

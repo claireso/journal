@@ -33,7 +33,14 @@ router.post('/photos/new', upload.single('file'), (req, res) => {
   pool
     .query(
       queries.insert_photo(),
-      [ photo.title, photo.description, filename, 'center', false, false ],
+      [
+        photo.title,
+        photo.description,
+        filename,
+        photo.position,
+        photo.portrait || false,
+        photo.square || false,
+      ],
     )
     .then(response => {
       res.redirect('/admin/photos')
@@ -53,8 +60,24 @@ router.get('/photos/:id/edit', (req, res) => {
     })
 })
 
-router.post('/photos/:id/edit', (req, res) => {
-  console.log('edit photo')
+router.post('/photos/:id/edit', upload.single('file'), (req, res) => {
+  const { id } = req.params
+  const photo = req.body
+  const filename = req.file && req.file.filename
+
+  // TODO delete current file
+  if (filename) photo.name = filename
+
+  const fields = Object.entries(photo).map((entry, index) => `${ entry[0] }=($${ index + 1 })`).join(',')
+
+  pool
+    .query(
+      queries.update_photo(id, fields),
+      Object.values(photo),
+    )
+    .then(response => {
+      res.redirect('/admin/photos')
+    })
 })
 
 // DELETE PHOTO
