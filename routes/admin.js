@@ -1,10 +1,24 @@
 const express = require('express')
+const fs = require('fs')
+const path = require('path')
 const multer = require('multer')
 const router = express.Router()
 const pool = require('../db/db')
 const queries = require('../db/queries')
 
 const upload = multer({ dest: './public/img' })
+
+const deleteFile = (photo) => new Promise((resolve, reject) => {
+  if (!photo) resolve()
+
+  const file = path.resolve('public/img', photo.name)
+
+  fs.unlink(file, resolve)
+});
+
+/////////////////////////////////////////////////////
+//  ROUTES
+/////////////////////////////////////////////////////
 
 router.get('/', (req, res) => {
   res.render('admin/admin')
@@ -85,10 +99,12 @@ router.get('/photos/:id/delete', (req, res) => {
   const { id } = req.params
 
   pool
-    .query(queries.delete_photo(id))
+    .query(queries.find_photo(id))
+    .then(response => deleteFile(response.rows[0]))
+    .then(pool.query(queries.delete_photo(id)))
     .then(response => {
-      // TODO: delete file
-      res.redirect('/admin/photos')
+      // TODO: clear cache
+      res.redirect('back')
     })
 })
 
