@@ -4,7 +4,7 @@ form(method="POST" action="" enctype="multipart/form-data")
   div
     label Title
     br
-    input(type="text" name="title" required)
+    input(type="text" name="title")
 
     br
     br
@@ -12,7 +12,7 @@ form(method="POST" action="" enctype="multipart/form-data")
     div
       label Description
       br
-      input(type="text" name="description" required)
+      input(type="text" name="description")
 
     br
     br
@@ -38,6 +38,13 @@ form(method="POST" action="" enctype="multipart/form-data")
     div
       label Portrait
       input(type="checkbox" name="portrait")
+
+    br
+    br
+
+    div
+      label Square
+      input(type="checkbox" name="square")
 
     br
     br
