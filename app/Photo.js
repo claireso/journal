@@ -8,7 +8,7 @@ const Photo = props => {
   return (
     <figure className={ cls }>
       <div>
-        <img src={ props.src }  width={ width } height={ height } />
+        <img src={ `/img/${ props.name }` }  width={ width } height={ height } />
         <figcaption>
           { props.title }
 
