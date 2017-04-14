@@ -1,5 +1,5 @@
 const get_photos = (fields = '*') =>
-  `SELECT ${ fields } FROM photos`
+  `SELECT ${ fields } FROM photos ORDER BY id DESC`
 
 const insert_photo = () =>
   `INSERT
