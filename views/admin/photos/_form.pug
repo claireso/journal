@@ -1,0 +1,55 @@
+form(method="POST" action="" enctype="multipart/form-data")
+  div
+    label Title
+    br
+    input(type="text" name="title" value= photo ? photo.title : '')
+
+    br
+    br
+
+    div
+      label Description
+      br
+      input(type="text" name="description" value= photo ? photo.description : '')
+
+    br
+    br
+
+    if photo
+      img(src="/img/" + photo.name, width=300)
+      br
+      br
+
+    div
+      label Photo
+      br
+      input(type="file" name="file" required)
+
+    br
+    br
+
+    div
+      label Position
+      select(name="position" required)
+        option(value="left") Left
+        option(value="center") Center
+        option(value="right") Right
+
+    br
+    br
+
+    div
+      label Portrait
+      input(type="checkbox" name="portrait")
+
+    br
+    br
+
+    div
+      label Square
+      input(type="checkbox" name="square")
+
+    br
+    br
+
+    input(type="submit" value="Submit")
