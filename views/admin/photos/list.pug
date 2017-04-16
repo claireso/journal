@@ -13,3 +13,17 @@ ul
         a(href="/admin/photos/" + photo.id + "/edit") Edit
         br
         a(href="/admin/photos/" + photo.id + "/delete") Delete
+
+ul
+  if pager.prev
+    if pager.first
+      li
+        a(href="/admin/photos/page/" + pager.first) First
+    li
+      a(href="/admin/photos/page/" + pager.prev) Prev
+  if pager.next
+    li
+      a(href="/admin/photos/page/" + pager.next) Next
+    if pager.last
+      li
+        a(href="/admin/photos/page/" + pager.last) Last

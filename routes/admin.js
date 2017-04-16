@@ -2,11 +2,14 @@ const express = require('express')
 const fs = require('fs')
 const path = require('path')
 const multer = require('multer')
-const router = express.Router()
+
 const pool = require('../db/db')
 const queries = require('../db/queries')
+const paginate = require('./middleware/paginate')
 
 const upload = multer({ dest: './public/img' })
+
+const router = express.Router()
 
 const deleteFile = (photo) => new Promise((resolve, reject) => {
   if (!photo) resolve()
@@ -25,15 +28,21 @@ router.get('/', (req, res) => {
 })
 
 // ALL PHOTOS
-router.get('/photos', (req, res) => {
+const renderList = (req, res, next) => {
   pool
-    .query(queries.get_photos())
+    .query(queries.get_photos({
+      options: `OFFSET ${ res.pager.offset } LIMIT ${ res.pager.limit }`
+    }))
     .then(response => {
       res.render('admin/photos/list', {
         photos: response.rows,
+        pager: res.pager
       })
     })
-})
+}
+
+router.get('/photos', paginate, renderList)
+router.get('/photos/page/:page', paginate, renderList)
 
 // NEW PHOTO
 router.get('/photos/new', (req, res) => {

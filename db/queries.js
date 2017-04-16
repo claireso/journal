@@ -1,5 +1,5 @@
-const get_photos = (fields = '*') =>
-  `SELECT ${ fields } FROM photos ORDER BY id DESC`
+const get_photos = ({fields = '*', options = ''} = {}) =>
+  `SELECT ${ fields } FROM photos ORDER BY id DESC ${ options }`
 
 const insert_photo = () =>
   `INSERT
@@ -18,10 +18,14 @@ const find_photo = (id = '', fields = '*') =>
 const delete_photo = (id = '') =>
   `DELETE FROM photos WHERE id=${ id }`
 
+const count_photos = () =>
+  `SELECT count(*) FROM photos`
+
 module.exports = {
   get_photos,
   insert_photo,
   update_photo,
   find_photo,
   delete_photo,
+  count_photos,
 }
