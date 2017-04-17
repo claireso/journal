@@ -23,7 +23,7 @@ form(method="POST" action="" enctype="multipart/form-data")
     div
       label Photo
       br
-      input(type="file" name="file" required)
+      input(type="file" name="file" required = !photo ? 'required' : undefined)
 
     br
     br
@@ -31,23 +31,25 @@ form(method="POST" action="" enctype="multipart/form-data")
     div
       label Position
       select(name="position" required)
-        option(value="left") Left
-        option(value="center") Center
-        option(value="right") Right
+        each position in ['left', 'center', 'right']
+          option(
+            value=position
+            selected= photo && photo.position === position ? 'selected' : undefined
+          ) #{position}
 
     br
     br
 
     div
       label Portrait
-      input(type="checkbox" name="portrait")
+      input(type="checkbox" name="portrait" checked= photo && photo.portrait ? 'checked' : undefined)
 
     br
     br
 
     div
       label Square
-      input(type="checkbox" name="square")
+      input(type="checkbox" name="square" checked= photo && photo.square ? 'checked' : undefined)
 
     br
     br

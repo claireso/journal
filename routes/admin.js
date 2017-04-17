@@ -88,15 +88,20 @@ router.post('/photos/:id/edit', upload.single('file'), (req, res) => {
   const photo = req.body
   const filename = req.file && req.file.filename
 
-  // TODO delete current file
-  if (filename) photo.name = filename
+  const newPhoto = Object.assign({}, photo)
 
-  const fields = Object.entries(photo).map((entry, index) => `${ entry[0] }=($${ index + 1 })`).join(',')
+  // TODO delete current file
+  if (filename) newPhoto.name = filename
+
+  newPhoto.square = photo.square || false
+  newPhoto.portrait = photo.portrait || false
+
+  const fields = Object.entries(newPhoto).map((entry, index) => `${ entry[0] }=($${ index + 1 })`).join(',')
 
   pool
     .query(
       queries.update_photo(id, fields),
-      Object.values(photo),
+      Object.values(newPhoto),
     )
     .then(response => {
       res.redirect('/admin/photos')
