@@ -17,7 +17,7 @@ const renderPage = (req, res, next) => {
     }))
     .then(response => {
       const photos = response.rows
-      const pager = res.pager 
+      const pager = res.pager
 
       res.render('index', {
         content: ReactDOMServer.renderToStaticMarkup(React.createElement(ReactApp, {photos, pager})),
@@ -29,6 +29,6 @@ const renderPage = (req, res, next) => {
 
 router.get('/', paginate, renderPage)
 
-router.get('/page/:page', paginate, renderPage)
+router.get('/page/:page(\\d+)', paginate, renderPage)
 
 module.exports = router

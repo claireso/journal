@@ -12,11 +12,11 @@ module.exports = (req, res, next) => {
   pool
     .query(queries.count_photos())
     .then(response => {
-      const limit = 1
+      const limit = 10
       const count = response.rows[0].count
       const totalPages = Math.ceil(count / limit)
 
-      if (page > totalPages || page < 1 || isNaN(page)) {
+      if (page > totalPages || page < 1) {
         res.redirect('/')
         return
       }

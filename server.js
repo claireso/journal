@@ -24,8 +24,17 @@ app.set('views', './views')
 app.use('/', client)
 app.use('/admin', auth.connect(basic), admin)
 
-// app.use((req, res, next) => {
-//   res.redirect('/')
-// })
+// Handle 404
+app.use((req, res, next) => {
+  res.status(404)
+  res.send('404')
+})
+
+// Handle 500
+app.use(function(err, req, res, next) {
+  res.status(500)
+  res.send('500')
+  console.log(err)
+})
 
 app.listen(3000, () => {})

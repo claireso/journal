@@ -12,8 +12,6 @@ const upload = multer({ dest: './public/img' })
 const router = express.Router()
 
 const deleteFile = (photo) => new Promise((resolve, reject) => {
-  if (!photo) resolve()
-
   const file = path.resolve('public/img', photo.name)
 
   fs.unlink(file, resolve)
@@ -39,6 +37,7 @@ const renderList = (req, res, next) => {
         pager: res.pager
       })
     })
+    .catch(next)
 }
 
 router.get('/photos', paginate, renderList)
@@ -49,7 +48,7 @@ router.get('/photos/new', (req, res) => {
   res.render('admin/photos/new')
 })
 
-router.post('/photos/new', upload.single('file'), (req, res) => {
+router.post('/photos/new', upload.single('file'), (req, res, next) => {
   const photo = req.body
   const filename = req.file && req.file.filename
 
@@ -68,22 +67,31 @@ router.post('/photos/new', upload.single('file'), (req, res) => {
     .then(response => {
       res.redirect('/admin/photos')
     })
+    .catch(next)
 })
 
 // EDIT PHOTO
-router.get('/photos/:id/edit', (req, res) => {
+router.get('/photos/:id(\\d+)/edit', (req, res, next) => {
   const { id } = req.params
 
   pool
     .query(queries.find_photo(id))
     .then(response => {
+      const photo = response.rows[0]
+
+      if (photo === undefined) {
+        next()
+        return
+      }
+
       res.render('admin/photos/edit', {
-        photo: response.rows[0],
+        photo,
       })
     })
+    .catch(next)
 })
 
-router.post('/photos/:id/edit', upload.single('file'), (req, res) => {
+router.post('/photos/:id(\\d+)/edit', upload.single('file'), (req, res, next) => {
   const { id } = req.params
   const photo = req.body
   const filename = req.file && req.file.filename
@@ -106,20 +114,30 @@ router.post('/photos/:id/edit', upload.single('file'), (req, res) => {
     .then(response => {
       res.redirect('/admin/photos')
     })
+    .catch(next)
 })
 
 // DELETE PHOTO
-router.get('/photos/:id/delete', (req, res) => {
+router.get('/photos/:id(\\d+)/delete', (req, res, next) => {
   const { id } = req.params
 
   pool
     .query(queries.find_photo(id))
-    .then(response => deleteFile(response.rows[0]))
+    .then(response => {
+      const photo = response.rows[0]
+
+      if (photo === undefined) {
+        return Promise.reject()
+      }
+
+      return deleteFile(response.rows[0])
+    })
     .then(pool.query(queries.delete_photo(id)))
     .then(response => {
       // TODO: clear cache
       res.redirect('back')
     })
+    .catch(next)
 })
 
 module.exports = router
