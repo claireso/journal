@@ -7,11 +7,13 @@ const auth = require('http-auth')
 const admin = require('./routes/admin')
 const client = require('./routes/client')
 
+const PORT = process.env.PORT || 3000
+
 const app = express()
 
 const basic = auth.basic({
-	realm: 'Admin area',
-	file: __dirname + '/htpasswd'
+  realm: 'Admin area',
+  file: __dirname + '/htpasswd'
 })
 
 app.use(express.static('public'))
@@ -37,4 +39,6 @@ app.use(function(err, req, res, next) {
   console.log(err)
 })
 
-app.listen(3000, () => {})
+app.listen(PORT, () => {
+  console.log('App listening on port %d!', PORT)
+})
