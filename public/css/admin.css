@@ -1,0 +1,77 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  transition: background 150ms ease-out;
+}
+
+main {
+  max-width: 1315px;
+  padding: 40px 20px;
+  margin: 0 auto;
+}
+
+.btn {
+  background:#8e44ad;
+  color: white;
+  display: inline-block;
+  padding: 10px;
+}
+
+.btn:hover {
+  background: #9b59b6;
+}
+
+.list__item {
+  padding: 20px 0;
+  display: flex;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.list__picture {
+  max-width: 150px;
+  margin: 0 10px 0 0;
+}
+
+.list__picture img {
+  max-width: 100%;
+}
+
+.list__picture, .list__text {
+  flex: 1;
+}
+
+.title {
+  font-size: 14px;
+  margin:0 0 10px;
+}
+
+.subtitle {
+  color: #464646;
+}
+
+.list__buttons {
+  opacity: 0;
+  transition: opacity 100ms ease-out;
+}
+
+.list__buttons .btn + .btn {
+  margin: 0 0 0 10px;
+}
+
+.list__item:hover .list__buttons {
+  opacity: 1;
+}

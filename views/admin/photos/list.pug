@@ -1,29 +1,36 @@
-h1 List photos
+extends ../admin.pug
 
-p
-  a(href="/admin/photos/new") New photo
+block content
+  h1 List photos
 
-ul
-  each photo in photos
-    li
-      img(src="/img/" + photo.name, width=300)
-      p= photo.title
-      p= photo.description
-      p
-        a(href="/admin/photos/" + photo.id + "/edit") Edit
-        br
-        a(href="/admin/photos/" + photo.id + "/delete") Delete
+  p
+    a.btn(href="/admin/photos/new") New photo
 
-ul
-  if pager.prev
-    if pager.first
+  ul.list
+    each photo in photos
+      li.list__item
+        div.list__picture
+          img(src="/img/" + photo.name, width=300)
+        div.list__text
+          h2.title= photo.title
+          p.subtitle= photo.description
+          p.list__buttons
+            a.btn(href="/admin/photos/" + photo.id + "/edit") Edit
+            a.btn(href="/admin/photos/" + photo.id + "/delete") Delete
+
+  p
+    a.btn(href="/admin/photos/new") New photo
+
+  ul
+    if pager.prev
+      if pager.first
+        li
+          a(href="/admin/photos/page/" + pager.first) First
       li
-        a(href="/admin/photos/page/" + pager.first) First
-    li
-      a(href="/admin/photos/page/" + pager.prev) Prev
-  if pager.next
-    li
-      a(href="/admin/photos/page/" + pager.next) Next
-    if pager.last
+        a(href="/admin/photos/page/" + pager.prev) Prev
+    if pager.next
       li
-        a(href="/admin/photos/page/" + pager.last) Last
+        a(href="/admin/photos/page/" + pager.next) Next
+      if pager.last
+        li
+          a(href="/admin/photos/page/" + pager.last) Last
