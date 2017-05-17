@@ -1,57 +1,37 @@
-form(method="POST" action="" enctype="multipart/form-data")
-  div
-    label Title
-    br
-    input(type="text" name="title" value= photo ? photo.title : '')
+form.form(method="POST" action="" enctype="multipart/form-data")
+  div.form__item
+    label.form__label Title
+    input.form__input(type="text" name="title" value= photo ? photo.title : '')
 
-    br
-    br
 
-    div
-      label Description
-      br
-      input(type="text" name="description" value= photo ? photo.description : '')
+  div.form__item
+    label.form__label Description
+    input.form__input(type="text" name="description" value= photo ? photo.description : '')
 
-    br
-    br
-
+  div.form__item
     if photo
       img(src="/img/" + photo.name, width=300)
       br
       br
 
-    div
-      label Photo
-      br
-      input(type="file" name="file" required = !photo ? 'required' : undefined)
+    label.form__label Photo
+    input(type="file" name="file" required = !photo ? 'required' : undefined)
 
-    br
-    br
+  div.form__item
+    label.form__label Position
+    select(name="position" required)
+      each position in ['left', 'center', 'right']
+        option(
+          value=position
+          selected= photo && photo.position === position ? 'selected' : undefined
+        ) #{position}
 
-    div
-      label Position
-      select(name="position" required)
-        each position in ['left', 'center', 'right']
-          option(
-            value=position
-            selected= photo && photo.position === position ? 'selected' : undefined
-          ) #{position}
+  div.form__item
+    label.form__label Portrait
+    input(type="checkbox" name="portrait" checked= photo && photo.portrait ? 'checked' : undefined)
 
-    br
-    br
+  div.form__item
+    label.form__label Square
+    input(type="checkbox" name="square" checked= photo && photo.square ? 'checked' : undefined)
 
-    div
-      label Portrait
-      input(type="checkbox" name="portrait" checked= photo && photo.portrait ? 'checked' : undefined)
-
-    br
-    br
-
-    div
-      label Square
-      input(type="checkbox" name="square" checked= photo && photo.square ? 'checked' : undefined)
-
-    br
-    br
-
-    input(type="submit" value="Submit")
+  input.form__submit.btn(type="submit" value="Submit")

@@ -13,6 +13,10 @@ body {
   color: #333;
 }
 
+.align-right {
+  text-align: right;
+}
+
 a {
   text-decoration: none;
   transition: background 150ms ease-out;
@@ -29,6 +33,7 @@ main {
   color: white;
   display: inline-block;
   padding: 10px;
+  transition: background 150ms ease-out;
 }
 
 .btn:hover {
@@ -74,4 +79,46 @@ main {
 
 .list__item:hover .list__buttons {
   opacity: 1;
+}
+
+.pager {
+  display: inline-flex;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+}
+
+.pager__item {
+  margin: 0 3px;
+}
+
+.pager__item .btn {
+  width: 34px;
+  text-align: center;
+}
+
+.form__submit {
+  -webkit-appearance: none;
+  appearence: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 15px 50px;
+}
+
+.form__item {
+  margin: 0 0 20px;
+}
+
+.form__input {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.form__label {
+  display: block;
+  font-size: 16px;
+  margin: 0 0 10px;
 }

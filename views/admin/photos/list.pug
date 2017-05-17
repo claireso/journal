@@ -3,7 +3,7 @@ extends ../admin.pug
 block content
   h1 List photos
 
-  p
+  p.align-right
     a.btn(href="/admin/photos/new") New photo
 
   ul.list
@@ -18,19 +18,19 @@ block content
             a.btn(href="/admin/photos/" + photo.id + "/edit") Edit
             a.btn(href="/admin/photos/" + photo.id + "/delete") Delete
 
-  p
+  p.align-right
     a.btn(href="/admin/photos/new") New photo
 
-  ul
+  ul.pager
     if pager.prev
       if pager.first
-        li
-          a(href="/admin/photos/page/" + pager.first) First
-      li
-        a(href="/admin/photos/page/" + pager.prev) Prev
+        li.pager__item
+          a.btn(href="/admin/photos/page/" + pager.first) ««
+      li.pager__item
+        a.btn(href="/admin/photos/page/" + pager.prev) «
     if pager.next
-      li
-        a(href="/admin/photos/page/" + pager.next) Next
+      li.pager__item
+        a.btn(href="/admin/photos/page/" + pager.next) »
       if pager.last
-        li
-          a(href="/admin/photos/page/" + pager.last) Last
+        li.pager__item
+          a.btn(href="/admin/photos/page/" + pager.last) »»
