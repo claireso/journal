@@ -16,7 +16,7 @@ module.exports = (req, res, next) => {
       const count = response.rows[0].count
       const totalPages = Math.ceil(count / limit)
 
-      if (page > totalPages || page < 1) {
+      if ((count > 0 && page > totalPages || page < 1) || (page > 1 && count == 0)) {
         res.redirect('/')
         return
       }
