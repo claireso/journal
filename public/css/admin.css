@@ -13,6 +13,10 @@ body {
   color: #333;
 }
 
+h1 {
+  margin-bottom: 40px;
+}
+
 .align-right {
   text-align: right;
 }
@@ -23,7 +27,7 @@ a {
 }
 
 main {
-  max-width: 1315px;
+  max-width: 960px;
   padding: 40px 20px;
   margin: 0 auto;
 }
@@ -31,7 +35,7 @@ main {
 .btn {
   background:#8e44ad;
   color: white;
-  display: inline-block;
+  display: inline-flex;
   padding: 10px;
   transition: background 150ms ease-out;
 }
@@ -40,10 +44,37 @@ main {
   background: #9b59b6;
 }
 
+.btn--icon svg {
+  fill: #fff;
+  margin: 0 -3px 0 3px;
+}
+
+.btn--gray {
+  background: #ecf0f1;
+  color: #333;
+}
+
+.btn--gray:hover {
+  background:#dcdede;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
+
 .list__item {
-  padding: 20px 0;
+  padding: 20px;
   display: flex;
-  border-bottom: 1px solid #ecf0f1;
+  transition: background 100ms ease-out;
+}
+
+.list__item:hover {
+  background: #ecf0f1;
+}
+
+.list__item + .list__item {
+  border-top: 1px solid #ecf0f1;
 }
 
 .list__picture {
@@ -53,6 +84,10 @@ main {
 
 .list__picture img {
   max-width: 100%;
+  max-height: 100px;
+  width: auto;
+  margin: 0 auto;
+  display: block;
 }
 
 .list__picture, .list__text {
@@ -93,8 +128,11 @@ main {
 }
 
 .pager__item .btn {
-  width: 34px;
-  text-align: center;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 
 .form__submit {
@@ -104,6 +142,10 @@ main {
   cursor: pointer;
   font-size: 14px;
   padding: 15px 50px;
+}
+
+.form {
+  max-width: 600px;
 }
 
 .form__item {
