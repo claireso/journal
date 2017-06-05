@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default (props) => {
+export default (props = {}) => {
   return (
     <div className="form__item form__item--inline">
       <label 
