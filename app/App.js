@@ -34,4 +34,4 @@ const App = props => {
   )
 }
 
-module.exports = App;
+module.exports = App

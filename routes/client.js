@@ -20,7 +20,7 @@ const renderPage = (req, res, next) => {
       const pager = res.pager
 
       res.render('index', {
-        content: ReactDOMServer.renderToStaticMarkup(React.createElement(ReactApp, {photos, pager})),
+        content: ReactDOMServer.renderToStaticMarkup(<ReactApp photos={ photos } pager={ pager } />),
       })
     })
     .catch(next)

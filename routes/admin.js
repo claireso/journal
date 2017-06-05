@@ -2,10 +2,16 @@ const express = require('express')
 const fs = require('fs')
 const path = require('path')
 const multer = require('multer')
+const React = require('react')
+const ReactDOMServer = require('react-dom/server')
 
 const pool = require('../db/db')
 const queries = require('../db/queries')
 const paginate = require('./middleware/paginate')
+
+const ListView = require('../app/admin/List')
+const NewView = require('../app/admin/New')
+const EditView = require('../app/admin/Edit')
 
 const upload = multer({ dest: './public/img' })
 
@@ -22,7 +28,7 @@ const deleteFile = (photo) => new Promise((resolve, reject) => {
 /////////////////////////////////////////////////////
 
 router.get('/', (req, res) => {
-  res.render('admin/admin')
+  res.redirect('admin/photos')
 })
 
 // ALL PHOTOS
@@ -32,9 +38,10 @@ const renderList = (req, res, next) => {
       options: `OFFSET ${ res.pager.offset } LIMIT ${ res.pager.limit }`
     }))
     .then(response => {
-      res.render('admin/photos/list', {
-        photos: response.rows,
-        pager: res.pager
+      res.render('admin', {
+        content: ReactDOMServer.renderToStaticMarkup(
+          <ListView photos={ response.rows } pager={ res.pager } />
+        ),
       })
     })
     .catch(next)
@@ -45,7 +52,11 @@ router.get('/photos/page/:page', paginate, renderList)
 
 // NEW PHOTO
 router.get('/photos/new', (req, res) => {
-  res.render('admin/photos/new')
+  res.render('admin', {
+    content: ReactDOMServer.renderToStaticMarkup(
+      <NewView />
+    )
+  })
 })
 
 router.post('/photos/new', upload.single('file'), (req, res, next) => {
@@ -84,8 +95,10 @@ router.get('/photos/:id(\\d+)/edit', (req, res, next) => {
         return
       }
 
-      res.render('admin/photos/edit', {
-        photo,
+      res.render('admin', {
+        content: ReactDOMServer.renderToStaticMarkup(
+          <EditView photo={ photo } />
+        ),
       })
     })
     .catch(next)
