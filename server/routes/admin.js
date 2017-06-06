@@ -2,16 +2,15 @@ const express = require('express')
 const fs = require('fs')
 const path = require('path')
 const multer = require('multer')
-const React = require('react')
-const ReactDOMServer = require('react-dom/server')
 
 const pool = require('../db/db')
 const queries = require('../db/queries')
 const paginate = require('./middleware/paginate')
+const render = require('../utils/render')
 
-const ListView = require('../app/admin/List')
-const NewView = require('../app/admin/New')
-const EditView = require('../app/admin/Edit')
+const ListView = require('../../app/admin/List')
+const NewView = require('../../app/admin/New')
+const EditView = require('../../app/admin/Edit')
 
 const upload = multer({ dest: './public/img' })
 
@@ -39,9 +38,10 @@ const renderList = (req, res, next) => {
     }))
     .then(response => {
       res.render('admin', {
-        content: ReactDOMServer.renderToStaticMarkup(
-          <ListView photos={ response.rows } pager={ res.pager } />
-        ),
+        content: render(ListView, {
+          photos: response.rows,
+          pager: res.pager,
+        }),
       })
     })
     .catch(next)
@@ -53,9 +53,7 @@ router.get('/photos/page/:page', paginate, renderList)
 // NEW PHOTO
 router.get('/photos/new', (req, res) => {
   res.render('admin', {
-    content: ReactDOMServer.renderToStaticMarkup(
-      <NewView />
-    )
+    content: render(NewView)
   })
 })
 
@@ -96,9 +94,7 @@ router.get('/photos/:id(\\d+)/edit', (req, res, next) => {
       }
 
       res.render('admin', {
-        content: ReactDOMServer.renderToStaticMarkup(
-          <EditView photo={ photo } />
-        ),
+        content: render(EditView, { photo }),
       })
     })
     .catch(next)

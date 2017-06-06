@@ -21,7 +21,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'pug')
-app.set('views', './views')
+app.set('views', 'server/views')
 
 app.use('/', client)
 app.use('/admin', auth.connect(basic), admin)

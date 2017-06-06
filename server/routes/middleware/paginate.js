@@ -12,12 +12,13 @@ module.exports = (req, res, next) => {
   pool
     .query(queries.count_photos())
     .then(response => {
-      const limit = 10
+      const limit = 2
       const count = response.rows[0].count
       const totalPages = Math.ceil(count / limit)
 
       if ((count > 0 && page > totalPages || page < 1) || (page > 1 && count == 0)) {
-        res.redirect('/')
+        const next = req.originalUrl.startsWith('/admin') ? '/admin/photos' : '/'
+        res.redirect(next)
         return
       }
 

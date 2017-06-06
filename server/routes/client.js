@@ -1,12 +1,11 @@
 const express = require('express')
-const React = require('react')
-const ReactDOMServer = require('react-dom/server')
 
 const pool = require('../db/db')
 const queries = require('../db/queries')
 const paginate = require('./middleware/paginate')
+const render = require('../utils/render')
 
-const ReactApp = require('../app/App')
+const ReactApp = require('../../app/App')
 
 const router = express.Router()
 
@@ -20,7 +19,7 @@ const renderPage = (req, res, next) => {
       const pager = res.pager
 
       res.render('index', {
-        content: ReactDOMServer.renderToStaticMarkup(<ReactApp photos={ photos } pager={ pager } />),
+        content: render(ReactApp, { photos, pager }),
       })
     })
     .catch(next)
