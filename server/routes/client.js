@@ -6,6 +6,7 @@ const paginate = require('./middleware/paginate')
 const render = require('../utils/render')
 
 const ReactApp = require('../../app/App')
+const Layout = require('../views/index')
 
 const router = express.Router()
 
@@ -18,13 +19,10 @@ const renderPage = (req, res, next) => {
       const photos = response.rows
       const pager = res.pager
 
-      res.render('index', {
-        content: render(ReactApp, { photos, pager }),
-      })
+      res.send( render(Layout, ReactApp, { photos, pager }) )
     })
     .catch(next)
 }
-
 
 router.get('/', paginate, renderPage)
 

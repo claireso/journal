@@ -1,6 +1,7 @@
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
 
-module.exports = (Component, props = {}) => {
-  return ReactDOMServer.renderToStaticMarkup(<Component { ...props } />)
+module.exports = (Layout, Component, props = {}) => {
+  const content = ReactDOMServer.renderToStaticMarkup(<Component { ...props } />)
+  return Layout({content})
 }

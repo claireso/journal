@@ -20,9 +20,6 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.set('view engine', 'pug')
-app.set('views', 'server/views')
-
 app.use('/', client)
 app.use('/admin', auth.connect(basic), admin)
 

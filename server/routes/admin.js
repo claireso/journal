@@ -12,6 +12,8 @@ const ListView = require('../../app/admin/List')
 const NewView = require('../../app/admin/New')
 const EditView = require('../../app/admin/Edit')
 
+const Layout = require('../views/admin')
+
 const upload = multer({ dest: './public/img' })
 
 const router = express.Router()
@@ -37,12 +39,10 @@ const renderList = (req, res, next) => {
       options: `OFFSET ${ res.pager.offset } LIMIT ${ res.pager.limit }`
     }))
     .then(response => {
-      res.render('admin', {
-        content: render(ListView, {
-          photos: response.rows,
-          pager: res.pager,
-        }),
-      })
+      res.send(render(Layout, ListView, {
+        photos: response.rows,
+        pager: res.pager,
+      }))
     })
     .catch(next)
 }
@@ -52,9 +52,7 @@ router.get('/photos/page/:page', paginate, renderList)
 
 // NEW PHOTO
 router.get('/photos/new', (req, res) => {
-  res.render('admin', {
-    content: render(NewView)
-  })
+  res.send(render(Layout, NewView))
 })
 
 router.post('/photos/new', upload.single('file'), (req, res, next) => {
@@ -93,9 +91,7 @@ router.get('/photos/:id(\\d+)/edit', (req, res, next) => {
         return
       }
 
-      res.render('admin', {
-        content: render(EditView, { photo }),
-      })
+      res.send(render(Layout, EditView, { photo }))
     })
     .catch(next)
 })
