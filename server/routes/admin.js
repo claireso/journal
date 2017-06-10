@@ -29,7 +29,7 @@ const deleteFile = (photo) => new Promise((resolve, reject) => {
 /////////////////////////////////////////////////////
 
 router.get('/', (req, res) => {
-  res.redirect('admin/photos')
+  res.redirect('/admin/photos')
 })
 
 // ALL PHOTOS
