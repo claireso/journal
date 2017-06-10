@@ -6,9 +6,13 @@ import helmet from 'helmet'
 import admin from './routes/admin'
 import client from './routes/client'
 
+import config from '../config'
+
 const PORT = process.env.PORT || 3000
 
 const app = express()
+
+app.disable('x-powered-by')
 
 const basic = auth.basic({
   realm: 'Admin area',
@@ -20,9 +24,8 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.disable('x-powered-by');
+app.locals.meta = config.meta
 
-console.log(helmet.noCache)
 
 app.use('/', client)
 app.use('/admin', helmet.noCache(), auth.connect(basic), admin)
