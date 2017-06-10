@@ -7,7 +7,9 @@ pool.on('error', function (err, client) {
   console.error('idle client error', err.message, err.stack)
 })
 
-module.exports.query = (text, values, callback) => {
-  console.log('query:', text, values)
-  return pool.query(text, values, callback)
+export default {
+  query(text, values, callback){
+    console.log('query:', text, values)
+    return pool.query(text, values, callback)
+  }
 }

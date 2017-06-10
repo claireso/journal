@@ -1,12 +1,12 @@
-const express = require('express')
+import  express from 'express'
 
-const pool = require('../db/db')
-const queries = require('../db/queries')
-const paginate = require('./middleware/paginate')
-const render = require('../utils/render')
+import  pool from '../db/db'
+import  queries from '../db/queries'
+import  paginate from './middleware/paginate'
+import  render from '../utils/render'
 
-const ReactApp = require('../../app/App')
-const Layout = require('../views/index')
+import  ReactApp from '../../app/App'
+import  Layout from '../views/index'
 
 const router = express.Router()
 
@@ -28,4 +28,4 @@ router.get('/', paginate, renderPage)
 
 router.get('/page/:page(\\d+)', paginate, renderPage)
 
-module.exports = router
+export default router

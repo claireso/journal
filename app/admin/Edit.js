@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from './form/Form'
 
-const Edit = ({ photo }) => {
+export default ({ photo }) => {
   return (
     <main>
       <h1>Edit photo</h1>
@@ -9,5 +9,3 @@ const Edit = ({ photo }) => {
     </main>
   )
 }
-
-module.exports = Edit

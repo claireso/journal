@@ -1,6 +1,6 @@
 // admin layout
 
-module.exports = ({content} = {}) => `
+export default ({content} = {}) => `
   <html lang="fr">
     <head>
       <meta charset="utf-8" />

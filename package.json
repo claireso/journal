@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
     "pm2": "pm2",
-    "server": "nodemon -e js,html,pug server/server.js"
+    "server": "nodemon -e js,html,pug server/server.js --exec babel-node"
   },
   "repository": {
     "type": "git",
@@ -29,10 +29,10 @@
     "sw-toolbox": "3.6.0"
   },
   "devDependencies": {
+    "babel-cli": "6.24.1",
     "babel-plugin-transform-react-jsx": "6.24.1",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
-    "babel-register": "6.24.1",
     "minimist": "1.2.0"
   }
 }

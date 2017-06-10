@@ -1,8 +1,8 @@
-const pool = require('../../db/db')
-const queries = require('../../db/queries')
+import pool from '../../db/db'
+import queries from '../../db/queries'
 
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   let page = 1
 
   if (req.params.page !== undefined) {

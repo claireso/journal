@@ -55,7 +55,7 @@ const Pager = ({pager}) => {
   )
 }
 
-const ListContainer = ({ photos, pager }) => {
+export default ({ photos, pager }) => {
   return (
     <main>
       <h1> List photos </h1>
@@ -72,5 +72,3 @@ const ListContainer = ({ photos, pager }) => {
     </main>
   )
 }
-
-module.exports = ListContainer

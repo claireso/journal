@@ -1,18 +1,18 @@
-const express = require('express')
-const fs = require('fs')
-const path = require('path')
-const multer = require('multer')
+import express from 'express'
+import fs from 'fs'
+import path from 'path'
+import multer from 'multer'
 
-const pool = require('../db/db')
-const queries = require('../db/queries')
-const paginate = require('./middleware/paginate')
-const render = require('../utils/render')
+import pool from '../db/db'
+import queries from '../db/queries'
+import paginate from './middleware/paginate'
+import render from '../utils/render'
 
-const ListView = require('../../app/admin/List')
-const NewView = require('../../app/admin/New')
-const EditView = require('../../app/admin/Edit')
+import ListView from '../../app/admin/List'
+import NewView from '../../app/admin/New'
+import EditView from '../../app/admin/Edit'
 
-const Layout = require('../views/admin')
+import Layout from '../views/admin'
 
 const upload = multer({ dest: './public/img' })
 
@@ -145,4 +145,4 @@ router.get('/photos/:id(\\d+)/delete', (req, res, next) => {
     .catch(next)
 })
 
-module.exports = router
+export default router

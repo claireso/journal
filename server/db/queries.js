@@ -21,7 +21,7 @@ const delete_photo = (id = '') =>
 const count_photos = () =>
   `SELECT count(*) FROM photos`
 
-module.exports = {
+export default {
   get_photos,
   insert_photo,
   update_photo,

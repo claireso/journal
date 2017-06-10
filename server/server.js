@@ -1,11 +1,9 @@
-require('babel-register')
+import express from 'express'
+import bodyParser from 'body-parser'
+import auth from 'http-auth'
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const auth = require('http-auth')
-
-const admin = require('./routes/admin')
-const client = require('./routes/client')
+import admin from './routes/admin'
+import client from './routes/client'
 
 const PORT = process.env.PORT || 3000
 
