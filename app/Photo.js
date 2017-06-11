@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Photo = props => {
+export default props => {
   const cls = 'figure-' + props.position;
   const width = props.portrait ? 385 : props.square ? 578 : 810;
   const height = props.portrait || props.square ? 578 :  540;
@@ -8,7 +8,7 @@ const Photo = props => {
   return (
     <figure className={ cls }>
       <div>
-        <img src={ props.src }  width={ width } height={ height } />
+        <img src={ `/img/${ props.name }` }  width={ width } height={ height } />
         <figcaption>
           { props.title }
 
@@ -20,5 +20,3 @@ const Photo = props => {
     </figure>
   )
 }
-
-export default Photo;

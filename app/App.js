@@ -1,7 +1,7 @@
 import React from 'react';
 import Photo from './Photo';
 
-const App = props => {
+export default props => {
   return (
     <main>
       { props.photos.map((photo, index) => <Photo key={ index } { ...photo } />) }
@@ -33,5 +33,3 @@ const App = props => {
     </main>
   )
 }
-
-module.exports = App;

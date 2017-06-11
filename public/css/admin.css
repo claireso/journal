@@ -1,0 +1,187 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+.align-right {
+  text-align: right;
+}
+
+a {
+  text-decoration: none;
+  transition: background 150ms ease-out;
+}
+
+main {
+  max-width: 960px;
+  padding: 40px 20px;
+  margin: 0 auto;
+}
+
+.btn {
+  background:#8e44ad;
+  color: white;
+  display: inline-flex;
+  padding: 10px;
+  transition: background 150ms ease-out;
+}
+
+.btn:hover {
+  background: #9b59b6;
+}
+
+.btn--icon svg {
+  fill: #fff;
+  margin: 0 -3px 0 3px;
+}
+
+.btn--gray {
+  background: #ecf0f1;
+  color: #333;
+}
+
+.btn--gray:hover {
+  background:#dcdede;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
+
+.list__item {
+  padding: 20px;
+  display: flex;
+  transition: background 100ms ease-out;
+}
+
+.list__item:hover {
+  background: #ecf0f1;
+}
+
+.list__item + .list__item {
+  border-top: 1px solid #ecf0f1;
+}
+
+.list__picture {
+  max-width: 150px;
+  margin: 0 10px 0 0;
+}
+
+.list__picture img {
+  max-width: 100%;
+  max-height: 110px;
+  width: auto;
+  margin: 0 auto;
+  display: block;
+  border: 5px solid white;
+}
+
+.list__picture, .list__text {
+  flex: 1;
+}
+
+.title {
+  font-size: 14px;
+  margin:0 0 10px;
+}
+
+.subtitle {
+  color: #464646;
+}
+
+.list__buttons {
+  opacity: 0;
+  transition: opacity 100ms ease-out;
+}
+
+.list__buttons .btn + .btn {
+  margin: 0 0 0 10px;
+}
+
+.list__item:hover .list__buttons {
+  opacity: 1;
+}
+
+.pager {
+  display: inline-flex;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.pager__item {
+  margin: 0 3px;
+}
+
+.pager__item .btn {
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.form__submit {
+  -webkit-appearance: none;
+  appearence: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 15px 50px;
+}
+
+.form {
+  max-width: 600px;
+}
+
+.form__item {
+  margin: 0 0 20px;
+}
+
+.form__item--inline {
+  display: flex;
+  align-items: center;
+}
+
+.form__item--inline .form__label {
+  margin: 0 5px 0 0;
+}
+
+.form__input {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.form__label {
+  display: block;
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.form__photo {
+  background: #ecf0f1;
+  padding: 15px;
+}
+
+.form__photo img {
+  display: block;
+  margin: 0 0 20px;
+}
