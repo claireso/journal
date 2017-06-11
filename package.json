@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
-    "pm2": "pm2",
     "server": "nodemon -e js,html,pug server/server.js --exec babel-node"
   },
   "repository": {
