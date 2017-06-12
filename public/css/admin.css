@@ -14,7 +14,11 @@ body {
 }
 
 h1 {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+}
+
+h1 + p {
+  margin-bottom: 30px;
 }
 
 .align-right {
@@ -24,6 +28,17 @@ h1 {
 a {
   text-decoration: none;
   transition: background 150ms ease-out;
+}
+
+.link {
+  color: #8e44ad;
+  display: inline-flex;
+  align-items: center;
+}
+
+.link svg {
+  fill: #8e44ad;
+  margin-right: 5px;
 }
 
 main {
