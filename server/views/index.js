@@ -1,6 +1,6 @@
 // default layout
 
-export default ({content, meta} = {}) => `
+export default ({content = '', meta = {}} = {}) => `
   <html lang="fr">
     <head>
       <meta charset="utf-8" />
