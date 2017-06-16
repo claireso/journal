@@ -24,7 +24,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.locals.meta = config.meta
+app.locals.config = { ...config.website }
 
 
 app.use('/', client)

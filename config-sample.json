@@ -8,8 +8,13 @@
     "max": 10,
     "idleTimeoutMillis": 30000,
   },
-  "meta": {
-    "title": "",
-    "description": ""
+  "website": {
+    "meta": {
+      "title": "",
+      "description": ""
+    },
+    "analytics": {
+      "ga": ""
+    }
   }
 }
