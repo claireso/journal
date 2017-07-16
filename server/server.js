@@ -24,8 +24,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.locals.config = { ...config.website }
-
+app.locals.config = { ...config.website, version: process.env.npm_package_version }
 
 app.use('/', client)
 app.use('/admin', helmet.noCache(), auth.connect(basic), admin)
