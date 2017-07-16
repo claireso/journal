@@ -8,7 +8,7 @@ export default props => {
   return (
     <figure className={ cls }>
       <div>
-        <img src={ `/img/${ props.name }` }  width={ width } height={ height } />
+        <img src={ `/img/${ props.name }` } width={ width } height={ height } alt="" />
         <figcaption>
           { props.title }
 

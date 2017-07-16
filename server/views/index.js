@@ -1,6 +1,7 @@
 // default layout
 
 export default ({content = '', config = {}} = {}) => `
+  <!doctype html>
   <html lang="fr">
     <head>
       <meta charset="utf-8" />
@@ -9,8 +10,8 @@ export default ({content = '', config = {}} = {}) => `
       <meta name="robots" content="noindex, nofollow" />
       <meta name="description" content="${ config.meta.description }" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400, 700" />
       <link rel="stylesheet" href="/css/journal.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
       <link rel="manifest" href="/manifest.json" />
     </head>
     <body>

@@ -1,6 +1,7 @@
 // admin layout
 
 export default ({content} = {}) => `
+  <!doctype html>
   <html lang="fr">
     <head>
       <meta charset="utf-8" />
