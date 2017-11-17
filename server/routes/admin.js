@@ -3,6 +3,7 @@ import path from 'path'
 import express from 'express'
 import multer from 'multer'
 import { ulid } from 'ulid'
+import escape from 'lodash/escape'
 
 import pool from '../db/db'
 import queries from '../db/queries'
@@ -80,8 +81,8 @@ router.post('/photos/new', upload.single('file'), (req, res, next) => {
 
   pool
     .query(queries.insert_photo(), [
-      photo.title,
-      photo.description,
+      escape(photo.title),
+      escape(photo.description),
       filename,
       photo.position,
       photo.portrait || false,
@@ -120,13 +121,15 @@ router.post(
     const photo = req.body
     const filename = req.file && req.file.filename
 
-    const newPhoto = Object.assign({}, photo)
+    const newPhoto = { ...photo }
 
     // TODO delete current file
     if (filename) newPhoto.name = filename
 
     newPhoto.square = photo.square || false
     newPhoto.portrait = photo.portrait || false
+    newPhoto.description = escape(newPhoto.description)
+    newPhoto.title = escape(newPhoto.title)
 
     const fields = Object.entries(newPhoto)
       .map((entry, index) => `${entry[0]}=($${index + 1})`)
