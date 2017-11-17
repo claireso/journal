@@ -1,6 +1,6 @@
 // admin layout
 
-export default ({content} = {}) => `
+export default ({content = '', config = {}} = {}) => `
   <!doctype html>
   <html lang="fr">
     <head>
