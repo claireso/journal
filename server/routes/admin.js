@@ -1,7 +1,8 @@
-import express from 'express'
 import fs from 'fs'
 import path from 'path'
+import express from 'express'
 import multer from 'multer'
+import { ulid } from 'ulid'
 
 import pool from '../db/db'
 import queries from '../db/queries'
@@ -14,15 +15,29 @@ import EditView from '../../app/admin/Edit'
 
 import Layout from '../views/admin'
 
-const upload = multer({ dest: './public/img' })
+
+// multer storage configuration
+const storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, path.resolve('public', 'img'))
+  },
+  filename: function (req, file, callback) {
+    const fieldname = ulid().toLowerCase()
+    const extension = path.extname(file.originalname)
+
+    callback(null, `${ fieldname }${ extension }`)
+  }
+})
+
+const upload = multer({ storage: storage })
 
 const router = express.Router()
 
 const deleteFile = (photo) => new Promise((resolve, reject) => {
-  const file = path.resolve('public/img', photo.name)
+  const file = path.resolve('public', 'img',  photo.name)
 
   fs.unlink(file, resolve)
-});
+})
 
 /////////////////////////////////////////////////////
 //  ROUTES
