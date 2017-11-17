@@ -1,3 +1,4 @@
+import path from 'path'
 import express from 'express'
 import bodyParser from 'body-parser'
 import auth from 'http-auth'
@@ -16,7 +17,7 @@ app.disable('x-powered-by')
 
 const basic = auth.basic({
   realm: 'Admin area',
-  file: __dirname + '/htpasswd'
+  file: path.resolve(__dirname, 'htpasswd')
 })
 
 app.use(helmet())
