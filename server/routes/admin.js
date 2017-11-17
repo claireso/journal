@@ -15,17 +15,16 @@ import EditView from '../../app/admin/Edit'
 
 import Layout from '../views/admin'
 
-
 // multer storage configuration
 const storage = multer.diskStorage({
-  destination: function (req, file, callback) {
+  destination: function(req, file, callback) {
     callback(null, path.resolve('public', 'img'))
   },
-  filename: function (req, file, callback) {
+  filename: function(req, file, callback) {
     const fieldname = ulid().toLowerCase()
     const extension = path.extname(file.originalname)
 
-    callback(null, `${ fieldname }${ extension }`)
+    callback(null, `${fieldname}${extension}`)
   }
 })
 
@@ -33,11 +32,12 @@ const upload = multer({ storage: storage })
 
 const router = express.Router()
 
-const deleteFile = (photo) => new Promise((resolve) => {
-  const file = path.resolve('public', 'img',  photo.name)
+const deleteFile = photo =>
+  new Promise(resolve => {
+    const file = path.resolve('public', 'img', photo.name)
 
-  fs.unlink(file, resolve)
-})
+    fs.unlink(file, resolve)
+  })
 
 /////////////////////////////////////////////////////
 //  ROUTES
@@ -50,14 +50,18 @@ router.get('/', (req, res) => {
 // ALL PHOTOS
 const renderList = (req, res, next) => {
   pool
-    .query(queries.get_photos({
-      options: `OFFSET ${ res.pager.offset } LIMIT ${ res.pager.limit }`
-    }))
+    .query(
+      queries.get_photos({
+        options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
+      })
+    )
     .then(response => {
-      res.send(render(Layout, ListView, {
-        photos: response.rows,
-        pager: res.pager,
-      }))
+      res.send(
+        render(Layout, ListView, {
+          photos: response.rows,
+          pager: res.pager
+        })
+      )
     })
     .catch(next)
 }
@@ -75,17 +79,14 @@ router.post('/photos/new', upload.single('file'), (req, res, next) => {
   const filename = req.file && req.file.filename
 
   pool
-    .query(
-      queries.insert_photo(),
-      [
-        photo.title,
-        photo.description,
-        filename,
-        photo.position,
-        photo.portrait || false,
-        photo.square || false,
-      ]
-    )
+    .query(queries.insert_photo(), [
+      photo.title,
+      photo.description,
+      filename,
+      photo.position,
+      photo.portrait || false,
+      photo.square || false
+    ])
     .then(() => {
       res.redirect('/admin/photos')
     })
@@ -111,31 +112,34 @@ router.get('/photos/:id(\\d+)/edit', (req, res, next) => {
     .catch(next)
 })
 
-router.post('/photos/:id(\\d+)/edit', upload.single('file'), (req, res, next) => {
-  const { id } = req.params
-  const photo = req.body
-  const filename = req.file && req.file.filename
+router.post(
+  '/photos/:id(\\d+)/edit',
+  upload.single('file'),
+  (req, res, next) => {
+    const { id } = req.params
+    const photo = req.body
+    const filename = req.file && req.file.filename
 
-  const newPhoto = Object.assign({}, photo)
+    const newPhoto = Object.assign({}, photo)
 
-  // TODO delete current file
-  if (filename) newPhoto.name = filename
+    // TODO delete current file
+    if (filename) newPhoto.name = filename
 
-  newPhoto.square = photo.square || false
-  newPhoto.portrait = photo.portrait || false
+    newPhoto.square = photo.square || false
+    newPhoto.portrait = photo.portrait || false
 
-  const fields = Object.entries(newPhoto).map((entry, index) => `${ entry[0] }=($${ index + 1 })`).join(',')
+    const fields = Object.entries(newPhoto)
+      .map((entry, index) => `${entry[0]}=($${index + 1})`)
+      .join(',')
 
-  pool
-    .query(
-      queries.update_photo(id, fields),
-      Object.values(newPhoto)
-    )
-    .then(() => {
-      res.redirect('/admin/photos')
-    })
-    .catch(next)
-})
+    pool
+      .query(queries.update_photo(id, fields), Object.values(newPhoto))
+      .then(() => {
+        res.redirect('/admin/photos')
+      })
+      .catch(next)
+  }
+)
 
 // DELETE PHOTO
 router.get('/photos/:id(\\d+)/delete', (req, res, next) => {

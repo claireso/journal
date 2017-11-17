@@ -7,36 +7,32 @@ import Checkbox from './components/Checkbox'
 
 const Form = ({ photo } = {}) => {
   return (
-    <form className="form" method="POST" action="" encType="multipart/form-data">
-      <Input
-        name="title"
-        label="Title"
-        value={ photo ? photo.title : '' }
-      />
+    <form
+      className="form"
+      method="POST"
+      action=""
+      encType="multipart/form-data"
+    >
+      <Input name="title" label="Title" value={photo ? photo.title : ''} />
 
       <Input
         name="description"
         label="Description"
-        value={ photo ? photo.description : '' }
+        value={photo ? photo.description : ''}
       />
 
       <div className="form__item">
-        <label
-          className="form__label"
-          htmlFor="file"
-        >
+        <label className="form__label" htmlFor="file">
           Photo
         </label>
 
-        <div className={ photo ? 'form__photo' : ''}>
-          { photo &&
-            <img src={ `/img/${ photo.name }` } width="300" />
-          }
+        <div className={photo ? 'form__photo' : ''}>
+          {photo && <img src={`/img/${photo.name}`} width="300" />}
           <input
             id="file"
             type="file"
             name="file"
-            required={ !photo ? 'required' : undefined }
+            required={!photo ? 'required' : undefined}
           />
         </div>
       </div>
@@ -44,15 +40,15 @@ const Form = ({ photo } = {}) => {
       <Select
         label="Position"
         name="position"
-        value={ photo ? photo.position : '' }
+        value={photo ? photo.position : ''}
         options={[
           {
             value: 'left',
-            label: 'Left',
+            label: 'Left'
           },
           {
             value: 'center',
-            label: 'Center',
+            label: 'Center'
           },
           {
             value: 'right',
@@ -64,21 +60,16 @@ const Form = ({ photo } = {}) => {
       <Checkbox
         name="portrait"
         label="Portrait"
-        value={ photo ? photo.portrait : false }
+        value={photo ? photo.portrait : false}
       />
 
       <Checkbox
         name="square"
         label="Square"
-        value={ photo ? photo.square : false }
+        value={photo ? photo.square : false}
       />
 
-      <input
-        className="form__submit btn"
-        type="submit"
-        value="Submit"
-      />
-
+      <input className="form__submit btn" type="submit" value="Submit" />
     </form>
   )
 }
@@ -90,7 +81,7 @@ Form.propTypes = {
     name: PropTypes.string,
     position: PropTypes.string,
     portrait: PropTypes.bool,
-    square: PropTypes.bool,
+    square: PropTypes.bool
   })
 }
 
