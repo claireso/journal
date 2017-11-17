@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
-    "server": "nodemon -e js,html,pug server/server.js --exec babel-node",
+    "dev": "nodemon -e js,html,pug server/server.js --exec babel-node",
+    "server": "babel-node server/server.js",
     "eslint": "eslint app/. server/.",
     "prettier": "prettier --write \"{app,server}/**/*.js\""
   },
