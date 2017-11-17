@@ -1,4 +1,5 @@
 // default layout
+// prettier-ignore
 
 export default ({content = '', config = {}} = {}) => `
   <!doctype html>
