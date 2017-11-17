@@ -33,7 +33,7 @@ const upload = multer({ storage: storage })
 
 const router = express.Router()
 
-const deleteFile = (photo) => new Promise((resolve, reject) => {
+const deleteFile = (photo) => new Promise((resolve) => {
   const file = path.resolve('public', 'img',  photo.name)
 
   fs.unlink(file, resolve)
@@ -84,9 +84,9 @@ router.post('/photos/new', upload.single('file'), (req, res, next) => {
         photo.position,
         photo.portrait || false,
         photo.square || false,
-      ],
+      ]
     )
-    .then(response => {
+    .then(() => {
       res.redirect('/admin/photos')
     })
     .catch(next)
@@ -129,9 +129,9 @@ router.post('/photos/:id(\\d+)/edit', upload.single('file'), (req, res, next) =>
   pool
     .query(
       queries.update_photo(id, fields),
-      Object.values(newPhoto),
+      Object.values(newPhoto)
     )
-    .then(response => {
+    .then(() => {
       res.redirect('/admin/photos')
     })
     .catch(next)
@@ -153,8 +153,7 @@ router.get('/photos/:id(\\d+)/delete', (req, res, next) => {
       return deleteFile(response.rows[0])
     })
     .then(pool.query(queries.delete_photo(id)))
-    .then(response => {
-      // TODO: clear cache
+    .then(() => {
       res.redirect('back')
     })
     .catch(next)

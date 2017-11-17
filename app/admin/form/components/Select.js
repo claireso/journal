@@ -1,23 +1,24 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default (props = {}) => {
+const Select = (props = {}) => {
   return (
     <div className="form__item form__item--inline">
-      <label 
+      <label
         className="form__label"
         htmlFor={ props.name }
       >
         { props.label }
       </label>
-      <select 
-        id={ props.name } 
-        name={ props.name } 
+      <select
+        id={ props.name }
+        name={ props.name }
         defaultValue={ props.value }
-        required 
+        required
       >
         { props.options.map((option, index) => {
           return (
-            <option 
+            <option
               key={ index }
               value={ option.value }
             >
@@ -29,3 +30,15 @@ export default (props = {}) => {
     </div>
   )
 }
+
+Select.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
+  })).isRequired,
+  value: PropTypes.string
+}
+
+export default Select

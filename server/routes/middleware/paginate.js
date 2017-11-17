@@ -12,7 +12,7 @@ export default (req, res, next) => {
   pool
     .query(queries.count_photos())
     .then(response => {
-      const limit = 10
+      const limit = 2
       const count = response.rows[0].count
       const totalPages = Math.ceil(count / limit)
 

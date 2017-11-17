@@ -31,18 +31,20 @@ app.use('/', client)
 app.use('/admin', helmet.noCache(), auth.connect(basic), admin)
 
 // Handle 404
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404)
   res.send('404')
 })
 
 // Handle 500
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   res.status(500)
   res.send('500')
+  /* eslint-disable */
   console.log(err)
 })
 
 app.listen(PORT, () => {
+  /* eslint-disable */
   console.log('App listening on port %d!', PORT)
 })

@@ -1,7 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import Form from './form/Form'
 
-export default ({ photo }) => {
+const New = ({ photo }) => {
   return (
     <main>
       <h1>New photo</h1>
@@ -22,3 +24,9 @@ export default ({ photo }) => {
     </main>
   )
 }
+
+New.propTypes = {
+  photo: PropTypes.object
+}
+
+export default New

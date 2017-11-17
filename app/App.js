@@ -1,7 +1,9 @@
-import React from 'react';
-import Photo from './Photo';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-export default props => {
+import Photo from './Photo'
+
+const App = (props) => {
   return (
     <main>
       { props.photos.map((photo, index) => <Photo key={ index } { ...photo } />) }
@@ -9,7 +11,7 @@ export default props => {
       <ul className="pager">
         { props.pager.first &&
           <li>
-            <a className="pager__item" title="First page" href={ `/` }>««</a>
+            <a className="pager__item" title="First page" href="/">««</a>
           </li>
         }
 
@@ -33,3 +35,10 @@ export default props => {
     </main>
   )
 }
+
+App.propTypes = {
+  photos: PropTypes.array.isRequired,
+  pager: PropTypes.object.isRequired
+}
+
+export default App

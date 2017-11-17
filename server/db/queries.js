@@ -19,7 +19,7 @@ const delete_photo = (id = '') =>
   `DELETE FROM photos WHERE id=${ id }`
 
 const count_photos = () =>
-  `SELECT count(*) FROM photos`
+  'SELECT count(*) FROM photos'
 
 export default {
   get_photos,

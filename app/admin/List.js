@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Item = (photo) => {
   return (
@@ -18,6 +19,13 @@ const Item = (photo) => {
   )
 }
 
+Item.propTypes = {
+  description: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+}
+
 const List = ({ photos }) => {
   return (
     <ul className="list">
@@ -26,7 +34,11 @@ const List = ({ photos }) => {
   )
 }
 
-const Pager = ({pager}) => {
+List.propTypes = {
+  photos: PropTypes.arrayOf(PropTypes.object).isRequired
+}
+
+const Pager = ({ pager }) => {
   return (
     <ul className="pager">
       { pager.first &&
@@ -55,7 +67,16 @@ const Pager = ({pager}) => {
   )
 }
 
-export default ({ photos, pager }) => {
+Pager.propTypes = {
+  pager: PropTypes.shape({
+    first: PropTypes.number,
+    prev: PropTypes.number,
+    next: PropTypes.number,
+    last: PropTypes.number,
+  }).isRequired
+}
+
+const PhotosList = ({ photos, pager }) => {
   return (
     <main>
       <h1> List photos </h1>
@@ -72,3 +93,10 @@ export default ({ photos, pager }) => {
     </main>
   )
 }
+
+PhotosList.propTypes = {
+  photos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pager: PropTypes.object.isRequired
+}
+
+export default PhotosList

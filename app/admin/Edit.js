@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Form from './form/Form'
 
-export default ({ photo }) => {
+const Edit = ({ photo }) => {
   return (
     <main>
       <h1>Edit photo</h1>
@@ -22,3 +23,9 @@ export default ({ photo }) => {
     </main>
   )
 }
+
+Edit.propTypes = {
+  photo: PropTypes.object.isRequired,
+}
+
+export default Edit
