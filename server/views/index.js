@@ -1,4 +1,5 @@
 // default layout
+// prettier-ignore
 
 export default ({content = '', config = {}} = {}) => `
   <!doctype html>
@@ -15,20 +16,21 @@ export default ({content = '', config = {}} = {}) => `
       <link rel="manifest" href="/manifest.json" />
     </head>
     <body>
-      ${ (config.analytics && config.analytics.ga) ?
-        `<script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ${(config.analytics && config.analytics.ga) ?
+    `
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-          ga('create', '${ config.analytics.ga }', 'auto');
-          ga('send', 'pageview');
-
-        </script>`
-        :
-        ``
-      }
+        ga('create', '${ config.analytics.ga }', 'auto');
+        ga('send', 'pageview');
+      </script>
+    `
+    :
+    ''
+}
 
       ${ content }
 

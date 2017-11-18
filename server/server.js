@@ -1,3 +1,4 @@
+import path from 'path'
 import express from 'express'
 import bodyParser from 'body-parser'
 import auth from 'http-auth'
@@ -16,7 +17,7 @@ app.disable('x-powered-by')
 
 const basic = auth.basic({
   realm: 'Admin area',
-  file: __dirname + '/htpasswd'
+  file: path.resolve(__dirname, 'htpasswd')
 })
 
 app.use(helmet())
@@ -24,24 +25,26 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.locals.config = { ...config.website, version: +new Date }
+app.locals.config = { ...config.website, version: +new Date() }
 
 app.use('/', client)
 app.use('/admin', helmet.noCache(), auth.connect(basic), admin)
 
 // Handle 404
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404)
   res.send('404')
 })
 
 // Handle 500
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   res.status(500)
   res.send('500')
+  /* eslint-disable */
   console.log(err)
 })
 
 app.listen(PORT, () => {
+  /* eslint-disable */
   console.log('App listening on port %d!', PORT)
 })

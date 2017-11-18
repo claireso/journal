@@ -1,6 +1,6 @@
 // admin layout
 
-export default ({content} = {}) => `
+export default ({ content = '', config = {} } = {}) => `
   <!doctype html>
   <html lang="fr">
     <head>
@@ -10,10 +10,10 @@ export default ({content} = {}) => `
       <meta name="robots" content="noindex, nofollow" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400, 700" />
-      <link rel="stylesheet" href="/css/admin.css?v=${ config.version }" />
+      <link rel="stylesheet" href="/css/admin.css?v=${config.version}" />
     </head>
     <body>
-      ${ content }
+      ${content}
     </body>
   </html>
 `

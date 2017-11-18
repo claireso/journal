@@ -1,5 +1,5 @@
-const get_photos = ({fields = '*', options = ''} = {}) =>
-  `SELECT ${ fields } FROM photos ORDER BY id DESC ${ options }`
+const get_photos = ({ fields = '*', options = '' } = {}) =>
+  `SELECT ${fields} FROM photos ORDER BY id DESC ${options}`
 
 const insert_photo = () =>
   `INSERT
@@ -10,16 +10,14 @@ const insert_photo = () =>
   `
 
 const update_photo = (id = '', fields) =>
-  `UPDATE photos SET ${ fields } WHERE id=${ id }`
+  `UPDATE photos SET ${fields} WHERE id=${id}`
 
 const find_photo = (id = '', fields = '*') =>
-  `SELECT ${ fields } FROM photos WHERE id=${ id }`
+  `SELECT ${fields} FROM photos WHERE id=${id}`
 
-const delete_photo = (id = '') =>
-  `DELETE FROM photos WHERE id=${ id }`
+const delete_photo = (id = '') => `DELETE FROM photos WHERE id=${id}`
 
-const count_photos = () =>
-  `SELECT count(*) FROM photos`
+const count_photos = () => 'SELECT count(*) FROM photos'
 
 export default {
   get_photos,
@@ -27,5 +25,5 @@ export default {
   update_photo,
   find_photo,
   delete_photo,
-  count_photos,
+  count_photos
 }
