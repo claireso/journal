@@ -3,7 +3,7 @@ const config = require('../../config.json')
 
 const pool = new pg.Pool(config.db)
 
-pool.on('error', function(err) {
+pool.on('error', err => {
   /* eslint-disable */
   console.error('idle client error', err.message, err.stack)
 })

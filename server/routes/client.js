@@ -10,22 +10,23 @@ import Layout from '../views/index'
 
 const router = express.Router()
 
-const renderPage = (req, res, next) => {
+const renderPage = async (req, res, next) => {
   const { config } = req.app.locals
 
-  pool
-    .query(
+  try {
+    const response = await pool.query(
       queries.get_photos({
         options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
       })
     )
-    .then(response => {
-      const photos = response.rows
-      const pager = res.pager
 
-      res.send(render(Layout, ReactApp, { photos, pager }, config))
-    })
-    .catch(next)
+    const photos = response.rows
+    const pager = res.pager
+
+    res.send(render(Layout, ReactApp, { photos, pager }, config))
+  } catch (err) {
+    next(err)
+  }
 }
 
 router.get('/', paginate, renderPage)
