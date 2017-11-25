@@ -20,7 +20,7 @@
   global.toolbox.precache(['/css/journal.css']);
 
   // cache for images
-  toolbox.router.get('/img/(.*)', global.toolbox.cacheFirst, {
+  global.toolbox.router.get('/img/(.*)', global.toolbox.cacheFirst, {
     cache: {
       name: CACHE_NAME_IMG,
       maxAgeSeconds: 86400 * 30, // cache for 30 days
@@ -28,7 +28,7 @@
   });
 
   //cache for css
-  toolbox.router.get('/css/(.*)', global.toolbox.cacheFirst);
+  global.toolbox.router.get('/css/(.*)', global.toolbox.cacheFirst);
 
   // cache for fonts
   global.toolbox.router.get('/(.+)', global.toolbox.cacheFirst, {
@@ -36,7 +36,7 @@
   });
 
   // cache for pages
-  toolbox.router.get('/(.*)', global.toolbox.networkFirst, {
+  global.toolbox.router.get('/(.*)', global.toolbox.networkFirst, {
     cache: {
       name: CACHE_NAME_PAGES,
     },
