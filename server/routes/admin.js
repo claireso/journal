@@ -9,6 +9,7 @@ import pool from '../db/db'
 import queries from '../db/queries'
 import paginate from './middleware/paginate'
 import render from '../utils/render'
+import catchErrors from '../utils/catchErrors'
 
 import ListView from '../../app/admin/List'
 import NewView from '../../app/admin/New'
@@ -50,37 +51,35 @@ router.get('/', (req, res) => {
 
 // ALL PHOTOS
 const renderList = async (req, res, next) => {
-  try {
-    const response = await pool.query(
-      queries.get_photos({
-        options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
-      })
-    )
+  const response = await pool.query(
+    queries.get_photos({
+      options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
+    })
+  )
 
-    res.send(
-      render(Layout, ListView, {
-        photos: response.rows,
-        pager: res.pager
-      })
-    )
-  } catch (err) {
-    next(err)
-  }
+  res.send(
+    render(Layout, ListView, {
+      photos: response.rows,
+      pager: res.pager
+    })
+  )
 }
 
-router.get('/photos', paginate, renderList)
-router.get('/photos/page/:page', paginate, renderList)
+router.get('/photos', catchErrors(paginate), catchErrors(renderList))
+router.get('/photos/page/:page', catchErrors(paginate), catchErrors(renderList))
 
 // NEW PHOTO
 router.get('/photos/new', (req, res) => {
   res.send(render(Layout, NewView))
 })
 
-router.post('/photos/new', upload.single('file'), async (req, res, next) => {
-  const photo = req.body
-  const filename = req.file && req.file.filename
+router.post(
+  '/photos/new',
+  upload.single('file'),
+  catchErrors(async (req, res, next) => {
+    const photo = req.body
+    const filename = req.file && req.file.filename
 
-  try {
     await pool.query(queries.insert_photo(), [
       escape(photo.title),
       escape(photo.description),
@@ -91,16 +90,15 @@ router.post('/photos/new', upload.single('file'), async (req, res, next) => {
     ])
 
     res.redirect('/admin/photos')
-  } catch (err) {
-    next(err)
-  }
-})
+  })
+)
 
 // EDIT PHOTO
-router.get('/photos/:id(\\d+)/edit', async (req, res, next) => {
-  const { id } = req.params
+router.get(
+  '/photos/:id(\\d+)/edit',
+  catchErrors(async (req, res, next) => {
+    const { id } = req.params
 
-  try {
     const response = await pool.query(queries.find_photo(id))
     const photo = response.rows[0]
 
@@ -110,15 +108,13 @@ router.get('/photos/:id(\\d+)/edit', async (req, res, next) => {
     }
 
     res.send(render(Layout, EditView, { photo }))
-  } catch (err) {
-    next(err)
-  }
-})
+  })
+)
 
 router.post(
   '/photos/:id(\\d+)/edit',
   upload.single('file'),
-  async (req, res, next) => {
+  catchErrors(async (req, res, next) => {
     const { id } = req.params
     const photo = req.body
     const filename = req.file && req.file.filename
@@ -137,23 +133,17 @@ router.post(
       .map((entry, index) => `${entry[0]}=($${index + 1})`)
       .join(',')
 
-    try {
-      await pool.query(
-        queries.update_photo(id, fields),
-        Object.values(newPhoto)
-      )
-      res.redirect('/admin/photos')
-    } catch (err) {
-      next(err)
-    }
-  }
+    await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
+    res.redirect('/admin/photos')
+  })
 )
 
 // DELETE PHOTO
-router.get('/photos/:id(\\d+)/delete', async (req, res, next) => {
-  const { id } = req.params
+router.get(
+  '/photos/:id(\\d+)/delete',
+  catchErrors(async (req, res, next) => {
+    const { id } = req.params
 
-  try {
     const response = await pool.query(queries.find_photo(id))
     const photo = response.rows[0]
 
@@ -169,9 +159,7 @@ router.get('/photos/:id(\\d+)/delete', async (req, res, next) => {
     await pool.query(queries.delete_photo(id))
 
     res.redirect('back')
-  } catch (err) {
-    next(err)
-  }
-})
+  })
+)
 
 export default router

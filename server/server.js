@@ -17,7 +17,7 @@ app.disable('x-powered-by')
 
 const basic = auth.basic({
   realm: 'Admin area',
-  file: path.resolve(__dirname, 'htpasswd')
+  file: path.resolve('htpasswd')
 })
 
 app.use(helmet())
