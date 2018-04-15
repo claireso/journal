@@ -8,7 +8,8 @@
     "dev": "nodemon -e js,html,pug server/server.js --exec babel-node",
     "server": "babel-node server/server.js",
     "eslint": "eslint app/. server/.",
-    "prettier": "prettier --write \"{app,server}/**/*.js\""
+    "prettier": "prettier --write \"{app,server}/**/*.js\"",
+    "bootstrap": "babel-node scripts/bootstrap.js"
   },
   "repository": {
     "type": "git",
@@ -40,11 +41,15 @@
     "babel-plugin-transform-react-jsx": "6.24.1",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
+    "chalk": "2.3.2",
     "eslint": "4.19.1",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "7.7.0",
+    "htpasswd": "2.4.0",
     "minimist": "1.2.0",
-    "prettier": "1.12.0"
+    "pgtools": "0.3.0",
+    "prettier": "1.12.0",
+    "promptly": "3.0.3"
   }
 }
