@@ -16,22 +16,17 @@ Journal is a self-hosted website to show your photography.
 $ npm install
 ```
 
-- Create a database
-
-- Setup your database
-
-```
-$ psql ${database} -f server/db/setup.sql -U ${username} -h 127.0.0.1
-```
-
-- Copy config-sample.json and configure your website
+- Copy config-sample.json and configure your application
 
 ```
 $ cp config-sample.json config.json
 ```
 
-- Generate an htpassword file in server folder to protect your admin pages.
-The file must be named `htpasswd`
+- Bootstrap the application. it will create and setup the database and create an account for the admin
+
+```
+$ npm run bootstrap
+```
 
 Run your website
 
