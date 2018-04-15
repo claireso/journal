@@ -13,5 +13,11 @@ export default {
     /* eslint-disable */
     console.log('query:', text, values)
     return pool.query(text, values, callback)
+  },
+  connect(fn) {
+    return pool.connect(fn)
+  },
+  end() {
+    return pool.end()
   }
 }
