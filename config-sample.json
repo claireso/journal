@@ -16,5 +16,10 @@
     "analytics": {
       "ga": ""
     }
+  },
+  "notification": {
+    "publicKey":"",
+    "privateKey":"",
+    "newPhotoDefaultText": ""
   }
 }

@@ -65,6 +65,12 @@ const createTable = async (client) => {
         square BOOLEAN DEFAULT False
       )
     `)
+    await client.query(`
+      CREATE TABLE subscriptions (
+        ID SERIAL PRIMARY KEY,
+        subscription JSON NOT NULL
+      )
+    `)
     console.log(chalk.green(`Table has been created successfully`))
   } catch (err) {
     console.log(chalk.red('An error has occured during database table creation'))
