@@ -15,11 +15,11 @@
     },
     "analytics": {
       "ga": ""
+    },
+    "notification": {
+      "publicKey":"",
+      "privateKey":"",
+      "newPhotoDefaultText": ""
     }
-  },
-  "notification": {
-    "publicKey":"",
-    "privateKey":"",
-    "newPhotoDefaultText": ""
   }
 }
