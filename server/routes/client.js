@@ -6,6 +6,8 @@ import paginate from './middleware/paginate'
 import render from '../utils/render'
 import catchErrors from '../utils/catchErrors'
 
+import { publicKey } from '../web-push'
+
 import ReactApp from '../../app/App'
 import Layout from '../views/index'
 
@@ -29,5 +31,32 @@ const renderPage = async (req, res, next) => {
 router.get('/', catchErrors(paginate), catchErrors(renderPage))
 
 router.get('/page/:page(\\d+)', catchErrors(paginate), catchErrors(renderPage))
+
+router.get('/push-public-key', (req, res, next) => res.send(publicKey))
+
+router.post('/subscriptions', catchErrors(async (req, res, next) => {
+  const subscription = req.body.subscription
+
+  if (!subscription || !subscription.endpoint) {
+    res.setHeader('Content-Type', 'application/json')
+    res.status(400).send(JSON.stringify({
+      error: {
+        id: 'no-endpoint',
+        message: 'Subscription must have an endpoint.'
+      }
+    }))
+
+    return
+  }
+
+  await pool.query(
+    queries.insert_subscription(),
+    [
+      req.body.subscription,
+    ]
+  )
+
+  res.status(201).send(subscription)
+}))
 
 export default router

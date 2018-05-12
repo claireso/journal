@@ -11,6 +11,8 @@ import paginate from './middleware/paginate'
 import render from '../utils/render'
 import catchErrors from '../utils/catchErrors'
 
+import { sendNotification, NOTIFICATION_NEW_PHOTO } from '../web-push'
+
 import ListView from '../../app/admin/List'
 import NewView from '../../app/admin/New'
 import EditView from '../../app/admin/Edit'
@@ -88,6 +90,21 @@ router.post(
       photo.portrait || false,
       photo.square || false
     ])
+
+    // send web-push notification
+    const response = await pool.query(queries.get_subscriptions())
+
+    const subscriptions = response.rows
+
+    subscriptions.map(({subscription, id}) =>
+      sendNotification(subscription, NOTIFICATION_NEW_PHOTO)
+      .catch(err => {
+        console.log(err)
+        if (err && [410, 404].includes(err.statusCode)) {
+          pool.query(queries.delete_subscription(id))
+        }
+      })
+    )
 
     res.redirect('/admin/photos')
   })
