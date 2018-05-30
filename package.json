@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
-    "server": "babel-node server/server.js",
     "dev": "nodemon -e js,html,pug src/server/server.js --exec babel-node",
+    "server": "node ./dist/server/server.js",
+    "build": "babel ./src --out-dir ./dist",
     "eslint": "eslint src/.",
     "prettier": "prettier --write \"src/**/*.js\"",
     "bootstrap": "babel-node scripts/bootstrap.js"
