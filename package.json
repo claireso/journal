@@ -5,10 +5,10 @@
   "main": "server.js",
   "scripts": {
     "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
-    "dev": "nodemon -e js,html,pug server/server.js --exec babel-node",
     "server": "babel-node server/server.js",
-    "eslint": "eslint app/. server/.",
-    "prettier": "prettier --write \"{app,server}/**/*.js\"",
+    "dev": "nodemon -e js,html,pug src/server/server.js --exec babel-node",
+    "eslint": "eslint src/.",
+    "prettier": "prettier --write \"src/**/*.js\"",
     "bootstrap": "babel-node scripts/bootstrap.js"
   },
   "repository": {
