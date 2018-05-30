@@ -15,7 +15,7 @@ const update_photo = (id, fields) =>
 const find_photo = (id, fields = '*') =>
   `SELECT ${fields} FROM photos WHERE id=${id}`
 
-const delete_photo = (id) => `DELETE FROM photos WHERE id=${id}`
+const delete_photo = id => `DELETE FROM photos WHERE id=${id}`
 
 const count_photos = () => 'SELECT count(*) FROM photos'
 
@@ -26,10 +26,9 @@ const insert_subscription = () =>
     VALUES
     ($1)
   `
-const get_subscriptions = () =>
-`SELECT * FROM subscriptions`
+const get_subscriptions = () => 'SELECT * FROM subscriptions'
 
-const delete_subscription = (id) => `DELETE FROM subscriptions WHERE id=${id}`
+const delete_subscription = id => `DELETE FROM subscriptions WHERE id=${id}`
 
 export default {
   get_photos,
@@ -40,5 +39,5 @@ export default {
   count_photos,
   insert_subscription,
   get_subscriptions,
-  delete_subscription,
+  delete_subscription
 }

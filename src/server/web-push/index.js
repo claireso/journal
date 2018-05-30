@@ -1,6 +1,6 @@
 import webpush from 'web-push'
 
-import config from '../../config'
+import config from '../../../config'
 
 // CONSTANTS
 export const NOTIFICATION_NEW_PHOTO = 'NOTIFICATION_NEW_PHOTO'
@@ -18,9 +18,9 @@ export const sendNotification = (subscription, key = '') => {
 
   if (key === NOTIFICATION_NEW_PHOTO) {
     payload.title = config.website.meta.title
-    payload.content = config.website.notification.newPhotoDefaultText || 'new photo posted'
+    payload.content =
+      config.website.notification.newPhotoDefaultText || 'new photo posted'
   }
 
   return webpush.sendNotification(subscription, JSON.stringify(payload))
 }
-

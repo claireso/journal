@@ -52,7 +52,7 @@ router.get('/', (req, res) => {
 })
 
 // ALL PHOTOS
-const renderList = async (req, res, next) => {
+const renderList = async (req, res) => {
   const response = await pool.query(
     queries.get_photos({
       options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
@@ -78,7 +78,7 @@ router.get('/photos/new', (req, res) => {
 router.post(
   '/photos/new',
   upload.single('file'),
-  catchErrors(async (req, res, next) => {
+  catchErrors(async (req, res) => {
     const photo = req.body
     const filename = req.file && req.file.filename
 
@@ -96,10 +96,8 @@ router.post(
 
     const subscriptions = response.rows
 
-    subscriptions.map(({subscription, id}) =>
-      sendNotification(subscription, NOTIFICATION_NEW_PHOTO)
-      .catch(err => {
-        console.log(err)
+    subscriptions.map(({ subscription, id }) =>
+      sendNotification(subscription, NOTIFICATION_NEW_PHOTO).catch(err => {
         if (err && [410, 404].includes(err.statusCode)) {
           pool.query(queries.delete_subscription(id))
         }
@@ -131,7 +129,7 @@ router.get(
 router.post(
   '/photos/:id(\\d+)/edit',
   upload.single('file'),
-  catchErrors(async (req, res, next) => {
+  catchErrors(async (req, res) => {
     const { id } = req.params
     const photo = req.body
     const filename = req.file && req.file.filename

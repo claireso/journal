@@ -1,40 +1,41 @@
 {
-  "name": "clairesophoto",
+  "name": "journal",
   "version": "1.0.0",
-  "description": "My personal photos website",
-  "main": "server.js",
+  "description": "A self-hosted website to show your photography",
+  "main": "",
   "scripts": {
     "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
-    "dev": "nodemon -e js,html,pug server/server.js --exec babel-node",
-    "server": "babel-node server/server.js",
-    "eslint": "eslint app/. server/.",
-    "prettier": "prettier --write \"{app,server}/**/*.js\"",
+    "dev": "nodemon -e js,html,pug src/server/server.js --exec babel-node",
+    "server": "node ./dist/server/server.js",
+    "build": "babel ./src --out-dir ./dist",
+    "eslint": "eslint src/.",
+    "prettier": "prettier --write \"src/**/*.js\"",
     "bootstrap": "babel-node scripts/bootstrap.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/claireso/clairesophotos.git"
+    "url": "git+https://github.com/claireso/journal.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/claireso/clairesophotos/issues"
+    "url": "https://github.com/claireso/journal/issues"
   },
-  "homepage": "https://github.com/claireso/clairesophotos#readme",
+  "homepage": "https://github.com/claireso/journal#readme",
   "dependencies": {
-    "body-parser": "1.18.2",
+    "body-parser": "1.18.3",
     "express": "4.16.3",
-    "helmet": "3.12.0",
+    "helmet": "3.12.1",
     "http-auth": "3.2.3",
     "lodash": "4.17.10",
     "multer": "1.3.0",
     "pg": "7.4.3",
     "prop-types": "15.6.1",
-    "react": "16.3.2",
-    "react-dom": "16.3.2",
+    "react": "16.4.0",
+    "react-dom": "16.4.0",
     "sw-toolbox": "3.6.0",
     "ulid": "2.3.0",
-    "web-push": "3.3.0"
+    "web-push": "3.3.1"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -46,11 +47,11 @@
     "eslint": "4.19.1",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-prettier": "2.6.0",
-    "eslint-plugin-react": "7.7.0",
+    "eslint-plugin-react": "7.8.2",
     "htpasswd": "2.4.0",
     "minimist": "1.2.0",
     "pgtools": "0.3.0",
-    "prettier": "1.12.1",
+    "prettier": "1.13.2",
     "promptly": "3.0.3"
   }
 }

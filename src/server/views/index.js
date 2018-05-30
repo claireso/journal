@@ -1,5 +1,6 @@
 // default layout
 // prettier-ignore
+/* eslint no-useless-escape: 0 */
 
 export default ({content = '', config = {}} = {}) => `
   <!doctype html>
