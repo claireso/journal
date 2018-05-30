@@ -28,6 +28,12 @@ $ cp config-sample.json config.json
 $ npm run bootstrap
 ```
 
+- Build the application
+
+```
+$ npm run build
+```
+
 Run your website
 
 ```
