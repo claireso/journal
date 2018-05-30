@@ -1,8 +1,8 @@
 {
-  "name": "clairesophoto",
+  "name": "journal",
   "version": "1.0.0",
-  "description": "My personal photos website",
-  "main": "server.js",
+  "description": "A self-hosted website to show your photography",
+  "main": "",
   "scripts": {
     "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
     "dev": "nodemon -e js,html,pug src/server/server.js --exec babel-node",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/claireso/clairesophotos.git"
+    "url": "git+https://github.com/claireso/journal.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/claireso/clairesophotos/issues"
+    "url": "https://github.com/claireso/journal/issues"
   },
-  "homepage": "https://github.com/claireso/clairesophotos#readme",
+  "homepage": "https://github.com/claireso/journal#readme",
   "dependencies": {
     "body-parser": "1.18.3",
     "express": "4.16.3",
