@@ -13,7 +13,7 @@ import Layout from '../views/index'
 
 const router = express.Router()
 
-const renderPage = async (req, res, next) => {
+const renderPage = async (req, res) => {
   const { config } = req.app.locals
 
   const response = await pool.query(
@@ -32,31 +32,31 @@ router.get('/', catchErrors(paginate), catchErrors(renderPage))
 
 router.get('/page/:page(\\d+)', catchErrors(paginate), catchErrors(renderPage))
 
-router.get('/push-public-key', (req, res, next) => res.send(publicKey))
+router.get('/push-public-key', (req, res) => res.send(publicKey))
 
-router.post('/subscriptions', catchErrors(async (req, res, next) => {
-  const subscription = req.body.subscription
+router.post(
+  '/subscriptions',
+  catchErrors(async (req, res) => {
+    const subscription = req.body.subscription
 
-  if (!subscription || !subscription.endpoint) {
-    res.setHeader('Content-Type', 'application/json')
-    res.status(400).send(JSON.stringify({
-      error: {
-        id: 'no-endpoint',
-        message: 'Subscription must have an endpoint.'
-      }
-    }))
+    if (!subscription || !subscription.endpoint) {
+      res.setHeader('Content-Type', 'application/json')
+      res.status(400).send(
+        JSON.stringify({
+          error: {
+            id: 'no-endpoint',
+            message: 'Subscription must have an endpoint.'
+          }
+        })
+      )
 
-    return
-  }
+      return
+    }
 
-  await pool.query(
-    queries.insert_subscription(),
-    [
-      req.body.subscription,
-    ]
-  )
+    await pool.query(queries.insert_subscription(), [req.body.subscription])
 
-  res.status(201).send(subscription)
-}))
+    res.status(201).send(subscription)
+  })
+)
 
 export default router
