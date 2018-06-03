@@ -8,7 +8,7 @@ import catchErrors from '../utils/catchErrors'
 
 import { publicKey } from '../web-push'
 
-import ReactApp from '../../app/App'
+import Photos from '../../app/client/Photos'
 import Layout from '../views/index'
 
 const router = express.Router()
@@ -25,7 +25,7 @@ const renderPage = async (req, res) => {
   const photos = response.rows
   const pager = res.pager
 
-  res.send(render(Layout, ReactApp, { photos, pager }, config))
+  res.send(render(Layout, Photos, { photos, pager }, config))
 }
 
 router.get('/', catchErrors(paginate), catchErrors(renderPage))
