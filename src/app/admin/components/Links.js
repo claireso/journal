@@ -4,8 +4,13 @@ import PropTypes from 'prop-types'
 import { IconBack } from './Icons'
 
 export const ButtonLink = (props = {}) => {
+  let cls = 'btn'
+
+  cls += props.icon ? ' btn--icon' : ''
+  cls += props.className ? ` ${props.className}` : ''
+
   return (
-    <a className="btn btn--icon" href={props.href}>
+    <a className={cls} href={props.href} onClick={props.onClick}>
       {props.label}
       {props.icon}
     </a>

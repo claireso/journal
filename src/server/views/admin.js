@@ -11,9 +11,22 @@ export default ({ content = '', config = {} } = {}) => `
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400, 700" />
       <link rel="stylesheet" href="/css/admin.css?v=${config.version}" />
-    </head>
-    <body>
+      </head>
+      <body>
       ${content}
+      <script>
+        (function(){
+          var nodes = [...document.querySelectorAll('.js-delete')]
+
+          nodes.map(node => {
+            node.addEventListener('click', (event) => {
+              if (!confirm('Are you sure? This action is irreversible')) {
+                event.preventDefault()
+              }
+            })
+          })
+        })()
+      </script>
     </body>
   </html>
 `
