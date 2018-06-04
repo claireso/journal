@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { ButtonLink } from './Links'
+
 const Photo = photo => {
   return (
     <li className="list__item">
@@ -11,14 +13,15 @@ const Photo = photo => {
         <h2 className="title">{photo.title}</h2>
         <p className="subtitle">{photo.description}</p>
         <p className="list__buttons">
-          <a className="btn" href={`/admin/photos/${photo.id}/edit`}>
-            {' '}
-            Edit{' '}
-          </a>
-          <a className="btn" href={`/admin/photos/${photo.id}/delete`}>
-            {' '}
-            Delete{' '}
-          </a>
+          <ButtonLink
+            href={`/admin/photos/${photo.id}/edit`}
+            label="Edit"
+          />
+          <ButtonLink
+            href={`/admin/photos/${photo.id}/delete`}
+            label="Delete"
+            className="js-delete"
+          />
         </p>
       </div>
     </li>
