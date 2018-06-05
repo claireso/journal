@@ -4,7 +4,7 @@ Journal is a self-hosted website to show your photography.
 
 - Node v8
 - PostgreSQL
-- nodemon
+- nodemon (only for development)
 
 # Installation:
 
@@ -27,6 +27,8 @@ $ cp config-sample.json config.json
 ```
 $ npm run bootstrap
 ```
+
+Note: if you enable web push notification during the installation, do not forget to update your config file with the public and private key printed in your console
 
 - Build the application
 

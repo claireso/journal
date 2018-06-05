@@ -1,17 +1,43 @@
+import fs from 'fs'
+import path from 'path'
 import pgtools from 'pgtools'
 import chalk from 'chalk'
 import promptly from 'promptly'
 import { exec } from 'child_process'
+import webpush from 'web-push'
 
 import config from '../config'
-import db from '../server/db/db'
+import db from '../src/server/db/db'
+
+// create folder img
+const createFolderImg = () => {
+  return new Promise((resolve, reject) => {
+    const dir = path.resolve('public', 'img')
+
+    fs.exists(dir, (exists) => {
+      if (exists) {
+        resolve()
+        return
+      }
+
+      fs.mkdir(dir, (err) => {
+        if (err) {
+          reject('Img folder can not be created')
+          return
+        }
+
+        resolve()
+      })
+    })
+  })
+}
 
 // create database
 const createDatabase = async (databaseName) => {
   if (!databaseName)
     throw new Error('Missing database name in config')
 
-  console.log(chalk.cyan(`Step 1/3 : Creating database "${ databaseName }"...`))
+  console.log(chalk.cyan(`Step 1/4 : Creating database "${ databaseName }"...`))
 
   try {
     await pgtools.createdb(
@@ -50,7 +76,7 @@ const dropDatabase = async (databaseName) => {
 
 // create table
 const createTable = async (client) => {
-  console.log(chalk.cyan(`Step 2/3 : Setup database...`))
+  console.log(chalk.cyan(`Step 2/4 : Setup database...`))
 
   try {
     await client.query(`CREATE TYPE POSITION_TYPE AS ENUM ('left', 'center', 'right')`)
@@ -90,9 +116,24 @@ const createHtpasswd = async (username, password) => {
   })
 }
 
+const enableWebPush = async () => {
+  console.log(chalk.cyan(`Step 4/4 : Enable web push notification?`))
+  //ask to enable
+  const answer = await promptly.confirm('Do you want to enable web push notification? (Y/n)')
+
+  if (answer === false) return
+
+  const vapidKeys = webpush.generateVAPIDKeys()
+
+  console.log(
+    chalk.gray('Please update your config by adding public and private keys:')
+  )
+  console.log(vapidKeys)
+}
+
 // create admin user
 const createAdminUser = async () => {
-  console.log(chalk.cyan(`Step 3/3 : Create admin user...`))
+  console.log(chalk.cyan(`Step 3/4 : Create admin user...`))
 
   try {
     const username = await promptly.prompt('Enter the username: ')
@@ -112,6 +153,7 @@ const createAdminUser = async () => {
 // start install
 const bootstrap = (restart) => {
   const databaseName = config.db.database
+
   db.connect(async (err, client, release) => {
     try {
       if (err) {
@@ -131,7 +173,7 @@ const bootstrap = (restart) => {
       } else {
         if (restart !== true) {
           // ask to drop database
-          const answer = await promptly.confirm(`Database ${ databaseName } already exists. Do you want do continue?(y/n)`);
+          const answer = await promptly.confirm(`Database ${ databaseName } already exists. Do you want do continue?(y/n)`)
 
           if (answer === false) {
             process.exit()
@@ -153,6 +195,12 @@ const bootstrap = (restart) => {
       //create admin user
       await createAdminUser()
 
+      // create folder img
+      await createFolderImg()
+
+      // enable web push
+      await enableWebPush()
+
       console.log(
         chalk.green('Installation has been completed successfully. You can now run your application.')
       )
@@ -160,7 +208,6 @@ const bootstrap = (restart) => {
       process.exit()
     } catch (err) {
       console.log(chalk.red('An error has occured during the installation'))
-      console.log(err)
       process.exit()
     }
   })

@@ -20,7 +20,9 @@ export const ButtonLink = (props = {}) => {
 ButtonLink.propTypes = {
   href: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  icon: PropTypes.element
+  icon: PropTypes.element,
+  className: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 export const BackLink = (props = {}) => {
