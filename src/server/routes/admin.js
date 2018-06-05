@@ -143,6 +143,7 @@ router.post(
     newPhoto.portrait = photo.portrait || false
     newPhoto.description = escape(newPhoto.description)
     newPhoto.title = escape(newPhoto.title)
+    newPhoto.updated_at = new Date()
 
     const fields = Object.entries(newPhoto)
       .map((entry, index) => `${entry[0]}=($${index + 1})`)

@@ -88,13 +88,17 @@ const createTable = async (client) => {
         name VARCHAR,
         position POSITION_TYPE DEFAULT 'left',
         portrait BOOLEAN DEFAULT False,
-        square BOOLEAN DEFAULT False
+        square BOOLEAN DEFAULT False,
+        created_at TIMESTAMP with time zone DEFAULT NOW(),
+        updated_at TIMESTAMP with time zone DEFAULT NOW()
       )
     `)
     await client.query(`
       CREATE TABLE subscriptions (
         ID SERIAL PRIMARY KEY,
-        subscription JSON NOT NULL
+        subscription JSON NOT NULL,
+        created_at TIMESTAMP with time zone DEFAULT NOW(),
+        updated_at TIMESTAMP with time zone DEFAULT NOW()
       )
     `)
     console.log(chalk.green(`Table has been created successfully`))
