@@ -5,21 +5,27 @@ import config from '../../../config'
 // CONSTANTS
 export const NOTIFICATION_NEW_PHOTO = 'NOTIFICATION_NEW_PHOTO'
 
-webpush.setVapidDetails(
+const notifConfig = config.website.notification
+
+const enabledPush = notifConfig.publicKey && notifConfig.privateKey
+
+enabledPush && webpush.setVapidDetails(
   config.website.baseUrl,
-  config.website.notification.publicKey,
-  config.website.notification.privateKey
+  notifConfig.publicKey,
+  notifConfig.privateKey
 )
 
-export const publicKey = config.website.notification.publicKey
+export const publicKey = notifConfig.publicKey
 
 export const sendNotification = (subscription, key = '') => {
   const payload = {}
 
+  if (enabledPush === false) return
+
   if (key === NOTIFICATION_NEW_PHOTO) {
     payload.title = config.website.meta.title
     payload.content =
-      config.website.notification.newPhotoDefaultText || 'new photo posted'
+      notifConfig.newPhotoDefaultText || 'new photo posted'
   }
 
   return webpush.sendNotification(subscription, JSON.stringify(payload))
