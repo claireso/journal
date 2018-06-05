@@ -41,3 +41,6 @@ Run your website
 ```
 $ npm run server
 ```
+
+By default the application will be visible at http://localhost:3000
+To post photo, go to your admin: http://localhost:3000/admin
