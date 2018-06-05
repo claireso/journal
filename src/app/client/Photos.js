@@ -6,10 +6,10 @@ import Pager from './components/Pager'
 
 const Photos = (props = {}) => {
   return (
-    <main>
+    <React.Fragment>
       {props.photos.map((photo, index) => <Photo key={index} {...photo} />)}
       <Pager {...props.pager} />
-    </main>
+    </React.Fragment>
   )
 }
 

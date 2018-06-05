@@ -12,6 +12,10 @@ body {
   font-size: 12px;
 }
 
+a {
+  text-decoration: none;
+}
+
 main {
   max-width: 1315px;
   padding: 0 20px;
@@ -93,4 +97,26 @@ figcaption span {
   figure + figure {
     margin-top: 200px;
   }
+}
+
+.welcome {
+  padding: 60px 0;
+}
+
+.welcome h1 {
+  font-size: 30px;
+  margin: 0 0 30px;
+}
+
+.welcome p {
+  font-size: 18px;
+}
+
+.welcome a {
+  color: #8e44ad;
+}
+
+.welcome a:hover,
+.welcome a:focus {
+  border-bottom: 1px solid #8e44ad;
 }
