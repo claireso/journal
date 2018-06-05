@@ -13,10 +13,7 @@ const Photo = photo => {
         <h2 className="title">{photo.title}</h2>
         <p className="subtitle">{photo.description}</p>
         <p className="list__buttons">
-          <ButtonLink
-            href={`/admin/photos/${photo.id}/edit`}
-            label="Edit"
-          />
+          <ButtonLink href={`/admin/photos/${photo.id}/edit`} label="Edit" />
           <ButtonLink
             href={`/admin/photos/${photo.id}/delete`}
             label="Delete"
