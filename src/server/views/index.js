@@ -63,6 +63,9 @@ export default ({content = '', config = {}} = {}) => `
               const response = await fetch('/push-public-key')
               const vapidPublicKey = await response.text()
 
+              // push notification not enabled
+              if (!vapidPublicKey) return
+
               const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey)
 
               subscription = await registration.pushManager.subscribe({

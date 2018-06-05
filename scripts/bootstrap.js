@@ -1,10 +1,35 @@
+import fs from 'fs'
+import path from 'path'
 import pgtools from 'pgtools'
 import chalk from 'chalk'
 import promptly from 'promptly'
 import { exec } from 'child_process'
 
 import config from '../config'
-import db from '../server/db/db'
+import db from '../src/server/db/db'
+
+// create folder img
+const createFolderImg = () => {
+  return new Promise((resolve, reject) => {
+    const dir = path.resolve('public', 'img')
+
+    fs.exists(dir, (exists) => {
+      if (exists) {
+        resolve()
+        return
+      }
+
+      fs.mkdir(dir, (err) => {
+        if (err) {
+          reject('Img folder can not be created')
+          return
+        }
+
+        resolve()
+      })
+    })
+  })
+}
 
 // create database
 const createDatabase = async (databaseName) => {
@@ -112,6 +137,7 @@ const createAdminUser = async () => {
 // start install
 const bootstrap = (restart) => {
   const databaseName = config.db.database
+
   db.connect(async (err, client, release) => {
     try {
       if (err) {
@@ -152,6 +178,9 @@ const bootstrap = (restart) => {
 
       //create admin user
       await createAdminUser()
+
+      // create folder img
+      await createFolderImg()
 
       console.log(
         chalk.green('Installation has been completed successfully. You can now run your application.')
