@@ -9,7 +9,7 @@
     "idleTimeoutMillis": 30000
   },
   "website": {
-    "baseUrl": "",
+    "baseUrl": "http://localhost:3000/",
     "meta": {
       "title": "",
       "description": ""
@@ -20,7 +20,7 @@
     "notification": {
       "publicKey":"",
       "privateKey":"",
-      "newPhotoDefaultText": ""
+      "newPhotoDefaultText": "new photo posted"
     }
   }
 }

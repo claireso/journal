@@ -25,7 +25,7 @@ export const sendNotification = (subscription, key = '') => {
   if (key === NOTIFICATION_NEW_PHOTO) {
     payload.title = config.website.meta.title
     payload.content =
-      notifConfig.newPhotoDefaultText || 'new photo posted'
+      notifConfig.newPhotoDefaultText
   }
 
   return webpush.sendNotification(subscription, JSON.stringify(payload))
