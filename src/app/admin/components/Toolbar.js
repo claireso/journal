@@ -8,7 +8,7 @@ const Toolbar = (props = {}) => {
 }
 
 Toolbar.propTypes = {
-  alignRight: PropTypes.boolean,
+  alignRight: PropTypes.bool,
   children: PropTypes.node
 }
 

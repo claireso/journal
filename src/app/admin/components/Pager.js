@@ -9,7 +9,7 @@ const Pager = (props = {}) => {
           <a
             className="btn btn--gray"
             title="First page"
-            href={`/admin/photos/page/${props.first}`}
+            href={`${props.baseUrl}/${props.first}`}
           >
             ««
           </a>
@@ -21,7 +21,7 @@ const Pager = (props = {}) => {
           <a
             className="btn btn--gray"
             title="Previous page"
-            href={`/admin/photos/page/${props.prev}`}
+            href={`${props.baseUrl}/${props.prev}`}
           >
             «
           </a>
@@ -33,7 +33,7 @@ const Pager = (props = {}) => {
           <a
             className="btn btn--gray"
             title="Next page"
-            href={`/admin/photos/page/${props.next}`}
+            href={`${props.baseUrl}/${props.next}`}
           >
             »
           </a>
@@ -45,7 +45,7 @@ const Pager = (props = {}) => {
           <a
             className="btn btn--gray"
             title="Last page"
-            href={`/admin/photos/page/${props.last}`}
+            href={`${props.baseUrl}/${props.last}`}
           >
             »»
           </a>
@@ -59,7 +59,8 @@ Pager.propTypes = {
   first: PropTypes.number,
   prev: PropTypes.number,
   next: PropTypes.number,
-  last: PropTypes.number
+  last: PropTypes.number,
+  baseUrl: PropTypes.string
 }
 
 export default Pager
