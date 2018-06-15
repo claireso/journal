@@ -16,6 +16,10 @@ a {
   text-decoration: none;
 }
 
+.is-hidden {
+  display: none;
+}
+
 main {
   max-width: 1315px;
   padding: 0 20px;
@@ -119,4 +123,26 @@ figcaption span {
 .welcome a:hover,
 .welcome a:focus {
   border-bottom: 1px solid #8e44ad;
+}
+
+.notification {
+  background: #FFE65D;
+  bottom: 0;
+  cursor: pointer;
+  font-size: 14px;
+  left: 0;
+  padding: 10px;
+  position: fixed;
+  right: 0;
+  transition: background 250ms ease-out;
+}
+
+.notification:hover {
+  background: #ffdf32;
+}
+
+.notification__inner {
+  max-width: 1315px;
+  margin: 0 auto;
+  text-align: center;
 }
