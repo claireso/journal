@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Page from './components/Page'
+import Page from '../components/Page'
 import Form from './form/Form'
-import Toolbar from './components/Toolbar'
-import { BackLink } from './components/Links'
+import Toolbar from '../components/Toolbar'
+import { BackLink } from '../components/Links'
 
 const New = ({ photo }) => {
   return (

@@ -7,11 +7,11 @@ import Welcome from './Welcome'
 const Page = (props = {}) => {
   return (
     <main>
-      { props.photos && props.photos.length > 0 ?
-          <Photos {...props} />
-        :
+      {props.photos && props.photos.length > 0 ? (
+        <Photos {...props} />
+      ) : (
         <Welcome />
-      }
+      )}
     </main>
   )
 }

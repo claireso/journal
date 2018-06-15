@@ -28,9 +28,13 @@ const renderPage = async (req, res) => {
   res.send(render(Layout, Page, { photos, pager }, config))
 }
 
-router.get('/', catchErrors(paginate), catchErrors(renderPage))
+router.get('/', catchErrors(paginate('photos')), catchErrors(renderPage))
 
-router.get('/page/:page(\\d+)', catchErrors(paginate), catchErrors(renderPage))
+router.get(
+  '/page/:page(\\d+)',
+  catchErrors(paginate('photos')),
+  catchErrors(renderPage)
+)
 
 router.get('/push-public-key', (req, res) => res.send(publicKey))
 

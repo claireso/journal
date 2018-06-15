@@ -13,6 +13,10 @@ body {
   color: #333;
 }
 
+strong {
+  font-weight: 700;
+}
+
 h1 {
   margin-bottom: 30px;
 }
@@ -132,6 +136,23 @@ main {
   opacity: 1;
 }
 
+.list__subscription {
+  font-size: 14px;
+  width: 100%;
+}
+
+.list__subscription dt {
+  font-weight: 700;
+  margin: 0 0 5px;
+}
+
+.list__subscription dd {
+  margin: 0 0 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .pager {
   display: inline-flex;
   justify-content: center;
@@ -199,4 +220,27 @@ main {
 .form__photo img {
   display: block;
   margin: 0 0 20px;
+}
+
+.tabs {
+  border-bottom: 1px solid #ecf0f1;
+  display: inline-flex;
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  width: 100%;
+}
+
+.tabs__tab a {
+  background: #ecf0f1;
+  border-bottom: none;
+  color: #333;
+  display: inline-block;
+  font-size: 14px;
+  padding: 20px;
+}
+
+.tabs__tab.is-active a {
+  background: #FFE65D;
+  color: #333;
 }

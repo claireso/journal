@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ButtonLink } from './Links'
+import { ButtonLink } from '../components/Links'
 
 const Photo = photo => {
   return (
