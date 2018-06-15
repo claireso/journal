@@ -31,6 +31,9 @@ const get_subscriptions = ({ fields = '*', options = '' } = {}) =>
 
 const delete_subscription = id => `DELETE FROM subscriptions WHERE id=${id}`
 
+const find_subscription = (id, fields = '*') =>
+  `SELECT ${fields} FROM subscriptions WHERE id=${id}`
+
 export default {
   get_photos,
   insert_photo,
@@ -40,5 +43,6 @@ export default {
   count,
   insert_subscription,
   get_subscriptions,
-  delete_subscription
+  delete_subscription,
+  find_subscription,
 }

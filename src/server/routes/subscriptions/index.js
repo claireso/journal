@@ -36,4 +36,25 @@ router.get(
   catchErrors(renderList)
 )
 
+// DELETE PHOTO
+router.get(
+  '/:id(\\d+)/delete',
+  catchErrors(async (req, res, next) => {
+    const { id } = req.params
+
+    const response = await pool.query(queries.find_subscription(id))
+    const subscription = response.rows[0]
+
+    if (subscription === undefined) {
+      next()
+      return
+    }
+
+    //delete subscription from database
+    await pool.query(queries.delete_subscription(id))
+
+    res.redirect('back')
+  })
+)
+
 export default router
