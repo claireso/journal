@@ -44,5 +44,5 @@ export default {
   insert_subscription,
   get_subscriptions,
   delete_subscription,
-  find_subscription,
+  find_subscription
 }
