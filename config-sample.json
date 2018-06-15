@@ -20,7 +20,8 @@
     "notification": {
       "publicKey":"",
       "privateKey":"",
-      "newPhotoDefaultText": "new photo posted"
+      "newPhotoDefaultText": "new photo posted",
+      "enableDefaultText": "Enable notifications to be alerted of new publication"
     }
   }
 }
