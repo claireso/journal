@@ -101,7 +101,19 @@ const createTable = async (client) => {
         updated_at TIMESTAMP with time zone DEFAULT NOW()
       )
     `)
-    console.log(chalk.green(`Table has been created successfully`))
+    await client.query('CREATE EXTENSION IF NOT EXISTS pgcrypto;')
+    await client.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
+    await client.query(`
+      CREATE TABLE users (
+        ID SERIAL PRIMARY KEY,
+        cid UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+        username VARCHAR NOT NULL UNIQUE,
+        password VARCHAR NOT NULL,
+        created_at TIMESTAMP with time zone DEFAULT NOW(),
+        updated_at TIMESTAMP with time zone DEFAULT NOW()
+      )
+    `)
+    console.log(chalk.green(`Tables has been created successfully`))
   } catch (err) {
     console.log(chalk.red('An error has occured during database table creation'))
     throw err
@@ -136,7 +148,7 @@ const enableWebPush = async () => {
 }
 
 // create admin user
-const createAdminUser = async () => {
+const createAdminUser = async (client) => {
   console.log(chalk.cyan(`Step 3/4 : Create admin user...`))
 
   try {
@@ -144,6 +156,13 @@ const createAdminUser = async () => {
     const password = await promptly.password('Enter a password: ')
 
     await createHtpasswd(username, password)
+
+    await client.query(`
+      INSERT INTO users (username, password) VALUES (
+        '${username}',
+        crypt('${password}', gen_salt('md5'))
+      )
+    `)
 
     console.log(
       chalk.green('Admin user has been created successfully.')
@@ -193,11 +212,11 @@ const bootstrap = (restart) => {
         }
       }
 
-      //create table photo
+      //create tables photo / subcriptions / users
       await createTable(client)
 
       //create admin user
-      await createAdminUser()
+      await createAdminUser(client)
 
       // create folder img
       await createFolderImg()
