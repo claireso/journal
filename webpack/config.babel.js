@@ -4,7 +4,7 @@ import ManifestPlugin from 'webpack-manifest-plugin'
 
 const ROOT = process.cwd()
 
-const mode = process.NODE_ENV === 'production' ? 'production' : 'development'
+const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const hash = mode === 'production' ? '[chunkhash]' : 'dev'
 
 const plugins = [
