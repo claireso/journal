@@ -5,6 +5,7 @@ import auth from 'http-auth'
 import helmet from 'helmet'
 
 import admin from './routes/admin'
+import api from './routes/api'
 import client from './routes/client'
 
 import config from '../../config'
@@ -28,7 +29,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.locals.config = { ...config.website, version: +new Date() }
 
 app.use('/', client)
-app.use('/admin', helmet.noCache(), auth.connect(basic), admin)
+// app.use('/admin', helmet.noCache(), auth.connect(basic), admin)
+app.use('/admin', helmet.noCache(), admin)
+app.use('/api', api)
 
 // Handle 404
 app.use((req, res) => {

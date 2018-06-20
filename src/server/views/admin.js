@@ -1,6 +1,6 @@
 // admin layout
 
-export default ({ content = '', config = {} } = {}) => `
+export default ({ content = '', config = {}, manifest = {} } = {}) => `
   <!doctype html>
   <html lang="fr">
     <head>
@@ -13,7 +13,8 @@ export default ({ content = '', config = {} } = {}) => `
       <link rel="stylesheet" href="/css/admin.css?v=${config.version}" />
       </head>
       <body>
-      ${content}
+      <div id="js-app">${content}</div>
+      <script src="/js/${manifest['admin.js']}"></script>
       <script>
         (function(){
           var nodes = [...document.querySelectorAll('.js-delete')]

@@ -8,10 +8,9 @@ import { AdminTabs } from '../components/tabs'
 import Subscription from './Subscription'
 import Toolbar from '../components/Toolbar'
 
-const Subscriptions = ({ subscriptions, pager } = {}) => {
+const Subscriptions = ({ subscriptions = [], pager = {} } = {}) => {
   return (
-    <Page>
-      <AdminTabs active="subscriptions" />
+    <div>
       <Toolbar alignRight>{pager.count} subscriptions</Toolbar>
       <List>
         {subscriptions.map((subscription, index) => (
@@ -19,13 +18,13 @@ const Subscriptions = ({ subscriptions, pager } = {}) => {
         ))}
       </List>
       <Pager baseUrl="/admin/subscriptions/page" {...pager} />
-    </Page>
+    </div>
   )
 }
 
 Subscriptions.propTypes = {
-  subscriptions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pager: PropTypes.object.isRequired
+  // subscriptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // pager: PropTypes.object.isRequired
 }
 
 export default Subscriptions

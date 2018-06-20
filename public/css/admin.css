@@ -240,7 +240,7 @@ main {
   padding: 20px;
 }
 
-.tabs__tab.is-active a {
+.tabs__tab .is-active {
   background: #FFE65D;
   color: #333;
 }

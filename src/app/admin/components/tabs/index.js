@@ -1,18 +1,15 @@
 import React from 'react'
 
-import { default as _Tabs } from './Tabs'
-import { default as _Tab } from './Tab'
+import Tabs from './Tabs'
+import Tab from './Tab'
 
-export const Tabs = _Tabs
-export const Tab = _Tab
-
-export const AdminTabs = ({ active } = {}) => {
+export const AdminTabs = () => {
   return (
     <Tabs>
-      <Tab active={active === 'photos'} url="/admin/photos">
+      <Tab to="/admin/photos">
         Photos
       </Tab>
-      <Tab active={active === 'subscriptions'} url="/admin/subscriptions">
+      <Tab to="/admin/subscriptions">
         Subscriptions
       </Tab>
     </Tabs>
