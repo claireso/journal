@@ -1,9 +1,10 @@
 import express from 'express'
 import React from 'react'
 import { ServerLocation, isRedirect } from '@reach/router'
+import { Provider } from 'react-redux'
 
-// import photos from './photos'
-// import subscriptions from './subscriptions'
+import configureStore from '../../common/store/configureStore'
+
 import Layout from '../views/admin'
 import render from '../utils/render'
 
@@ -12,12 +13,14 @@ import Admin from '../../app/admin'
 const router = express.Router()
 
 router.get('*', (req, res, next) => {
+  const store = configureStore()
+
   const View = () => (
-    <div>
-      <ServerLocation url={'/admin' + req.url}>
+    <ServerLocation url={'/admin' + req.url}>
+      <Provider store={store}>
         <Admin />
-      </ServerLocation>
-    </div>
+      </Provider>
+    </ServerLocation>
   )
 
   try {
@@ -31,8 +34,5 @@ router.get('*', (req, res, next) => {
     }
   }
 })
-
-// router.use('/photos', photos)
-// router.use('/subscriptions', subscriptions)
 
 export default router

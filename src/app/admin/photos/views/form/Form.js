@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Input from '../../components/form/Input'
-import Select from '../../components/form/Select'
-import Checkbox from '../../components/form/Checkbox'
+import Input from '../../../components/form/Input'
+import Select from '../../../components/form/Select'
+import Checkbox from '../../../components/form/Checkbox'
 
 const Form = ({ photo } = {}) => {
   return (

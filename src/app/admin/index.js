@@ -2,7 +2,7 @@ import React from 'react'
 import { Router, Link, Redirect } from '@reach/router'
 
 import App from './App'
-import Photos from './photos/List'
+import Photos from './photos/containers'
 import Subscriptions from './subscriptions/List'
 
 const NotFound = () => <p>Sorry, nothing here</p>
