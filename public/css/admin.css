@@ -18,7 +18,7 @@ strong {
 }
 
 h1 {
-  margin-bottom: 30px;
+  margin: 0 0 30px;
 }
 
 h1 + p {
@@ -178,13 +178,16 @@ main {
   appearence: none;
   border: none;
   cursor: pointer;
+  display: block;
   font-size: 14px;
+  margin: 40px 0 0;
   padding: 15px 50px;
+  width: 100%;
 }
 
-.form {
+/* .form {
   max-width: 600px;
-}
+} */
 
 .form__item {
   margin: 0 0 20px;
@@ -243,4 +246,22 @@ main {
 .tabs__tab .is-active {
   background: #FFE65D;
   color: #333;
+}
+
+.modal {
+  background: rgba(0,0,0,.5);
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.modal__inner {
+  background: #fff;
+  border: 20px solid #ecf0f1;
+  padding: 40px;
+  max-width: 690px;
+  margin: 80px auto;
 }

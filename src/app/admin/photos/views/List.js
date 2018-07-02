@@ -13,6 +13,7 @@ import Photo from './Photo'
 
 // const Photos = ({ photos = [], pager = {} }) => {
 class Photos extends React.Component {
+
   componentDidMount() {
     this.props.loadPhotos()
   }
@@ -23,15 +24,21 @@ class Photos extends React.Component {
       <div>
         <Toolbar alignRight>
           <ButtonLink
-            href="/admin/photos/new"
+            href="#"
             label="Add a photo"
             icon={<IconPlus />}
+            onClick={ (ev) => {
+              ev.preventDefault()
+              this.props.navigate('new')
+            } }
           />
         </Toolbar>
         <List>
           {photos.items.map((photo, index) => <Photo key={index} {...photo} />)}
         </List>
         <Pager baseUrl="/admin/photos/page" {...pager} />
+
+        { this.props.children }
       </div>
     )
   }

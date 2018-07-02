@@ -69,7 +69,7 @@ const Form = ({ photo } = {}) => {
         value={photo ? photo.square : false}
       />
 
-      <input className="form__submit btn" type="submit" value="Submit" />
+      <input className="form__submit btn" type="submit" value="Create" />
     </form>
   )
 }
