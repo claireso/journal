@@ -85,7 +85,7 @@ const createTable = async (client) => {
         ID SERIAL PRIMARY KEY,
         title VARCHAR,
         description TEXT,
-        name VARCHAR,
+        name VARCHAR NOT NULL,
         position POSITION_TYPE DEFAULT 'left',
         portrait BOOLEAN DEFAULT False,
         square BOOLEAN DEFAULT False,

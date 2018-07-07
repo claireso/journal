@@ -18,7 +18,7 @@ class Photos extends React.Component {
     this.props.loadPhotos()
   }
   render() {
-    const { photos, pager = {} } = this.props
+    const { photos } = this.props
 
     return (
       <div>
@@ -36,7 +36,7 @@ class Photos extends React.Component {
         <List>
           {photos.items.map((photo, index) => <Photo key={index} {...photo} />)}
         </List>
-        <Pager baseUrl="/admin/photos/page" {...pager} />
+        <Pager baseUrl="/admin/photos/page" {...photos.pager} />
 
         { this.props.children }
       </div>

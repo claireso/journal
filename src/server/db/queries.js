@@ -7,6 +7,7 @@ const insert_photo = () =>
     (title, description, name, position, portrait, square)
     VALUES
     ($1, $2, $3, $4, $5, $6)
+    RETURNING *
   `
 
 const update_photo = (id, fields) =>

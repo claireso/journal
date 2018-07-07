@@ -7,6 +7,12 @@ const fetch = async (url, params = {}) => {
 
 const get = fetch
 
+const post = async (url, params = {}) => {
+  const response = await fetch(url, {method: 'post', ...params})
+  return response
+}
+
 export default {
   get,
+  post,
 }

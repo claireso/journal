@@ -38,8 +38,8 @@ export default ({ dispatch, getState }) => {
       .catch(err => {
         return dispatch({
           type: TYPE_ERROR,
-          // status: err.response && err.response.status,
-          // error: err.response && err.response.data,
+          status: err.response && err.response.status,
+          error: err.response && err.response.data,
           ...actionParams,
         })
       })

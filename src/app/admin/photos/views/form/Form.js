@@ -4,75 +4,97 @@ import PropTypes from 'prop-types'
 import Input from '../../../components/form/Input'
 import Select from '../../../components/form/Select'
 import Checkbox from '../../../components/form/Checkbox'
+import Uploader from '../../../components/form/Uploader'
+import { ALLOWED_MIMETYPES } from '../../../../../common/constants'
 
-const Form = ({ photo } = {}) => {
-  return (
-    <form
-      className="form"
-      method="POST"
-      action=""
-      encType="multipart/form-data"
-    >
-      <Input name="title" label="Title" value={photo ? photo.title : ''} />
+// const Form = ({ photo } = {}) => {
+class Form extends React.Component {
 
-      <Input
-        name="description"
-        label="Description"
-        value={photo ? photo.description : ''}
-      />
+  handleSubmit = (event) => {
+    event.preventDefault()
 
-      <div className="form__item">
-        <label className="form__label" htmlFor="file">
-          Photo
-        </label>
+    const { onSubmit } = this.props
 
-        <div className={photo ? 'form__photo' : ''}>
-          {photo && <img src={`/img/${photo.name}`} width="300" />}
-          <input
-            id="file"
-            type="file"
-            name="file"
-            required={!photo ? 'required' : undefined}
-          />
+    onSubmit && onSubmit(new FormData(this.form))
+  }
+
+  render() {
+    const { photo } = this.props
+
+    return (
+      <form
+        ref={ c => this.form = c}
+        className="form"
+        method="POST"
+        action=""
+        encType="multipart/form-data"
+        onSubmit={ this.handleSubmit }
+      >
+        <Input name="title" label="Title" value={photo ? photo.title : ''} />
+
+        <Input
+          name="description"
+          label="Description"
+          value={photo ? photo.description : ''}
+        />
+
+        <div className="form__item">
+          <label className="form__label" htmlFor="file">
+            Photo
+          </label>
+
+          {/*<div className={photo ? 'form__photo' : ''}>
+            {photo && <img src={`/img/${photo.name}`} width="300" />}
+            <input
+              id="file"
+              type="file"
+              name="file"
+              required={!photo ? 'required' : undefined}
+            />
+            </div>*/}
+
+          <Uploader name="file" required accept={ ALLOWED_MIMETYPES } />
+
         </div>
-      </div>
 
-      <Select
-        label="Position"
-        name="position"
-        value={photo ? photo.position : ''}
-        options={[
-          {
-            value: 'left',
-            label: 'Left'
-          },
-          {
-            value: 'center',
-            label: 'Center'
-          },
-          {
-            value: 'right',
-            label: 'Right'
-          }
-        ]}
-      />
+        <Select
+          label="Position"
+          name="position"
+          value={photo ? photo.position : ''}
+          options={[
+            {
+              value: 'left',
+              label: 'Left'
+            },
+            {
+              value: 'center',
+              label: 'Center'
+            },
+            {
+              value: 'right',
+              label: 'Right'
+            }
+          ]}
+        />
 
-      <Checkbox
-        name="portrait"
-        label="Portrait"
-        value={photo ? photo.portrait : false}
-      />
+        <Checkbox
+          name="portrait"
+          label="Portrait"
+          value={photo ? photo.portrait : false}
+        />
 
-      <Checkbox
-        name="square"
-        label="Square"
-        value={photo ? photo.square : false}
-      />
+        <Checkbox
+          name="square"
+          label="Square"
+          value={photo ? photo.square : false}
+        />
 
-      <input className="form__submit btn" type="submit" value="Create" />
-    </form>
-  )
+        <input className="form__submit btn" type="submit" value="Create" />
+      </form>
+    )
+  }
 }
+
 
 Form.propTypes = {
   photo: PropTypes.shape({
