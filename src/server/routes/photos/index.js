@@ -49,6 +49,7 @@ const deleteFile = fileName =>
 
 const router = express.Router()
 
+// GET ALL PHOTOS
 router.get('/', catchErrors(paginate('photos')), catchErrors(async (req, res, next) => {
   const response = await pool.query(
     queries.get_photos({
@@ -62,6 +63,7 @@ router.get('/', catchErrors(paginate('photos')), catchErrors(async (req, res, ne
   })
 }))
 
+// CREATE NEW PHOTO
 router.post('/', upload.single('file'), catchErrors(async (req, res, next) => {
   const filename = req.file && req.file.filename
 
@@ -103,6 +105,25 @@ router.post('/', upload.single('file'), catchErrors(async (req, res, next) => {
   res.json(response.rows[0])
 }))
 
+// GET ONE PHOTO
+router.get(
+  '/:id(\\d+)',
+  catchErrors(async (req, res) => {
+    const { id } = req.params
+
+    const response = await pool.query(queries.find_photo(id))
+    const photo = response.rows[0]
+
+    if (photo === undefined) {
+      res.status(404).json()
+      return
+    }
+
+    res.json(photo)
+  })
+)
+
+// UPDATE PHOTO
 router.patch(
   '/:id(\\d+)',
   upload.single('file'),
@@ -135,6 +156,7 @@ router.patch(
   })
 )
 
+// DELETE PHOTO
 router.delete(
   '/:id(\\d+)',
   catchErrors(async (req, res, next) => {

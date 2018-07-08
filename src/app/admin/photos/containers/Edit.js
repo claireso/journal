@@ -3,10 +3,10 @@ import { navigate } from '@reach/router'
 
 import Edit from '../views/Edit'
 
-import { editPhoto, EDIT_PHOTO_SUCCESS } from '../../../../common/actions/photos'
+import { editPhoto, EDIT_PHOTO_SUCCESS, loadPhoto } from '../../../../common/actions/photos'
 
 const mapStateToProps = (state, props) => ({
-  photo: state.photos.items.find(photo => photo.id === Number(props.id)),
+  photo: state.photos.items.find(photo => photo.id === Number(props.id)) || state.photos.detail,
   error: state.photos.error,
 })
 
@@ -21,6 +21,10 @@ const mapDispatchToProps = (dispatch) => ({
 
       document.querySelector('.modal').scrollTo(0,0)
     })
+  },
+
+  loadPhoto(id) {
+    dispatch(loadPhoto(id))
   }
 })
 

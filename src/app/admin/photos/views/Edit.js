@@ -6,18 +6,29 @@ import Flash from '../../components/Flash'
 
 import Form from './form/Form'
 
-const Edit = ({photo, ...props}) => {
-  if (photo === undefined) return null
+class Edit extends React.Component {
 
-  return (
-    <Modal onClose={ () => props.navigate('/admin/photos') }>
-      { props.error &&
-        <Flash {...props.error} />
-      }
-      <h1>Edit photo</h1>
-      <Form onSubmit={ props.editPhoto.bind(this, photo.id) } photo={ photo } />
-    </Modal>
-  )
+  componentDidMount() {
+    if (!this.props.photo) {
+      this.props.loadPhoto(this.props.id)
+    }
+  }
+
+  render() {
+    const { photo, error } = this.props
+
+    if (photo === undefined) return null
+
+    return (
+      <Modal onClose={ () => this.props.navigate('/admin/photos') }>
+        { error &&
+          <Flash {...error} />
+        }
+        <h1>Edit photo</h1>
+        <Form onSubmit={ this.props.editPhoto.bind(this, photo.id) } photo={ photo } />
+      </Modal>
+    )
+  }
 }
 
 Edit.propTypes = {

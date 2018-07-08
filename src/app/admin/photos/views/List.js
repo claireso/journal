@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Page from '../../components/Page'
 import Pager from '../../components/Pager'
 import Toolbar from '../../components/Toolbar'
 import List from '../../components/List'
 import { ButtonLink } from '../../components/Links'
 import { IconPlus } from '../../components/Icons'
-import { AdminTabs } from '../../components/tabs'
+import Loader from '../../components/Loader'
 
 import Photo from './Photo'
 
@@ -44,12 +43,24 @@ class Photos extends React.Component {
             } }
           />
         </Toolbar>
-        <List>
-          {photos.items.map((photo, index) => <Photo key={index} {...photo} onDelete={ this.onDelete } onEdit={ this.onEdit } />)}
-        </List>
-        <Pager baseUrl="/admin/photos/page" {...photos.pager} />
 
-        { this.props.children }
+        {
+          photos.isLoading ?
+            (
+              <Loader />
+            )
+          :
+            (
+              <React.Fragment>
+                <List>
+                  {photos.items.map((photo, index) => <Photo key={index} {...photo} onDelete={ this.onDelete } onEdit={ this.onEdit } />)}
+                </List>
+                <Pager baseUrl="/admin/photos/page" {...photos.pager} />
+
+                { this.props.children }
+              </React.Fragment>
+            )
+        }
       </div>
     )
   }

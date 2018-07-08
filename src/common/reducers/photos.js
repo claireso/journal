@@ -3,14 +3,31 @@ import * as actionTypes from '../actions/photos'
 const initialState = {
   items: [],
   pager: null,
+  isLoading: true,
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
+
+    case actionTypes.LOAD_PHOTOS_REQUEST : {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    }
+
     case actionTypes.LOAD_PHOTOS_SUCCESS : {
       return {
         ...state,
         ...action.response,
+        isLoading: false,
+      }
+    }
+
+    case actionTypes.LOAD_PHOTO_SUCCESS : {
+      return {
+        ...state,
+        detail: action.response,
       }
     }
 
