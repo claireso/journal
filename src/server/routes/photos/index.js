@@ -12,6 +12,8 @@ import paginate from '../middleware/paginate'
 
 import { ALLOWED_MIMETYPES } from '../../../common/constants'
 
+import photoModel from './model'
+
 // multer storage configuration
 const storage = multer.diskStorage({
   destination(req, file, callback) {
@@ -61,7 +63,6 @@ router.get('/', catchErrors(paginate('photos')), catchErrors(async (req, res, ne
 }))
 
 router.post('/', upload.single('file'), catchErrors(async (req, res, next) => {
-  const photo = req.body
   const filename = req.file && req.file.filename
 
   //@TODO manage errors
@@ -72,13 +73,18 @@ router.post('/', upload.single('file'), catchErrors(async (req, res, next) => {
     return
   }
 
+  const photo = photoModel({
+    ...req.body,
+    name: filename,
+  })
+
   const response = await pool.query(queries.insert_photo(), [
-    escape(photo.title),
-    escape(photo.description),
-    filename,
+    photo.title,
+    photo.description,
+    photo.name,
     photo.position,
-    photo.portrait || false,
-    photo.square || false
+    photo.portrait,
+    photo.square,
   ])
 
   // send web-push notification
@@ -102,32 +108,26 @@ router.patch(
   upload.single('file'),
   catchErrors(async (req, res) => {
     const { id } = req.params
-    const photo = req.body
-    const filename = req.file && req.file.filename
 
-    const newPhoto = { ...photo }
+    let response = await pool.query(queries.find_photo(id))
+    const photo = response.rows[0]
+
+    if (photo === undefined) {
+      res.status(404).json()
+      return
+    }
+
+    const newPhoto = photoModel(req.body)
+    const filename = req.file && req.file.filename
 
     // TODO delete current file
     if (filename) newPhoto.name = filename
 
-    newPhoto.square = photo.square || false
-    newPhoto.portrait = photo.portrait || false
-    newPhoto.description = escape(newPhoto.description)
-    newPhoto.title = escape(newPhoto.title)
     newPhoto.updated_at = new Date()
 
     const fields = Object.entries(newPhoto)
       .map((entry, index) => `${entry[0]}=($${index + 1})`)
       .join(',')
-
-    // @TODO: use count ?
-    let response = await pool.query(queries.find_photo(id))
-    const currentPhoto = response.rows[0]
-
-    if (currentPhoto === undefined) {
-      res.status(404).json()
-      return
-    }
 
     response = await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
 
