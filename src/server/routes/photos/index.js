@@ -120,7 +120,16 @@ router.patch(
       .map((entry, index) => `${entry[0]}=($${index + 1})`)
       .join(',')
 
-    const response = await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
+    // @TODO: use count ?
+    let response = await pool.query(queries.find_photo(id))
+    const currentPhoto = response.rows[0]
+
+    if (currentPhoto === undefined) {
+      res.status(404).json()
+      return
+    }
+
+    response = await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
 
     res.json(response.rows[0])
   })
