@@ -1,24 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Page from '../components/Page'
-import Form from './form/Form'
-import Toolbar from '../components/Toolbar'
-import { BackLink } from '../components/Links'
+import Modal from '../../components/Modal'
+import Flash from '../../components/Flash'
 
-const Edit = ({ photo }) => {
+import Form from './form/Form'
+
+const Edit = ({photo, ...props}) => {
+  if (photo === undefined) return null
+
   return (
-    <Page title="Edit photo">
-      <Toolbar>
-        <BackLink href="/admin/photos" label="Back to list" />
-      </Toolbar>
-      <Form photo={photo} />
-    </Page>
+    <Modal onClose={ () => props.navigate('/admin/photos') }>
+      { props.error &&
+        <Flash {...props.error} />
+      }
+      <h1>Edit photo</h1>
+      <Form onSubmit={ props.editPhoto.bind(this, photo.id) } photo={ photo } />
+    </Modal>
   )
 }
 
 Edit.propTypes = {
-  photo: PropTypes.object.isRequired
+  photo: PropTypes.object
 }
 
 export default Edit

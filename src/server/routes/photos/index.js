@@ -89,4 +89,33 @@ router.post('/', upload.single('file'), catchErrors(async (req, res, next) => {
   res.json(response.rows[0])
 }))
 
+router.patch(
+  '/:id(\\d+)',
+  upload.single('file'),
+  catchErrors(async (req, res) => {
+    const { id } = req.params
+    const photo = req.body
+    const filename = req.file && req.file.filename
+
+    const newPhoto = { ...photo }
+
+    // TODO delete current file
+    if (filename) newPhoto.name = filename
+
+    newPhoto.square = photo.square || false
+    newPhoto.portrait = photo.portrait || false
+    newPhoto.description = escape(newPhoto.description)
+    newPhoto.title = escape(newPhoto.title)
+    newPhoto.updated_at = new Date()
+
+    const fields = Object.entries(newPhoto)
+      .map((entry, index) => `${entry[0]}=($${index + 1})`)
+      .join(',')
+
+    const response = await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
+
+    res.json(response.rows[0])
+  })
+)
+
 export default router

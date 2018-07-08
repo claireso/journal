@@ -3,21 +3,25 @@ import PropTypes from 'prop-types'
 
 import { ButtonLink } from '../../components/Links'
 
-const Photo = photo => {
+const Photo = props => {
   return (
     <li className="list__item">
       <div className="list__picture">
-        <img src={`/img/${photo.name}`} />
+        <img src={`/img/${props.name}`} />
       </div>
       <div className="list__text">
-        <h2 className="title">{photo.title}</h2>
-        <p className="subtitle">{photo.description}</p>
+        <h2 className="title">{props.title}</h2>
+        <p className="subtitle">{props.description}</p>
         <p className="list__buttons">
-          <ButtonLink href={`/admin/photos/${photo.id}/edit`} label="Edit" />
           <ButtonLink
-            href={`/admin/photos/${photo.id}/delete`}
+            href="#"
+            label="Edit"
+            onClick={ props.onEdit.bind(this, props.id) }
+          />
+          <ButtonLink
+            href="#"
             label="Delete"
-            className="js-delete"
+            onClick={ props.onDelete.bind(this, props.id) }
           />
         </p>
       </div>

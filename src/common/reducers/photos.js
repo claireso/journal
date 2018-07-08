@@ -1,4 +1,4 @@
-import * as actionsTypes from '../actions/photos'
+import * as actionTypes from '../actions/photos'
 
 const initialState = {
   items: [],
@@ -7,14 +7,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actionsTypes.LOAD_PHOTOS_SUCCESS : {
+    case actionTypes.LOAD_PHOTOS_SUCCESS : {
       return {
         ...state,
         ...action.response,
       }
     }
 
-    case actionsTypes.CREATE_PHOTO_SUCCESS: {
+    case actionTypes.CREATE_PHOTO_SUCCESS: {
       return {
         ...state,
         items: [
@@ -25,13 +25,29 @@ export default (state = initialState, action) => {
       }
     }
 
-    case actionsTypes.CREATE_PHOTO_ERROR: {
+    case actionTypes.CREATE_PHOTO_ERROR: {
       return {
         ...state,
         error: {
           status: 'error',
           ...action.error,
         },
+      }
+    }
+
+    case actionTypes.EDIT_PHOTO_SUCCESS: {
+      const photo = action.response
+      const index = state.items.findIndex(_photo => _photo.id === photo.id)
+
+      if (index < 0) return state
+
+      return {
+        ...state,
+        items: [
+          ...state.items.slice(0, index),
+          photo,
+          ...state.items.slice(index + 1)
+        ]
       }
     }
 

@@ -12,7 +12,13 @@ const post = async (url, params = {}) => {
   return response
 }
 
+const patch = async (url, params = {}) => {
+  const response = await fetch(url, {method: 'patch', ...params})
+  return response
+}
+
 export default {
   get,
   post,
+  patch,
 }

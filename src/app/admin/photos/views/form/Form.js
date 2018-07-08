@@ -7,7 +7,6 @@ import Checkbox from '../../../components/form/Checkbox'
 import Uploader from '../../../components/form/Uploader'
 import { ALLOWED_MIMETYPES } from '../../../../../common/constants'
 
-// const Form = ({ photo } = {}) => {
 class Form extends React.Component {
 
   handleSubmit = (event) => {
@@ -43,18 +42,12 @@ class Form extends React.Component {
             Photo
           </label>
 
-          {/*<div className={photo ? 'form__photo' : ''}>
-            {photo && <img src={`/img/${photo.name}`} width="300" />}
-            <input
-              id="file"
-              type="file"
-              name="file"
-              required={!photo ? 'required' : undefined}
-            />
-            </div>*/}
-
-          <Uploader name="file" required accept={ ALLOWED_MIMETYPES } />
-
+          <Uploader
+            name="file"
+            required={!photo ? 'required' : undefined}
+            accept={ ALLOWED_MIMETYPES }
+            preview={ photo && `/img/${photo.name}` }
+          />
         </div>
 
         <Select
@@ -89,7 +82,7 @@ class Form extends React.Component {
           value={photo ? photo.square : false}
         />
 
-        <input className="form__submit btn" type="submit" value="Create" />
+        <input className="form__submit btn" type="submit" value={ photo ? 'Save' : 'Create' } />
       </form>
     )
   }

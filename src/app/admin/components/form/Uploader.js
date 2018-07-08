@@ -15,7 +15,13 @@ const createThumbnail = (file) =>
 
 export default class Uploader extends React.Component {
 
-  state = {}
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      preview: props.preview
+    }
+  }
 
   handleChange = async (event) => {
     const { accept } = this.props

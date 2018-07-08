@@ -11,7 +11,7 @@ const insert_photo = () =>
   `
 
 const update_photo = (id, fields) =>
-  `UPDATE photos SET ${fields} WHERE id=${id}`
+  `UPDATE photos SET ${fields} WHERE id=${id} RETURNING *`
 
 const find_photo = (id, fields = '*') =>
   `SELECT ${fields} FROM photos WHERE id=${id}`

@@ -17,6 +17,17 @@ class Photos extends React.Component {
   componentDidMount() {
     this.props.loadPhotos()
   }
+
+  onDelete = (id, event) => {
+    event.preventDefault()
+    this.props.navigate(`${id}/delete`)
+  }
+
+  onEdit = (id, event) => {
+    event.preventDefault()
+    this.props.navigate(`${id}/edit`)
+  }
+
   render() {
     const { photos } = this.props
 
@@ -34,7 +45,7 @@ class Photos extends React.Component {
           />
         </Toolbar>
         <List>
-          {photos.items.map((photo, index) => <Photo key={index} {...photo} />)}
+          {photos.items.map((photo, index) => <Photo key={index} {...photo} onDelete={ this.onDelete } onEdit={ this.onEdit } />)}
         </List>
         <Pager baseUrl="/admin/photos/page" {...photos.pager} />
 
