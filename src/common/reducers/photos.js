@@ -51,6 +51,20 @@ export default (state = initialState, action) => {
       }
     }
 
+    case actionTypes.DELETE_PHOTO_SUCCESS: {
+      const index = state.items.findIndex(photo => photo.id === action.id)
+
+      if (index < 0) return state
+
+      return {
+        ...state,
+        items: [
+          ...state.items.slice(0, index),
+          ...state.items.slice(index + 1)
+        ]
+      }
+    }
+
     default:
       return state
   }

@@ -17,8 +17,14 @@ const patch = async (url, params = {}) => {
   return response
 }
 
+const del = async (url, params = {}) => {
+  const response = await fetch(url, {method: 'delete', ...params})
+  return response
+}
+
 export default {
   get,
   post,
   patch,
+  del,
 }

@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 import express from 'express'
 import multer from 'multer'
@@ -36,6 +37,13 @@ const upload = multer({
     callback(null, false)
   }
 })
+
+const deleteFile = fileName =>
+  new Promise(resolve => {
+    const file = path.resolve('public', 'img', fileName)
+
+    fs.unlink(file, resolve)
+  })
 
 const router = express.Router()
 
@@ -115,6 +123,29 @@ router.patch(
     const response = await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
 
     res.json(response.rows[0])
+  })
+)
+
+router.delete(
+  '/:id(\\d+)',
+  catchErrors(async (req, res, next) => {
+    const { id } = req.params
+
+    const response = await pool.query(queries.find_photo(id))
+    const photo = response.rows[0]
+
+    if (photo === undefined) {
+      res.status(404).json()
+      return
+    }
+
+    // delete photo from the folder
+    await deleteFile(response.rows[0].name)
+
+    //delete photo from database
+    await pool.query(queries.delete_photo(id))
+
+    res.json()
   })
 )
 

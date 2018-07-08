@@ -63,6 +63,10 @@ main {
   background: #9b59b6;
 }
 
+.btn + .btn {
+  margin: 0 0 0 10px;
+}
+
 .btn--icon svg {
   fill: #fff;
   margin: 0 -3px 0 3px;
@@ -126,10 +130,6 @@ main {
 .list__buttons {
   opacity: 0;
   transition: opacity 100ms ease-out;
-}
-
-.list__buttons .btn + .btn {
-  margin: 0 0 0 10px;
 }
 
 .list__item:hover .list__buttons {

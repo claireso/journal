@@ -10,7 +10,7 @@ export const ButtonLink = (props = {}) => {
   cls += props.className ? ` ${props.className}` : ''
 
   return (
-    <a className={cls} href={props.href} onClick={props.onClick}>
+    <a className={cls} href={props.href || '#'} onClick={props.onClick}>
       {props.label}
       {props.icon}
     </a>
@@ -18,7 +18,7 @@ export const ButtonLink = (props = {}) => {
 }
 
 ButtonLink.propTypes = {
-  href: PropTypes.string.isRequired,
+  // href: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   icon: PropTypes.element,
   className: PropTypes.string,
