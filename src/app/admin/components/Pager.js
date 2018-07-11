@@ -1,66 +1,80 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Pager = (props = {}) => {
-  return (
-    <ul className="pager">
-      {props.first && (
-        <li className="pager__item">
-          <a
-            className="btn btn--gray"
-            title="First page"
-            href={`${props.baseUrl}/${props.first}`}
-          >
-            ««
-          </a>
-        </li>
-      )}
+import { ButtonLink } from './Links'
 
-      {props.prev && (
-        <li className="pager__item">
-          <a
-            className="btn btn--gray"
-            title="Previous page"
-            href={`${props.baseUrl}/${props.prev}`}
-          >
-            «
-          </a>
-        </li>
-      )}
+class Pager extends React.Component {
 
-      {props.next && (
-        <li className="pager__item">
-          <a
-            className="btn btn--gray"
-            title="Next page"
-            href={`${props.baseUrl}/${props.next}`}
-          >
-            »
-          </a>
-        </li>
-      )}
+  getItems() {
+    const { first, prev, next, last } = this.props
+    const items = []
 
-      {props.last && (
-        <li className="pager__item">
-          <a
-            className="btn btn--gray"
-            title="Last page"
-            href={`${props.baseUrl}/${props.last}`}
-          >
-            »»
-          </a>
-        </li>
-      )}
-    </ul>
-  )
+    if (first) {
+      items.push({
+        label: '««',
+        title: 'First page',
+        page: first
+      })
+    }
+
+    if (prev) {
+      items.push({
+        label: '«',
+        title: 'Previous page',
+        page: prev
+      })
+    }
+
+    if (next) {
+      items.push({
+        label: '»',
+        title: 'Next page',
+        page: next
+      })
+    }
+
+    if (last) {
+      items.push({
+        label: '»»',
+        title: 'Last page',
+        page: last
+      })
+    }
+
+    return items
+  }
+
+  getItemsProps = ({item, ...customProps} = {}) => {
+    const { navigate } = this.props
+
+    return {
+      ...customProps,
+      onClick: (event) => {
+        event && event.preventDefault()
+        navigate && navigate(item.page)
+      }
+    }
+  }
+
+  render() {
+    return (
+      <ul className="pager">
+        {
+          this.props.children({
+            items: this.getItems(),
+            getItemsProps: this.getItemsProps,
+          })
+        }
+      </ul>
+    )
+  }
 }
 
 Pager.propTypes = {
   first: PropTypes.number,
   prev: PropTypes.number,
   next: PropTypes.number,
-  last: PropTypes.number,
-  baseUrl: PropTypes.string
+  last: PropTypes.number
 }
 
 export default Pager

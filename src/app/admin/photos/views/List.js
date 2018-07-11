@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import qs from 'qs'
 
 import Pager from '../../components/Pager'
 import Toolbar from '../../components/Toolbar'
@@ -10,11 +11,27 @@ import Loader from '../../components/Loader'
 
 import Photo from './Photo'
 
-// const Photos = ({ photos = [], pager = {} }) => {
 class Photos extends React.Component {
 
   componentDidMount() {
-    this.props.loadPhotos()
+    const query = qs.parse(this.props.location.search.substring(1))
+    const params = {}
+
+    if (query.page !== undefined) {
+      params['page'] = query.page
+    }
+
+    this.props.loadPhotos(params)
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevQuery = qs.parse(prevProps.location.search.substring(1))
+    const query = qs.parse(this.props.location.search.substring(1))
+
+    if (prevQuery.page !== query.page) {
+      this.props.loadPhotos({page: query.page})
+      window.scrollTo(0, 0)
+    }
   }
 
   onDelete = (id, event) => {
@@ -55,9 +72,30 @@ class Photos extends React.Component {
                 <List>
                   {photos.items.map((photo, index) => <Photo key={index} {...photo} onDelete={ this.onDelete } onEdit={ this.onEdit } />)}
                 </List>
-                <Pager baseUrl="/admin/photos/page" {...photos.pager} />
+
+                <Pager
+                  {...photos.pager}
+                  // navigate={ (page) => this.props.loadPhotos({page})}
+                  navigate={ (page) => this.props.navigate(`?page=${page}`)}
+                >
+                  { ({items, getItemsProps}) => {
+                    return items.map(item => (
+                      <li key={ item.label } className="pager__item">
+                        <ButtonLink
+                          {...getItemsProps({
+                            className: 'btn--gray',
+                            label: item.label,
+                            title: item.title,
+                            item: item,
+                          })}
+                        />
+                      </li>
+                    ))
+                  }}
+                </Pager>
 
                 { this.props.children }
+
               </React.Fragment>
             )
         }

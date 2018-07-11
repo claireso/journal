@@ -4,8 +4,8 @@ import queries from '../../db/queries'
 export default resourceName => async (req, res, next) => {
   let page = 1
 
-  if (req.params.page !== undefined) {
-    page = parseInt(req.params.page, 10)
+  if (req.query.page !== undefined) {
+    page = Number(req.query.page)
   }
 
   const response = await pool.query(queries.count(resourceName))
@@ -18,10 +18,7 @@ export default resourceName => async (req, res, next) => {
     page < 1 ||
     (page > 1 && count == 0)
   ) {
-    const url = req.originalUrl.startsWith('/admin')
-      ? `/admin/${resourceName}`
-      : '/'
-    res.redirect(url)
+    res.status(404).json()
     return
   }
 

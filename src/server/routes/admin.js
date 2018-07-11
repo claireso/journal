@@ -16,7 +16,7 @@ router.get('*', (req, res, next) => {
   const store = configureStore()
 
   const View = () => (
-    <ServerLocation url={'/admin' + req.url}>
+    <ServerLocation url={req.originalUrl}>
       <Provider store={store}>
         <Admin />
       </Provider>

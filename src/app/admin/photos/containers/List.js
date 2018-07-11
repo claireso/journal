@@ -1,16 +1,24 @@
 import { connect } from 'react-redux'
+import { navigate } from '@reach/router'
 
 import List from '../views/List'
 
-import { loadPhotos } from '../../../../common/actions/photos'
+import { loadPhotos, LOAD_PHOTOS_ERROR } from '../../../../common/actions/photos'
 
 const mapStateToProps = (state) => ({
   photos : state.photos
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  loadPhotos() {
-    dispatch(loadPhotos())
+  loadPhotos(params) {
+    dispatch(loadPhotos(params))
+    .then(action => {
+      if (action.type === LOAD_PHOTOS_ERROR) {
+        if (action.status === 404) {
+          navigate('/admin/photos')
+        }
+      }
+    })
   }
 })
 

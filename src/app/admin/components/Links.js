@@ -10,7 +10,7 @@ export const ButtonLink = (props = {}) => {
   cls += props.className ? ` ${props.className}` : ''
 
   return (
-    <a className={cls} href={props.href || '#'} onClick={props.onClick}>
+    <a className={cls} href={props.href || '#'} onClick={props.onClick} title={ props.title }>
       {props.label}
       {props.icon}
     </a>

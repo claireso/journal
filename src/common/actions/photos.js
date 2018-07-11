@@ -20,9 +20,9 @@ export const DELETE_PHOTO_REQUEST = 'DELETE_PHOTO_REQUEST'
 export const DELETE_PHOTO_SUCCESS = 'DELETE_PHOTO_SUCCESS'
 export const DELETE_PHOTO_ERROR = 'DELETE_PHOTO_ERROR'
 
-export const loadPhotos = () => ({
+export const loadPhotos = (params = {}) => ({
   types: [LOAD_PHOTOS_REQUEST, LOAD_PHOTOS_SUCCESS, LOAD_PHOTOS_ERROR],
-  promise: () => api.get('/photos')
+  promise: () => api.get('/photos', { params })
 })
 
 export const loadPhoto = (id) => ({
