@@ -3,11 +3,12 @@ import { Router, Link, Redirect, Match } from '@reach/router'
 
 import App from './App'
 import Photos from './photos/containers/List'
-import Create from './photos/containers/Create'
-import Edit from './photos/containers/Edit'
-import Delete from './photos/containers/Delete'
+import CreatePhoto from './photos/containers/Create'
+import EditPhoto from './photos/containers/Edit'
+import DeletePhoto from './photos/containers/Delete'
 
-import Subscriptions from './subscriptions/List'
+import Subscriptions from './subscriptions/containers/List'
+import DeleteSubscription from './subscriptions/containers/Delete'
 
 import ScrollUp from './components/ScrollUp'
 
@@ -21,11 +22,13 @@ export default (props) => {
           <Redirect from="/" to="photos" />
           <NotFound default />
           <Photos path="photos">
-            <Create path="new" />
-            <Edit path=":id/edit" />
-            <Delete path=":id/delete" />
+            <CreatePhoto path="new" />
+            <EditPhoto path=":id/edit" />
+            <DeletePhoto path=":id/delete" />
           </Photos>
-          <Subscriptions path="subscriptions" />
+          <Subscriptions path="subscriptions">
+            <DeleteSubscription path=":id/delete" />
+          </Subscriptions>
           </App>
       </ScrollUp>
     </Router>

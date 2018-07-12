@@ -10,7 +10,7 @@ export default resourceName => async (req, res, next) => {
 
   const response = await pool.query(queries.count(resourceName))
   const limit = 10
-  const count = response.rows[0].count
+  const count = Number(response.rows[0].count)
   const totalPages = Math.ceil(count / limit)
 
   if (
