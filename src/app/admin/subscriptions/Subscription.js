@@ -28,6 +28,7 @@ const Subscription = (props = {}) => {
 }
 
 Subscription.propTypes = {
+  id: PropTypes.number,
   created_at: PropTypes.object,
   subscription: PropTypes.object.isRequired
 }
