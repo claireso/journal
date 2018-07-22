@@ -6,8 +6,8 @@ import { readFileSync } from 'jsonfile'
 const manifestPath = `${process.cwd()}/public/js/asset-manifest.json`
 const manifest = readFileSync(manifestPath)
 
-export default (Layout, Component, props = {}, config = {}) => {
+export default (Layout, Component, props = {}, config = {}, preloadedState) => {
   const content = ReactDOMServer.renderToString(<Component {...props} />)
 
-  return Layout({ content, config, manifest })
+  return Layout({ content, config, manifest, preloadedState: JSON.stringify(preloadedState) })
 }

@@ -1,4 +1,5 @@
 {
+  "sessionSecret": "",
   "db": {
     "database": "journal",
     "user": "",

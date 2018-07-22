@@ -1,5 +1,7 @@
 import express from 'express'
 
+import authenticated from '../middleware/authenticated'
+
 import pool from '../../db/db'
 import queries from '../../db/queries'
 
@@ -9,7 +11,7 @@ import paginate from '../middleware/paginate'
 const router = express.Router()
 
 // ALL SUBSCRIPTIONS
-router.get('/', catchErrors(paginate('subscriptions')), catchErrors(async (req, res) => {
+router.get('/', authenticated, catchErrors(paginate('subscriptions')), catchErrors(async (req, res) => {
   const response = await pool.query(
     queries.get_subscriptions({
       options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
@@ -25,6 +27,7 @@ router.get('/', catchErrors(paginate('subscriptions')), catchErrors(async (req, 
 // DELETE SUBSCRIPTION
 router.delete(
   '/:id(\\d+)',
+  authenticated,
   catchErrors(async (req, res, next) => {
     const { id } = req.params
 

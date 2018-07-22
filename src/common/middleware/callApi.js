@@ -1,4 +1,5 @@
 // redux middleware to call api and manage errors
+import { unauthorized } from '../actions/api'
 
 export default ({ dispatch, getState }) => {
   return next => action => {
@@ -36,9 +37,15 @@ export default ({ dispatch, getState }) => {
         })
       })
       .catch(err => {
+        const status = err.response && err.response.status
+
+        if (status === 401) {
+          return dispatch(unauthorized())
+        }
+
         return dispatch({
           type: TYPE_ERROR,
-          status: err.response && err.response.status,
+          status: status,
           error: err.response && err.response.data,
           ...actionParams,
         })

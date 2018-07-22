@@ -5,6 +5,8 @@ import multer from 'multer'
 import { ulid } from 'ulid'
 import escape from 'lodash/escape'
 
+import authenticated from '../middleware/authenticated'
+
 import catchErrors from '../../utils/catchErrors'
 import pool from '../../db/db'
 import queries from '../../db/queries'
@@ -64,7 +66,7 @@ router.get('/', catchErrors(paginate('photos')), catchErrors(async (req, res, ne
 }))
 
 // CREATE NEW PHOTO
-router.post('/', upload.single('file'), catchErrors(async (req, res, next) => {
+router.post('/', authenticated, upload.single('file'), catchErrors(async (req, res, next) => {
   const filename = req.file && req.file.filename
 
   //@TODO manage errors
@@ -126,6 +128,7 @@ router.get(
 // UPDATE PHOTO
 router.patch(
   '/:id(\\d+)',
+  authenticated,
   upload.single('file'),
   catchErrors(async (req, res) => {
     const { id } = req.params
@@ -159,6 +162,7 @@ router.patch(
 // DELETE PHOTO
 router.delete(
   '/:id(\\d+)',
+  authenticated,
   catchErrors(async (req, res, next) => {
     const { id } = req.params
 

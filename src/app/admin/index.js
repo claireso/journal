@@ -2,11 +2,11 @@ import React from 'react'
 import { Router, Link, Redirect, Match } from '@reach/router'
 
 import App from './App'
+import Login from './login/containers/Login'
 import Photos from './photos/containers/List'
 import CreatePhoto from './photos/containers/Create'
 import EditPhoto from './photos/containers/Edit'
 import DeletePhoto from './photos/containers/Delete'
-
 import Subscriptions from './subscriptions/containers/List'
 import DeleteSubscription from './subscriptions/containers/Delete'
 
@@ -29,7 +29,8 @@ export default (props) => {
           <Subscriptions path="subscriptions">
             <DeleteSubscription path=":id/delete" />
           </Subscriptions>
-          </App>
+        </App>
+        <Login path="login" />
       </ScrollUp>
     </Router>
   )

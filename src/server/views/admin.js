@@ -1,6 +1,6 @@
 // admin layout
 
-export default ({ content = '', config = {}, manifest = {} } = {}) => `
+export default ({ content = '', config = {}, manifest = {}, preloadedState = {} } = {}) => `
   <!doctype html>
   <html lang="fr">
     <head>
@@ -14,20 +14,12 @@ export default ({ content = '', config = {}, manifest = {} } = {}) => `
       </head>
       <body>
       <div id="js-app">${content}</div>
-      <script src="/js/${manifest['admin.js']}"></script>
       <script>
-        (function(){
-          var nodes = [...document.querySelectorAll('.js-delete')]
-
-          nodes.map(node => {
-            node.addEventListener('click', (event) => {
-              if (!confirm('Are you sure? This action is irreversible')) {
-                event.preventDefault()
-              }
-            })
-          })
-        })()
+      (function(){
+        window.preloadedState = ${preloadedState}
+      })()
       </script>
+      <script src="/js/${manifest['admin.js']}"></script>
     </body>
   </html>
 `

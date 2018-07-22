@@ -3,6 +3,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import auth from 'http-auth'
 import helmet from 'helmet'
+import session from 'express-session'
 
 import admin from './routes/admin'
 import api from './routes/api'
@@ -25,6 +26,7 @@ app.use(helmet())
 app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(session({ secret: config.sessionSecret, resave: false, saveUninitialized: false }))
 
 app.locals.config = { ...config.website, version: +new Date() }
 

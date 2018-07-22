@@ -6,7 +6,8 @@ import List from '../views/List'
 import { loadPhotos, LOAD_PHOTOS_ERROR } from '../../../../common/actions/photos'
 
 const mapStateToProps = (state) => ({
-  photos : state.photos
+  photos : state.photos,
+  user: state.user
 })
 
 const mapDispatchToProps = (dispatch) => ({

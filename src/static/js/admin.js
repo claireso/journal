@@ -6,7 +6,7 @@ import configureStore from '../../common/store/configureStore'
 
 import Admin from '../../app/admin'
 
-const store = configureStore()
+const store = configureStore(window.preloadedState)
 const dom = document.querySelector('#js-app')
 
 if (dom) {

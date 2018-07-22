@@ -355,3 +355,10 @@ main {
     opacity: 1;
   }
 }
+
+.box {
+  background: #ecf0f1;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px;
+}

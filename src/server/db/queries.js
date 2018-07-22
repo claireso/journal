@@ -35,6 +35,12 @@ const delete_subscription = id => `DELETE FROM subscriptions WHERE id=${id}`
 const find_subscription = (id, fields = '*') =>
   `SELECT ${fields} FROM subscriptions WHERE id=${id}`
 
+const find_user_by_username = (username, password, fields = '*') =>
+  `SELECT ${fields} FROM users WHERE username='${username}' AND password=crypt('${password}', password)`
+
+const find_user_by_cid = (cid, fields = '*') =>
+  `SELECT ${fields} FROM users WHERE cid='${cid}'`
+
 export default {
   get_photos,
   insert_photo,
@@ -45,5 +51,7 @@ export default {
   insert_subscription,
   get_subscriptions,
   delete_subscription,
-  find_subscription
+  find_subscription,
+  find_user_by_username,
+  find_user_by_cid
 }

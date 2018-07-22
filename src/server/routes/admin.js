@@ -13,7 +13,18 @@ import Admin from '../../app/admin'
 const router = express.Router()
 
 router.get('*', (req, res, next) => {
-  const store = configureStore()
+  const state = {}
+  const userCid = req.session.passport && req.session.passport.user
+
+  if (userCid) {
+    state['user'] = {
+      cid: userCid
+    }
+  }
+
+  const store = configureStore(state)
+
+  const preloadedState = store.getState()
 
   const View = () => (
     <ServerLocation url={req.originalUrl}>
@@ -24,11 +35,11 @@ router.get('*', (req, res, next) => {
   )
 
   try {
-    const markup = render(Layout, View)
+    const markup = render(Layout, View, undefined, undefined, preloadedState)
     res.send(markup)
   } catch(err) {
     if (isRedirect(err)) {
-      res.redirect('admin' + err.uri)
+      res.redirect(err.uri)
     } else {
       next(err)
     }
