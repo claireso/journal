@@ -26,7 +26,12 @@ app.use(helmet())
 app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(session({ secret: config.sessionSecret, resave: false, saveUninitialized: false }))
+app.use(session({
+  secret: config.sessionSecret,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24h
+}))
 
 app.locals.config = { ...config.website, version: +new Date() }
 
