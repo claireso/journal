@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import qs from 'qs'
+import { Redirect } from '@reach/router'
 
 import Pager from '../../components/Pager'
 import Toolbar from '../../components/Toolbar'
@@ -10,6 +11,8 @@ import { IconPlus } from '../../components/Icons'
 import Loader from '../../components/Loader'
 
 import Photo from './Photo'
+
+const regex = /^(new|(\d+\/(edit|delete)))?$/
 
 class Photos extends React.Component {
 
@@ -46,6 +49,11 @@ class Photos extends React.Component {
 
   render() {
     const { photos } = this.props
+    const path = this.props['*']
+
+    if (!regex.test(path)) {
+      return <Redirect to="/admin/photos" />
+    }
 
     return (
       <div>

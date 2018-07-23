@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import qs from 'qs'
+import { Redirect } from '@reach/router'
 
 // import Page from '../components/Page'
 import Pager from '../../components/Pager'
@@ -10,6 +11,8 @@ import { ButtonLink } from '../../components/Links'
 import { AdminTabs } from '../../components/tabs'
 import Subscription from './Subscription'
 import Toolbar from '../../components/Toolbar'
+
+const regex = /^(\d+\/delete)?$/
 
 class Subscriptions extends React.Component {
 
@@ -40,8 +43,14 @@ class Subscriptions extends React.Component {
   }
 
   render() {
+    const path = this.props['*']
     const { subscriptions } = this.props
     const { pager } = subscriptions
+
+
+    if (!regex.test(path)) {
+      return <Redirect to="/admin/subscriptions" />
+    }
 
     return (
       <div>
