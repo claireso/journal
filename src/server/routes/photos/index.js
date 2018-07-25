@@ -7,6 +7,8 @@ import escape from 'lodash/escape'
 
 import authenticated from '../middleware/authenticated'
 
+import { sendNotification, NOTIFICATION_NEW_PHOTO } from '../../web-push'
+
 import catchErrors from '../../utils/catchErrors'
 import pool from '../../db/db'
 import queries from '../../db/queries'
