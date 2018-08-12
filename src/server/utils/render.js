@@ -9,5 +9,10 @@ const manifest = readFileSync(manifestPath)
 export default (Layout, Component, props = {}, config = {}, preloadedState) => {
   const content = ReactDOMServer.renderToString(<Component {...props} />)
 
-  return Layout({ content, config, manifest, preloadedState: JSON.stringify(preloadedState) })
+  return Layout({
+    content,
+    config,
+    manifest,
+    preloadedState: JSON.stringify(preloadedState)
+  })
 }

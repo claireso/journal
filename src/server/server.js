@@ -1,7 +1,5 @@
-import path from 'path'
 import express from 'express'
 import bodyParser from 'body-parser'
-import auth from 'http-auth'
 import helmet from 'helmet'
 import session from 'express-session'
 
@@ -17,26 +15,22 @@ const app = express()
 
 app.disable('x-powered-by')
 
-const basic = auth.basic({
-  realm: 'Admin area',
-  file: path.resolve('htpasswd')
-})
-
 app.use(helmet())
 app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(session({
-  secret: config.sessionSecret,
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24h
-}))
+app.use(
+  session({
+    secret: config.sessionSecret,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24h
+  })
+)
 
 app.locals.config = { ...config.website, version: +new Date() }
 
 app.use('/', client)
-// app.use('/admin', helmet.noCache(), auth.connect(basic), admin)
 app.use('/admin', helmet.noCache(), admin)
 app.use('/api', api)
 

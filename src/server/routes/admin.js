@@ -37,7 +37,7 @@ router.get('*', (req, res, next) => {
   try {
     const markup = render(Layout, View, undefined, undefined, preloadedState)
     res.send(markup)
-  } catch(err) {
+  } catch (err) {
     if (isRedirect(err)) {
       res.redirect(err.uri)
     } else {

@@ -1,10 +1,8 @@
 // redux middleware to call api and manage errors
 import { unauthorized } from '../actions/api'
 
-export default ({ dispatch, getState }) => {
+export default ({ dispatch }) => {
   return next => action => {
-    const config = getState().config
-
     const { types, promise, ...actionParams } = action
 
     // default redux action
@@ -12,10 +10,7 @@ export default ({ dispatch, getState }) => {
       return next(action)
     }
 
-    if (
-      !Array.isArray(types) ||
-      types.length < 3
-    ) {
+    if (!Array.isArray(types) || types.length < 3) {
       throw new Error('callAPIMiddleware: types must be an array of 3 values')
     }
 
@@ -23,7 +18,7 @@ export default ({ dispatch, getState }) => {
       throw new Error('callAPIMiddleware: missing promise')
     }
 
-    const [ TYPE_REQUEST, TYPE_SUCCESS, TYPE_ERROR ] = types
+    const [TYPE_REQUEST, TYPE_SUCCESS, TYPE_ERROR] = types
 
     dispatch({ type: TYPE_REQUEST, ...actionParams })
 
@@ -33,7 +28,7 @@ export default ({ dispatch, getState }) => {
         return dispatch({
           type: TYPE_SUCCESS,
           response: response.data,
-          ...actionParams,
+          ...actionParams
         })
       })
       .catch(err => {
@@ -47,7 +42,7 @@ export default ({ dispatch, getState }) => {
           type: TYPE_ERROR,
           status: status,
           error: err.response && err.response.data,
-          ...actionParams,
+          ...actionParams
         })
       })
   }

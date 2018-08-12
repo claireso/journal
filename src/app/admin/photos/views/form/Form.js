@@ -8,8 +8,7 @@ import Uploader from '../../../components/form/Uploader'
 import { ALLOWED_MIMETYPES } from '../../../../../common/constants'
 
 class Form extends React.Component {
-
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault()
 
     const { onSubmit } = this.props
@@ -22,12 +21,12 @@ class Form extends React.Component {
 
     return (
       <form
-        ref={ c => this.form = c}
+        ref={c => (this.form = c)}
         className="form"
         method="POST"
         action=""
         encType="multipart/form-data"
-        onSubmit={ this.handleSubmit }
+        onSubmit={this.handleSubmit}
       >
         <Input name="title" label="Title" value={photo ? photo.title : ''} />
 
@@ -45,8 +44,8 @@ class Form extends React.Component {
           <Uploader
             name="file"
             required={!photo ? 'required' : undefined}
-            accept={ ALLOWED_MIMETYPES }
-            preview={ photo && `/img/${photo.name}` }
+            accept={ALLOWED_MIMETYPES}
+            preview={photo && `/img/${photo.name}`}
           />
         </div>
 
@@ -82,12 +81,15 @@ class Form extends React.Component {
           value={photo ? photo.square : false}
         />
 
-        <input className="form__submit btn" type="submit" value={ photo ? 'Save' : 'Create' } />
+        <input
+          className="form__submit btn"
+          type="submit"
+          value={photo ? 'Save' : 'Create'}
+        />
       </form>
     )
   }
 }
-
 
 Form.propTypes = {
   photo: PropTypes.shape({
@@ -97,7 +99,8 @@ Form.propTypes = {
     position: PropTypes.string,
     portrait: PropTypes.bool,
     square: PropTypes.bool
-  })
+  }),
+  onSubmit: PropTypes.func
 }
 
 export default Form

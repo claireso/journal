@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Link, Redirect, Match } from '@reach/router'
+import { Router, Redirect } from '@reach/router'
 
 import App from './App'
 import Login from './login/containers/Login'
@@ -14,7 +14,7 @@ import ScrollUp from './components/ScrollUp'
 
 const NotFound = () => <p>Sorry, nothing here</p>
 
-export default (props) => {
+const Admin = () => {
   return (
     <Router basepath="/admin">
       <ScrollUp default>
@@ -35,3 +35,5 @@ export default (props) => {
     </Router>
   )
 }
+
+export default Admin

@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
 class Input extends React.Component {
-
-  handleChange = (event) => {
+  handleChange = event => {
     const { onChange } = this.props
 
     onChange(this.props.name, event.target.value)
@@ -33,7 +31,10 @@ class Input extends React.Component {
 Input.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string
+  value: PropTypes.string,
+  type: PropTypes.string,
+  required: PropTypes.bool,
+  onChange: PropTypes.func
 }
 
 export default Input

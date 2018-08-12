@@ -1,10 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ButtonLink } from './Links'
-
 class Pager extends React.Component {
-
   getItems() {
     const { first, prev, next, last } = this.props
     const items = []
@@ -44,12 +41,12 @@ class Pager extends React.Component {
     return items
   }
 
-  getItemsProps = ({item, ...customProps} = {}) => {
+  getItemsProps = ({ item, ...customProps } = {}) => {
     const { navigate } = this.props
 
     return {
       ...customProps,
-      onClick: (event) => {
+      onClick: event => {
         event && event.preventDefault()
         navigate && navigate(item.page)
       }
@@ -59,22 +56,22 @@ class Pager extends React.Component {
   render() {
     return (
       <ul className="pager">
-        {
-          this.props.children({
-            items: this.getItems(),
-            getItemsProps: this.getItemsProps,
-          })
-        }
+        {this.props.children({
+          items: this.getItems(),
+          getItemsProps: this.getItemsProps
+        })}
       </ul>
     )
   }
 }
 
 Pager.propTypes = {
+  navigate: PropTypes.func.isRequired,
   first: PropTypes.number,
   prev: PropTypes.number,
   next: PropTypes.number,
-  last: PropTypes.number
+  last: PropTypes.number,
+  children: PropTypes.func.isRequired
 }
 
 export default Pager

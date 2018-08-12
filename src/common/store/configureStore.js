@@ -1,20 +1,15 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 import reducers from '../reducers'
 import callApiMiddleware from '../middleware/callApi'
 
-const configureStore = (preloadedState) => {
+const configureStore = preloadedState => {
   const store = createStore(
     reducers,
     preloadedState,
-    composeWithDevTools(
-      applyMiddleware(
-      thunk,
-      callApiMiddleware
-      )
-    )
+    composeWithDevTools(applyMiddleware(thunk, callApiMiddleware))
   )
 
   // if (module.hot) {

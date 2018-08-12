@@ -2,7 +2,6 @@ import express from 'express'
 
 import pool from '../db/db'
 import queries from '../db/queries'
-import paginate from './middleware/paginate'
 import render from '../utils/render'
 import catchErrors from '../utils/catchErrors'
 
@@ -13,7 +12,7 @@ import Layout from '../views/index'
 
 const router = express.Router()
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
   const { config } = req.app.locals
 
   res.send(render(Layout, Page, null, config))

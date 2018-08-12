@@ -6,8 +6,5 @@ import Page from '../../app/client'
 const dom = document.querySelector('#js-journal')
 
 if (dom) {
-  ReactDOM.hydrate(
-    <Page />,
-    dom
-  )
+  ReactDOM.hydrate(<Page />, dom)
 }

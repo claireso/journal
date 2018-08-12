@@ -25,12 +25,12 @@ export const loadPhotos = (params = {}) => ({
   promise: () => api.get('/photos', { params })
 })
 
-export const loadPhoto = (id) => ({
+export const loadPhoto = id => ({
   types: [LOAD_PHOTO_REQUEST, LOAD_PHOTO_SUCCESS, LOAD_PHOTO_ERROR],
   promise: () => api.get(`/photos/${id}`)
 })
 
-export const createPhoto = (data) => ({
+export const createPhoto = data => ({
   types: [CREATE_PHOTO_REQUEST, CREATE_PHOTO_SUCCESS, CREATE_PHOTO_ERROR],
   promise: () => api.post('/photos', { data })
 })
@@ -40,8 +40,8 @@ export const editPhoto = (id, data) => ({
   promise: () => api.patch(`/photos/${id}`, { data })
 })
 
-export const deletePhoto = (id) => ({
+export const deletePhoto = id => ({
   types: [DELETE_PHOTO_REQUEST, DELETE_PHOTO_SUCCESS, DELETE_PHOTO_ERROR],
   promise: () => api.del(`/photos/${id}`),
-  id,
+  id
 })

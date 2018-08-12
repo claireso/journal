@@ -6,12 +6,8 @@ import Tab from './Tab'
 export const AdminTabs = () => {
   return (
     <Tabs>
-      <Tab to="/admin/photos">
-        Photos
-      </Tab>
-      <Tab to="/admin/subscriptions">
-        Subscriptions
-      </Tab>
+      <Tab to="/admin/photos">Photos</Tab>
+      <Tab to="/admin/subscriptions">Subscriptions</Tab>
     </Tabs>
   )
 }

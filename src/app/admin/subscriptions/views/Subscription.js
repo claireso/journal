@@ -19,7 +19,7 @@ const Subscription = (props = {}) => {
           <ButtonLink
             href="#"
             label="Revoke"
-            onClick={ props.onDelete.bind(this, props.id) }
+            onClick={props.onDelete.bind(this, props.id)}
           />
         </p>
       </div>
@@ -28,9 +28,10 @@ const Subscription = (props = {}) => {
 }
 
 Subscription.propTypes = {
-  id: PropTypes.number,
-  created_at: PropTypes.object,
-  subscription: PropTypes.object.isRequired
+  id: PropTypes.number.isRequired,
+  created_at: PropTypes.object.isRequired,
+  subscription: PropTypes.object.isRequired,
+  onDelete: PropTypes.func.isRequired
 }
 
 export default Subscription

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Loader from './components/Loader'
 
@@ -7,9 +6,8 @@ import Photos from './Photos'
 import Welcome from './Welcome'
 
 class Page extends React.Component {
-
   state = {
-    isLoading: true,
+    isLoading: true
   }
 
   componentDidMount() {
@@ -19,7 +17,7 @@ class Page extends React.Component {
     this.loadPhotos(page)
 
     // listen history
-    window.addEventListener('popstate', (event) => {
+    window.addEventListener('popstate', event => {
       window.scroll(0, 0)
       this.loadPhotos(event.state.page)
     })
@@ -32,7 +30,7 @@ class Page extends React.Component {
       url += `?page=${page}`
     }
 
-    this.setState({isLoading: true})
+    this.setState({ isLoading: true })
 
     const response = await fetch(url)
 
@@ -58,21 +56,16 @@ class Page extends React.Component {
 
     return (
       <main>
-        { this.state.isLoading ?
+        {this.state.isLoading ? (
           <Loader />
-          :
-          photos.length > 0 ?
-            <Photos photos={photos} pager={pager} />
-            :
-            <Welcome />
-        }
+        ) : photos.length > 0 ? (
+          <Photos photos={photos} pager={pager} />
+        ) : (
+          <Welcome />
+        )}
       </main>
     )
   }
-}
-
-Page.propTypes = {
-  // photos: PropTypes.array.isRequired
 }
 
 export default Page

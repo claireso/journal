@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { IconUpload } from '../Icons'
 
-const createThumbnail = (file) =>
-  new Promise((resolve, reject) => {
+const createThumbnail = file =>
+  new Promise(resolve => {
     const reader = new FileReader()
 
     reader.addEventListener('load', () => {
@@ -13,8 +14,7 @@ const createThumbnail = (file) =>
     reader.readAsDataURL(file)
   })
 
-export default class Uploader extends React.Component {
-
+class Uploader extends React.Component {
   constructor(props) {
     super(props)
 
@@ -23,7 +23,7 @@ export default class Uploader extends React.Component {
     }
   }
 
-  handleChange = async (event) => {
+  handleChange = async event => {
     const { accept } = this.props
 
     const files = event.target.files
@@ -46,9 +46,9 @@ export default class Uploader extends React.Component {
     try {
       const thumbnail = await createThumbnail(file)
 
-      this.setState({preview: thumbnail, error: null})
-
+      this.setState({ preview: thumbnail, error: null })
     } catch (err) {
+      /* eslint-disable */
       console.error(err)
     }
   }
@@ -58,28 +58,35 @@ export default class Uploader extends React.Component {
 
     return (
       <div className="uploader">
-        { preview &&
+        {preview && (
           <div className="uploader__preview">
-            <img src={ preview } />
+            <img src={preview} />
           </div>
-        }
+        )}
         <div className="uploader__content">
           <IconUpload />
           <span>Upload new photo</span>
           <small>(only jpg and png)</small>
           <input
-            ref={ c => this.input = c }
+            ref={c => (this.input = c)}
             className="uploader__input"
             type="file"
-            name={ this.props.name }
-            onChange={ this.handleChange }
-            required={ this.props.required }
+            name={this.props.name}
+            onChange={this.handleChange}
+            required={this.props.required}
           />
         </div>
-        { error &&
-          <div className="uploader__error">{ error }</div>
-        }
+        {error && <div className="uploader__error">{error}</div>}
       </div>
     )
   }
 }
+
+Uploader.propTypes = {
+  name: PropTypes.string.isRequired,
+  preview: PropTypes.string,
+  accept: PropTypes.array,
+  required: PropTypes.bool
+}
+
+export default Uploader

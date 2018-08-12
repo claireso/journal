@@ -11,18 +11,23 @@ import paginate from '../middleware/paginate'
 const router = express.Router()
 
 // ALL SUBSCRIPTIONS
-router.get('/', authenticated, catchErrors(paginate('subscriptions')), catchErrors(async (req, res) => {
-  const response = await pool.query(
-    queries.get_subscriptions({
-      options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
-    })
-  )
+router.get(
+  '/',
+  authenticated,
+  catchErrors(paginate('subscriptions')),
+  catchErrors(async (req, res) => {
+    const response = await pool.query(
+      queries.get_subscriptions({
+        options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
+      })
+    )
 
-  res.json({
-    items: response.rows,
-    pager: res.pager
+    res.json({
+      items: response.rows,
+      pager: res.pager
+    })
   })
-}))
+)
 
 // DELETE SUBSCRIPTION
 router.delete(

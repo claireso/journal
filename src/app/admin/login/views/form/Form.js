@@ -1,16 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Input from '../../../components/form/Input'
 
-export default class extends React.Component {
+class Form extends React.Component {
+  state = {}
 
-  constructor(props) {
-    super(props)
-
-    this.state = {}
-  }
-
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event && event.preventDefault()
 
     const { onSubmit } = this.props
@@ -19,20 +15,39 @@ export default class extends React.Component {
   }
 
   handleChange = (fieldName, value) => {
-    this.setState({[fieldName]: value})
+    this.setState({ [fieldName]: value })
   }
 
   render() {
     return (
       <form
         className="form"
-        onSubmit={ this.handleSubmit }
-        ref={ c => this.form = c}
+        onSubmit={this.handleSubmit}
+        ref={c => (this.form = c)}
       >
-        <Input name="username" label="Username" required onChange={ this.handleChange } value={this.state.username} />
-        <Input type="password" name="password" label="Password" required onChange={ this.handleChange } value={this.state.password} />
+        <Input
+          name="username"
+          label="Username"
+          required
+          onChange={this.handleChange}
+          value={this.state.username}
+        />
+        <Input
+          type="password"
+          name="password"
+          label="Password"
+          required
+          onChange={this.handleChange}
+          value={this.state.password}
+        />
         <input className="form__submit btn" type="submit" value="Log in" />
       </form>
     )
   }
 }
+
+Form.propTypes = {
+  onSubmit: PropTypes.func
+}
+
+export default Form

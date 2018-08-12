@@ -3,42 +3,38 @@ import * as actionTypes from '../actions/photos'
 const initialState = {
   items: [],
   pager: null,
-  isLoading: true,
+  isLoading: true
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-
-    case actionTypes.LOAD_PHOTOS_REQUEST : {
+    case actionTypes.LOAD_PHOTOS_REQUEST: {
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       }
     }
 
-    case actionTypes.LOAD_PHOTOS_SUCCESS : {
+    case actionTypes.LOAD_PHOTOS_SUCCESS: {
       return {
         ...state,
         ...action.response,
-        isLoading: false,
+        isLoading: false
       }
     }
 
-    case actionTypes.LOAD_PHOTO_SUCCESS : {
+    case actionTypes.LOAD_PHOTO_SUCCESS: {
       return {
         ...state,
-        detail: action.response,
+        detail: action.response
       }
     }
 
     case actionTypes.CREATE_PHOTO_SUCCESS: {
       return {
         ...state,
-        items: [
-          action.response,
-          ...state.items,
-        ],
-        error: null,
+        items: [action.response, ...state.items],
+        error: null
       }
     }
 
@@ -47,8 +43,8 @@ export default (state = initialState, action) => {
         ...state,
         error: {
           status: 'error',
-          ...action.error,
-        },
+          ...action.error
+        }
       }
     }
 
@@ -75,10 +71,7 @@ export default (state = initialState, action) => {
 
       return {
         ...state,
-        items: [
-          ...state.items.slice(0, index),
-          ...state.items.slice(index + 1)
-        ]
+        items: [...state.items.slice(0, index), ...state.items.slice(index + 1)]
       }
     }
 

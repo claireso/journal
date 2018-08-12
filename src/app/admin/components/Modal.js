@@ -1,7 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default class Modal extends React.Component {
-
+class Modal extends React.Component {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown)
   }
@@ -10,16 +10,19 @@ export default class Modal extends React.Component {
     document.removeEventListener('keydown', this.handleKeyDown)
   }
 
-  handleKeyDown = (event) => {
+  handleKeyDown = event => {
     if (event && event.keyCode === 27) {
       this.close()
     }
   }
 
-  handleClick = (event) => {
+  handleClick = event => {
     const target = event.target
 
-    if (target.contains(this.content) && !target.classList.contains('modal__inner')) {
+    if (
+      target.contains(this.content) &&
+      !target.classList.contains('modal__inner')
+    ) {
       this.close()
     }
   }
@@ -32,11 +35,18 @@ export default class Modal extends React.Component {
 
   render() {
     return (
-      <div className="modal" onClick={ this.handleClick }>
-        <div ref={ c => this.content = c } className="modal__inner">
-          { this.props.children }
+      <div className="modal" onClick={this.handleClick}>
+        <div ref={c => (this.content = c)} className="modal__inner">
+          {this.props.children}
         </div>
       </div>
     )
   }
 }
+
+Modal.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func
+}
+
+export default Modal

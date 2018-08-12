@@ -3,7 +3,10 @@ import { navigate } from '@reach/router'
 
 import List from '../views/List'
 
-import { loadSubscriptions, LOAD_SUBSCRIPTIONS_ERROR } from '../../../../common/actions/subscriptions'
+import {
+  loadSubscriptions,
+  LOAD_SUBSCRIPTIONS_ERROR
+} from '../../../../common/actions/subscriptions'
 
 const mapStateToProps = state => ({
   subscriptions: state.subscriptions
@@ -11,8 +14,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   loadSubscriptions(params) {
-    dispatch(loadSubscriptions(params))
-    .then(action => {
+    dispatch(loadSubscriptions(params)).then(action => {
       if (action.type === LOAD_SUBSCRIPTIONS_ERROR) {
         if (action.status === 404) {
           navigate('/admin/subscriptions')
@@ -22,4 +24,7 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(List)

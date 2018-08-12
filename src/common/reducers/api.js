@@ -6,7 +6,6 @@ const initialState = {}
 
 export default (state = initialState, action) => {
   switch (action.type) {
-
     case actionTypes.UNAUTHORIZED_ERROR: {
       navigate('/admin/login')
       return state

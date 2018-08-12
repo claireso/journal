@@ -3,7 +3,6 @@ import path from 'path'
 import pgtools from 'pgtools'
 import chalk from 'chalk'
 import promptly from 'promptly'
-import { exec } from 'child_process'
 import webpush from 'web-push'
 
 import config from '../config'
@@ -120,18 +119,6 @@ const createTable = async (client) => {
   }
 }
 
-const createHtpasswd = async (username, password) => {
-  return new Promise((resolve, reject) => {
-    exec(`npx htpasswd -b -c htpasswd ${username} ${password}`, function(err, stdout, stderr) {
-      if (err) {
-        reject(err)
-        return
-      }
-      resolve()
-    })
-  })
-}
-
 const enableWebPush = async () => {
   console.log(chalk.cyan(`Step 4/4 : Enable web push notification?`))
   //ask to enable
@@ -154,8 +141,6 @@ const createAdminUser = async (client) => {
   try {
     const username = await promptly.prompt('Enter the username: ')
     const password = await promptly.password('Enter a password: ')
-
-    await createHtpasswd(username, password)
 
     await client.query(`
       INSERT INTO users (username, password) VALUES (

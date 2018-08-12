@@ -3,7 +3,6 @@ import path from 'path'
 import express from 'express'
 import multer from 'multer'
 import { ulid } from 'ulid'
-import escape from 'lodash/escape'
 
 import authenticated from '../middleware/authenticated'
 
@@ -54,60 +53,69 @@ const deleteFile = fileName =>
 const router = express.Router()
 
 // GET ALL PHOTOS
-router.get('/', catchErrors(paginate('photos')), catchErrors(async (req, res, next) => {
-  const response = await pool.query(
-    queries.get_photos({
-      options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
-    })
-  )
+router.get(
+  '/',
+  catchErrors(paginate('photos')),
+  catchErrors(async (req, res) => {
+    const response = await pool.query(
+      queries.get_photos({
+        options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
+      })
+    )
 
-  res.json({
-    items: response.rows,
-    pager: res.pager
+    res.json({
+      items: response.rows,
+      pager: res.pager
+    })
   })
-}))
+)
 
 // CREATE NEW PHOTO
-router.post('/', authenticated, upload.single('file'), catchErrors(async (req, res, next) => {
-  const filename = req.file && req.file.filename
+router.post(
+  '/',
+  authenticated,
+  upload.single('file'),
+  catchErrors(async (req, res) => {
+    const filename = req.file && req.file.filename
 
-  //@TODO manage errors
-  if (!filename) {
-    res.status(422).json({
-      message: 'Photo is required'
+    //@TODO manage errors
+    if (!filename) {
+      res.status(422).json({
+        message: 'Photo is required'
+      })
+      return
+    }
+
+    const photo = photoModel({
+      ...req.body,
+      name: filename
     })
-    return
-  }
 
-  const photo = photoModel({
-    ...req.body,
-    name: filename,
+    const response = await pool.query(queries.insert_photo(), [
+      photo.title,
+      photo.description,
+      photo.name,
+      photo.position,
+      photo.portrait,
+      photo.square
+    ])
+
+    // send web-push notification
+    const responseSub = await pool.query(queries.get_subscriptions())
+
+    const subscriptions = responseSub.rows
+
+    subscriptions.map(({ subscription, id }) =>
+      sendNotification(subscription, NOTIFICATION_NEW_PHOTO).catch(err => {
+        if (err && [410, 404].includes(err.statusCode)) {
+          pool.query(queries.delete_subscription(id))
+        }
+      })
+    )
+
+    res.json(response.rows[0])
   })
-
-  const response = await pool.query(queries.insert_photo(), [
-    photo.title,
-    photo.description,
-    photo.name,
-    photo.position,
-    photo.portrait,
-    photo.square,
-  ])
-
-  // send web-push notification
-  const responseSub = await pool.query(queries.get_subscriptions())
-
-  const subscriptions = responseSub.rows
-
-  subscriptions.map(({ subscription, id }) =>
-    sendNotification(subscription, NOTIFICATION_NEW_PHOTO).catch(err => {
-      if (err && [410, 404].includes(err.statusCode)) {
-        pool.query(queries.delete_subscription(id))
-      }
-    })
-  )
-
-  res.json(response.rows[0])
-}))
+)
 
 // GET ONE PHOTO
 router.get(
@@ -155,7 +163,10 @@ router.patch(
       .map((entry, index) => `${entry[0]}=($${index + 1})`)
       .join(',')
 
-    response = await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
+    response = await pool.query(
+      queries.update_photo(id, fields),
+      Object.values(newPhoto)
+    )
 
     res.json(response.rows[0])
   })
@@ -165,7 +176,7 @@ router.patch(
 router.delete(
   '/:id(\\d+)',
   authenticated,
-  catchErrors(async (req, res, next) => {
+  catchErrors(async (req, res) => {
     const { id } = req.params
 
     const response = await pool.query(queries.find_photo(id))

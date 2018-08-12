@@ -8,24 +8,25 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-
-    case actionTypes.LOAD_SUBSCRIPTIONS_REQUEST : {
+    case actionTypes.LOAD_SUBSCRIPTIONS_REQUEST: {
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       }
     }
 
-    case actionTypes.LOAD_SUBSCRIPTIONS_SUCCESS : {
+    case actionTypes.LOAD_SUBSCRIPTIONS_SUCCESS: {
       return {
         ...state,
         isLoading: false,
-        ...action.response,
+        ...action.response
       }
     }
 
     case actionTypes.DELETE_SUBSCRIPTION_SUCCESS: {
-      const index = state.items.findIndex(subscription => subscription.id === action.id)
+      const index = state.items.findIndex(
+        subscription => subscription.id === action.id
+      )
 
       if (index < 0) return state
 
@@ -37,7 +38,7 @@ export default (state = initialState, action) => {
         ],
         pager: {
           ...state.pager,
-          count: state.pager.count - 1,
+          count: state.pager.count - 1
         }
       }
     }

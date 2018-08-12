@@ -9,5 +9,5 @@ export default combineReducers({
   photos,
   subscriptions,
   api,
-  user,
+  user
 })

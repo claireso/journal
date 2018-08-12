@@ -15,7 +15,6 @@ import Photo from './Photo'
 const regex = /^(new|(\d+\/(edit|delete)))?$/
 
 class Photos extends React.Component {
-
   componentDidMount() {
     const query = qs.parse(this.props.location.search.substring(1))
     const params = {}
@@ -32,7 +31,7 @@ class Photos extends React.Component {
     const query = qs.parse(this.props.location.search.substring(1))
 
     if (prevQuery.page !== query.page) {
-      this.props.loadPhotos({page: query.page})
+      this.props.loadPhotos({ page: query.page })
       window.scrollTo(0, 0)
     }
   }
@@ -62,59 +61,68 @@ class Photos extends React.Component {
             href="#"
             label="Add a photo"
             icon={<IconPlus />}
-            onClick={ (ev) => {
+            onClick={ev => {
               ev.preventDefault()
               this.props.navigate('new')
-            } }
+            }}
           />
         </Toolbar>
 
-        {
-          photos.isLoading ?
-            (
-              <Loader />
-            )
-          :
-            (
-              <React.Fragment>
-                <List>
-                  {photos.items.map((photo, index) => <Photo key={index} {...photo} onDelete={ this.onDelete } onEdit={ this.onEdit } />)}
-                </List>
+        {photos.isLoading ? (
+          <Loader />
+        ) : (
+          <React.Fragment>
+            <List>
+              {photos.items.map((photo, index) => (
+                <Photo
+                  key={index}
+                  {...photo}
+                  onDelete={this.onDelete}
+                  onEdit={this.onEdit}
+                />
+              ))}
+            </List>
 
-                <Pager
-                  {...photos.pager}
-                  // navigate={ (page) => this.props.loadPhotos({page})}
-                  navigate={ (page) => this.props.navigate(`?page=${page}`)}
-                >
-                  { ({items, getItemsProps}) => {
-                    return items.map(item => (
-                      <li key={ item.label } className="pager__item">
-                        <ButtonLink
-                          {...getItemsProps({
-                            className: 'btn--gray',
-                            label: item.label,
-                            title: item.title,
-                            item: item,
-                          })}
-                        />
-                      </li>
-                    ))
-                  }}
-                </Pager>
+            <Pager
+              {...photos.pager}
+              // navigate={ (page) => this.props.loadPhotos({page})}
+              navigate={page => this.props.navigate(`?page=${page}`)}
+            >
+              {({ items, getItemsProps }) => {
+                return items.map(item => (
+                  <li key={item.label} className="pager__item">
+                    <ButtonLink
+                      {...getItemsProps({
+                        className: 'btn--gray',
+                        label: item.label,
+                        title: item.title,
+                        item: item
+                      })}
+                    />
+                  </li>
+                ))
+              }}
+            </Pager>
 
-                { this.props.children }
-
-              </React.Fragment>
-            )
-        }
+            {this.props.children}
+          </React.Fragment>
+        )}
       </div>
     )
   }
 }
 
 Photos.propTypes = {
-  // photos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // pager: PropTypes.object.isRequired
+  '*': PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  navigate: PropTypes.func.isRequired,
+  photos: PropTypes.shape({
+    isLoading: PropTypes.bool.isRequired,
+    items: PropTypes.arrayOf(PropTypes.object),
+    pager: PropTypes.object
+  }).isRequired,
+  loadPhotos: PropTypes.func.isRequired,
+  children: PropTypes.node
 }
 
 export default Photos

@@ -16,12 +16,12 @@ const Photo = props => {
           <ButtonLink
             href="#"
             label="Edit"
-            onClick={ props.onEdit.bind(this, props.id) }
+            onClick={props.onEdit.bind(this, props.id)}
           />
           <ButtonLink
             href="#"
             label="Delete"
-            onClick={ props.onDelete.bind(this, props.id) }
+            onClick={props.onDelete.bind(this, props.id)}
           />
         </p>
       </div>
@@ -33,7 +33,9 @@ Photo.propTypes = {
   description: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
 }
 
 export default Photo

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 
-const getProps = ({isCurrent, isPartiallyCurrent}) => {
+const getProps = ({ isCurrent, isPartiallyCurrent }) => {
   return isCurrent || isPartiallyCurrent ? { className: 'is-active' } : null
 }
 
