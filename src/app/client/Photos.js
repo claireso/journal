@@ -3,12 +3,39 @@ import PropTypes from 'prop-types'
 
 import Photo from './components/Photo'
 import Pager from './components/Pager'
+import Button from './components/Button'
 
 const Photos = (props = {}) => {
   return (
     <React.Fragment>
       {props.photos.map((photo, index) => <Photo key={index} {...photo} />)}
-      <Pager {...props.pager} />
+      <Pager
+        {...props.pager}
+        navigate={ page => {
+          const state = {page}
+          window.history.pushState(state, '', `?page=${page}`)
+
+          const popStateEvent = new PopStateEvent('popstate', { state })
+          dispatchEvent(popStateEvent)
+        }}
+      >
+        { ({items, getItemsProps}) => {
+          return (
+            <ul className="pager">
+              {items.map((item, key) => (
+                <li key={key}>
+                  <Button {...getItemsProps({
+                    className: 'pager__item',
+                    label: item.label,
+                    title: item.title,
+                    item: item,
+                  })} />
+                </li>
+              ))}
+            </ul>
+          )
+        } }
+      </Pager>
     </React.Fragment>
   )
 }

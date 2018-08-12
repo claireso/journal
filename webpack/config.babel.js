@@ -19,6 +19,7 @@ module.exports = {
   mode: mode,
   entry: {
     admin: './src/static/js/admin.js',
+    journal: './src/static/js/journal.js',
   },
   output: {
     filename: `[name]-${hash}.js`,

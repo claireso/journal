@@ -2,7 +2,7 @@
 // prettier-ignore
 /* eslint no-useless-escape: 0 */
 
-export default ({content = '', config = {}} = {}) => `
+export default ({content = '', config = {},  manifest = {}} = {}) => `
   <!doctype html>
   <html lang="fr">
     <head>
@@ -33,7 +33,9 @@ export default ({content = '', config = {}} = {}) => `
     ''
 }
 
-      ${ content }
+      <div id="js-journal">${content}</div>
+
+      <script src="/js/${manifest['journal.js']}"></script>
 
       ${ (config.notification.publicKey && config.notification.privateKey) ?
     `
