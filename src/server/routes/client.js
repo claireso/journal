@@ -2,7 +2,6 @@ import express from 'express'
 
 import pool from '../db/db'
 import queries from '../db/queries'
-import paginate from './middleware/paginate'
 import render from '../utils/render'
 import catchErrors from '../utils/catchErrors'
 
@@ -13,28 +12,11 @@ import Layout from '../views/index'
 
 const router = express.Router()
 
-const renderPage = async (req, res) => {
+router.get('/', (req, res) => {
   const { config } = req.app.locals
 
-  const response = await pool.query(
-    queries.get_photos({
-      options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
-    })
-  )
-
-  const photos = response.rows
-  const pager = res.pager
-
-  res.send(render(Layout, Page, { photos, pager }, config))
-}
-
-router.get('/', catchErrors(paginate('photos')), catchErrors(renderPage))
-
-router.get(
-  '/page/:page(\\d+)',
-  catchErrors(paginate('photos')),
-  catchErrors(renderPage)
-)
+  res.send(render(Layout, Page, null, config))
+})
 
 router.get('/push-public-key', (req, res) => res.send(publicKey))
 

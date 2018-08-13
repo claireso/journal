@@ -4,6 +4,7 @@
     "es6": true,
     "node": true
   },
+  "parser": "babel-eslint",
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -22,9 +23,11 @@
     "react"
   ],
   "rules": {
+    "strict": 0,
     "indent": [
       "error",
-      2
+      2,
+      {"SwitchCase": 1}
     ],
     "linebreak-style": [
       "error",

@@ -2,7 +2,7 @@ import React from 'react'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 
-import { ButtonLink } from '../components/Links'
+import { ButtonLink } from '../../components/Links'
 
 const Subscription = (props = {}) => {
   return (
@@ -17,9 +17,9 @@ const Subscription = (props = {}) => {
         </dl>
         <p>
           <ButtonLink
-            href={`/admin/subscriptions/${props.id}/delete`}
+            href="#"
             label="Revoke"
-            className="js-delete"
+            onClick={props.onDelete.bind(this, props.id)}
           />
         </p>
       </div>
@@ -28,9 +28,10 @@ const Subscription = (props = {}) => {
 }
 
 Subscription.propTypes = {
-  id: PropTypes.number,
-  created_at: PropTypes.object,
-  subscription: PropTypes.object.isRequired
+  id: PropTypes.number.isRequired,
+  created_at: PropTypes.object.isRequired,
+  subscription: PropTypes.object.isRequired,
+  onDelete: PropTypes.func.isRequired
 }
 
 export default Subscription
