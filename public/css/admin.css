@@ -81,6 +81,11 @@ main {
   background:#dcdede;
 }
 
+.btn-icon {
+  display: inline-block;
+  padding: 10px;
+}
+
 .list {
   margin: 0;
   padding: 0;
@@ -324,11 +329,37 @@ main {
   font-size: 14px;
   margin: 0 0 20px;
   padding: 15px;
+  position: relative;
   text-align: center;
 }
 
 .flash--error {
   background: red;
+}
+
+.flash .btn-icon {
+  align-items: center;
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.flash .btn-icon svg {
+  fill: white;
+}
+
+.flash-group {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.flash-group .flash {
+  margin: 0;
 }
 
 .loader {

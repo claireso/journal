@@ -44,3 +44,23 @@ BackLink.propTypes = {
   href: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
 }
+
+export const ButtonIcon = (props = {}) => {
+  return (
+    <a
+      className="btn-icon"
+      href="#"
+      onClick={props.onClick}
+      role="button"
+      title={props.title}
+    >
+      {props.icon}
+    </a>
+  )
+}
+
+ButtonIcon.propTypes = {
+  onClick: PropTypes.func,
+  title: PropTypes.string,
+  icon: PropTypes.node.isRequired
+}
