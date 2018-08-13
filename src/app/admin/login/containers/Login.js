@@ -10,6 +10,8 @@ import {
   LOAD_USER_SUCCESS
 } from '../../../../common/actions/user'
 
+import { UNAUTHORIZED_ERROR } from '../../../../common/actions/api'
+
 const mapDispatchToProps = dispatch => ({
   login(data) {
     dispatch(login(data)).then(action => {
@@ -20,6 +22,10 @@ const mapDispatchToProps = dispatch => ({
             navigate('/admin/photos')
           }
         })
+      }
+
+      if (action.type === UNAUTHORIZED_ERROR) {
+        alert('Bad username/password. Please retry')
       }
     })
   }
