@@ -1,15 +1,49 @@
 import express from 'express'
+import React from 'react'
+import { ServerLocation, isRedirect } from '@reach/router'
+import { Provider } from 'react-redux'
 
-import photos from './photos'
-import subscriptions from './subscriptions'
+import configureStore from '../../common/store/configureStore'
+
+import Layout from '../views/admin'
+import render from '../utils/render'
+
+import Admin from '../../app/admin'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.redirect('/admin/photos')
-})
+router.get('*', (req, res, next) => {
+  const state = {}
+  const userCid = req.session.passport && req.session.passport.user
 
-router.use('/photos', photos)
-router.use('/subscriptions', subscriptions)
+  if (userCid) {
+    state['user'] = {
+      cid: userCid
+    }
+  }
+
+  const store = configureStore(state)
+
+  const preloadedState = store.getState()
+
+  const View = () => (
+    <ServerLocation url={req.originalUrl}>
+      <Provider store={store}>
+        <Admin />
+      </Provider>
+    </ServerLocation>
+  )
+
+  try {
+    const markup = render(Layout, View, undefined, undefined, preloadedState)
+    res.send(markup)
+  } catch (err) {
+    if (isRedirect(err)) {
+      res.redirect(err.uri)
+    } else {
+      next(err)
+    }
+  }
+})
 
 export default router

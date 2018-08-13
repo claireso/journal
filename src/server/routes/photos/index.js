@@ -3,28 +3,26 @@ import path from 'path'
 import express from 'express'
 import multer from 'multer'
 import { ulid } from 'ulid'
-import escape from 'lodash/escape'
 
-import pool from '../../db/db'
-import queries from '../../db/queries'
-import paginate from '../middleware/paginate'
-import render from '../../utils/render'
-import catchErrors from '../../utils/catchErrors'
+import authenticated from '../middleware/authenticated'
 
 import { sendNotification, NOTIFICATION_NEW_PHOTO } from '../../web-push'
 
-import ListView from '../../../app/admin/photos/List'
-import NewView from '../../../app/admin/photos/New'
-import EditView from '../../../app/admin/photos/Edit'
+import catchErrors from '../../utils/catchErrors'
+import pool from '../../db/db'
+import queries from '../../db/queries'
+import paginate from '../middleware/paginate'
 
-import Layout from '../../views/admin'
+import { ALLOWED_MIMETYPES } from '../../../common/constants'
+
+import photoModel from './model'
 
 // multer storage configuration
 const storage = multer.diskStorage({
-  destination: function(req, file, callback) {
+  destination(req, file, callback) {
     callback(null, path.resolve('public', 'img'))
   },
-  filename: function(req, file, callback) {
+  filename(req, file, callback) {
     const fieldname = ulid().toLowerCase()
     const extension = path.extname(file.originalname)
 
@@ -32,9 +30,18 @@ const storage = multer.diskStorage({
   }
 })
 
-const upload = multer({ storage: storage })
+const upload = multer({
+  storage: storage,
+  fileFilter(req, file, callback) {
+    if (ALLOWED_MIMETYPES.includes(file.mimetype)) {
+      callback(null, true)
+      return
+    }
 
-const router = express.Router()
+    // reject file
+    callback(null, false)
+  }
+})
 
 const deleteFile = fileName =>
   new Promise(resolve => {
@@ -43,54 +50,60 @@ const deleteFile = fileName =>
     fs.unlink(file, resolve)
   })
 
-// ALL PHOTOS
-const renderList = async (req, res) => {
-  const response = await pool.query(
-    queries.get_photos({
-      options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
-    })
-  )
+const router = express.Router()
 
-  res.send(
-    render(Layout, ListView, {
-      photos: response.rows,
+// GET ALL PHOTOS
+router.get(
+  '/',
+  catchErrors(paginate('photos')),
+  catchErrors(async (req, res) => {
+    const response = await pool.query(
+      queries.get_photos({
+        options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
+      })
+    )
+
+    res.json({
+      items: response.rows,
       pager: res.pager
     })
-  )
-}
-
-router.get('/', catchErrors(paginate('photos')), catchErrors(renderList))
-router.get(
-  '/page/:page',
-  catchErrors(paginate('photos')),
-  catchErrors(renderList)
+  })
 )
 
-// NEW PHOTO
-router.get('/new', (req, res) => {
-  res.send(render(Layout, NewView))
-})
-
+// CREATE NEW PHOTO
 router.post(
-  '/new',
+  '/',
+  authenticated,
   upload.single('file'),
   catchErrors(async (req, res) => {
-    const photo = req.body
     const filename = req.file && req.file.filename
 
-    await pool.query(queries.insert_photo(), [
-      escape(photo.title),
-      escape(photo.description),
-      filename,
+    //@TODO manage errors
+    if (!filename) {
+      res.status(422).json({
+        message: 'Photo is required'
+      })
+      return
+    }
+
+    const photo = photoModel({
+      ...req.body,
+      name: filename
+    })
+
+    const response = await pool.query(queries.insert_photo(), [
+      photo.title,
+      photo.description,
+      photo.name,
       photo.position,
-      photo.portrait || false,
-      photo.square || false
+      photo.portrait,
+      photo.square
     ])
 
     // send web-push notification
-    const response = await pool.query(queries.get_subscriptions())
+    const responseSub = await pool.query(queries.get_subscriptions())
 
-    const subscriptions = response.rows
+    const subscriptions = responseSub.rows
 
     subscriptions.map(({ subscription, id }) =>
       sendNotification(subscription, NOTIFICATION_NEW_PHOTO).catch(err => {
@@ -100,67 +113,77 @@ router.post(
       })
     )
 
-    res.redirect('/admin/photos')
+    res.json(response.rows[0])
   })
 )
 
-// EDIT PHOTO
+// GET ONE PHOTO
 router.get(
-  '/:id(\\d+)/edit',
-  catchErrors(async (req, res, next) => {
+  '/:id(\\d+)',
+  catchErrors(async (req, res) => {
     const { id } = req.params
 
     const response = await pool.query(queries.find_photo(id))
     const photo = response.rows[0]
 
     if (photo === undefined) {
-      next()
+      res.status(404).json()
       return
     }
 
-    res.send(render(Layout, EditView, { photo }))
+    res.json(photo)
   })
 )
 
-router.post(
-  '/:id(\\d+)/edit',
+// UPDATE PHOTO
+router.patch(
+  '/:id(\\d+)',
+  authenticated,
   upload.single('file'),
   catchErrors(async (req, res) => {
     const { id } = req.params
-    const photo = req.body
-    const filename = req.file && req.file.filename
 
-    const newPhoto = { ...photo }
+    let response = await pool.query(queries.find_photo(id))
+    const photo = response.rows[0]
+
+    if (photo === undefined) {
+      res.status(404).json()
+      return
+    }
+
+    const newPhoto = photoModel(req.body)
+    const filename = req.file && req.file.filename
 
     // TODO delete current file
     if (filename) newPhoto.name = filename
 
-    newPhoto.square = photo.square || false
-    newPhoto.portrait = photo.portrait || false
-    newPhoto.description = escape(newPhoto.description)
-    newPhoto.title = escape(newPhoto.title)
     newPhoto.updated_at = new Date()
 
     const fields = Object.entries(newPhoto)
       .map((entry, index) => `${entry[0]}=($${index + 1})`)
       .join(',')
 
-    await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
-    res.redirect('/admin/photos')
+    response = await pool.query(
+      queries.update_photo(id, fields),
+      Object.values(newPhoto)
+    )
+
+    res.json(response.rows[0])
   })
 )
 
 // DELETE PHOTO
-router.get(
-  '/:id(\\d+)/delete',
-  catchErrors(async (req, res, next) => {
+router.delete(
+  '/:id(\\d+)',
+  authenticated,
+  catchErrors(async (req, res) => {
     const { id } = req.params
 
     const response = await pool.query(queries.find_photo(id))
     const photo = response.rows[0]
 
     if (photo === undefined) {
-      next()
+      res.status(404).json()
       return
     }
 
@@ -170,7 +193,7 @@ router.get(
     //delete photo from database
     await pool.query(queries.delete_photo(id))
 
-    res.redirect('back')
+    res.json()
   })
 )
 

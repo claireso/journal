@@ -1,23 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from '@reach/router'
+
+const getProps = ({ isCurrent, isPartiallyCurrent }) => {
+  return isCurrent || isPartiallyCurrent ? { className: 'is-active' } : null
+}
 
 const Tab = (props = {}) => {
-  let cls = 'tabs__tab'
-
-  if (props.active) {
-    cls += ' is-active'
-  }
-
   return (
-    <li className={cls}>
-      <a href={props.url}>{props.children}</a>
+    <li className="tabs__tab">
+      <Link to={props.to} getProps={getProps}>
+        {props.children}
+      </Link>
     </li>
   )
 }
 
 Tab.propTypes = {
-  active: PropTypes.bool,
-  url: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
   children: PropTypes.node
 }
 

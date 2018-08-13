@@ -1,60 +1,77 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Pager = (props = {}) => {
-  return (
-    <ul className="pager">
-      {props.first && (
-        <li>
-          <a className="pager__item" title="First page" href="/">
-            ««
-          </a>
-        </li>
-      )}
+class Pager extends React.Component {
+  getItems() {
+    const { first, prev, next, last } = this.props
+    const items = []
 
-      {props.prev && (
-        <li>
-          <a
-            className="pager__item"
-            title="Previous page"
-            href={`/page/${props.prev}`}
-          >
-            «
-          </a>
-        </li>
-      )}
+    if (first) {
+      items.push({
+        label: '««',
+        title: 'First page',
+        page: first
+      })
+    }
 
-      {props.next && (
-        <li>
-          <a
-            className="pager__item"
-            title="Next page"
-            href={`/page/${props.next}`}
-          >
-            »
-          </a>
-        </li>
-      )}
-      {props.last && (
-        <li>
-          <a
-            className="pager__item"
-            title="Last page"
-            href={`/page/${props.last}`}
-          >
-            »»
-          </a>
-        </li>
-      )}
-    </ul>
-  )
+    if (prev) {
+      items.push({
+        label: '«',
+        title: 'Previous page',
+        page: prev
+      })
+    }
+
+    if (next) {
+      items.push({
+        label: '»',
+        title: 'Next page',
+        page: next
+      })
+    }
+
+    if (last) {
+      items.push({
+        label: '»»',
+        title: 'Last page',
+        page: last
+      })
+    }
+
+    return items
+  }
+
+  getItemsProps = ({ item, ...customProps } = {}) => {
+    const { navigate } = this.props
+
+    return {
+      ...customProps,
+      onClick: event => {
+        event && event.preventDefault()
+        navigate && navigate(item.page)
+      }
+    }
+  }
+
+  render() {
+    return (
+      <ul className="pager">
+        {this.props.children({
+          items: this.getItems(),
+          getItemsProps: this.getItemsProps
+        })}
+      </ul>
+    )
+  }
 }
 
 Pager.propTypes = {
   first: PropTypes.number,
   prev: PropTypes.number,
   next: PropTypes.number,
-  last: PropTypes.number
+  last: PropTypes.number,
+  navigate: PropTypes.func,
+  children: PropTypes.func.isRequired
 }
 
 export default Pager

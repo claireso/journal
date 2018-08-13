@@ -3,7 +3,6 @@ import path from 'path'
 import pgtools from 'pgtools'
 import chalk from 'chalk'
 import promptly from 'promptly'
-import { exec } from 'child_process'
 import webpush from 'web-push'
 
 import config from '../config'
@@ -85,7 +84,7 @@ const createTable = async (client) => {
         ID SERIAL PRIMARY KEY,
         title VARCHAR,
         description TEXT,
-        name VARCHAR,
+        name VARCHAR NOT NULL,
         position POSITION_TYPE DEFAULT 'left',
         portrait BOOLEAN DEFAULT False,
         square BOOLEAN DEFAULT False,
@@ -101,23 +100,23 @@ const createTable = async (client) => {
         updated_at TIMESTAMP with time zone DEFAULT NOW()
       )
     `)
-    console.log(chalk.green(`Table has been created successfully`))
+    await client.query('CREATE EXTENSION IF NOT EXISTS pgcrypto;')
+    await client.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
+    await client.query(`
+      CREATE TABLE users (
+        ID SERIAL PRIMARY KEY,
+        cid UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+        username VARCHAR NOT NULL UNIQUE,
+        password VARCHAR NOT NULL,
+        created_at TIMESTAMP with time zone DEFAULT NOW(),
+        updated_at TIMESTAMP with time zone DEFAULT NOW()
+      )
+    `)
+    console.log(chalk.green(`Tables has been created successfully`))
   } catch (err) {
     console.log(chalk.red('An error has occured during database table creation'))
     throw err
   }
-}
-
-const createHtpasswd = async (username, password) => {
-  return new Promise((resolve, reject) => {
-    exec(`npx htpasswd -b -c htpasswd ${username} ${password}`, function(err, stdout, stderr) {
-      if (err) {
-        reject(err)
-        return
-      }
-      resolve()
-    })
-  })
 }
 
 const enableWebPush = async () => {
@@ -136,14 +135,19 @@ const enableWebPush = async () => {
 }
 
 // create admin user
-const createAdminUser = async () => {
+const createAdminUser = async (client) => {
   console.log(chalk.cyan(`Step 3/4 : Create admin user...`))
 
   try {
     const username = await promptly.prompt('Enter the username: ')
     const password = await promptly.password('Enter a password: ')
 
-    await createHtpasswd(username, password)
+    await client.query(`
+      INSERT INTO users (username, password) VALUES (
+        '${username}',
+        crypt('${password}', gen_salt('md5'))
+      )
+    `)
 
     console.log(
       chalk.green('Admin user has been created successfully.')
@@ -193,11 +197,11 @@ const bootstrap = (restart) => {
         }
       }
 
-      //create table photo
+      //create tables photo / subcriptions / users
       await createTable(client)
 
       //create admin user
-      await createAdminUser()
+      await createAdminUser(client)
 
       // create folder img
       await createFolderImg()

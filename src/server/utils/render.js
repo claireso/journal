@@ -1,7 +1,18 @@
-const React = require('react')
-const ReactDOMServer = require('react-dom/server')
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import { readFileSync } from 'jsonfile'
 
-export default (Layout, Component, props = {}, config = {}) => {
-  const content = ReactDOMServer.renderToStaticMarkup(<Component {...props} />)
-  return Layout({ content, config })
+//@TODO not sure if it is the right way
+const manifestPath = `${process.cwd()}/public/js/asset-manifest.json`
+const manifest = readFileSync(manifestPath)
+
+export default (Layout, Component, props = {}, config = {}, preloadedState) => {
+  const content = ReactDOMServer.renderToString(<Component {...props} />)
+
+  return Layout({
+    content,
+    config,
+    manifest,
+    preloadedState: JSON.stringify(preloadedState)
+  })
 }

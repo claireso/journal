@@ -17,7 +17,7 @@
   global.toolbox.options.cache = {name: CACHE_NAME_ASSETS}
 
   // precache assets
-  global.toolbox.precache(['/css/journal.css'])
+  global.toolbox.precache(['/css/journal.css', '/css/admin.css'])
 
   // cache for images
   global.toolbox.router.get('/img/(.*)', global.toolbox.cacheFirst, {
@@ -30,10 +30,19 @@
   //cache for css
   global.toolbox.router.get('/css/(.*)', global.toolbox.cacheFirst)
 
+  //cache for js
+  global.toolbox.router.get('/js/(.*)', global.toolbox.cacheFirst)
+
   // cache for fonts
   global.toolbox.router.get('/(.+)', global.toolbox.cacheFirst, {
     origin: /https?:\/\/fonts.+/
   })
+
+  // no cache for api
+  global.toolbox.router.get('/api/(.*)', global.toolbox.networkOnly)
+
+  // no cache for admin
+  global.toolbox.router.get('/admin/(.*)', global.toolbox.networkOnly)
 
   // cache for pages
   global.toolbox.router.get('/(.*)', global.toolbox.networkFirst, {
