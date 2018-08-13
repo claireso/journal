@@ -7,8 +7,10 @@
     "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
     "dev": "nodemon -e js,html,pug src/server/server.js --exec babel-node",
     "server": "node ./dist/server/server.js",
-    "build:static": "webpack --config ./webpack/config.babel.js --watch",
+    "watch": "webpack --config ./webpack/config.babel.js --watch",
+    "build:static": "webpack --config ./webpack/config.babel.js --bail",
     "build:server": "babel ./src --out-dir ./dist",
+    "build": "npm run build:server && npm run build:static",
     "eslint": "eslint src/.",
     "prettier": "prettier --write \"src/**/*.js\"",
     "bootstrap": "babel-node scripts/bootstrap.js"
