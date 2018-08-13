@@ -32,7 +32,7 @@ class Edit extends React.Component {
 }
 
 Edit.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   navigate: PropTypes.func.isRequired,
   error: PropTypes.shape({
     status: PropTypes.string.isRequired,
