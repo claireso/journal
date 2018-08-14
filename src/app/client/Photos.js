@@ -20,22 +20,18 @@ const Photos = (props = {}) => {
         }}
       >
         {({ items, getItemsProps }) => {
-          return (
-            <ul className="pager">
-              {items.map((item, key) => (
-                <li key={key}>
-                  <Button
-                    {...getItemsProps({
-                      className: 'pager__item',
-                      label: item.label,
-                      title: item.title,
-                      item: item
-                    })}
-                  />
-                </li>
-              ))}
-            </ul>
-          )
+          return items.map((item, key) => (
+            <li key={key}>
+              <Button
+                {...getItemsProps({
+                  className: 'pager__item',
+                  label: item.label,
+                  title: item.title,
+                  item: item
+                })}
+              />
+            </li>
+          ))
         }}
       </Pager>
     </React.Fragment>
