@@ -13,7 +13,7 @@ export default ({content = '', config = {},  manifest = {}} = {}) => `
       <meta name="description" content="${ config.meta.description }" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
-      <link rel="stylesheet" href="/css/journal.css?v=${ config.version }" />
+      <link rel="stylesheet" href="${manifest['css/journal.css']}" />
       <link rel="manifest" href="/manifest.json" />
     </head>
     <body>
@@ -35,7 +35,7 @@ export default ({content = '', config = {},  manifest = {}} = {}) => `
 
       <div id="js-journal">${content}</div>
 
-      <script src="/js/${manifest['journal.js']}"></script>
+      <script src="${manifest['journal.js']}"></script>
 
       ${ (config.notification.publicKey && config.notification.privateKey) ?
     `

@@ -1,42 +1,64 @@
 import path from 'path'
 
 import ManifestPlugin from 'webpack-manifest-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
 const ROOT = process.cwd()
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
-const hash = mode === 'production' ? '[chunkhash]' : 'dev'
+const isProduction = mode === 'production'
+
+const hashes = {
+  hash: isProduction ? '[hash:10]' : 'dev',
+  chunkhash: isProduction ? '[chunkhash:10]' : 'dev'
+}
 
 const plugins = [
+  CopyWebpackPlugin([
+    {
+      from: './static/css/*',
+      to: `${ROOT}/public/css/[name]-${hashes.hash}.[ext]`
+    }
+  ]),
   new ManifestPlugin({
     fileName: 'asset-manifest.json',
-    //publicPath: '/public/',
-    //writeToFileEmit: true,
+    map(file) {
+      // https://github.com/webpack-contrib/copy-webpack-plugin/issues/104
+      // We need to do this until copy-webpack-plugin supports webpack hashing
+      if (isProduction) {
+        file.name =  file.name.replace(/\-[a-f0-9]{10}\./, '.')
+      } else {
+        file.name =  file.name.replace(/\-dev\./, '.')
+      }
+
+      return file
+    }
   })
 ]
 
 module.exports = {
+  context: path.resolve(ROOT, 'src'),
   mode: mode,
   entry: {
-    admin: './src/static/js/admin.js',
-    journal: './src/static/js/journal.js',
+    admin: './static/js/admin.js',
+    journal: './static/js/journal.js',
   },
   output: {
-    filename: `[name]-${hash}.js`,
-    path: path.resolve(ROOT, 'public', 'js'),
-    //publicPath: '/',
+    filename: `js/[name]-${hashes.chunkhash}.js`,
+    path: path.resolve(ROOT, 'public'),
+    publicPath: '/'
   },
   plugins: plugins,
+  resolve: {
+    extensions: ['.js', '.css']
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          // options: {
-          //   // presets: ['@babel/preset-env']
-          // }
+          loader: 'babel-loader'
         }
       }
     ]

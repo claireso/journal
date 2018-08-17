@@ -2,6 +2,8 @@ node_modules
 npm-debug.log
 public/img/
 public/js/
+public/css/
+public/asset-manifest.json
 public/sw-toolbox.js
 config.json
 htpasswd
