@@ -28,7 +28,7 @@ app.use(
   })
 )
 
-app.locals.config = { ...config.website, version: +new Date() }
+app.locals.config = config.website
 
 app.use('/', client)
 app.use('/admin', helmet.noCache(), admin)

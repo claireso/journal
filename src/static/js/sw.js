@@ -16,9 +16,6 @@
 
   global.toolbox.options.cache = {name: CACHE_NAME_ASSETS}
 
-  // precache assets
-  global.toolbox.precache(['/css/journal.css', '/css/admin.css'])
-
   // cache for images
   global.toolbox.router.get('/img/(.*)', global.toolbox.cacheFirst, {
     cache: {

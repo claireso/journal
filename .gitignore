@@ -1,8 +1,6 @@
 node_modules
 npm-debug.log
-public/img/
-public/js/
-public/sw-toolbox.js
+public
 config.json
 htpasswd
 dist

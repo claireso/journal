@@ -15,7 +15,7 @@ export default ({
       <meta name="robots" content="noindex, nofollow" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400, 700" />
-      <link rel="stylesheet" href="/css/admin.css?v=${config.version}" />
+      <link rel="stylesheet" href="${manifest['css/admin.css']}" />
       </head>
       <body>
       <div id="js-app">${content}</div>
@@ -24,7 +24,7 @@ export default ({
         window.preloadedState = ${preloadedState}
       })()
       </script>
-      <script src="/js/${manifest['admin.js']}"></script>
+      <script src="${manifest['admin.js']}"></script>
     </body>
   </html>
 `
