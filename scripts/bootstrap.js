@@ -8,27 +8,37 @@ import webpush from 'web-push'
 import config from '../config'
 import db from '../src/server/db/db'
 
-// create folder img
-const createFolderImg = () => {
+// create folder
+const createFolder = (folderPath) => {
   return new Promise((resolve, reject) => {
-    const dir = path.resolve('public', 'img')
-
-    fs.exists(dir, (exists) => {
+    fs.exists(folderPath, (exists) => {
       if (exists) {
         resolve()
         return
       }
 
-      fs.mkdir(dir, (err) => {
+      fs.mkdir(folderPath, (err) => {
         if (err) {
-          reject('Img folder can not be created')
+          reject('Folder can not be created')
           return
         }
-
         resolve()
       })
     })
   })
+}
+
+// create folder img
+const createFolderImg = async () => {
+  const dirPublic = path.resolve('public')
+  const dirImg = path.resolve('public', 'img')
+
+  try {
+    await createFolder(dirPublic)
+    await createFolder(dirImg)
+  } catch (err) {
+    console.log(chalk.red('Failed: img folder cannot be created'))
+  }
 }
 
 // create database
