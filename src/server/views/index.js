@@ -15,24 +15,23 @@ export default ({content = '', config = {},  manifest = {}} = {}) => `
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
       <link rel="stylesheet" href="${manifest['css/journal.css']}" />
       <link rel="manifest" href="${manifest['manifest.json']}" />
+
+      ${(config.analytics && config.analytics.ga) ?
+        `
+          <script async src="https://www.googletagmanager.com/gtag/js?id=${ config.analytics.ga }"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${ config.analytics.ga }');
+          </script>
+        `
+        :
+        ''
+      }
     </head>
     <body>
-      ${(config.analytics && config.analytics.ga) ?
-    `
-      <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', '${ config.analytics.ga }', 'auto');
-        ga('send', 'pageview');
-      </script>
-    `
-    :
-    ''
-}
-
       <div id="js-journal">${content}</div>
 
       <script src="${manifest['journal.js']}"></script>
