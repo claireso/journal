@@ -14,7 +14,7 @@ export default ({content = '', config = {},  manifest = {}} = {}) => `
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
       <link rel="stylesheet" href="${manifest['css/journal.css']}" />
-      <link rel="manifest" href="/manifest.json" />
+      <link rel="manifest" href="${manifest['manifest.json']}" />
     </head>
     <body>
       ${(config.analytics && config.analytics.ga) ?
@@ -76,7 +76,7 @@ export default ({content = '', config = {},  manifest = {}} = {}) => `
               }
             }
 
-            navigator.serviceWorker.register('/sw.js?v=${ config.version }')
+            navigator.serviceWorker.register("${manifest['sw.js']}")
 
             navigator.serviceWorker.ready.then((registration) => {
               registration.pushManager.getSubscription()

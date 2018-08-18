@@ -18,6 +18,14 @@ const plugins = [
     {
       from: './static/css/*',
       to: `${ROOT}/public/css/[name]-${hashes.hash}.[ext]`
+    },
+    {
+      from: './static/js/sw.js',
+      to: `${ROOT}/public/[name]-${hashes.hash}.[ext]`
+    },
+    {
+      from: './static/manifest.json',
+      to: `${ROOT}/public/[name]-${hashes.hash}.[ext]`
     }
   ]),
   new ManifestPlugin({
