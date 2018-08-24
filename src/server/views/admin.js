@@ -1,11 +1,6 @@
 // admin layout
 
-export default ({
-  content = '',
-  config = {},
-  manifest = {},
-  preloadedState = {}
-} = {}) => `
+export default ({ content = '', manifest = {}, preloadedState = {} } = {}) => `
   <!doctype html>
   <html lang="fr">
     <head>

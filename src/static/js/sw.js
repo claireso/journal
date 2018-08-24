@@ -1,26 +1,24 @@
-(global => {
+/*eslint no-undef: 0*/
+
+;(global => {
   const VERSION = '2'
 
   const CACHE_PREFIX = 'claireso-journal'
-  const CACHE_NAME_IMG = `${ CACHE_PREFIX }-img-${ VERSION }`
-  const CACHE_NAME_ASSETS = `${ CACHE_PREFIX }-assets-${ VERSION }`
-  const CACHE_NAME_PAGES = `${ CACHE_PREFIX }-pages-${ VERSION }`
+  const CACHE_NAME_IMG = `${CACHE_PREFIX}-img-${VERSION}`
+  const CACHE_NAME_ASSETS = `${CACHE_PREFIX}-assets-${VERSION}`
+  const CACHE_NAME_PAGES = `${CACHE_PREFIX}-pages-${VERSION}`
 
-  const expectedCaches = [
-    CACHE_NAME_IMG,
-    CACHE_NAME_ASSETS,
-    CACHE_NAME_PAGES,
-  ]
+  const expectedCaches = [CACHE_NAME_IMG, CACHE_NAME_ASSETS, CACHE_NAME_PAGES]
 
   importScripts('./sw-toolbox.js')
 
-  global.toolbox.options.cache = {name: CACHE_NAME_ASSETS}
+  global.toolbox.options.cache = { name: CACHE_NAME_ASSETS }
 
   // cache for images
   global.toolbox.router.get('/img/(.*)', global.toolbox.cacheFirst, {
     cache: {
       name: CACHE_NAME_IMG,
-      maxAgeSeconds: 86400 * 30, // cache for 30 days
+      maxAgeSeconds: 86400 * 30 // cache for 30 days
     }
   })
 
@@ -44,8 +42,8 @@
   // cache for pages
   global.toolbox.router.get('/(.*)', global.toolbox.networkFirst, {
     cache: {
-      name: CACHE_NAME_PAGES,
-    },
+      name: CACHE_NAME_PAGES
+    }
   })
 
   global.addEventListener('install', event => {
@@ -76,7 +74,7 @@
 
     event.waitUntil(
       self.registration.showNotification(payload.title, {
-        body: payload.content,
+        body: payload.content
       })
     )
   })
@@ -84,8 +82,6 @@
   global.addEventListener('notificationclick', event => {
     event.notification.close()
 
-    event.waitUntil(
-      clients.openWindow(global.origin)
-    )
+    event.waitUntil(clients.openWindow(global.origin))
   })
 })(self)
