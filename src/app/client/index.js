@@ -5,6 +5,62 @@ import Loader from './components/Loader'
 import Photos from './Photos'
 import Welcome from './Welcome'
 
+import styled, { injectGlobal } from 'styled-components'
+
+injectGlobal`
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    color: #333;
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .is-hidden {
+    display: none;
+  }
+
+  .notification {
+    background: #FFE65D;
+    bottom: 0;
+    cursor: pointer;
+    font-size: 1.4rem;
+    left: 0;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+    transition: background 250ms ease-out;
+  }
+
+  .notification:hover {
+    background: #ffdf32;
+  }
+
+  .notification__inner {
+    max-width: 131.5rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+`
+
+const Main = styled.main`
+  max-width: 131.5rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+
+  @media (min-width: 800px) {
+    padding: 0 4rem;
+  }
+`
+
 class Page extends React.Component {
   state = {
     isLoading: true
@@ -55,7 +111,7 @@ class Page extends React.Component {
     const { items: photos, pager } = this.state
 
     return (
-      <main>
+      <Main>
         {this.state.isLoading ? (
           <Loader />
         ) : photos.length > 0 ? (
@@ -63,7 +119,7 @@ class Page extends React.Component {
         ) : (
           <Welcome />
         )}
-      </main>
+      </Main>
     )
   }
 }

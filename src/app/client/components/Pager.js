@@ -1,5 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const StyledPager = styled.ul`
+  margin: 0 0 8.5rem;
+  padding: 0;
+  text-align: center;
+
+  > li {
+    display: inline-block;
+    margin: 0 0.5rem;
+  }
+`
 
 class Pager extends React.Component {
   getItems() {
@@ -55,12 +67,12 @@ class Pager extends React.Component {
 
   render() {
     return (
-      <ul className="pager">
+      <StyledPager>
         {this.props.children({
           items: this.getItems(),
           getItemsProps: this.getItemsProps
         })}
-      </ul>
+      </StyledPager>
     )
   }
 }

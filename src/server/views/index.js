@@ -3,7 +3,7 @@
 /* eslint no-useless-escape: 0 */
 /* eslint indent: 0 */
 
-export default ({content = '', config = {},  manifest = {}} = {}) => `
+export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) => `
   <!doctype html>
   <html lang="fr">
     <head>
@@ -14,8 +14,9 @@ export default ({content = '', config = {},  manifest = {}} = {}) => `
       <meta name="description" content="${ config.meta.description }" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
-      <link rel="stylesheet" href="${manifest['css/journal.css']}" />
       <link rel="manifest" href="${manifest['manifest.json']}" />
+
+      ${ styles }
 
       ${(config.analytics && config.analytics.ga) ?
         `
