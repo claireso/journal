@@ -1,15 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Heading1 } from '../../components/Headings'
+import Box from '../../components/Box'
+
 import Form from './form/Form'
 
 const Login = props => {
   return (
     <main>
-      <div className="box">
-        <h1>Login</h1>
+      <Box>
+        <Heading1>Login</Heading1>
         <Form onSubmit={props.login} />
-      </div>
+      </Box>
     </main>
   )
 }

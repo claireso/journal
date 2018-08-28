@@ -5,6 +5,9 @@ import Input from '../../../components/form/Input'
 import Select from '../../../components/form/Select'
 import Checkbox from '../../../components/form/Checkbox'
 import Uploader from '../../../components/form/Uploader'
+import { Group } from '../../../components/form/components/Group'
+import Label from '../../../components/form/components/Label'
+import SubmitButton from '../../../components/form/components/Button'
 import { ALLOWED_MIMETYPES } from '../../../../../common/constants'
 
 class Form extends React.Component {
@@ -22,7 +25,6 @@ class Form extends React.Component {
     return (
       <form
         ref={c => (this.form = c)}
-        className="form"
         method="POST"
         action=""
         encType="multipart/form-data"
@@ -36,10 +38,8 @@ class Form extends React.Component {
           value={photo ? photo.description : ''}
         />
 
-        <div className="form__item">
-          <label className="form__label" htmlFor="file">
-            Photo
-          </label>
+        <Group>
+          <Label htmlFor="file">Photo</Label>
 
           <Uploader
             name="file"
@@ -47,7 +47,7 @@ class Form extends React.Component {
             accept={ALLOWED_MIMETYPES}
             preview={photo && `/img/${photo.name}`}
           />
-        </div>
+        </Group>
 
         <Select
           label="Position"
@@ -81,11 +81,7 @@ class Form extends React.Component {
           value={photo ? photo.square : false}
         />
 
-        <input
-          className="form__submit btn"
-          type="submit"
-          value={photo ? 'Save' : 'Create'}
-        />
+        <SubmitButton value={photo ? 'Save' : 'Create'} />
       </form>
     )
   }

@@ -1,12 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-const Tabs = (props = {}) => {
-  return <ul className="tabs">{props.children}</ul>
-}
+const Tabs = styled.ul`
+  border-bottom: 1px solid #ecf0f1;
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 
-Tabs.propTypes = {
-  children: PropTypes.node
-}
+  & .is-active {
+    background: #ffe65d;
+    color: #333;
+  }
+`
 
 export default Tabs

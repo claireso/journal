@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import { IconUpload } from '../Icons'
 
@@ -13,6 +14,61 @@ const createThumbnail = file =>
 
     reader.readAsDataURL(file)
   })
+
+const UploaderWrapper = styled.div`
+  border: 1px solid #d4d3d3;
+  padding: 2rem;
+  position: relative;
+`
+
+const UploaderPreview = styled.div`
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 17rem;
+    margin: 0 auto 2rem;
+  }
+`
+
+const UploaderContent = styled.div`
+  svg {
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: #8e44ad;
+    margin: 0 auto;
+  }
+
+  span {
+    display: block;
+    font-size: 1.4rem;
+    margin: 1rem 0 0;
+    text-align: center;
+  }
+
+  small {
+    color: #999;
+    display: block;
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0;
+    text-align: center;
+  }
+`
+
+const UploaderInput = styled.input`
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+`
+
+const UploaderError = styled.div`
+  color: red;
+`
 
 class Uploader extends React.Component {
   constructor(props) {
@@ -57,27 +113,26 @@ class Uploader extends React.Component {
     const { preview, error } = this.state
 
     return (
-      <div className="uploader">
+      <UploaderWrapper>
         {preview && (
-          <div className="uploader__preview">
+          <UploaderPreview>
             <img src={preview} />
-          </div>
+          </UploaderPreview>
         )}
-        <div className="uploader__content">
+        <UploaderContent>
           <IconUpload />
           <span>Upload new photo</span>
           <small>(only jpg and png)</small>
-          <input
-            ref={c => (this.input = c)}
-            className="uploader__input"
+          <UploaderInput
+            innerRef={c => (this.input = c)}
             type="file"
             name={this.props.name}
             onChange={this.handleChange}
             required={this.props.required}
           />
-        </div>
-        {error && <div className="uploader__error">{error}</div>}
-      </div>
+        </UploaderContent>
+        {error && <UploaderError>{error}</UploaderError>}
+      </UploaderWrapper>
     )
   }
 }

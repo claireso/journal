@@ -1,55 +1,10 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import Loader from './components/Loader'
 
 import Photos from './Photos'
 import Welcome from './Welcome'
-
-import styled, { injectGlobal } from 'styled-components'
-
-injectGlobal`
-  html {
-    box-sizing: border-box;
-    font-size: 62.5%;
-  }
-
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-  body {
-    color: #333;
-    font-family: "Roboto", Arial, sans-serif;
-    font-size: 16px;
-    margin: 0;
-  }
-
-  .is-hidden {
-    display: none;
-  }
-
-  .notification {
-    background: #FFE65D;
-    bottom: 0;
-    cursor: pointer;
-    font-size: 1.4rem;
-    left: 0;
-    padding: 10px;
-    position: fixed;
-    right: 0;
-    transition: background 250ms ease-out;
-  }
-
-  .notification:hover {
-    background: #ffdf32;
-  }
-
-  .notification__inner {
-    max-width: 131.5rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-`
 
 const Main = styled.main`
   max-width: 131.5rem;
