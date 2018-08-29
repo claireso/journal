@@ -1,12 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-const List = (props = {}) => {
-  return <ul className="list">{props.children}</ul>
-}
-
-List.propTypes = {
-  children: PropTypes.node
-}
-
-export default List
+export default styled.ul`
+  margin: 0;
+  padding: 0;
+`

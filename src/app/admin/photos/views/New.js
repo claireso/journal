@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Page from '../components/Page'
 import Form from './form/Form'
 import Toolbar from '../components/Toolbar'
-import { BackLink } from '../components/Links'
+import { BackLink } from '../components/Buttons'
 
 const New = ({ photo }) => {
   return (

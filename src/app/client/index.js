@@ -1,9 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import Loader from './components/Loader'
 
 import Photos from './Photos'
 import Welcome from './Welcome'
+
+const Main = styled.main`
+  max-width: 131.5rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+
+  @media (min-width: 800px) {
+    padding: 0 4rem;
+  }
+`
 
 class Page extends React.Component {
   state = {
@@ -55,7 +66,7 @@ class Page extends React.Component {
     const { items: photos, pager } = this.state
 
     return (
-      <main>
+      <Main>
         {this.state.isLoading ? (
           <Loader />
         ) : photos.length > 0 ? (
@@ -63,7 +74,7 @@ class Page extends React.Component {
         ) : (
           <Welcome />
         )}
-      </main>
+      </Main>
     )
   }
 }

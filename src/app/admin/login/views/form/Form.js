@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Input from '../../../components/form/Input'
+import SubmitButton from '../../../components/form/components/Button'
 
 class Form extends React.Component {
   state = {}
@@ -20,11 +21,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form
-        className="form"
-        onSubmit={this.handleSubmit}
-        ref={c => (this.form = c)}
-      >
+      <form onSubmit={this.handleSubmit} ref={c => (this.form = c)}>
         <Input
           name="username"
           label="Username"
@@ -40,7 +37,7 @@ class Form extends React.Component {
           onChange={this.handleChange}
           value={this.state.password}
         />
-        <input className="form__submit btn" type="submit" value="Log in" />
+        <SubmitButton value="Log in" />
       </form>
     )
   }

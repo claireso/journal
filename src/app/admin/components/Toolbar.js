@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Toolbar = (props = {}) => {
-  const cls = props.alignRight ? 'align-right' : ''
+import Text from './Text'
 
-  return <p className={cls}>{props.children}</p>
+const Toolbar = (props = {}) => {
+  return <Text align="right">{props.children}</Text>
 }
 
 Toolbar.propTypes = {
-  alignRight: PropTypes.bool,
   children: PropTypes.node
 }
 

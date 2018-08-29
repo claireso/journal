@@ -1,7 +1,26 @@
-import React from 'react'
+import styled, { keyframes } from 'styled-components'
 
-const Loader = () => {
-  return <div className="loader" />
-}
+const pulse = keyframes`
+  from {
+    opacity: 0;
+  }
 
-export default Loader
+  to {
+    opacity: 1;
+  }
+`
+
+export default styled.div`
+  margin: 2rem 0;
+  animation: ${pulse} 800ms ease-in-out infinite alternate;
+
+  &:after {
+    background: #8e44ad;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    margin: 0 auto;
+  }
+`

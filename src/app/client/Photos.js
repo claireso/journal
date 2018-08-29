@@ -24,7 +24,6 @@ const Photos = (props = {}) => {
             <li key={key}>
               <Button
                 {...getItemsProps({
-                  className: 'pager__item',
                   label: item.label,
                   title: item.title,
                   item: item
