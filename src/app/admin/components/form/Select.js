@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { GroupInline } from './components/Group'
+import Label from './components/Label'
+
 const Select = (props = {}) => {
   return (
-    <div className="form__item form__item--inline">
-      <label className="form__label" htmlFor={props.name}>
-        {props.label}
-      </label>
+    <GroupInline>
+      <Label htmlFor={props.name}>{props.label}</Label>
       <select
         id={props.name}
         name={props.name}
@@ -21,7 +22,7 @@ const Select = (props = {}) => {
           )
         })}
       </select>
-    </div>
+    </GroupInline>
   )
 }
 

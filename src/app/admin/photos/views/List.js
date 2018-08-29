@@ -6,7 +6,7 @@ import { Redirect } from '@reach/router'
 import Pager from '../../components/Pager'
 import Toolbar from '../../components/Toolbar'
 import List from '../../components/List'
-import { ButtonLink } from '../../components/Links'
+import { PrimaryButton, PagerButton } from '../../components/Buttons'
 import { IconPlus } from '../../components/Icons'
 import Loader from '../../components/Loader'
 
@@ -56,16 +56,16 @@ class Photos extends React.Component {
 
     return (
       <div>
-        <Toolbar alignRight>
-          <ButtonLink
-            href="#"
-            label="Add a photo"
-            icon={<IconPlus />}
+        <Toolbar>
+          <PrimaryButton
             onClick={ev => {
               ev.preventDefault()
               this.props.navigate('new')
             }}
-          />
+          >
+            Add a photo
+            <IconPlus />
+          </PrimaryButton>
         </Toolbar>
 
         {photos.isLoading ? (
@@ -90,15 +90,15 @@ class Photos extends React.Component {
             >
               {({ items, getItemsProps }) => {
                 return items.map(item => (
-                  <li key={item.label} className="pager__item">
-                    <ButtonLink
+                  <li key={item.label}>
+                    <PagerButton
                       {...getItemsProps({
-                        className: 'btn--gray',
-                        label: item.label,
-                        title: item.title,
-                        item: item
+                        item: item,
+                        title: item.title
                       })}
-                    />
+                    >
+                      {item.label}
+                    </PagerButton>
                   </li>
                 ))
               }}

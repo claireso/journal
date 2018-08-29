@@ -16,10 +16,6 @@ const hashes = {
 const plugins = [
   CopyWebpackPlugin([
     {
-      from: './static/css/*',
-      to: `${ROOT}/public/css/[name]-${hashes.hash}.[ext]`
-    },
-    {
       from: './static/js/sw.js',
       to: `${ROOT}/public/[name]-${hashes.hash}.[ext]`
     },

@@ -6,7 +6,7 @@ import { Redirect } from '@reach/router'
 import Pager from '../../components/Pager'
 import List from '../../components/List'
 import Loader from '../../components/Loader'
-import { ButtonLink } from '../../components/Links'
+import { PagerButton } from '../../components/Buttons'
 import Subscription from './Subscription'
 import Toolbar from '../../components/Toolbar'
 
@@ -71,15 +71,15 @@ class Subscriptions extends React.Component {
             >
               {({ items, getItemsProps }) => {
                 return items.map(item => (
-                  <li key={item.label} className="pager__item">
-                    <ButtonLink
+                  <li key={item.label}>
+                    <PagerButton
                       {...getItemsProps({
-                        className: 'btn--gray',
-                        label: item.label,
                         title: item.title,
                         item: item
                       })}
-                    />
+                    >
+                      {item.label}
+                    </PagerButton>
                   </li>
                 ))
               }}

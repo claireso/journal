@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Modal from '../../components/Modal'
 import Flash from '../../components/Flash'
+import { Heading1 } from '../../components/Headings'
 
 import Form from './form/Form'
 
@@ -21,7 +22,7 @@ class Edit extends React.Component {
     return (
       <Modal onClose={() => this.props.navigate('/admin/photos')}>
         {error && <Flash {...error} />}
-        <h1>Edit photo</h1>
+        <Heading1>Edit photo</Heading1>
         <Form
           onSubmit={this.props.editPhoto.bind(this, photo.id)}
           photo={photo}

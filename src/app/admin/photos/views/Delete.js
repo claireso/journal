@@ -2,30 +2,35 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Modal from '../../components/Modal'
-import { ButtonLink } from '../../components/Links'
+import { PrimaryButton, SecondaryButton } from '../../components/Buttons'
+import { Heading1 } from '../../components/Headings'
+import Text from '../../components/Text'
 
 const Delete = props => {
   return (
-    <Modal>
-      <h1>Are you sure?</h1>
+    <Modal onClose={() => props.navigate('/admin/photos')}>
+      <Heading1>Are you sure?</Heading1>
       <p>This action is irreversible</p>
-      <p className="align-right">
-        <ButtonLink
-          label="Cancel"
-          className="btn--gray"
+      <Text align="right">
+        <SecondaryButton
           onClick={event => {
             event.preventDefault()
             props.navigate('/admin/photos')
           }}
-        />
-        <ButtonLink
-          label="Yes"
+        >
+          {' '}
+          Cancel{' '}
+        </SecondaryButton>
+        <PrimaryButton
           onClick={event => {
             event.preventDefault()
             props.deletePhoto(props.id)
           }}
-        />
-      </p>
+        >
+          {' '}
+          Yes{' '}
+        </PrimaryButton>
+      </Text>
     </Modal>
   )
 }

@@ -1,5 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+import { Group } from './components/Group'
+import Label from './components/Label'
+
+const StyledInput = styled.input`
+  border: 1px solid #d4d3d3;
+  display: block;
+  padding: 1rem;
+  width: 100%;
+  font-size: 1.4rem;
+`
 
 class Input extends React.Component {
   handleChange = event => {
@@ -10,20 +22,17 @@ class Input extends React.Component {
 
   render() {
     return (
-      <div className="form__item">
-        <label className="form__label" htmlFor={this.props.name}>
-          {this.props.label}
-        </label>
-        <input
+      <Group>
+        <Label htmlFor={this.props.name}>{this.props.label}</Label>
+        <StyledInput
           id={this.props.name}
-          className="form__input"
           type={this.props.type || 'text'}
           name={this.props.name}
           defaultValue={this.props.value}
           required={this.props.required}
           onChange={this.props.onChange && this.handleChange}
         />
-      </div>
+      </Group>
     )
   }
 }

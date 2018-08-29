@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Modal from '../../components/Modal'
 import Flash from '../../components/Flash'
+import { Heading1 } from '../../components/Headings'
 
 import Form from './form/Form'
 
@@ -10,7 +11,7 @@ const Create = props => {
   return (
     <Modal onClose={() => props.navigate('/admin/photos')}>
       {props.error && <Flash {...props.error} />}
-      <h1>Create a photo</h1>
+      <Heading1>Create a photo</Heading1>
       <Form onSubmit={props.createPhoto} />
     </Modal>
   )
