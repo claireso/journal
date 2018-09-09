@@ -56,7 +56,7 @@ class Modal extends React.Component {
     return (
       <ModalWrapper onClick={this.handleClick}>
         <ModalInner
-          innerRef={c => {
+          ref={c => {
             this.content = c
           }}
         >
