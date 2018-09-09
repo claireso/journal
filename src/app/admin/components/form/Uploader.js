@@ -124,7 +124,7 @@ class Uploader extends React.Component {
           <span>Upload new photo</span>
           <small>(only jpg and png)</small>
           <UploaderInput
-            innerRef={c => (this.input = c)}
+            ref={c => (this.input = c)}
             type="file"
             name={this.props.name}
             onChange={this.handleChange}

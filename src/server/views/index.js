@@ -16,50 +16,6 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
       <link rel="manifest" href="${manifest['manifest.json']}" />
 
-      <style>
-        html {
-          box-sizing: border-box;
-          font-size: 62.5%;
-        }
-
-        *, *:before, *:after {
-          box-sizing: inherit;
-        }
-
-        body {
-          color: #333;
-          font-family: "Roboto", Arial, sans-serif;
-          font-size: 16px;
-          margin: 0;
-        }
-
-        .is-hidden {
-          display: none;
-        }
-
-        .notification {
-          background: #FFE65D;
-          bottom: 0;
-          cursor: pointer;
-          font-size: 1.4rem;
-          left: 0;
-          padding: 10px;
-          position: fixed;
-          right: 0;
-          transition: background 250ms ease-out;
-        }
-
-        .notification:hover {
-          background: #ffdf32;
-        }
-
-        .notification__inner {
-          max-width: 131.5rem;
-          margin: 0 auto;
-          text-align: center;
-        }
-      </style>
-
       ${ styles }
 
       ${(config.analytics && config.analytics.ga) ?

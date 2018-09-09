@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 import Loader from './components/Loader'
 
@@ -13,6 +13,50 @@ const Main = styled.main`
 
   @media (min-width: 800px) {
     padding: 0 4rem;
+  }
+`
+
+const GlobalStyle = createGlobalStyle`
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    color: #333;
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .is-hidden {
+    display: none;
+  }
+
+  .notification {
+    background: #FFE65D;
+    bottom: 0;
+    cursor: pointer;
+    font-size: 1.4rem;
+    left: 0;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+    transition: background 250ms ease-out;
+  }
+
+  .notification:hover {
+    background: #ffdf32;
+  }
+
+  .notification__inner {
+    max-width: 131.5rem;
+    margin: 0 auto;
+    text-align: center;
   }
 `
 
@@ -67,6 +111,7 @@ class Page extends React.Component {
 
     return (
       <Main>
+        <GlobalStyle />
         {this.state.isLoading ? (
           <Loader />
         ) : photos.length > 0 ? (
