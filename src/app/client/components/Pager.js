@@ -13,7 +13,7 @@ const StyledPager = styled.ul`
   }
 `
 
-class Pager extends React.Component {
+class Pager extends React.PureComponent {
   getItems() {
     const { first, prev, next, last } = this.props
     const items = []

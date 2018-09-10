@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class ScrollUp extends React.Component {
+class ScrollUp extends React.PureComponent {
   componentDidUpdate(prevProps) {
     if (prevProps.uri !== this.props.uri) {
       window.scrollTo(0, 0)

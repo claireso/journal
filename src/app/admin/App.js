@@ -11,7 +11,8 @@ import { closeMessage } from '../../common/actions/api'
 
 const App = ({ children, api, ...props }) => {
   if (!props.user || !props.user.cid) {
-    return <Redirect to="/admin/login" />
+    const next = encodeURIComponent(props.location.pathname)
+    return <Redirect to={`/admin/login?next=${next}`} />
   }
 
   return (

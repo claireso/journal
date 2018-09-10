@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Input from '../../../components/form/Input'
 import SubmitButton from '../../../components/form/components/Button'
 
-class Form extends React.Component {
+class Form extends React.PureComponent {
   state = {}
 
   handleSubmit = event => {

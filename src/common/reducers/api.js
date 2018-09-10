@@ -9,7 +9,8 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.UNAUTHORIZED_ERROR: {
-      navigate('/admin/login')
+      const next = encodeURIComponent(window.location.pathname)
+      navigate(`/admin/login?next=${next}`)
       return state
     }
 

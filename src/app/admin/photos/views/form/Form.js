@@ -10,7 +10,7 @@ import Label from '../../../components/form/components/Label'
 import SubmitButton from '../../../components/form/components/Button'
 import { ALLOWED_MIMETYPES } from '../../../../../common/constants'
 
-class Form extends React.Component {
+class Form extends React.PureComponent {
   handleSubmit = event => {
     event.preventDefault()
 

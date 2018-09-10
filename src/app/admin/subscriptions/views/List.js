@@ -12,7 +12,7 @@ import Toolbar from '../../components/Toolbar'
 
 const regex = /^(\d+\/delete)?$/
 
-class Subscriptions extends React.Component {
+class Subscriptions extends React.PureComponent {
   componentDidMount() {
     const query = qs.parse(this.props.location.search.substring(1))
     const params = {}

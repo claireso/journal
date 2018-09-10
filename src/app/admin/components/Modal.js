@@ -20,7 +20,7 @@ const ModalInner = styled.div`
   margin: 8rem auto;
 `
 
-class Modal extends React.Component {
+class Modal extends React.PureComponent {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown)
   }
