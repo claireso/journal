@@ -50,7 +50,7 @@ const Admin = () => {
       <Router basepath="/admin">
         <ScrollUp default>
           <App path="/">
-            <Redirect from="/" to="photos" />
+            <Redirect from="/" to="/admin/photos" />
             <NotFound default />
             <Photos path="photos">
               <CreatePhoto path="new" />
