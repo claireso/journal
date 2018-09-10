@@ -43,7 +43,7 @@ class Form extends React.Component {
 
           <Uploader
             name="file"
-            required={!photo ? 'required' : undefined}
+            required={!photo ? true : undefined}
             accept={ALLOWED_MIMETYPES}
             preview={photo && `/img/${photo.name}`}
           />
