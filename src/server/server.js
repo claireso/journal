@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import helmet from 'helmet'
 import session from 'express-session'
+import '@babel/polyfill'
 
 import admin from './routes/admin'
 import api from './routes/api'
