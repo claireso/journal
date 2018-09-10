@@ -7,7 +7,7 @@ import { Heading1 } from '../../components/Headings'
 
 import Form from './form/Form'
 
-class Edit extends React.Component {
+class Edit extends React.PureComponent {
   componentDidMount() {
     if (!this.props.photo) {
       this.props.loadPhoto(this.props.id)

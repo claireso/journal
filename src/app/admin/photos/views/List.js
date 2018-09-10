@@ -14,7 +14,7 @@ import Photo from './Photo'
 
 const regex = /^(new|(\d+\/(edit|delete)))?$/
 
-class Photos extends React.Component {
+class Photos extends React.PureComponent {
   componentDidMount() {
     const query = qs.parse(this.props.location.search.substring(1))
     const params = {}

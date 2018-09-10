@@ -13,7 +13,7 @@ const StyledInput = styled.input`
   font-size: 1.4rem;
 `
 
-class Input extends React.Component {
+class Input extends React.PureComponent {
   handleChange = event => {
     const { onChange } = this.props
 

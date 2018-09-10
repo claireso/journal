@@ -70,7 +70,7 @@ const UploaderError = styled.div`
   color: red;
 `
 
-class Uploader extends React.Component {
+class Uploader extends React.PureComponent {
   constructor(props) {
     super(props)
 

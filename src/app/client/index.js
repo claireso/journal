@@ -60,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-class Page extends React.Component {
+class Page extends React.PureComponent {
   state = {
     isLoading: true
   }
