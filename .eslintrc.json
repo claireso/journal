@@ -22,6 +22,11 @@
     "prettier",
     "react"
   ],
+  "settings": {
+    "react": {
+      "version": "16.5.0"
+    }
+  },
   "rules": {
     "strict": 0,
     "indent": [

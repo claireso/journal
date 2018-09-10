@@ -8,7 +8,9 @@ import Button from './components/Button'
 const Photos = (props = {}) => {
   return (
     <React.Fragment>
-      {props.photos.map((photo, index) => <Photo key={index} {...photo} />)}
+      {props.photos.map((photo, index) => (
+        <Photo key={index} {...photo} />
+      ))}
       <Pager
         {...props.pager}
         navigate={page => {
