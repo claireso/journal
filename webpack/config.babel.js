@@ -1,7 +1,7 @@
-import path from 'path'
+const path = require('path')
 
-import ManifestPlugin from 'webpack-manifest-plugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
+const ManifestPlugin = require('webpack-manifest-plugin')
+const CopyWebpackPlugin =  require('copy-webpack-plugin')
 
 const ROOT = process.cwd()
 
@@ -44,8 +44,8 @@ module.exports = {
   context: path.resolve(ROOT, 'src'),
   mode: mode,
   entry: {
-    admin: './static/js/admin.js',
-    journal: './static/js/journal.js',
+    admin: ['@babel/polyfill', './static/js/admin.js'],
+    journal: ['@babel/polyfill', './static/js/journal.js'],
   },
   output: {
     filename: `js/[name]-${hashes.chunkhash}.js`,
