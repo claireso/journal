@@ -16,7 +16,7 @@ const createThumbnail = file =>
   })
 
 const UploaderWrapper = styled.div`
-  border: 1px solid #d4d3d3;
+  border: 1px solid var(--gray-1);
   padding: 2rem;
   position: relative;
 `
@@ -26,7 +26,7 @@ const UploaderPreview = styled.div`
     display: block;
     max-width: 100%;
     max-height: 17rem;
-    margin: 0 auto 2rem;
+    margin: 0 auto var(--gutter);
   }
 `
 
@@ -35,7 +35,7 @@ const UploaderContent = styled.div`
     display: block;
     width: 2.4rem;
     height: 2.4rem;
-    fill: #8e44ad;
+    fill: var(--primary);
     margin: 0 auto;
   }
 
@@ -47,7 +47,7 @@ const UploaderContent = styled.div`
   }
 
   small {
-    color: #999;
+    color: var(--gray-2);
     display: block;
     font-size: 1.2rem;
     margin: 0.5rem 0 0;
@@ -67,7 +67,7 @@ const UploaderInput = styled.input`
 `
 
 const UploaderError = styled.div`
-  color: red;
+  color: var(--error);
 `
 
 class Uploader extends React.PureComponent {

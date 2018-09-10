@@ -5,16 +5,16 @@ import styled from 'styled-components'
 import { PrimaryButton } from '../../components/Buttons'
 
 const PhotoWrapper = styled.li`
-  padding: 2rem;
+  padding: var(--gutter);
   display: flex;
   transition: background 100ms ease-out;
 
   &:hover {
-    background: #ecf0f1;
+    background: var(--secondary);
   }
 
   & + & {
-    border-top: 1px solid #ecf0f1;
+    border-top: 1px solid var(--secondary);
   }
 `
 
@@ -43,7 +43,7 @@ const PhotoTitle = styled.h2`
 `
 
 const PhotoDescription = styled.p`
-  color: #464646;
+  color: var(--gray-3);
   font-size: 1.2rem;
 `
 

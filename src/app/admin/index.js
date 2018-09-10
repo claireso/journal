@@ -23,16 +23,32 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  :root {
+    --text: #333;
+    --primary: #8e44ad;
+    --primary-darken: #9b59b6;
+    --secondary: #ecf0f1;
+    --secondary-darken: #dcdede;
+    --hightlight: #ffe65d;
+    --error: #f00;
+    --white: #fff;
+    --gray-1: #d4d3d3;
+    --gray-2: #999;
+    --gray-3: #464646;
+    --gutter: 2rem;
+    --container-max-width: 96rem;
+  }
+
   body {
-    color: #333;
+    color: var(--text);
     font-family: "Roboto", Arial, sans-serif;
     font-size: 16px;
     margin: 0;
   }
 
   main {
-    max-width: 96rem;
-    padding: 4rem 2rem;
+    max-width: var(--container-max-width);
+    padding: calc(var(--gutter)*2) var(--gutter);
     margin: 0 auto;
   }
 

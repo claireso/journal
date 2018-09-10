@@ -8,8 +8,8 @@ const getProps = ({ isCurrent, isPartiallyCurrent }) => {
   return isCurrent || isPartiallyCurrent
     ? {
         style: {
-          background: '#FFE65D',
-          color: '#333'
+          background: 'var(--hightlight)',
+          color: 'var(--text)'
         }
       }
     : null
@@ -17,9 +17,9 @@ const getProps = ({ isCurrent, isPartiallyCurrent }) => {
 
 const StyledTab = styled.li`
   a {
-    background: #ecf0f1;
+    background: var(--secondary);
     border-bottom: none;
-    color: #333;
+    color: var(--text);
     display: inline-block;
     font-size: 1.4rem;
     padding: 2rem;

@@ -11,11 +11,11 @@ const pulse = keyframes`
 `
 
 export default styled.div`
-  margin: 2rem 0;
+  margin: var(--gutter) 0;
   animation: ${pulse} 800ms ease-in-out infinite alternate;
 
   &:after {
-    background: #8e44ad;
+    background: var(--primary);
     border-radius: 50%;
     content: '';
     display: block;

@@ -6,15 +6,15 @@ import { ButtonIcon } from './Buttons'
 import { IconClose } from './Icons'
 
 const mapFlashBackground = {
-  default: '#8e44ad',
-  error: '#f00'
+  default: 'var(--primary)',
+  error: 'var(--error)'
 }
 
 const FlashWrapper = styled.div`
   background: ${props => mapFlashBackground[props.status || 'default']};
-  color: #fff;
+  color: var(--white);
   font-size: 1.4rem;
-  margin: 0 0 2rem;
+  margin: 0 0 var(--gutter);
   padding: 1.5rem;
   position: relative;
   text-align: center;

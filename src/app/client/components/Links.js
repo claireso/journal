@@ -5,10 +5,10 @@ export const Link = styled.a`
 `
 
 export const PrimaryLink = styled(Link)`
-  color: #8e44ad;
+  color: var(--primary);
 
   &:hover,
   &:focus {
-    border-bottom: 1px solid #8e44ad;
+    border-bottom: 1px solid var(--primary);
   }
 `

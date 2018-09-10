@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Group = styled.div`
-  margin: 0 0 2rem;
+  margin: 0 0 var(--gutter);
 `
 
 export const GroupInline = styled(Group)`
@@ -9,6 +9,6 @@ export const GroupInline = styled(Group)`
   align-items: center;
 
   > label {
-    margin: 0 5px 0 0;
+    margin: 0 0.5rem 0 0;
   }
 `

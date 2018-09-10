@@ -70,7 +70,7 @@ const Title = styled.figcaption`
 `
 
 const Description = styled.span`
-  color: #c7c7c7;
+  color: var(--gray-2);
   display: block;
   font-size: 1rem;
   font-style: italic;
@@ -78,7 +78,7 @@ const Description = styled.span`
 `
 
 const PictureWrapper = styled.div`
-  background: #edeff5;
+  background: var(--gray-4);
   position: relative;
   padding-top: calc(${props => getRatio(props)} * 100%);
   width: 100%;

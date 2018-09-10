@@ -21,7 +21,11 @@ class Form extends React.PureComponent {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} ref={c => (this.form = c)}>
+      <form
+        onSubmit={this.handleSubmit}
+        ref={c => (this.form = c)}
+        method="POST"
+      >
         <Input
           name="username"
           label="Username"
