@@ -18,8 +18,10 @@ const mapDispatchToProps = dispatch => ({
       if (action.type === LOGIN_SUCCESS) {
         dispatch(loadUser()).then(action => {
           if (action.type === LOAD_USER_SUCCESS) {
-            //@TODO: next parameter in url
-            navigate('/admin/photos')
+            const parsedUrl = new URL(window.location.href)
+            const next = parsedUrl.searchParams.get('next')
+
+            navigate(next || '/admin/photos')
           }
         })
       }
