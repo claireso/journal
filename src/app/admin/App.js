@@ -26,6 +26,7 @@ const App = ({ children, api, ...props }) => {
 
 App.propTypes = {
   children: PropTypes.node,
+  location: PropTypes.object.isRequired,
   user: PropTypes.shape({
     cid: PropTypes.string.isRequired
   }),
