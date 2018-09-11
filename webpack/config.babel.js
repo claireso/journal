@@ -2,6 +2,7 @@ const path = require('path')
 
 const ManifestPlugin = require('webpack-manifest-plugin')
 const CopyWebpackPlugin =  require('copy-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 const ROOT = process.cwd()
 
@@ -13,32 +14,44 @@ const hashes = {
   chunkhash: isProduction ? '[chunkhash:10]' : 'dev'
 }
 
-const plugins = [
-  CopyWebpackPlugin([
-    {
-      from: './static/js/sw.js',
-      to: `${ROOT}/public/[name]-${hashes.hash}.[ext]`
-    },
-    {
-      from: './static/manifest.json',
-      to: `${ROOT}/public/[name]-${hashes.hash}.[ext]`
-    }
-  ]),
-  new ManifestPlugin({
-    fileName: 'asset-manifest.json',
-    map(file) {
-      // https://github.com/webpack-contrib/copy-webpack-plugin/issues/104
-      // We need to do this until copy-webpack-plugin supports webpack hashing
-      if (isProduction) {
-        file.name =  file.name.replace(/\-[a-f0-9]{10}\./, '.')
-      } else {
-        file.name =  file.name.replace(/\-dev\./, '.')
+const getPlugins = () => {
+  const plugins = [
+    CopyWebpackPlugin([
+      {
+        from: './static/js/sw.js',
+        to: `${ROOT}/public/[name]-${hashes.hash}.[ext]`
+      },
+      {
+        from: './static/manifest.json',
+        to: `${ROOT}/public/[name]-${hashes.hash}.[ext]`
       }
+    ]),
+    new ManifestPlugin({
+      fileName: 'asset-manifest.json',
+      map(file) {
+        // https://github.com/webpack-contrib/copy-webpack-plugin/issues/104
+        // We need to do this until copy-webpack-plugin supports webpack hashing
+        if (isProduction) {
+          file.name =  file.name.replace(/\-[a-f0-9]{10}\./, '.')
+        } else {
+          file.name =  file.name.replace(/\-dev\./, '.')
+        }
 
-      return file
-    }
-  })
-]
+        return file
+      }
+    })
+  ]
+
+  if (isProduction) {
+    plugins.push(new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.js(\?.*)?$/i,
+      deleteOriginalAssets: true
+    }))
+  }
+
+  return plugins
+}
 
 module.exports = {
   context: path.resolve(ROOT, 'src'),
@@ -52,7 +65,7 @@ module.exports = {
     path: path.resolve(ROOT, 'public'),
     publicPath: '/'
   },
-  plugins: plugins,
+  plugins: getPlugins(),
   resolve: {
     extensions: ['.js', '.css']
   },
