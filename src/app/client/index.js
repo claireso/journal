@@ -7,7 +7,7 @@ import Photos from './Photos'
 import Welcome from './Welcome'
 
 const Main = styled.main`
-  max-width: 131.5rem;
+  max-width: var(--container-max-width);
   padding: 0 2rem;
   margin: 0 auto;
 
@@ -26,8 +26,20 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  :root {
+    --text: #333;
+    --primary: #8e44ad;
+    --yellow: #ffe65d;
+    --yellow-darken: #ffdf32;
+    --gray-1: #e2dfdf;
+    --gray-2: #c7c7c7;
+    --gray-3: #bfbcbc;
+    --gray-4: #edeff5;
+    --container-max-width: 131.5rem;
+  }
+
   body {
-    color: #333;
+    color: var(--text);
     font-family: "Roboto", Arial, sans-serif;
     font-size: 16px;
     margin: 0;
@@ -38,25 +50,39 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .notification {
-    background: #FFE65D;
-    bottom: 0;
+    background: var(--yellow);
     cursor: pointer;
     font-size: 1.4rem;
-    left: 0;
-    padding: 10px;
-    position: fixed;
-    right: 0;
+    line-height: 1.6;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
     transition: background 250ms ease-out;
+    z-index: 10;
   }
 
   .notification:hover {
-    background: #ffdf32;
+    background: var(--yellow-darken);
   }
 
   .notification__inner {
-    max-width: 131.5rem;
+    max-width: var(--container-max-width);
     margin: 0 auto;
     text-align: center;
+  }
+
+  .notification__button-close {
+    appearance: none;
+    background: none;
+    border: none;
+    bottom: 0;
+    cursor: pointer;
+    padding: 1rem;
+    position: absolute;
+    outline: none;
+    right: 0;
+    top: 0;
+    width: 50px;
   }
 `
 

@@ -4,5 +4,5 @@ export default styled.div`
   background: #ecf0f1;
   margin: 0 auto;
   max-width: 60rem;
-  padding: 2rem;
+  padding: var(--gutter);
 `

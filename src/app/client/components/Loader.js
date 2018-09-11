@@ -15,7 +15,7 @@ const Loader = styled.div`
   margin: 2rem 0;
 
   &:after {
-    background: #8e44ad;
+    background: var(--primary);
     border-radius: 50%;
     content: '';
     display: block;

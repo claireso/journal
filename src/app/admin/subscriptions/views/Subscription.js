@@ -7,25 +7,25 @@ import { PrimaryButton } from '../../components/Buttons'
 
 const SubscriptionWrapper = styled.li`
   list-style: none;
-  padding: 2rem;
+  padding: var(--gutter);
   font-size: 1.4rem;
   transition: background 100ms ease-out;
 
   &:hover {
-    background: #ecf0f1;
+    background: var(--secondary);
   }
 
   & + & {
-    border-top: 1px solid #ecf0f1;
+    border-top: 1px solid var(--secondary);
   }
 
   dt {
     font-weight: 700;
-    margin: 0 0 5px;
+    margin: 0 0 0.5rem;
   }
 
   dd {
-    margin: 0 0 10px;
+    margin: 0 0 1rem;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

@@ -13,11 +13,11 @@ const ModalWrapper = styled.div`
 `
 
 const ModalInner = styled.div`
-  background: #fff;
-  border: 2rem solid #ecf0f1;
+  background: var(--white);
+  border: 2rem solid var(--secondary);
   padding: 4rem;
   max-width: 69rem;
-  margin: 8rem auto;
+  margin: calc(var(--gutter) * 4) auto;
 `
 
 class Modal extends React.PureComponent {

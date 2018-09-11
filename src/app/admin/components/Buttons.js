@@ -22,20 +22,20 @@ const Button = styled.button`
 `
 
 export const PrimaryButton = styled(Button)`
-  background: #8e44ad;
+  background: var(--primary);
   color: white;
 
   &:hover {
-    background: #9b59b6;
+    background: var(--primary-darken);
   }
 `
 
 export const SecondaryButton = styled(Button)`
-  background: #ecf0f1;
-  color: #333;
+  background: var(--secondary);
+  color: var(--text);
 
   &:hover {
-    background: #dcdede;
+    background: var(--secondary-darken);
   }
 `
 
