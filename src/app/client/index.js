@@ -51,14 +51,14 @@ const GlobalStyle = createGlobalStyle`
 
   .notification {
     background: var(--yellow);
-    bottom: 0;
     cursor: pointer;
     font-size: 1.4rem;
-    left: 0;
+    line-height: 1.6;
     padding: 1rem;
-    position: fixed;
-    right: 0;
+    position: sticky;
+    top: 0;
     transition: background 250ms ease-out;
+    z-index: 10;
   }
 
   .notification:hover {
@@ -69,6 +69,20 @@ const GlobalStyle = createGlobalStyle`
     max-width: var(--container-max-width);
     margin: 0 auto;
     text-align: center;
+  }
+
+  .notification__button-close {
+    appearance: none;
+    background: none;
+    border: none;
+    bottom: 0;
+    cursor: pointer;
+    padding: 1rem;
+    position: absolute;
+    outline: none;
+    right: 0;
+    top: 0;
+    width: 50px;
   }
 `
 

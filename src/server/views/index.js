@@ -34,17 +34,33 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
       }
     </head>
     <body>
+      ${ (config.notification.publicKey && config.notification.privateKey) ?
+        `
+        <div role="button" id="js-notification" class="notification is-hidden">
+          <div class="notification__inner">
+            <p>${ config.notification.enableDefaultText }</p>
+          </div>
+          <button id="js-notification-close" class="notification__button-close">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 22 28"
+            >
+              <path d="M20.281 20.656c0 0.391-0.156 0.781-0.438 1.062l-2.125 2.125c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-4.594-4.594-4.594 4.594c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-2.125-2.125c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l4.594-4.594-4.594-4.594c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l2.125-2.125c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l4.594 4.594 4.594-4.594c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l2.125 2.125c0.281 0.281 0.438 0.672 0.438 1.062s-0.156 0.781-0.438 1.062l-4.594 4.594 4.594 4.594c0.281 0.281 0.438 0.672 0.438 1.062z" />
+            </svg>
+          </button>
+        </div>
+        `
+        : ''
+      }
+
       <div id="js-journal">${content}</div>
 
       <script src="${manifest['journal.js']}"></script>
 
       ${ (config.notification.publicKey && config.notification.privateKey) ?
     `
-        <div role="button" id="js-notification" class="notification is-hidden">
-          <div class="notification__inner">
-            <p>${ config.notification.enableDefaultText }</p>
-          </div>
-        </div>
         <script>
           const urlBase64ToUint8Array = (base64String) => {
             const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -64,16 +80,23 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
           if ('serviceWorker' in navigator) {
             const notification = {
               dom: document.querySelector('#js-notification'),
+              buttonClose: document.querySelector('#js-notification-close'),
               showBanner() {
                 this.dom.classList.remove('is-hidden')
                 this.dom.addEventListener('click', subscribe)
+                this.buttonClose.addEventListener('click', this.closeBanner)
               },
               hideBanner() {
                 this.dom.classList.add('is-hidden')
                 this.dom.removeEventListener('click', subscribe)
+                this.buttonClose.removeEventListener('click', this.closeBanner)
               },
               isDenied() {
                 return Notification.permission === 'denied'
+              },
+              closeBanner: (event) => {
+                event.stopPropagation()
+                notification.hideBanner()
               }
             }
 
