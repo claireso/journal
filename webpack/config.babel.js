@@ -19,7 +19,7 @@ const getPlugins = () => {
     CopyWebpackPlugin([
       {
         from: './static/js/sw.js',
-        to: `${ROOT}/public/[name]-${hashes.hash}.[ext]`
+        to: `${ROOT}/public/[name].[ext]`
       },
       {
         from: './static/manifest.json',
@@ -46,7 +46,8 @@ const getPlugins = () => {
     plugins.push(new CompressionPlugin({
       algorithm: 'gzip',
       test: /\.js(\?.*)?$/i,
-      deleteOriginalAssets: true
+      deleteOriginalAssets: true,
+      exclude: 'sw.js'
     }))
   }
 
