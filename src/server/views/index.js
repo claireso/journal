@@ -57,7 +57,7 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
 
       <div id="js-journal">${content}</div>
 
-      <script src="${manifest['journal.js']}"></script>
+      <script defer src="${manifest['journal.js']}"></script>
 
       ${ (config.notification.publicKey && config.notification.privateKey) ?
     `

@@ -26,7 +26,7 @@ export const PrimaryButton = styled(Button)`
   color: white;
 
   &:hover {
-    background: var(--primary-darken);
+    background: var(--primary-lighter);
   }
 `
 
@@ -35,7 +35,7 @@ export const SecondaryButton = styled(Button)`
   color: var(--text);
 
   &:hover {
-    background: var(--secondary-darken);
+    background: var(--secondary-darker);
   }
 `
 

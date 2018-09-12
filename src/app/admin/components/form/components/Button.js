@@ -17,6 +17,6 @@ export default styled.input.attrs({
   transition: background 150ms ease-out;
 
   &:hover {
-    background: var(--primary-darken);
+    background: var(--primary-lighter);
   }
 `
