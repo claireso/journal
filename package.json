@@ -7,8 +7,8 @@
     "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
     "dev": "nodemon -e js,html,pug src/server/server.js --exec babel-node",
     "server": "node ./dist/server/server.js",
-    "watch": "webpack --config ./webpack/config.babel.js --watch",
-    "build:static": "webpack --config ./webpack/config.babel.js --bail",
+    "watch": "webpack --config ./webpack/development.js --watch",
+    "build:static": "webpack --config ./webpack/production.js --bail",
     "build:server": "babel ./src --out-dir ./dist",
     "build": "npm run build:server && npm run build:static",
     "eslint": "eslint src/.",
@@ -77,6 +77,7 @@
     "redux-devtools-extension": "2.13.5",
     "webpack": "4.17.2",
     "webpack-cli": "3.1.0",
-    "webpack-manifest-plugin": "2.0.3"
+    "webpack-manifest-plugin": "2.0.3",
+    "webpack-merge": "4.1.4"
   }
 }
