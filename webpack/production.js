@@ -1,4 +1,5 @@
 const merge = require('webpack-merge')
+const webpack = require('webpack')
 
 const ManifestPlugin = require('webpack-manifest-plugin')
 const CopyWebpackPlugin =  require('copy-webpack-plugin')
@@ -39,6 +40,9 @@ module.exports = merge(webpackConfig, {
       test: /\.js(\?.*)?$/i,
       deleteOriginalAssets: true,
       exclude: 'sw.js'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
 })
