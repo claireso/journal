@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import withInViewStatement from '../../../common/hoc/withInViewStatement'
+
 const mapPosition = {
   center: 'center',
   left: 'flex-start',
@@ -102,7 +104,7 @@ const Photo = (props = {}) => {
     <PhotoWrapper position={props.position}>
       <PhotoInner portrait={props.portrait} square={props.square}>
         <PictureWrapper portrait={props.portrait} square={props.square}>
-          <Picture name={props.name} />
+          {props.inView && <Picture name={props.name} />}
         </PictureWrapper>
         <Title>
           {props.title}
@@ -120,7 +122,8 @@ Photo.propTypes = {
   portrait: PropTypes.bool.isRequired,
   position: PropTypes.string.isRequired,
   square: PropTypes.bool.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
+  inView: PropTypes.bool.isRequired
 }
 
-export default Photo
+export default withInViewStatement(Photo)
