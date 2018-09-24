@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import withInViewStatement from '../../../../common/hoc/withInViewStatement'
+
 import { PrimaryButton } from '../../components/Buttons'
 
 const PhotoWrapper = styled.li`
@@ -60,7 +62,7 @@ const Photo = props => {
   return (
     <PhotoWrapper>
       <PhotoPicture>
-        <img src={`/img/${props.name}`} />
+        {props.inView && <img src={`/img/${props.name}`} />}
       </PhotoPicture>
       <PhotoInner>
         <PhotoTitle>{props.title}</PhotoTitle>
@@ -85,7 +87,8 @@ Photo.propTypes = {
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired,
+  inView: PropTypes.bool.isRequired
 }
 
-export default Photo
+export default withInViewStatement(Photo)
