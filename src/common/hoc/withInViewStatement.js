@@ -10,12 +10,6 @@ export default WrappedComponent => {
     }
 
     componentDidMount() {
-      if ('IntersectionObserver' in window === false) {
-        // display element without lazyloading
-        this.setState({ inView: true })
-        return
-      }
-
       const config = {
         root: null,
         rootMargin: '0px',
