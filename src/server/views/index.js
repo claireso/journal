@@ -58,6 +58,16 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
 
       <div id="js-journal">${content}</div>
 
+      <script>
+        if ('IntersectionObserver' in window === false) {
+          var scriptElement = document.createElement('script')
+
+          scriptElement.defer = true
+          scriptElement.src = "${manifest['polyfills.js']}"
+          document.head.appendChild(scriptElement)
+        }
+      </script>
+
       <script defer src="${manifest['journal.js']}"></script>
 
       ${ (config.notification.publicKey && config.notification.privateKey) ?

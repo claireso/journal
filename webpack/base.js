@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     admin: ['@babel/polyfill', './static/js/admin.js'],
     journal: ['@babel/polyfill', './static/js/journal.js'],
+    polyfills: './static/js/polyfills.js'
   },
   output: {
     filename: `js/[name].js`,
