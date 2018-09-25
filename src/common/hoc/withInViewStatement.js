@@ -19,7 +19,7 @@ export default WrappedComponent => {
       const config = {
         root: null,
         rootMargin: '0px',
-        threshold: 0
+        threshold: 0.25
       }
 
       const observer = new IntersectionObserver(entries => {
