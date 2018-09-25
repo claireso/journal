@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import posed, { PoseGroup } from 'react-pose'
 
 import withInViewStatement from '../../../common/hoc/withInViewStatement'
 
@@ -86,7 +87,16 @@ const PictureWrapper = styled.div`
   width: 100%;
   margin: 0 0 1rem;
 `
-const Picture = styled.img.attrs({
+
+const PosedPicture = posed.img({
+  enter: {
+    opacity: 1,
+    transition: { duration: 500, ease: 'easeOut' }
+  },
+  exit: { opacity: 0 }
+})
+
+const Picture = styled(PosedPicture).attrs({
   alt: '',
   src: props => `/img/${props.name}`
 })`
@@ -104,7 +114,9 @@ const Photo = (props = {}) => {
     <PhotoWrapper position={props.position}>
       <PhotoInner portrait={props.portrait} square={props.square}>
         <PictureWrapper portrait={props.portrait} square={props.square}>
-          {props.inView && <Picture name={props.name} />}
+          <PoseGroup>
+            {props.inView && <Picture key="picture" name={props.name} />}
+          </PoseGroup>
         </PictureWrapper>
         <Title>
           {props.title}
