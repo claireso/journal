@@ -40,7 +40,7 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
           <div class="notification__inner">
             <p>${ config.notification.enableDefaultText }</p>
           </div>
-          <button id="js-notification-close" class="notification__button-close">
+          <button id="js-notification-close" class="notification__button-close" aria-label="close">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
