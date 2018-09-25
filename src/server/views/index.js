@@ -13,6 +13,7 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
       <meta name="robots" content="noindex, nofollow" />
       <meta name="description" content="${ config.meta.description }" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="theme-color" content="#868585"/>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
       <link rel="manifest" href="${manifest['manifest.json']}" />
 

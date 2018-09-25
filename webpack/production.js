@@ -23,6 +23,10 @@ module.exports = merge(webpackConfig, {
       {
         from: './static/manifest.json',
         to: `${ROOT}/public/[name]-[hash:10].[ext]`
+      },
+      {
+        from: './static/icons/*',
+        to: `${ROOT}/public/icons/[name].[ext]`
       }
     ]),
     new ManifestPlugin({
