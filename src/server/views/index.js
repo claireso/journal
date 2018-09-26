@@ -58,8 +58,6 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
 
       <div id="js-journal">${content}</div>
 
-      <script defer src="${manifest['vendors.js']}"></script>
-
       <script>
         if ('IntersectionObserver' in window === false) {
           var scriptElement = document.createElement('script')
