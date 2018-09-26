@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import qs from 'qs'
 import { Redirect } from '@reach/router'
 
+import Loader from '../../../../common/components/Loader'
+
 import Pager from '../../components/Pager'
 import List from '../../components/List'
-import Loader from '../../components/Loader'
 import { PagerButton } from '../../components/Buttons'
 import Subscription from './Subscription'
 import Toolbar from '../../components/Toolbar'

@@ -10,9 +10,9 @@ const pulse = keyframes`
   }
 `
 
-const Loader = styled.div`
-  animation: ${pulse} 800ms ease-in-out infinite alternate;
+export default styled.div`
   margin: 2rem 0;
+  animation: ${pulse} 800ms ease-in-out infinite alternate;
 
   &:after {
     background: var(--primary);
@@ -24,5 +24,3 @@ const Loader = styled.div`
     margin: 0 auto;
   }
 `
-
-export default Loader
