@@ -27,17 +27,5 @@ module.exports = {
         }
       }
     ]
-  },
-  optimization: {
-		splitChunks: {
-      cacheGroups: {
-        commons: {
-          name: 'vendors',
-					chunks: 'initial',
-          minChunks: 2,
-          test: /[\\/]node_modules[\\/]/
-				},
-      }
-    }
   }
 }

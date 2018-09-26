@@ -26,7 +26,6 @@ export default ({
         window.preloadedState = ${preloadedState}
       })()
       </script>
-      <script defer src="${manifest['vendors.js']}"></script>
       <script defer src="${manifest['admin.js']}"></script>
     </body>
   </html>
