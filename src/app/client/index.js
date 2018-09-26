@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Styles from './Styles'
-import Loader from './components/Loader'
+
+import Loader from '../../common/components/Loader'
 
 import Photos from './Photos'
 import Welcome from './Welcome'

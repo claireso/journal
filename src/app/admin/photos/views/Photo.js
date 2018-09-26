@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import posed, { PoseGroup } from 'react-pose'
 
 import withInViewStatement from '../../../../common/hoc/withInViewStatement'
+import LazyLoadedImage from '../../../../common/components/LazyLoadedImage'
 
 import { PrimaryButton } from '../../components/Buttons'
 
@@ -36,14 +36,6 @@ const PhotoPicture = styled.div`
   }
 `
 
-const PosedPicture = posed.img({
-  enter: {
-    opacity: 1,
-    transition: { duration: 500, ease: 'easeOut' }
-  },
-  exit: { opacity: 0 }
-})
-
 const PhotoInner = styled.div`
   flex: 1;
 `
@@ -71,11 +63,9 @@ const Photo = props => {
   return (
     <PhotoWrapper>
       <PhotoPicture>
-        <PoseGroup>
-          {props.inView && (
-            <PosedPicture key="picture" src={`/img/${props.name}`} />
-          )}
-        </PoseGroup>
+        {props.inView && (
+          <LazyLoadedImage src={`/img/${props.name}`} />
+        )}
       </PhotoPicture>
       <PhotoInner>
         <PhotoTitle>{props.title}</PhotoTitle>
