@@ -6,7 +6,7 @@ import List from '../views/List'
 import {
   loadPhotos,
   LOAD_PHOTOS_ERROR
-} from '../../../../common/actions/photos'
+} from '@common/actions/photos'
 
 const mapStateToProps = state => ({
   photos: state.photos,

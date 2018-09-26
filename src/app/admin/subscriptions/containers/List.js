@@ -6,7 +6,7 @@ import List from '../views/List'
 import {
   loadSubscriptions,
   LOAD_SUBSCRIPTIONS_ERROR
-} from '../../../../common/actions/subscriptions'
+} from '@common/actions/subscriptions'
 
 const mapStateToProps = state => ({
   subscriptions: state.subscriptions

@@ -1,5 +1,5 @@
-import pool from '../../db/db'
-import queries from '../../db/queries'
+import pool from '@server/db/db'
+import queries from '@server/db/queries'
 
 export default resourceName => async (req, res, next) => {
   let page = 1

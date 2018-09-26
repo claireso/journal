@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Modal from '../../components/Modal'
-import Flash from '../../components/Flash'
-import { Heading1 } from '../../components/Headings'
+import Modal from '@admin/components/Modal'
+import Flash from '@admin/components/Flash'
+import { Heading1 } from '@admin/components/Headings'
 
 import Form from './form/Form'
 

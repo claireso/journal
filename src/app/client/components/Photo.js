@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import withInViewStatement from '../../../common/hoc/withInViewStatement'
-import LazyLoadedImage from '../../../common/components/LazyLoadedImage'
+import withInViewStatement from '@common/hoc/withInViewStatement'
+import LazyLoadedImage from '@common/components/LazyLoadedImage'
 
 const mapPosition = {
   center: 'center',

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Heading1 } from '../../components/Headings'
-import Box from '../../components/Box'
+import { Heading1 } from '@admin/components/Headings'
+import Box from '@admin/components/Box'
 
 import Form from './form/Form'
 

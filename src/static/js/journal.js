@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Page from '../../app/client'
+import Page from '@client'
 
 const dom = document.querySelector('#js-journal')
 

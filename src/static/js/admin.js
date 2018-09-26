@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-import configureStore from '../../common/store/configureStore'
+import configureStore from '@common/store/configureStore'
 
-import Admin from '../../app/admin'
+import Admin from '@admin'
 
 const store = configureStore(window.preloadedState)
 const dom = document.querySelector('#js-app')

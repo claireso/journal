@@ -7,7 +7,7 @@ import {
   editPhoto,
   EDIT_PHOTO_SUCCESS,
   loadPhoto
-} from '../../../../common/actions/photos'
+} from '@common/actions/photos'
 
 const mapStateToProps = (state, props) => ({
   photo:

@@ -8,6 +8,14 @@
     ["babel-plugin-styled-components", {
       "ssr": true,
       "displayName": true
+    }],
+    ["module-resolver", {
+      "alias": {
+        "@client": "./src/app/client",
+        "@admin": "./src/app/admin",
+        "@common": "./src/common",
+        "@server": "./src/server"
+      }
     }]
   ],
   "env": {

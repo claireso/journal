@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import qs from 'qs'
 import { Redirect } from '@reach/router'
 
-import Loader from '../../../../common/components/Loader'
+import Loader from '@common/components/Loader'
 
-import Pager from '../../components/Pager'
-import List from '../../components/List'
-import { PagerButton } from '../../components/Buttons'
+import Pager from '@admin/components/Pager'
+import List from '@admin/components/List'
+import { PagerButton } from '@admin/components/Buttons'
 import Subscription from './Subscription'
-import Toolbar from '../../components/Toolbar'
+import Toolbar from '@admin/components/Toolbar'
 
 const regex = /^(\d+\/delete)?$/
 
