@@ -27,15 +27,6 @@ export default ({
       })()
       </script>
       <script defer src="${manifest['vendors.js']}"></script>
-      <script>
-        if ('IntersectionObserver' in window === false) {
-          var scriptElement = document.createElement('script')
-
-          scriptElement.defer = true
-          scriptElement.src = "${manifest['polyfills.js']}"
-          document.head.appendChild(scriptElement)
-        }
-      </script>
       <script defer src="${manifest['admin.js']}"></script>
     </body>
   </html>
