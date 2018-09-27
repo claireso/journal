@@ -54,7 +54,7 @@ class Modal extends React.PureComponent {
 
   render() {
     return (
-      <ModalWrapper onClick={this.handleClick}>
+      <ModalWrapper id="modal" onClick={this.handleClick}>
         <ModalInner
           ref={c => {
             this.content = c

@@ -2,10 +2,10 @@ import express from 'express'
 
 import authenticated from '../middleware/authenticated'
 
-import pool from '../../db/db'
-import queries from '../../db/queries'
+import pool from '@server/db/db'
+import queries from '@server/db/queries'
 
-import catchErrors from '../../utils/catchErrors'
+import catchErrors from '@server/utils/catchErrors'
 import paginate from '../middleware/paginate'
 
 const router = express.Router()

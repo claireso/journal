@@ -6,7 +6,7 @@ import Delete from '../views/Delete'
 import {
   deletePhoto,
   DELETE_PHOTO_SUCCESS
-} from '../../../../common/actions/photos'
+} from '@common/actions/photos'
 
 const mapDispatchToProps = dispatch => ({
   deletePhoto(id) {
@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
         return
       }
 
-      document.querySelector('.modal').scrollTo(0, 0)
+      document.querySelector('#modal').scrollTo(0, 0)
     })
   }
 })

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import qs from 'qs'
 import { Redirect } from '@reach/router'
 
-import Loader from '../../../../common/components/Loader'
+import Loader from '@common/components/Loader'
 
-import Pager from '../../components/Pager'
-import Toolbar from '../../components/Toolbar'
-import List from '../../components/List'
-import { PrimaryButton, PagerButton } from '../../components/Buttons'
-import { IconPlus } from '../../components/Icons'
+import Pager from '@admin/components/Pager'
+import Toolbar from '@admin/components/Toolbar'
+import List from '@admin/components/List'
+import { PrimaryButton, PagerButton } from '@admin/components/Buttons'
+import { IconPlus } from '@admin/components/Icons'
 
 import Photo from './Photo'
 

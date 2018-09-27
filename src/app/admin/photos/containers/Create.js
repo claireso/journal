@@ -6,7 +6,7 @@ import Create from '../views/Create'
 import {
   createPhoto,
   CREATE_PHOTO_SUCCESS
-} from '../../../../common/actions/photos'
+} from '@common/actions/photos'
 
 const mapStateToProps = state => ({
   error: state.photos.error
@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => ({
         return
       }
 
-      document.querySelector('.modal').scrollTo(0, 0)
+      document.querySelector('#modal').scrollTo(0, 0)
     })
   }
 })

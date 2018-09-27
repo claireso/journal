@@ -1,14 +1,14 @@
 import express from 'express'
 
-import pool from '../db/db'
-import queries from '../db/queries'
-import render from '../utils/render'
-import catchErrors from '../utils/catchErrors'
+import pool from '@server/db/db'
+import queries from '@server/db/queries'
+import render from '@server/utils/render'
+import catchErrors from '@server/utils/catchErrors'
 
-import { publicKey } from '../web-push'
+import { publicKey } from '@server/web-push'
 
-import Page from '../../app/client'
-import Layout from '../views/index'
+import Page from '@client'
+import Layout from '@server/views/index'
 
 const router = express.Router()
 

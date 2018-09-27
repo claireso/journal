@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Input from '../../../components/form/Input'
-import Select from '../../../components/form/Select'
-import Checkbox from '../../../components/form/Checkbox'
-import Uploader from '../../../components/form/Uploader'
-import { Group } from '../../../components/form/components/Group'
-import Label from '../../../components/form/components/Label'
-import SubmitButton from '../../../components/form/components/Button'
-import { ALLOWED_MIMETYPES } from '../../../../../common/constants'
+import Input from '@admin/components/form/Input'
+import Select from '@admin/components/form/Select'
+import Checkbox from '@admin/components/form/Checkbox'
+import Uploader from '@admin/components/form/Uploader'
+import { Group } from '@admin/components/form/components/Group'
+import Label from '@admin/components/form/components/Label'
+import SubmitButton from '@admin/components/form/components/Button'
+import { ALLOWED_MIMETYPES } from '@common/constants'
 
 class Form extends React.PureComponent {
   handleSubmit = event => {

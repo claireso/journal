@@ -8,9 +8,9 @@ import {
   LOGIN_SUCCESS,
   loadUser,
   LOAD_USER_SUCCESS
-} from '../../../../common/actions/user'
+} from '@common/actions/user'
 
-import { UNAUTHORIZED_ERROR } from '../../../../common/actions/api'
+import { UNAUTHORIZED_ERROR } from '@common/actions/api'
 
 const mapDispatchToProps = dispatch => ({
   login(data) {

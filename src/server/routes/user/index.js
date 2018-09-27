@@ -3,8 +3,8 @@ import escape from 'lodash/escape'
 import passport from 'passport'
 import LocalStrategy from 'passport-local'
 
-import pool from '../../db/db'
-import queries from '../../db/queries'
+import pool from '@server/db/db'
+import queries from '@server/db/queries'
 
 import authenticated from '../middleware/authenticated'
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Input from '../../../components/form/Input'
-import SubmitButton from '../../../components/form/components/Button'
+import Input from '@admin/components/form/Input'
+import SubmitButton from '@admin/components/form/components/Button'
 
 class Form extends React.PureComponent {
   state = {}

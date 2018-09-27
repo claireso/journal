@@ -7,7 +7,7 @@ import Page from './components/Page'
 import FlashGroup from './components/FlashGroup'
 import { AdminTabs } from './components/tabs'
 
-import { closeMessage } from '../../common/actions/api'
+import { closeMessage } from '@common/actions/api'
 
 const App = ({ children, api, ...props }) => {
   if (!props.user || !props.user.cid) {

@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { PrimaryButton } from '../../components/Buttons'
+import { PrimaryButton } from '@admin/components/Buttons'
 
 const SubscriptionWrapper = styled.li`
   list-style: none;

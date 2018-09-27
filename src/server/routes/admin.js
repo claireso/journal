@@ -3,12 +3,12 @@ import React from 'react'
 import { ServerLocation, isRedirect } from '@reach/router'
 import { Provider } from 'react-redux'
 
-import configureStore from '../../common/store/configureStore'
+import configureStore from '@common/store/configureStore'
 
-import Layout from '../views/admin'
-import render from '../utils/render'
+import Layout from '@server/views/admin'
+import render from '@server/utils/render'
 
-import Admin from '../../app/admin'
+import Admin from '@admin'
 
 const router = express.Router()
 

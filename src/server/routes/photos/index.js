@@ -6,14 +6,14 @@ import { ulid } from 'ulid'
 
 import authenticated from '../middleware/authenticated'
 
-import { sendNotification, NOTIFICATION_NEW_PHOTO } from '../../web-push'
+import { sendNotification, NOTIFICATION_NEW_PHOTO } from '@server/web-push'
 
-import catchErrors from '../../utils/catchErrors'
-import pool from '../../db/db'
-import queries from '../../db/queries'
+import catchErrors from '@server/utils/catchErrors'
+import pool from '@server/db/db'
+import queries from '@server/db/queries'
 import paginate from '../middleware/paginate'
 
-import { ALLOWED_MIMETYPES } from '../../../common/constants'
+import { ALLOWED_MIMETYPES } from '@common/constants'
 
 import photoModel from './model'
 

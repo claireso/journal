@@ -6,7 +6,7 @@ import Delete from '../views/Delete'
 import {
   deleteSubscription,
   DELETE_SUBSCRIPTION_SUCCESS
-} from '../../../../common/actions/subscriptions'
+} from '@common/actions/subscriptions'
 
 const mapDispatchToProps = dispatch => ({
   deleteSubscription(id) {
@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
         return
       }
 
-      document.querySelector('.modal').scrollTo(0, 0)
+      // document.querySelector('.modal').scrollTo(0, 0)
     })
   }
 })

@@ -7,7 +7,7 @@ import {
   editPhoto,
   EDIT_PHOTO_SUCCESS,
   loadPhoto
-} from '../../../../common/actions/photos'
+} from '@common/actions/photos'
 
 const mapStateToProps = (state, props) => ({
   photo:
@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
         return
       }
 
-      document.querySelector('.modal').scrollTo(0, 0)
+      document.querySelector('#modal').scrollTo(0, 0)
     })
   },
 

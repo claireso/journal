@@ -13,22 +13,27 @@ export default WrappedComponent => {
       const config = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.25
+        threshold: 0
       }
 
-      const observer = new IntersectionObserver(entries => {
+      this.observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           const isInView = entry.isIntersecting
           this.setState({ inView: isInView })
 
           if (isInView) {
-            observer.unobserve(entry.target)
+            this.observer.unobserve(entry.target)
           }
         })
       }, config)
 
-      observer.observe(ReactDom.findDOMNode(this))
+      this.observer.observe(ReactDom.findDOMNode(this))
     }
+
+    componentWillUnmount() {
+      this.observer && this.observer.unobserve(ReactDom.findDOMNode(this))
+    }
+
     render() {
       return <WrappedComponent inView={this.state.inView} {...this.props} />
     }
