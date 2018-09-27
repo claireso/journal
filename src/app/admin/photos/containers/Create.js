@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => ({
         return
       }
 
-      document.querySelector('.modal').scrollTo(0, 0)
+      document.querySelector('#modal').scrollTo(0, 0)
     })
   }
 })
