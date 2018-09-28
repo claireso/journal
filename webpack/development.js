@@ -12,10 +12,6 @@ module.exports = merge(webpackConfig, {
   plugins: [
     CopyWebpackPlugin([
       {
-        from: './static/js/sw.js',
-        to: `${ROOT}/public/[name].[ext]`
-      },
-      {
         from: './static/manifest.json',
         to: `${ROOT}/public/[name].[ext]`
       },

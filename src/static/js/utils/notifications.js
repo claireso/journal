@@ -13,9 +13,12 @@ export default {
     return Notification.permission === 'default'
   },
 
-  async subscribe() {
-    const registration = await this.getRegistration()
+  async subscribe(registration) {
     const pushPublicKey = await this.getPushPublicKey()
+
+    if (!registration) {
+      registration = await this.getRegistration()
+    }
 
     if (!pushPublicKey) return
 
