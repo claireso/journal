@@ -12,14 +12,12 @@ const ROOT = process.cwd()
 module.exports = merge(webpackConfig, {
   mode: 'production',
   output: {
-    filename: `js/[name]-[chunkhash:10].js`,
+    filename: (chunkData) => {
+      return chunkData.chunk.name === 'sw' ? '[name].js' : 'js/[name]-[chunkhash:10].js'
+    },
   },
   plugins: [
     CopyWebpackPlugin([
-      {
-        from: './static/js/sw.js',
-        to: `${ROOT}/public/[name].[ext]`
-      },
       {
         from: './static/manifest.json',
         to: `${ROOT}/public/[name]-[hash:10].[ext]`
