@@ -42,7 +42,7 @@ const PhotoInner = styled.div`
 
 const PhotoTitle = styled.h2`
   font-size: 1.4rem;
-  margin: 0 0 1rem;
+  margin: .5rem 0 1rem;
 `
 
 const PhotoDescription = styled.p`
@@ -68,7 +68,7 @@ const Photo = props => {
         )}
       </PhotoPicture>
       <PhotoInner>
-        <PhotoTitle>{props.title}</PhotoTitle>
+        <PhotoTitle dangerouslySetInnerHTML={{__html: props.title}} />
         <PhotoDescription>{props.description}</PhotoDescription>
         <PhotoTools>
           <PrimaryButton onClick={props.onEdit.bind(this, props.id)}>
