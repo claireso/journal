@@ -109,7 +109,7 @@ const Photo = (props = {}) => {
           {props.inView && <Picture name={props.name} />}
         </PictureWrapper>
         <Title>
-          {props.title}
+          <span dangerouslySetInnerHTML={{__html: props.title}} />
 
           {props.description && <Description>{props.description}</Description>}
         </Title>
