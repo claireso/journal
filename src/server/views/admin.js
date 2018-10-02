@@ -9,7 +9,7 @@ export default ({
   <!doctype html>
   <html lang="fr">
     <head>
-      <meta charset="utf-8" />
+      <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
       <title> Admin - Journal </title>
       <meta name="robots" content="noindex, nofollow" />
