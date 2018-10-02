@@ -10,7 +10,9 @@ class Form extends React.PureComponent {
   handleSubmit = event => {
     event && event.preventDefault()
 
-    const { onSubmit } = this.props
+    const { onSubmit, isProcessing } = this.props
+
+    if (isProcessing) return
 
     onSubmit && onSubmit(this.state)
   }
@@ -41,14 +43,15 @@ class Form extends React.PureComponent {
           onChange={this.handleChange}
           value={this.state.password}
         />
-        <SubmitButton value="Log in" />
+        <SubmitButton value="Log in" isLoading={this.props.isProcessing} />
       </form>
     )
   }
 }
 
 Form.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  isProcessing: PropTypes.bool.isRequired
 }
 
 export default Form

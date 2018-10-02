@@ -7,6 +7,7 @@ import { Heading1 } from '@admin/components/Headings'
 import Text from '@admin/components/Text'
 
 const Delete = props => {
+  const { isProcessing } = props
   return (
     <Modal onClose={() => props.navigate('/admin/photos')}>
       <Heading1>Are you sure?</Heading1>
@@ -24,8 +25,10 @@ const Delete = props => {
         <PrimaryButton
           onClick={event => {
             event.preventDefault()
+            if (isProcessing) return
             props.deletePhoto(props.id)
           }}
+          isLoading={ isProcessing }
         >
           {' '}
           Yes{' '}
@@ -38,7 +41,8 @@ const Delete = props => {
 Delete.propTypes = {
   navigate: PropTypes.func.isRequired,
   deletePhoto: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  isProcessing: PropTypes.bool.isRequired
 }
 
 export default Delete

@@ -12,6 +12,10 @@ import {
 
 import { UNAUTHORIZED_ERROR } from '@common/actions/api'
 
+const mapStateToProps = state => ({
+  isLogin: state.user.isLogin
+})
+
 const mapDispatchToProps = dispatch => ({
   login(data) {
     dispatch(login(data)).then(action => {
@@ -34,6 +38,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login)

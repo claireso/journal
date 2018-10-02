@@ -8,6 +8,10 @@ import {
   DELETE_PHOTO_SUCCESS
 } from '@common/actions/photos'
 
+const mapStateToProps = state => ({
+  isProcessing: state.photos.isProcessing
+})
+
 const mapDispatchToProps = dispatch => ({
   deletePhoto(id) {
     dispatch(deletePhoto(Number(id))).then(action => {
@@ -22,6 +26,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Delete)

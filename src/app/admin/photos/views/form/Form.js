@@ -14,13 +14,15 @@ class Form extends React.PureComponent {
   handleSubmit = event => {
     event.preventDefault()
 
-    const { onSubmit } = this.props
+    const { onSubmit, isProcessing } = this.props
+
+    if (isProcessing) return
 
     onSubmit && onSubmit(new FormData(this.form))
   }
 
   render() {
-    const { photo } = this.props
+    const { photo, isProcessing } = this.props
 
     return (
       <form
@@ -81,7 +83,7 @@ class Form extends React.PureComponent {
           value={photo ? photo.square : false}
         />
 
-        <SubmitButton value={photo ? 'Save' : 'Create'} />
+        <SubmitButton value={photo ? 'Save' : 'Create'} isLoading={ isProcessing } />
       </form>
     )
   }
@@ -96,7 +98,8 @@ Form.propTypes = {
     portrait: PropTypes.bool,
     square: PropTypes.bool
   }),
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  isProcessing: PropTypes.bool.isRequired
 }
 
 export default Form

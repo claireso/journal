@@ -15,7 +15,7 @@ class Edit extends React.PureComponent {
   }
 
   render() {
-    const { photo, error } = this.props
+    const { photo, error, isProcessing } = this.props
 
     if (photo === undefined) return null
 
@@ -26,6 +26,7 @@ class Edit extends React.PureComponent {
         <Form
           onSubmit={this.props.editPhoto.bind(this, photo.id)}
           photo={photo}
+          isProcessing={isProcessing}
         />
       </Modal>
     )
@@ -41,7 +42,8 @@ Edit.propTypes = {
   }),
   editPhoto: PropTypes.func.isRequired,
   loadPhoto: PropTypes.func.isRequired,
-  photo: PropTypes.object
+  photo: PropTypes.object,
+  isProcessing: PropTypes.bool.isRequired
 }
 
 export default Edit

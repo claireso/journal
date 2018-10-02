@@ -11,14 +11,15 @@ const Login = props => {
     <main>
       <Box>
         <Heading1>Login</Heading1>
-        <Form onSubmit={props.login} />
+        <Form onSubmit={props.login} isProcessing={ props.isLogin } />
       </Box>
     </main>
   )
 }
 
 Login.propTypes = {
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  isLogin: PropTypes.bool.isRequired
 }
 
 export default Login

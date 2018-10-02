@@ -13,7 +13,8 @@ const mapStateToProps = (state, props) => ({
   photo:
     state.photos.items.find(photo => photo.id === Number(props.id)) ||
     state.photos.detail,
-  error: state.photos.error
+  error: state.photos.error,
+  isProcessing: state.photos.isProcessing
 })
 
 const mapDispatchToProps = dispatch => ({

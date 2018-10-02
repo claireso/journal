@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/photos'
 const initialState = {
   items: [],
   pager: null,
-  isLoading: true
+  isLoading: true,
+  isProcessing: false
 }
 
 export default (state = initialState, action) => {
@@ -30,11 +31,19 @@ export default (state = initialState, action) => {
       }
     }
 
+    case actionTypes.CREATE_PHOTO_REQUEST: {
+      return {
+        ...state,
+        isProcessing: true
+      }
+    }
+
     case actionTypes.CREATE_PHOTO_SUCCESS: {
       return {
         ...state,
         items: [action.response, ...state.items],
-        error: null
+        error: null,
+       isProcessing: false
       }
     }
 
@@ -44,7 +53,15 @@ export default (state = initialState, action) => {
         error: {
           status: 'error',
           ...action.error
-        }
+        },
+       isProcessing: false
+      }
+    }
+
+    case actionTypes.EDIT_PHOTO_REQUEST: {
+      return {
+        ...state,
+        isProcessing: true
       }
     }
 
@@ -52,7 +69,7 @@ export default (state = initialState, action) => {
       const photo = action.response
       const index = state.items.findIndex(_photo => _photo.id === photo.id)
 
-      if (index < 0) return state
+      if (index < 0) return {...state, isProcessing: false}
 
       return {
         ...state,
@@ -60,18 +77,41 @@ export default (state = initialState, action) => {
           ...state.items.slice(0, index),
           photo,
           ...state.items.slice(index + 1)
-        ]
+        ],
+        isProcessing: false
+      }
+    }
+
+    case actionTypes.EDIT_PHOTO_ERROR: {
+      return {
+        ...state,
+       isProcessing: false
+      }
+    }
+
+    case actionTypes.DELETE_PHOTO_REQUEST: {
+      return {
+        ...state,
+        isProcessing: true
       }
     }
 
     case actionTypes.DELETE_PHOTO_SUCCESS: {
       const index = state.items.findIndex(photo => photo.id === action.id)
 
-      if (index < 0) return state
+      if (index < 0) return {...state, isProcessing: false}
 
       return {
         ...state,
-        items: [...state.items.slice(0, index), ...state.items.slice(index + 1)]
+        items: [...state.items.slice(0, index), ...state.items.slice(index + 1)],
+        isProcessing: false
+      }
+    }
+
+    case actionTypes.DELETE_PHOTO_ERROR: {
+      return {
+        ...state,
+        isProcessing: false
       }
     }
 
