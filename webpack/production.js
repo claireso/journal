@@ -40,7 +40,6 @@ module.exports = merge(webpackConfig, {
     new CompressionPlugin({
       algorithm: 'gzip',
       test: /\.js(\?.*)?$/i,
-      deleteOriginalAssets: true,
       exclude: 'sw.js'
     }),
     new webpack.DefinePlugin({

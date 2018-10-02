@@ -1,6 +1,8 @@
+import React from 'react'
 import styled from 'styled-components'
+import Loader from '@common/components/Loader'
 
-export default styled.input.attrs({
+export const SubmitButton = styled.input.attrs({
   type: 'submit'
 })`
   appearence: none;
@@ -20,3 +22,19 @@ export default styled.input.attrs({
     background: var(--primary-lighter);
   }
 `
+
+export const SubmitButtonLoading = styled(SubmitButton).attrs({
+  children: <Loader />
+})`
+  padding: 1.8rem 5rem 1.9rem;
+
+  ${Loader}{
+    margin: 0 auto;
+
+    &:after {
+      background: #fff;
+    }
+  }
+`
+
+export default props => props.isLoading ? <SubmitButtonLoading as="div" /> : <SubmitButton {...props} />

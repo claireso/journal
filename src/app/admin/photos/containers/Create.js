@@ -9,7 +9,8 @@ import {
 } from '@common/actions/photos'
 
 const mapStateToProps = state => ({
-  error: state.photos.error
+  error: state.photos.error,
+  isProcessing: state.photos.isProcessing
 })
 
 const mapDispatchToProps = dispatch => ({

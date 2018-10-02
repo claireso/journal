@@ -1,4 +1,6 @@
+import React from 'react'
 import styled from 'styled-components'
+import Loader from '@common/components/Loader'
 
 const Button = styled.button`
   appearance: none;
@@ -21,7 +23,7 @@ const Button = styled.button`
   }
 `
 
-export const PrimaryButton = styled(Button)`
+const StyledPrimaryButton = styled(Button)`
   background: var(--primary);
   color: white;
 
@@ -29,6 +31,24 @@ export const PrimaryButton = styled(Button)`
     background: var(--primary-lighter);
   }
 `
+
+const StyledPrimaryButtonLoading = styled(StyledPrimaryButton).attrs({
+  children: <Loader />
+})`
+  padding: 1.1rem 1rem 1.3rem;
+
+  ${Loader} {
+    margin: 0;
+
+    &:after {
+      background: #fff;
+    }
+  }
+`
+
+export const PrimaryButton = props => {
+  return props.isLoading ? <StyledPrimaryButtonLoading /> : <StyledPrimaryButton {...props} />
+}
 
 export const SecondaryButton = styled(Button)`
   background: var(--secondary);

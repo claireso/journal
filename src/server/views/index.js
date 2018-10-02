@@ -7,7 +7,7 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
   <!doctype html>
   <html lang="fr">
     <head>
-      <meta charset="utf-8" />
+      <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
       <title> ${ config.meta.title } </title>
       <meta name="robots" content="noindex, nofollow" />

@@ -12,7 +12,7 @@ const Create = props => {
     <Modal onClose={() => props.navigate('/admin/photos')}>
       {props.error && <Flash {...props.error} />}
       <Heading1>Create a photo</Heading1>
-      <Form onSubmit={props.createPhoto} />
+      <Form onSubmit={props.createPhoto} isProcessing={props.isProcessing} />
     </Modal>
   )
 }
@@ -23,7 +23,8 @@ Create.propTypes = {
   error: PropTypes.shape({
     status: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired
-  })
+  }),
+  isProcessing: PropTypes.bool.isRequired
 }
 
 export default Create

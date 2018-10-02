@@ -1,6 +1,8 @@
 import * as actionTypes from '../actions/user'
 
-const initialState = {}
+const initialState = {
+  isLogin: false
+}
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -8,6 +10,21 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ...action.response
+      }
+    }
+
+    case actionTypes.LOGIN_REQUEST: {
+      return {
+        ...state,
+        isLogin: true,
+      }
+    }
+
+    case actionTypes.LOGIN_SUCCESS:
+    case actionTypes.LOGIN_ERROR: {
+      return {
+        ...state,
+        isLogin: false,
       }
     }
 
