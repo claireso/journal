@@ -4,7 +4,7 @@
   "description": "A self-hosted website to show your photography",
   "private": true,
   "scripts": {
-    "postinstall": "cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
+    "postinstall": "mkdir ./public && cp ./node_modules/sw-toolbox/sw-toolbox.js ./public",
     "dev": "nodemon -e js,html,pug src/server/server.js --exec babel-node",
     "server": "node ./dist/server/server.js",
     "watch": "webpack --config ./webpack/development.js --watch",
