@@ -1,5 +1,5 @@
 {
-  "sessionSecret": "",
+  "sessionSecret": "keyboard cat",
   "db": {
     "database": "journal",
     "user": "",
