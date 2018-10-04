@@ -7,9 +7,9 @@ import Page from './components/Page'
 import FlashGroup from './components/FlashGroup'
 import { AdminTabs } from './components/tabs'
 
-import { closeMessage } from '@common/actions/api'
+import { closeMessage } from '@common/actions/messages'
 
-const App = ({ children, api, ...props }) => {
+const App = ({ children, messages, ...props }) => {
   if (!props.user || !props.user.cid) {
     const next = encodeURIComponent(props.location.pathname)
     return <Redirect to={`/admin/login?next=${next}`} />
@@ -17,7 +17,7 @@ const App = ({ children, api, ...props }) => {
 
   return (
     <Page>
-      <FlashGroup messages={api.errors} onClose={props.closeMessage} />
+      <FlashGroup messages={messages} onClose={props.closeMessage} />
       <AdminTabs />
       {children}
     </Page>
@@ -30,13 +30,13 @@ App.propTypes = {
   user: PropTypes.shape({
     cid: PropTypes.string.isRequired
   }),
-  api: PropTypes.object.isRequired,
+  messages: PropTypes.array.isRequired,
   closeMessage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
   user: state.user,
-  api: state.api
+  messages: state.messages
 })
 
 const mapDispatchToProps = dispatch => ({

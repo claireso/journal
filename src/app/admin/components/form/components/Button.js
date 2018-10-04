@@ -28,7 +28,7 @@ export const SubmitButtonLoading = styled(SubmitButton).attrs({
 })`
   padding: 1.8rem 5rem 1.9rem;
 
-  ${Loader}{
+  ${Loader} {
     margin: 0 auto;
 
     &:after {
@@ -37,4 +37,9 @@ export const SubmitButtonLoading = styled(SubmitButton).attrs({
   }
 `
 
-export default props => props.isLoading ? <SubmitButtonLoading as="div" /> : <SubmitButton {...props} />
+export default props =>
+  props.isLoading ? (
+    <SubmitButtonLoading as="div" />
+  ) : (
+    <SubmitButton {...props} />
+  )

@@ -7,11 +7,13 @@ import { IconClose } from './Icons'
 
 const mapFlashBackground = {
   default: 'var(--primary)',
-  error: 'var(--error)'
+  error: 'var(--error)',
+  success: 'var(--success)'
 }
 
 const FlashWrapper = styled.div`
-  background: ${props => mapFlashBackground[props.status || 'default']};
+  background: ${props =>
+    mapFlashBackground[props.status] || mapFlashBackground['default']};
   color: var(--white);
   font-size: 1.4rem;
   margin: 0 0 var(--gutter);
@@ -29,7 +31,7 @@ const FlashWrapper = styled.div`
   }
 `
 
-const Flash = ({ status, message, type, onClose }) => {
+const Flash = ({ status, message, onClose, index }) => {
   return (
     <FlashWrapper status={status}>
       {message}
@@ -37,7 +39,7 @@ const Flash = ({ status, message, type, onClose }) => {
         <ButtonIcon
           onClick={event => {
             event.preventDefault()
-            onClose(type)
+            onClose(index)
           }}
         >
           <IconClose />

@@ -2,12 +2,12 @@ import { combineReducers } from 'redux'
 
 import photos from './photos'
 import subscriptions from './subscriptions'
-import api from './api'
+import messages from './messages'
 import user from './user'
 
 export default combineReducers({
   photos,
   subscriptions,
-  api,
+  messages,
   user
 })

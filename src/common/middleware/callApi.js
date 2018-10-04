@@ -1,5 +1,6 @@
 // redux middleware to call api and manage errors
-import { unauthorized, internalServerError } from '../actions/api'
+import { internalServerError } from '../actions/messages'
+import { unauthorized } from '../actions/user'
 
 export default ({ dispatch }) => {
   return next => action => {

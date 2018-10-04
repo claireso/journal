@@ -83,7 +83,10 @@ class Form extends React.PureComponent {
           value={photo ? photo.square : false}
         />
 
-        <SubmitButton value={photo ? 'Save' : 'Create'} isLoading={ isProcessing } />
+        <SubmitButton
+          value={photo ? 'Save' : 'Create'}
+          isLoading={isProcessing}
+        />
       </form>
     )
   }
