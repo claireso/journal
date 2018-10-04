@@ -47,7 +47,11 @@ const StyledPrimaryButtonLoading = styled(StyledPrimaryButton).attrs({
 `
 
 export const PrimaryButton = props => {
-  return props.isLoading ? <StyledPrimaryButtonLoading /> : <StyledPrimaryButton {...props} />
+  return props.isLoading ? (
+    <StyledPrimaryButtonLoading />
+  ) : (
+    <StyledPrimaryButton {...props} />
+  )
 }
 
 export const SecondaryButton = styled(Button)`

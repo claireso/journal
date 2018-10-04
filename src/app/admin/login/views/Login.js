@@ -11,7 +11,7 @@ const Login = props => {
     <main>
       <Box>
         <Heading1>Login</Heading1>
-        <Form onSubmit={props.login} isProcessing={ props.isLogin } />
+        <Form onSubmit={props.login} isProcessing={props.isLogin} />
       </Box>
     </main>
   )

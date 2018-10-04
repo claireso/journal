@@ -1,3 +1,5 @@
+import { navigate } from '@reach/router'
+
 import * as actionTypes from '../actions/user'
 
 const initialState = {
@@ -26,6 +28,12 @@ export default (state = initialState, action) => {
         ...state,
         isLogin: false,
       }
+    }
+
+    case actionTypes.UNAUTHORIZED_ERROR: {
+      const next = encodeURIComponent(window.location.pathname)
+      navigate(`/admin/login?next=${next}`)
+      return state
     }
 
     default:

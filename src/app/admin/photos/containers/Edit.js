@@ -9,6 +9,8 @@ import {
   loadPhoto
 } from '@common/actions/photos'
 
+import { displaySuccessMessage } from '@common/actions/messages'
+
 const mapStateToProps = (state, props) => ({
   photo:
     state.photos.items.find(photo => photo.id === Number(props.id)) ||
@@ -22,6 +24,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPhoto(id, data)).then(action => {
       if (action.type === EDIT_PHOTO_SUCCESS) {
         navigate('/admin/photos')
+        dispatch(
+          displaySuccessMessage({
+            message: 'Your photo has been updated successfully',
+            key: 'CRUD_PHOTO'
+          })
+        )
         return
       }
 
