@@ -31,8 +31,13 @@ export default (state = initialState, action) => {
     }
 
     case actionTypes.UNAUTHORIZED_ERROR: {
-      const next = encodeURIComponent(window.location.pathname)
-      navigate(`/admin/login?next=${next}`)
+      const pathname = window.location.pathname
+
+      if (pathname !== '/admin/login') {
+        const next = encodeURIComponent(pathname)
+        navigate(`/admin/login?next=${next}`)
+      }
+
       return state
     }
 

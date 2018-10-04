@@ -48,14 +48,13 @@ export default (state = initialState, action) => {
     }
 
     case actionTypes.CREATE_PHOTO_ERROR: {
-      return {
-        ...state,
-        error: {
-          status: 'error',
-          ...action.error
-        },
-        isProcessing: false
+      const newState = {...state, isProcessing: false}
+
+      if (action.error) {
+        newState.error = action.error
       }
+
+      return newState
     }
 
     case actionTypes.EDIT_PHOTO_REQUEST: {
