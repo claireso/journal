@@ -1,13 +1,5 @@
 import React from 'react'
-import posed, { PoseGroup } from 'react-pose'
-
-const PosedPicture = posed.img({
-  enter: {
-    opacity: 1,
-    transition: { duration: 500, ease: 'easeOut' }
-  },
-  exit: { opacity: 0 }
-})
+import { Spring } from 'react-spring'
 
 export default class LazyLoadedImage extends React.PureComponent {
   state = {
@@ -22,10 +14,12 @@ export default class LazyLoadedImage extends React.PureComponent {
   }
 
   render() {
+    if (!this.state.isLoaded) return null
+
     return (
-      <PoseGroup>
-        {this.state.isLoaded && <PosedPicture key="image" {...this.props} />}
-      </PoseGroup>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+        {props => <img style={props} {...this.props} />}
+      </Spring>
     )
   }
 }
