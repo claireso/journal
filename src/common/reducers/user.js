@@ -1,3 +1,5 @@
+import { navigate } from '@reach/router'
+
 import * as actionTypes from '../actions/user'
 
 const initialState = {
@@ -16,7 +18,7 @@ export default (state = initialState, action) => {
     case actionTypes.LOGIN_REQUEST: {
       return {
         ...state,
-        isLogin: true,
+        isLogin: true
       }
     }
 
@@ -24,8 +26,19 @@ export default (state = initialState, action) => {
     case actionTypes.LOGIN_ERROR: {
       return {
         ...state,
-        isLogin: false,
+        isLogin: false
       }
+    }
+
+    case actionTypes.UNAUTHORIZED_ERROR: {
+      const pathname = window.location.pathname
+
+      if (pathname !== '/admin/login') {
+        const next = encodeURIComponent(pathname)
+        navigate(`/admin/login?next=${next}`)
+      }
+
+      return state
     }
 
     default:

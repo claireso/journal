@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Spring } from 'react-spring'
 
 const ModalWrapper = styled.div`
   background: rgba(0, 0, 0, 0.5);
@@ -54,15 +55,31 @@ class Modal extends React.PureComponent {
 
   render() {
     return (
-      <ModalWrapper id="modal" onClick={this.handleClick}>
-        <ModalInner
-          ref={c => {
-            this.content = c
-          }}
-        >
-          {this.props.children}
-        </ModalInner>
-      </ModalWrapper>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+        {wrapperStyles => (
+          <ModalWrapper
+            style={wrapperStyles}
+            id="modal"
+            onClick={this.handleClick}
+          >
+            <Spring
+              from={{ transform: 'translate3d(0, 2rem, 0)' }}
+              to={{ transform: 'translate3d(0, 0, 0)' }}
+            >
+              {innerStyles => (
+                <ModalInner
+                  ref={c => {
+                    this.content = c
+                  }}
+                  style={innerStyles}
+                >
+                  {this.props.children}
+                </ModalInner>
+              )}
+            </Spring>
+          </ModalWrapper>
+        )}
+      </Spring>
     )
   }
 }

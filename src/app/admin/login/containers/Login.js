@@ -10,7 +10,7 @@ import {
   LOAD_USER_SUCCESS
 } from '@common/actions/user'
 
-import { UNAUTHORIZED_ERROR } from '@common/actions/api'
+import { UNAUTHORIZED_ERROR } from '@common/actions/user'
 
 const mapStateToProps = state => ({
   isLogin: state.user.isLogin

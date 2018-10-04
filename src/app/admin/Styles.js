@@ -18,6 +18,7 @@ export default createGlobalStyle`
     --secondary-darker: #dcdede;
     --hightlight: #ffe65d;
     --error: #f00;
+    --success: #48ad44;
     --white: #fff;
     --gray-1: #d4d3d3;
     --gray-2: #999;
@@ -35,7 +36,7 @@ export default createGlobalStyle`
 
   main {
     max-width: var(--container-max-width);
-    padding: calc(var(--gutter)*2) var(--gutter);
+    padding: calc(var(--gutter)*3.5) var(--gutter);
     margin: 0 auto;
   }
 

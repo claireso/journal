@@ -1,7 +1,6 @@
 import notifications from './utils/notifications'
 
 class Banner {
-
   static CLS_HIDDEN = 'is-hidden'
 
   constructor(dom, buttonClose) {
@@ -36,7 +35,7 @@ class Banner {
     try {
       await notifications.subscribe()
       this.hide()
-    } catch(err) {
+    } catch (err) {
       // user decline
       if (notifications.areDenied()) {
         this.hide()

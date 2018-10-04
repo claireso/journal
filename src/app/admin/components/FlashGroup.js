@@ -20,7 +20,7 @@ const FlashGroup = props => {
   return (
     <FlashGroupWrapper>
       {props.messages.map((message, index) => (
-        <Flash key={index} {...message} onClose={props.onClose} />
+        <Flash {...message} onClose={props.onClose} key={index} index={index} />
       ))}
     </FlashGroupWrapper>
   )

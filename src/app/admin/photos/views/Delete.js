@@ -28,7 +28,7 @@ const Delete = props => {
             if (isProcessing) return
             props.deletePhoto(props.id)
           }}
-          isLoading={ isProcessing }
+          isLoading={isProcessing}
         >
           {' '}
           Yes{' '}
