@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/subscriptions'
 const initialState = {
   items: [],
   pager: null,
-  isLoading: true
+  isLoading: true,
+  isProcessing: false
 }
 
 export default (state = initialState, action) => {
@@ -23,12 +24,19 @@ export default (state = initialState, action) => {
       }
     }
 
+    case actionTypes.DELETE_SUBSCRIPTION_REQUEST: {
+      return {
+        ...state,
+        isProcessing: true
+      }
+    }
+
     case actionTypes.DELETE_SUBSCRIPTION_SUCCESS: {
       const index = state.items.findIndex(
         subscription => subscription.id === action.id
       )
 
-      if (index < 0) return state
+      if (index < 0) return {...state, isProcessing: false}
 
       return {
         ...state,
@@ -40,6 +48,13 @@ export default (state = initialState, action) => {
           ...state.pager,
           count: state.pager.count - 1
         }
+      }
+    }
+
+    case actionTypes.DELETE_SUBSCRIPTION_ERROR: {
+      return {
+        ...state,
+        isProcessing: false
       }
     }
 

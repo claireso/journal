@@ -9,6 +9,10 @@ import {
 } from '@common/actions/subscriptions'
 import { displaySuccessMessage } from '@common/actions/messages'
 
+const mapStateToProps = state => ({
+  isProcessing: state.subscriptions.isProcessing
+})
+
 const mapDispatchToProps = dispatch => ({
   deleteSubscription(id) {
     dispatch(deleteSubscription(Number(id))).then(action => {
@@ -29,6 +33,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Delete)

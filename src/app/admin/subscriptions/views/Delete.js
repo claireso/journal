@@ -6,7 +6,7 @@ import { PrimaryButton, SecondaryButton } from '@admin/components/Buttons'
 import { Heading1 } from '@admin/components/Headings'
 import Text from '@admin/components/Text'
 
-const Delete = props => {
+const Delete = ({isProcessing, ...props}) => {
   return (
     <Modal onClose={() => props.navigate('/admin/subscriptions')}>
       <Heading1>Are you sure?</Heading1>
@@ -23,8 +23,10 @@ const Delete = props => {
         <PrimaryButton
           onClick={event => {
             event.preventDefault()
+            if (isProcessing) return
             props.deleteSubscription(props.id)
           }}
+          isLoading={isProcessing}
         >
           Yes
         </PrimaryButton>
@@ -36,7 +38,8 @@ const Delete = props => {
 Delete.propTypes = {
   id: PropTypes.string.isRequired,
   navigate: PropTypes.func.isRequired,
-  deleteSubscription: PropTypes.func.isRequired
+  deleteSubscription: PropTypes.func.isRequired,
+  isProcessing: PropTypes.bool.isRequired
 }
 
 export default Delete
