@@ -37,9 +37,11 @@ export const SubmitButtonLoading = styled(SubmitButton).attrs({
   }
 `
 
-export default props =>
+const Button = props =>
   props.isLoading ? (
     <SubmitButtonLoading as="div" />
   ) : (
     <SubmitButton {...props} />
   )
+
+export default Button

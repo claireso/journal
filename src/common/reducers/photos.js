@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
         ...state,
         items: [action.response, ...state.items],
         error: null,
-       isProcessing: false
+        isProcessing: false
       }
     }
 
@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
           status: 'error',
           ...action.error
         },
-       isProcessing: false
+        isProcessing: false
       }
     }
 
@@ -69,7 +69,7 @@ export default (state = initialState, action) => {
       const photo = action.response
       const index = state.items.findIndex(_photo => _photo.id === photo.id)
 
-      if (index < 0) return {...state, isProcessing: false}
+      if (index < 0) return { ...state, isProcessing: false }
 
       return {
         ...state,
@@ -85,7 +85,7 @@ export default (state = initialState, action) => {
     case actionTypes.EDIT_PHOTO_ERROR: {
       return {
         ...state,
-       isProcessing: false
+        isProcessing: false
       }
     }
 
@@ -99,11 +99,14 @@ export default (state = initialState, action) => {
     case actionTypes.DELETE_PHOTO_SUCCESS: {
       const index = state.items.findIndex(photo => photo.id === action.id)
 
-      if (index < 0) return {...state, isProcessing: false}
+      if (index < 0) return { ...state, isProcessing: false }
 
       return {
         ...state,
-        items: [...state.items.slice(0, index), ...state.items.slice(index + 1)],
+        items: [
+          ...state.items.slice(0, index),
+          ...state.items.slice(index + 1)
+        ],
         isProcessing: false
       }
     }

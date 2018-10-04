@@ -53,7 +53,7 @@ Flash.propTypes = {
   status: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onClose: PropTypes.func,
-  type: PropTypes.string
+  index: PropTypes.number
 }
 
 export default Flash

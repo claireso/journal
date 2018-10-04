@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
     case actionTypes.LOGIN_REQUEST: {
       return {
         ...state,
-        isLogin: true,
+        isLogin: true
       }
     }
 
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
     case actionTypes.LOGIN_ERROR: {
       return {
         ...state,
-        isLogin: false,
+        isLogin: false
       }
     }
 

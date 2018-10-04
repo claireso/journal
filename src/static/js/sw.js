@@ -1,7 +1,7 @@
 /*eslint no-undef: 0*/
+/*eslint indent: 0*/
 import notifications from './utils/notifications'
-
-(global => {
+;(global => {
   const VERSION = '2'
 
   const CACHE_PREFIX = 'claireso-journal'
@@ -87,8 +87,6 @@ import notifications from './utils/notifications'
   })
 
   global.addEventListener('pushsubscriptionchange', event => {
-    event.waitUntil(
-      notifications.subscribe(self.registration)
-    )
+    event.waitUntil(notifications.subscribe(self.registration))
   })
 })(self)

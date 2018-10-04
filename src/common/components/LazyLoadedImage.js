@@ -11,14 +11,14 @@ const PosedPicture = posed.img({
 
 export default class LazyLoadedImage extends React.PureComponent {
   state = {
-    isLoaded: false,
+    isLoaded: false
   }
 
   componentDidMount() {
     const img = new Image()
     img.src = this.props.src
 
-    img.onload = () => this.setState({isLoaded: true})
+    img.onload = () => this.setState({ isLoaded: true })
   }
 
   render() {

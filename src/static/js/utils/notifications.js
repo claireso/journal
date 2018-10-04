@@ -43,7 +43,7 @@ export default {
   async getRegistration() {
     try {
       return await navigator.serviceWorker.ready
-    } catch(err) {
+    } catch (err) {
       throw new Error('Banner: can not get registration')
     }
   },
