@@ -36,12 +36,12 @@ export default ({ dispatch }) => {
         const status = err.response && err.response.status
 
         if (status === 401) {
-          dispatch({type: TYPE_ERROR, ...actionParams})
+          dispatch({ type: TYPE_ERROR, ...actionParams })
           return dispatch(unauthorized())
         }
 
         if (status === 500) {
-          dispatch({type: TYPE_ERROR, ...actionParams})
+          dispatch({ type: TYPE_ERROR, ...actionParams })
           return dispatch(internalServerError())
         }
 

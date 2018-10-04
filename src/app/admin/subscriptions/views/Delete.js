@@ -6,7 +6,7 @@ import { PrimaryButton, SecondaryButton } from '@admin/components/Buttons'
 import { Heading1 } from '@admin/components/Headings'
 import Text from '@admin/components/Text'
 
-const Delete = ({isProcessing, ...props}) => {
+const Delete = ({ isProcessing, ...props }) => {
   return (
     <Modal onClose={() => props.navigate('/admin/subscriptions')}>
       <Heading1>Are you sure?</Heading1>

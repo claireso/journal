@@ -36,7 +36,7 @@ export default (state = initialState, action) => {
         subscription => subscription.id === action.id
       )
 
-      if (index < 0) return {...state, isProcessing: false}
+      if (index < 0) return { ...state, isProcessing: false }
 
       return {
         ...state,
