@@ -44,7 +44,19 @@ export default {
     try {
       return await navigator.serviceWorker.ready
     } catch (err) {
-      throw new Error('Banner: can not get registration')
+      throw new Error('Notifications: can not get registration')
+    }
+  },
+
+  async getSubscription() {
+    try {
+      const registration = await this.getRegistration()
+      if (registration) {
+        const subscription = await registration.pushManager.getSubscription()
+        return subscription
+      }
+    } catch (err) {
+      throw new Error('Notifications: can not get subscription')
     }
   },
 
@@ -53,7 +65,7 @@ export default {
       const response = await fetch('/push-public-key')
       return await response.text()
     } catch (err) {
-      throw new Error('Banner can not get public key')
+      throw new Error('Notifications: can not get public key')
     }
   }
 }

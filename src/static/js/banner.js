@@ -16,7 +16,15 @@ class Banner {
     // show banner if user
     // - has not already subscribed
     // - or has not denied notification
-    if (notifications.areDefault()) this.show()
+    if (notifications.areDefault()) {
+      this.show()
+      return
+    }
+
+    // check if subscription is expired
+    if (notifications.areGranted()) {
+      this.checkSubscription()
+    }
   }
 
   show() {
@@ -42,7 +50,20 @@ class Banner {
         return
       }
 
-      throw new Error('Banner can not subscribe')
+      throw new Error('Banner: can not subscribe')
+    }
+  }
+
+  checkSubscription = async () => {
+    try {
+      const subscription = await notifications.getSubscription()
+
+      // expired subscription
+      if (!subscription) {
+        this.subscribe()
+      }
+    } catch (err) {
+      throw new Error('Banner: Can not check subscription')
     }
   }
 }

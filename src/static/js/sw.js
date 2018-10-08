@@ -1,6 +1,5 @@
 /*eslint no-undef: 0*/
 /*eslint indent: 0*/
-import notifications from './utils/notifications'
 ;(global => {
   const VERSION = '2'
 
@@ -84,9 +83,5 @@ import notifications from './utils/notifications'
     event.notification.close()
 
     event.waitUntil(clients.openWindow(global.origin))
-  })
-
-  global.addEventListener('pushsubscriptionchange', event => {
-    event.waitUntil(notifications.subscribe(self.registration))
   })
 })(self)
