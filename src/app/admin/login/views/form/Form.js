@@ -29,6 +29,7 @@ class Form extends React.PureComponent {
         method="POST"
       >
         <Input
+          autoFocus
           name="username"
           label="Username"
           required

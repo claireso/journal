@@ -20,7 +20,7 @@ export default class LazyLoadedImage extends React.PureComponent {
       <Spring
         from={{ opacity: 0 }}
         to={{ opacity: 1 }}
-        config={{ tension: 120, friction: 70 }}
+        config={{ tension: 140, friction: 70 }}
       >
         {props => <img style={props} {...this.props} />}
       </Spring>

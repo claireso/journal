@@ -31,6 +31,7 @@ class Input extends React.PureComponent {
           defaultValue={this.props.value}
           required={this.props.required}
           onChange={this.props.onChange && this.handleChange}
+          autoFocus={this.props.autoFocus}
         />
       </Group>
     )
@@ -43,7 +44,8 @@ Input.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   required: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  autoFocus: PropTypes.bool
 }
 
 export default Input

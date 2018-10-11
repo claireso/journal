@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Spring } from 'react-spring'
 
 import { ButtonIcon } from './Buttons'
 import { IconClose } from './Icons'
@@ -33,19 +34,23 @@ const FlashWrapper = styled.div`
 
 const Flash = ({ status, message, onClose, index }) => {
   return (
-    <FlashWrapper status={status}>
-      {message}
-      {onClose && (
-        <ButtonIcon
-          onClick={event => {
-            event.preventDefault()
-            onClose(index)
-          }}
-        >
-          <IconClose />
-        </ButtonIcon>
+    <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+      {props => (
+        <FlashWrapper style={props} status={status}>
+          {message}
+          {onClose && (
+            <ButtonIcon
+              onClick={event => {
+                event.preventDefault()
+                onClose(index)
+              }}
+            >
+              <IconClose />
+            </ButtonIcon>
+          )}
+        </FlashWrapper>
       )}
-    </FlashWrapper>
+    </Spring>
   )
 }
 
