@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { navigate } from '@reach/router'
 
-import Create from '../views/Create'
+import Create from '../views/modals/Create'
 
 import { createPhoto, CREATE_PHOTO_SUCCESS } from '@common/actions/photos'
 

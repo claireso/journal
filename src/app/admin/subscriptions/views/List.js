@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import qs from 'qs'
-import { Redirect } from '@reach/router'
 
 import Loader from '@common/components/Loader'
 
@@ -10,12 +9,15 @@ import List from '@admin/components/List'
 import { PagerButton } from '@admin/components/Buttons'
 import Subscription from './Subscription'
 import Toolbar from '@admin/components/Toolbar'
+import DeleteSubscription from '../containers/Delete'
 
-const regex = /^(\d+\/delete)?$/
+const ACTION_TYPES = {
+  DELETE_SUBSCRIPTION: 'delete_subscription'
+}
 
 class Subscriptions extends React.PureComponent {
   componentDidMount() {
-    const query = qs.parse(this.props.location.search.substring(1))
+    const query = this.getSearchParams()
     const params = {}
 
     if (query.page !== undefined) {
@@ -26,8 +28,8 @@ class Subscriptions extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const prevQuery = qs.parse(prevProps.location.search.substring(1))
-    const query = qs.parse(this.props.location.search.substring(1))
+    const prevQuery = this.getSearchParams(prevProps.location)
+    const query = this.getSearchParams()
 
     if (prevQuery.page !== query.page) {
       this.props.loadSubscriptions({ page: query.page })
@@ -35,19 +37,51 @@ class Subscriptions extends React.PureComponent {
     }
   }
 
+  getSearchParams = loc => {
+    if (!loc) loc = this.props.location
+
+    return qs.parse(loc.search.substring(1))
+  }
+
+  navigate = (params = {}) => {
+    const query = this.getSearchParams()
+
+    const search = qs.stringify({
+      ...query,
+      ...params
+    })
+
+    this.props.navigate(`?${search}`)
+  }
+
   onDelete = (id, event) => {
     event && event.preventDefault()
-    this.props.navigate(`${id}/delete`)
+    this.navigate({
+      action: ACTION_TYPES.DELETE_SUBSCRIPTION,
+      id: id
+    })
+  }
+
+  getModal() {
+    const query = this.getSearchParams()
+    const action = query.action
+    const id = Number(query.id)
+
+    if (!action) return null
+
+    const onClose = () => this.navigate({ action: undefined, id: undefined })
+
+    switch (action) {
+      case ACTION_TYPES.DELETE_SUBSCRIPTION: {
+        if (!id) return null
+        return <DeleteSubscription id={id} onClose={onClose} />
+      }
+    }
   }
 
   render() {
-    const path = this.props['*']
     const { subscriptions } = this.props
     const { pager } = subscriptions
-
-    if (!regex.test(path)) {
-      return <Redirect to="/admin/subscriptions" />
-    }
 
     return (
       <div>
@@ -66,10 +100,7 @@ class Subscriptions extends React.PureComponent {
               ))}
             </List>
 
-            <Pager
-              {...pager}
-              navigate={page => this.props.navigate(`?page=${page}`)}
-            >
+            <Pager {...pager} navigate={page => this.navigate({ page })}>
               {({ items, getItemsProps }) => {
                 return items.map(item => (
                   <li key={item.label}>
@@ -86,7 +117,7 @@ class Subscriptions extends React.PureComponent {
               }}
             </Pager>
 
-            {this.props.children}
+            {this.getModal()}
           </React.Fragment>
         )}
       </div>
@@ -95,7 +126,6 @@ class Subscriptions extends React.PureComponent {
 }
 
 Subscriptions.propTypes = {
-  '*': PropTypes.string.isRequired,
   subscriptions: PropTypes.shape({
     isLoading: PropTypes.bool.isRequired,
     pager: PropTypes.shape({

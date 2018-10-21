@@ -6,29 +6,32 @@ import { PrimaryButton, SecondaryButton } from '@admin/components/Buttons'
 import { Heading1 } from '@admin/components/Headings'
 import Text from '@admin/components/Text'
 
-const Delete = ({ isProcessing, ...props }) => {
+const Delete = props => {
+  const { isProcessing } = props
   return (
-    <Modal onClose={() => props.navigate('/admin/subscriptions')}>
+    <Modal onClose={() => props.onClose()}>
       <Heading1>Are you sure?</Heading1>
       <p>This action is irreversible</p>
       <Text align="right">
         <SecondaryButton
           onClick={event => {
             event.preventDefault()
-            props.navigate('/admin/subscriptions')
+            props.onClose()
           }}
         >
-          Cancel
+          {' '}
+          Cancel{' '}
         </SecondaryButton>
         <PrimaryButton
           onClick={event => {
             event.preventDefault()
             if (isProcessing) return
-            props.deleteSubscription(props.id)
+            props.deletePhoto(props.id)
           }}
           isLoading={isProcessing}
         >
-          Yes
+          {' '}
+          Yes{' '}
         </PrimaryButton>
       </Text>
     </Modal>
@@ -36,10 +39,10 @@ const Delete = ({ isProcessing, ...props }) => {
 }
 
 Delete.propTypes = {
-  id: PropTypes.string.isRequired,
-  navigate: PropTypes.func.isRequired,
-  deleteSubscription: PropTypes.func.isRequired,
-  isProcessing: PropTypes.bool.isRequired
+  deletePhoto: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  isProcessing: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired
 }
 
 export default Delete
