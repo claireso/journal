@@ -1,13 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Redirect } from '@reach/router'
 
 import Page from './components/Page'
 import FlashGroup from './components/FlashGroup'
 import { AdminTabs } from './components/tabs'
+import Link from './components/Links'
+import { IconAngleRight } from './components/Icons'
 
 import { closeMessage } from '@common/actions/messages'
+
+const Nav = styled.div`
+  align-items: center;
+  border-bottom: 1px solid var(--secondary);
+  display: flex;
+  justify-content: space-between;
+`
 
 const App = ({ children, messages, ...props }) => {
   if (!props.user || !props.user.cid) {
@@ -18,7 +28,13 @@ const App = ({ children, messages, ...props }) => {
   return (
     <Page>
       <FlashGroup messages={messages} onClose={props.closeMessage} />
-      <AdminTabs />
+      <Nav>
+        <AdminTabs />
+        <Link href="/">
+          View website
+          <IconAngleRight />
+        </Link>
+      </Nav>
       {children}
     </Page>
   )
