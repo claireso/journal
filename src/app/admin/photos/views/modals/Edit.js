@@ -20,7 +20,7 @@ class Edit extends React.PureComponent {
     if (photo === undefined) return null
 
     return (
-      <Modal onClose={() => this.props.navigate('/admin/photos')}>
+      <Modal onClose={() => this.props.onClose()}>
         {error && <Flash {...error} />}
         <Heading1>Edit photo</Heading1>
         <Form
@@ -34,8 +34,6 @@ class Edit extends React.PureComponent {
 }
 
 Edit.propTypes = {
-  id: PropTypes.string.isRequired,
-  navigate: PropTypes.func.isRequired,
   error: PropTypes.shape({
     status: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired
@@ -43,7 +41,9 @@ Edit.propTypes = {
   editPhoto: PropTypes.func.isRequired,
   loadPhoto: PropTypes.func.isRequired,
   photo: PropTypes.object,
-  isProcessing: PropTypes.bool.isRequired
+  isProcessing: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
 }
 
 export default Edit

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import qs from 'qs'
-import { Redirect } from '@reach/router'
 
 import Loader from '@common/components/Loader'
 
@@ -11,13 +10,20 @@ import List from '@admin/components/List'
 import { PrimaryButton, PagerButton } from '@admin/components/Buttons'
 import { IconPlus } from '@admin/components/Icons'
 
+import CreatePhoto from '../containers/Create'
+import EditPhoto from '../containers/Edit'
+import DeletePhoto from '../containers/Delete'
 import Photo from './Photo'
 
-const regex = /^(new|(\d+\/(edit|delete)))?$/
+const ACTION_TYPES = {
+  CREATE_PHOTO: 'create_photo',
+  EDIT_PHOTO: 'edit_photo',
+  DELETE_PHOTO: 'delete_photo'
+}
 
 class Photos extends React.PureComponent {
   componentDidMount() {
-    const query = qs.parse(this.props.location.search.substring(1))
+    const query = this.getSearchParams()
     const params = {}
 
     if (query.page !== undefined) {
@@ -28,8 +34,8 @@ class Photos extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const prevQuery = qs.parse(prevProps.location.search.substring(1))
-    const query = qs.parse(this.props.location.search.substring(1))
+    const prevQuery = this.getSearchParams(prevProps.location)
+    const query = this.getSearchParams()
 
     if (prevQuery.page !== query.page) {
       this.props.loadPhotos({ page: query.page })
@@ -37,23 +43,70 @@ class Photos extends React.PureComponent {
     }
   }
 
+  getSearchParams = loc => {
+    if (!loc) loc = this.props.location
+
+    return qs.parse(loc.search.substring(1))
+  }
+
+  navigate = (params = {}) => {
+    const query = this.getSearchParams()
+
+    const search = qs.stringify({
+      ...query,
+      ...params
+    })
+
+    this.props.navigate(`?${search}`)
+  }
+
   onDelete = (id, event) => {
     event.preventDefault()
-    this.props.navigate(`${id}/delete`)
+    this.navigate({
+      action: ACTION_TYPES.DELETE_PHOTO,
+      id: id
+    })
   }
 
   onEdit = (id, event) => {
     event.preventDefault()
-    this.props.navigate(`${id}/edit`)
+    this.navigate({
+      action: ACTION_TYPES.EDIT_PHOTO,
+      id: id
+    })
+  }
+
+  getModal() {
+    const query = this.getSearchParams()
+    const action = query.action
+    const id = Number(query.id)
+
+    if (!action) return null
+
+    const onClose = () => this.navigate({ action: undefined, id: undefined })
+
+    switch (action) {
+      case ACTION_TYPES.CREATE_PHOTO: {
+        return <CreatePhoto onClose={onClose} />
+      }
+      case ACTION_TYPES.DELETE_PHOTO: {
+        if (!id) return null
+        return <DeletePhoto id={id} onClose={onClose} />
+      }
+      case ACTION_TYPES.EDIT_PHOTO: {
+        if (!id) return null
+
+        let photo = this.props.photos.items.find(p => p.id === id)
+
+        if (!photo) photo = this.props.photos.detail
+
+        return <EditPhoto onClose={onClose} photo={photo} id={id} />
+      }
+    }
   }
 
   render() {
     const { photos } = this.props
-    const path = this.props['*']
-
-    if (!regex.test(path)) {
-      return <Redirect to="/admin/photos" />
-    }
 
     return (
       <div>
@@ -61,7 +114,7 @@ class Photos extends React.PureComponent {
           <PrimaryButton
             onClick={ev => {
               ev.preventDefault()
-              this.props.navigate('new')
+              this.navigate({ action: ACTION_TYPES.CREATE_PHOTO })
             }}
           >
             Add a photo
@@ -84,11 +137,7 @@ class Photos extends React.PureComponent {
               ))}
             </List>
 
-            <Pager
-              {...photos.pager}
-              // navigate={ (page) => this.props.loadPhotos({page})}
-              navigate={page => this.props.navigate(`?page=${page}`)}
-            >
+            <Pager {...photos.pager} navigate={page => this.navigate({ page })}>
               {({ items, getItemsProps }) => {
                 return items.map(item => (
                   <li key={item.label}>
@@ -105,7 +154,7 @@ class Photos extends React.PureComponent {
               }}
             </Pager>
 
-            {this.props.children}
+            {this.getModal()}
           </React.Fragment>
         )}
       </div>
@@ -114,7 +163,6 @@ class Photos extends React.PureComponent {
 }
 
 Photos.propTypes = {
-  '*': PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   navigate: PropTypes.func.isRequired,
   photos: PropTypes.shape({
