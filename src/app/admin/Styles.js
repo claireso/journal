@@ -43,4 +43,9 @@ export default createGlobalStyle`
   svg {
     fill: currentColor;
   }
+
+  a {
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
 `
