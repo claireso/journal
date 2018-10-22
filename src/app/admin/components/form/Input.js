@@ -7,10 +7,16 @@ import Label from './components/Label'
 
 const StyledInput = styled.input`
   border: 1px solid var(--gray-1);
+  border-radius: 0.4rem;
   display: block;
+  outline: none;
   padding: 1rem;
   width: 100%;
   font-size: 1.4rem;
+
+  &:focus {
+    box-shadow: 0 0 0 0.3rem #c8e2ff;
+  }
 `
 
 class Input extends React.PureComponent {

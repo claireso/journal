@@ -16,6 +16,7 @@ const ModalWrapper = styled.div`
 const ModalInner = styled.div`
   background: var(--white);
   border: 2rem solid var(--secondary);
+  border-radius: 0.4rem;
   padding: 4rem;
   max-width: 69rem;
   margin: calc(var(--gutter) * 4) auto;

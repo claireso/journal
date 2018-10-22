@@ -6,6 +6,7 @@ const Button = styled.button`
   appearance: none;
   align-items: center;
   border: none;
+  border-radius: 0.2rem;
   cursor: pointer;
   display: inline-flex;
   font-family: 'Roboto', Arial, sans-serif;
@@ -60,6 +61,10 @@ export const SecondaryButton = styled(Button)`
 
   &:hover {
     background: var(--secondary-darker);
+  }
+
+  & + ${StyledPrimaryButton} {
+    margin-left: 1rem;
   }
 `
 

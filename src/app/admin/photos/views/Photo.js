@@ -27,12 +27,13 @@ const PhotoPicture = styled.div`
   margin: 0 1rem 0 0;
 
   img {
+    border: 0.5rem solid white;
+    border-radius: 0.2rem;
+    display: block;
+    margin: 0 auto;
     max-width: 100%;
     max-height: 11rem;
     width: auto;
-    margin: 0 auto;
-    display: block;
-    border: 0.5rem solid white;
   }
 `
 

@@ -19,6 +19,7 @@ const StyledTab = styled.li`
   a {
     background: var(--secondary);
     border-bottom: none;
+    border-radius: 0.2rem 0.2rem 0 0;
     color: var(--text);
     display: inline-block;
     font-size: 1.4rem;
