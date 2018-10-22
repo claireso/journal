@@ -15,6 +15,8 @@ const Wrapper = styled.div`
 
   > main {
     width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 `
 

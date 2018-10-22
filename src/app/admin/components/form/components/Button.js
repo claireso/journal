@@ -8,14 +8,14 @@ export const SubmitButton = styled.input.attrs({
   appearence: none;
   background: var(--primary);
   border: none;
+  border-radius: 3.6rem;
   color: white;
   cursor: pointer;
   display: block;
   font-size: 1.4rem;
-  margin: calc(var(--gutter) * 2) 0 0;
+  margin: 3rem auto 0;
   outline: none;
-  padding: 1.5rem 5rem;
-  width: 100%;
+  padding: 1.5rem 5.5rem;
   transition: background 150ms ease-out;
 
   &:hover {
@@ -23,17 +23,14 @@ export const SubmitButton = styled.input.attrs({
   }
 `
 
-export const SubmitButtonLoading = styled(SubmitButton).attrs({
+export const SubmitButtonLoading = styled.div.attrs({
   children: <Loader />
 })`
-  padding: 1.8rem 5rem 1.9rem;
+  margin: 3rem 0 0;
+  padding: 1.8rem 0 1.9rem;
 
   ${Loader} {
     margin: 0 auto;
-
-    &:after {
-      background: #fff;
-    }
   }
 `
 
