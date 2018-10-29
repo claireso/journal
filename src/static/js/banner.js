@@ -7,11 +7,16 @@ class Banner {
     this.dom = dom
     this.buttonClose = buttonClose
 
-    if (!('serviceWorker' in navigator) || window.safari) {
+    if (!('serviceWorker' in navigator)) {
       return
     }
 
     navigator.serviceWorker.register('/sw.js')
+
+    // do not display banner in safari
+    if (window.safari) {
+      return
+    }
 
     // show banner if user
     // - has not already subscribed
