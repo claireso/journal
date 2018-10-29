@@ -7,8 +7,8 @@ class Banner {
     this.dom = dom
     this.buttonClose = buttonClose
 
-    if (!('serviceWorker' in navigator)) {
-      throw new Error('Service worker not available')
+    if (!('serviceWorker' in navigator) || window.safari) {
+      return
     }
 
     navigator.serviceWorker.register('/sw.js')

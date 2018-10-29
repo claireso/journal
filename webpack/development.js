@@ -9,6 +9,11 @@ const ROOT = process.cwd()
 
 module.exports = merge(webpackConfig, {
   mode: 'development',
+  output: {
+    filename: (chunkData) => {
+      return chunkData.chunk.name === 'sw' ? '[name].js' : 'js/[name].js'
+    },
+  },
   plugins: [
     CopyWebpackPlugin([
       {

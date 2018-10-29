@@ -17,6 +17,7 @@ const createThumbnail = file =>
 
 const UploaderWrapper = styled.div`
   border: 1px solid var(--gray-1);
+  border-radius: 0.4rem;
   padding: 2rem;
   position: relative;
 `
