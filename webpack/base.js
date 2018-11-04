@@ -8,8 +8,7 @@ module.exports = {
     admin: ['@babel/polyfill', './static/js/admin.js'],
     journal: ['@babel/polyfill', './static/js/journal.js'],
     polyfills: './static/js/polyfills.js',
-    banner: './static/js/banner.js',
-    sw: ['@babel/polyfill', './static/js/sw.js']
+    banner: './static/js/banner.js'
   },
   output: {
     filename: `js/[name].js`,
@@ -29,5 +28,17 @@ module.exports = {
         }
       }
     ]
+  },
+  optimization: {
+		splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: 'vendors',
+					chunks: 'initial',
+          minChunks: 2,
+          test: /[\\/]node_modules[\\/]/
+				},
+      }
+    }
   }
 }

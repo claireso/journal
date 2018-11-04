@@ -1,0 +1,9 @@
+{
+  "restartable": "rs",
+  "exec": "babel-node --plugins dynamic-import-node",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules"
+  ],
+  "ext": "js"
+}
