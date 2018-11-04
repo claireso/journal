@@ -44,7 +44,7 @@ App.propTypes = {
   children: PropTypes.node,
   location: PropTypes.object.isRequired,
   user: PropTypes.shape({
-    cid: PropTypes.string.isRequired
+    cid: PropTypes.string
   }),
   messages: PropTypes.array.isRequired,
   closeMessage: PropTypes.func.isRequired

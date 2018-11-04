@@ -12,9 +12,8 @@ const ROOT = process.cwd()
 module.exports = merge(webpackConfig, {
   mode: 'production',
   output: {
-    filename: (chunkData) => {
-      return chunkData.chunk.name === 'sw' ? '[name].js' : 'js/[name]-[chunkhash:10].js'
-    },
+    filename: 'js/[name]-[chunkhash:10].js',
+    chunkFilename: 'js/[name]-[chunkhash:10].bundle.js',
   },
   plugins: [
     CopyWebpackPlugin([
@@ -25,6 +24,10 @@ module.exports = merge(webpackConfig, {
       {
         from: './static/icons/*',
         to: `${ROOT}/public/icons/[name].[ext]`
+      },
+      {
+        from: './static/js/sw.js',
+        to: `${ROOT}/public/[name].[ext]`
       }
     ]),
     new ManifestPlugin({
@@ -45,5 +48,9 @@ module.exports = merge(webpackConfig, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
-  ]
+  ],
+  performance: {
+    maxEntrypointSize: 400000,
+    maxAssetSize: 400000
+  }
 })
