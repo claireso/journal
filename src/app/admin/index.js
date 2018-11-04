@@ -1,15 +1,25 @@
 import React from 'react'
 import { Router, Redirect } from '@reach/router'
+import Loadable from 'react-loadable'
 
 import Styles from './Styles'
+import Loader from '@common/components/Loader'
 import App from './App'
 import Login from './login/containers/Login'
-import Photos from './photos/containers/List'
-import Subscriptions from './subscriptions/containers/List'
 
 import ScrollUp from './components/ScrollUp'
 
 const NotFound = () => <p>Sorry, nothing here</p>
+
+const AsyncPhotos = Loadable({
+  loader: () => import("./photos/containers/List"),
+  loading: Loader
+})
+
+const AsyncSubscriptions = Loadable({
+  loader: () => import("./subscriptions/containers/List"),
+  loading: Loader
+})
 
 const Admin = () => {
   return (
@@ -20,8 +30,8 @@ const Admin = () => {
           <App path="/">
             <Redirect from="/" to="/admin/photos" />
             <NotFound default />
-            <Photos path="photos" />
-            <Subscriptions path="subscriptions" />
+            <AsyncPhotos path="photos" />
+            <AsyncSubscriptions path="subscriptions" />
           </App>
           <Login path="login" />
         </ScrollUp>
