@@ -1,5 +1,7 @@
 Journal is a self-hosted website to show your photography.
 
+Note: the theme is optimized for pictures with an aspect ratio of 3:2 or 1:1
+
 # Requirements:
 
 - Node v8
