@@ -81,7 +81,7 @@
     "prettier": "1.14.3",
     "promptly": "3.0.3",
     "redux-devtools-extension": "2.13.5",
-    "webpack": "4.24.0",
+    "webpack": "4.25.0",
     "webpack-cli": "3.1.2",
     "webpack-manifest-plugin": "2.0.4",
     "webpack-merge": "4.1.4"
