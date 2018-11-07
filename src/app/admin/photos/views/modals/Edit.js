@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import Modal from '@admin/components/Modal'
 import Flash from '@admin/components/Flash'
 import { Heading1 } from '@admin/components/Headings'
 
@@ -20,7 +19,7 @@ class Edit extends React.PureComponent {
     if (photo === undefined) return null
 
     return (
-      <Modal onClose={() => this.props.onClose()}>
+      <Fragment>
         {error && <Flash {...error} />}
         <Heading1>Edit photo</Heading1>
         <Form
@@ -28,7 +27,7 @@ class Edit extends React.PureComponent {
           photo={photo}
           isProcessing={isProcessing}
         />
-      </Modal>
+      </Fragment>
     )
   }
 }
