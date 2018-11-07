@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Spring } from 'react-spring'
+import { Transition } from 'react-spring'
 
 const ModalWrapper = styled.div`
   background: rgba(0, 0, 0, 0.5);
@@ -11,6 +11,7 @@ const ModalWrapper = styled.div`
   position: fixed;
   right: 0;
   top: 0;
+  will-change: opacity;
 `
 
 const ModalInner = styled.div`
@@ -23,12 +24,28 @@ const ModalInner = styled.div`
 `
 
 class Modal extends React.PureComponent {
+  static DEFAULT_SPEED = 350
+
+  constructor(props) {
+    super(props)
+    this.content = React.createRef()
+    this.state = {
+      isOpen: props.isOpen
+    }
+  }
+
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown)
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyDown)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.isOpen !== prevProps.isOpen) {
+      this.setState({ isOpen: this.props.isOpen })
+    }
   }
 
   handleKeyDown = event => {
@@ -41,46 +58,62 @@ class Modal extends React.PureComponent {
     const target = event.target
 
     if (
-      target.contains(this.content) &&
+      target.contains(this.content.current) &&
       !target.classList.contains('modal__inner')
     ) {
       this.close()
     }
   }
 
-  close() {
+  close = () => {
+    this.setState({ isOpen: false })
     const { onClose } = this.props
 
-    onClose && onClose()
+    onClose && setTimeout(() => onClose(), Modal.DEFAULT_SPEED + 100)
   }
 
   render() {
+    const { isOpen } = this.state
+
     return (
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-        {wrapperStyles => (
-          <ModalWrapper
-            style={wrapperStyles}
-            id="modal"
-            onClick={this.handleClick}
-          >
-            <Spring
-              from={{ transform: 'translate3d(0, 2rem, 0)' }}
-              to={{ transform: 'translate3d(0, 0, 0)' }}
+      <Transition
+        items={isOpen}
+        from={{ opacity: 0 }}
+        enter={{ opacity: 1 }}
+        leave={{ opacity: 0 }}
+        config={{ tension: Modal.DEFAULT_SPEED }}
+      >
+        {isOpen =>
+          isOpen &&
+          (wrapperStyles => (
+            <ModalWrapper
+              style={wrapperStyles}
+              id="modal"
+              onClick={this.handleClick}
             >
-              {innerStyles => (
-                <ModalInner
-                  ref={c => {
-                    this.content = c
-                  }}
-                  style={innerStyles}
-                >
-                  {this.props.children}
-                </ModalInner>
-              )}
-            </Spring>
-          </ModalWrapper>
-        )}
-      </Spring>
+              <Transition
+                items={isOpen}
+                from={{ transform: 'translate3d(0, 2rem, 0)' }}
+                enter={{ transform: 'translate3d(0, 0, 0)' }}
+                leave={{ transform: 'translate3d(0, 2rem, 0)' }}
+                config={{ tension: Modal.DEFAULT_SPEED }}
+              >
+                {isOpen =>
+                  isOpen &&
+                  (innerStyles => (
+                    <ModalInner ref={this.content} style={innerStyles}>
+                      {this.props.children &&
+                        React.cloneElement(this.props.children, {
+                          onClose: this.close
+                        })}
+                    </ModalInner>
+                  ))
+                }
+              </Transition>
+            </ModalWrapper>
+          ))
+        }
+      </Transition>
     )
   }
 }

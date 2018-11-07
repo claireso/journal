@@ -9,6 +9,7 @@ import Toolbar from '@admin/components/Toolbar'
 import List from '@admin/components/List'
 import { PrimaryButton, PagerButton } from '@admin/components/Buttons'
 import { IconPlus } from '@admin/components/Icons'
+import Modal from '@admin/components/Modal'
 
 import CreatePhoto from '../containers/Create'
 import EditPhoto from '../containers/Edit'
@@ -81,17 +82,18 @@ class Photos extends React.PureComponent {
     const action = query.action
     const id = Number(query.id)
 
-    if (!action) return null
-
     const onClose = () => this.navigate({ action: undefined, id: undefined })
+    let component
 
     switch (action) {
       case ACTION_TYPES.CREATE_PHOTO: {
-        return <CreatePhoto onClose={onClose} />
+        component = <CreatePhoto />
+        break
       }
       case ACTION_TYPES.DELETE_PHOTO: {
         if (!id) return null
-        return <DeletePhoto id={id} onClose={onClose} />
+        component = <DeletePhoto id={id} />
+        break
       }
       case ACTION_TYPES.EDIT_PHOTO: {
         if (!id) return null
@@ -100,9 +102,16 @@ class Photos extends React.PureComponent {
 
         if (!photo) photo = this.props.photos.detail
 
-        return <EditPhoto onClose={onClose} photo={photo} id={id} />
+        component = <EditPhoto photo={photo} id={id} />
+        break
       }
     }
+
+    return (
+      <Modal isOpen={!!action} onClose={onClose}>
+        {component}
+      </Modal>
+    )
   }
 
   render() {

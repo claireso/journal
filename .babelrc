@@ -6,6 +6,7 @@
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
     ["@babel/plugin-proposal-class-properties", { "loose": false }],
+    "react-loadable/babel",
     ["babel-plugin-styled-components", {
       "ssr": true,
       "displayName": true

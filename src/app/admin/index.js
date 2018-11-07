@@ -5,19 +5,23 @@ import Loadable from 'react-loadable'
 import Styles from './Styles'
 import Loader from '@common/components/Loader'
 import App from './App'
-import Login from './login/containers/Login'
 
 import ScrollUp from './components/ScrollUp'
 
 const NotFound = () => <p>Sorry, nothing here</p>
 
 const AsyncPhotos = Loadable({
-  loader: () => import("./photos/containers/List"),
+  loader: () => import('./photos/containers/List'),
   loading: Loader
 })
 
 const AsyncSubscriptions = Loadable({
-  loader: () => import("./subscriptions/containers/List"),
+  loader: () => import('./subscriptions/containers/List'),
+  loading: Loader
+})
+
+const AsyncLogin = Loadable({
+  loader: () => import('./login/containers/Login'),
   loading: Loader
 })
 
@@ -33,7 +37,7 @@ const Admin = () => {
             <AsyncPhotos path="photos" />
             <AsyncSubscriptions path="subscriptions" />
           </App>
-          <Login path="login" />
+          <AsyncLogin path="login" />
         </ScrollUp>
       </Router>
     </React.Fragment>
