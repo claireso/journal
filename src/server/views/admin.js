@@ -1,10 +1,12 @@
 // admin layout
+/* eslint indent: 0 */
 
 export default ({
   content = '',
   manifest = {},
   preloadedState = {},
-  styles = ''
+  styles = '',
+  bundles = []
 } = {}) => `
   <!doctype html>
   <html lang="fr">
@@ -27,6 +29,13 @@ export default ({
       })()
       </script>
       <script defer src="${manifest['vendors.js']}"></script>
+
+      ${bundles
+        .map(bundle => {
+          return `<script defer src="${bundle.publicPath}"></script>`
+        })
+        .join('\n')}
+
       <script>
         if ('IntersectionObserver' in window === false) {
           var scriptElement = document.createElement('script')

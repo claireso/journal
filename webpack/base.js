@@ -1,3 +1,4 @@
+const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin
 const path = require('path')
 
 const ROOT = process.cwd()
@@ -29,6 +30,11 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new ReactLoadablePlugin({
+      filename: './dist/react-loadable.json',
+    }),
+  ],
   optimization: {
 		splitChunks: {
       cacheGroups: {

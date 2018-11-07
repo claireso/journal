@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import helmet from 'helmet'
 import session from 'express-session'
+import Loadable from 'react-loadable'
 import '@babel/polyfill'
 
 import admin from './routes/admin'
@@ -49,7 +50,9 @@ app.use(function(err, req, res) {
   console.log(err)
 })
 
-app.listen(PORT, () => {
-  /* eslint-disable */
-  console.log('App listening on port %d!', PORT)
+Loadable.preloadAll().then(() => {
+  app.listen(PORT, () => {
+    /* eslint-disable */
+    console.log('App listening on port %d!', PORT)
+  })
 })
