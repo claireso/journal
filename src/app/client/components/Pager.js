@@ -13,68 +13,66 @@ const StyledPager = styled.ul`
   }
 `
 
-class Pager extends React.PureComponent {
-  getItems() {
-    const { first, prev, next, last } = this.props
-    const items = []
+const getItems = props => {
+  const { first, prev, next, last } = props
+  const items = []
 
-    if (first) {
-      items.push({
-        label: '««',
-        title: 'First page',
-        page: first
-      })
-    }
-
-    if (prev) {
-      items.push({
-        label: '«',
-        title: 'Previous page',
-        page: prev
-      })
-    }
-
-    if (next) {
-      items.push({
-        label: '»',
-        title: 'Next page',
-        page: next
-      })
-    }
-
-    if (last) {
-      items.push({
-        label: '»»',
-        title: 'Last page',
-        page: last
-      })
-    }
-
-    return items
+  if (first) {
+    items.push({
+      label: '««',
+      title: 'First page',
+      page: first
+    })
   }
 
-  getItemsProps = ({ item, ...customProps } = {}) => {
-    const { navigate } = this.props
+  if (prev) {
+    items.push({
+      label: '«',
+      title: 'Previous page',
+      page: prev
+    })
+  }
 
-    return {
-      ...customProps,
-      onClick: event => {
-        event && event.preventDefault()
-        navigate && navigate(item.page)
-      }
+  if (next) {
+    items.push({
+      label: '»',
+      title: 'Next page',
+      page: next
+    })
+  }
+
+  if (last) {
+    items.push({
+      label: '»»',
+      title: 'Last page',
+      page: last
+    })
+  }
+
+  return items
+}
+
+const getItemsProps = props => ({ item, ...customProps } = {}) => {
+  const { navigate } = props
+
+  return {
+    ...customProps,
+    onClick: event => {
+      event && event.preventDefault()
+      navigate && navigate(item.page)
     }
   }
+}
 
-  render() {
-    return (
-      <StyledPager>
-        {this.props.children({
-          items: this.getItems(),
-          getItemsProps: this.getItemsProps
-        })}
-      </StyledPager>
-    )
-  }
+const Pager = ({ children, ...props }) => {
+  return (
+    <StyledPager>
+      {children({
+        items: getItems(props),
+        getItemsProps: getItemsProps(props)
+      })}
+    </StyledPager>
+  )
 }
 
 Pager.propTypes = {
