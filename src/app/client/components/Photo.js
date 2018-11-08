@@ -101,21 +101,28 @@ const Picture = styled(LazyLoadedImage).attrs({
   left: 0;
 `
 
-const Photo = (props = {}) => {
-  return (
-    <PhotoWrapper position={props.position}>
-      <PhotoInner portrait={props.portrait} square={props.square}>
-        <PictureWrapper portrait={props.portrait} square={props.square}>
-          {props.inView && <Picture name={props.name} />}
-        </PictureWrapper>
-        <Title>
-          <span dangerouslySetInnerHTML={{ __html: props.title }} />
+class Photo extends React.PureComponent {
+  render() {
+    return (
+      <PhotoWrapper position={this.props.position}>
+        <PhotoInner portrait={this.props.portrait} square={this.props.square}>
+          <PictureWrapper
+            portrait={this.props.portrait}
+            square={this.props.square}
+          >
+            {this.props.inView && <Picture name={this.props.name} />}
+          </PictureWrapper>
+          <Title>
+            <span dangerouslySetInnerHTML={{ __html: this.props.title }} />
 
-          {props.description && <Description>{props.description}</Description>}
-        </Title>
-      </PhotoInner>
-    </PhotoWrapper>
-  )
+            {this.props.description && (
+              <Description>{this.props.description}</Description>
+            )}
+          </Title>
+        </PhotoInner>
+      </PhotoWrapper>
+    )
+  }
 }
 
 Photo.propTypes = {

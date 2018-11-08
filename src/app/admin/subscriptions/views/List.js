@@ -7,8 +7,10 @@ import Loader from '@common/components/Loader'
 import Pager from '@admin/components/Pager'
 import List from '@admin/components/List'
 import { PagerButton } from '@admin/components/Buttons'
-import Subscription from './Subscription'
 import Toolbar from '@admin/components/Toolbar'
+import Modal from '@admin/components/Modal'
+
+import Subscription from './Subscription'
 import DeleteSubscription from '../containers/Delete'
 
 const ACTION_TYPES = {
@@ -67,16 +69,22 @@ class Subscriptions extends React.PureComponent {
     const action = query.action
     const id = Number(query.id)
 
-    if (!action) return null
-
     const onClose = () => this.navigate({ action: undefined, id: undefined })
+    let component
 
     switch (action) {
       case ACTION_TYPES.DELETE_SUBSCRIPTION: {
         if (!id) return null
-        return <DeleteSubscription id={id} onClose={onClose} />
+        component = <DeleteSubscription id={id} />
+        break
       }
     }
+
+    return (
+      <Modal isOpen={!!action} onClose={onClose}>
+        {component}
+      </Modal>
+    )
   }
 
   render() {
