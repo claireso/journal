@@ -60,27 +60,35 @@ const PhotoTools = styled.p`
   }
 `
 
-const Photo = props => {
-  return (
-    <PhotoWrapper>
-      <PhotoPicture>
-        {props.inView && <LazyLoadedImage src={`/img/${props.name}`} />}
-      </PhotoPicture>
-      <PhotoInner>
-        <PhotoTitle dangerouslySetInnerHTML={{ __html: props.title }} />
-        <PhotoDescription>{props.description}</PhotoDescription>
-        <PhotoTools>
-          <PrimaryButton onClick={props.onEdit.bind(this, props.id)}>
-            {' '}
-            Edit{' '}
-          </PrimaryButton>
-          <PrimaryButton onClick={props.onDelete.bind(this, props.id)}>
-            Delete
-          </PrimaryButton>
-        </PhotoTools>
-      </PhotoInner>
-    </PhotoWrapper>
-  )
+class Photo extends React.PureComponent {
+  render() {
+    return (
+      <PhotoWrapper>
+        <PhotoPicture>
+          {this.props.inView && (
+            <LazyLoadedImage src={`/img/${this.props.name}`} />
+          )}
+        </PhotoPicture>
+        <PhotoInner>
+          <PhotoTitle dangerouslySetInnerHTML={{ __html: this.props.title }} />
+          <PhotoDescription>{this.props.description}</PhotoDescription>
+          <PhotoTools>
+            <PrimaryButton
+              onClick={this.props.onEdit.bind(this, this.props.id)}
+            >
+              {' '}
+              Edit{' '}
+            </PrimaryButton>
+            <PrimaryButton
+              onClick={this.props.onDelete.bind(this, this.props.id)}
+            >
+              Delete
+            </PrimaryButton>
+          </PhotoTools>
+        </PhotoInner>
+      </PhotoWrapper>
+    )
+  }
 }
 
 Photo.propTypes = {

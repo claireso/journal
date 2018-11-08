@@ -3,7 +3,9 @@
   "exec": "babel-node --plugins dynamic-import-node",
   "ignore": [
     ".git",
-    "node_modules/**/node_modules"
+    "node_modules/**/node_modules",
+    "dist",
+    "public"
   ],
   "ext": "js"
 }
