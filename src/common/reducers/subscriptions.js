@@ -47,7 +47,8 @@ export default (state = initialState, action) => {
         pager: {
           ...state.pager,
           count: state.pager.count - 1
-        }
+        },
+        isProcessing: false
       }
     }
 
