@@ -5,13 +5,11 @@ const LazyLoadedImage = props => {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    if (loaded) return
-
     const img = new Image()
     img.src = props.src
 
     img.onload = () => setLoaded(true)
-  })
+  }, [])
 
   if (!loaded) return null
 

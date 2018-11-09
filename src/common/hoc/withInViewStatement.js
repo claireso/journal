@@ -9,8 +9,6 @@ export default WrappedComponent => {
     const targetComp = useRef(null)
 
     useEffect(() => {
-      if (inView) return
-
       const config = {
         root: null,
         rootMargin: '0px',
@@ -34,7 +32,7 @@ export default WrappedComponent => {
       observer.observe(targetDom)
 
       return () => observer.unobserve(targetDom)
-    })
+    }, [])
 
     return <WrappedComponent ref={targetComp} inView={inView} {...props} />
   }
