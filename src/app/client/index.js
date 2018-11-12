@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 
 import Styles from './Styles'
@@ -18,68 +18,64 @@ const Main = styled.main`
   }
 `
 
-class Page extends React.PureComponent {
-  state = {
-    isLoading: true
+const getPhotos = async (page) => {
+  let url = '/api/photos'
+
+  if (page !== undefined && page !== null) {
+    url += `?page=${page}`
   }
 
-  componentDidMount() {
+  const response = await fetch(url)
+
+  if (response.status === 200) {
+    return await response.json()
+  }
+
+  // redirect to homepage
+  if (window.location.search !== '') {
+    window.location.href = '/'
+  }
+}
+
+const Page = () => {
+  const [state, setState] = useState({isLoading: true})
+  const { items: photos, pager } = state
+
+  const loadPhotos = async (page) => {
+    setState({isLoading: true})
+    const data = await getPhotos(page)
+    data && setState({...state, ...data, isLoading: false})
+  }
+
+  const onNavigate = (event) => {
+    window.scroll(0, 0)
+    loadPhotos(event.state.page)
+  }
+
+  useEffect(async () => {
     const parsedUrl = new URL(window.location.href)
     const page = parsedUrl.searchParams.get('page')
 
-    this.loadPhotos(page)
+    loadPhotos(page)
 
     // listen history
-    window.addEventListener('popstate', event => {
-      window.scroll(0, 0)
-      this.loadPhotos(event.state.page)
-    })
-  }
+    window.addEventListener('popstate', onNavigate)
 
-  async loadPhotos(page) {
-    let url = '/api/photos'
-
-    if (page !== undefined && page !== null) {
-      url += `?page=${page}`
-    }
-
-    this.setState({ isLoading: true })
-
-    const response = await fetch(url)
-
-    if (response.status === 200) {
-      const data = await response.json()
-
-      this.setState({
-        isLoading: false,
-        ...data
-      })
-
-      return
-    }
-
-    // redirect to homepage
-    if (window.location.search !== '') {
-      window.location.href = '/'
-    }
-  }
-
-  render() {
-    const { items: photos, pager } = this.state
+    return () => window.removeEventListener('popstate', onNavigate)
+  }, [])
 
     return (
       <Main>
         <Styles />
-        {this.state.isLoading ? (
+        {state.isLoading ? (
           <Loader />
-        ) : photos.length > 0 ? (
+        ) : photos && photos.length > 0 ? (
           <Photos photos={photos} pager={pager} />
         ) : (
           <Welcome />
         )}
       </Main>
     )
-  }
 }
 
 export default Page
