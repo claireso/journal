@@ -4,6 +4,10 @@
     "es6": true,
     "node": true
   },
+  "globals": {
+    "workbox": true,
+    "clients": true
+  },
   "parser": "babel-eslint",
   "extends": [
     "eslint:recommended",
@@ -33,7 +37,9 @@
     "indent": [
       "error",
       2,
-      {"SwitchCase": 1}
+      {
+        "SwitchCase": 1
+      }
     ],
     "linebreak-style": [
       "error",

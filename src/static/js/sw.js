@@ -1,56 +1,81 @@
-/*eslint no-undef: 0*/
-/*eslint indent: 0*/
-;(global => {
-  const VERSION = '2'
+const VERSION = '2'
 
-  const CACHE_PREFIX = 'claireso-journal'
-  const CACHE_NAME_IMG = `${CACHE_PREFIX}-img-${VERSION}`
-  const CACHE_NAME_ASSETS = `${CACHE_PREFIX}-assets-${VERSION}`
-  const CACHE_NAME_PAGES = `${CACHE_PREFIX}-pages-${VERSION}`
+const CACHE_PREFIX = 'claireso-journal'
+const CACHE_NAME_IMG = `${CACHE_PREFIX}-img-${VERSION}`
+const CACHE_NAME_PAGES = `${CACHE_PREFIX}-pages-${VERSION}`
+const CACHE_NAME_CSS_FONTS = `${CACHE_PREFIX}-google-fonts-stylesheets-${VERSION}`
+const CACHE_NAME_FONTS = `${CACHE_PREFIX}-google-fonts-webfonts-${VERSION}`
 
-  const expectedCaches = [CACHE_NAME_IMG, CACHE_NAME_ASSETS, CACHE_NAME_PAGES]
+const expectedCaches = [
+  CACHE_NAME_IMG,
+  CACHE_NAME_PAGES,
+  CACHE_NAME_CSS_FONTS,
+  CACHE_NAME_FONTS
+]
 
-  importScripts('./sw-toolbox.js')
-
-  global.toolbox.options.cache = { name: CACHE_NAME_ASSETS }
+if (workbox) {
+  workbox.skipWaiting()
+  workbox.clientsClaim()
+  // precache js files
+  workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
   // cache for images
-  global.toolbox.router.get('/img/(.*)', global.toolbox.cacheFirst, {
-    cache: {
-      name: CACHE_NAME_IMG,
-      maxAgeSeconds: 86400 * 30 // cache for 30 days
-    }
-  })
-
-  //cache for css
-  global.toolbox.router.get('/css/(.*)', global.toolbox.cacheFirst)
-
-  //cache for js
-  global.toolbox.router.get('/js/(.*)', global.toolbox.cacheFirst)
+  workbox.routing.registerRoute(
+    /.*\.(png|jpg)/,
+    workbox.strategies.cacheFirst({
+      cacheName: CACHE_NAME_IMG,
+      plugins: [
+        new workbox.expiration.Plugin({
+          maxEntries: 100,
+          maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
+        })
+      ]
+    })
+  )
 
   // cache for fonts
-  global.toolbox.router.get('/(.+)', global.toolbox.cacheFirst, {
-    origin: /https?:\/\/fonts.+/
-  })
+  workbox.routing.registerRoute(
+    /^https:\/\/fonts\.googleapis\.com/,
+    workbox.strategies.staleWhileRevalidate({
+      cacheName: CACHE_NAME_CSS_FONTS
+    })
+  )
 
-  // no cache for api
-  global.toolbox.router.get('/api/(.*)', global.toolbox.networkOnly)
+  workbox.routing.registerRoute(
+    /^https:\/\/fonts\.gstatic\.com/,
+    workbox.strategies.cacheFirst({
+      cacheName: CACHE_NAME_FONTS,
+      plugins: [
+        new workbox.cacheableResponse.Plugin({
+          statuses: [0, 200]
+        }),
+        new workbox.expiration.Plugin({
+          maxAgeSeconds: 60 * 60 * 24 * 365
+        })
+      ]
+    })
+  )
 
-  // no cache for admin
-  global.toolbox.router.get('/admin/(.*)', global.toolbox.networkOnly)
+  // no cache for api and admin
+  workbox.routing.registerRoute(
+    /\/(api|admin)\/(.*)/,
+    workbox.strategies.networkOnly()
+  )
 
   // cache for pages
-  global.toolbox.router.get('/(.*)', global.toolbox.networkFirst, {
-    cache: {
-      name: CACHE_NAME_PAGES
-    }
-  })
+  workbox.routing.registerRoute(
+    /\/(.*)/,
+    workbox.strategies.networkFirst({
+      cacheName: CACHE_NAME_PAGES,
+      plugins: [
+        new workbox.cacheableResponse.Plugin({
+          statuses: [0, 200]
+        })
+      ]
+    })
+  )
 
-  global.addEventListener('install', event => {
-    event.waitUntil(global.skipWaiting())
-  })
-
-  global.addEventListener('activate', event => {
+  self.addEventListener('activate', event => {
     // remove old caches
     event.waitUntil(
       caches.keys().then(cacheNames => {
@@ -67,7 +92,8 @@
     )
   })
 
-  global.addEventListener('push', event => {
+  // web push
+  self.addEventListener('push', event => {
     if (!event.data) return
 
     const payload = JSON.parse(event.data.text())
@@ -79,9 +105,9 @@
     )
   })
 
-  global.addEventListener('notificationclick', event => {
+  self.addEventListener('notificationclick', event => {
     event.notification.close()
 
-    event.waitUntil(clients.openWindow(global.origin))
+    event.waitUntil(clients.openWindow(self.origin))
   })
-})(self)
+}

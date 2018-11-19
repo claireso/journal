@@ -120,7 +120,8 @@ class Modal extends React.PureComponent {
 
 Modal.propTypes = {
   children: PropTypes.node,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  isOpen: PropTypes.bool
 }
 
 export default Modal

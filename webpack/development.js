@@ -1,7 +1,7 @@
 const merge = require('webpack-merge')
 
 const ManifestPlugin = require('webpack-manifest-plugin')
-const CopyWebpackPlugin =  require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const webpackConfig = require('./base')
 
@@ -23,10 +23,6 @@ module.exports = merge(webpackConfig, {
         from: './static/icons/*',
         to: `${ROOT}/public/icons/[name].[ext]`
       },
-      {
-        from: './static/js/sw.js',
-        to: `${ROOT}/public/[name].[ext]`
-      }
     ]),
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
