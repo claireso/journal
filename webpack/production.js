@@ -2,7 +2,7 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 
 const ManifestPlugin = require('webpack-manifest-plugin')
-const CopyWebpackPlugin =  require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 
 const webpackConfig = require('./base')
@@ -24,10 +24,6 @@ module.exports = merge(webpackConfig, {
       {
         from: './static/icons/*',
         to: `${ROOT}/public/icons/[name].[ext]`
-      },
-      {
-        from: './static/js/sw.js',
-        to: `${ROOT}/public/[name].[ext]`
       }
     ]),
     new ManifestPlugin({
@@ -35,7 +31,7 @@ module.exports = merge(webpackConfig, {
       map(file) {
         // https://github.com/webpack-contrib/copy-webpack-plugin/issues/104
         // We need to do this until copy-webpack-plugin supports webpack hashing
-        file.name =  file.name.replace(/\-[a-f0-9]{10}\./, '.')
+        file.name = file.name.replace(/\-[a-f0-9]{10}\./, '.')
 
         return file
       }
