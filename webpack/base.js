@@ -1,5 +1,6 @@
-const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin
 const path = require('path')
+const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin
+const { InjectManifest } = require('workbox-webpack-plugin')
 
 const ROOT = process.cwd()
 
@@ -34,16 +35,20 @@ module.exports = {
     new ReactLoadablePlugin({
       filename: './dist/react-loadable.json',
     }),
+    new InjectManifest({
+      swSrc: './src/static/js/sw.js',
+      swDest: `${ROOT}/public/sw.js`
+    })
   ],
   optimization: {
-		splitChunks: {
+    splitChunks: {
       cacheGroups: {
         commons: {
           name: 'vendors',
-					chunks: 'initial',
+          chunks: 'initial',
           minChunks: 2,
           test: /[\\/]node_modules[\\/]/
-				},
+        },
       }
     }
   }
