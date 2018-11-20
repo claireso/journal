@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Styles from './Styles'
@@ -18,7 +19,7 @@ const Main = styled.main`
   }
 `
 
-const getPhotos = async (page) => {
+const getPhotos = async page => {
   let url = '/api/photos'
 
   if (page !== undefined && page !== null) {
@@ -37,45 +38,49 @@ const getPhotos = async (page) => {
   }
 }
 
-const Page = () => {
-  const [state, setState] = useState({isLoading: true})
+const Page = props => {
+  const [state, setState] = useState({
+    isLoading: false,
+    items: props.items,
+    pager: props.pager
+  })
   const { items: photos, pager } = state
 
-  const loadPhotos = async (page) => {
-    setState({isLoading: true})
+  const loadPhotos = async page => {
+    setState({ isLoading: true })
     const data = await getPhotos(page)
-    data && setState({...state, ...data, isLoading: false})
+    data && setState({ ...state, ...data, isLoading: false })
   }
 
-  const onNavigate = (event) => {
+  const onNavigate = event => {
     window.scroll(0, 0)
     loadPhotos(event.state.page)
   }
 
   useEffect(async () => {
-    const parsedUrl = new URL(window.location.href)
-    const page = parsedUrl.searchParams.get('page')
-
-    loadPhotos(page)
-
     // listen history
     window.addEventListener('popstate', onNavigate)
 
     return () => window.removeEventListener('popstate', onNavigate)
   }, [])
 
-    return (
-      <Main>
-        <Styles />
-        {state.isLoading ? (
-          <Loader />
-        ) : photos && photos.length > 0 ? (
-          <Photos photos={photos} pager={pager} />
-        ) : (
-          <Welcome />
-        )}
-      </Main>
-    )
+  return (
+    <Main>
+      <Styles />
+      {state.isLoading ? (
+        <Loader />
+      ) : photos && photos.length > 0 ? (
+        <Photos photos={photos} pager={pager} />
+      ) : (
+        <Welcome />
+      )}
+    </Main>
+  )
+}
+
+Page.propTypes = {
+  items: PropTypes.array,
+  pager: PropTypes.object
 }
 
 export default Page
