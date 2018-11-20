@@ -1,4 +1,6 @@
 import express from 'express'
+import url from 'url'
+import request from 'axios'
 
 import pool from '@server/db/db'
 import queries from '@server/db/queries'
@@ -7,15 +9,47 @@ import catchErrors from '@server/utils/catchErrors'
 
 import { publicKey } from '@server/web-push'
 
-import Page from '@client'
+import Component from '@client'
 import Layout from '@server/views/index'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   const { config } = req.app.locals
 
-  res.send(render(Layout, Page, null, config))
+  const api = url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: 'api/photos'
+  })
+
+  try {
+    const response = await request.get(api, {
+      params: {
+        page: req.query.page
+      }
+    })
+
+    const preloadedState = response.data
+
+    res.send(
+      render({
+        Layout,
+        Component,
+        config,
+        preloadedState,
+        props: preloadedState
+      })
+    )
+  } catch (err) {
+    const status = err.response && err.response.status
+
+    if (status === 404 && req.url !== '/') {
+      res.redirect('/')
+    }
+
+    res.status(500).send()
+  }
 })
 
 router.get('/push-public-key', (req, res) => res.send(publicKey))

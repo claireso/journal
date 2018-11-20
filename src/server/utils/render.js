@@ -11,7 +11,13 @@ import stats from '../../../dist/react-loadable.json'
 const manifestPath = `${process.cwd()}/public/asset-manifest.json`
 const manifest = readFileSync(manifestPath)
 
-export default (Layout, Component, props = {}, config = {}, preloadedState) => {
+export default ({
+  Layout,
+  Component,
+  config = {},
+  props = {},
+  preloadedState
+}) => {
   const sheet = new ServerStyleSheet()
   const modules = []
 

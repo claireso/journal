@@ -3,43 +3,43 @@
 /* eslint no-useless-escape: 0 */
 /* eslint indent: 0 */
 
-export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) => `
+export default ({ content = '', config = {}, manifest = {}, styles = '', preloadedState = {} } = {}) => `
   <!doctype html>
   <html lang="fr">
     <head>
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
-      <title> ${ config.meta.title } </title>
+      <title> ${ config.meta.title} </title>
       <meta name="robots" content="noindex, nofollow" />
-      <meta name="description" content="${ config.meta.description }" />
+      <meta name="description" content="${ config.meta.description}" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#868585"/>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
       <link rel="manifest" href="${manifest['manifest.json']}" />
 
-      ${ styles }
+      ${ styles}
 
       ${(config.analytics && config.analytics.ga) ?
-        `
-          <script async src="https://www.googletagmanager.com/gtag/js?id=${ config.analytics.ga }"></script>
+    `
+          <script async src="https://www.googletagmanager.com/gtag/js?id=${ config.analytics.ga}"></script>
           <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', '${ config.analytics.ga }');
+            gtag('config', '${ config.analytics.ga}');
           </script>
         `
-        :
-        ''
-      }
+    :
+    ''
+  }
     </head>
     <body>
       ${ (config.notification.publicKey && config.notification.privateKey) ?
-        `
+    `
         <div role="button" id="js-notification" class="notification is-hidden">
           <div class="notification__inner">
-            <p>${ config.notification.enableDefaultText }</p>
+            <p>${ config.notification.enableDefaultText}</p>
           </div>
           <button id="js-notification-close" class="notification__button-close" aria-label="close">
             <svg
@@ -53,10 +53,16 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
           </button>
         </div>
         `
-        : ''
-      }
+    : ''
+  }
 
       <div id="js-journal">${content}</div>
+
+      <script>
+      (function(){
+        window.preloadedState = ${preloadedState}
+      })()
+      </script>
 
       <script defer src="${manifest['vendors.js']}"></script>
 
@@ -73,11 +79,11 @@ export default ({content = '', config = {},  manifest = {}, styles = ''} = {}) =
       <script defer src="${manifest['journal.js']}"></script>
 
       ${ (config.notification.publicKey && config.notification.privateKey) ?
-      `
+    `
         <script defer src="${manifest['banner.js']}"></script>
       `
     : ''
-}
+  }
     </body>
   </html>
 `

@@ -26,7 +26,7 @@ router.get('*', (req, res, next) => {
 
   const preloadedState = store.getState()
 
-  const View = () => (
+  const Component = () => (
     <ServerLocation url={req.originalUrl}>
       <Provider store={store}>
         <Admin />
@@ -35,7 +35,7 @@ router.get('*', (req, res, next) => {
   )
 
   try {
-    const markup = render(Layout, View, undefined, undefined, preloadedState)
+    const markup = render({ Layout, Component, preloadedState })
     res.send(markup)
   } catch (err) {
     if (isRedirect(err)) {
