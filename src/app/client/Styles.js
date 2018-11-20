@@ -16,7 +16,7 @@ export default createGlobalStyle`
     --yellow: #ffe65d;
     --yellow-darker: #ffdf32;
     --gray-1: #e2dfdf;
-    --gray-2: #868585;
+    --gray-2: #6b6b6b;
     --gray-3: #bfbcbc;
     --gray-4: #edeff5;
     --container-max-width: 131.5rem;
