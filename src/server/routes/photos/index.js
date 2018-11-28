@@ -1,10 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 import express from 'express'
-import multer from 'multer'
-import { ulid } from 'ulid'
 
 import authenticated from '../middleware/authenticated'
+import upload from '../middleware/upload'
 
 import { sendNotification, NOTIFICATION_NEW_PHOTO } from '@server/web-push'
 
@@ -13,35 +12,7 @@ import pool from '@server/db/db'
 import queries from '@server/db/queries'
 import paginate from '../middleware/paginate'
 
-import { ALLOWED_MIMETYPES } from '@common/constants'
-
 import photoModel from './model'
-
-// multer storage configuration
-const storage = multer.diskStorage({
-  destination(req, file, callback) {
-    callback(null, path.resolve('public', 'img'))
-  },
-  filename(req, file, callback) {
-    const fieldname = ulid().toLowerCase()
-    const extension = path.extname(file.originalname)
-
-    callback(null, `${fieldname}${extension}`)
-  }
-})
-
-const upload = multer({
-  storage: storage,
-  fileFilter(req, file, callback) {
-    if (ALLOWED_MIMETYPES.includes(file.mimetype)) {
-      callback(null, true)
-      return
-    }
-
-    // reject file
-    callback(null, false)
-  }
-})
 
 const deleteFile = fileName =>
   new Promise(resolve => {
