@@ -54,7 +54,7 @@ const Page = props => {
 
   const onNavigate = event => {
     window.scroll(0, 0)
-    loadPhotos(event.state.page)
+    loadPhotos(event.state && event.state.page)
   }
 
   useEffect(async () => {
