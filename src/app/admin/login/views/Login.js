@@ -9,7 +9,6 @@ import Form from './form/Form'
 
 const Wrapper = styled.div`
   align-items: center;
-  background: var(--secondary);
   display: flex;
   height: 100vh;
 

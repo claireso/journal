@@ -8,12 +8,15 @@ import LazyLoadedImage from '@common/components/LazyLoadedImage'
 import { PrimaryButton } from '@admin/components/Buttons'
 
 const PhotoWrapper = styled.li`
-  padding: var(--gutter);
-  display: flex;
-  transition: background 100ms ease-out;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 8rem auto 12rem;
+  grid-column-gap: 1rem;
+  padding: 1.5rem;
+  transition: background 150ms ease-out;
 
   &:hover {
-    background: var(--secondary);
+    background: var(--gray-5);
   }
 
   & + & {
@@ -22,18 +25,12 @@ const PhotoWrapper = styled.li`
 `
 
 const PhotoPicture = styled.div`
-  flex: 1;
-  max-width: 15rem;
-  margin: 0 1rem 0 0;
+  height: 8rem;
 
   img {
-    border: 0.5rem solid white;
-    border-radius: 0.2rem;
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    max-height: 11rem;
-    width: auto;
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
   }
 `
 
@@ -53,9 +50,11 @@ const PhotoDescription = styled.p`
 
 const PhotoTools = styled.p`
   opacity: 0;
-  transition: opacity 100ms ease-out;
+  place-self: center flex-end;
+  transition: opacity 150ms ease-out;
 
-  ${PhotoWrapper}:hover & {
+  ${PhotoWrapper}:hover &,
+  ${PhotoWrapper}:focus & {
     opacity: 1;
   }
 `
@@ -70,22 +69,26 @@ class Photo extends React.PureComponent {
           )}
         </PhotoPicture>
         <PhotoInner>
-          <PhotoTitle dangerouslySetInnerHTML={{ __html: this.props.title }} />
-          <PhotoDescription>{this.props.description}</PhotoDescription>
-          <PhotoTools>
-            <PrimaryButton
-              onClick={this.props.onEdit.bind(this, this.props.id)}
-            >
-              {' '}
-              Edit{' '}
-            </PrimaryButton>
-            <PrimaryButton
-              onClick={this.props.onDelete.bind(this, this.props.id)}
-            >
-              Delete
-            </PrimaryButton>
-          </PhotoTools>
+          {this.props.title && (
+            <PhotoTitle
+              dangerouslySetInnerHTML={{ __html: this.props.title }}
+            />
+          )}
+          {this.props.description && (
+            <PhotoDescription>{this.props.description}</PhotoDescription>
+          )}
         </PhotoInner>
+        <PhotoTools>
+          <PrimaryButton onClick={this.props.onEdit.bind(this, this.props.id)}>
+            {' '}
+            Edit{' '}
+          </PrimaryButton>
+          <PrimaryButton
+            onClick={this.props.onDelete.bind(this, this.props.id)}
+          >
+            Delete
+          </PrimaryButton>
+        </PhotoTools>
       </PhotoWrapper>
     )
   }

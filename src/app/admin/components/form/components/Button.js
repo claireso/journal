@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Loader from '@common/components/Loader'
 
@@ -40,5 +41,9 @@ const Button = props =>
   ) : (
     <SubmitButton {...props} />
   )
+
+Button.propTypes = {
+  isLoading: PropTypes.bool
+}
 
 export default Button

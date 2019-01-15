@@ -118,7 +118,7 @@ class Photos extends React.PureComponent {
     const { photos } = this.props
 
     return (
-      <div>
+      <React.Fragment>
         <Toolbar>
           <PrimaryButton
             onClick={ev => {
@@ -126,7 +126,7 @@ class Photos extends React.PureComponent {
               this.navigate({ action: ACTION_TYPES.CREATE_PHOTO })
             }}
           >
-            Add a photo
+            Add a new photo
             <IconPlus />
           </PrimaryButton>
         </Toolbar>
@@ -166,7 +166,7 @@ class Photos extends React.PureComponent {
             {this.getModal()}
           </React.Fragment>
         )}
-      </div>
+      </React.Fragment>
     )
   }
 }
@@ -177,7 +177,8 @@ Photos.propTypes = {
   photos: PropTypes.shape({
     isLoading: PropTypes.bool.isRequired,
     items: PropTypes.arrayOf(PropTypes.object),
-    pager: PropTypes.object
+    pager: PropTypes.object,
+    detail: PropTypes.object
   }).isRequired,
   loadPhotos: PropTypes.func.isRequired,
   children: PropTypes.node

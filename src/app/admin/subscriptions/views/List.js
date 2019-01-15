@@ -9,6 +9,7 @@ import List from '@admin/components/List'
 import { PagerButton } from '@admin/components/Buttons'
 import Toolbar from '@admin/components/Toolbar'
 import Modal from '@admin/components/Modal'
+import Text from '@admin/components/Text'
 
 import Subscription from './Subscription'
 import DeleteSubscription from '../containers/Delete'
@@ -97,7 +98,11 @@ class Subscriptions extends React.PureComponent {
           <Loader />
         ) : (
           <React.Fragment>
-            {pager && <Toolbar alignRight>{pager.count} subscriptions</Toolbar>}
+            {pager && (
+              <Toolbar alignRight>
+                <Text>{pager.count} subscriptions</Text>
+              </Toolbar>
+            )}
             <List>
               {subscriptions.items.map((subscription, index) => (
                 <Subscription

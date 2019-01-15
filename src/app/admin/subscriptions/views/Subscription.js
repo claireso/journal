@@ -6,17 +6,24 @@ import styled from 'styled-components'
 import { PrimaryButton } from '@admin/components/Buttons'
 
 const SubscriptionWrapper = styled.li`
-  list-style: none;
-  padding: var(--gutter);
+  align-items: center;
+  display: flex;
   font-size: 1.4rem;
+  list-style: none;
+  padding: 1.5rem;
   transition: background 100ms ease-out;
 
   &:hover {
-    background: var(--secondary);
+    background: var(--gray-5);
   }
 
   & + & {
     border-top: 1px solid var(--secondary);
+  }
+
+  dl {
+    margin: 0;
+    padding-right: 4rem;
   }
 
   dt {
@@ -26,9 +33,18 @@ const SubscriptionWrapper = styled.li`
 
   dd {
     margin: 0 0 1rem;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+`
+
+const SubscriptionTools = styled.p`
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+
+  ${SubscriptionWrapper}:hover &,
+  ${SubscriptionWrapper}:focus & {
+    opacity: 1;
   }
 `
 
@@ -42,18 +58,18 @@ const Subscription = (props = {}) => {
         <dt>Endpoint:</dt>
         <dd>{props.subscription.endpoint}</dd>
       </dl>
-      <p>
+      <SubscriptionTools>
         <PrimaryButton onClick={props.onDelete.bind(this, props.id)}>
           Revoke
         </PrimaryButton>
-      </p>
+      </SubscriptionTools>
     </SubscriptionWrapper>
   )
 }
 
 Subscription.propTypes = {
   id: PropTypes.number.isRequired,
-  created_at: PropTypes.object.isRequired,
+  created_at: PropTypes.string.isRequired,
   subscription: PropTypes.object.isRequired,
   onDelete: PropTypes.func.isRequired
 }

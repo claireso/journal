@@ -5,10 +5,7 @@ import Flash from './Flash'
 import styled from 'styled-components'
 
 const FlashGroupWrapper = styled.div`
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
+  position: relative;
   z-index: 100;
 
   > div {

@@ -6,7 +6,11 @@ import { differenceInMinutes } from 'date-fns'
 import authenticated from '../middleware/authenticated'
 import upload from '../middleware/upload'
 
-import { sendNotification, NOTIFICATION_NEW_PHOTO, isPushEnabled } from '@server/web-push'
+import {
+  sendNotification,
+  NOTIFICATION_NEW_PHOTO,
+  isPushEnabled
+} from '@server/web-push'
 
 import catchErrors from '@server/utils/catchErrors'
 import pool from '@server/db/db'
@@ -76,13 +80,18 @@ router.post(
 
     // send web-push notification
     if (isPushEnabled) {
-      const responseForPreviousPhoto = await pool.query(queries.get_previous_photo())
+      const responseForPreviousPhoto = await pool.query(
+        queries.get_previous_photo()
+      )
 
       if (responseForPreviousPhoto.rowCount === 1) {
         const previousPhoto = responseForPreviousPhoto.rows[0]
 
         // do not send web push if the previous photo was posted less than 30 minutes ago
-        if (differenceInMinutes(new Date(), new Date(previousPhoto.created_at)) < 30) {
+        if (
+          differenceInMinutes(new Date(), new Date(previousPhoto.created_at)) <
+          30
+        ) {
           return
         }
       }
