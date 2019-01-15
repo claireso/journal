@@ -13,8 +13,11 @@ const insert_photo = () =>
 const update_photo = (id, fields) =>
   `UPDATE photos SET ${fields} WHERE id=${id} RETURNING *`
 
-const find_photo = (id, fields = '*') =>
+const get_photo = (id, fields = '*') =>
   `SELECT ${fields} FROM photos WHERE id=${id}`
+
+const get_previous_photo = ({ fields = '*' } = {}) =>
+  `SELECT ${fields} FROM photos ORDER BY created_at DESC LIMIT 1 OFFSET 1`
 
 const delete_photo = id => `DELETE FROM photos WHERE id=${id}`
 
@@ -45,7 +48,8 @@ export default {
   get_photos,
   insert_photo,
   update_photo,
-  find_photo,
+  get_photo,
+  get_previous_photo,
   delete_photo,
   count,
   insert_subscription,
