@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Redirect } from '@reach/router'
 
-import Page from './components/Page'
 import FlashGroup from './components/FlashGroup'
 import { AdminTabs } from './components/tabs'
 import Link from './components/Links'
@@ -12,11 +11,37 @@ import { IconAngleRight } from './components/Icons'
 
 import { closeMessage } from '@common/actions/messages'
 
-const Nav = styled.div`
-  align-items: center;
-  border-bottom: 1px solid var(--secondary);
+const Layout = styled.div`
+  display: grid;
+  grid-template-columns: 15rem auto;
+  grid-template-rows: 6rem auto;
+  grid-template-areas:
+    'title content'
+    'sidebar content';
+  min-height: 100vh;
+`
+
+const Sidebar = styled.div`
+  grid-area: sidebar;
+`
+
+const Content = styled.div`
+  background: var(--white);
+  grid-area: content;
+`
+
+const Title = styled.h1`
+  font-size: 2rem;
+  grid-area: title;
+  line-height: 6rem;
+  margin: 0;
+  text-align: center;
+`
+
+const LinkGoToWebsite = styled(Link)`
+  border-top: 1px solid var(--gray-5);
   display: flex;
-  justify-content: space-between;
+  padding: 2rem 2rem 2rem 4rem;
 `
 
 const App = ({ children, messages, ...props }) => {
@@ -26,17 +51,20 @@ const App = ({ children, messages, ...props }) => {
   }
 
   return (
-    <Page>
-      <FlashGroup messages={messages} onClose={props.closeMessage} />
-      <Nav>
+    <Layout>
+      <Title>Journal</Title>
+      <Sidebar>
         <AdminTabs />
-        <Link href="/">
+        <LinkGoToWebsite href="/">
           View website
           <IconAngleRight />
-        </Link>
-      </Nav>
-      {children}
-    </Page>
+        </LinkGoToWebsite>
+      </Sidebar>
+      <Content>
+        <FlashGroup messages={messages} onClose={props.closeMessage} />
+        {children}
+      </Content>
+    </Layout>
   )
 }
 

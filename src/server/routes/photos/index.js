@@ -1,11 +1,16 @@
 import fs from 'fs'
 import path from 'path'
 import express from 'express'
+import { differenceInMinutes } from 'date-fns'
 
 import authenticated from '../middleware/authenticated'
 import upload from '../middleware/upload'
 
-import { sendNotification, NOTIFICATION_NEW_PHOTO } from '@server/web-push'
+import {
+  sendNotification,
+  NOTIFICATION_NEW_PHOTO,
+  isPushEnabled
+} from '@server/web-push'
 
 import catchErrors from '@server/utils/catchErrors'
 import pool from '@server/db/db'
@@ -71,20 +76,38 @@ router.post(
       photo.square
     ])
 
-    // send web-push notification
-    const responseSub = await pool.query(queries.get_subscriptions())
-
-    const subscriptions = responseSub.rows
-
-    subscriptions.map(({ subscription, id }) =>
-      sendNotification(subscription, NOTIFICATION_NEW_PHOTO).catch(err => {
-        if (err && [410, 404].includes(err.statusCode)) {
-          pool.query(queries.delete_subscription(id))
-        }
-      })
-    )
-
     res.json(response.rows[0])
+
+    // send web-push notification
+    if (isPushEnabled) {
+      const responseForPreviousPhoto = await pool.query(
+        queries.get_previous_photo()
+      )
+
+      if (responseForPreviousPhoto.rowCount === 1) {
+        const previousPhoto = responseForPreviousPhoto.rows[0]
+
+        // do not send web push if the previous photo was posted less than 30 minutes ago
+        if (
+          differenceInMinutes(new Date(), new Date(previousPhoto.created_at)) <
+          30
+        ) {
+          return
+        }
+      }
+
+      const responseSub = await pool.query(queries.get_subscriptions())
+
+      const subscriptions = responseSub.rows
+
+      subscriptions.map(({ subscription, id }) =>
+        sendNotification(subscription, NOTIFICATION_NEW_PHOTO).catch(err => {
+          if (err && [410, 404].includes(err.statusCode)) {
+            pool.query(queries.delete_subscription(id))
+          }
+        })
+      )
+    }
   })
 )
 
@@ -94,7 +117,7 @@ router.get(
   catchErrors(async (req, res) => {
     const { id } = req.params
 
-    const response = await pool.query(queries.find_photo(id))
+    const response = await pool.query(queries.get_photo(id))
     const photo = response.rows[0]
 
     if (photo === undefined) {
@@ -114,7 +137,7 @@ router.patch(
   catchErrors(async (req, res) => {
     const { id } = req.params
 
-    let response = await pool.query(queries.find_photo(id))
+    let response = await pool.query(queries.get_photo(id))
     const photo = response.rows[0]
 
     if (photo === undefined) {
@@ -150,7 +173,7 @@ router.delete(
   catchErrors(async (req, res) => {
     const { id } = req.params
 
-    const response = await pool.query(queries.find_photo(id))
+    const response = await pool.query(queries.get_photo(id))
     const photo = response.rows[0]
 
     if (photo === undefined) {

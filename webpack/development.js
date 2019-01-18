@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const merge = require('webpack-merge')
 
 const ManifestPlugin = require('webpack-manifest-plugin')
@@ -26,6 +27,9 @@ module.exports = merge(webpackConfig, {
     ]),
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development'
     })
   ]
 })

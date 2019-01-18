@@ -7,9 +7,9 @@ export const NOTIFICATION_NEW_PHOTO = 'NOTIFICATION_NEW_PHOTO'
 
 const notifConfig = config.website.notification
 
-const enabledPush = notifConfig.publicKey && notifConfig.privateKey
+export const isPushEnabled = !!(notifConfig.publicKey && notifConfig.privateKey)
 
-enabledPush &&
+isPushEnabled &&
   webpush.setVapidDetails(
     config.website.baseUrl,
     notifConfig.publicKey,
@@ -21,7 +21,7 @@ export const publicKey = notifConfig.publicKey
 export const sendNotification = (subscription, key = '') => {
   const payload = {}
 
-  if (enabledPush === false) return
+  if (isPushEnabled === false) return
 
   if (key === NOTIFICATION_NEW_PHOTO) {
     payload.title = config.website.meta.title

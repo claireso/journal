@@ -41,8 +41,8 @@ module.exports = merge(webpackConfig, {
       test: /\.js(\?.*)?$/i,
       exclude: 'sw.js'
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production'
     })
   ],
   performance: {
