@@ -21,10 +21,15 @@ const StyledTab = styled.li`
     border-bottom: none;
     border-radius: 0.2rem 0.2rem 0 0;
     color: var(--text);
-    display: inline-block;
+    display: block;
     font-size: 1.4rem;
-    padding: 2rem;
+    padding: 2rem 2rem 2rem 4rem;
     text-decoration: none;
+    transition: background 150ms ease-out;
+
+    &:hover {
+      background: var(--gray-5);
+    }
   }
 `
 

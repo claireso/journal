@@ -18,20 +18,24 @@ export default createGlobalStyle`
     --secondary-darker: #dcdede;
     --hightlight: #ffe65d;
     --error: #f00;
-    --success: #48ad44;
+    --success: #23d01c;
     --white: #fff;
     --gray-1: #d4d3d3;
     --gray-2: #999;
     --gray-3: #464646;
+    --gray-4: #2b2c2c;
+    --gray-5: #fbfcfc;
     --gutter: 2rem;
     --container-max-width: 96rem;
   }
 
   body {
+    background: var(--secondary);
     color: var(--text);
     font-family: "Roboto", Arial, sans-serif;
     font-size: 16px;
     margin: 0;
+    min-width: 70rem;
   }
 
   main {
