@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Transition } from 'react-spring'
 
+import { ButtonIcon } from '@admin/components/Buttons'
+import { IconClose } from '@admin/components/Icons'
+
 const ModalWrapper = styled.div`
   background: rgba(0, 0, 0, 0.5);
   bottom: 0;
@@ -21,6 +24,12 @@ const ModalInner = styled.div`
   padding: 4rem;
   max-width: 69rem;
   margin: calc(var(--gutter) * 4) auto;
+`
+
+const ModalCloseButton = styled(ButtonIcon)`
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
 `
 
 class Modal extends React.PureComponent {
@@ -59,7 +68,7 @@ class Modal extends React.PureComponent {
 
     if (
       target.contains(this.content.current) &&
-      !target.classList.contains('modal__inner')
+      !(target.getAttribute('id') === 'modalInner')
     ) {
       this.close()
     }
@@ -101,7 +110,14 @@ class Modal extends React.PureComponent {
                 {isOpen =>
                   isOpen &&
                   (innerStyles => (
-                    <ModalInner ref={this.content} style={innerStyles}>
+                    <ModalInner
+                      id="modalInner"
+                      ref={this.content}
+                      style={innerStyles}
+                    >
+                      <ModalCloseButton onClick={this.close}>
+                        <IconClose width="20" height="26" />
+                      </ModalCloseButton>
                       {this.props.children &&
                         React.cloneElement(this.props.children, {
                           onClose: this.close
