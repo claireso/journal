@@ -88,4 +88,8 @@ export const ButtonIcon = styled(Button)`
   > svg {
     margin: 0;
   }
+
+  & + & {
+    margin: 0;
+  }
 `

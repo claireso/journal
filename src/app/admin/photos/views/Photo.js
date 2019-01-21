@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import withInViewStatement from '@common/hoc/withInViewStatement'
 import LazyLoadedImage from '@common/components/LazyLoadedImage'
 
-import { PrimaryButton } from '@admin/components/Buttons'
+import { ButtonIcon } from '@admin/components/Buttons'
+import { IconPencil, IconDelete } from '@admin/components/Icons'
 
 const PhotoWrapper = styled.li`
   align-items: center;
@@ -49,13 +50,16 @@ const PhotoDescription = styled.p`
 `
 
 const PhotoTools = styled.p`
-  opacity: 0;
   place-self: center flex-end;
   transition: opacity 150ms ease-out;
 
-  ${PhotoWrapper}:hover &,
-  ${PhotoWrapper}:focus & {
-    opacity: 1;
+  button {
+    opacity: 0.5;
+    transition: opacity 150ms ease-out;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 `
 
@@ -79,15 +83,15 @@ class Photo extends React.PureComponent {
           )}
         </PhotoInner>
         <PhotoTools>
-          <PrimaryButton onClick={this.props.onEdit.bind(this, this.props.id)}>
-            {' '}
-            Edit{' '}
-          </PrimaryButton>
-          <PrimaryButton
-            onClick={this.props.onDelete.bind(this, this.props.id)}
+          <ButtonIcon
+            onClick={this.props.onEdit.bind(this, this.props.id)}
+            title="Edit"
           >
-            Delete
-          </PrimaryButton>
+            <IconPencil />
+          </ButtonIcon>
+          <ButtonIcon onClick={this.props.onDelete.bind(this, this.props.id)}>
+            <IconDelete />
+          </ButtonIcon>
         </PhotoTools>
       </PhotoWrapper>
     )

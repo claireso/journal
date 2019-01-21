@@ -3,7 +3,8 @@ import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { PrimaryButton } from '@admin/components/Buttons'
+import { ButtonIcon } from '@admin/components/Buttons'
+import { IconDelete } from '@admin/components/Icons'
 
 const SubscriptionWrapper = styled.li`
   align-items: center;
@@ -39,12 +40,15 @@ const SubscriptionWrapper = styled.li`
 `
 
 const SubscriptionTools = styled.p`
-  opacity: 0;
   transition: opacity 150ms ease-out;
 
-  ${SubscriptionWrapper}:hover &,
-  ${SubscriptionWrapper}:focus & {
-    opacity: 1;
+  button {
+    opacity: 0.5;
+    transition: opacity 150ms ease-out;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 `
 
@@ -59,9 +63,12 @@ const Subscription = (props = {}) => {
         <dd>{props.subscription.endpoint}</dd>
       </dl>
       <SubscriptionTools>
-        <PrimaryButton onClick={props.onDelete.bind(this, props.id)}>
-          Revoke
-        </PrimaryButton>
+        <ButtonIcon
+          onClick={props.onDelete.bind(this, props.id)}
+          title="Revoke"
+        >
+          <IconDelete />
+        </ButtonIcon>
       </SubscriptionTools>
     </SubscriptionWrapper>
   )
