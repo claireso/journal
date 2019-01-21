@@ -93,16 +93,15 @@ class Subscriptions extends React.PureComponent {
     const { pager } = subscriptions
 
     return (
-      <div>
+      <React.Fragment>
+        <Toolbar alignRight>
+          {pager && <Text>{pager.count} subscriptions</Text>}
+        </Toolbar>
+
         {subscriptions.isLoading ? (
           <Loader />
         ) : (
           <React.Fragment>
-            {pager && (
-              <Toolbar alignRight>
-                <Text>{pager.count} subscriptions</Text>
-              </Toolbar>
-            )}
             <List>
               {subscriptions.items.map((subscription, index) => (
                 <Subscription
@@ -112,7 +111,6 @@ class Subscriptions extends React.PureComponent {
                 />
               ))}
             </List>
-
             <Pager {...pager} navigate={page => this.navigate({ page })}>
               {({ items, getItemsProps }) => {
                 return items.map(item => (
@@ -133,7 +131,7 @@ class Subscriptions extends React.PureComponent {
             {this.getModal()}
           </React.Fragment>
         )}
-      </div>
+      </React.Fragment>
     )
   }
 }
