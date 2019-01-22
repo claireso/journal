@@ -8,7 +8,7 @@
     "server": "node ./dist/server/server.js",
     "watch": "webpack --config ./webpack/development.js --watch",
     "build:static": "webpack --config ./webpack/production.js --bail",
-    "build:server": "babel ./src --out-dir ./dist --plugins=dynamic-import-node",
+    "build:server": "babel ./src --out-dir ./dist --env-name serverProd",
     "build": "npm run build:server && npm run build:static",
     "eslint": "eslint src/.",
     "prettier": "prettier --write \"src/**/*.js\"",

@@ -1,6 +1,6 @@
 {
   "restartable": "rs",
-  "exec": "babel-node --plugins dynamic-import-node",
+  "exec": "babel-node --env-name serverDev",
   "ignore": [
     ".git",
     "node_modules/**/node_modules",
