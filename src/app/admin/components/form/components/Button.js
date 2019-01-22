@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Loader from '@common/components/Loader'
 
-export const SubmitButton = styled.input.attrs({
+export const SubmitButton = styled.input.attrs(() => ({
   type: 'submit'
-})`
+}))`
   appearence: none;
   background: var(--primary);
   border: none;
@@ -24,9 +24,9 @@ export const SubmitButton = styled.input.attrs({
   }
 `
 
-export const SubmitButtonLoading = styled.div.attrs({
+export const SubmitButtonLoading = styled.div.attrs(() => ({
   children: <Loader />
-})`
+}))`
   margin: 3rem 0 0;
   padding: 1.8rem 0 1.9rem;
 
