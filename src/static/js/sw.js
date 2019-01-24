@@ -5,12 +5,14 @@ const CACHE_NAME_IMG = `${CACHE_PREFIX}-img-${VERSION}`
 const CACHE_NAME_PAGES = `${CACHE_PREFIX}-pages-${VERSION}`
 const CACHE_NAME_CSS_FONTS = `${CACHE_PREFIX}-google-fonts-stylesheets-${VERSION}`
 const CACHE_NAME_FONTS = `${CACHE_PREFIX}-google-fonts-webfonts-${VERSION}`
+const CACHE_NAME_API = `${CACHE_PREFIX}-api-${VERSION}`
 
 const expectedCaches = [
   CACHE_NAME_IMG,
   CACHE_NAME_PAGES,
   CACHE_NAME_CSS_FONTS,
-  CACHE_NAME_FONTS
+  CACHE_NAME_FONTS,
+  CACHE_NAME_API
 ]
 
 if (workbox) {
@@ -56,20 +58,46 @@ if (workbox) {
     })
   )
 
-  // no cache for api and admin
+  // admin: no cache
   workbox.routing.registerRoute(
-    /\/(api|admin)\/(.*)/,
+    /\/admin\/(.*)/,
     workbox.strategies.networkOnly()
   )
 
-  // cache for pages
+  // api : cache for endpoint photos
   workbox.routing.registerRoute(
-    /\/(.*)/,
+    /\/api\/photos(\?.*)?$/,
+    workbox.strategies.networkFirst({
+      cacheName: CACHE_NAME_API,
+      plugins: [
+        new workbox.cacheableResponse.Plugin({
+          statuses: [0, 200]
+        }),
+        new workbox.expiration.Plugin({
+          maxEntries: 100,
+          maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
+        })
+      ]
+    })
+  )
+  // api: no cache for others endpoints
+  workbox.routing.registerRoute(
+    /\/api\/(.*)/,
+    workbox.strategies.networkOnly()
+  )
+
+  // cache for pages (root / and /page=2)
+  workbox.routing.registerRoute(
+    /\/(\?.*)?$/,
     workbox.strategies.networkFirst({
       cacheName: CACHE_NAME_PAGES,
       plugins: [
         new workbox.cacheableResponse.Plugin({
           statuses: [0, 200]
+        }),
+        new workbox.expiration.Plugin({
+          maxEntries: 100,
+          maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
         })
       ]
     })
