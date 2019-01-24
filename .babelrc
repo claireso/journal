@@ -5,28 +5,73 @@
   ],
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
-    ["@babel/plugin-proposal-class-properties", { "loose": false }],
-    "react-loadable/babel",
-    ["babel-plugin-styled-components", {
-      "ssr": true,
-      "displayName": true
-    }],
-    ["module-resolver", {
-      "alias": {
-        "@client": "./src/app/client",
-        "@admin": "./src/app/admin",
-        "@common": "./src/common",
-        "@server": "./src/server"
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": false
       }
-    }]
+    ],
+    "react-loadable/babel",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@client": "./src/app/client",
+          "@admin": "./src/app/admin",
+          "@common": "./src/common",
+          "@server": "./src/server"
+        }
+      }
+    ]
   ],
   "env": {
+    "development": {
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true,
+            "displayName": true
+          }
+        ]
+      ]
+    },
     "production": {
       "plugins": [
-        ["babel-plugin-styled-components", {
-          "ssr": true,
-          "displayName": false
-        }]
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true,
+            "displayName": false
+          }
+        ]
+      ]
+    },
+    "serverDev": {
+      "plugins": [
+        "dynamic-import-node",
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true,
+            "displayName": true
+          }
+        ]
+      ]
+    },
+    "serverProd": {
+      "plugins": [
+        "dynamic-import-node",
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true,
+            "displayName": false
+          }
+        ]
+      ],
+      "ignore": [
+        "src/static/**/*.js"
       ]
     }
   }

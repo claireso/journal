@@ -88,10 +88,10 @@ const PictureWrapper = styled.div`
   margin: 0 0 1rem;
 `
 
-const Picture = styled(LazyLoadedImage).attrs({
+const Picture = styled(LazyLoadedImage).attrs(props => ({
   alt: '',
-  src: props => `/img/${props.name}`
-})`
+  src: `/img/${props.name}`
+}))`
   display: block;
   width: 100%;
   height: 100%;

@@ -1,4 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
+const ICON_PROPTYPES = {
+  width: PropTypes.string,
+  height: PropTypes.string
+}
 
 export const IconPlus = ({ width = '14', height = '14' }) => (
   <svg
@@ -11,6 +17,8 @@ export const IconPlus = ({ width = '14', height = '14' }) => (
   </svg>
 )
 
+IconPlus.propTypes = ICON_PROPTYPES
+
 export const IconBack = ({ width = '16', height = '16' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +29,8 @@ export const IconBack = ({ width = '16', height = '16' }) => (
     <path d="M32 14.286v3.43q0 .25-.16.41t-.412.16H9.142v4q0 .376-.34.52t-.624-.09l-6.857-6.25q-.178-.18-.178-.41 0-.25.18-.43l6.856-6.32q.286-.25.625-.108.34.16.34.518v4h22.285q.25 0 .41.16t.162.412z" />
   </svg>
 )
+
+IconBack.propTypes = ICON_PROPTYPES
 
 export const IconUpload = ({ width = '16', height = '16' }) => (
   <svg
@@ -33,6 +43,8 @@ export const IconUpload = ({ width = '16', height = '16' }) => (
   </svg>
 )
 
+IconUpload.propTypes = ICON_PROPTYPES
+
 export const IconClose = ({ width = '16', height = '16' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +56,8 @@ export const IconClose = ({ width = '16', height = '16' }) => (
   </svg>
 )
 
+IconClose.propTypes = ICON_PROPTYPES
+
 export const IconAngleRight = ({ width = '9', height = '14' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -54,6 +68,8 @@ export const IconAngleRight = ({ width = '9', height = '14' }) => (
     <path d="M9.297 15c0 0.125-0.063 0.266-0.156 0.359l-7.281 7.281c-0.094 0.094-0.234 0.156-0.359 0.156s-0.266-0.063-0.359-0.156l-0.781-0.781c-0.094-0.094-0.156-0.219-0.156-0.359 0-0.125 0.063-0.266 0.156-0.359l6.141-6.141-6.141-6.141c-0.094-0.094-0.156-0.234-0.156-0.359s0.063-0.266 0.156-0.359l0.781-0.781c0.094-0.094 0.234-0.156 0.359-0.156s0.266 0.063 0.359 0.156l7.281 7.281c0.094 0.094 0.156 0.234 0.156 0.359z" />
   </svg>
 )
+
+IconAngleRight.propTypes = ICON_PROPTYPES
 
 export const IconPencil = ({ width = '14', height = '16' }) => (
   <svg
@@ -67,6 +83,8 @@ export const IconPencil = ({ width = '14', height = '16' }) => (
   </svg>
 )
 
+IconPencil.propTypes = ICON_PROPTYPES
+
 export const IconDelete = ({ width = '22', height = '16' }) => (
   <svg
     version="1.1"
@@ -78,3 +96,5 @@ export const IconDelete = ({ width = '22', height = '16' }) => (
     <path d="M8 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM12 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM16 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM7.5 6h7l-0.75-1.828c-0.047-0.063-0.187-0.156-0.266-0.172h-4.953c-0.094 0.016-0.219 0.109-0.266 0.172zM22 6.5v1c0 0.281-0.219 0.5-0.5 0.5h-1.5v14.812c0 1.719-1.125 3.187-2.5 3.187h-13c-1.375 0-2.5-1.406-2.5-3.125v-14.875h-1.5c-0.281 0-0.5-0.219-0.5-0.5v-1c0-0.281 0.219-0.5 0.5-0.5h4.828l1.094-2.609c0.313-0.766 1.25-1.391 2.078-1.391h5c0.828 0 1.766 0.625 2.078 1.391l1.094 2.609h4.828c0.281 0 0.5 0.219 0.5 0.5z" />
   </svg>
 )
+
+IconDelete.propTypes = ICON_PROPTYPES
