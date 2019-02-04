@@ -35,6 +35,7 @@ app.locals.config = config.website
 app.use('/', client)
 app.use('/admin', helmet.noCache(), admin)
 app.use('/api', api)
+app.get('/favicon.ico', (req, res) => res.sendStatus(204))
 
 // Handle 404
 app.use((req, res) => {
