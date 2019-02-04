@@ -4,9 +4,9 @@ import styled from 'styled-components'
 
 import withInViewStatement from '@common/hoc/withInViewStatement'
 import LazyLoadedImage from '@common/components/LazyLoadedImage'
+import { IconPencil, IconDelete } from '@common/components/Icons'
 
 import { ButtonIcon } from '@admin/components/Buttons'
-import { IconPencil, IconDelete } from '@admin/components/Icons'
 
 const PhotoWrapper = styled.li`
   align-items: center;

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Transition } from 'react-spring'
 
 import { ButtonIcon } from '@admin/components/Buttons'
-import { IconClose } from '@admin/components/Icons'
+import { IconClose } from '@common/components/Icons'
 
 const ModalWrapper = styled.div`
   background: rgba(0, 0, 0, 0.5);

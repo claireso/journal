@@ -4,10 +4,13 @@ import styled from 'styled-components'
 
 import Styles from './Styles'
 
+import TranslationsContext from '@common/context/Translations'
 import Loader from '@common/components/Loader'
 
 import Photos from './Photos'
 import Welcome from './Welcome'
+import BannerOfline from './components/banners/Offline'
+import BannerNotifications from './components/banners/Notifications'
 
 const Main = styled.main`
   max-width: var(--container-max-width);
@@ -44,6 +47,7 @@ const Page = props => {
     items: props.items,
     pager: props.pager
   })
+
   const { items: photos, pager } = state
 
   const loadPhotos = async page => {
@@ -65,22 +69,29 @@ const Page = props => {
   }, [])
 
   return (
-    <Main>
+    <TranslationsContext.Provider value={props.translations.client}>
       <Styles />
-      {state.isLoading ? (
-        <Loader />
-      ) : photos && photos.length > 0 ? (
-        <Photos photos={photos} pager={pager} />
-      ) : (
-        <Welcome />
-      )}
-    </Main>
+
+      <BannerOfline />
+      <BannerNotifications />
+
+      <Main>
+        {state.isLoading ? (
+          <Loader />
+        ) : photos && photos.length > 0 ? (
+          <Photos photos={photos} pager={pager} />
+        ) : (
+          <Welcome />
+        )}
+      </Main>
+    </TranslationsContext.Provider>
   )
 }
 
 Page.propTypes = {
   items: PropTypes.array,
-  pager: PropTypes.object
+  pager: PropTypes.object,
+  translations: PropTypes.object.isRequired
 }
 
 export default Page
