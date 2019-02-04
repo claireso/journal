@@ -20,11 +20,12 @@ export default ({
 }) => {
   const sheet = new ServerStyleSheet()
   const modules = []
+  const translations = config.translations
 
   const content = ReactDOMServer.renderToString(
     sheet.collectStyles(
       <Loadable.Capture report={moduleName => modules.push(moduleName)}>
-        <Component {...props} />
+        <Component {...props} translations={translations} />
       </Loadable.Capture>
     )
   )
@@ -37,7 +38,7 @@ export default ({
     content,
     config,
     manifest,
-    preloadedState: JSON.stringify(preloadedState),
+    preloadedState: JSON.stringify({ ...preloadedState, translations }),
     styles: styleTags,
     bundles: bundles
   })

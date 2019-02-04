@@ -81,10 +81,7 @@ if (workbox) {
     })
   )
   // api: no cache for others endpoints
-  workbox.routing.registerRoute(
-    /\/api\/(.*)/,
-    workbox.strategies.networkOnly()
-  )
+  workbox.routing.registerRoute(/\/api\/(.*)/, workbox.strategies.networkOnly())
 
   // cache for pages (root / and /page=2)
   workbox.routing.registerRoute(

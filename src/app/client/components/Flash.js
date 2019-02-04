@@ -5,12 +5,14 @@ import { Spring } from 'react-spring'
 
 import { IconClose } from '@common/components/Icons'
 
-import { ButtonIcon } from './Buttons'
+import { ButtonIcon } from './Button'
 
 const mapFlashBackground = {
-  default: 'var(--primary)',
-  error: 'var(--error)',
-  success: 'var(--success)'
+  default: 'var(--yellow)'
+}
+
+const mapFlashBorder = {
+  default: 'var(--yellow-darker)'
 }
 
 const FlashWrapper = styled.div`
@@ -31,14 +33,19 @@ const FlashWrapper = styled.div`
     top: 0;
     bottom: 0;
   }
+
+  & + & {
+    border-top: 3px solid
+      ${props => mapFlashBorder[props.status] || mapFlashBorder['default']};
+  }
 `
 
-const Flash = ({ status, message, onClose, index }) => {
+const Flash = ({ status, onClose, index, children }) => {
   return (
     <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
       {props => (
         <FlashWrapper style={props} status={status}>
-          {message}
+          {children}
           {onClose && (
             <ButtonIcon
               onClick={event => {
@@ -55,11 +62,15 @@ const Flash = ({ status, message, onClose, index }) => {
   )
 }
 
+Flash.defaultProps = {
+  status: 'default'
+}
+
 Flash.propTypes = {
   status: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
   onClose: PropTypes.func,
-  index: PropTypes.number
+  index: PropTypes.number,
+  children: PropTypes.string.isRequired
 }
 
 export default Flash

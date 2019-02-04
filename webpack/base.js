@@ -1,16 +1,19 @@
 const path = require('path')
+const webpack = require('webpack')
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin
 const { InjectManifest } = require('workbox-webpack-plugin')
 
+const config = require('../config.json')
+
 const ROOT = process.cwd()
+const notificationConfig = config.website.notification
 
 module.exports = {
   context: path.resolve(ROOT, 'src'),
   entry: {
     admin: ['@babel/polyfill', './static/js/admin.js'],
     journal: ['@babel/polyfill', './static/js/journal.js'],
-    polyfills: './static/js/polyfills.js',
-    banner: './static/js/banner.js'
+    polyfills: './static/js/polyfills.js'
   },
   output: {
     filename: `js/[name].js`,
@@ -38,6 +41,9 @@ module.exports = {
     new InjectManifest({
       swSrc: './src/static/js/sw.js',
       swDest: `${ROOT}/public/sw.js`
+    }),
+    new webpack.EnvironmentPlugin({
+      IS_PUSH_ENABLED: !!(notificationConfig.publicKey && notificationConfig.privateKey)
     })
   ],
   optimization: {

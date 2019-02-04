@@ -4,10 +4,11 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Redirect } from '@reach/router'
 
+import { IconAngleRight } from '@common/components/Icons'
+
 import FlashGroup from './components/FlashGroup'
 import { AdminTabs } from './components/tabs'
 import Link from './components/Links'
-import { IconAngleRight } from './components/Icons'
 
 import { closeMessage } from '@common/actions/messages'
 

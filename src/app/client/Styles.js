@@ -28,44 +28,4 @@ export default createGlobalStyle`
     font-size: 16px;
     margin: 0;
   }
-
-  .is-hidden {
-    display: none;
-  }
-
-  .notification {
-    background: var(--yellow);
-    cursor: pointer;
-    font-size: 1.4rem;
-    line-height: 1.6;
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    transition: background 250ms ease-out;
-    z-index: 10;
-  }
-
-  .notification:hover {
-    background: var(--yellow-darker);
-  }
-
-  .notification__inner {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .notification__button-close {
-    appearance: none;
-    background: none;
-    border: none;
-    bottom: 0;
-    cursor: pointer;
-    padding: 1rem;
-    position: absolute;
-    outline: none;
-    right: 0;
-    top: 0;
-    width: 50px;
-  }
 `
