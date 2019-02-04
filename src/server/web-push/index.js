@@ -6,6 +6,7 @@ import config from '../../../config'
 export const NOTIFICATION_NEW_PHOTO = 'NOTIFICATION_NEW_PHOTO'
 
 const notifConfig = config.website.notification
+const translations = config.website.translations.admin
 
 export const isPushEnabled = !!(notifConfig.publicKey && notifConfig.privateKey)
 
@@ -25,7 +26,7 @@ export const sendNotification = (subscription, key = '') => {
 
   if (key === NOTIFICATION_NEW_PHOTO) {
     payload.title = config.website.meta.title
-    payload.content = notifConfig.newPhotoDefaultText
+    payload.content = translations.pushNewPhotoPosted
   }
 
   return webpush.sendNotification(subscription, JSON.stringify(payload))

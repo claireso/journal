@@ -20,13 +20,15 @@
     },
     "notification": {
       "publicKey": "",
-      "privateKey": "",
-      "newPhotoDefaultText": "new photo posted",
-      "enableDefaultText": "Enable notifications to be alerted of new publication"
+      "privateKey": ""
     },
     "translations": {
       "client": {
-        "bannerOffline": "You are currently offline. Connect to the internet for access to the latest photos"
+        "bannerOffline": "You are currently offline. Connect to the internet for access to the latest photos",
+        "bannerNotifications": "Enable notifications to be alerted of new publication"
+      },
+      "admin": {
+        "pushNewPhotoPosted": "New photo posted"
       }
     }
   }

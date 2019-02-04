@@ -9,7 +9,8 @@ import Loader from '@common/components/Loader'
 
 import Photos from './Photos'
 import Welcome from './Welcome'
-import OfflineBanner from './components/OfflineBanner'
+import BannerOfline from './components/banners/Offline'
+import BannerNotifications from './components/banners/Notifications'
 
 const Main = styled.main`
   max-width: var(--container-max-width);
@@ -70,7 +71,9 @@ const Page = props => {
   return (
     <TranslationsContext.Provider value={props.translations.client}>
       <Styles />
-      <OfflineBanner />
+
+      <BannerOfline />
+      <BannerNotifications />
 
       <Main>
         {state.isLoading ? (
@@ -78,8 +81,8 @@ const Page = props => {
         ) : photos && photos.length > 0 ? (
           <Photos photos={photos} pager={pager} />
         ) : (
-              <Welcome />
-            )}
+          <Welcome />
+        )}
       </Main>
     </TranslationsContext.Provider>
   )

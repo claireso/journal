@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Spring } from 'react-spring'
 
+import { IconClose } from '@common/components/Icons'
+
 import { ButtonIcon } from './Buttons'
-import { IconClose } from './Icons'
 
 const mapFlashBackground = {
   default: 'var(--primary)',

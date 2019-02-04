@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Photo from './components/Photo'
 import Pager from './components/Pager'
-import Button from './components/Button'
+import { Button } from './components/Button'
 
 const Photos = (props = {}) => {
   return (

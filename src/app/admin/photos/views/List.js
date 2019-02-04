@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import qs from 'qs'
 
 import Loader from '@common/components/Loader'
+import { IconPlus } from '@common/components/Icons'
 
 import Pager from '@admin/components/Pager'
 import Toolbar from '@admin/components/Toolbar'
 import List from '@admin/components/List'
 import { PrimaryButton, PagerButton } from '@admin/components/Buttons'
-import { IconPlus } from '@admin/components/Icons'
 import Modal from '@admin/components/Modal'
 
 import CreatePhoto from '../containers/Create'

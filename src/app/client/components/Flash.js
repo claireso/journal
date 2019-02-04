@@ -3,11 +3,16 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Spring } from 'react-spring'
 
-// import { ButtonIcon } from './Buttons'
-// import { IconClose } from './Icons'
+import { IconClose } from '@common/components/Icons'
+
+import { ButtonIcon } from './Button'
 
 const mapFlashBackground = {
-  default: 'var(--yellow)',
+  default: 'var(--yellow)'
+}
+
+const mapFlashBorder = {
+  default: 'var(--yellow-darker)'
 }
 
 const FlashWrapper = styled.div`
@@ -28,15 +33,20 @@ const FlashWrapper = styled.div`
     top: 0;
     bottom: 0;
   }
+
+  & + & {
+    border-top: 3px solid
+      ${props => mapFlashBorder[props.status] || mapFlashBorder['default']};
+  }
 `
 
-const Flash = ({ status, message, onClose, index }) => {
+const Flash = ({ status, onClose, index, children }) => {
   return (
     <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
       {props => (
         <FlashWrapper style={props} status={status}>
-          {message}
-          {/*onClose && (
+          {children}
+          {onClose && (
             <ButtonIcon
               onClick={event => {
                 event.preventDefault()
@@ -45,7 +55,7 @@ const Flash = ({ status, message, onClose, index }) => {
             >
               <IconClose />
             </ButtonIcon>
-            )*/}
+          )}
         </FlashWrapper>
       )}
     </Spring>
@@ -58,9 +68,9 @@ Flash.defaultProps = {
 
 Flash.propTypes = {
   status: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
   onClose: PropTypes.func,
-  index: PropTypes.number
+  index: PropTypes.number,
+  children: PropTypes.string.isRequired
 }
 
 export default Flash
