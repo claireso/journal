@@ -3,7 +3,7 @@
 /* eslint no-useless-escape: 0 */
 /* eslint indent: 0 */
 
-export default ({ content = '', config = {}, manifest = {}, styles = '', preloadedState = {} } = {}) => `
+export default ({ content = '', config = {}, manifest = {}, styles = '', preloadedState = {}, environment = '' } = {}) => `
   <!doctype html>
   <html lang="fr">
     <head>
@@ -56,6 +56,15 @@ export default ({ content = '', config = {}, manifest = {}, styles = '', preload
       </script>
 
       <script defer src="${manifest['journal.js']}"></script>
+
+      ${(environment === 'production') ?
+    `
+        <script>
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+          }
+        </script>
+      ` : ''}
     </body>
   </html>
 `

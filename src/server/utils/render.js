@@ -40,6 +40,7 @@ export default ({
     manifest,
     preloadedState: JSON.stringify({ ...preloadedState, translations }),
     styles: styleTags,
-    bundles: bundles
+    bundles: bundles,
+    environment: process.env.NODE_ENV
   })
 }
