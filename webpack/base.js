@@ -7,6 +7,7 @@ const config = require('../config.json')
 
 const ROOT = process.cwd()
 const notificationConfig = config.website.notification
+const IS_PUSH_ENABLED = !!(notificationConfig.publicKey && notificationConfig.privateKey)
 
 module.exports = {
   context: path.resolve(ROOT, 'src'),
@@ -40,10 +41,11 @@ module.exports = {
     }),
     new InjectManifest({
       swSrc: './src/static/js/sw.js',
-      swDest: `${ROOT}/public/sw.js`
+      swDest: `${ROOT}/public/sw.js`,
+      ...(IS_PUSH_ENABLED ? { importScripts: '/sw-push.js' } : {})
     }),
     new webpack.EnvironmentPlugin({
-      IS_PUSH_ENABLED: !!(notificationConfig.publicKey && notificationConfig.privateKey)
+      IS_PUSH_ENABLED: IS_PUSH_ENABLED
     })
   ],
   optimization: {

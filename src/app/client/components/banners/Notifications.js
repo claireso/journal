@@ -70,18 +70,15 @@ export default () => {
   const showBanner = () => setIsVisible(true)
 
   useEffect(async () => {
-    if (
-      !('serviceWorker' in navigator) ||
-      process.env.NODE_ENV !== 'production'
-    ) {
-      return
-    }
-
-    navigator.serviceWorker.register('/sw.js')
-
+    // do not display banner if service worker not support
     // do not display banner if push not enabled
     // do not display banner in safari
-    if (!process.env.IS_PUSH_ENABLED || window.safari) {
+    if (
+      !('serviceWorker' in navigator) ||
+      process.env.NODE_ENV !== 'production' ||
+      !process.env.IS_PUSH_ENABLED ||
+      window.safari
+    ) {
       return
     }
 

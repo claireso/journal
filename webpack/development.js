@@ -24,6 +24,10 @@ module.exports = merge(webpackConfig, {
         from: './static/icons/*',
         to: `${ROOT}/public/icons/[name].[ext]`
       },
+      {
+        from: './static/js/sw-push.js',
+        to: `${ROOT}/public/[name].[ext]`
+      },
     ]),
     new ManifestPlugin({
       fileName: 'asset-manifest.json'

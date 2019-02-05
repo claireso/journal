@@ -70,10 +70,7 @@ Flash.propTypes = {
   status: PropTypes.string.isRequired,
   onClose: PropTypes.func,
   index: PropTypes.number,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node
-  ]).isRequired
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired
 }
 
 export default Flash
