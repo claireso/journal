@@ -69,7 +69,7 @@ export default () => {
   const hideBanner = () => setIsVisible(false)
   const showBanner = () => setIsVisible(true)
 
-  useEffect(() => {
+  useEffect(async () => {
     if (
       !('serviceWorker' in navigator) ||
       process.env.NODE_ENV !== 'production'
@@ -95,7 +95,7 @@ export default () => {
 
     // check if subscription is expired
     if (notifications.areGranted()) {
-      const isSubscriptionExpired = checkSubscription()
+      const isSubscriptionExpired = await checkSubscription()
 
       if (isSubscriptionExpired) {
         subscribe()
