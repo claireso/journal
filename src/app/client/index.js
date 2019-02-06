@@ -9,7 +9,7 @@ import Loader from '@common/components/Loader'
 
 import Photos from './Photos'
 import Welcome from './Welcome'
-import BannerOfline from './components/banners/Offline'
+import BannerOffline from './components/banners/Offline'
 import BannerNotifications from './components/banners/Notifications'
 
 const Main = styled.main`
@@ -72,7 +72,7 @@ const Page = props => {
     <TranslationsContext.Provider value={props.translations.client}>
       <Styles />
 
-      <BannerOfline />
+      <BannerOffline />
       <BannerNotifications />
 
       <Main>
