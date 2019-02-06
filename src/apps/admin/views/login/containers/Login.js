@@ -8,9 +8,9 @@ import {
   LOGIN_SUCCESS,
   loadUser,
   LOAD_USER_SUCCESS
-} from '@common/actions/user'
+} from '@admin/actions/user'
 
-import { UNAUTHORIZED_ERROR } from '@common/actions/user'
+import { UNAUTHORIZED_ERROR } from '@admin/actions/user'
 
 const mapStateToProps = state => ({
   isLogin: state.user.isLogin

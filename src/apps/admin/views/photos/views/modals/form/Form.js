@@ -8,7 +8,7 @@ import Uploader from '@admin/components/form/Uploader'
 import { Group } from '@admin/components/form/components/Group'
 import Label from '@admin/components/form/components/Label'
 import SubmitButton from '@admin/components/form/components/Button'
-import { ALLOWED_MIMETYPES } from '@common/constants'
+import { ALLOWED_MIMETYPES } from '@admin/constants'
 
 class Form extends React.PureComponent {
   handleSubmit = event => {

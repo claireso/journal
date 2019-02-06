@@ -10,7 +10,7 @@ import FlashGroup from './components/FlashGroup'
 import { AdminTabs } from './components/tabs'
 import Link from './components/Links'
 
-import { closeMessage } from '@common/actions/messages'
+import { closeMessage } from '@admin/actions/messages'
 
 const Layout = styled.div`
   display: grid;
