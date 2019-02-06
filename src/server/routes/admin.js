@@ -3,7 +3,7 @@ import React from 'react'
 import { ServerLocation, isRedirect } from '@reach/router'
 import { Provider } from 'react-redux'
 
-import configureStore from '@common/store/configureStore'
+import configureStore from '@admin/store/configureStore'
 
 import Layout from '@server/views/admin'
 import render from '@server/utils/render'

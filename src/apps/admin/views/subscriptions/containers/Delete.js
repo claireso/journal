@@ -4,17 +4,20 @@ import qs from 'qs'
 
 import Delete from '../views/modals/Delete'
 
-import { deletePhoto, DELETE_PHOTO_SUCCESS } from '@common/actions/photos'
-import { displaySuccessMessage } from '@common/actions/messages'
+import {
+  deleteSubscription,
+  DELETE_SUBSCRIPTION_SUCCESS
+} from '@admin/actions/subscriptions'
+import { displaySuccessMessage } from '@admin/actions/messages'
 
 const mapStateToProps = state => ({
-  isProcessing: state.photos.isProcessing
+  isProcessing: state.subscriptions.isProcessing
 })
 
 const mapDispatchToProps = dispatch => ({
-  deletePhoto(id) {
-    dispatch(deletePhoto(Number(id))).then(action => {
-      if (action.type === DELETE_PHOTO_SUCCESS) {
+  deleteSubscription(id) {
+    dispatch(deleteSubscription(Number(id))).then(action => {
+      if (action.type === DELETE_SUBSCRIPTION_SUCCESS) {
         const query = qs.parse(window.location.search.substring(1))
         const search = qs.stringify({
           ...query,
@@ -24,7 +27,7 @@ const mapDispatchToProps = dispatch => ({
         navigate(`?${search}`)
         dispatch(
           displaySuccessMessage({
-            message: 'Your photo has been deleted successfully',
+            message: 'Your subscription has been deleted successfully',
             key: 'CRUD_PHOTO'
           })
         )

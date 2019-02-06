@@ -2,22 +2,25 @@ import { connect } from 'react-redux'
 import { navigate } from '@reach/router'
 import qs from 'qs'
 
-import Delete from '../views/modals/Delete'
+import Edit from '../views/modals/Edit'
 
 import {
-  deleteSubscription,
-  DELETE_SUBSCRIPTION_SUCCESS
-} from '@common/actions/subscriptions'
-import { displaySuccessMessage } from '@common/actions/messages'
+  editPhoto,
+  EDIT_PHOTO_SUCCESS,
+  loadPhoto
+} from '@admin/actions/photos'
+
+import { displaySuccessMessage } from '@admin/actions/messages'
 
 const mapStateToProps = state => ({
-  isProcessing: state.subscriptions.isProcessing
+  error: state.photos.error,
+  isProcessing: state.photos.isProcessing
 })
 
 const mapDispatchToProps = dispatch => ({
-  deleteSubscription(id) {
-    dispatch(deleteSubscription(Number(id))).then(action => {
-      if (action.type === DELETE_SUBSCRIPTION_SUCCESS) {
+  editPhoto(id, data) {
+    dispatch(editPhoto(id, data)).then(action => {
+      if (action.type === EDIT_PHOTO_SUCCESS) {
         const query = qs.parse(window.location.search.substring(1))
         const search = qs.stringify({
           ...query,
@@ -27,7 +30,7 @@ const mapDispatchToProps = dispatch => ({
         navigate(`?${search}`)
         dispatch(
           displaySuccessMessage({
-            message: 'Your subscription has been deleted successfully',
+            message: 'Your photo has been updated successfully',
             key: 'CRUD_PHOTO'
           })
         )
@@ -37,10 +40,14 @@ const mapDispatchToProps = dispatch => ({
 
       document.querySelector('#modal').scrollTo(0, 0)
     })
+  },
+
+  loadPhoto(id) {
+    dispatch(loadPhoto(id))
   }
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Delete)
+)(Edit)

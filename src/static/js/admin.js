@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import Loadable from 'react-loadable'
 import { Provider } from 'react-redux'
 
-import configureStore from '@common/store/configureStore'
+import configureStore from '@admin/store/configureStore'
 
 import Admin from '@admin'
 
