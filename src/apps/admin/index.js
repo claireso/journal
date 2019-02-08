@@ -3,25 +3,26 @@ import { Router, Redirect } from '@reach/router'
 import Loadable from 'react-loadable'
 
 import Styles from './Styles'
-import Loader from '@common/components/Loader'
-import App from './App'
 
+import Loader from '@common/components/Loader'
+
+import App from './App'
 import ScrollUp from './components/ScrollUp'
 
 const NotFound = () => <p>Sorry, nothing here</p>
 
 const AsyncPhotos = Loadable({
-  loader: () => import('./photos/containers/List'),
+  loader: () => import('./views/photos/containers/List'),
   loading: Loader
 })
 
 const AsyncSubscriptions = Loadable({
-  loader: () => import('./subscriptions/containers/List'),
+  loader: () => import('./views/subscriptions/containers/List'),
   loading: Loader
 })
 
 const AsyncLogin = Loadable({
-  loader: () => import('./login/containers/Login'),
+  loader: () => import('./views/login/containers/Login'),
   loading: Loader
 })
 

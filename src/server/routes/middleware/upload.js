@@ -2,7 +2,7 @@ import multer from 'multer'
 import { ulid } from 'ulid'
 import path from 'path'
 
-import { ALLOWED_MIMETYPES } from '@common/constants'
+import { ALLOWED_MIMETYPES } from '@admin/constants'
 import customDiskStorage from '@server/utils/multer/customDiskStorage'
 
 // multer storage configuration

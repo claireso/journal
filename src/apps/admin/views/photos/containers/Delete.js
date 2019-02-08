@@ -2,25 +2,19 @@ import { connect } from 'react-redux'
 import { navigate } from '@reach/router'
 import qs from 'qs'
 
-import Edit from '../views/modals/Edit'
+import Delete from '../views/modals/Delete'
 
-import {
-  editPhoto,
-  EDIT_PHOTO_SUCCESS,
-  loadPhoto
-} from '@common/actions/photos'
-
-import { displaySuccessMessage } from '@common/actions/messages'
+import { deletePhoto, DELETE_PHOTO_SUCCESS } from '@admin/actions/photos'
+import { displaySuccessMessage } from '@admin/actions/messages'
 
 const mapStateToProps = state => ({
-  error: state.photos.error,
   isProcessing: state.photos.isProcessing
 })
 
 const mapDispatchToProps = dispatch => ({
-  editPhoto(id, data) {
-    dispatch(editPhoto(id, data)).then(action => {
-      if (action.type === EDIT_PHOTO_SUCCESS) {
+  deletePhoto(id) {
+    dispatch(deletePhoto(Number(id))).then(action => {
+      if (action.type === DELETE_PHOTO_SUCCESS) {
         const query = qs.parse(window.location.search.substring(1))
         const search = qs.stringify({
           ...query,
@@ -30,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
         navigate(`?${search}`)
         dispatch(
           displaySuccessMessage({
-            message: 'Your photo has been updated successfully',
+            message: 'Your photo has been deleted successfully',
             key: 'CRUD_PHOTO'
           })
         )
@@ -40,14 +34,10 @@ const mapDispatchToProps = dispatch => ({
 
       document.querySelector('#modal').scrollTo(0, 0)
     })
-  },
-
-  loadPhoto(id) {
-    dispatch(loadPhoto(id))
   }
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Edit)
+)(Delete)

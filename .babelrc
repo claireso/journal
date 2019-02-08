@@ -16,9 +16,9 @@
       "module-resolver",
       {
         "alias": {
-          "@client": "./src/app/client",
-          "@admin": "./src/app/admin",
-          "@common": "./src/common",
+          "@client": "./src/apps/client",
+          "@admin": "./src/apps/admin",
+          "@common": "./src/apps/common",
           "@server": "./src/server"
         }
       }

@@ -3,9 +3,9 @@ import { navigate } from '@reach/router'
 
 import Create from '../views/modals/Create'
 
-import { createPhoto, CREATE_PHOTO_SUCCESS } from '@common/actions/photos'
+import { createPhoto, CREATE_PHOTO_SUCCESS } from '@admin/actions/photos'
 
-import { displaySuccessMessage } from '@common/actions/messages'
+import { displaySuccessMessage } from '@admin/actions/messages'
 
 const mapStateToProps = state => ({
   error: state.photos.error,
