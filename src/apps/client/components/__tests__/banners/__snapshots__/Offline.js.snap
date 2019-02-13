@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Offline /> should not render component 1`] = `<div />`;
+
+exports[`<Offline /> should render component 1`] = `
+.c1 {
+  background: var(--yellow);
+  color: var(--white);
+  font-size: 1.4rem;
+  margin: 0 0 var(--gutter);
+  padding: 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.c1 button {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.c1 + .c0 {
+  border-top: 3px solid var(--yellow-darker);
+}
+
+<div>
+  <div
+    class="c0 c1"
+    style="opacity: 0;"
+  >
+    Vous êtes actuellement hors-ligne. Connectez-vous à internet pour avoir accès aux dernières photos
+  </div>
+</div>
+`;

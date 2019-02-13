@@ -75,7 +75,8 @@ export default () => {
     // do not display banner in safari
     if (
       !('serviceWorker' in navigator) ||
-      process.env.NODE_ENV !== 'production' ||
+      (process.env.NODE_ENV !== 'production' &&
+        process.env.NODE_ENV !== 'test') ||
       !process.env.IS_PUSH_ENABLED ||
       window.safari
     ) {

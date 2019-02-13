@@ -4,11 +4,7 @@ import qs from 'qs'
 
 import Edit from '../views/modals/Edit'
 
-import {
-  editPhoto,
-  EDIT_PHOTO_SUCCESS,
-  loadPhoto
-} from '@admin/actions/photos'
+import { editPhoto, EDIT_PHOTO_SUCCESS, loadPhoto } from '@admin/actions/photos'
 
 import { displaySuccessMessage } from '@admin/actions/messages'
 
