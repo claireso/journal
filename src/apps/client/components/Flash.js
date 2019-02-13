@@ -40,7 +40,7 @@ const FlashWrapper = styled.div`
   }
 `
 
-const Flash = ({ status, onClose, index, children }) => {
+const Flash = ({ status, onClose, children }) => {
   return (
     <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
       {props => (
@@ -50,7 +50,7 @@ const Flash = ({ status, onClose, index, children }) => {
             <ButtonIcon
               onClick={event => {
                 event.preventDefault()
-                onClose(index)
+                onClose()
               }}
             >
               <IconClose />
@@ -69,7 +69,6 @@ Flash.defaultProps = {
 Flash.propTypes = {
   status: PropTypes.string.isRequired,
   onClose: PropTypes.func,
-  index: PropTypes.number,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired
 }
 

@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Photos /> should render component 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.c1 {
+  width: 100%;
+  max-width: 810px;
+}
+
+.c3 {
+  font-size: 1.2rem;
+}
+
+.c4 {
+  color: var(--gray-2);
+  display: block;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.4rem 0 0;
+}
+
+.c2 {
+  background: var(--gray-4);
+  position: relative;
+  padding-top: calc(0.666667 * 100%);
+  width: 100%;
+  margin: 0 0 1rem;
+}
+
+.c6 {
+  margin: 0 0 8.5rem;
+  padding: 0;
+  text-align: center;
+}
+
+.c6 > li {
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+.c7 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 1rem 1.2rem 1.1rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background: white;
+  border: 1px solid var(--gray-1);
+  display: inline-block;
+  font-family: 'Roboto',Arial,sans-serif;
+  width: 4.2rem;
+  color: var(--text);
+  font-size: 1.6rem;
+  font-weight: 700;
+  will-change: border-color;
+  -webkit-transition: border-color 150ms ease-out;
+  transition: border-color 150ms ease-out;
+}
+
+.c7:hover {
+  border-color: var(--gray-3);
+}
+
+@media (min-width:800px) {
+  .c0 {
+    margin: 8.5rem 0;
+    padding: 0 8.5rem;
+  }
+
+  .c0 + figure {
+    margin-top: 20rem;
+  }
+}
+
+@media (min-width:800px) {
+  .c5 {
+    margin: 8.5rem 0;
+    padding: 0 8.5rem;
+  }
+
+  .c5 + figure {
+    margin-top: 20rem;
+  }
+}
+
+<div>
+  <figure
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      />
+      <figcaption
+        class="c3"
+      >
+        <span />
+        <span
+          class="c4"
+        >
+          Février 2019
+        </span>
+      </figcaption>
+    </div>
+  </figure>
+  <figure
+    class="c5"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      />
+      <figcaption
+        class="c3"
+      >
+        <span />
+        <span
+          class="c4"
+        >
+          Janvier 2019
+        </span>
+      </figcaption>
+    </div>
+  </figure>
+  <ul
+    class="c6"
+  >
+    <li>
+      <button
+        class="c7"
+        title="Next page"
+      >
+        »
+      </button>
+    </li>
+    <li>
+      <button
+        class="c7"
+        title="Last page"
+      >
+        »»
+      </button>
+    </li>
+  </ul>
+</div>
+`;

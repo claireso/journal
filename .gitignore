@@ -4,3 +4,4 @@ public
 config.json
 htpasswd
 dist
+coverage

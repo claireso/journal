@@ -1,0 +1,386 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Photo /> should render photo (landscape center) 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.c1 {
+  width: 100%;
+  max-width: 810px;
+}
+
+.c3 {
+  font-size: 1.2rem;
+}
+
+.c4 {
+  color: var(--gray-2);
+  display: block;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.4rem 0 0;
+}
+
+.c2 {
+  background: var(--gray-4);
+  position: relative;
+  padding-top: calc(0.666667 * 100%);
+  width: 100%;
+  margin: 0 0 1rem;
+}
+
+@media (min-width:800px) {
+  .c0 {
+    margin: 8.5rem 0;
+    padding: 0 8.5rem;
+  }
+
+  .c0 + figure {
+    margin-top: 20rem;
+  }
+}
+
+<div>
+  <figure
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      />
+      <figcaption
+        class="c3"
+      >
+        <span>
+          Single photography
+        </span>
+        <span
+          class="c4"
+        >
+          Janvier 2019
+        </span>
+      </figcaption>
+    </div>
+  </figure>
+</div>
+`;
+
+exports[`<Photo /> should render photo (landscape left) 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.c1 {
+  width: 100%;
+  max-width: 810px;
+}
+
+.c3 {
+  font-size: 1.2rem;
+}
+
+.c4 {
+  color: var(--gray-2);
+  display: block;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.4rem 0 0;
+}
+
+.c2 {
+  background: var(--gray-4);
+  position: relative;
+  padding-top: calc(0.666667 * 100%);
+  width: 100%;
+  margin: 0 0 1rem;
+}
+
+@media (min-width:800px) {
+  .c0 {
+    margin: 8.5rem 0;
+    padding: 0 8.5rem;
+  }
+
+  .c0 + figure {
+    margin-top: 20rem;
+  }
+}
+
+<div>
+  <figure
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      />
+      <figcaption
+        class="c3"
+      >
+        <span>
+          Single photography
+        </span>
+        <span
+          class="c4"
+        >
+          Janvier 2019
+        </span>
+      </figcaption>
+    </div>
+  </figure>
+</div>
+`;
+
+exports[`<Photo /> should render photo (landscape right) 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.c1 {
+  width: 100%;
+  max-width: 810px;
+}
+
+.c3 {
+  font-size: 1.2rem;
+}
+
+.c4 {
+  color: var(--gray-2);
+  display: block;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.4rem 0 0;
+}
+
+.c2 {
+  background: var(--gray-4);
+  position: relative;
+  padding-top: calc(0.666667 * 100%);
+  width: 100%;
+  margin: 0 0 1rem;
+}
+
+@media (min-width:800px) {
+  .c0 {
+    margin: 8.5rem 0;
+    padding: 0 8.5rem;
+  }
+
+  .c0 + figure {
+    margin-top: 20rem;
+  }
+}
+
+<div>
+  <figure
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      />
+      <figcaption
+        class="c3"
+      >
+        <span>
+          Single photography
+        </span>
+        <span
+          class="c4"
+        >
+          Janvier 2019
+        </span>
+      </figcaption>
+    </div>
+  </figure>
+</div>
+`;
+
+exports[`<Photo /> should render photo (portrait center) 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.c1 {
+  width: 100%;
+  max-width: 385px;
+}
+
+.c3 {
+  font-size: 1.2rem;
+}
+
+.c4 {
+  color: var(--gray-2);
+  display: block;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.4rem 0 0;
+}
+
+.c2 {
+  background: var(--gray-4);
+  position: relative;
+  padding-top: calc(1.501299 * 100%);
+  width: 100%;
+  margin: 0 0 1rem;
+}
+
+@media (min-width:800px) {
+  .c0 {
+    margin: 8.5rem 0;
+    padding: 0 8.5rem;
+  }
+
+  .c0 + figure {
+    margin-top: 20rem;
+  }
+}
+
+<div>
+  <figure
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      />
+      <figcaption
+        class="c3"
+      >
+        <span>
+          Single photography
+        </span>
+        <span
+          class="c4"
+        >
+          Janvier 2019
+        </span>
+      </figcaption>
+    </div>
+  </figure>
+</div>
+`;
+
+exports[`<Photo /> should render photo (square center) 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.c1 {
+  width: 100%;
+  max-width: 578px;
+}
+
+.c3 {
+  font-size: 1.2rem;
+}
+
+.c4 {
+  color: var(--gray-2);
+  display: block;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.4rem 0 0;
+}
+
+.c2 {
+  background: var(--gray-4);
+  position: relative;
+  padding-top: calc(1.000000 * 100%);
+  width: 100%;
+  margin: 0 0 1rem;
+}
+
+@media (min-width:800px) {
+  .c0 {
+    margin: 8.5rem 0;
+    padding: 0 8.5rem;
+  }
+
+  .c0 + figure {
+    margin-top: 20rem;
+  }
+}
+
+<div>
+  <figure
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      />
+      <figcaption
+        class="c3"
+      >
+        <span>
+          Single photography
+        </span>
+        <span
+          class="c4"
+        >
+          Janvier 2019
+        </span>
+      </figcaption>
+    </div>
+  </figure>
+</div>
+`;
