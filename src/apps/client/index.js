@@ -61,11 +61,13 @@ const Page = props => {
     loadPhotos(event.state && event.state.page)
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     // listen history
     window.addEventListener('popstate', onNavigate)
 
-    return () => window.removeEventListener('popstate', onNavigate)
+    return () => {
+      window.removeEventListener('popstate', onNavigate)
+    }
   }, [])
 
   return (
