@@ -43,7 +43,7 @@ const FlashWrapper = animated(styled.div`
 const Flash = ({ status, onClose, children }) => {
   const styles = useSpring({
     from: { opacity: 0 },
-    to: { opacity: 1 },
+    to: { opacity: 1 }
   })
   return (
     <FlashWrapper style={styles} status={status}>

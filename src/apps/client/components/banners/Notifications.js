@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 
 import TranslationsContext from '@common/context/Translations'
@@ -49,9 +49,11 @@ const checkSubscription = async () => {
 
 export default () => {
   const [isVisible, setIsVisible] = useState(false)
+  const translations = useContext(TranslationsContext)
 
   const subscribe = async event => {
     event && event.preventDefault()
+
     try {
       await notifications.subscribe()
       hideBanner()
@@ -98,21 +100,18 @@ export default () => {
           if (isSubscriptionExpired) {
             subscribe()
           }
-        }).catch(() => { })
+        })
+        .catch(() => {})
     }
   }, [])
 
   if (!isVisible) return null
 
   return (
-    <TranslationsContext.Consumer>
-      {translations => (
-        <Flash onClose={hideBanner}>
-          <ButtonSubscribe onClick={subscribe}>
-            {translations.bannerNotifications}
-          </ButtonSubscribe>
-        </Flash>
-      )}
-    </TranslationsContext.Consumer>
+    <Flash onClose={hideBanner}>
+      <ButtonSubscribe onClick={subscribe}>
+        {translations.bannerNotifications}
+      </ButtonSubscribe>
+    </Flash>
   )
 }

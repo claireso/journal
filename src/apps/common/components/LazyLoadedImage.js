@@ -20,9 +20,7 @@ const LazyLoadedImage = props => {
 
   if (!loaded) return null
 
-  return (
-    <animated.img style={styles} {...props} />
-  )
+  return <animated.img style={styles} {...props} />
 }
 
 LazyLoadedImage.propTypes = {
