@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Spring } from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 
 import { IconClose } from '@common/components/Icons'
 
@@ -13,7 +13,7 @@ const mapFlashBackground = {
   success: 'var(--success)'
 }
 
-const FlashWrapper = styled.div`
+const FlashWrapper = animated(styled.div`
   background: ${props =>
     mapFlashBackground[props.status] || mapFlashBackground['default']};
   color: var(--white);
@@ -31,27 +31,28 @@ const FlashWrapper = styled.div`
     top: 0;
     bottom: 0;
   }
-`
+`)
 
 const Flash = ({ status, message, onClose, index }) => {
+  const styles = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 }
+  })
+
   return (
-    <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-      {props => (
-        <FlashWrapper style={props} status={status}>
-          {message}
-          {onClose && (
-            <ButtonIcon
-              onClick={event => {
-                event.preventDefault()
-                onClose(index)
-              }}
-            >
-              <IconClose />
-            </ButtonIcon>
-          )}
-        </FlashWrapper>
+    <FlashWrapper style={styles} status={status}>
+      {message}
+      {onClose && (
+        <ButtonIcon
+          onClick={event => {
+            event.preventDefault()
+            onClose(index)
+          }}
+        >
+          <IconClose />
+        </ButtonIcon>
       )}
-    </Spring>
+    </FlashWrapper>
   )
 }
 

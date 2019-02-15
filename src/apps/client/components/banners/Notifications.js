@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 
 import TranslationsContext from '@common/context/Translations'
@@ -49,9 +49,11 @@ const checkSubscription = async () => {
 
 export default () => {
   const [isVisible, setIsVisible] = useState(false)
+  const translations = useContext(TranslationsContext)
 
   const subscribe = async event => {
     event && event.preventDefault()
+
     try {
       await notifications.subscribe()
       hideBanner()
@@ -69,7 +71,7 @@ export default () => {
   const hideBanner = () => setIsVisible(false)
   const showBanner = () => setIsVisible(true)
 
-  useEffect(async () => {
+  useEffect(() => {
     // do not display banner if service worker not support
     // do not display banner if push not enabled
     // do not display banner in safari
@@ -93,25 +95,23 @@ export default () => {
 
     // check if subscription is expired
     if (notifications.areGranted()) {
-      const isSubscriptionExpired = await checkSubscription()
-
-      if (isSubscriptionExpired) {
-        subscribe()
-      }
+      checkSubscription()
+        .then(isSubscriptionExpired => {
+          if (isSubscriptionExpired) {
+            subscribe()
+          }
+        })
+        .catch(() => {})
     }
   }, [])
 
   if (!isVisible) return null
 
   return (
-    <TranslationsContext.Consumer>
-      {translations => (
-        <Flash onClose={hideBanner}>
-          <ButtonSubscribe onClick={subscribe}>
-            {translations.bannerNotifications}
-          </ButtonSubscribe>
-        </Flash>
-      )}
-    </TranslationsContext.Consumer>
+    <Flash onClose={hideBanner}>
+      <ButtonSubscribe onClick={subscribe}>
+        {translations.bannerNotifications}
+      </ButtonSubscribe>
+    </Flash>
   )
 }

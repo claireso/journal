@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Transition } from 'react-spring'
+import { Transition } from 'react-spring/renderprops.cjs'
 
 import { ButtonIcon } from '@admin/components/Buttons'
 import { IconClose } from '@common/components/Icons'
