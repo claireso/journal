@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Spring } from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 
 const LazyLoadedImage = props => {
   const [loaded, setLoaded] = useState(false)
+
+  const styles = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { tension: 140, friction: 70 }
+  })
 
   useEffect(() => {
     const img = new Image()
@@ -15,13 +21,7 @@ const LazyLoadedImage = props => {
   if (!loaded) return null
 
   return (
-    <Spring
-      from={{ opacity: 0 }}
-      to={{ opacity: 1 }}
-      config={{ tension: 140, friction: 70 }}
-    >
-      {styles => <img style={styles} {...props} />}
-    </Spring>
+    <animated.img style={styles} {...props} />
   )
 }
 

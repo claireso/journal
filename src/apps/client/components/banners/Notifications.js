@@ -69,7 +69,7 @@ export default () => {
   const hideBanner = () => setIsVisible(false)
   const showBanner = () => setIsVisible(true)
 
-  useEffect(async () => {
+  useEffect(() => {
     // do not display banner if service worker not support
     // do not display banner if push not enabled
     // do not display banner in safari
@@ -93,11 +93,12 @@ export default () => {
 
     // check if subscription is expired
     if (notifications.areGranted()) {
-      const isSubscriptionExpired = await checkSubscription()
-
-      if (isSubscriptionExpired) {
-        subscribe()
-      }
+      checkSubscription()
+        .then(isSubscriptionExpired => {
+          if (isSubscriptionExpired) {
+            subscribe()
+          }
+        }).catch(() => { })
     }
   }, [])
 
