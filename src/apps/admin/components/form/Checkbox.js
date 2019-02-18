@@ -21,11 +21,7 @@ const Checkbox = (props = {}) => {
 Checkbox.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-    PropTypes.number
-  ])
+  value: PropTypes.bool
 }
 
 export default Checkbox

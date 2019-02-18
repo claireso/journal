@@ -50,6 +50,29 @@ module.exports = {
       "created_at": "2019-02-03T19:59:00.088Z",
       "updated_at": "2019-02-03T19:59:00.088Z"
     },
-    '__NOTIFICATIONS_PUBLIC_KEY__': 'BF5aNmzb2AOaGpjZbZu4peOrCM5bRYjIv4BC0U1o-_qAhiA0RMiO09SnAOFUlQuQeLcG9mtwlUgksO1vckjQOXU'
+    '__NOTIFICATIONS_PUBLIC_KEY__': 'BF5aNmzb2AOaGpjZbZu4peOrCM5bRYjIv4BC0U1o-_qAhiA0RMiO09SnAOFUlQuQeLcG9mtwlUgksO1vckjQOXU',
+    __SUBSCRIPTIONS__: {
+      "items": [
+        {
+          "id": 118,
+          "subscription": {
+            "endpoint": "https://fcm.googleapis.com/",
+            "expirationTime": null,
+            "keys": {
+              "p256dh": "BH_v",
+              "auth": "nijX1"
+            }
+          },
+          "created_at": "2019-02-05T15:41:23.646Z",
+          "updated_at": "2019-02-05T15:41:23.646Z"
+        }
+      ],
+      "pager": {
+        "count": 10,
+        "totalPages": 1,
+        "limit": 10,
+        "offset": 0
+      }
+    }
   }
 }
