@@ -52,8 +52,8 @@ export const PrimaryButton = props => {
   return props.isLoading ? (
     <StyledPrimaryButtonLoading />
   ) : (
-      <StyledPrimaryButton {...props} />
-    )
+    <StyledPrimaryButton {...props} />
+  )
 }
 
 PrimaryButton.propTypes = {

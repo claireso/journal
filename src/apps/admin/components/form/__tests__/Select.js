@@ -21,7 +21,6 @@ describe('<Select />', () => {
       value: 'option2'
     }
 
-
     const { container } = render(<Select {...props} />)
 
     expect(container).toMatchSnapshot()

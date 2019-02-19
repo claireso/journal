@@ -22,7 +22,7 @@ describe('reducer user', () => {
 
   test('should request log in', () => {
     const action = {
-      type: actionTypes.LOGIN_REQUEST,
+      type: actionTypes.LOGIN_REQUEST
     }
 
     reducer = userReducer(reducer, action)
@@ -35,7 +35,7 @@ describe('reducer user', () => {
 
   test('should stop log in', () => {
     const action = {
-      type: actionTypes.LOGIN_ERROR,
+      type: actionTypes.LOGIN_ERROR
     }
 
     reducer = userReducer(reducer, action)

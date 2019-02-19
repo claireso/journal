@@ -24,7 +24,7 @@ const getPager = (props = {}) => (
 
 describe('<Pager />', () => {
   test('should not render items', () => {
-    const { container } = render(getPager({ navigate: () => { } }))
+    const { container } = render(getPager({ navigate: () => {} }))
 
     expect(container.querySelector('li')).toBeNull()
   })

@@ -5,10 +5,10 @@ import Delete from '../Delete'
 
 describe('<Delete />', () => {
   const getProps = () => ({
-    deletePhoto: () => { },
+    deletePhoto: () => {},
     id: 199,
     isProcessing: false,
-    onClose: () => { }
+    onClose: () => {}
   })
 
   test('should render component', () => {
@@ -20,7 +20,7 @@ describe('<Delete />', () => {
   test('should close component', () => {
     const props = {
       ...getProps(),
-      onClose: jest.fn(),
+      onClose: jest.fn()
     }
 
     const { getByText } = render(<Delete {...props} />)
@@ -33,7 +33,7 @@ describe('<Delete />', () => {
   test('should delete photo', () => {
     const props = {
       ...getProps(),
-      deletePhoto: jest.fn(),
+      deletePhoto: jest.fn()
     }
 
     const { getByText } = render(<Delete {...props} />)

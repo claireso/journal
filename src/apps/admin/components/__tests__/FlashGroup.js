@@ -16,14 +16,18 @@ describe('<FlashGroup />', () => {
   ]
 
   test('should render two flash messages', () => {
-    const { container } = render(<FlashGroup messages={messages} onClose={() => { }} />)
+    const { container } = render(
+      <FlashGroup messages={messages} onClose={() => {}} />
+    )
 
     expect(container).toMatchSnapshot()
   })
 
   test('should close flash messages', () => {
     const spyOnClose = jest.fn()
-    const { container } = render(<FlashGroup messages={messages} onClose={spyOnClose} />)
+    const { container } = render(
+      <FlashGroup messages={messages} onClose={spyOnClose} />
+    )
 
     expect(container).toMatchSnapshot()
 

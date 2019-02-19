@@ -5,7 +5,9 @@ import { PrimaryButton } from '../Buttons'
 
 describe('<PrimaryButton />', () => {
   test('should render loader', () => {
-    const { container } = render(<PrimaryButton isLoading>Button</PrimaryButton>)
+    const { container } = render(
+      <PrimaryButton isLoading>Button</PrimaryButton>
+    )
 
     expect(container).toMatchSnapshot()
   })

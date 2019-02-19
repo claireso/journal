@@ -6,7 +6,7 @@ describe('reducer subscriptions', () => {
 
   test('should start request subscriptions', () => {
     const action = {
-      type: actionTypes.LOAD_SUBSCRIPTIONS_REQUEST,
+      type: actionTypes.LOAD_SUBSCRIPTIONS_REQUEST
     }
 
     reducer = subscriptionsReducer(reducer, action)
@@ -28,26 +28,26 @@ describe('reducer subscriptions', () => {
     reducer = subscriptionsReducer(reducer, action)
 
     expect(reducer).toEqual({
-      "items": [
+      items: [
         {
-          "id": 118,
-          "subscription": {
-            "endpoint": "https://fcm.googleapis.com/",
-            "expirationTime": null,
-            "keys": {
-              "p256dh": "BH_v",
-              "auth": "nijX1"
+          id: 118,
+          subscription: {
+            endpoint: 'https://fcm.googleapis.com/',
+            expirationTime: null,
+            keys: {
+              p256dh: 'BH_v',
+              auth: 'nijX1'
             }
           },
-          "created_at": "2019-02-05T15:41:23.646Z",
-          "updated_at": "2019-02-05T15:41:23.646Z"
+          created_at: '2019-02-05T15:41:23.646Z',
+          updated_at: '2019-02-05T15:41:23.646Z'
         }
       ],
-      "pager": {
-        "count": 10,
-        "totalPages": 1,
-        "limit": 10,
-        "offset": 0
+      pager: {
+        count: 10,
+        totalPages: 1,
+        limit: 10,
+        offset: 0
       },
       isLoading: false,
       isProcessing: false
@@ -62,26 +62,26 @@ describe('reducer subscriptions', () => {
     reducer = subscriptionsReducer(reducer, action)
 
     expect(reducer).toEqual({
-      "items": [
+      items: [
         {
-          "id": 118,
-          "subscription": {
-            "endpoint": "https://fcm.googleapis.com/",
-            "expirationTime": null,
-            "keys": {
-              "p256dh": "BH_v",
-              "auth": "nijX1"
+          id: 118,
+          subscription: {
+            endpoint: 'https://fcm.googleapis.com/',
+            expirationTime: null,
+            keys: {
+              p256dh: 'BH_v',
+              auth: 'nijX1'
             }
           },
-          "created_at": "2019-02-05T15:41:23.646Z",
-          "updated_at": "2019-02-05T15:41:23.646Z"
+          created_at: '2019-02-05T15:41:23.646Z',
+          updated_at: '2019-02-05T15:41:23.646Z'
         }
       ],
-      "pager": {
-        "count": 10,
-        "totalPages": 1,
-        "limit": 10,
-        "offset": 0
+      pager: {
+        count: 10,
+        totalPages: 1,
+        limit: 10,
+        offset: 0
       },
       isLoading: false,
       isProcessing: true
@@ -96,26 +96,26 @@ describe('reducer subscriptions', () => {
     reducer = subscriptionsReducer(reducer, action)
 
     expect(reducer).toEqual({
-      "items": [
+      items: [
         {
-          "id": 118,
-          "subscription": {
-            "endpoint": "https://fcm.googleapis.com/",
-            "expirationTime": null,
-            "keys": {
-              "p256dh": "BH_v",
-              "auth": "nijX1"
+          id: 118,
+          subscription: {
+            endpoint: 'https://fcm.googleapis.com/',
+            expirationTime: null,
+            keys: {
+              p256dh: 'BH_v',
+              auth: 'nijX1'
             }
           },
-          "created_at": "2019-02-05T15:41:23.646Z",
-          "updated_at": "2019-02-05T15:41:23.646Z"
+          created_at: '2019-02-05T15:41:23.646Z',
+          updated_at: '2019-02-05T15:41:23.646Z'
         }
       ],
-      "pager": {
-        "count": 10,
-        "totalPages": 1,
-        "limit": 10,
-        "offset": 0
+      pager: {
+        count: 10,
+        totalPages: 1,
+        limit: 10,
+        offset: 0
       },
       isLoading: false,
       isProcessing: false
@@ -131,13 +131,12 @@ describe('reducer subscriptions', () => {
     reducer = subscriptionsReducer(reducer, action)
 
     expect(reducer).toEqual({
-      "items": [
-      ],
-      "pager": {
-        "count": 9,
-        "totalPages": 1,
-        "limit": 10,
-        "offset": 0
+      items: [],
+      pager: {
+        count: 9,
+        totalPages: 1,
+        limit: 10,
+        offset: 0
       },
       isLoading: false,
       isProcessing: false

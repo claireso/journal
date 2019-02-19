@@ -11,14 +11,18 @@ describe('<Form />', () => {
   })
 
   test('should prefill form with photo data', () => {
-    const { container } = render(<Form isProcessing={false} photo={__PHOTO__} />)
+    const { container } = render(
+      <Form isProcessing={false} photo={__PHOTO__} />
+    )
 
     expect(container).toMatchSnapshot()
   })
 
   test('should submit form', async () => {
     const spyOnSubmit = jest.fn()
-    const { container, getByLabelText } = render(<Form isProcessing={false} onSubmit={spyOnSubmit} />)
+    const { container, getByLabelText } = render(
+      <Form isProcessing={false} onSubmit={spyOnSubmit} />
+    )
 
     fireEvent.change(getByLabelText(/title/i), {
       target: {
@@ -42,8 +46,8 @@ describe('<Form />', () => {
 
     fireEvent.change(container.querySelector('input[type="file"]'), {
       target: {
-        files: [new File(['(⌐□_□)'], 'mypicture.jpg', { type: 'image/jpeg' })],
-      },
+        files: [new File(['(⌐□_□)'], 'mypicture.jpg', { type: 'image/jpeg' })]
+      }
     })
 
     await waitForElement(() => container.querySelector('img'))
@@ -55,7 +59,9 @@ describe('<Form />', () => {
     const dataAsFormData = spyOnSubmit.mock.calls[0][0]
 
     expect(dataAsFormData.get('title')).toEqual('my new photo')
-    expect(dataAsFormData.get('description')).toEqual('my new photo description')
+    expect(dataAsFormData.get('description')).toEqual(
+      'my new photo description'
+    )
     expect(dataAsFormData.get('position')).toEqual('center')
     expect(dataAsFormData.get('portrait')).toBeTruthy()
     // expect(dataAsFormData.get('file')).toEqual()
@@ -63,7 +69,9 @@ describe('<Form />', () => {
 
   test('should display loader instead of submit button', () => {
     const spyOnSubmit = jest.fn()
-    const { container } = render(<Form isProcessing={true} onSubmit={spyOnSubmit} />)
+    const { container } = render(
+      <Form isProcessing={true} onSubmit={spyOnSubmit} />
+    )
 
     expect(container).toMatchSnapshot()
 

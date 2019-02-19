@@ -7,7 +7,7 @@ describe('<Input />', () => {
   const props = {
     label: 'My input',
     name: 'myinput',
-    value: 'my custom value',
+    value: 'my custom value'
   }
 
   test('should render input', () => {
@@ -19,7 +19,9 @@ describe('<Input />', () => {
   test('should call onChange property', () => {
     const spyOnChange = jest.fn()
 
-    const { getByLabelText } = render(<Input {...props} onChange={spyOnChange} />)
+    const { getByLabelText } = render(
+      <Input {...props} onChange={spyOnChange} />
+    )
 
     const input = getByLabelText('My input')
 

@@ -28,8 +28,8 @@ describe('<Uploader />', () => {
 
     fireEvent.change(input, {
       target: {
-        files: [new File(['(⌐□_□)'], 'mypdf.pdf', { type: 'application/pdf' })],
-      },
+        files: [new File(['(⌐□_□)'], 'mypdf.pdf', { type: 'application/pdf' })]
+      }
     })
 
     expect(container).toMatchSnapshot()
@@ -42,8 +42,8 @@ describe('<Uploader />', () => {
 
     await fireEvent.change(input, {
       target: {
-        files: [new File(['(⌐□_□)'], 'mypicture.jpg', { type: 'image/jpeg' })],
-      },
+        files: [new File(['(⌐□_□)'], 'mypicture.jpg', { type: 'image/jpeg' })]
+      }
     })
 
     await wait(() => {

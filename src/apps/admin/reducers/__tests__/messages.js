@@ -13,11 +13,13 @@ describe('reducer messages', () => {
 
     reducer = messagesReducer(reducer, action)
 
-    expect(reducer).toEqual([{
-      status: 'error',
-      message: 'Message 1',
-      type: 'ADD_MESSAGE'
-    }])
+    expect(reducer).toEqual([
+      {
+        status: 'error',
+        message: 'Message 1',
+        type: 'ADD_MESSAGE'
+      }
+    ])
   })
 
   test('should add a second message', () => {
@@ -34,7 +36,7 @@ describe('reducer messages', () => {
       {
         message: 'Message 1',
         status: 'error',
-        'type': 'ADD_MESSAGE'
+        type: 'ADD_MESSAGE'
       },
       {
         key: 'crudPhoto',
@@ -59,7 +61,7 @@ describe('reducer messages', () => {
       {
         message: 'Message 1',
         status: 'error',
-        'type': 'ADD_MESSAGE'
+        type: 'ADD_MESSAGE'
       },
       {
         key: 'crudPhoto',
@@ -90,7 +92,7 @@ describe('reducer messages', () => {
       {
         message: 'Message 1',
         status: 'error',
-        'type': 'ADD_MESSAGE'
+        type: 'ADD_MESSAGE'
       },
       {
         key: 'crudPhoto',
@@ -110,7 +112,7 @@ describe('reducer messages', () => {
   test('should delete second message', () => {
     const action = {
       type: actionTypes.CLOSE_MESSAGE,
-      index: 1,
+      index: 1
     }
 
     reducer = messagesReducer(reducer, action)
@@ -119,7 +121,7 @@ describe('reducer messages', () => {
       {
         message: 'Message 1',
         status: 'error',
-        'type': 'ADD_MESSAGE'
+        type: 'ADD_MESSAGE'
       },
       {
         type: 'ADD_MESSAGE',
@@ -133,7 +135,7 @@ describe('reducer messages', () => {
   test('should delete first message', () => {
     const action = {
       type: actionTypes.CLOSE_MESSAGE,
-      index: 0,
+      index: 0
     }
 
     reducer = messagesReducer(reducer, action)
@@ -152,7 +154,7 @@ describe('reducer messages', () => {
     const action = {
       type: actionTypes.INTERNAL_SERVER_ERROR,
       status: 'error',
-      message: 'An error has occured, please retry',
+      message: 'An error has occured, please retry'
     }
 
     reducer = messagesReducer(reducer, action)

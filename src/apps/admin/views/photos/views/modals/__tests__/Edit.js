@@ -4,13 +4,12 @@ import { render, fireEvent } from 'react-testing-library'
 import Edit from '../Edit'
 
 describe('<Edit />', () => {
-
   const getProps = () => ({
-    editPhoto: () => { },
-    loadPhoto: () => { },
+    editPhoto: () => {},
+    loadPhoto: () => {},
     photo: __PHOTO__,
     isProcessing: false,
-    onClose: () => { },
+    onClose: () => {},
     id: 199
   })
 
