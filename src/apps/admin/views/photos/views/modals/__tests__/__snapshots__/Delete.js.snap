@@ -1,0 +1,268 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Delete /> should not delete photo 1`] = `
+.c8 {
+  margin: 2rem 0;
+  -webkit-animation: eMLfYp 800ms ease-in-out infinite alternate;
+  animation: eMLfYp 800ms ease-in-out infinite alternate;
+}
+
+.c8:after {
+  background: var(--primary);
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  margin: 0 auto;
+}
+
+.c9 + .c4 {
+  margin: 0 0 0 1rem;
+}
+
+.c6 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: var(--primary);
+  color: white;
+  padding: 1.1rem 1rem 1.3rem;
+}
+
+.c6 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c6 + .c5 {
+  margin: 0 0 0 1rem;
+}
+
+.c6:hover {
+  background: var(--primary-lighter);
+}
+
+.c6 .c7 {
+  margin: 0;
+}
+
+.c6 .c7:after {
+  background: #fff;
+}
+
+.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.c3 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c3 + .c2 {
+  margin: 0 0 0 1rem;
+}
+
+.c3:hover {
+  background: var(--secondary-darker);
+}
+
+.c3 + .c4 {
+  margin-left: 1rem;
+}
+
+.c0 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
+}
+
+.c1 {
+  text-align: right;
+  font-size: 1.2rem;
+}
+
+<div>
+  <h1
+    class="c0"
+  >
+    Are you sure?
+  </h1>
+  <p>
+    This action is irreversible
+  </p>
+  <p
+    class="c1"
+  >
+    <button
+      class="c2 c3"
+    >
+       
+      Cancel
+       
+    </button>
+    <button
+      class="c4 c5 c6"
+    >
+      <span
+        class="c7 c8"
+      />
+    </button>
+  </p>
+</div>
+`;
+
+exports[`<Delete /> should render component 1`] = `
+.c5 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: var(--primary);
+  color: white;
+}
+
+.c5 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c5 + .c4 {
+  margin: 0 0 0 1rem;
+}
+
+.c5:hover {
+  background: var(--primary-lighter);
+}
+
+.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.c3 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c3 + .c2 {
+  margin: 0 0 0 1rem;
+}
+
+.c3:hover {
+  background: var(--secondary-darker);
+}
+
+.c3 + .c4 {
+  margin-left: 1rem;
+}
+
+.c0 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
+}
+
+.c1 {
+  text-align: right;
+  font-size: 1.2rem;
+}
+
+<div>
+  <h1
+    class="c0"
+  >
+    Are you sure?
+  </h1>
+  <p>
+    This action is irreversible
+  </p>
+  <p
+    class="c1"
+  >
+    <button
+      class="c2 c3"
+    >
+       
+      Cancel
+       
+    </button>
+    <button
+      class="c4 c5"
+    >
+       
+      Yes
+       
+    </button>
+  </p>
+</div>
+`;

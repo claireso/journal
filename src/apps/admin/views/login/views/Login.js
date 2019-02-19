@@ -32,6 +32,10 @@ const Login = props => {
   )
 }
 
+Login.defaultProps = {
+  isLogin: false
+}
+
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   isLogin: PropTypes.bool.isRequired

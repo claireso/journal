@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
 
     case actionTypes.ADD_MESSAGE: {
       const message = action
-      let index = state.length ? state.length - 1 : 0
+      let index = state.length || 0
 
       if (message.key) {
         const messageToReplaceIndex = state.findIndex(
