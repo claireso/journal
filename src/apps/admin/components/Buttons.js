@@ -35,7 +35,7 @@ const StyledPrimaryButton = styled(Button)`
 `
 
 const StyledPrimaryButtonLoading = styled(StyledPrimaryButton).attrs(() => ({
-  children: <Loader />
+  children: <Loader as="span" />
 }))`
   padding: 1.1rem 1rem 1.3rem;
 

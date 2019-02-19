@@ -89,7 +89,10 @@ class Photo extends React.PureComponent {
           >
             <IconPencil />
           </ButtonIcon>
-          <ButtonIcon onClick={this.props.onDelete.bind(this, this.props.id)}>
+          <ButtonIcon
+            onClick={this.props.onDelete.bind(this, this.props.id)}
+            title="Delete"
+          >
             <IconDelete />
           </ButtonIcon>
         </PhotoTools>

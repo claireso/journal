@@ -57,8 +57,8 @@ const Flash = ({ status, message, onClose, index }) => {
 }
 
 Flash.propTypes = {
-  status: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
+  status: PropTypes.string,
   onClose: PropTypes.func,
   index: PropTypes.number
 }

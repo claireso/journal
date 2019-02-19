@@ -2,18 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import createThumbnail from '@common/utils/createThumbnail'
 import { IconUpload } from '@common/components/Icons'
-
-const createThumbnail = file =>
-  new Promise(resolve => {
-    const reader = new FileReader()
-
-    reader.addEventListener('load', () => {
-      resolve(reader.result)
-    })
-
-    reader.readAsDataURL(file)
-  })
 
 const UploaderWrapper = styled.div`
   border: 1px solid var(--gray-1);
