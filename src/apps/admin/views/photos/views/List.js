@@ -180,8 +180,7 @@ Photos.propTypes = {
     pager: PropTypes.object,
     detail: PropTypes.object
   }).isRequired,
-  loadPhotos: PropTypes.func.isRequired,
-  children: PropTypes.node
+  loadPhotos: PropTypes.func.isRequired
 }
 
 export default Photos

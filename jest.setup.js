@@ -6,6 +6,7 @@ import 'react-testing-library/cleanup-after-each'
 import 'jest-styled-components'
 
 window.scroll = () => { }
+window.scrollTo = () => { }
 global.fetch = fetchMock
 
 // go offline
