@@ -16,7 +16,7 @@ passport.use(
       usernameField: 'username',
       passwordField: 'password'
     },
-    async function(username, password, done) {
+    async function (username, password, done) {
       const _username = escape(username)
       const _password = escape(password)
 
@@ -60,6 +60,12 @@ passport.deserializeUser(async (cid, cb) => {
 
 // LOGIN
 router.post('/login', passport.authenticate('local'), (req, res) => {
+  res.json({})
+})
+
+// LOGOUT
+router.post('/logout', (req, res) => {
+  req.logout()
   res.json({})
 })
 
