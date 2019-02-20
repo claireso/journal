@@ -8,14 +8,14 @@ describe('reducer user', () => {
     const action = {
       type: actionTypes.LOAD_USER_SUCCESS,
       response: {
-        id: 1
+        cid: 1
       }
     }
 
     reducer = userReducer(reducer, action)
 
     expect(reducer).toEqual({
-      id: 1,
+      cid: 1,
       isLogin: false
     })
   })
@@ -28,7 +28,7 @@ describe('reducer user', () => {
     reducer = userReducer(reducer, action)
 
     expect(reducer).toEqual({
-      id: 1,
+      cid: 1,
       isLogin: true
     })
   })
@@ -41,7 +41,7 @@ describe('reducer user', () => {
     reducer = userReducer(reducer, action)
 
     expect(reducer).toEqual({
-      id: 1,
+      cid: 1,
       isLogin: false
     })
 
@@ -50,7 +50,20 @@ describe('reducer user', () => {
     reducer = userReducer(reducer, { type: actionTypes.LOGIN_SUCCESS })
 
     expect(reducer).toEqual({
-      id: 1,
+      cid: 1,
+      isLogin: false
+    })
+  })
+
+  test('should logout user', () => {
+    const action = {
+      type: actionTypes.SIGN_OUT_SUCCESS
+    }
+
+    reducer = userReducer(reducer, action)
+
+    expect(reducer).toEqual({
+      cid: undefined,
       isLogin: false
     })
   })

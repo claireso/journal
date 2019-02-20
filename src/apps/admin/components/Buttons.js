@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Loader from '@common/components/Loader'
 
-const Button = styled.button`
+export const Button = styled.button`
   appearance: none;
   align-items: center;
   border: none;
@@ -52,8 +52,8 @@ export const PrimaryButton = props => {
   return props.isLoading ? (
     <StyledPrimaryButtonLoading />
   ) : (
-    <StyledPrimaryButton {...props} />
-  )
+      <StyledPrimaryButton {...props} />
+    )
 }
 
 PrimaryButton.propTypes = {
