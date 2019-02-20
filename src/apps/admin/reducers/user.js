@@ -41,6 +41,12 @@ export default (state = initialState, action) => {
       return state
     }
 
+    case actionTypes.SIGN_OUT_SUCCESS: {
+      return {
+        ...state,
+        cid: undefined
+      }
+    }
     default:
       return state
   }
