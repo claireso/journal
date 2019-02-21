@@ -37,7 +37,7 @@ exports[`<Offline /> should render component 1`] = `
     class="c0 c1"
     style="opacity: 0;"
   >
-    Vous êtes actuellement hors-ligne. Connectez-vous à internet pour avoir accès aux dernières photos
+    You are currently offline. Connect to the internet for access to the latest photos
   </div>
 </div>
 `;
