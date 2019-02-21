@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, act } from 'react-testing-library'
+import { render, fireEvent } from 'react-testing-library'
 import { Location } from '@reach/router'
 import { Provider } from 'react-redux'
 

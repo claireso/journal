@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> should render component 1`] = `
+.c2 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
+}
+
+.c1 {
+  background: var(--white);
+  border-radius: 0.4rem;
+  border: 1px solid var(--gray-1);
+  box-shadow: 0px 1px 5px #e0dede;
+  margin: 0 auto;
+  max-width: 40rem;
+  padding: calc(var(--gutter) * 2);
+}
+
+.c3 {
+  margin: 0 0 var(--gutter);
+}
+
+.c4 {
+  display: block;
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+}
+
+.c5 {
+  border: 1px solid var(--gray-1);
+  border-radius: 0.4rem;
+  display: block;
+  outline: none;
+  padding: 1rem;
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+.c5:focus {
+  box-shadow: 0 0 0 0.3rem #c8e2ff;
+}
+
+.c6 {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  appearence: none;
+  background: var(--primary);
+  border: none;
+  border-radius: 3.6rem;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 1.4rem;
+  margin: 3rem auto 0;
+  outline: none;
+  padding: 1.5rem 5.5rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+}
+
+.c6:hover {
+  background: var(--primary-lighter);
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+}
+
+.c0 > main {
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <main>
+      <div
+        class="c1"
+      >
+        <h1
+          class="c2"
+        >
+          Login
+        </h1>
+        <form
+          method="POST"
+        >
+          <div
+            class="c3"
+          >
+            <label
+              class="c4"
+              for="username"
+            >
+              Username
+            </label>
+            <input
+              class="c5"
+              id="username"
+              name="username"
+              required=""
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="c3"
+          >
+            <label
+              class="c4"
+              for="password"
+            >
+              Password
+            </label>
+            <input
+              class="c5"
+              id="password"
+              name="password"
+              required=""
+              type="password"
+              value=""
+            />
+          </div>
+          <input
+            class="c6"
+            type="submit"
+            value="Log in"
+          />
+        </form>
+      </div>
+    </main>
+  </div>
+</div>
+`;
