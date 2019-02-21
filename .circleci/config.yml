@@ -43,7 +43,7 @@ jobs:
       # run tests!
       - run:
           name: Run tests
-          command: npm test
+          command: npm test -- --maxWorkers=2
 
       # upload the test results as an artifact
       - store_artifacts:
