@@ -101,7 +101,7 @@ exports[`<Client /> should render <Loader /> then new page 1`] = `
       href="#"
       role="button"
     >
-      Activer les notifications pour être alerté de nouvelle publication
+      Enable notifications to be alerted of new publication
     </a>
     <button
       class="c3"
@@ -325,7 +325,7 @@ exports[`<Client /> should render <Photos /> 1`] = `
       href="#"
       role="button"
     >
-      Activer les notifications pour être alerté de nouvelle publication
+      Enable notifications to be alerted of new publication
     </a>
     <button
       class="c3"
@@ -520,7 +520,7 @@ exports[`<Client /> should render <Welcome /> 1`] = `
       href="#"
       role="button"
     >
-      Activer les notifications pour être alerté de nouvelle publication
+      Enable notifications to be alerted of new publication
     </a>
     <button
       class="c3"
