@@ -16,7 +16,7 @@ passport.use(
       usernameField: 'username',
       passwordField: 'password'
     },
-    async function (username, password, done) {
+    async function(username, password, done) {
       const _username = escape(username)
       const _password = escape(password)
 

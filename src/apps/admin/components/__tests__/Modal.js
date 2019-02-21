@@ -4,19 +4,23 @@ import { render, fireEvent } from 'react-testing-library'
 import Modal from '../Modal'
 
 describe('<Modal />', () => {
-
   const TRANSITION_SPEED = 500
 
   const renderComponent = (props = {}, options = {}) =>
-    render(<Modal {...props}><div>content</div></Modal>, options)
+    render(
+      <Modal {...props}>
+        <div>content</div>
+      </Modal>,
+      options
+    )
 
   test('should render component', () => {
-    const { container } = renderComponent({ isOpen: true, onClose: () => { } })
+    const { container } = renderComponent({ isOpen: true, onClose: () => {} })
 
     expect(container).toMatchSnapshot()
   })
 
-  test('should close component by click (button close)', (done) => {
+  test('should close component by click (button close)', done => {
     const props = { isOpen: true, onClose: jest.fn() }
     const { container } = renderComponent(props)
 
@@ -29,7 +33,7 @@ describe('<Modal />', () => {
     }, TRANSITION_SPEED)
   })
 
-  test('should close component by click (background layer)', (done) => {
+  test('should close component by click (background layer)', done => {
     const props = { isOpen: true, onClose: jest.fn() }
     const { container } = renderComponent(props)
 
@@ -42,7 +46,7 @@ describe('<Modal />', () => {
     }, TRANSITION_SPEED)
   })
 
-  test('should close component by keyboard', (done) => {
+  test('should close component by keyboard', done => {
     const props = { isOpen: true, onClose: jest.fn() }
     const { container } = renderComponent(props)
 
@@ -52,7 +56,7 @@ describe('<Modal />', () => {
         key: 'Escape',
         keyCode: 27,
         which: 27,
-        bubbles: true,
+        bubbles: true
       })
     )
 
@@ -63,7 +67,7 @@ describe('<Modal />', () => {
     }, TRANSITION_SPEED)
   })
 
-  test('should close component by prop update', (done) => {
+  test('should close component by prop update', done => {
     const props = { isOpen: true, onClose: jest.fn() }
     const { container } = renderComponent(props)
 
