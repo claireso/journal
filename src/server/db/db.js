@@ -10,8 +10,15 @@ pool.on('error', err => {
 
 export default {
   query(text, values, callback) {
-    /* eslint-disable */
-    console.log('query:', text, values)
+    // log queries in dev environment
+    if (process.env.NODE_ENV !== 'production') {
+      /* eslint-disable */
+      console.log('query: ', text)
+      if (values) {
+        console.log('query with values: ', values)
+      }
+    }
+
     return pool.query(text, values, callback)
   },
   connect(fn) {
