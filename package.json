@@ -87,6 +87,7 @@
     "promptly": "3.0.3",
     "react-testing-library": "5.9.0",
     "redux-devtools-extension": "2.13.8",
+    "redux-mock-store": "1.5.3",
     "webpack": "4.29.5",
     "webpack-cli": "3.2.3",
     "webpack-manifest-plugin": "2.0.4",

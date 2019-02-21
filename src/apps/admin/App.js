@@ -74,9 +74,7 @@ const App = ({ children, messages, ...props }) => {
           View website
           <IconAngleRight />
         </LinkGoToWebsite>
-        <ButtonToSignOut onClick={props.signOut}>
-          Sign out
-        </ButtonToSignOut>
+        <ButtonToSignOut onClick={props.signOut}>Sign out</ButtonToSignOut>
       </Sidebar>
       <Content>
         <FlashGroup messages={messages} onClose={props.closeMessage} />
