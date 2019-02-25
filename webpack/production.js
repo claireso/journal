@@ -16,7 +16,7 @@ module.exports = merge(webpackConfig, {
     chunkFilename: 'js/[name]-[chunkhash:10].bundle.js',
   },
   plugins: [
-    CopyWebpackPlugin([
+    new CopyWebpackPlugin([
       {
         from: './static/manifest.json',
         to: `${ROOT}/public/[name]-[hash:10].[ext]`
