@@ -44,15 +44,3 @@ jobs:
       - run:
           name: Run tests
           command: npm test -- --maxWorkers=2
-
-      # upload the test results as an artifact
-      - store_artifacts:
-          path: test-results.xml
-          prefix: tests
-
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
-
-      - store_test_results:
-          path: test-results.xml
