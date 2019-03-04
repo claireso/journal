@@ -10,7 +10,7 @@ export default createGlobalStyle`
     box-sizing: inherit;
   }
 
-  :root {
+  .client {
     --text: #333;
     --primary: #8e44ad;
     --yellow: #ffe65d;
@@ -20,9 +20,7 @@ export default createGlobalStyle`
     --gray-3: #bfbcbc;
     --gray-4: #edeff5;
     --container-max-width: 131.5rem;
-  }
 
-  body {
     color: var(--text);
     font-family: "Roboto", Arial, sans-serif;
     font-size: 16px;

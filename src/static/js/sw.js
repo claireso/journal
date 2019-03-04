@@ -16,15 +16,15 @@ const expectedCaches = [
 ]
 
 if (workbox) {
-  workbox.skipWaiting()
-  workbox.clientsClaim()
+  workbox.core.skipWaiting()
+  workbox.core.clientsClaim()
   // precache js files
   workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
   // cache for images
   workbox.routing.registerRoute(
     /.*\.(png|jpg)/,
-    workbox.strategies.cacheFirst({
+    new workbox.strategies.CacheFirst({
       cacheName: CACHE_NAME_IMG,
       plugins: [
         new workbox.expiration.Plugin({
@@ -38,14 +38,14 @@ if (workbox) {
   // cache for fonts
   workbox.routing.registerRoute(
     /^https:\/\/fonts\.googleapis\.com/,
-    workbox.strategies.staleWhileRevalidate({
+    new workbox.strategies.StaleWhileRevalidate({
       cacheName: CACHE_NAME_CSS_FONTS
     })
   )
 
   workbox.routing.registerRoute(
     /^https:\/\/fonts\.gstatic\.com/,
-    workbox.strategies.cacheFirst({
+    new workbox.strategies.CacheFirst({
       cacheName: CACHE_NAME_FONTS,
       plugins: [
         new workbox.cacheableResponse.Plugin({
@@ -61,13 +61,13 @@ if (workbox) {
   // admin: no cache
   workbox.routing.registerRoute(
     /\/admin\/(.*)/,
-    workbox.strategies.networkOnly()
+    new workbox.strategies.NetworkOnly()
   )
 
   // api : cache for endpoint photos
   workbox.routing.registerRoute(
     /\/api\/photos(\?.*)?$/,
-    workbox.strategies.networkFirst({
+    new workbox.strategies.NetworkFirst({
       cacheName: CACHE_NAME_API,
       plugins: [
         new workbox.cacheableResponse.Plugin({
@@ -81,12 +81,12 @@ if (workbox) {
     })
   )
   // api: no cache for others endpoints
-  workbox.routing.registerRoute(/\/api\/(.*)/, workbox.strategies.networkOnly())
+  workbox.routing.registerRoute(/\/api\/(.*)/, new workbox.strategies.NetworkOnly())
 
   // cache for pages (root / and /page=2)
   workbox.routing.registerRoute(
     /\/(\?.*)?$/,
-    workbox.strategies.networkFirst({
+    new workbox.strategies.NetworkFirst({
       cacheName: CACHE_NAME_PAGES,
       plugins: [
         new workbox.cacheableResponse.Plugin({
