@@ -21,7 +21,7 @@ export default ({
       ${styles}
 
       </head>
-      <body>
+      <body class="admin">
       <div id="js-app">${content}</div>
       <script>
       (function(){

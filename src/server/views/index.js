@@ -34,7 +34,7 @@ export default ({ content = '', config = {}, manifest = {}, styles = '', preload
     ''
   }
     </head>
-    <body>
+    <body class="client">
       <div id="js-journal">${content}</div>
 
       <script>

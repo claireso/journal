@@ -10,7 +10,7 @@ export default createGlobalStyle`
     box-sizing: inherit;
   }
 
-  :root {
+  .admin {
     --text: #333;
     --primary: #8e44ad;
     --primary-lighter: #9b59b6;
@@ -27,29 +27,27 @@ export default createGlobalStyle`
     --gray-5: #fbfcfc;
     --gutter: 2rem;
     --container-max-width: 96rem;
-  }
 
-  body {
     background: var(--secondary);
     color: var(--text);
     font-family: "Roboto", Arial, sans-serif;
     font-size: 16px;
     margin: 0;
     min-width: 70rem;
-  }
 
-  main {
-    max-width: var(--container-max-width);
-    padding: calc(var(--gutter)*3.5) var(--gutter);
-    margin: 0 auto;
-  }
+    main {
+      max-width: var(--container-max-width);
+      padding: calc(var(--gutter)*3.5) var(--gutter);
+      margin: 0 auto;
+    }
 
-  svg {
-    fill: currentColor;
-  }
+    svg {
+      fill: currentColor;
+    }
 
-  a {
-    text-decoration: none;
-    transition: color 150ms ease;
+    a {
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
   }
 `
