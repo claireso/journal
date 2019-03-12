@@ -26,11 +26,10 @@ const Photos = (props = {}) => {
             <li key={key}>
               <Button
                 {...getItemsProps({
-                  label: item.label,
                   title: item.title,
                   item: item
                 })}
-              />
+              >{item.label}</Button>
             </li>
           ))
         }}

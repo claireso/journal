@@ -31,12 +31,12 @@ const StyledButton = styled(StyledDefaultButton)`
 
 const StyledButtonIcon = styled(StyledDefaultButton)``
 
-export const Button = ({ label, ...props }) => {
-  return <StyledButton {...props}>{label}</StyledButton>
+export const Button = ({ children, ...props }) => {
+  return <StyledButton {...props}>{children}</StyledButton>
 }
 
 Button.propTypes = {
-  label: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired
 }
 
 export const ButtonIcon = ({ children, ...props }) => {

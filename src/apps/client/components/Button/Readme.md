@@ -5,10 +5,10 @@
 ```js
 import {Button} from './index.js';
 <div>
-  <Button label="««" />
-  <Button label="«" />
-  <Button label="»" />
-  <Button label="»»" />
+  <Button>««</Button>
+  <Button>«</Button>
+  <Button>»</Button>
+  <Button>»»</Button>
 </div>
 ```
 
