@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import Flash from '@admin/components/Flash'
@@ -6,30 +6,29 @@ import { Heading1 } from '@admin/components/Headings'
 
 import Form from './form/Form'
 
-class Edit extends React.PureComponent {
-  componentDidMount() {
-    if (!this.props.photo) {
-      this.props.loadPhoto(this.props.id)
+const Edit = ({ id, photo, error, isProcessing, loadPhoto, editPhoto }) => {
+  useEffect(() => {
+    if (!photo) {
+      loadPhoto(id)
     }
-  }
+  }, [])
 
-  render() {
-    const { photo, error, isProcessing } = this.props
+  const onSubmit = useCallback(
+    data => {
+      editPhoto(id, data)
+    },
+    [id]
+  )
 
-    if (photo === undefined) return null
+  if (photo === undefined) return null
 
-    return (
-      <Fragment>
-        {error && <Flash {...error} />}
-        <Heading1>Edit photo</Heading1>
-        <Form
-          onSubmit={this.props.editPhoto.bind(this, photo.id)}
-          photo={photo}
-          isProcessing={isProcessing}
-        />
-      </Fragment>
-    )
-  }
+  return (
+    <Fragment>
+      {error && <Flash {...error} />}
+      <Heading1>Edit photo</Heading1>
+      <Form onSubmit={onSubmit} photo={photo} isProcessing={isProcessing} />
+    </Fragment>
+  )
 }
 
 Edit.propTypes = {

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import { PrimaryButton, SecondaryButton } from '@admin/components/Buttons'
@@ -7,28 +7,25 @@ import Text from '@admin/components/Text'
 
 const Delete = props => {
   const { isProcessing } = props
+
+  const onCancel = useCallback(event => {
+    event.preventDefault()
+    props.onClose()
+  }, [])
+
+  const onConfirm = useCallback(event => {
+    event.preventDefault()
+    if (isProcessing) return
+    props.deletePhoto(props.id)
+  }, [])
+
   return (
     <Fragment>
       <Heading1>Are you sure?</Heading1>
       <p>This action is irreversible</p>
       <Text align="right">
-        <SecondaryButton
-          onClick={event => {
-            event.preventDefault()
-            props.onClose()
-          }}
-        >
-          {' '}
-          Cancel{' '}
-        </SecondaryButton>
-        <PrimaryButton
-          onClick={event => {
-            event.preventDefault()
-            if (isProcessing) return
-            props.deletePhoto(props.id)
-          }}
-          isLoading={isProcessing}
-        >
+        <SecondaryButton onClick={onCancel}> Cancel </SecondaryButton>
+        <PrimaryButton onClick={onConfirm} isLoading={isProcessing}>
           {' '}
           Yes{' '}
         </PrimaryButton>

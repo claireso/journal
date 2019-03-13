@@ -133,9 +133,7 @@ exports[`<Delete /> should not delete photo 1`] = `
     <button
       class="c2 c3"
     >
-       
-      Cancel
-       
+       Cancel 
     </button>
     <button
       class="c4 c5 c6"
@@ -252,9 +250,7 @@ exports[`<Delete /> should render component 1`] = `
     <button
       class="c2 c3"
     >
-       
-      Cancel
-       
+       Cancel 
     </button>
     <button
       class="c4 c5"

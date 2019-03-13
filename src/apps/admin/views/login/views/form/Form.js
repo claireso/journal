@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import Input from '@admin/components/form/Input'
@@ -7,19 +7,22 @@ import SubmitButton from '@admin/components/form/components/Button'
 const Form = props => {
   const [state, setState] = useState({ username: '', password: '' })
 
-  function handleChange(fieldName, value) {
+  const handleChange = useCallback((fieldName, value) => {
     setState(prevState => ({ ...prevState, [fieldName]: value }))
-  }
+  }, [])
 
-  function handleSubmit(event) {
-    event && event.preventDefault()
+  const handleSubmit = useCallback(
+    event => {
+      event && event.preventDefault()
 
-    const { onSubmit, isProcessing } = props
+      const { onSubmit, isProcessing } = props
 
-    if (isProcessing) return
+      if (isProcessing) return
 
-    onSubmit && onSubmit(state)
-  }
+      onSubmit && onSubmit(state)
+    },
+    [state]
+  )
 
   return (
     <form onSubmit={handleSubmit} method="POST">
