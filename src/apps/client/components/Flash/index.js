@@ -45,6 +45,7 @@ const Flash = ({ status, onClose, children }) => {
     from: { opacity: 0 },
     to: { opacity: 1 }
   })
+
   return (
     <FlashWrapper style={styles} status={status}>
       {children}

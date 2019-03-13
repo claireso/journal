@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useCallback } from 'react'
 import styled from 'styled-components'
 
 import TranslationsContext from '@common/context/Translations'
@@ -51,7 +51,7 @@ export default () => {
   const [isVisible, setIsVisible] = useState(false)
   const translations = useContext(TranslationsContext)
 
-  const subscribe = async event => {
+  const subscribe = useCallback(async event => {
     event && event.preventDefault()
 
     try {
@@ -66,10 +66,10 @@ export default () => {
 
       throw new Error('Banner: can not subscribe')
     }
-  }
+  }, [])
 
-  const hideBanner = () => setIsVisible(false)
-  const showBanner = () => setIsVisible(true)
+  const hideBanner = useCallback(() => setIsVisible(false), [])
+  const showBanner = useCallback(() => setIsVisible(true), [])
 
   useEffect(() => {
     // do not display banner if service worker not support

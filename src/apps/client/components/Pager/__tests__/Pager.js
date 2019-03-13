@@ -14,7 +14,9 @@ const getPager = (props = {}) => (
               title: item.title,
               item: item
             })}
-          >{item.label}</Button>
+          >
+            {item.label}
+          </Button>
         </li>
       ))
     }

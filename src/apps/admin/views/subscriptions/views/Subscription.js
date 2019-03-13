@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -52,7 +52,11 @@ const SubscriptionTools = styled.p`
   }
 `
 
-const Subscription = (props = {}) => {
+const Subscription = ({ onDelete, id, ...props }) => {
+  const handleDelete = useCallback(() => {
+    onDelete(id)
+  }, [id])
+
   return (
     <SubscriptionWrapper>
       <dl>
@@ -63,10 +67,7 @@ const Subscription = (props = {}) => {
         <dd>{props.subscription.endpoint}</dd>
       </dl>
       <SubscriptionTools>
-        <ButtonIcon
-          onClick={props.onDelete.bind(this, props.id)}
-          title="Revoke"
-        >
+        <ButtonIcon onClick={handleDelete} title="Revoke">
           <IconDelete />
         </ButtonIcon>
       </SubscriptionTools>

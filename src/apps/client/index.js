@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -50,16 +50,16 @@ const Page = props => {
 
   const { items: photos, pager } = state
 
-  const loadPhotos = async page => {
+  const loadPhotos = useCallback(async page => {
     setState({ isLoading: true })
     const data = await getPhotos(page)
     data && setState({ ...state, ...data, isLoading: false })
-  }
+  }, [])
 
-  const onNavigate = event => {
+  const onNavigate = useCallback(event => {
     window.scroll(0, 0)
     loadPhotos(event.state && event.state.page)
-  }
+  }, [])
 
   useEffect(() => {
     // listen history
