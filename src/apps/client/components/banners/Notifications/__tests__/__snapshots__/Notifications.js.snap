@@ -1,10 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Notifications /> should not render component 1`] = `<div />`;
+exports[`<Notifications /> should not render component (user has already subscribed) 1`] = `<div />`;
 
-exports[`<Notifications /> should not render component and call \`subscribe\` function (registration expired) 1`] = `<div />`;
-
-exports[`<Notifications /> should not render component and not call \`subscribe\` function (registration not expired) 1`] = `<div />`;
+exports[`<Notifications /> should not render component (user has blocked notifications) 1`] = `<div />`;
 
 exports[`<Notifications /> should not subscribe and hide banner (denied story) 1`] = `<div />`;
 
