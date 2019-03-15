@@ -28,25 +28,6 @@ const ButtonSubscribe = styled.a.attrs(() => ({
   }
 `
 
-/**
- * checkSubscription: check if subscription is expired
- * @return Boolean
- */
-const checkSubscription = async () => {
-  try {
-    const subscription = await notifications.getSubscription()
-
-    // expired subscription
-    if (!subscription) {
-      return true
-    }
-
-    return false
-  } catch (err) {
-    throw new Error('Banner: Can not check subscription')
-  }
-}
-
 export default () => {
   const [isVisible, setIsVisible] = useState(false)
   const translations = useContext(TranslationsContext)
@@ -85,24 +66,22 @@ export default () => {
       return
     }
 
-    // show banner if user
-    // - has not already subscribed
-    // - or has not denied notification
-    if (notifications.areDefault()) {
-      showBanner()
+    // do not display banner if if user has denied notifications
+    if (notifications.areDenied()) {
       return
     }
 
-    // check if subscription is expired
-    if (notifications.areGranted()) {
-      checkSubscription()
-        .then(isSubscriptionExpired => {
-          if (isSubscriptionExpired) {
-            subscribe()
-          }
-        })
-        .catch(() => {})
-    }
+    // check if user has already subscribed
+    notifications
+      .getSubscription()
+      .then(subscription => {
+        if (!subscription) {
+          showBanner()
+        }
+      })
+      .catch(err => {
+        throw new Error('Banner can not get subscription')
+      })
   }, [])
 
   if (!isVisible) return null
