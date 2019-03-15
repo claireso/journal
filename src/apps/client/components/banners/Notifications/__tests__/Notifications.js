@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent, waitForElement, wait } from 'react-testing-library'
 
 import TranslationsContext from '@common/context/Translations'
 import notifications from '@common/utils/notifications'
@@ -7,64 +7,90 @@ import notifications from '@common/utils/notifications'
 import Notifications from '../index'
 
 describe('<Notifications />', () => {
-  test('should render component', () => {
-    setNotificationPermission()
-
-    const { container } = render(
+  const renderComponent = () =>
+    render(
       <TranslationsContext.Provider value={__TRANSLATIONS__.client}>
         <Notifications />
       </TranslationsContext.Provider>
     )
 
-    expect(container).toMatchSnapshot()
+  beforeEach(() => {
+    setNotificationPermission()
   })
 
-  test('should not render component', () => {
+  test('should render component', done => {
+    const spy = jest
+      .spyOn(notifications, 'getSubscription')
+      .mockImplementation(() => Promise.resolve(null))
+
+    const { container } = renderComponent()
+
+    setImmediate(() => {
+      expect(container).toMatchSnapshot()
+      spy.mockRestore()
+      done()
+    })
+  })
+
+  test('should not render component (user has already subscribed)', done => {
+    const spy = jest
+      .spyOn(notifications, 'getSubscription')
+      .mockImplementation(() => Promise.resolve({}))
+
+    const { container } = renderComponent()
+
+    setImmediate(() => {
+      expect(container).toMatchSnapshot()
+      spy.mockRestore()
+      done()
+    })
+  })
+
+  test('should not render component (user has blocked notifications)', () => {
     setNotificationPermission('denied')
 
-    const { container } = render(
-      <TranslationsContext.Provider value={__TRANSLATIONS__.client}>
-        <Notifications />
-      </TranslationsContext.Provider>
-    )
+    const { container } = renderComponent()
 
     expect(container).toMatchSnapshot()
     setNotificationPermission()
   })
 
   test('should subscribe and hide banner', async () => {
-    setNotificationPermission()
-
     // mock func subscribe
     const spy = jest
       .spyOn(notifications, 'subscribe')
       .mockImplementation(() => Promise.resolve())
 
-    const { container, getByRole } = render(
-      <TranslationsContext.Provider value={__TRANSLATIONS__.client}>
-        <Notifications />
-      </TranslationsContext.Provider>
-    )
+    // mock func getSubscription
+    const spySubscription = jest
+      .spyOn(notifications, 'getSubscription')
+      .mockImplementation(() => Promise.resolve(null))
+
+    const { container, getByRole, debug } = renderComponent()
+
+    await waitForElement(() => getByRole('button'), { container })
 
     await fireEvent.click(getByRole('button'))
 
     expect(container).toMatchSnapshot()
     spy.mockRestore()
+    spySubscription.mockRestore()
   })
 
   test('should not subscribe and hide banner (denied story)', async () => {
-    setNotificationPermission()
-
     // mock func subscribe
     const spy = jest
       .spyOn(notifications, 'subscribe')
       .mockImplementation(() => Promise.reject())
 
-    const { container, getByRole, debug } = render(
-      <TranslationsContext.Provider value={__TRANSLATIONS__.client}>
-        <Notifications />
-      </TranslationsContext.Provider>
-    )
+    // mock func getSubscription
+    const spySubscription = jest
+      .spyOn(notifications, 'getSubscription')
+      .mockImplementation(() => Promise.resolve(null))
+
+    const { container, getByRole } = renderComponent()
+
+    await waitForElement(() => getByRole('button'), { container })
 
     setNotificationPermission('denied')
 
@@ -72,57 +98,6 @@ describe('<Notifications />', () => {
 
     expect(container).toMatchSnapshot()
     spy.mockRestore()
-    setNotificationPermission()
-  })
-
-  test('should not render component and not call `subscribe` function (registration not expired)', done => {
-    setNotificationPermission('granted')
-
-    const spy = jest
-      .spyOn(notifications, 'getSubscription')
-      .mockImplementation(() => Promise.resolve({}))
-    const spySubscribe = jest
-      .spyOn(notifications, 'subscribe')
-      .mockImplementation(() => Promise.resolve())
-
-    const { container } = render(
-      <TranslationsContext.Provider value={__TRANSLATIONS__.client}>
-        <Notifications />
-      </TranslationsContext.Provider>
-    )
-
-    setImmediate(() => {
-      expect(spySubscribe).toHaveBeenCalledTimes(0)
-      expect(container).toMatchSnapshot()
-
-      spy.mockRestore()
-      spySubscribe.mockRestore()
-      done()
-    })
-  })
-
-  test('should not render component and call `subscribe` function (registration expired)', done => {
-    setNotificationPermission('granted')
-
-    const spy = jest
-      .spyOn(notifications, 'getSubscription')
-      .mockImplementation(() => Promise.resolve())
-    const spySubscribe = jest
-      .spyOn(notifications, 'subscribe')
-      .mockImplementation(() => Promise.resolve())
-
-    const { container } = render(
-      <TranslationsContext.Provider value={__TRANSLATIONS__.client}>
-        <Notifications />
-      </TranslationsContext.Provider>
-    )
-
-    setImmediate(() => {
-      expect(spySubscribe).toHaveBeenCalledTimes(1)
-      expect(container).toMatchSnapshot()
-      spy.mockRestore()
-      spySubscribe.mockRestore()
-      done()
-    })
+    spySubscription.mockRestore()
   })
 })
