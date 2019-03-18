@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin
+const LoadablePlugin = require('@loadable/webpack-plugin')
 const { InjectManifest } = require('workbox-webpack-plugin')
 
 const config = require('../config.json')
@@ -36,8 +36,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new ReactLoadablePlugin({
-      filename: './dist/react-loadable.json',
+    new LoadablePlugin({
+      writeToDisk: {
+        filename: './dist/loadable-stats'
+      }
     }),
     new InjectManifest({
       swSrc: './src/static/js/sw.js',
