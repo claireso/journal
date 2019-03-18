@@ -27,7 +27,19 @@ self.addEventListener('push', event => {
 self.addEventListener('notificationclick', event => {
   event.notification.close()
 
-  event.waitUntil(clients.openWindow(self.origin))
+  event.waitUntil(
+    self.clients.matchAll().then(clientList => {
+      // get the first browser tab (except admin tab)
+      const tab = clientList.find(client => !client.url.includes('/admin/'))
+
+      if (tab) {
+        tab.navigate(self.origin)
+        return tab.focus()
+      }
+
+      return self.clients.openWindow(self.origin)
+    })
+  )
 })
 
 // renew subscription on subscription expiration
