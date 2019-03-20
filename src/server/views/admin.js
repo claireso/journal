@@ -28,13 +28,7 @@ export default ({
         window.preloadedState = ${preloadedState}
       })()
       </script>
-      <script defer src="${manifest['vendors.js']}"></script>
 
-      ${bundles
-        .map(bundle => {
-          return `<script defer src="${bundle.publicPath}"></script>`
-        })
-        .join('\n')}
 
       <script>
         if ('IntersectionObserver' in window === false) {
@@ -45,7 +39,9 @@ export default ({
           document.head.appendChild(scriptElement)
         }
       </script>
-      <script defer src="${manifest['admin.js']}"></script>
+
+      ${bundles}
+
     </body>
   </html>
 `

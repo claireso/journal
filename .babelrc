@@ -11,7 +11,7 @@
         "loose": false
       }
     ],
-    "react-loadable/babel",
+    "@loadable/babel-plugin",
     [
       "module-resolver",
       {

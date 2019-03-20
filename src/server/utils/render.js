@@ -1,11 +1,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import Loadable from 'react-loadable'
-import { getBundles } from 'react-loadable/webpack'
 import { ServerStyleSheet } from 'styled-components'
 import { readFileSync } from 'jsonfile'
-
-import stats from '../../../dist/react-loadable.json'
 
 //@TODO not sure if it is the right way
 const manifestPath = `${process.cwd()}/public/asset-manifest.json`
@@ -16,23 +12,21 @@ export default ({
   Component,
   config = {},
   props = {},
-  preloadedState
+  preloadedState,
+  extractor
 }) => {
   const sheet = new ServerStyleSheet()
-  const modules = []
   const translations = config.translations
 
+  const comp = <Component {...props} translations={translations} />
+
   const content = ReactDOMServer.renderToString(
-    sheet.collectStyles(
-      <Loadable.Capture report={moduleName => modules.push(moduleName)}>
-        <Component {...props} translations={translations} />
-      </Loadable.Capture>
-    )
+    sheet.collectStyles(extractor ? extractor.collectChunks(comp) : comp)
   )
 
   const styleTags = sheet.getStyleTags()
 
-  const bundles = getBundles(stats, modules)
+  const scriptTags = extractor && extractor.getScriptTags()
 
   return Layout({
     content,
@@ -40,7 +34,7 @@ export default ({
     manifest,
     preloadedState: JSON.stringify({ ...preloadedState, translations }),
     styles: styleTags,
-    bundles: bundles,
+    bundles: scriptTags,
     environment: process.env.NODE_ENV
   })
 }
