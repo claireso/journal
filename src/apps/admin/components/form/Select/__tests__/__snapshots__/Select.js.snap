@@ -14,13 +14,45 @@ exports[`<Select /> should render select 1`] = `
 }
 
 .c0 > label {
-  margin: 0 0.5rem 0 0;
+  margin: 0 1rem 0 0;
 }
 
 .c1 {
   display: block;
   font-size: 1.6rem;
   margin: 0 0 1rem;
+}
+
+.c2 {
+  position: relative;
+}
+
+.c2 svg {
+  position: absolute;
+  top: 50%;
+  right: .9rem;
+  bottom: 0;
+  -webkit-transform: translate(0,-50%) rotate(90deg);
+  -ms-transform: translate(0,-50%) rotate(90deg);
+  transform: translate(0,-50%) rotate(90deg);
+}
+
+.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: .5rem;
+  cursor: pointer;
+  font-family: "Roboto",Arial,sans-serif;
+  font-size: 1.4rem;
+  outline: none;
+  padding: .8rem 2.6rem .8rem .8rem;
+}
+
+.c3:focus {
+  box-shadow: 0 0 0 0.3rem #c8e2ff;
 }
 
 <div>
@@ -33,23 +65,38 @@ exports[`<Select /> should render select 1`] = `
     >
       My select
     </label>
-    <select
-      id="myselect"
-      name="myselect"
-      required=""
+    <div
+      class="c2"
     >
-      <option
-        value="option1"
+      <select
+        class="c3"
+        id="myselect"
+        name="myselect"
+        required=""
       >
-        option 1
-      </option>
-      <option
-        selected=""
-        value="option2"
+        <option
+          value="option1"
+        >
+          option 1
+        </option>
+        <option
+          selected=""
+          value="option2"
+        >
+          option 2
+        </option>
+      </select>
+      <svg
+        height="14"
+        viewBox="0 0 9 28"
+        width="9"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        option 2
-      </option>
-    </select>
+        <path
+          d="M9.297 15c0 0.125-0.063 0.266-0.156 0.359l-7.281 7.281c-0.094 0.094-0.234 0.156-0.359 0.156s-0.266-0.063-0.359-0.156l-0.781-0.781c-0.094-0.094-0.156-0.219-0.156-0.359 0-0.125 0.063-0.266 0.156-0.359l6.141-6.141-6.141-6.141c-0.094-0.094-0.156-0.234-0.156-0.359s0.063-0.266 0.156-0.359l0.781-0.781c0.094-0.094 0.234-0.156 0.359-0.156s0.266 0.063 0.359 0.156l7.281 7.281c0.094 0.094 0.156 0.234 0.156 0.359z"
+        />
+      </svg>
+    </div>
   </div>
 </div>
 `;

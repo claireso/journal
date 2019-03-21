@@ -1,9 +1,8 @@
+import '@babel/polyfill'
 import express from 'express'
 import bodyParser from 'body-parser'
 import helmet from 'helmet'
 import session from 'express-session'
-import Loadable from 'react-loadable'
-import '@babel/polyfill'
 
 import admin from './routes/admin'
 import api from './routes/api'
@@ -51,9 +50,7 @@ app.use(function(err, req, res) {
   console.log(err)
 })
 
-Loadable.preloadAll().then(() => {
-  app.listen(PORT, () => {
-    /* eslint-disable */
-    console.log('App listening on port %d!', PORT)
-  })
+app.listen(PORT, () => {
+  /* eslint-disable */
+  console.log('App listening on port %d!', PORT)
 })

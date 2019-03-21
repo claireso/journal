@@ -267,7 +267,7 @@ exports[`<List /> should display create form 1`] = `
 }
 
 .c26 > label {
-  margin: 0 0.5rem 0 0;
+  margin: 0 1rem 0 0;
 }
 
 .c21 {
@@ -287,6 +287,38 @@ exports[`<List /> should display create form 1`] = `
 }
 
 .c22:focus {
+  box-shadow: 0 0 0 0.3rem #c8e2ff;
+}
+
+.c27 {
+  position: relative;
+}
+
+.c27 svg {
+  position: absolute;
+  top: 50%;
+  right: .9rem;
+  bottom: 0;
+  -webkit-transform: translate(0,-50%) rotate(90deg);
+  -ms-transform: translate(0,-50%) rotate(90deg);
+  transform: translate(0,-50%) rotate(90deg);
+}
+
+.c28 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: .5rem;
+  cursor: pointer;
+  font-family: "Roboto",Arial,sans-serif;
+  font-size: 1.4rem;
+  outline: none;
+  padding: .8rem 2.6rem .8rem .8rem;
+}
+
+.c28:focus {
   box-shadow: 0 0 0 0.3rem #c8e2ff;
 }
 
@@ -331,7 +363,7 @@ exports[`<List /> should display create form 1`] = `
   width: 100%;
 }
 
-.c27 {
+.c29 {
   -webkit-appearence: none;
   -moz-appearence: none;
   appearence: none;
@@ -349,7 +381,7 @@ exports[`<List /> should display create form 1`] = `
   transition: background 150ms ease-out;
 }
 
-.c27:hover {
+.c29:hover {
   background: var(--primary-lighter);
 }
 
@@ -678,27 +710,42 @@ exports[`<List /> should display create form 1`] = `
           >
             Position
           </label>
-          <select
-            id="position"
-            name="position"
-            required=""
+          <div
+            class="c27"
           >
-            <option
-              value="left"
+            <select
+              class="c28"
+              id="position"
+              name="position"
+              required=""
             >
-              Left
-            </option>
-            <option
-              value="center"
+              <option
+                value="left"
+              >
+                Left
+              </option>
+              <option
+                value="center"
+              >
+                Center
+              </option>
+              <option
+                value="right"
+              >
+                Right
+              </option>
+            </select>
+            <svg
+              height="14"
+              viewBox="0 0 9 28"
+              width="9"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              Center
-            </option>
-            <option
-              value="right"
-            >
-              Right
-            </option>
-          </select>
+              <path
+                d="M9.297 15c0 0.125-0.063 0.266-0.156 0.359l-7.281 7.281c-0.094 0.094-0.234 0.156-0.359 0.156s-0.266-0.063-0.359-0.156l-0.781-0.781c-0.094-0.094-0.156-0.219-0.156-0.359 0-0.125 0.063-0.266 0.156-0.359l6.141-6.141-6.141-6.141c-0.094-0.094-0.156-0.234-0.156-0.359s0.063-0.266 0.156-0.359l0.781-0.781c0.094-0.094 0.234-0.156 0.359-0.156s0.266 0.063 0.359 0.156l7.281 7.281c0.094 0.094 0.156 0.234 0.156 0.359z"
+              />
+            </svg>
+          </div>
         </div>
         <div
           class="c26"
@@ -731,7 +778,7 @@ exports[`<List /> should display create form 1`] = `
           />
         </div>
         <input
-          class="c27"
+          class="c29"
           type="submit"
           value="Create"
         />
@@ -1565,7 +1612,7 @@ exports[`<List /> should display edit form 1`] = `
 }
 
 .c27 > label {
-  margin: 0 0.5rem 0 0;
+  margin: 0 1rem 0 0;
 }
 
 .c21 {
@@ -1585,6 +1632,38 @@ exports[`<List /> should display edit form 1`] = `
 }
 
 .c22:focus {
+  box-shadow: 0 0 0 0.3rem #c8e2ff;
+}
+
+.c28 {
+  position: relative;
+}
+
+.c28 svg {
+  position: absolute;
+  top: 50%;
+  right: .9rem;
+  bottom: 0;
+  -webkit-transform: translate(0,-50%) rotate(90deg);
+  -ms-transform: translate(0,-50%) rotate(90deg);
+  transform: translate(0,-50%) rotate(90deg);
+}
+
+.c29 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: .5rem;
+  cursor: pointer;
+  font-family: "Roboto",Arial,sans-serif;
+  font-size: 1.4rem;
+  outline: none;
+  padding: .8rem 2.6rem .8rem .8rem;
+}
+
+.c29:focus {
   box-shadow: 0 0 0 0.3rem #c8e2ff;
 }
 
@@ -1636,7 +1715,7 @@ exports[`<List /> should display edit form 1`] = `
   width: 100%;
 }
 
-.c28 {
+.c30 {
   -webkit-appearence: none;
   -moz-appearence: none;
   appearence: none;
@@ -1654,7 +1733,7 @@ exports[`<List /> should display edit form 1`] = `
   transition: background 150ms ease-out;
 }
 
-.c28:hover {
+.c30:hover {
   background: var(--primary-lighter);
 }
 
@@ -1989,28 +2068,43 @@ exports[`<List /> should display edit form 1`] = `
           >
             Position
           </label>
-          <select
-            id="position"
-            name="position"
-            required=""
+          <div
+            class="c28"
           >
-            <option
-              value="left"
+            <select
+              class="c29"
+              id="position"
+              name="position"
+              required=""
             >
-              Left
-            </option>
-            <option
-              value="center"
+              <option
+                value="left"
+              >
+                Left
+              </option>
+              <option
+                value="center"
+              >
+                Center
+              </option>
+              <option
+                selected=""
+                value="right"
+              >
+                Right
+              </option>
+            </select>
+            <svg
+              height="14"
+              viewBox="0 0 9 28"
+              width="9"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              Center
-            </option>
-            <option
-              selected=""
-              value="right"
-            >
-              Right
-            </option>
-          </select>
+              <path
+                d="M9.297 15c0 0.125-0.063 0.266-0.156 0.359l-7.281 7.281c-0.094 0.094-0.234 0.156-0.359 0.156s-0.266-0.063-0.359-0.156l-0.781-0.781c-0.094-0.094-0.156-0.219-0.156-0.359 0-0.125 0.063-0.266 0.156-0.359l6.141-6.141-6.141-6.141c-0.094-0.094-0.156-0.234-0.156-0.359s0.063-0.266 0.156-0.359l0.781-0.781c0.094-0.094 0.234-0.156 0.359-0.156s0.266 0.063 0.359 0.156l7.281 7.281c0.094 0.094 0.156 0.234 0.156 0.359z"
+              />
+            </svg>
+          </div>
         </div>
         <div
           class="c27"
@@ -2043,7 +2137,7 @@ exports[`<List /> should display edit form 1`] = `
           />
         </div>
         <input
-          class="c28"
+          class="c30"
           type="submit"
           value="Save"
         />

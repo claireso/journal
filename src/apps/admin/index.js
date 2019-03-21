@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router, Redirect } from '@reach/router'
-import Loadable from 'react-loadable'
+import loadable from '@loadable/component'
 
 import Styles from './Styles'
 
@@ -11,19 +11,19 @@ import ScrollUp from './components/ScrollUp'
 
 const NotFound = () => <p>Sorry, nothing here</p>
 
-const AsyncPhotos = Loadable({
-  loader: () => import('./views/photos/containers/List'),
-  loading: Loader
+const AsyncPhotos = loadable(() => import('./views/photos/containers/List'), {
+  fallback: <Loader />
 })
 
-const AsyncSubscriptions = Loadable({
-  loader: () => import('./views/subscriptions/containers/List'),
-  loading: Loader
-})
+const AsyncSubscriptions = loadable(
+  () => import('./views/subscriptions/containers/List'),
+  {
+    fallback: <Loader />
+  }
+)
 
-const AsyncLogin = Loadable({
-  loader: () => import('./views/login/containers/Login'),
-  loading: Loader
+const AsyncLogin = loadable(() => import('./views/login/containers/Login'), {
+  fallback: <Loader />
 })
 
 const Admin = () => {
