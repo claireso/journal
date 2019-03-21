@@ -18,7 +18,7 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
 }
 
 .c6 > label {
-  margin: 0 0.5rem 0 0;
+  margin: 0 1rem 0 0;
 }
 
 .c1 {
@@ -38,6 +38,38 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
 }
 
 .c2:focus {
+  box-shadow: 0 0 0 0.3rem #c8e2ff;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c7 svg {
+  position: absolute;
+  top: 50%;
+  right: .9rem;
+  bottom: 0;
+  -webkit-transform: translate(0,-50%) rotate(90deg);
+  -ms-transform: translate(0,-50%) rotate(90deg);
+  transform: translate(0,-50%) rotate(90deg);
+}
+
+.c8 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: .5rem;
+  cursor: pointer;
+  font-family: "Roboto",Arial,sans-serif;
+  font-size: 1.4rem;
+  outline: none;
+  padding: .8rem 2.6rem .8rem .8rem;
+}
+
+.c8:focus {
   box-shadow: 0 0 0 0.3rem #c8e2ff;
 }
 
@@ -82,13 +114,13 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
   width: 100%;
 }
 
-.c9 {
+.c11 {
   margin: 2rem 0;
   -webkit-animation: eMLfYp 800ms ease-in-out infinite alternate;
   animation: eMLfYp 800ms ease-in-out infinite alternate;
 }
 
-.c9:after {
+.c11:after {
   background: var(--primary);
   border-radius: 50%;
   content: '';
@@ -98,12 +130,12 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
   margin: 0 auto;
 }
 
-.c7 {
+.c9 {
   margin: 3rem 0 0;
   padding: 1.8rem 0 1.9rem;
 }
 
-.c7 .c8 {
+.c9 .c10 {
   margin: 0 auto;
 }
 
@@ -196,27 +228,42 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
       >
         Position
       </label>
-      <select
-        id="position"
-        name="position"
-        required=""
+      <div
+        class="c7"
       >
-        <option
-          value="left"
+        <select
+          class="c8"
+          id="position"
+          name="position"
+          required=""
         >
-          Left
-        </option>
-        <option
-          value="center"
+          <option
+            value="left"
+          >
+            Left
+          </option>
+          <option
+            value="center"
+          >
+            Center
+          </option>
+          <option
+            value="right"
+          >
+            Right
+          </option>
+        </select>
+        <svg
+          height="14"
+          viewBox="0 0 9 28"
+          width="9"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          Center
-        </option>
-        <option
-          value="right"
-        >
-          Right
-        </option>
-      </select>
+          <path
+            d="M9.297 15c0 0.125-0.063 0.266-0.156 0.359l-7.281 7.281c-0.094 0.094-0.234 0.156-0.359 0.156s-0.266-0.063-0.359-0.156l-0.781-0.781c-0.094-0.094-0.156-0.219-0.156-0.359 0-0.125 0.063-0.266 0.156-0.359l6.141-6.141-6.141-6.141c-0.094-0.094-0.156-0.234-0.156-0.359s0.063-0.266 0.156-0.359l0.781-0.781c0.094-0.094 0.234-0.156 0.359-0.156s0.266 0.063 0.359 0.156l7.281 7.281c0.094 0.094 0.156 0.234 0.156 0.359z"
+          />
+        </svg>
+      </div>
     </div>
     <div
       class="c6"
@@ -249,10 +296,10 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
       />
     </div>
     <div
-      class="c7"
+      class="c9"
     >
       <div
-        class="c8 c9"
+        class="c10 c11"
       />
     </div>
   </form>
@@ -277,7 +324,7 @@ exports[`<Form /> should prefill form with photo data 1`] = `
 }
 
 .c7 > label {
-  margin: 0 0.5rem 0 0;
+  margin: 0 1rem 0 0;
 }
 
 .c1 {
@@ -297,6 +344,38 @@ exports[`<Form /> should prefill form with photo data 1`] = `
 }
 
 .c2:focus {
+  box-shadow: 0 0 0 0.3rem #c8e2ff;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c8 svg {
+  position: absolute;
+  top: 50%;
+  right: .9rem;
+  bottom: 0;
+  -webkit-transform: translate(0,-50%) rotate(90deg);
+  -ms-transform: translate(0,-50%) rotate(90deg);
+  transform: translate(0,-50%) rotate(90deg);
+}
+
+.c9 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: .5rem;
+  cursor: pointer;
+  font-family: "Roboto",Arial,sans-serif;
+  font-size: 1.4rem;
+  outline: none;
+  padding: .8rem 2.6rem .8rem .8rem;
+}
+
+.c9:focus {
   box-shadow: 0 0 0 0.3rem #c8e2ff;
 }
 
@@ -348,7 +427,7 @@ exports[`<Form /> should prefill form with photo data 1`] = `
   width: 100%;
 }
 
-.c8 {
+.c10 {
   -webkit-appearence: none;
   -moz-appearence: none;
   appearence: none;
@@ -366,7 +445,7 @@ exports[`<Form /> should prefill form with photo data 1`] = `
   transition: background 150ms ease-out;
 }
 
-.c8:hover {
+.c10:hover {
   background: var(--primary-lighter);
 }
 
@@ -465,28 +544,43 @@ exports[`<Form /> should prefill form with photo data 1`] = `
       >
         Position
       </label>
-      <select
-        id="position"
-        name="position"
-        required=""
+      <div
+        class="c8"
       >
-        <option
-          value="left"
+        <select
+          class="c9"
+          id="position"
+          name="position"
+          required=""
         >
-          Left
-        </option>
-        <option
-          selected=""
-          value="center"
+          <option
+            value="left"
+          >
+            Left
+          </option>
+          <option
+            selected=""
+            value="center"
+          >
+            Center
+          </option>
+          <option
+            value="right"
+          >
+            Right
+          </option>
+        </select>
+        <svg
+          height="14"
+          viewBox="0 0 9 28"
+          width="9"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          Center
-        </option>
-        <option
-          value="right"
-        >
-          Right
-        </option>
-      </select>
+          <path
+            d="M9.297 15c0 0.125-0.063 0.266-0.156 0.359l-7.281 7.281c-0.094 0.094-0.234 0.156-0.359 0.156s-0.266-0.063-0.359-0.156l-0.781-0.781c-0.094-0.094-0.156-0.219-0.156-0.359 0-0.125 0.063-0.266 0.156-0.359l6.141-6.141-6.141-6.141c-0.094-0.094-0.156-0.234-0.156-0.359s0.063-0.266 0.156-0.359l0.781-0.781c0.094-0.094 0.234-0.156 0.359-0.156s0.266 0.063 0.359 0.156l7.281 7.281c0.094 0.094 0.156 0.234 0.156 0.359z"
+          />
+        </svg>
+      </div>
     </div>
     <div
       class="c7"
@@ -519,7 +613,7 @@ exports[`<Form /> should prefill form with photo data 1`] = `
       />
     </div>
     <input
-      class="c8"
+      class="c10"
       type="submit"
       value="Save"
     />
@@ -545,7 +639,7 @@ exports[`<Form /> should render form 1`] = `
 }
 
 .c6 > label {
-  margin: 0 0.5rem 0 0;
+  margin: 0 1rem 0 0;
 }
 
 .c1 {
@@ -565,6 +659,38 @@ exports[`<Form /> should render form 1`] = `
 }
 
 .c2:focus {
+  box-shadow: 0 0 0 0.3rem #c8e2ff;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c7 svg {
+  position: absolute;
+  top: 50%;
+  right: .9rem;
+  bottom: 0;
+  -webkit-transform: translate(0,-50%) rotate(90deg);
+  -ms-transform: translate(0,-50%) rotate(90deg);
+  transform: translate(0,-50%) rotate(90deg);
+}
+
+.c8 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: .5rem;
+  cursor: pointer;
+  font-family: "Roboto",Arial,sans-serif;
+  font-size: 1.4rem;
+  outline: none;
+  padding: .8rem 2.6rem .8rem .8rem;
+}
+
+.c8:focus {
   box-shadow: 0 0 0 0.3rem #c8e2ff;
 }
 
@@ -609,7 +735,7 @@ exports[`<Form /> should render form 1`] = `
   width: 100%;
 }
 
-.c7 {
+.c9 {
   -webkit-appearence: none;
   -moz-appearence: none;
   appearence: none;
@@ -627,7 +753,7 @@ exports[`<Form /> should render form 1`] = `
   transition: background 150ms ease-out;
 }
 
-.c7:hover {
+.c9:hover {
   background: var(--primary-lighter);
 }
 
@@ -720,27 +846,42 @@ exports[`<Form /> should render form 1`] = `
       >
         Position
       </label>
-      <select
-        id="position"
-        name="position"
-        required=""
+      <div
+        class="c7"
       >
-        <option
-          value="left"
+        <select
+          class="c8"
+          id="position"
+          name="position"
+          required=""
         >
-          Left
-        </option>
-        <option
-          value="center"
+          <option
+            value="left"
+          >
+            Left
+          </option>
+          <option
+            value="center"
+          >
+            Center
+          </option>
+          <option
+            value="right"
+          >
+            Right
+          </option>
+        </select>
+        <svg
+          height="14"
+          viewBox="0 0 9 28"
+          width="9"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          Center
-        </option>
-        <option
-          value="right"
-        >
-          Right
-        </option>
-      </select>
+          <path
+            d="M9.297 15c0 0.125-0.063 0.266-0.156 0.359l-7.281 7.281c-0.094 0.094-0.234 0.156-0.359 0.156s-0.266-0.063-0.359-0.156l-0.781-0.781c-0.094-0.094-0.156-0.219-0.156-0.359 0-0.125 0.063-0.266 0.156-0.359l6.141-6.141-6.141-6.141c-0.094-0.094-0.156-0.234-0.156-0.359s0.063-0.266 0.156-0.359l0.781-0.781c0.094-0.094 0.234-0.156 0.359-0.156s0.266 0.063 0.359 0.156l7.281 7.281c0.094 0.094 0.156 0.234 0.156 0.359z"
+          />
+        </svg>
+      </div>
     </div>
     <div
       class="c6"
@@ -773,7 +914,7 @@ exports[`<Form /> should render form 1`] = `
       />
     </div>
     <input
-      class="c7"
+      class="c9"
       type="submit"
       value="Create"
     />
