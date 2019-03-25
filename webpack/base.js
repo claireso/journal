@@ -12,8 +12,8 @@ const IS_PUSH_ENABLED = !!(notificationConfig.publicKey && notificationConfig.pr
 module.exports = {
   context: path.resolve(ROOT, 'src'),
   entry: {
-    admin: ['./static/js/admin.js'],
-    journal: ['./static/js/journal.js'],
+    admin: ['@babel/polyfill', './static/js/admin.js'],
+    journal: ['@babel/polyfill', './static/js/journal.js'],
     polyfills: './static/js/polyfills.js'
   },
   output: {
@@ -36,9 +36,7 @@ module.exports = {
               ["@babel/preset-env", {
                 "targets": {
                   "esmodules": true
-                },
-                "useBuiltIns": "usage",
-                "corejs": 2
+                }
               }]
             ]
           }
