@@ -1,10 +1,20 @@
 {
   "presets": [
-    "@babel/preset-env",
+    [
+      // will be overridden by webpack configuration to generate bundles for modern browsers
+      // see webpack/base.js
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        },
+        "useBuiltIns": "usage",
+        "corejs": 2,
+      },
+    ],
     "@babel/preset-react"
   ],
   "plugins": [
-    "@babel/plugin-syntax-dynamic-import",
     [
       "@babel/plugin-proposal-class-properties",
       {
@@ -45,33 +55,6 @@
             "displayName": false
           }
         ]
-      ]
-    },
-    "serverDev": {
-      "plugins": [
-        "dynamic-import-node",
-        [
-          "babel-plugin-styled-components",
-          {
-            "ssr": true,
-            "displayName": true
-          }
-        ]
-      ]
-    },
-    "serverProd": {
-      "plugins": [
-        "dynamic-import-node",
-        [
-          "babel-plugin-styled-components",
-          {
-            "ssr": true,
-            "displayName": false
-          }
-        ]
-      ],
-      "ignore": [
-        "src/static/**/*.js"
       ]
     }
   }
