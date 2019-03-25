@@ -1,4 +1,3 @@
-import '@babel/polyfill'
 import express from 'express'
 import bodyParser from 'body-parser'
 import helmet from 'helmet'
@@ -43,7 +42,7 @@ app.use((req, res) => {
 })
 
 // Handle 500
-app.use(function(err, req, res) {
+app.use(function (err, req, res) {
   res.status(500)
   res.send('500')
   /* eslint-disable */

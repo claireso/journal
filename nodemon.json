@@ -1,6 +1,6 @@
 {
   "restartable": "rs",
-  "exec": "babel-node --env-name serverDev",
+  "exec": "babel-node",
   "ignore": [
     ".git",
     "node_modules/**/node_modules",
