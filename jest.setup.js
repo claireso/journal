@@ -1,4 +1,3 @@
-import '@babel/polyfill'
 import 'intersection-observer'
 import 'jest-dom/extend-expect'
 import fetchMock from 'jest-fetch-mock'
