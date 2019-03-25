@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, waitForElement, wait } from 'react-testing-library'
+import { render, fireEvent, waitForElement } from 'react-testing-library'
 
 import TranslationsContext from '@common/context/Translations'
 import notifications from '@common/utils/notifications'
@@ -55,7 +55,7 @@ describe('<Notifications />', () => {
     setNotificationPermission()
   })
 
-  test('should subscribe and hide banner', async () => {
+  test('should subscribe and hide banner', async (done) => {
     // mock func subscribe
     const spy = jest
       .spyOn(notifications, 'subscribe')
@@ -66,18 +66,21 @@ describe('<Notifications />', () => {
       .spyOn(notifications, 'getSubscription')
       .mockImplementation(() => Promise.resolve(null))
 
-    const { container, getByRole, debug } = renderComponent()
+    const { container, getByRole } = renderComponent()
 
     await waitForElement(() => getByRole('button'), { container })
 
-    await fireEvent.click(getByRole('button'))
+    fireEvent.click(getByRole('button'))
 
-    expect(container).toMatchSnapshot()
-    spy.mockRestore()
-    spySubscription.mockRestore()
+    setImmediate(() => {
+      expect(container).toMatchSnapshot()
+      spy.mockRestore()
+      spySubscription.mockRestore()
+      done()
+    })
   })
 
-  test('should not subscribe and hide banner (denied story)', async () => {
+  test('should not subscribe and hide banner (denied story)', async (done) => {
     // mock func subscribe
     const spy = jest
       .spyOn(notifications, 'subscribe')
@@ -94,10 +97,13 @@ describe('<Notifications />', () => {
 
     setNotificationPermission('denied')
 
-    await fireEvent.click(getByRole('button'))
+    fireEvent.click(getByRole('button'))
 
-    expect(container).toMatchSnapshot()
-    spy.mockRestore()
-    spySubscription.mockRestore()
+    setImmediate(() => {
+      expect(container).toMatchSnapshot()
+      spy.mockRestore()
+      spySubscription.mockRestore()
+      done()
+    })
   })
 })
