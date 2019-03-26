@@ -1,15 +1,5 @@
 {
   "presets": [
-    [
-      // will be overridden by webpack configuration to generate bundles for modern browsers
-      // see webpack/base.js
-      "@babel/preset-env",
-      {
-        "targets": {
-          "node": "current"
-        }
-      },
-    ],
     "@babel/preset-react"
   ],
   "plugins": [
