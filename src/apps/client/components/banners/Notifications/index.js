@@ -53,14 +53,15 @@ export default () => {
   const showBanner = useCallback(() => setIsVisible(true), [])
 
   useEffect(() => {
-    // do not display banner if service worker not support
-    // do not display banner if push not enabled
+    // do not display banner if service worker or Notification is not support
+    // do not display banner if push is not enabled
     // do not display banner in safari
     if (
+      !process.env.IS_PUSH_ENABLED ||
       !('serviceWorker' in navigator) ||
+      !('Notification' in window) ||
       (process.env.NODE_ENV !== 'production' &&
         process.env.NODE_ENV !== 'test') ||
-      !process.env.IS_PUSH_ENABLED ||
       window.safari
     ) {
       return
