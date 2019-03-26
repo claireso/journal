@@ -6,6 +6,7 @@ import { Group } from '../components/Group'
 import Label from '../components/Label'
 
 const StyledInput = styled.input`
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;
