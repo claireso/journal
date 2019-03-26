@@ -35,6 +35,9 @@ exports[`<Edit /> should render component 1`] = `
 }
 
 .c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;
@@ -129,9 +132,9 @@ exports[`<Edit /> should render component 1`] = `
 }
 
 .c11 {
-  -webkit-appearence: none;
-  -moz-appearence: none;
-  appearence: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: var(--primary);
   border: none;
   border-radius: 3.6rem;

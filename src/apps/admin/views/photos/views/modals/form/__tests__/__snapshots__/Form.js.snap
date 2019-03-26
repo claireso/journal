@@ -28,6 +28,9 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;
@@ -334,6 +337,9 @@ exports[`<Form /> should prefill form with photo data 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;
@@ -428,9 +434,9 @@ exports[`<Form /> should prefill form with photo data 1`] = `
 }
 
 .c10 {
-  -webkit-appearence: none;
-  -moz-appearence: none;
-  appearence: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: var(--primary);
   border: none;
   border-radius: 3.6rem;
@@ -649,6 +655,9 @@ exports[`<Form /> should render form 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;
@@ -736,9 +745,9 @@ exports[`<Form /> should render form 1`] = `
 }
 
 .c9 {
-  -webkit-appearence: none;
-  -moz-appearence: none;
-  appearence: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: var(--primary);
   border: none;
   border-radius: 3.6rem;

@@ -27,6 +27,9 @@ exports[`<Login /> should render component 1`] = `
 }
 
 .c5 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;
@@ -41,9 +44,9 @@ exports[`<Login /> should render component 1`] = `
 }
 
 .c6 {
-  -webkit-appearence: none;
-  -moz-appearence: none;
-  appearence: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: var(--primary);
   border: none;
   border-radius: 3.6rem;
@@ -171,6 +174,9 @@ exports[`<Login /> should render component in processing status 1`] = `
 }
 
 .c5 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;

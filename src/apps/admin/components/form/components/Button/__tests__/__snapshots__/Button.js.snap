@@ -2,9 +2,9 @@
 
 exports[`<Button /> should render button 1`] = `
 .c0 {
-  -webkit-appearence: none;
-  -moz-appearence: none;
-  appearence: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: var(--primary);
   border: none;
   border-radius: 3.6rem;

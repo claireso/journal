@@ -277,6 +277,9 @@ exports[`<List /> should display create form 1`] = `
 }
 
 .c22 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;
@@ -364,9 +367,9 @@ exports[`<List /> should display create form 1`] = `
 }
 
 .c29 {
-  -webkit-appearence: none;
-  -moz-appearence: none;
-  appearence: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: var(--primary);
   border: none;
   border-radius: 3.6rem;
@@ -1622,6 +1625,9 @@ exports[`<List /> should display edit form 1`] = `
 }
 
 .c22 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;
@@ -1716,9 +1722,9 @@ exports[`<List /> should display edit form 1`] = `
 }
 
 .c30 {
-  -webkit-appearence: none;
-  -moz-appearence: none;
-  appearence: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: var(--primary);
   border: none;
   border-radius: 3.6rem;
