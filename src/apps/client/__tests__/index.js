@@ -5,7 +5,7 @@ import Client from '../index'
 
 describe('<Client />', () => {
   const props = {
-    translations: __TRANSLATIONS__
+    translations: global.__TRANSLATIONS__
   }
 
   beforeEach(() => {
@@ -19,14 +19,14 @@ describe('<Client />', () => {
   })
 
   test('should render <Photos />', () => {
-    const { container } = render(<Client {...props} {...__PHOTOS__} />)
+    const { container } = render(<Client {...props} {...global.__PHOTOS__} />)
 
     expect(container).toMatchSnapshot()
   })
 
   test('should render <Loader /> then new page', done => {
     const { container, getByTitle } = render(
-      <Client {...props} {...__PHOTOS__} />
+      <Client {...props} {...global.__PHOTOS__} />
     )
 
     fetch.mockResponse(

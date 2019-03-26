@@ -43,7 +43,7 @@ app.use((req, res) => {
 })
 
 // Handle 500
-app.use(function (err, req, res) {
+app.use(function(err, req, res) {
   res.status(500)
   res.send('500')
   /* eslint-disable */

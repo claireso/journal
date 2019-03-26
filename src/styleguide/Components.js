@@ -23,8 +23,7 @@ export default function Components({
   components,
   depth,
   exampleMode,
-  usageMode,
-  ...props
+  usageMode
 }) {
   return (
     <ComponentsRenderer>

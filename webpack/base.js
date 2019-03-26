@@ -7,7 +7,9 @@ const config = require('../config.json')
 
 const ROOT = process.cwd()
 const notificationConfig = config.website.notification
-const IS_PUSH_ENABLED = !!(notificationConfig.publicKey && notificationConfig.privateKey)
+const IS_PUSH_ENABLED = !!(
+  notificationConfig.publicKey && notificationConfig.privateKey
+)
 
 module.exports = {
   context: path.resolve(ROOT, 'src'),
@@ -17,7 +19,7 @@ module.exports = {
     polyfills: './static/js/polyfills.js'
   },
   output: {
-    filename: `js/[name].js`,
+    filename: 'js/[name].js',
     path: path.resolve(ROOT, 'public'),
     publicPath: '/'
   },
@@ -32,13 +34,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              ["@babel/preset-env", {
-                "targets": {
-                  "esmodules": true
-                }
-              }]
-            ]
+            configFile: path.resolve(ROOT, '.babel-client.babelrc')
           }
         }
       }
@@ -67,7 +63,7 @@ module.exports = {
           chunks: 'initial',
           minChunks: 2,
           test: /[\\/]node_modules[\\/]/
-        },
+        }
       }
     }
   }

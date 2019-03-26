@@ -9,13 +9,13 @@ import Notifications from '../index'
 describe('<Notifications />', () => {
   const renderComponent = () =>
     render(
-      <TranslationsContext.Provider value={__TRANSLATIONS__.client}>
+      <TranslationsContext.Provider value={global.__TRANSLATIONS__.client}>
         <Notifications />
       </TranslationsContext.Provider>
     )
 
   beforeEach(() => {
-    setNotificationPermission()
+    global.setNotificationPermission()
   })
 
   test('should render component', done => {
@@ -47,15 +47,15 @@ describe('<Notifications />', () => {
   })
 
   test('should not render component (user has blocked notifications)', () => {
-    setNotificationPermission('denied')
+    global.setNotificationPermission('denied')
 
     const { container } = renderComponent()
 
     expect(container).toMatchSnapshot()
-    setNotificationPermission()
+    global.setNotificationPermission()
   })
 
-  test('should subscribe and hide banner', async (done) => {
+  test('should subscribe and hide banner', async done => {
     // mock func subscribe
     const spy = jest
       .spyOn(notifications, 'subscribe')
@@ -80,7 +80,7 @@ describe('<Notifications />', () => {
     })
   })
 
-  test('should not subscribe and hide banner (denied story)', async (done) => {
+  test('should not subscribe and hide banner (denied story)', async done => {
     // mock func subscribe
     const spy = jest
       .spyOn(notifications, 'subscribe')
@@ -95,7 +95,7 @@ describe('<Notifications />', () => {
 
     await waitForElement(() => getByRole('button'), { container })
 
-    setNotificationPermission('denied')
+    global.setNotificationPermission('denied')
 
     fireEvent.click(getByRole('button'))
 

@@ -12,7 +12,7 @@ describe('<Form />', () => {
 
   test('should prefill form with photo data', () => {
     const { container } = render(
-      <Form isProcessing={false} photo={__PHOTO__} />
+      <Form isProcessing={false} photo={global.__PHOTO__} />
     )
 
     expect(container).toMatchSnapshot()

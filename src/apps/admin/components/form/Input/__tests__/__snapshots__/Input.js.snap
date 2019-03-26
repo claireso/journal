@@ -12,6 +12,9 @@ exports[`<Input /> should render input 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
   display: block;

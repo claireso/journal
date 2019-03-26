@@ -6,6 +6,7 @@ import SubmitButton from '@admin/components/form/components/Button'
 
 const Form = props => {
   const [state, setState] = useState({ username: '', password: '' })
+  const { onSubmit, isProcessing } = props
 
   const handleChange = useCallback((fieldName, value) => {
     setState(prevState => ({ ...prevState, [fieldName]: value }))
@@ -15,13 +16,11 @@ const Form = props => {
     event => {
       event && event.preventDefault()
 
-      const { onSubmit, isProcessing } = props
-
       if (isProcessing) return
 
       onSubmit && onSubmit(state)
     },
-    [state]
+    [state, onSubmit, isProcessing]
   )
 
   return (

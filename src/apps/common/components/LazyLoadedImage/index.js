@@ -16,7 +16,7 @@ const LazyLoadedImage = props => {
     img.src = props.src
 
     img.onload = () => setLoaded(true)
-  }, [])
+  }, [props.src])
 
   if (!loaded) return null
 

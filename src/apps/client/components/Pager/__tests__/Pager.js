@@ -34,8 +34,8 @@ describe('<Pager />', () => {
     const navigate = jest.fn()
     const { container, getByTitle } = render(
       getPager({
-        next: __PHOTOS__.pager.next,
-        last: __PHOTOS__.pager.last,
+        next: global.__PHOTOS__.pager.next,
+        last: global.__PHOTOS__.pager.last,
         navigate: navigate
       })
     )
@@ -57,8 +57,8 @@ describe('<Pager />', () => {
       getPager({
         first: 1,
         prev: 1,
-        next: __PHOTOS__.pager.next,
-        last: __PHOTOS__.pager.last,
+        next: global.__PHOTOS__.pager.next,
+        last: global.__PHOTOS__.pager.last,
         navigate: navigate
       })
     )

@@ -28,39 +28,43 @@ const ButtonSubscribe = styled.a.attrs(() => ({
   }
 `
 
-export default () => {
+const NotificationBanner = () => {
   const [isVisible, setIsVisible] = useState(false)
   const translations = useContext(TranslationsContext)
-
-  const subscribe = useCallback(async event => {
-    event && event.preventDefault()
-
-    try {
-      await notifications.subscribe()
-      hideBanner()
-    } catch (err) {
-      // user decline
-      if (notifications.areDenied()) {
-        hideBanner()
-        return
-      }
-
-      throw new Error('Banner: can not subscribe')
-    }
-  }, [])
 
   const hideBanner = useCallback(() => setIsVisible(false), [])
   const showBanner = useCallback(() => setIsVisible(true), [])
 
+  const subscribe = useCallback(
+    async event => {
+      event && event.preventDefault()
+
+      try {
+        await notifications.subscribe()
+        hideBanner()
+      } catch (err) {
+        // user decline
+        if (notifications.areDenied()) {
+          hideBanner()
+          return
+        }
+
+        throw new Error('Banner: can not subscribe')
+      }
+    },
+    [hideBanner]
+  )
+
   useEffect(() => {
-    // do not display banner if service worker not support
-    // do not display banner if push not enabled
+    // do not display banner if service worker or Notification is not support
+    // do not display banner if push is not enabled
     // do not display banner in safari
     if (
+      !process.env.IS_PUSH_ENABLED ||
       !('serviceWorker' in navigator) ||
+      !('Notification' in window) ||
       (process.env.NODE_ENV !== 'production' &&
         process.env.NODE_ENV !== 'test') ||
-      !process.env.IS_PUSH_ENABLED ||
       window.safari
     ) {
       return
@@ -79,10 +83,10 @@ export default () => {
           showBanner()
         }
       })
-      .catch(err => {
+      .catch(() => {
         throw new Error('Banner can not get subscription')
       })
-  }, [])
+  }, [showBanner])
 
   if (!isVisible) return null
 
@@ -94,3 +98,5 @@ export default () => {
     </Flash>
   )
 }
+
+export default NotificationBanner

@@ -7,31 +7,31 @@ describe('notifications', () => {
 
   afterEach(() => {
     // reset permission
-    setNotificationPermission()
+    global.setNotificationPermission()
     // reset service worker
-    setServiceWorker()
+    global.setServiceWorker()
   })
 
   test('should be default', () => {
-    setNotificationPermission()
+    global.setNotificationPermission()
 
     expect(notifications.areDefault()).toBeTruthy()
   })
 
   test('should be denied', () => {
-    setNotificationPermission('denied')
+    global.setNotificationPermission('denied')
 
     expect(notifications.areDenied()).toBeTruthy()
   })
 
   test('should be granted', () => {
-    setNotificationPermission('granted')
+    global.setNotificationPermission('granted')
 
     expect(notifications.areGranted()).toBeTruthy()
   })
 
   test('should get public key', async () => {
-    const response = __NOTIFICATIONS_PUBLIC_KEY__
+    const response = global.__NOTIFICATIONS_PUBLIC_KEY__
     fetch.mockResponseOnce(response)
 
     await expect(notifications.getPushPublicKey()).resolves.toEqual(response)
@@ -52,7 +52,7 @@ describe('notifications', () => {
   })
 
   test('should throw error on get registration', async () => {
-    setServiceWorker({
+    global.setServiceWorker({
       ready: Promise.reject()
     })
 
@@ -62,12 +62,12 @@ describe('notifications', () => {
   })
 
   test('should subscribe', async () => {
-    const { subscribe } = setServiceWorker({
+    const { subscribe } = global.setServiceWorker({
       subscribe: jest.fn()
     })
 
     fetch.mockResponses(
-      [__NOTIFICATIONS_PUBLIC_KEY__, { status: 200 }],
+      [global.__NOTIFICATIONS_PUBLIC_KEY__, { status: 200 }],
       ['', { status: 200 }]
     )
 
@@ -82,7 +82,7 @@ describe('notifications', () => {
   })
 
   test('should not subscribe when no public key', async () => {
-    const { subscribe } = setServiceWorker({
+    const { subscribe } = global.setServiceWorker({
       subscribe: jest.fn()
     })
 
@@ -95,7 +95,7 @@ describe('notifications', () => {
   })
 
   test('should get subscription', async () => {
-    const { getSubscription } = setServiceWorker()
+    const { getSubscription } = global.setServiceWorker()
     const result = await notifications.getSubscription()
 
     expect(result).toEqual({})
@@ -103,7 +103,7 @@ describe('notifications', () => {
   })
 
   test('should throw error on get subscription', async () => {
-    setServiceWorker({
+    global.setServiceWorker({
       getSubscription: jest.fn().mockImplementation(() => Promise.reject({}))
     })
 

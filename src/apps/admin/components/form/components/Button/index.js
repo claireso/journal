@@ -7,7 +7,7 @@ import Loader from '@common/components/Loader'
 export const SubmitButton = styled.input.attrs(() => ({
   type: 'submit'
 }))`
-  appearence: none;
+  appearance: none;
   background: var(--primary);
   border: none;
   border-radius: 3.6rem;

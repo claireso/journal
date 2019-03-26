@@ -3,7 +3,6 @@ import { Provider } from 'react-redux'
 import { render, fireEvent, wait } from 'react-testing-library'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import axios from 'axios'
 
 import Edit from '../Edit'
 import callApiMiddleware from '@admin/middleware/callApi'
@@ -52,7 +51,7 @@ describe('<Edit />', () => {
   }
 
   test('should render component', () => {
-    const { container } = renderComponent({ photo: __PHOTO__ })
+    const { container } = renderComponent({ photo: global.__PHOTO__ })
 
     expect(container).toMatchSnapshot()
   })
@@ -87,7 +86,7 @@ describe('<Edit />', () => {
 
   test('should edit photo', async () => {
     const { container, getByLabelText, store } = renderComponent({
-      photo: __PHOTO__
+      photo: global.__PHOTO__
     })
 
     fireEvent.change(getByLabelText(/title/i), {

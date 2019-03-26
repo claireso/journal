@@ -22,7 +22,7 @@ describe('reducer subscriptions', () => {
   test('should load subscriptions', () => {
     const action = {
       type: actionTypes.LOAD_SUBSCRIPTIONS_SUCCESS,
-      response: __SUBSCRIPTIONS__
+      response: global.__SUBSCRIPTIONS__
     }
 
     reducer = subscriptionsReducer(reducer, action)
