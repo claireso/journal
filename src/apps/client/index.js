@@ -53,13 +53,16 @@ const Page = props => {
   const loadPhotos = useCallback(async page => {
     setState({ isLoading: true })
     const data = await getPhotos(page)
-    data && setState({ ...state, ...data, isLoading: false })
+    data && setState(prevState => ({ ...prevState, ...data, isLoading: false }))
   }, [])
 
-  const onNavigate = useCallback(event => {
-    window.scroll(0, 0)
-    loadPhotos(event.state && event.state.page)
-  }, [])
+  const onNavigate = useCallback(
+    event => {
+      window.scroll(0, 0)
+      loadPhotos(event.state && event.state.page)
+    },
+    [loadPhotos]
+  )
 
   useEffect(() => {
     // listen history
@@ -68,7 +71,7 @@ const Page = props => {
     return () => {
       window.removeEventListener('popstate', onNavigate)
     }
-  }, [])
+  }, [onNavigate])
 
   return (
     <TranslationsContext.Provider value={props.translations.client}>

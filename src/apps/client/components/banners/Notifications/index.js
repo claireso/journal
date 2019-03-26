@@ -28,29 +28,32 @@ const ButtonSubscribe = styled.a.attrs(() => ({
   }
 `
 
-export default () => {
+const NotificationBanner = () => {
   const [isVisible, setIsVisible] = useState(false)
   const translations = useContext(TranslationsContext)
 
-  const subscribe = useCallback(async event => {
-    event && event.preventDefault()
-
-    try {
-      await notifications.subscribe()
-      hideBanner()
-    } catch (err) {
-      // user decline
-      if (notifications.areDenied()) {
-        hideBanner()
-        return
-      }
-
-      throw new Error('Banner: can not subscribe')
-    }
-  }, [])
-
   const hideBanner = useCallback(() => setIsVisible(false), [])
   const showBanner = useCallback(() => setIsVisible(true), [])
+
+  const subscribe = useCallback(
+    async event => {
+      event && event.preventDefault()
+
+      try {
+        await notifications.subscribe()
+        hideBanner()
+      } catch (err) {
+        // user decline
+        if (notifications.areDenied()) {
+          hideBanner()
+          return
+        }
+
+        throw new Error('Banner: can not subscribe')
+      }
+    },
+    [hideBanner]
+  )
 
   useEffect(() => {
     // do not display banner if service worker or Notification is not support
@@ -80,10 +83,10 @@ export default () => {
           showBanner()
         }
       })
-      .catch(err => {
+      .catch(() => {
         throw new Error('Banner can not get subscription')
       })
-  }, [])
+  }, [showBanner])
 
   if (!isVisible) return null
 
@@ -95,3 +98,5 @@ export default () => {
     </Flash>
   )
 }
+
+export default NotificationBanner

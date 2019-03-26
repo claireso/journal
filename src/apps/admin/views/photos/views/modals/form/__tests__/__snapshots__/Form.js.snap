@@ -48,7 +48,7 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
 .c7 svg {
   position: absolute;
   top: 50%;
-  right: .9rem;
+  right: 0.9rem;
   bottom: 0;
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
@@ -61,12 +61,12 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
   appearance: none;
   background: var(--white);
   border: 1px solid var(--gray-1);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
-  font-family: "Roboto",Arial,sans-serif;
+  font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.4rem;
   outline: none;
-  padding: .8rem 2.6rem .8rem .8rem;
+  padding: 0.8rem 2.6rem 0.8rem 0.8rem;
 }
 
 .c8:focus {
@@ -354,7 +354,7 @@ exports[`<Form /> should prefill form with photo data 1`] = `
 .c8 svg {
   position: absolute;
   top: 50%;
-  right: .9rem;
+  right: 0.9rem;
   bottom: 0;
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
@@ -367,12 +367,12 @@ exports[`<Form /> should prefill form with photo data 1`] = `
   appearance: none;
   background: var(--white);
   border: 1px solid var(--gray-1);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
-  font-family: "Roboto",Arial,sans-serif;
+  font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.4rem;
   outline: none;
-  padding: .8rem 2.6rem .8rem .8rem;
+  padding: 0.8rem 2.6rem 0.8rem 0.8rem;
 }
 
 .c9:focus {
@@ -669,7 +669,7 @@ exports[`<Form /> should render form 1`] = `
 .c7 svg {
   position: absolute;
   top: 50%;
-  right: .9rem;
+  right: 0.9rem;
   bottom: 0;
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
@@ -682,12 +682,12 @@ exports[`<Form /> should render form 1`] = `
   appearance: none;
   background: var(--white);
   border: 1px solid var(--gray-1);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
-  font-family: "Roboto",Arial,sans-serif;
+  font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.4rem;
   outline: none;
-  padding: .8rem 2.6rem .8rem .8rem;
+  padding: 0.8rem 2.6rem 0.8rem 0.8rem;
 }
 
 .c8:focus {

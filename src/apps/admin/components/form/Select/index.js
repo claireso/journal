@@ -12,9 +12,9 @@ const SelectWrapper = styled.div`
   svg {
     position: absolute;
     top: 50%;
-    right: .9rem;
+    right: 0.9rem;
     bottom: 0;
-    transform: translate(0, -50%) rotate(90deg) ;
+    transform: translate(0, -50%) rotate(90deg);
   }
 `
 
@@ -22,12 +22,12 @@ const StyledSelect = styled.select`
   appearance: none;
   background: var(--white);
   border: 1px solid var(--gray-1);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 1.4rem;
   outline: none;
-  padding: .8rem 2.6rem .8rem .8rem;
+  padding: 0.8rem 2.6rem 0.8rem 0.8rem;
 
   &:focus {
     box-shadow: 0 0 0 0.3rem #c8e2ff;

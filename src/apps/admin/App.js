@@ -91,7 +91,8 @@ App.propTypes = {
     cid: PropTypes.string
   }),
   messages: PropTypes.array.isRequired,
-  closeMessage: PropTypes.func.isRequired
+  closeMessage: PropTypes.func.isRequired,
+  signOut: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

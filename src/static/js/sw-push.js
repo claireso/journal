@@ -1,5 +1,6 @@
 const urlBase64ToUint8Array = base64String => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
+  // eslint-disable-next-line no-useless-escape
   const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/')
 
   const rawData = self.atob(base64)
@@ -52,7 +53,7 @@ self.addEventListener('pushsubscriptionchange', event => {
       .then(pushPublicKey => {
         const convertedPushPublicKey = urlBase64ToUint8Array(pushPublicKey)
 
-        return registration.pushManager.subscribe({
+        return self.registration.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: convertedPushPublicKey
         })

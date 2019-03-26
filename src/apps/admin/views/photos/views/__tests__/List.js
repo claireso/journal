@@ -16,7 +16,7 @@ describe('<List />', () => {
     const defaultProps = {
       photos: {
         isLoading: false,
-        ...__PHOTOS__
+        ...global.__PHOTOS__
       },
       loadPhotos: () => {}
     }

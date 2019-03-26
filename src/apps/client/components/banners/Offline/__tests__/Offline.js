@@ -7,7 +7,7 @@ import Offline from '../index'
 describe('<Offline />', () => {
   test('should not render component', () => {
     const { container } = render(
-      <TranslationsContext.Provider value={__TRANSLATIONS__.client}>
+      <TranslationsContext.Provider value={global.__TRANSLATIONS__.client}>
         <Offline />
       </TranslationsContext.Provider>
     )
@@ -16,16 +16,16 @@ describe('<Offline />', () => {
   })
 
   test('should render component', () => {
-    goOffline()
+    global.goOffline()
 
     const { container } = render(
-      <TranslationsContext.Provider value={__TRANSLATIONS__.client}>
+      <TranslationsContext.Provider value={global.__TRANSLATIONS__.client}>
         <Offline />
       </TranslationsContext.Provider>
     )
 
     expect(container).toMatchSnapshot()
 
-    goOnline()
+    global.goOnline()
   })
 })

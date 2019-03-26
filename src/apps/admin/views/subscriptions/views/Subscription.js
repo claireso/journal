@@ -55,7 +55,7 @@ const SubscriptionTools = styled.p`
 const Subscription = ({ onDelete, id, ...props }) => {
   const handleDelete = useCallback(() => {
     onDelete(id)
-  }, [id])
+  }, [id, onDelete])
 
   return (
     <SubscriptionWrapper>

@@ -5,7 +5,7 @@ import Photos from '../Photos'
 
 describe('<Photos />', () => {
   test('should render component', () => {
-    const { items: photos, pager } = __PHOTOS__
+    const { items: photos, pager } = global.__PHOTOS__
     const { container } = render(<Photos photos={photos} pager={pager} />)
 
     expect(container).toMatchSnapshot()
@@ -15,7 +15,7 @@ describe('<Photos />', () => {
     window.history.pushState = jest.fn()
     window.onpopstate = jest.fn()
 
-    const { items: photos, pager } = __PHOTOS__
+    const { items: photos, pager } = global.__PHOTOS__
     const { getByTitle } = render(<Photos photos={photos} pager={pager} />)
 
     fireEvent.click(getByTitle('Next page'))

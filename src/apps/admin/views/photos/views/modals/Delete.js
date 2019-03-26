@@ -6,18 +6,24 @@ import { Heading1 } from '@admin/components/Headings'
 import Text from '@admin/components/Text'
 
 const Delete = props => {
-  const { isProcessing } = props
+  const { isProcessing, onClose, deletePhoto, id } = props
 
-  const onCancel = useCallback(event => {
-    event.preventDefault()
-    props.onClose()
-  }, [])
+  const onCancel = useCallback(
+    event => {
+      event.preventDefault()
+      onClose()
+    },
+    [onClose]
+  )
 
-  const onConfirm = useCallback(event => {
-    event.preventDefault()
-    if (isProcessing) return
-    props.deletePhoto(props.id)
-  }, [])
+  const onConfirm = useCallback(
+    event => {
+      event.preventDefault()
+      if (isProcessing) return
+      deletePhoto(id)
+    },
+    [isProcessing, deletePhoto, id]
+  )
 
   return (
     <Fragment>

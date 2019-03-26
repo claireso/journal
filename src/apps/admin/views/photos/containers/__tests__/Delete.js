@@ -3,7 +3,6 @@ import { Provider } from 'react-redux'
 import { render, fireEvent, wait } from 'react-testing-library'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import axios from 'axios'
 
 import Delete from '../Delete'
 import callApiMiddleware from '@admin/middleware/callApi'

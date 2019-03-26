@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ReactComponent from 'react-styleguidist/lib/client/rsg-components/ReactComponent'
 
 export default class ReactComponentWrapper extends React.Component {
@@ -11,4 +12,8 @@ export default class ReactComponentWrapper extends React.Component {
       </div>
     )
   }
+}
+
+ReactComponentWrapper.propTypes = {
+  className: PropTypes.string
 }

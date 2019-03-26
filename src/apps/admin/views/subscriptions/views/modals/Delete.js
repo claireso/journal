@@ -5,19 +5,22 @@ import { PrimaryButton, SecondaryButton } from '@admin/components/Buttons'
 import { Heading1 } from '@admin/components/Headings'
 import Text from '@admin/components/Text'
 
-const Delete = ({ isProcessing, id, ...props }) => {
-  const onCancel = useCallback(event => {
-    event.preventDefault()
-    props.onClose()
-  }, [])
+const Delete = ({ isProcessing, id, deleteSubscription, onClose }) => {
+  const onCancel = useCallback(
+    event => {
+      event.preventDefault()
+      onClose()
+    },
+    [onClose]
+  )
 
   const onConfirm = useCallback(
     event => {
       event.preventDefault()
       if (isProcessing) return
-      props.deleteSubscription(id)
+      deleteSubscription(id)
     },
-    [isProcessing, id]
+    [isProcessing, id, deleteSubscription]
   )
 
   return (

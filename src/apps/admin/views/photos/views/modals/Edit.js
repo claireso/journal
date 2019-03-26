@@ -11,13 +11,13 @@ const Edit = ({ id, photo, error, isProcessing, loadPhoto, editPhoto }) => {
     if (!photo) {
       loadPhoto(id)
     }
-  }, [])
+  }, [id, loadPhoto, photo])
 
   const onSubmit = useCallback(
     data => {
       editPhoto(id, data)
     },
-    [id]
+    [editPhoto, id]
   )
 
   if (photo === undefined) return null

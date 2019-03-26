@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from 'react-testing-library'
+import { render } from 'react-testing-library'
 
 import Edit from '../Edit'
 
@@ -7,7 +7,7 @@ describe('<Edit />', () => {
   const getProps = () => ({
     editPhoto: () => {},
     loadPhoto: () => {},
-    photo: __PHOTO__,
+    photo: global.__PHOTO__,
     isProcessing: false,
     onClose: () => {},
     id: 199

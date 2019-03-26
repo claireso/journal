@@ -22,7 +22,7 @@ describe('reducer photos', () => {
   test('should load photos', () => {
     const action = {
       type: actionTypes.LOAD_PHOTOS_SUCCESS,
-      response: __PHOTOS__
+      response: global.__PHOTOS__
     }
 
     reducer = photosReducer(reducer, action)
@@ -68,7 +68,7 @@ describe('reducer photos', () => {
   test('should load one photo', () => {
     const action = {
       type: actionTypes.LOAD_PHOTO_SUCCESS,
-      response: __PHOTO__
+      response: global.__PHOTO__
     }
 
     reducer = photosReducer(reducer, action)
@@ -241,7 +241,7 @@ describe('reducer photos', () => {
   test('should create one photo', () => {
     const action = {
       type: actionTypes.CREATE_PHOTO_SUCCESS,
-      response: __PHOTO__
+      response: global.__PHOTO__
     }
 
     reducer = photosReducer(reducer, action)
@@ -379,7 +379,7 @@ describe('reducer photos', () => {
     const action = {
       type: actionTypes.EDIT_PHOTO_SUCCESS,
       response: {
-        ...__PHOTO__,
+        ...global.__PHOTO__,
         title: 'Single photography edit'
       }
     }
