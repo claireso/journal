@@ -1,0 +1,6 @@
+{
+  "src/**/*.js": [
+    "npm run lint:write",
+    "git add"
+  ]
+}
