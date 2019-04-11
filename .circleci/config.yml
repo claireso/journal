@@ -2,19 +2,19 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
-jobs:
-  build:
+version: 2.1
+
+executors:
+  my-docker:
     docker:
       # specify the version you desire here
       - image: circleci/node:10.13.0
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
     working_directory: ~/journal
+
+jobs:
+  install:
+    executor: my-docker
 
     steps:
       - checkout
@@ -40,7 +40,82 @@ jobs:
           name: Create config
           command: cp config-sample.json config.json
 
-      # run tests!
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  test:
+    executor: my-docker
+
+    steps:
+      - attach_workspace:
+          at: ~/journal
+
       - run:
           name: Run tests
           command: npm test -- --maxWorkers=2
+
+  lint:
+    executor: my-docker
+
+    steps:
+      - attach_workspace:
+          at: ~/journal
+
+      - run:
+          name: Run lint
+          command: npm run lint
+
+  build:
+    executor: my-docker
+
+    steps:
+      - attach_workspace:
+          at: ~/journal
+
+      - run:
+          name: Build application
+          command: npm run build
+
+  deploy:
+    executor: my-docker
+
+    steps:
+      - attach_workspace:
+          at: ~/journal
+
+      - run:
+          name: Deploy
+          command: |
+            echo "Deploy now!"
+            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd ~/journal; sh .circleci/deploy.sh;"
+
+
+workflows:
+  version: 2
+  # install and test for all branches
+  # build and deploy only on master
+  install-test-build-and-deploy:
+    jobs:
+      - install
+      - test:
+          requires:
+            - install
+      - lint:
+          requires:
+            - install
+      # - build:
+      #     filters:
+      #       branches:
+      #         only: master
+      #     requires:
+      #       - test
+      #       - lint
+      # - hold:
+      #     type: approval
+      #     requires:
+      #       - build
+      # - deploy:
+      #     requires:
+      #       - hold
