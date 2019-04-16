@@ -8,7 +8,7 @@ import { IconPlus } from '@common/components/Icons'
 import Pager from '@admin/components/Pager'
 import Toolbar from '@admin/components/Toolbar'
 import List from '@admin/components/List'
-import { PrimaryButton, PagerButton } from '@admin/components/Buttons'
+import { PrimaryButton } from '@admin/components/Buttons'
 import Modal from '@admin/components/Modal'
 
 import CreatePhoto from '../containers/Create'
@@ -146,22 +146,7 @@ class Photos extends React.PureComponent {
               ))}
             </List>
 
-            <Pager {...photos.pager} navigate={page => this.navigate({ page })}>
-              {({ items, getItemsProps }) => {
-                return items.map(item => (
-                  <li key={item.label}>
-                    <PagerButton
-                      {...getItemsProps({
-                        item: item,
-                        title: item.title
-                      })}
-                    >
-                      {item.label}
-                    </PagerButton>
-                  </li>
-                ))
-              }}
-            </Pager>
+            <Pager {...photos.pager} navigate={this.navigate} />
 
             {this.getModal()}
           </React.Fragment>

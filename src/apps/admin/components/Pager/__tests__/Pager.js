@@ -43,11 +43,11 @@ describe('<Pager />', () => {
 
     expect(getByTitle('Next page')).toBeInTheDocument()
     fireEvent.click(getByTitle('Next page'))
-    expect(navigate).toHaveBeenCalledWith(2)
+    expect(navigate).toHaveBeenCalledWith({ page: 2 })
 
     expect(getByTitle('Last page')).toBeInTheDocument()
     fireEvent.click(getByTitle('Last page'))
-    expect(navigate).toHaveBeenCalledWith(19)
+    expect(navigate).toHaveBeenCalledWith({ page: 19 })
   })
 
   test('should render second page', () => {
@@ -66,19 +66,19 @@ describe('<Pager />', () => {
 
     expect(getByTitle('First page')).toBeInTheDocument()
     fireEvent.click(getByTitle('First page'))
-    expect(navigate).toHaveBeenCalledWith(1)
+    expect(navigate).toHaveBeenCalledWith({ page: 1 })
 
     expect(getByTitle('Previous page')).toBeInTheDocument()
     fireEvent.click(getByTitle('Previous page'))
-    expect(navigate).toHaveBeenCalledWith(1)
+    expect(navigate).toHaveBeenCalledWith({ page: 1 })
 
     expect(getByTitle('Next page')).toBeInTheDocument()
     fireEvent.click(getByTitle('Next page'))
-    expect(navigate).toHaveBeenCalledWith(2)
+    expect(navigate).toHaveBeenCalledWith({ page: 2 })
 
     expect(getByTitle('Last page')).toBeInTheDocument()
     fireEvent.click(getByTitle('Last page'))
-    expect(navigate).toHaveBeenCalledWith(19)
+    expect(navigate).toHaveBeenCalledWith({ page: 19 })
   })
 
   test('should render last page', () => {
@@ -95,10 +95,10 @@ describe('<Pager />', () => {
 
     expect(getByTitle('First page')).toBeInTheDocument()
     fireEvent.click(getByTitle('First page'))
-    expect(navigate).toHaveBeenCalledWith(1)
+    expect(navigate).toHaveBeenCalledWith({ page: 1 })
 
     expect(getByTitle('Previous page')).toBeInTheDocument()
     fireEvent.click(getByTitle('Previous page'))
-    expect(navigate).toHaveBeenCalledWith(1)
+    expect(navigate).toHaveBeenCalledWith({ page: 1 })
   })
 })

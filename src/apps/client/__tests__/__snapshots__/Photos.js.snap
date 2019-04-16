@@ -52,17 +52,6 @@ exports[`<Photos /> should render component 1`] = `
   margin: 0 0 1rem;
 }
 
-.c6 {
-  margin: 0 0 8.5rem;
-  padding: 0;
-  text-align: center;
-}
-
-.c6 > li {
-  display: inline-block;
-  margin: 0 0.5rem;
-}
-
 .c7 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -89,6 +78,17 @@ exports[`<Photos /> should render component 1`] = `
 
 .c7:hover {
   border-color: var(--gray-3);
+}
+
+.c6 {
+  margin: 0 0 8.5rem;
+  padding: 0;
+  text-align: center;
+}
+
+.c6 > li {
+  display: inline-block;
+  margin: 0 0.5rem;
 }
 
 @media (min-width:800px) {
