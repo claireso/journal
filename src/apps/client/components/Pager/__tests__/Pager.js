@@ -2,30 +2,12 @@ import React from 'react'
 import { render, fireEvent } from 'react-testing-library'
 
 import Pager from '../index'
-import { Button } from '../../Button'
 
-const getPager = (props = {}) => (
-  <Pager {...props}>
-    {({ items, getItemsProps }) =>
-      items.map((item, key) => (
-        <li key={key}>
-          <Button
-            {...getItemsProps({
-              title: item.title,
-              item: item
-            })}
-          >
-            {item.label}
-          </Button>
-        </li>
-      ))
-    }
-  </Pager>
-)
+const getPager = (props = {}) => <Pager {...props} />
 
 describe('<Pager />', () => {
   test('should not render items', () => {
-    const { container } = render(getPager())
+    const { container } = render(getPager({ navigate: () => {} }))
 
     expect(container.querySelector('li')).toBeNull()
   })

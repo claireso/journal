@@ -6,7 +6,6 @@ import Loader from '@common/components/Loader'
 
 import Pager from '@admin/components/Pager'
 import List from '@admin/components/List'
-import { PagerButton } from '@admin/components/Buttons'
 import Toolbar from '@admin/components/Toolbar'
 import Modal from '@admin/components/Modal'
 import Text from '@admin/components/Text'
@@ -111,22 +110,7 @@ class Subscriptions extends React.PureComponent {
                 />
               ))}
             </List>
-            <Pager {...pager} navigate={page => this.navigate({ page })}>
-              {({ items, getItemsProps }) => {
-                return items.map(item => (
-                  <li key={item.label}>
-                    <PagerButton
-                      {...getItemsProps({
-                        title: item.title,
-                        item: item
-                      })}
-                    >
-                      {item.label}
-                    </PagerButton>
-                  </li>
-                ))
-              }}
-            </Pager>
+            <Pager {...pager} navigate={this.navigate} />
 
             {this.getModal()}
           </React.Fragment>

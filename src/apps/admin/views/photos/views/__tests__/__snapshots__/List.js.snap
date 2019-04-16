@@ -1,56 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<List /> should display create form 1`] = `
-.c12 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  list-style-type: none;
-  width: 100%;
-  padding: 0;
-}
-
-.c12 > li {
-  margin: 0 0.3rem;
-}
-
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
-.c3 {
-  margin: 0;
-  padding: 2rem;
-}
-
 .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -179,6 +129,56 @@ exports[`<List /> should display create form 1`] = `
 
 .c11 + .c10 {
   margin: 0;
+}
+
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.c12 > li {
+  margin: 0 0.3rem;
+}
+
+.c0 {
+  background: var(--gray-4);
+  color: var(--white);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 6rem;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1.3rem 2rem;
+}
+
+.c0 > p {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+.c3 {
+  margin: 0;
+  padding: 2rem;
 }
 
 .c15 {
@@ -792,56 +792,6 @@ exports[`<List /> should display create form 1`] = `
 `;
 
 exports[`<List /> should display delete modal 1`] = `
-.c12 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  list-style-type: none;
-  width: 100%;
-  padding: 0;
-}
-
-.c12 > li {
-  margin: 0 0.3rem;
-}
-
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
-.c3 {
-  margin: 0;
-  padding: 2rem;
-}
-
 .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1011,6 +961,56 @@ exports[`<List /> should display delete modal 1`] = `
 
 .c11 + .c10 {
   margin: 0;
+}
+
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.c12 > li {
+  margin: 0 0.3rem;
+}
+
+.c0 {
+  background: var(--gray-4);
+  color: var(--white);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 6rem;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1.3rem 2rem;
+}
+
+.c0 > p {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+.c3 {
+  margin: 0;
+  padding: 2rem;
 }
 
 .c16 {
@@ -1349,56 +1349,6 @@ exports[`<List /> should display delete modal 1`] = `
 `;
 
 exports[`<List /> should display edit form 1`] = `
-.c12 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  list-style-type: none;
-  width: 100%;
-  padding: 0;
-}
-
-.c12 > li {
-  margin: 0 0.3rem;
-}
-
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
-.c3 {
-  margin: 0;
-  padding: 2rem;
-}
-
 .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1527,6 +1477,56 @@ exports[`<List /> should display edit form 1`] = `
 
 .c11 + .c10 {
   margin: 0;
+}
+
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.c12 > li {
+  margin: 0 0.3rem;
+}
+
+.c0 {
+  background: var(--gray-4);
+  color: var(--white);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 6rem;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1.3rem 2rem;
+}
+
+.c0 > p {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+.c3 {
+  margin: 0;
+  padding: 2rem;
 }
 
 .c15 {
@@ -2154,56 +2154,6 @@ exports[`<List /> should display edit form 1`] = `
 `;
 
 exports[`<List /> should not display delete modal 1`] = `
-.c12 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  list-style-type: none;
-  width: 100%;
-  padding: 0;
-}
-
-.c12 > li {
-  margin: 0 0.3rem;
-}
-
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
-.c3 {
-  margin: 0;
-  padding: 2rem;
-}
-
 .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2340,6 +2290,56 @@ exports[`<List /> should not display delete modal 1`] = `
 
 .c11 + .c10 {
   margin: 0;
+}
+
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.c12 > li {
+  margin: 0 0.3rem;
+}
+
+.c0 {
+  background: var(--gray-4);
+  color: var(--white);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 6rem;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1.3rem 2rem;
+}
+
+.c0 > p {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+.c3 {
+  margin: 0;
+  padding: 2rem;
 }
 
 .c5 {
@@ -2554,56 +2554,6 @@ exports[`<List /> should not display delete modal 1`] = `
 `;
 
 exports[`<List /> should not display edit form 1`] = `
-.c12 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  list-style-type: none;
-  width: 100%;
-  padding: 0;
-}
-
-.c12 > li {
-  margin: 0 0.3rem;
-}
-
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
-.c3 {
-  margin: 0;
-  padding: 2rem;
-}
-
 .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2732,6 +2682,56 @@ exports[`<List /> should not display edit form 1`] = `
 
 .c11 + .c10 {
   margin: 0;
+}
+
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.c12 > li {
+  margin: 0 0.3rem;
+}
+
+.c0 {
+  background: var(--gray-4);
+  color: var(--white);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 6rem;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1.3rem 2rem;
+}
+
+.c0 > p {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+.c3 {
+  margin: 0;
+  padding: 2rem;
 }
 
 .c5 {
@@ -2946,56 +2946,6 @@ exports[`<List /> should not display edit form 1`] = `
 `;
 
 exports[`<List /> should render list photos 1`] = `
-.c12 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  list-style-type: none;
-  width: 100%;
-  padding: 0;
-}
-
-.c12 > li {
-  margin: 0 0.3rem;
-}
-
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
-.c3 {
-  margin: 0;
-  padding: 2rem;
-}
-
 .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -3124,6 +3074,56 @@ exports[`<List /> should render list photos 1`] = `
 
 .c11 + .c10 {
   margin: 0;
+}
+
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.c12 > li {
+  margin: 0 0.3rem;
+}
+
+.c0 {
+  background: var(--gray-4);
+  color: var(--white);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 6rem;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1.3rem 2rem;
+}
+
+.c0 > p {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+.c3 {
+  margin: 0;
+  padding: 2rem;
 }
 
 .c5 {
@@ -3354,33 +3354,6 @@ exports[`<List /> should render loading view 1`] = `
   margin: 0 auto;
 }
 
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
 .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -3416,6 +3389,33 @@ exports[`<List /> should render loading view 1`] = `
 
 .c2:hover {
   background: var(--primary-lighter);
+}
+
+.c0 {
+  background: var(--gray-4);
+  color: var(--white);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 6rem;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1.3rem 2rem;
+}
+
+.c0 > p {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
 }
 
 <div>
