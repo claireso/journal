@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 
 import Photo from './components/Photo'
 import Pager from './components/Pager'
-import { Button } from './components/Button'
 
 const Photos = (props = {}) => {
-  const onNavigate = useCallback(page => {
+  const navigate = useCallback(page => {
     const state = { page }
     window.history.pushState(state, '', `?page=${page}`)
 
@@ -19,22 +18,7 @@ const Photos = (props = {}) => {
       {props.photos.map((photo, index) => (
         <Photo key={index} {...photo} />
       ))}
-      <Pager {...props.pager} navigate={onNavigate}>
-        {({ items, getItemsProps }) => {
-          return items.map((item, key) => (
-            <li key={key}>
-              <Button
-                {...getItemsProps({
-                  title: item.title,
-                  item: item
-                })}
-              >
-                {item.label}
-              </Button>
-            </li>
-          ))
-        }}
-      </Pager>
+      <Pager {...props.pager} navigate={navigate} />
     </React.Fragment>
   )
 }

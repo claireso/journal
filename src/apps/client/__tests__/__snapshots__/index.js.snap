@@ -92,17 +92,6 @@ exports[`<Client /> should render <Photos /> 1`] = `
   margin: 0 0 1rem;
 }
 
-.c7 {
-  margin: 0 0 8.5rem;
-  padding: 0;
-  text-align: center;
-}
-
-.c7 > li {
-  display: inline-block;
-  margin: 0 0.5rem;
-}
-
 .c8 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -129,6 +118,17 @@ exports[`<Client /> should render <Photos /> 1`] = `
 
 .c8:hover {
   border-color: var(--gray-3);
+}
+
+.c7 {
+  margin: 0 0 8.5rem;
+  padding: 0;
+  text-align: center;
+}
+
+.c7 > li {
+  display: inline-block;
+  margin: 0 0.5rem;
 }
 
 .c0 {
