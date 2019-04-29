@@ -18,7 +18,10 @@ describe('<Login />', () => {
 
   test('should call login function', () => {
     const spyOnSubmit = jest.fn()
-    const { getByLabelText, getByValue } = render(<Login login={spyOnSubmit} />)
+
+    const { getByLabelText, getByDisplayValue } = render(
+      <Login login={spyOnSubmit} />
+    )
 
     fireEvent.change(getByLabelText(/username/i), {
       target: { value: 'admin' }
@@ -27,7 +30,7 @@ describe('<Login />', () => {
       target: { value: 'password' }
     })
 
-    fireEvent.click(getByValue(/log in/i))
+    fireEvent.click(getByDisplayValue(/log in/i))
 
     expect(spyOnSubmit).toHaveBeenCalledWith({
       username: 'admin',
