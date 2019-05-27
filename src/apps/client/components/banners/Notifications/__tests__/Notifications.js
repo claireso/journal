@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent, waitForElement } from 'react-testing-library'
 
-import TranslationsContext from '@common/context/Translations'
+import { TranslationsProvider } from '@common/context/Translations'
 import notifications from '@common/utils/notifications'
 
 import Notifications from '../index'
@@ -9,9 +9,9 @@ import Notifications from '../index'
 describe('<Notifications />', () => {
   const renderComponent = () =>
     render(
-      <TranslationsContext.Provider value={global.__TRANSLATIONS__.client}>
+      <TranslationsProvider translations={global.__TRANSLATIONS__.client}>
         <Notifications />
-      </TranslationsContext.Provider>
+      </TranslationsProvider>
     )
 
   beforeEach(() => {

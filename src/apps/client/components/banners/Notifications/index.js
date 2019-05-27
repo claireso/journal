@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 
-import TranslationsContext from '@common/context/Translations'
+import { useTranslations } from '@common/context/Translations'
 import notifications from '@common/utils/notifications'
 
 import Flash from '../../Flash'
@@ -30,7 +30,7 @@ const ButtonSubscribe = styled.a.attrs(() => ({
 
 const NotificationBanner = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const translations = useContext(TranslationsContext)
+  const translations = useTranslations()
 
   const hideBanner = useCallback(() => setIsVisible(false), [])
   const showBanner = useCallback(() => setIsVisible(true), [])

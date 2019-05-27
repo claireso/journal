@@ -84,20 +84,20 @@ describe('<List />', () => {
       navigate: jest.fn()
     }
 
-    const { getByText, getByTitle } = renderWithLocation(List, props)
+    const { getByText, getAllByTitle } = renderWithLocation(List, props)
 
     fireEvent.click(getByText('Add a new photo'))
 
     expect(props.navigate).toHaveBeenNthCalledWith(1, '?action=create_photo')
 
-    fireEvent.click(getByTitle('Edit'))
+    fireEvent.click(getAllByTitle('Edit')[0])
 
     expect(props.navigate).toHaveBeenNthCalledWith(
       2,
       '?action=edit_photo&id=199'
     )
 
-    fireEvent.click(getByTitle('Delete'))
+    fireEvent.click(getAllByTitle('Delete')[0])
 
     expect(props.navigate).toHaveBeenNthCalledWith(
       3,

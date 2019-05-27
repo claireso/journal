@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Styles from './Styles'
 
-import TranslationsContext from '@common/context/Translations'
+import { TranslationsProvider } from '@common/context/Translations'
 import Loader from '@common/components/Loader'
 
 import Photos from './Photos'
@@ -74,7 +74,7 @@ const Page = props => {
   }, [onNavigate])
 
   return (
-    <TranslationsContext.Provider value={props.translations.client}>
+    <TranslationsProvider translations={props.translations.client}>
       <Styles />
 
       <BannerOffline />
@@ -89,7 +89,7 @@ const Page = props => {
           <Welcome />
         )}
       </Main>
-    </TranslationsContext.Provider>
+    </TranslationsProvider>
   )
 }
 
