@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { render, fireEvent, wait, waitForElement } from 'react-testing-library'
+import { render, fireEvent, wait, waitForElement } from '@testing-library/react'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 

@@ -1,7 +1,7 @@
 import 'intersection-observer'
 import 'jest-dom/extend-expect'
 import fetchMock from 'jest-fetch-mock'
-import 'react-testing-library/cleanup-after-each'
+import '@testing-library/react/cleanup-after-each'
 import 'jest-styled-components'
 
 window.scroll = () => { }
