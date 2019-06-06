@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-import Photos from '../Photos'
+import Photos from '../index'
 
 describe('<Photos />', () => {
   test('should render component', () => {
