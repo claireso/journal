@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, memo } from 'react'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -82,4 +82,4 @@ Subscription.propTypes = {
   onDelete: PropTypes.func.isRequired
 }
 
-export default Subscription
+export default memo(Subscription)

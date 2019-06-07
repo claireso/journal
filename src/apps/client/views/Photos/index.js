@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
-import Photo from './components/Photo'
-import Pager from './components/Pager'
+import Photo from '../../components/Photo'
+import Pager from '../../components/Pager'
 
 const Photos = (props = {}) => {
   const navigate = useCallback(page => {
