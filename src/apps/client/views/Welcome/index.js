@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Heading1 } from './components/Headings'
-import { PrimaryLink } from './components/Links'
+import { Heading1 } from '../../components/Headings'
+import { PrimaryLink } from '../../components/Links'
 
 const Wrapper = styled.div`
   padding: 6rem 0;

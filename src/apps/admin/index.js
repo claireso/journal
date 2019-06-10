@@ -33,7 +33,7 @@ const Admin = () => {
       <Router basepath="/admin">
         <ScrollUp default>
           <App path="/">
-            <Redirect from="/" to="/admin/photos" />
+            <Redirect from="/" to="/admin/photos" noThrow />
             <NotFound default />
             <AsyncPhotos path="photos" />
             <AsyncSubscriptions path="subscriptions" />
