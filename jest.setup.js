@@ -1,8 +1,8 @@
 import 'intersection-observer'
-import 'jest-dom/extend-expect'
-import fetchMock from 'jest-fetch-mock'
+import '@testing-library/jest-dom/extend-expect'
 import '@testing-library/react/cleanup-after-each'
 import 'jest-styled-components'
+import fetchMock from 'jest-fetch-mock'
 
 window.scroll = () => { }
 window.scrollTo = () => { }
