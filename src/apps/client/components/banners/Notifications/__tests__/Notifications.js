@@ -66,11 +66,13 @@ describe('<Notifications />', () => {
       .spyOn(notifications, 'getSubscription')
       .mockImplementation(() => Promise.resolve(null))
 
-    const { container, getByRole } = renderComponent()
+    const { container, getByText } = renderComponent()
 
-    await waitForElement(() => getByRole('button'), { container })
+    await waitForElement(() => getByText(/^Enable notifications/i), {
+      container
+    })
 
-    fireEvent.click(getByRole('button'))
+    fireEvent.click(getByText(/^Enable notifications/i))
 
     setImmediate(() => {
       expect(container).toMatchSnapshot()
@@ -91,13 +93,15 @@ describe('<Notifications />', () => {
       .spyOn(notifications, 'getSubscription')
       .mockImplementation(() => Promise.resolve(null))
 
-    const { container, getByRole } = renderComponent()
+    const { container, getByText } = renderComponent()
 
-    await waitForElement(() => getByRole('button'), { container })
+    await waitForElement(() => getByText(/^Enable notifications/i), {
+      container
+    })
 
     global.setNotificationPermission('denied')
 
-    fireEvent.click(getByRole('button'))
+    fireEvent.click(getByText(/^Enable notifications/i))
 
     setImmediate(() => {
       expect(container).toMatchSnapshot()
