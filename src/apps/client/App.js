@@ -1,44 +1,39 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
+import usePopstate from '@common/hooks/usePopstate'
+import usePhotosReducer from './hooks/usePhotosReducer'
+
+import Loader from '@common/components/Loader'
 import Photos from './views/Photos'
 import Welcome from './views/Welcome'
 
-import Loader from '@common/components/Loader'
-
-const getPhotos = async page => {
-  let url = '/api/photos'
-
-  if (page !== undefined && page !== null) {
-    url += `?page=${page}`
-  }
-
-  const response = await fetch(url)
-
-  if (response.status === 200) {
-    return await response.json()
-  }
-
-  // redirect to homepage
-  if (window.location.search !== '') {
-    window.location.href = '/'
-  }
-}
-
 const App = props => {
-  const [state, setState] = useState({
+  const initialState = {
     isLoading: false,
     items: props.items,
     pager: props.pager
-  })
+  }
+
+  const [state, actions] = usePhotosReducer(initialState)
 
   const { items: photos, pager } = state
 
-  const loadPhotos = useCallback(async page => {
-    setState({ isLoading: true })
-    const data = await getPhotos(page)
-    data && setState(prevState => ({ ...prevState, ...data, isLoading: false }))
-  }, [])
+  const loadPhotos = useCallback(
+    async page => {
+      actions.setLoading(true)
+
+      try {
+        await actions.getPhotos(page)
+        actions.setLoading(false)
+      } catch (err) {
+        if (window.location.search !== '') {
+          window.location.href = '/'
+        }
+      }
+    },
+    [actions]
+  )
 
   const onNavigate = useCallback(
     event => {
@@ -48,14 +43,7 @@ const App = props => {
     [loadPhotos]
   )
 
-  useEffect(() => {
-    // listen history
-    window.addEventListener('popstate', onNavigate)
-
-    return () => {
-      window.removeEventListener('popstate', onNavigate)
-    }
-  }, [onNavigate])
+  usePopstate(onNavigate)
 
   return state.isLoading ? (
     <Loader />
