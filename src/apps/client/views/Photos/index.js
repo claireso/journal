@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { Fragment, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import Photo from '../../components/Photo'
@@ -14,12 +14,12 @@ const Photos = (props = {}) => {
   }, [])
 
   return (
-    <React.Fragment>
+    <Fragment>
       {props.photos.map((photo, index) => (
         <Photo key={index} {...photo} />
       ))}
       <Pager {...props.pager} navigate={navigate} />
-    </React.Fragment>
+    </Fragment>
   )
 }
 

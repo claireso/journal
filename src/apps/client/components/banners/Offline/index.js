@@ -1,6 +1,6 @@
 import React from 'react'
 
-import useIsOnline from '@common/hooks/isOnline'
+import useIsOnline from '@common/hooks/useIsOnline'
 import { useTranslations } from '@common/context/Translations'
 
 import Flash from '../../Flash'

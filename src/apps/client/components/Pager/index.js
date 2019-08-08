@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import usePagination from '@common/hooks/pagination'
+import usePagination from '@common/hooks/usePagination'
 
 import { Button } from '../Button'
 
