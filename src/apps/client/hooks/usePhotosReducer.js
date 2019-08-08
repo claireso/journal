@@ -1,7 +1,7 @@
 import { useReducer } from 'react'
 
 import { getPhotos } from '@client/api'
-import photosReducer, { TYPES } from './reducer/photos'
+import photosReducer, { TYPES } from './reducers/photos'
 
 export default (initialState = {}) => {
   const [state, dispatch] = useReducer(photosReducer, initialState)
