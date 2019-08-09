@@ -25,7 +25,6 @@ export default ({ dispatch }) => {
 
     return promise()
       .then(response => {
-        // const response = await response.json()
         return dispatch({
           type: TYPE_SUCCESS,
           response: response.data,
