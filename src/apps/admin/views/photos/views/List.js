@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import qs from 'qs'
 
 import Loader from '@common/components/Loader'
 import { IconPlus } from '@common/components/Icons'
@@ -9,7 +8,8 @@ import Pager from '@admin/components/Pager'
 import Toolbar from '@admin/components/Toolbar'
 import List from '@admin/components/List'
 import { PrimaryButton } from '@admin/components/Buttons'
-import Modal from '@admin/components/Modal'
+
+import withModalEdition from '@admin/hoc/withModalEdition'
 
 import CreatePhoto from '../containers/Create'
 import EditPhoto from '../containers/Edit'
@@ -22,67 +22,86 @@ const ACTION_TYPES = {
   DELETE_PHOTO: 'delete_photo'
 }
 
-class Photos extends React.PureComponent {
-  componentDidMount() {
-    const query = this.getSearchParams()
-    const params = {}
+const Photos = props => {
+  const { photos, navigate } = props
 
-    if (query.page !== undefined) {
-      params['page'] = query.page
-    }
+  const onDelete = useCallback(
+    (id, event) => {
+      event.preventDefault()
+      navigate({
+        action: ACTION_TYPES.DELETE_PHOTO,
+        id: id
+      })
+    },
+    [navigate]
+  )
 
-    this.props.loadPhotos(params)
-  }
+  const onEdit = useCallback(
+    (id, event) => {
+      event.preventDefault()
+      navigate({
+        action: ACTION_TYPES.EDIT_PHOTO,
+        id: id
+      })
+    },
+    [navigate]
+  )
 
-  componentDidUpdate(prevProps) {
-    const prevQuery = this.getSearchParams(prevProps.location)
-    const query = this.getSearchParams()
+  return (
+    <React.Fragment>
+      <Toolbar>
+        <PrimaryButton
+          onClick={ev => {
+            ev.preventDefault()
+            navigate({ action: ACTION_TYPES.CREATE_PHOTO })
+          }}
+        >
+          Add a new photo
+          <IconPlus />
+        </PrimaryButton>
+      </Toolbar>
 
-    if (prevQuery.page !== query.page) {
-      this.props.loadPhotos({ page: query.page })
-      window.scrollTo(0, 0)
-    }
-  }
+      {photos.isLoading ? (
+        <Loader />
+      ) : (
+        <React.Fragment>
+          <List>
+            {photos.items.map((photo, index) => (
+              <Photo
+                key={index}
+                {...photo}
+                onDelete={onDelete}
+                onEdit={onEdit}
+              />
+            ))}
+          </List>
 
-  getSearchParams = loc => {
-    if (!loc) loc = this.props.location
+          <Pager {...photos.pager} navigate={navigate} />
 
-    return qs.parse(loc.search.substring(1))
-  }
+          {props.getModal()}
+        </React.Fragment>
+      )}
+    </React.Fragment>
+  )
+}
 
-  navigate = (params = {}) => {
-    const query = this.getSearchParams()
+Photos.propTypes = {
+  navigate: PropTypes.func.isRequired,
+  photos: PropTypes.shape({
+    isLoading: PropTypes.bool.isRequired,
+    items: PropTypes.arrayOf(PropTypes.object),
+    pager: PropTypes.object,
+    detail: PropTypes.object
+  }).isRequired,
+  loadPhotos: PropTypes.func.isRequired,
+  getModal: PropTypes.func.isRequired
+}
 
-    const search = qs.stringify({
-      ...query,
-      ...params
-    })
-
-    this.props.navigate(`?${search}`)
-  }
-
-  onDelete = (id, event) => {
-    event.preventDefault()
-    this.navigate({
-      action: ACTION_TYPES.DELETE_PHOTO,
-      id: id
-    })
-  }
-
-  onEdit = (id, event) => {
-    event.preventDefault()
-    this.navigate({
-      action: ACTION_TYPES.EDIT_PHOTO,
-      id: id
-    })
-  }
-
-  getModal() {
-    const query = this.getSearchParams()
-    const action = query.action
-    const id = Number(query.id)
-
-    const onClose = () => this.navigate({ action: undefined, id: undefined })
+export default withModalEdition(Photos, {
+  loadData: (params, props) => {
+    props.loadPhotos(params)
+  },
+  getModalChildComponent: (id, action, props) => {
     let component
 
     switch (action) {
@@ -98,74 +117,15 @@ class Photos extends React.PureComponent {
       case ACTION_TYPES.EDIT_PHOTO: {
         if (!id) return null
 
-        let photo = this.props.photos.items.find(p => p.id === id)
+        let photo = props.photos.items.find(p => p.id === id)
 
-        if (!photo) photo = this.props.photos.detail
+        if (!photo) photo = props.photos.detail
 
         component = <EditPhoto photo={photo} id={id} />
         break
       }
     }
 
-    return (
-      <Modal isOpen={!!action} onClose={onClose}>
-        {component}
-      </Modal>
-    )
+    return component
   }
-
-  render() {
-    const { photos } = this.props
-
-    return (
-      <React.Fragment>
-        <Toolbar>
-          <PrimaryButton
-            onClick={ev => {
-              ev.preventDefault()
-              this.navigate({ action: ACTION_TYPES.CREATE_PHOTO })
-            }}
-          >
-            Add a new photo
-            <IconPlus />
-          </PrimaryButton>
-        </Toolbar>
-
-        {photos.isLoading ? (
-          <Loader />
-        ) : (
-          <React.Fragment>
-            <List>
-              {photos.items.map((photo, index) => (
-                <Photo
-                  key={index}
-                  {...photo}
-                  onDelete={this.onDelete}
-                  onEdit={this.onEdit}
-                />
-              ))}
-            </List>
-
-            <Pager {...photos.pager} navigate={this.navigate} />
-
-            {this.getModal()}
-          </React.Fragment>
-        )}
-      </React.Fragment>
-    )
-  }
-}
-
-Photos.propTypes = {
-  location: PropTypes.object.isRequired,
-  navigate: PropTypes.func.isRequired,
-  photos: PropTypes.shape({
-    isLoading: PropTypes.bool.isRequired,
-    items: PropTypes.arrayOf(PropTypes.object),
-    pager: PropTypes.object,
-    detail: PropTypes.object
-  }).isRequired,
-  loadPhotos: PropTypes.func.isRequired
-}
-
-export default Photos
+})
