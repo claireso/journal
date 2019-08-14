@@ -23,7 +23,8 @@ export default (WrappedComponent, loadData = () => {}) => {
       }
 
       loadData(params, props)
-    }, [location, props])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     // didUpdate
     useEffect(() => {
@@ -36,7 +37,8 @@ export default (WrappedComponent, loadData = () => {}) => {
         loadData({ page: query.page }, props)
         window.scrollTo(0, 0)
       }
-    }, [location, previousLocation, props])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location, previousLocation])
 
     return <WrappedComponent {...props} />
   }
