@@ -10,6 +10,8 @@ import List from '@admin/components/List'
 import { PrimaryButton } from '@admin/components/Buttons'
 
 import withModalEdition from '@admin/hoc/withModalEdition'
+import withNavigate from '@admin/hoc/withNavigate'
+import withList from '@admin/hoc/withList'
 
 import CreatePhoto from '../containers/Create'
 import EditPhoto from '../containers/Edit'
@@ -78,7 +80,7 @@ const Photos = props => {
 
           <Pager {...photos.pager} navigate={navigate} />
 
-          {props.getModal()}
+          {props.modal}
         </React.Fragment>
       )}
     </React.Fragment>
@@ -94,38 +96,39 @@ Photos.propTypes = {
     detail: PropTypes.object
   }).isRequired,
   loadPhotos: PropTypes.func.isRequired,
-  getModal: PropTypes.func.isRequired
+  modal: PropTypes.node.isRequired
 }
 
-export default withModalEdition(Photos, {
-  loadData: (params, props) => {
-    props.loadPhotos(params)
-  },
-  getModalChildComponent: (id, action, props) => {
-    let component
+const loadData = (params, props) => props.loadPhotos(params)
 
-    switch (action) {
-      case ACTION_TYPES.CREATE_PHOTO: {
-        component = <CreatePhoto />
-        break
-      }
-      case ACTION_TYPES.DELETE_PHOTO: {
-        if (!id) return null
-        component = <DeletePhoto id={id} />
-        break
-      }
-      case ACTION_TYPES.EDIT_PHOTO: {
-        if (!id) return null
+const getModalChildComponent = (id, action, props) => {
+  let component
 
-        let photo = props.photos.items.find(p => p.id === id)
-
-        if (!photo) photo = props.photos.detail
-
-        component = <EditPhoto photo={photo} id={id} />
-        break
-      }
+  switch (action) {
+    case ACTION_TYPES.CREATE_PHOTO: {
+      component = <CreatePhoto />
+      break
     }
+    case ACTION_TYPES.DELETE_PHOTO: {
+      if (!id) return null
+      component = <DeletePhoto id={id} />
+      break
+    }
+    case ACTION_TYPES.EDIT_PHOTO: {
+      if (!id) return null
 
-    return component
+      let photo = props.photos.items.find(p => p.id === id)
+
+      if (!photo) photo = props.photos.detail
+
+      component = <EditPhoto photo={photo} id={id} />
+      break
+    }
   }
-})
+
+  return component
+}
+
+export default withNavigate(
+  withModalEdition(withList(Photos, loadData), getModalChildComponent)
+)
