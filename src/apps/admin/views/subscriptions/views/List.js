@@ -10,6 +10,8 @@ import Toolbar from '@admin/components/Toolbar'
 import Text from '@admin/components/Text'
 
 import withModalEdition from '@admin/hoc/withModalEdition'
+import withNavigate from '@admin/hoc/withNavigate'
+import withList from '@admin/hoc/withList'
 
 import Subscription from './Subscription'
 import DeleteSubscription from '../containers/Delete'
@@ -50,7 +52,7 @@ const Subscriptions = props => {
           </List>
           <Pager {...pager} navigate={navigate} />
 
-          {props.getModal()}
+          {props.modal}
         </React.Fragment>
       )}
     </React.Fragment>
@@ -67,24 +69,25 @@ Subscriptions.propTypes = {
   }).isRequired,
   navigate: PropTypes.func.isRequired,
   loadSubscriptions: PropTypes.func.isRequired,
-  getModal: PropTypes.func.isRequired
+  modal: PropTypes.node.isRequired
 }
 
-export default withModalEdition(Subscriptions, {
-  loadData: (params, props) => {
-    props.loadSubscriptions(params)
-  },
-  getModalChildComponent: (id, action) => {
-    let component
+const loadData = (params, props) => props.loadSubscriptions(params)
 
-    switch (action) {
-      case ACTION_TYPES.DELETE_SUBSCRIPTION: {
-        if (!id) return null
-        component = <DeleteSubscription id={id} />
-        break
-      }
+const getModalChildComponent = (id, action) => {
+  let component
+
+  switch (action) {
+    case ACTION_TYPES.DELETE_SUBSCRIPTION: {
+      if (!id) return null
+      component = <DeleteSubscription id={id} />
+      break
     }
-
-    return component
   }
-})
+
+  return component
+}
+
+export default withNavigate(
+  withModalEdition(withList(Subscriptions, loadData), getModalChildComponent)
+)
