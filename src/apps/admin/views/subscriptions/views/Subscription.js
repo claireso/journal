@@ -1,5 +1,5 @@
 import React, { useCallback, memo } from 'react'
-import { format } from 'date-fns'
+import { format, parseISO } from 'date-fns'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -61,7 +61,7 @@ const Subscription = ({ onDelete, id, ...props }) => {
     <SubscriptionWrapper>
       <dl>
         <dt>Created at:</dt>
-        <dd>{format(props.created_at, 'YYYY-MM-DD HH:mm:ss')}</dd>
+        <dd>{format(parseISO(props.created_at), 'yyyy-MM-dd HH:mm:ss')}</dd>
 
         <dt>Endpoint:</dt>
         <dd>{props.subscription.endpoint}</dd>

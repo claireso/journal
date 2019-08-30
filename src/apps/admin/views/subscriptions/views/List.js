@@ -69,7 +69,7 @@ Subscriptions.propTypes = {
   }).isRequired,
   navigate: PropTypes.func.isRequired,
   loadSubscriptions: PropTypes.func.isRequired,
-  modal: PropTypes.node.isRequired
+  modal: PropTypes.node
 }
 
 const loadData = (params, props) => props.loadSubscriptions(params)

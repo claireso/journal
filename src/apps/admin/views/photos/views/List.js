@@ -96,7 +96,7 @@ Photos.propTypes = {
     detail: PropTypes.object
   }).isRequired,
   loadPhotos: PropTypes.func.isRequired,
-  modal: PropTypes.node.isRequired
+  modal: PropTypes.node
 }
 
 const loadData = (params, props) => props.loadPhotos(params)
