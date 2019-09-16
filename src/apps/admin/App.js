@@ -68,6 +68,9 @@ const ButtonToSignOut = styled(Button)`
 
 const ToolbarWrapper = styled.div`
   grid-area: toolbar;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 `
 
 const App = ({ children, messages, ...props }) => {
