@@ -5,11 +5,8 @@ import styled from 'styled-components'
 import Flash from '../Flash'
 
 const FlashGroupWrapper = styled.div`
-  position: relative;
-  z-index: 100;
-
   > div {
-    margin: 0;
+    margin: calc(var(--gutter) * -1) calc(var(--gutter) * -1) var(--gutter);
   }
 `
 

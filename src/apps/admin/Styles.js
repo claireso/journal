@@ -25,8 +25,10 @@ export default createGlobalStyle`
     --gray-3: #464646;
     --gray-4: #2b2c2c;
     --gray-5: #fbfcfc;
+    --box-shadow: #e6e6e6;
     --gutter: 2rem;
     --container-max-width: 96rem;
+    --toolbar-height: 6rem;
 
     background: var(--secondary);
     color: var(--text);

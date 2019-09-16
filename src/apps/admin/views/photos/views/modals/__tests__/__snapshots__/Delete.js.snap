@@ -39,7 +39,7 @@ exports[`<Delete /> should not delete photo 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -85,7 +85,7 @@ exports[`<Delete /> should not delete photo 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
@@ -165,7 +165,7 @@ exports[`<Delete /> should render component 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -202,7 +202,7 @@ exports[`<Delete /> should render component 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);

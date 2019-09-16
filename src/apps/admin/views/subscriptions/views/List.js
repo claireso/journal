@@ -4,10 +4,8 @@ import PropTypes from 'prop-types'
 import Loader from '@common/components/Loader'
 
 import Pager from '@admin/components/Pager'
-import List from '@admin/components/List'
-import Toolbar from '@admin/components/Toolbar'
-
-import Text from '@admin/components/Text'
+import { List, ListHeader } from '@admin/components/List'
+import { Heading1 } from '@admin/components/Headings'
 
 import withModalEdition from '@admin/hoc/withModalEdition'
 import withNavigate from '@admin/hoc/withNavigate'
@@ -37,9 +35,11 @@ const Subscriptions = props => {
 
   return (
     <React.Fragment>
-      <Toolbar alignRight>
-        {pager && <Text>{pager.count} subscriptions</Text>}
-      </Toolbar>
+      <ListHeader>
+        <Heading1>
+          Your subscriptions {pager && <span>({pager.count})</span>}
+        </Heading1>
+      </ListHeader>
 
       {subscriptions.isLoading ? (
         <Loader />
@@ -69,7 +69,7 @@ Subscriptions.propTypes = {
   }).isRequired,
   navigate: PropTypes.func.isRequired,
   loadSubscriptions: PropTypes.func.isRequired,
-  modal: PropTypes.node.isRequired
+  modal: PropTypes.node
 }
 
 const loadData = (params, props) => props.loadSubscriptions(params)

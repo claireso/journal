@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<List /> should display create form 1`] = `
-.c2 {
+.c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -19,26 +19,26 @@ exports[`<List /> should display create form 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
   color: white;
 }
 
-.c2 > svg {
+.c3 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c2 + .c1 {
+.c3 + .c2 {
   margin: 0 0 0 1rem;
 }
 
-.c2:hover {
+.c3:hover {
   background: var(--primary-lighter);
 }
 
-.c14 {
+.c15 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -56,7 +56,7 @@ exports[`<List /> should display create form 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
@@ -74,23 +74,23 @@ exports[`<List /> should display create form 1`] = `
   font-size: 1.4rem;
 }
 
-.c14 > svg {
+.c15 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c14 + .c13 {
+.c15 + .c14 {
   margin: 0 0 0 1rem;
 }
 
-.c14:hover {
+.c15:hover {
   background: var(--secondary-darker);
 }
 
-.c14 + .c1 {
+.c15 + .c2 {
   margin-left: 1rem;
 }
 
-.c11 {
+.c12 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -108,30 +108,30 @@ exports[`<List /> should display create form 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
 }
 
-.c11 > svg {
+.c12 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c11 + .c10 {
+.c12 + .c11 {
   margin: 0 0 0 1rem;
 }
 
-.c11 > svg {
+.c12 > svg {
   margin: 0;
 }
 
-.c11 + .c10 {
+.c12 + .c11 {
   margin: 0;
 }
 
-.c12 {
+.c13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -145,26 +145,16 @@ exports[`<List /> should display create form 1`] = `
   padding: 0;
 }
 
-.c12 > li {
+.c13 > li {
   margin: 0 0.3rem;
 }
 
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
+.c4 {
+  margin: 0;
+  padding: 0;
 }
 
-.c0 > p {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -173,35 +163,55 @@ exports[`<List /> should display create form 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 2rem;
+}
+
+.c0 > h1 {
+  line-height: 1.8;
   margin: 0;
 }
 
-.c3 {
-  margin: 0;
-  padding: 2rem;
+.c0 > h1 > span {
+  color: var(--gray-2);
+  font-size: 2rem;
+  font-weight: normal;
 }
 
-.c15 {
-  background: rgba(0,0,0,0.5);
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-  position: fixed;
-  right: 0;
-  top: 0;
-  will-change: opacity;
+.c1 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
+}
+
+.c20 {
+  font-size: 2.2rem;
+  margin: 0 0 3rem;
 }
 
 .c16 {
-  background: var(--white);
-  border: 2rem solid var(--secondary);
-  border-radius: 0.4rem;
-  padding: 4rem;
-  max-width: 69rem;
-  margin: calc(var(--gutter) * 4) auto;
+  background: rgba(43,44,44,0.4);
+  bottom: 0;
+  overflow: auto;
+  position: fixed;
+  left: 15rem;
+  right: 0;
+  top: var(--toolbar-height);
+  will-change: opacity;
 }
 
-.c18 {
+.c17 {
+  background: var(--white);
+  box-shadow: 0 0px 11px #898c8e;
+  padding: 3rem;
+  max-width: 45rem;
+  min-height: calc(100vh);
+  margin: 0 0 0 auto;
+}
+
+.c19 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -219,42 +229,37 @@ exports[`<List /> should display create form 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
   position: absolute;
   right: 0.5rem;
-  top: 0.5rem;
+  top: 1.5rem;
 }
 
-.c18 > svg {
+.c19 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c18 + .c17 {
+.c19 + .c18 {
   margin: 0 0 0 1rem;
 }
 
-.c18 > svg {
+.c19 > svg {
   margin: 0;
 }
 
-.c18 + .c17 {
+.c19 + .c18 {
   margin: 0;
 }
 
-.c19 {
-  font-size: 2.4rem;
-  margin: 0 0 3rem;
-}
-
-.c20 {
+.c21 {
   margin: 0 0 var(--gutter);
 }
 
-.c26 {
+.c27 {
   margin: 0 0 var(--gutter);
   display: -webkit-box;
   display: -webkit-flex;
@@ -266,38 +271,41 @@ exports[`<List /> should display create form 1`] = `
   align-items: center;
 }
 
-.c26 > label {
+.c27 > label {
   margin: 0 1rem 0 0;
 }
 
-.c21 {
+.c22 {
   display: block;
   font-size: 1.6rem;
   margin: 0 0 1rem;
 }
 
-.c22 {
+.c23 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
   padding: 1rem;
   width: 100%;
   font-size: 1.4rem;
+  -webkit-transition: border-color 250ms ease-out;
+  transition: border-color 250ms ease-out;
 }
 
-.c22:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+.c23:focus {
+  border-color: var(--gray-2);
 }
 
-.c27 {
+.c28 {
   position: relative;
 }
 
-.c27 svg {
+.c28 svg {
   position: absolute;
   top: 50%;
   right: 0.9rem;
@@ -307,13 +315,14 @@ exports[`<List /> should display create form 1`] = `
   transform: translate(0,-50%) rotate(90deg);
 }
 
-.c28 {
+.c29 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: var(--white);
   border: 1px solid var(--gray-1);
   border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   cursor: pointer;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.4rem;
@@ -321,18 +330,19 @@ exports[`<List /> should display create form 1`] = `
   padding: 0.8rem 2.6rem 0.8rem 0.8rem;
 }
 
-.c28:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+.c29:focus {
+  border-color: var(--gray-2);
 }
 
-.c23 {
+.c24 {
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   padding: 2rem;
   position: relative;
 }
 
-.c24 svg {
+.c25 svg {
   display: block;
   width: 2.4rem;
   height: 2.4rem;
@@ -340,14 +350,14 @@ exports[`<List /> should display create form 1`] = `
   margin: 0 auto;
 }
 
-.c24 span {
+.c25 span {
   display: block;
   font-size: 1.4rem;
   margin: 1rem 0 0;
   text-align: center;
 }
 
-.c24 small {
+.c25 small {
   color: var(--gray-2);
   display: block;
   font-size: 1.2rem;
@@ -355,7 +365,7 @@ exports[`<List /> should display create form 1`] = `
   text-align: center;
 }
 
-.c25 {
+.c26 {
   bottom: 0;
   cursor: pointer;
   left: 0;
@@ -366,7 +376,7 @@ exports[`<List /> should display create form 1`] = `
   width: 100%;
 }
 
-.c29 {
+.c30 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -384,11 +394,11 @@ exports[`<List /> should display create form 1`] = `
   transition: background 150ms ease-out;
 }
 
-.c29:hover {
+.c30:hover {
   background: var(--primary-lighter);
 }
 
-.c5 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -401,48 +411,48 @@ exports[`<List /> should display create form 1`] = `
   transition: background 150ms ease-out;
 }
 
-.c5:hover {
+.c6:hover {
   background: var(--gray-5);
 }
 
-.c5 + .c4 {
+.c6 + .c5 {
   border-top: 1px solid var(--secondary);
 }
 
-.c6 {
+.c7 {
   height: 8rem;
 }
 
-.c6 img {
+.c7 img {
   height: 100%;
   object-fit: contain;
   width: 100%;
 }
 
-.c7 {
+.c8 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c8 {
+.c9 {
   color: var(--gray-3);
   font-size: 1.2rem;
 }
 
-.c9 {
+.c10 {
   place-self: center flex-end;
   -webkit-transition: opacity 150ms ease-out;
   transition: opacity 150ms ease-out;
 }
 
-.c9 button {
+.c10 button {
   opacity: 0.5;
   -webkit-transition: opacity 150ms ease-out;
   transition: opacity 150ms ease-out;
 }
 
-.c9 button:hover {
+.c10 button:hover {
   opacity: 1;
 }
 
@@ -450,8 +460,19 @@ exports[`<List /> should display create form 1`] = `
   <div
     class="c0"
   >
+    <h1
+      class="c1"
+    >
+      Your photographies
+       
+      <span>
+        (
+        184
+        )
+      </span>
+    </h1>
     <button
-      class="c1 c2"
+      class="c2 c3"
     >
       Add a new photo
       <svg
@@ -467,29 +488,29 @@ exports[`<List /> should display create form 1`] = `
     </button>
   </div>
   <ul
-    class="c3"
+    class="c4"
   >
     <li
-      class="c4 c5"
+      class="c5 c6"
     >
       <div
-        class="c6"
+        class="c7"
       />
       <div
-        class="c7"
+        class="c8"
       >
         
         <p
-          class="c8"
+          class="c9"
         >
           Février 2019
         </p>
       </div>
       <p
-        class="c9"
+        class="c10"
       >
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Edit"
         >
           <svg
@@ -505,7 +526,7 @@ exports[`<List /> should display create form 1`] = `
           </svg>
         </button>
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Delete"
         >
           <svg
@@ -523,26 +544,26 @@ exports[`<List /> should display create form 1`] = `
       </p>
     </li>
     <li
-      class="c4 c5"
+      class="c5 c6"
     >
       <div
-        class="c6"
+        class="c7"
       />
       <div
-        class="c7"
+        class="c8"
       >
         
         <p
-          class="c8"
+          class="c9"
         >
           Janvier 2019
         </p>
       </div>
       <p
-        class="c9"
+        class="c10"
       >
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Edit"
         >
           <svg
@@ -558,7 +579,7 @@ exports[`<List /> should display create form 1`] = `
           </svg>
         </button>
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Delete"
         >
           <svg
@@ -577,11 +598,11 @@ exports[`<List /> should display create form 1`] = `
     </li>
   </ul>
   <ul
-    class="c12"
+    class="c13"
   >
     <li>
       <button
-        class="c13 c14"
+        class="c14 c15"
         title="Next page"
       >
         »
@@ -589,7 +610,7 @@ exports[`<List /> should display create form 1`] = `
     </li>
     <li>
       <button
-        class="c13 c14"
+        class="c14 c15"
         title="Last page"
       >
         »»
@@ -597,17 +618,17 @@ exports[`<List /> should display create form 1`] = `
     </li>
   </ul>
   <div
-    class="c15"
+    class="c16"
     id="modal"
     style="opacity: 0;"
   >
     <div
-      class="c16"
+      class="c17"
       id="modalInner"
-      style="transform: translate3d(0, 2rem, 0);"
+      style="opacity: 0; transform: translate3d(4rem, 0, 0);"
     >
       <button
-        class="c10 c17 c18"
+        class="c11 c18 c19"
       >
         <svg
           height="26"
@@ -620,27 +641,27 @@ exports[`<List /> should display create form 1`] = `
           />
         </svg>
       </button>
-      <h1
-        class="c19"
+      <h2
+        class="c20"
       >
         Create a photo
-      </h1>
+      </h2>
       <form
         action=""
         enctype="multipart/form-data"
         method="POST"
       >
         <div
-          class="c20"
+          class="c21"
         >
           <label
-            class="c21"
+            class="c22"
             for="title"
           >
             Title
           </label>
           <input
-            class="c22"
+            class="c23"
             id="title"
             name="title"
             type="text"
@@ -648,16 +669,16 @@ exports[`<List /> should display create form 1`] = `
           />
         </div>
         <div
-          class="c20"
+          class="c21"
         >
           <label
-            class="c21"
+            class="c22"
             for="description"
           >
             Description
           </label>
           <input
-            class="c22"
+            class="c23"
             id="description"
             name="description"
             type="text"
@@ -665,19 +686,19 @@ exports[`<List /> should display create form 1`] = `
           />
         </div>
         <div
-          class="c20"
+          class="c21"
         >
           <label
-            class="c21"
+            class="c22"
             for="file"
           >
             Photo
           </label>
           <div
-            class="c23"
+            class="c24"
           >
             <div
-              class="c24"
+              class="c25"
             >
               <svg
                 height="16"
@@ -696,7 +717,7 @@ exports[`<List /> should display create form 1`] = `
                 (only jpg and png)
               </small>
               <input
-                class="c25"
+                class="c26"
                 name="file"
                 required=""
                 type="file"
@@ -705,19 +726,19 @@ exports[`<List /> should display create form 1`] = `
           </div>
         </div>
         <div
-          class="c26"
+          class="c27"
         >
           <label
-            class="c21"
+            class="c22"
             for="position"
           >
             Position
           </label>
           <div
-            class="c27"
+            class="c28"
           >
             <select
-              class="c28"
+              class="c29"
               id="position"
               name="position"
               required=""
@@ -751,10 +772,10 @@ exports[`<List /> should display create form 1`] = `
           </div>
         </div>
         <div
-          class="c26"
+          class="c27"
         >
           <label
-            class="c21"
+            class="c22"
             for="portrait"
           >
             Portrait
@@ -766,10 +787,10 @@ exports[`<List /> should display create form 1`] = `
           />
         </div>
         <div
-          class="c26"
+          class="c27"
         >
           <label
-            class="c21"
+            class="c22"
             for="square"
           >
             Square
@@ -781,7 +802,7 @@ exports[`<List /> should display create form 1`] = `
           />
         </div>
         <input
-          class="c29"
+          class="c30"
           type="submit"
           value="Create"
         />
@@ -792,7 +813,7 @@ exports[`<List /> should display create form 1`] = `
 `;
 
 exports[`<List /> should display delete modal 1`] = `
-.c2 {
+.c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -810,22 +831,22 @@ exports[`<List /> should display delete modal 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
   color: white;
 }
 
-.c2 > svg {
+.c3 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c2 + .c1 {
+.c3 + .c2 {
   margin: 0 0 0 1rem;
 }
 
-.c2:hover {
+.c3:hover {
   background: var(--primary-lighter);
 }
 
@@ -847,7 +868,7 @@ exports[`<List /> should display delete modal 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
@@ -858,7 +879,7 @@ exports[`<List /> should display delete modal 1`] = `
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c22 + .c13 {
+.c22 + .c14 {
   margin: 0 0 0 1rem;
 }
 
@@ -866,8 +887,535 @@ exports[`<List /> should display delete modal 1`] = `
   background: var(--secondary-darker);
 }
 
-.c22 + .c1 {
+.c22 + .c2 {
   margin-left: 1rem;
+}
+
+.c16 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1.4rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: var(--secondary);
+  color: var(--text);
+  width: 4.4rem;
+  height: 4.4rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.c16 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c16 + .c15 {
+  margin: 0 0 0 1rem;
+}
+
+.c16:hover {
+  background: var(--secondary-darker);
+}
+
+.c16 + .c2 {
+  margin-left: 1rem;
+}
+
+.c12 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1.4rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: none;
+  color: inherit;
+}
+
+.c12 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c12 + .c11 {
+  margin: 0 0 0 1rem;
+}
+
+.c12 > svg {
+  margin: 0;
+}
+
+.c12 + .c11 {
+  margin: 0;
+}
+
+.c13 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.c13 > li {
+  margin: 0 0.3rem;
+}
+
+.c4 {
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 2rem;
+}
+
+.c0 > h1 {
+  line-height: 1.8;
+  margin: 0;
+}
+
+.c0 > h1 > span {
+  color: var(--gray-2);
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.c1 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
+}
+
+.c17 {
+  background: rgba(43,44,44,0.4);
+  bottom: 0;
+  overflow: auto;
+  position: fixed;
+  left: 15rem;
+  right: 0;
+  top: var(--toolbar-height);
+  will-change: opacity;
+}
+
+.c18 {
+  background: var(--white);
+  box-shadow: 0 0px 11px #898c8e;
+  padding: 3rem;
+  max-width: 45rem;
+  min-height: calc(100vh);
+  margin: 0 0 0 auto;
+}
+
+.c20 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1.4rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: none;
+  color: inherit;
+  position: absolute;
+  right: 0.5rem;
+  top: 1.5rem;
+}
+
+.c20 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c20 + .c19 {
+  margin: 0 0 0 1rem;
+}
+
+.c20 > svg {
+  margin: 0;
+}
+
+.c20 + .c19 {
+  margin: 0;
+}
+
+.c21 {
+  text-align: right;
+  font-size: 1.2rem;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 8rem auto 12rem;
+  grid-column-gap: 1rem;
+  padding: 1.5rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+}
+
+.c6:hover {
+  background: var(--gray-5);
+}
+
+.c6 + .c5 {
+  border-top: 1px solid var(--secondary);
+}
+
+.c7 {
+  height: 8rem;
+}
+
+.c7 img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.c8 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c9 {
+  color: var(--gray-3);
+  font-size: 1.2rem;
+}
+
+.c10 {
+  place-self: center flex-end;
+  -webkit-transition: opacity 150ms ease-out;
+  transition: opacity 150ms ease-out;
+}
+
+.c10 button {
+  opacity: 0.5;
+  -webkit-transition: opacity 150ms ease-out;
+  transition: opacity 150ms ease-out;
+}
+
+.c10 button:hover {
+  opacity: 1;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <h1
+      class="c1"
+    >
+      Your photographies
+       
+      <span>
+        (
+        184
+        )
+      </span>
+    </h1>
+    <button
+      class="c2 c3"
+    >
+      Add a new photo
+      <svg
+        height="14"
+        viewBox="0 0 24 24"
+        width="14"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18.984 12.984h-6v6h-1.97v-6h-6v-1.97h6v-6h1.97v6h6v1.97z"
+        />
+      </svg>
+    </button>
+  </div>
+  <ul
+    class="c4"
+  >
+    <li
+      class="c5 c6"
+    >
+      <div
+        class="c7"
+      />
+      <div
+        class="c8"
+      >
+        
+        <p
+          class="c9"
+        >
+          Février 2019
+        </p>
+      </div>
+      <p
+        class="c10"
+      >
+        <button
+          class="c11 c12"
+          title="Edit"
+        >
+          <svg
+            height="16"
+            version="1.1"
+            viewBox="0 0 24 28"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.672 24l1.422-1.422-3.672-3.672-1.422 1.422v1.672h2v2h1.672zM13.844 9.5c0-0.203-0.141-0.344-0.344-0.344-0.094 0-0.187 0.031-0.266 0.109l-8.469 8.469c-0.078 0.078-0.109 0.172-0.109 0.266 0 0.203 0.141 0.344 0.344 0.344 0.094 0 0.187-0.031 0.266-0.109l8.469-8.469c0.078-0.078 0.109-0.172 0.109-0.266zM13 6.5l6.5 6.5-13 13h-6.5v-6.5zM23.672 8c0 0.531-0.219 1.047-0.578 1.406l-2.594 2.594-6.5-6.5 2.594-2.578c0.359-0.375 0.875-0.594 1.406-0.594s1.047 0.219 1.422 0.594l3.672 3.656c0.359 0.375 0.578 0.891 0.578 1.422z"
+            />
+          </svg>
+        </button>
+        <button
+          class="c11 c12"
+          title="Delete"
+        >
+          <svg
+            height="16"
+            version="1.1"
+            viewBox="0 0 22 28"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM12 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM16 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM7.5 6h7l-0.75-1.828c-0.047-0.063-0.187-0.156-0.266-0.172h-4.953c-0.094 0.016-0.219 0.109-0.266 0.172zM22 6.5v1c0 0.281-0.219 0.5-0.5 0.5h-1.5v14.812c0 1.719-1.125 3.187-2.5 3.187h-13c-1.375 0-2.5-1.406-2.5-3.125v-14.875h-1.5c-0.281 0-0.5-0.219-0.5-0.5v-1c0-0.281 0.219-0.5 0.5-0.5h4.828l1.094-2.609c0.313-0.766 1.25-1.391 2.078-1.391h5c0.828 0 1.766 0.625 2.078 1.391l1.094 2.609h4.828c0.281 0 0.5 0.219 0.5 0.5z"
+            />
+          </svg>
+        </button>
+      </p>
+    </li>
+    <li
+      class="c5 c6"
+    >
+      <div
+        class="c7"
+      />
+      <div
+        class="c8"
+      >
+        
+        <p
+          class="c9"
+        >
+          Janvier 2019
+        </p>
+      </div>
+      <p
+        class="c10"
+      >
+        <button
+          class="c11 c12"
+          title="Edit"
+        >
+          <svg
+            height="16"
+            version="1.1"
+            viewBox="0 0 24 28"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.672 24l1.422-1.422-3.672-3.672-1.422 1.422v1.672h2v2h1.672zM13.844 9.5c0-0.203-0.141-0.344-0.344-0.344-0.094 0-0.187 0.031-0.266 0.109l-8.469 8.469c-0.078 0.078-0.109 0.172-0.109 0.266 0 0.203 0.141 0.344 0.344 0.344 0.094 0 0.187-0.031 0.266-0.109l8.469-8.469c0.078-0.078 0.109-0.172 0.109-0.266zM13 6.5l6.5 6.5-13 13h-6.5v-6.5zM23.672 8c0 0.531-0.219 1.047-0.578 1.406l-2.594 2.594-6.5-6.5 2.594-2.578c0.359-0.375 0.875-0.594 1.406-0.594s1.047 0.219 1.422 0.594l3.672 3.656c0.359 0.375 0.578 0.891 0.578 1.422z"
+            />
+          </svg>
+        </button>
+        <button
+          class="c11 c12"
+          title="Delete"
+        >
+          <svg
+            height="16"
+            version="1.1"
+            viewBox="0 0 22 28"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM12 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM16 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM7.5 6h7l-0.75-1.828c-0.047-0.063-0.187-0.156-0.266-0.172h-4.953c-0.094 0.016-0.219 0.109-0.266 0.172zM22 6.5v1c0 0.281-0.219 0.5-0.5 0.5h-1.5v14.812c0 1.719-1.125 3.187-2.5 3.187h-13c-1.375 0-2.5-1.406-2.5-3.125v-14.875h-1.5c-0.281 0-0.5-0.219-0.5-0.5v-1c0-0.281 0.219-0.5 0.5-0.5h4.828l1.094-2.609c0.313-0.766 1.25-1.391 2.078-1.391h5c0.828 0 1.766 0.625 2.078 1.391l1.094 2.609h4.828c0.281 0 0.5 0.219 0.5 0.5z"
+            />
+          </svg>
+        </button>
+      </p>
+    </li>
+  </ul>
+  <ul
+    class="c13"
+  >
+    <li>
+      <button
+        class="c14 c15 c16"
+        title="Next page"
+      >
+        »
+      </button>
+    </li>
+    <li>
+      <button
+        class="c14 c15 c16"
+        title="Last page"
+      >
+        »»
+      </button>
+    </li>
+  </ul>
+  <div
+    class="c17"
+    id="modal"
+    style="opacity: 0;"
+  >
+    <div
+      class="c18"
+      id="modalInner"
+      style="opacity: 0; transform: translate3d(4rem, 0, 0);"
+    >
+      <button
+        class="c11 c19 c20"
+      >
+        <svg
+          height="26"
+          viewBox="0 0 22 28"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.281 20.656c0 0.391-0.156 0.781-0.438 1.062l-2.125 2.125c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-4.594-4.594-4.594 4.594c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-2.125-2.125c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l4.594-4.594-4.594-4.594c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l2.125-2.125c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l4.594 4.594 4.594-4.594c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l2.125 2.125c0.281 0.281 0.438 0.672 0.438 1.062s-0.156 0.781-0.438 1.062l-4.594 4.594 4.594 4.594c0.281 0.281 0.438 0.672 0.438 1.062z"
+          />
+        </svg>
+      </button>
+      <h1
+        class="c1"
+      >
+        Are you sure?
+      </h1>
+      <p>
+        This action is irreversible
+      </p>
+      <p
+        class="c21"
+      >
+        <button
+          class="c14 c22"
+        >
+           Cancel 
+        </button>
+        <button
+          class="c2 c3"
+        >
+           
+          Yes
+           
+        </button>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<List /> should display edit form 1`] = `
+.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1.4rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: var(--primary);
+  color: white;
+}
+
+.c3 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c3 + .c2 {
+  margin: 0 0 0 1rem;
+}
+
+.c3:hover {
+  background: var(--primary-lighter);
 }
 
 .c15 {
@@ -888,7 +1436,7 @@ exports[`<List /> should display delete modal 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
@@ -918,11 +1466,11 @@ exports[`<List /> should display delete modal 1`] = `
   background: var(--secondary-darker);
 }
 
-.c15 + .c1 {
+.c15 + .c2 {
   margin-left: 1rem;
 }
 
-.c11 {
+.c12 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -940,30 +1488,30 @@ exports[`<List /> should display delete modal 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
 }
 
-.c11 > svg {
+.c12 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c11 + .c10 {
+.c12 + .c11 {
   margin: 0 0 0 1rem;
 }
 
-.c11 > svg {
+.c12 > svg {
   margin: 0;
 }
 
-.c11 + .c10 {
+.c12 + .c11 {
   margin: 0;
 }
 
-.c12 {
+.c13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -977,26 +1525,16 @@ exports[`<List /> should display delete modal 1`] = `
   padding: 0;
 }
 
-.c12 > li {
+.c13 > li {
   margin: 0 0.3rem;
 }
 
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
+.c4 {
+  margin: 0;
+  padding: 0;
 }
 
-.c0 > p {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1005,32 +1543,47 @@ exports[`<List /> should display delete modal 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 2rem;
+}
+
+.c0 > h1 {
+  line-height: 1.8;
   margin: 0;
 }
 
-.c3 {
-  margin: 0;
-  padding: 2rem;
+.c0 > h1 > span {
+  color: var(--gray-2);
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.c1 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
 }
 
 .c16 {
-  background: rgba(0,0,0,0.5);
+  background: rgba(43,44,44,0.4);
   bottom: 0;
-  left: 0;
   overflow: auto;
   position: fixed;
+  left: 15rem;
   right: 0;
-  top: 0;
+  top: var(--toolbar-height);
   will-change: opacity;
 }
 
 .c17 {
   background: var(--white);
-  border: 2rem solid var(--secondary);
-  border-radius: 0.4rem;
-  padding: 4rem;
-  max-width: 69rem;
-  margin: calc(var(--gutter) * 4) auto;
+  box-shadow: 0 0px 11px #898c8e;
+  padding: 3rem;
+  max-width: 45rem;
+  min-height: calc(100vh);
+  margin: 0 0 0 auto;
 }
 
 .c19 {
@@ -1051,14 +1604,14 @@ exports[`<List /> should display delete modal 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
   position: absolute;
   right: 0.5rem;
-  top: 0.5rem;
+  top: 1.5rem;
 }
 
 .c19 > svg {
@@ -1075,527 +1628,6 @@ exports[`<List /> should display delete modal 1`] = `
 
 .c19 + .c18 {
   margin: 0;
-}
-
-.c20 {
-  font-size: 2.4rem;
-  margin: 0 0 3rem;
-}
-
-.c21 {
-  text-align: right;
-  font-size: 1.2rem;
-}
-
-.c5 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: grid;
-  grid-template-columns: 8rem auto 12rem;
-  grid-column-gap: 1rem;
-  padding: 1.5rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-}
-
-.c5:hover {
-  background: var(--gray-5);
-}
-
-.c5 + .c4 {
-  border-top: 1px solid var(--secondary);
-}
-
-.c6 {
-  height: 8rem;
-}
-
-.c6 img {
-  height: 100%;
-  object-fit: contain;
-  width: 100%;
-}
-
-.c7 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c8 {
-  color: var(--gray-3);
-  font-size: 1.2rem;
-}
-
-.c9 {
-  place-self: center flex-end;
-  -webkit-transition: opacity 150ms ease-out;
-  transition: opacity 150ms ease-out;
-}
-
-.c9 button {
-  opacity: 0.5;
-  -webkit-transition: opacity 150ms ease-out;
-  transition: opacity 150ms ease-out;
-}
-
-.c9 button:hover {
-  opacity: 1;
-}
-
-<div>
-  <div
-    class="c0"
-  >
-    <button
-      class="c1 c2"
-    >
-      Add a new photo
-      <svg
-        height="14"
-        viewBox="0 0 24 24"
-        width="14"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M18.984 12.984h-6v6h-1.97v-6h-6v-1.97h6v-6h1.97v6h6v1.97z"
-        />
-      </svg>
-    </button>
-  </div>
-  <ul
-    class="c3"
-  >
-    <li
-      class="c4 c5"
-    >
-      <div
-        class="c6"
-      />
-      <div
-        class="c7"
-      >
-        
-        <p
-          class="c8"
-        >
-          Février 2019
-        </p>
-      </div>
-      <p
-        class="c9"
-      >
-        <button
-          class="c10 c11"
-          title="Edit"
-        >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 24 28"
-            width="14"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.672 24l1.422-1.422-3.672-3.672-1.422 1.422v1.672h2v2h1.672zM13.844 9.5c0-0.203-0.141-0.344-0.344-0.344-0.094 0-0.187 0.031-0.266 0.109l-8.469 8.469c-0.078 0.078-0.109 0.172-0.109 0.266 0 0.203 0.141 0.344 0.344 0.344 0.094 0 0.187-0.031 0.266-0.109l8.469-8.469c0.078-0.078 0.109-0.172 0.109-0.266zM13 6.5l6.5 6.5-13 13h-6.5v-6.5zM23.672 8c0 0.531-0.219 1.047-0.578 1.406l-2.594 2.594-6.5-6.5 2.594-2.578c0.359-0.375 0.875-0.594 1.406-0.594s1.047 0.219 1.422 0.594l3.672 3.656c0.359 0.375 0.578 0.891 0.578 1.422z"
-            />
-          </svg>
-        </button>
-        <button
-          class="c10 c11"
-          title="Delete"
-        >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 22 28"
-            width="22"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM12 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM16 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM7.5 6h7l-0.75-1.828c-0.047-0.063-0.187-0.156-0.266-0.172h-4.953c-0.094 0.016-0.219 0.109-0.266 0.172zM22 6.5v1c0 0.281-0.219 0.5-0.5 0.5h-1.5v14.812c0 1.719-1.125 3.187-2.5 3.187h-13c-1.375 0-2.5-1.406-2.5-3.125v-14.875h-1.5c-0.281 0-0.5-0.219-0.5-0.5v-1c0-0.281 0.219-0.5 0.5-0.5h4.828l1.094-2.609c0.313-0.766 1.25-1.391 2.078-1.391h5c0.828 0 1.766 0.625 2.078 1.391l1.094 2.609h4.828c0.281 0 0.5 0.219 0.5 0.5z"
-            />
-          </svg>
-        </button>
-      </p>
-    </li>
-    <li
-      class="c4 c5"
-    >
-      <div
-        class="c6"
-      />
-      <div
-        class="c7"
-      >
-        
-        <p
-          class="c8"
-        >
-          Janvier 2019
-        </p>
-      </div>
-      <p
-        class="c9"
-      >
-        <button
-          class="c10 c11"
-          title="Edit"
-        >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 24 28"
-            width="14"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.672 24l1.422-1.422-3.672-3.672-1.422 1.422v1.672h2v2h1.672zM13.844 9.5c0-0.203-0.141-0.344-0.344-0.344-0.094 0-0.187 0.031-0.266 0.109l-8.469 8.469c-0.078 0.078-0.109 0.172-0.109 0.266 0 0.203 0.141 0.344 0.344 0.344 0.094 0 0.187-0.031 0.266-0.109l8.469-8.469c0.078-0.078 0.109-0.172 0.109-0.266zM13 6.5l6.5 6.5-13 13h-6.5v-6.5zM23.672 8c0 0.531-0.219 1.047-0.578 1.406l-2.594 2.594-6.5-6.5 2.594-2.578c0.359-0.375 0.875-0.594 1.406-0.594s1.047 0.219 1.422 0.594l3.672 3.656c0.359 0.375 0.578 0.891 0.578 1.422z"
-            />
-          </svg>
-        </button>
-        <button
-          class="c10 c11"
-          title="Delete"
-        >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 22 28"
-            width="22"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM12 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM16 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM7.5 6h7l-0.75-1.828c-0.047-0.063-0.187-0.156-0.266-0.172h-4.953c-0.094 0.016-0.219 0.109-0.266 0.172zM22 6.5v1c0 0.281-0.219 0.5-0.5 0.5h-1.5v14.812c0 1.719-1.125 3.187-2.5 3.187h-13c-1.375 0-2.5-1.406-2.5-3.125v-14.875h-1.5c-0.281 0-0.5-0.219-0.5-0.5v-1c0-0.281 0.219-0.5 0.5-0.5h4.828l1.094-2.609c0.313-0.766 1.25-1.391 2.078-1.391h5c0.828 0 1.766 0.625 2.078 1.391l1.094 2.609h4.828c0.281 0 0.5 0.219 0.5 0.5z"
-            />
-          </svg>
-        </button>
-      </p>
-    </li>
-  </ul>
-  <ul
-    class="c12"
-  >
-    <li>
-      <button
-        class="c13 c14 c15"
-        title="Next page"
-      >
-        »
-      </button>
-    </li>
-    <li>
-      <button
-        class="c13 c14 c15"
-        title="Last page"
-      >
-        »»
-      </button>
-    </li>
-  </ul>
-  <div
-    class="c16"
-    id="modal"
-    style="opacity: 0;"
-  >
-    <div
-      class="c17"
-      id="modalInner"
-      style="transform: translate3d(0, 2rem, 0);"
-    >
-      <button
-        class="c10 c18 c19"
-      >
-        <svg
-          height="26"
-          viewBox="0 0 22 28"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20.281 20.656c0 0.391-0.156 0.781-0.438 1.062l-2.125 2.125c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-4.594-4.594-4.594 4.594c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-2.125-2.125c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l4.594-4.594-4.594-4.594c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l2.125-2.125c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l4.594 4.594 4.594-4.594c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l2.125 2.125c0.281 0.281 0.438 0.672 0.438 1.062s-0.156 0.781-0.438 1.062l-4.594 4.594 4.594 4.594c0.281 0.281 0.438 0.672 0.438 1.062z"
-          />
-        </svg>
-      </button>
-      <h1
-        class="c20"
-      >
-        Are you sure?
-      </h1>
-      <p>
-        This action is irreversible
-      </p>
-      <p
-        class="c21"
-      >
-        <button
-          class="c13 c22"
-        >
-           Cancel 
-        </button>
-        <button
-          class="c1 c2"
-        >
-           
-          Yes
-           
-        </button>
-      </p>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<List /> should display edit form 1`] = `
-.c2 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: 1.2rem;
-  outline: none;
-  padding: 1rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: var(--primary);
-  color: white;
-}
-
-.c2 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
-}
-
-.c2 + .c1 {
-  margin: 0 0 0 1rem;
-}
-
-.c2:hover {
-  background: var(--primary-lighter);
-}
-
-.c14 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: 1.2rem;
-  outline: none;
-  padding: 1rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: var(--secondary);
-  color: var(--text);
-  width: 4.4rem;
-  height: 4.4rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 1.4rem;
-}
-
-.c14 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
-}
-
-.c14 + .c13 {
-  margin: 0 0 0 1rem;
-}
-
-.c14:hover {
-  background: var(--secondary-darker);
-}
-
-.c14 + .c1 {
-  margin-left: 1rem;
-}
-
-.c11 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: 1.2rem;
-  outline: none;
-  padding: 1rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: none;
-  color: inherit;
-}
-
-.c11 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
-}
-
-.c11 + .c10 {
-  margin: 0 0 0 1rem;
-}
-
-.c11 > svg {
-  margin: 0;
-}
-
-.c11 + .c10 {
-  margin: 0;
-}
-
-.c12 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  list-style-type: none;
-  width: 100%;
-  padding: 0;
-}
-
-.c12 > li {
-  margin: 0 0.3rem;
-}
-
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
-.c3 {
-  margin: 0;
-  padding: 2rem;
-}
-
-.c15 {
-  background: rgba(0,0,0,0.5);
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-  position: fixed;
-  right: 0;
-  top: 0;
-  will-change: opacity;
-}
-
-.c16 {
-  background: var(--white);
-  border: 2rem solid var(--secondary);
-  border-radius: 0.4rem;
-  padding: 4rem;
-  max-width: 69rem;
-  margin: calc(var(--gutter) * 4) auto;
-}
-
-.c18 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: 1.2rem;
-  outline: none;
-  padding: 1rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: none;
-  color: inherit;
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
-}
-
-.c18 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
-}
-
-.c18 + .c17 {
-  margin: 0 0 0 1rem;
-}
-
-.c18 > svg {
-  margin: 0;
-}
-
-.c18 + .c17 {
-  margin: 0;
-}
-
-.c19 {
-  font-size: 2.4rem;
-  margin: 0 0 3rem;
 }
 
 .c20 {
@@ -1630,15 +1662,18 @@ exports[`<List /> should display edit form 1`] = `
   appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
   padding: 1rem;
   width: 100%;
   font-size: 1.4rem;
+  -webkit-transition: border-color 250ms ease-out;
+  transition: border-color 250ms ease-out;
 }
 
 .c22:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c28 {
@@ -1662,6 +1697,7 @@ exports[`<List /> should display edit form 1`] = `
   background: var(--white);
   border: 1px solid var(--gray-1);
   border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   cursor: pointer;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.4rem;
@@ -1670,12 +1706,13 @@ exports[`<List /> should display edit form 1`] = `
 }
 
 .c29:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c23 {
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   padding: 2rem;
   position: relative;
 }
@@ -1743,7 +1780,7 @@ exports[`<List /> should display edit form 1`] = `
   background: var(--primary-lighter);
 }
 
-.c5 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1756,48 +1793,48 @@ exports[`<List /> should display edit form 1`] = `
   transition: background 150ms ease-out;
 }
 
-.c5:hover {
+.c6:hover {
   background: var(--gray-5);
 }
 
-.c5 + .c4 {
+.c6 + .c5 {
   border-top: 1px solid var(--secondary);
 }
 
-.c6 {
+.c7 {
   height: 8rem;
 }
 
-.c6 img {
+.c7 img {
   height: 100%;
   object-fit: contain;
   width: 100%;
 }
 
-.c7 {
+.c8 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c8 {
+.c9 {
   color: var(--gray-3);
   font-size: 1.2rem;
 }
 
-.c9 {
+.c10 {
   place-self: center flex-end;
   -webkit-transition: opacity 150ms ease-out;
   transition: opacity 150ms ease-out;
 }
 
-.c9 button {
+.c10 button {
   opacity: 0.5;
   -webkit-transition: opacity 150ms ease-out;
   transition: opacity 150ms ease-out;
 }
 
-.c9 button:hover {
+.c10 button:hover {
   opacity: 1;
 }
 
@@ -1805,8 +1842,19 @@ exports[`<List /> should display edit form 1`] = `
   <div
     class="c0"
   >
+    <h1
+      class="c1"
+    >
+      Your photographies
+       
+      <span>
+        (
+        184
+        )
+      </span>
+    </h1>
     <button
-      class="c1 c2"
+      class="c2 c3"
     >
       Add a new photo
       <svg
@@ -1822,29 +1870,29 @@ exports[`<List /> should display edit form 1`] = `
     </button>
   </div>
   <ul
-    class="c3"
+    class="c4"
   >
     <li
-      class="c4 c5"
+      class="c5 c6"
     >
       <div
-        class="c6"
+        class="c7"
       />
       <div
-        class="c7"
+        class="c8"
       >
         
         <p
-          class="c8"
+          class="c9"
         >
           Février 2019
         </p>
       </div>
       <p
-        class="c9"
+        class="c10"
       >
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Edit"
         >
           <svg
@@ -1860,7 +1908,7 @@ exports[`<List /> should display edit form 1`] = `
           </svg>
         </button>
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Delete"
         >
           <svg
@@ -1878,26 +1926,26 @@ exports[`<List /> should display edit form 1`] = `
       </p>
     </li>
     <li
-      class="c4 c5"
+      class="c5 c6"
     >
       <div
-        class="c6"
+        class="c7"
       />
       <div
-        class="c7"
+        class="c8"
       >
         
         <p
-          class="c8"
+          class="c9"
         >
           Janvier 2019
         </p>
       </div>
       <p
-        class="c9"
+        class="c10"
       >
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Edit"
         >
           <svg
@@ -1913,7 +1961,7 @@ exports[`<List /> should display edit form 1`] = `
           </svg>
         </button>
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Delete"
         >
           <svg
@@ -1932,11 +1980,11 @@ exports[`<List /> should display edit form 1`] = `
     </li>
   </ul>
   <ul
-    class="c12"
+    class="c13"
   >
     <li>
       <button
-        class="c13 c14"
+        class="c14 c15"
         title="Next page"
       >
         »
@@ -1944,7 +1992,7 @@ exports[`<List /> should display edit form 1`] = `
     </li>
     <li>
       <button
-        class="c13 c14"
+        class="c14 c15"
         title="Last page"
       >
         »»
@@ -1952,17 +2000,17 @@ exports[`<List /> should display edit form 1`] = `
     </li>
   </ul>
   <div
-    class="c15"
+    class="c16"
     id="modal"
     style="opacity: 0;"
   >
     <div
-      class="c16"
+      class="c17"
       id="modalInner"
-      style="transform: translate3d(0, 2rem, 0);"
+      style="opacity: 0; transform: translate3d(4rem, 0, 0);"
     >
       <button
-        class="c10 c17 c18"
+        class="c11 c18 c19"
       >
         <svg
           height="26"
@@ -1976,7 +2024,7 @@ exports[`<List /> should display edit form 1`] = `
         </svg>
       </button>
       <h1
-        class="c19"
+        class="c1"
       >
         Edit photo
       </h1>
@@ -2154,7 +2202,7 @@ exports[`<List /> should display edit form 1`] = `
 `;
 
 exports[`<List /> should not display delete modal 1`] = `
-.c2 {
+.c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -2172,31 +2220,439 @@ exports[`<List /> should not display delete modal 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
   color: white;
 }
 
-.c2 > svg {
+.c3 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c2 + .c1 {
+.c3 + .c2 {
   margin: 0 0 0 1rem;
 }
 
-.c2:hover {
+.c3:hover {
   background: var(--primary-lighter);
 }
 
-.c16 + .c13 {
+.c17 + .c14 {
   margin: 0 0 0 1rem;
 }
 
-.c16 + .c1 {
+.c17 + .c2 {
   margin-left: 1rem;
+}
+
+.c16 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1.4rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: var(--secondary);
+  color: var(--text);
+  width: 4.4rem;
+  height: 4.4rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.c16 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c16 + .c15 {
+  margin: 0 0 0 1rem;
+}
+
+.c16:hover {
+  background: var(--secondary-darker);
+}
+
+.c16 + .c2 {
+  margin-left: 1rem;
+}
+
+.c12 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1.4rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: none;
+  color: inherit;
+}
+
+.c12 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c12 + .c11 {
+  margin: 0 0 0 1rem;
+}
+
+.c12 > svg {
+  margin: 0;
+}
+
+.c12 + .c11 {
+  margin: 0;
+}
+
+.c13 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.c13 > li {
+  margin: 0 0.3rem;
+}
+
+.c4 {
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 2rem;
+}
+
+.c0 > h1 {
+  line-height: 1.8;
+  margin: 0;
+}
+
+.c0 > h1 > span {
+  color: var(--gray-2);
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.c1 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 8rem auto 12rem;
+  grid-column-gap: 1rem;
+  padding: 1.5rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+}
+
+.c6:hover {
+  background: var(--gray-5);
+}
+
+.c6 + .c5 {
+  border-top: 1px solid var(--secondary);
+}
+
+.c7 {
+  height: 8rem;
+}
+
+.c7 img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.c8 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c9 {
+  color: var(--gray-3);
+  font-size: 1.2rem;
+}
+
+.c10 {
+  place-self: center flex-end;
+  -webkit-transition: opacity 150ms ease-out;
+  transition: opacity 150ms ease-out;
+}
+
+.c10 button {
+  opacity: 0.5;
+  -webkit-transition: opacity 150ms ease-out;
+  transition: opacity 150ms ease-out;
+}
+
+.c10 button:hover {
+  opacity: 1;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <h1
+      class="c1"
+    >
+      Your photographies
+       
+      <span>
+        (
+        184
+        )
+      </span>
+    </h1>
+    <button
+      class="c2 c3"
+    >
+      Add a new photo
+      <svg
+        height="14"
+        viewBox="0 0 24 24"
+        width="14"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18.984 12.984h-6v6h-1.97v-6h-6v-1.97h6v-6h1.97v6h6v1.97z"
+        />
+      </svg>
+    </button>
+  </div>
+  <ul
+    class="c4"
+  >
+    <li
+      class="c5 c6"
+    >
+      <div
+        class="c7"
+      />
+      <div
+        class="c8"
+      >
+        
+        <p
+          class="c9"
+        >
+          Février 2019
+        </p>
+      </div>
+      <p
+        class="c10"
+      >
+        <button
+          class="c11 c12"
+          title="Edit"
+        >
+          <svg
+            height="16"
+            version="1.1"
+            viewBox="0 0 24 28"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.672 24l1.422-1.422-3.672-3.672-1.422 1.422v1.672h2v2h1.672zM13.844 9.5c0-0.203-0.141-0.344-0.344-0.344-0.094 0-0.187 0.031-0.266 0.109l-8.469 8.469c-0.078 0.078-0.109 0.172-0.109 0.266 0 0.203 0.141 0.344 0.344 0.344 0.094 0 0.187-0.031 0.266-0.109l8.469-8.469c0.078-0.078 0.109-0.172 0.109-0.266zM13 6.5l6.5 6.5-13 13h-6.5v-6.5zM23.672 8c0 0.531-0.219 1.047-0.578 1.406l-2.594 2.594-6.5-6.5 2.594-2.578c0.359-0.375 0.875-0.594 1.406-0.594s1.047 0.219 1.422 0.594l3.672 3.656c0.359 0.375 0.578 0.891 0.578 1.422z"
+            />
+          </svg>
+        </button>
+        <button
+          class="c11 c12"
+          title="Delete"
+        >
+          <svg
+            height="16"
+            version="1.1"
+            viewBox="0 0 22 28"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM12 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM16 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM7.5 6h7l-0.75-1.828c-0.047-0.063-0.187-0.156-0.266-0.172h-4.953c-0.094 0.016-0.219 0.109-0.266 0.172zM22 6.5v1c0 0.281-0.219 0.5-0.5 0.5h-1.5v14.812c0 1.719-1.125 3.187-2.5 3.187h-13c-1.375 0-2.5-1.406-2.5-3.125v-14.875h-1.5c-0.281 0-0.5-0.219-0.5-0.5v-1c0-0.281 0.219-0.5 0.5-0.5h4.828l1.094-2.609c0.313-0.766 1.25-1.391 2.078-1.391h5c0.828 0 1.766 0.625 2.078 1.391l1.094 2.609h4.828c0.281 0 0.5 0.219 0.5 0.5z"
+            />
+          </svg>
+        </button>
+      </p>
+    </li>
+    <li
+      class="c5 c6"
+    >
+      <div
+        class="c7"
+      />
+      <div
+        class="c8"
+      >
+        
+        <p
+          class="c9"
+        >
+          Janvier 2019
+        </p>
+      </div>
+      <p
+        class="c10"
+      >
+        <button
+          class="c11 c12"
+          title="Edit"
+        >
+          <svg
+            height="16"
+            version="1.1"
+            viewBox="0 0 24 28"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.672 24l1.422-1.422-3.672-3.672-1.422 1.422v1.672h2v2h1.672zM13.844 9.5c0-0.203-0.141-0.344-0.344-0.344-0.094 0-0.187 0.031-0.266 0.109l-8.469 8.469c-0.078 0.078-0.109 0.172-0.109 0.266 0 0.203 0.141 0.344 0.344 0.344 0.094 0 0.187-0.031 0.266-0.109l8.469-8.469c0.078-0.078 0.109-0.172 0.109-0.266zM13 6.5l6.5 6.5-13 13h-6.5v-6.5zM23.672 8c0 0.531-0.219 1.047-0.578 1.406l-2.594 2.594-6.5-6.5 2.594-2.578c0.359-0.375 0.875-0.594 1.406-0.594s1.047 0.219 1.422 0.594l3.672 3.656c0.359 0.375 0.578 0.891 0.578 1.422z"
+            />
+          </svg>
+        </button>
+        <button
+          class="c11 c12"
+          title="Delete"
+        >
+          <svg
+            height="16"
+            version="1.1"
+            viewBox="0 0 22 28"
+            width="22"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM12 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM16 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM7.5 6h7l-0.75-1.828c-0.047-0.063-0.187-0.156-0.266-0.172h-4.953c-0.094 0.016-0.219 0.109-0.266 0.172zM22 6.5v1c0 0.281-0.219 0.5-0.5 0.5h-1.5v14.812c0 1.719-1.125 3.187-2.5 3.187h-13c-1.375 0-2.5-1.406-2.5-3.125v-14.875h-1.5c-0.281 0-0.5-0.219-0.5-0.5v-1c0-0.281 0.219-0.5 0.5-0.5h4.828l1.094-2.609c0.313-0.766 1.25-1.391 2.078-1.391h5c0.828 0 1.766 0.625 2.078 1.391l1.094 2.609h4.828c0.281 0 0.5 0.219 0.5 0.5z"
+            />
+          </svg>
+        </button>
+      </p>
+    </li>
+  </ul>
+  <ul
+    class="c13"
+  >
+    <li>
+      <button
+        class="c14 c15 c16"
+        title="Next page"
+      >
+        »
+      </button>
+    </li>
+    <li>
+      <button
+        class="c14 c15 c16"
+        title="Last page"
+      >
+        »»
+      </button>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`<List /> should not display edit form 1`] = `
+.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 1.4rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: var(--primary);
+  color: white;
+}
+
+.c3 > svg {
+  margin: 0 -0.3rem 0 0.3rem;
+}
+
+.c3 + .c2 {
+  margin: 0 0 0 1rem;
+}
+
+.c3:hover {
+  background: var(--primary-lighter);
 }
 
 .c15 {
@@ -2217,7 +2673,7 @@ exports[`<List /> should not display delete modal 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
@@ -2247,11 +2703,11 @@ exports[`<List /> should not display delete modal 1`] = `
   background: var(--secondary-darker);
 }
 
-.c15 + .c1 {
+.c15 + .c2 {
   margin-left: 1rem;
 }
 
-.c11 {
+.c12 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -2269,30 +2725,30 @@ exports[`<List /> should not display delete modal 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
 }
 
-.c11 > svg {
+.c12 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c11 + .c10 {
+.c12 + .c11 {
   margin: 0 0 0 1rem;
 }
 
-.c11 > svg {
+.c12 > svg {
   margin: 0;
 }
 
-.c11 + .c10 {
+.c12 + .c11 {
   margin: 0;
 }
 
-.c12 {
+.c13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2306,26 +2762,16 @@ exports[`<List /> should not display delete modal 1`] = `
   padding: 0;
 }
 
-.c12 > li {
+.c13 > li {
   margin: 0 0.3rem;
 }
 
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
+.c4 {
+  margin: 0;
+  padding: 0;
 }
 
-.c0 > p {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2334,15 +2780,30 @@ exports[`<List /> should not display delete modal 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 2rem;
+}
+
+.c0 > h1 {
+  line-height: 1.8;
   margin: 0;
 }
 
-.c3 {
-  margin: 0;
-  padding: 2rem;
+.c0 > h1 > span {
+  color: var(--gray-2);
+  font-size: 2rem;
+  font-weight: normal;
 }
 
-.c5 {
+.c1 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
+}
+
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2355,48 +2816,48 @@ exports[`<List /> should not display delete modal 1`] = `
   transition: background 150ms ease-out;
 }
 
-.c5:hover {
+.c6:hover {
   background: var(--gray-5);
 }
 
-.c5 + .c4 {
+.c6 + .c5 {
   border-top: 1px solid var(--secondary);
 }
 
-.c6 {
+.c7 {
   height: 8rem;
 }
 
-.c6 img {
+.c7 img {
   height: 100%;
   object-fit: contain;
   width: 100%;
 }
 
-.c7 {
+.c8 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c8 {
+.c9 {
   color: var(--gray-3);
   font-size: 1.2rem;
 }
 
-.c9 {
+.c10 {
   place-self: center flex-end;
   -webkit-transition: opacity 150ms ease-out;
   transition: opacity 150ms ease-out;
 }
 
-.c9 button {
+.c10 button {
   opacity: 0.5;
   -webkit-transition: opacity 150ms ease-out;
   transition: opacity 150ms ease-out;
 }
 
-.c9 button:hover {
+.c10 button:hover {
   opacity: 1;
 }
 
@@ -2404,8 +2865,19 @@ exports[`<List /> should not display delete modal 1`] = `
   <div
     class="c0"
   >
+    <h1
+      class="c1"
+    >
+      Your photographies
+       
+      <span>
+        (
+        184
+        )
+      </span>
+    </h1>
     <button
-      class="c1 c2"
+      class="c2 c3"
     >
       Add a new photo
       <svg
@@ -2421,29 +2893,29 @@ exports[`<List /> should not display delete modal 1`] = `
     </button>
   </div>
   <ul
-    class="c3"
+    class="c4"
   >
     <li
-      class="c4 c5"
+      class="c5 c6"
     >
       <div
-        class="c6"
+        class="c7"
       />
       <div
-        class="c7"
+        class="c8"
       >
         
         <p
-          class="c8"
+          class="c9"
         >
           Février 2019
         </p>
       </div>
       <p
-        class="c9"
+        class="c10"
       >
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Edit"
         >
           <svg
@@ -2459,7 +2931,7 @@ exports[`<List /> should not display delete modal 1`] = `
           </svg>
         </button>
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Delete"
         >
           <svg
@@ -2477,26 +2949,26 @@ exports[`<List /> should not display delete modal 1`] = `
       </p>
     </li>
     <li
-      class="c4 c5"
+      class="c5 c6"
     >
       <div
-        class="c6"
+        class="c7"
       />
       <div
-        class="c7"
+        class="c8"
       >
         
         <p
-          class="c8"
+          class="c9"
         >
           Janvier 2019
         </p>
       </div>
       <p
-        class="c9"
+        class="c10"
       >
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Edit"
         >
           <svg
@@ -2512,7 +2984,7 @@ exports[`<List /> should not display delete modal 1`] = `
           </svg>
         </button>
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Delete"
         >
           <svg
@@ -2531,11 +3003,11 @@ exports[`<List /> should not display delete modal 1`] = `
     </li>
   </ul>
   <ul
-    class="c12"
+    class="c13"
   >
     <li>
       <button
-        class="c13 c14 c15"
+        class="c14 c15"
         title="Next page"
       >
         »
@@ -2543,399 +3015,7 @@ exports[`<List /> should not display delete modal 1`] = `
     </li>
     <li>
       <button
-        class="c13 c14 c15"
-        title="Last page"
-      >
-        »»
-      </button>
-    </li>
-  </ul>
-</div>
-`;
-
-exports[`<List /> should not display edit form 1`] = `
-.c2 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: 1.2rem;
-  outline: none;
-  padding: 1rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: var(--primary);
-  color: white;
-}
-
-.c2 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
-}
-
-.c2 + .c1 {
-  margin: 0 0 0 1rem;
-}
-
-.c2:hover {
-  background: var(--primary-lighter);
-}
-
-.c14 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: 1.2rem;
-  outline: none;
-  padding: 1rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: var(--secondary);
-  color: var(--text);
-  width: 4.4rem;
-  height: 4.4rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 1.4rem;
-}
-
-.c14 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
-}
-
-.c14 + .c13 {
-  margin: 0 0 0 1rem;
-}
-
-.c14:hover {
-  background: var(--secondary-darker);
-}
-
-.c14 + .c1 {
-  margin-left: 1rem;
-}
-
-.c11 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: 1.2rem;
-  outline: none;
-  padding: 1rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: none;
-  color: inherit;
-}
-
-.c11 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
-}
-
-.c11 + .c10 {
-  margin: 0 0 0 1rem;
-}
-
-.c11 > svg {
-  margin: 0;
-}
-
-.c11 + .c10 {
-  margin: 0;
-}
-
-.c12 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  list-style-type: none;
-  width: 100%;
-  padding: 0;
-}
-
-.c12 > li {
-  margin: 0 0.3rem;
-}
-
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
-.c3 {
-  margin: 0;
-  padding: 2rem;
-}
-
-.c5 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: grid;
-  grid-template-columns: 8rem auto 12rem;
-  grid-column-gap: 1rem;
-  padding: 1.5rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-}
-
-.c5:hover {
-  background: var(--gray-5);
-}
-
-.c5 + .c4 {
-  border-top: 1px solid var(--secondary);
-}
-
-.c6 {
-  height: 8rem;
-}
-
-.c6 img {
-  height: 100%;
-  object-fit: contain;
-  width: 100%;
-}
-
-.c7 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c8 {
-  color: var(--gray-3);
-  font-size: 1.2rem;
-}
-
-.c9 {
-  place-self: center flex-end;
-  -webkit-transition: opacity 150ms ease-out;
-  transition: opacity 150ms ease-out;
-}
-
-.c9 button {
-  opacity: 0.5;
-  -webkit-transition: opacity 150ms ease-out;
-  transition: opacity 150ms ease-out;
-}
-
-.c9 button:hover {
-  opacity: 1;
-}
-
-<div>
-  <div
-    class="c0"
-  >
-    <button
-      class="c1 c2"
-    >
-      Add a new photo
-      <svg
-        height="14"
-        viewBox="0 0 24 24"
-        width="14"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M18.984 12.984h-6v6h-1.97v-6h-6v-1.97h6v-6h1.97v6h6v1.97z"
-        />
-      </svg>
-    </button>
-  </div>
-  <ul
-    class="c3"
-  >
-    <li
-      class="c4 c5"
-    >
-      <div
-        class="c6"
-      />
-      <div
-        class="c7"
-      >
-        
-        <p
-          class="c8"
-        >
-          Février 2019
-        </p>
-      </div>
-      <p
-        class="c9"
-      >
-        <button
-          class="c10 c11"
-          title="Edit"
-        >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 24 28"
-            width="14"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.672 24l1.422-1.422-3.672-3.672-1.422 1.422v1.672h2v2h1.672zM13.844 9.5c0-0.203-0.141-0.344-0.344-0.344-0.094 0-0.187 0.031-0.266 0.109l-8.469 8.469c-0.078 0.078-0.109 0.172-0.109 0.266 0 0.203 0.141 0.344 0.344 0.344 0.094 0 0.187-0.031 0.266-0.109l8.469-8.469c0.078-0.078 0.109-0.172 0.109-0.266zM13 6.5l6.5 6.5-13 13h-6.5v-6.5zM23.672 8c0 0.531-0.219 1.047-0.578 1.406l-2.594 2.594-6.5-6.5 2.594-2.578c0.359-0.375 0.875-0.594 1.406-0.594s1.047 0.219 1.422 0.594l3.672 3.656c0.359 0.375 0.578 0.891 0.578 1.422z"
-            />
-          </svg>
-        </button>
-        <button
-          class="c10 c11"
-          title="Delete"
-        >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 22 28"
-            width="22"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM12 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM16 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM7.5 6h7l-0.75-1.828c-0.047-0.063-0.187-0.156-0.266-0.172h-4.953c-0.094 0.016-0.219 0.109-0.266 0.172zM22 6.5v1c0 0.281-0.219 0.5-0.5 0.5h-1.5v14.812c0 1.719-1.125 3.187-2.5 3.187h-13c-1.375 0-2.5-1.406-2.5-3.125v-14.875h-1.5c-0.281 0-0.5-0.219-0.5-0.5v-1c0-0.281 0.219-0.5 0.5-0.5h4.828l1.094-2.609c0.313-0.766 1.25-1.391 2.078-1.391h5c0.828 0 1.766 0.625 2.078 1.391l1.094 2.609h4.828c0.281 0 0.5 0.219 0.5 0.5z"
-            />
-          </svg>
-        </button>
-      </p>
-    </li>
-    <li
-      class="c4 c5"
-    >
-      <div
-        class="c6"
-      />
-      <div
-        class="c7"
-      >
-        
-        <p
-          class="c8"
-        >
-          Janvier 2019
-        </p>
-      </div>
-      <p
-        class="c9"
-      >
-        <button
-          class="c10 c11"
-          title="Edit"
-        >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 24 28"
-            width="14"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.672 24l1.422-1.422-3.672-3.672-1.422 1.422v1.672h2v2h1.672zM13.844 9.5c0-0.203-0.141-0.344-0.344-0.344-0.094 0-0.187 0.031-0.266 0.109l-8.469 8.469c-0.078 0.078-0.109 0.172-0.109 0.266 0 0.203 0.141 0.344 0.344 0.344 0.094 0 0.187-0.031 0.266-0.109l8.469-8.469c0.078-0.078 0.109-0.172 0.109-0.266zM13 6.5l6.5 6.5-13 13h-6.5v-6.5zM23.672 8c0 0.531-0.219 1.047-0.578 1.406l-2.594 2.594-6.5-6.5 2.594-2.578c0.359-0.375 0.875-0.594 1.406-0.594s1.047 0.219 1.422 0.594l3.672 3.656c0.359 0.375 0.578 0.891 0.578 1.422z"
-            />
-          </svg>
-        </button>
-        <button
-          class="c10 c11"
-          title="Delete"
-        >
-          <svg
-            height="16"
-            version="1.1"
-            viewBox="0 0 22 28"
-            width="22"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM12 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM16 21.5v-11c0-0.281-0.219-0.5-0.5-0.5h-1c-0.281 0-0.5 0.219-0.5 0.5v11c0 0.281 0.219 0.5 0.5 0.5h1c0.281 0 0.5-0.219 0.5-0.5zM7.5 6h7l-0.75-1.828c-0.047-0.063-0.187-0.156-0.266-0.172h-4.953c-0.094 0.016-0.219 0.109-0.266 0.172zM22 6.5v1c0 0.281-0.219 0.5-0.5 0.5h-1.5v14.812c0 1.719-1.125 3.187-2.5 3.187h-13c-1.375 0-2.5-1.406-2.5-3.125v-14.875h-1.5c-0.281 0-0.5-0.219-0.5-0.5v-1c0-0.281 0.219-0.5 0.5-0.5h4.828l1.094-2.609c0.313-0.766 1.25-1.391 2.078-1.391h5c0.828 0 1.766 0.625 2.078 1.391l1.094 2.609h4.828c0.281 0 0.5 0.219 0.5 0.5z"
-            />
-          </svg>
-        </button>
-      </p>
-    </li>
-  </ul>
-  <ul
-    class="c12"
-  >
-    <li>
-      <button
-        class="c13 c14"
-        title="Next page"
-      >
-        »
-      </button>
-    </li>
-    <li>
-      <button
-        class="c13 c14"
+        class="c14 c15"
         title="Last page"
       >
         »»
@@ -2946,7 +3026,7 @@ exports[`<List /> should not display edit form 1`] = `
 `;
 
 exports[`<List /> should render list photos 1`] = `
-.c2 {
+.c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -2964,26 +3044,26 @@ exports[`<List /> should render list photos 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
   color: white;
 }
 
-.c2 > svg {
+.c3 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c2 + .c1 {
+.c3 + .c2 {
   margin: 0 0 0 1rem;
 }
 
-.c2:hover {
+.c3:hover {
   background: var(--primary-lighter);
 }
 
-.c14 {
+.c15 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -3001,7 +3081,7 @@ exports[`<List /> should render list photos 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
@@ -3019,23 +3099,23 @@ exports[`<List /> should render list photos 1`] = `
   font-size: 1.4rem;
 }
 
-.c14 > svg {
+.c15 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c14 + .c13 {
+.c15 + .c14 {
   margin: 0 0 0 1rem;
 }
 
-.c14:hover {
+.c15:hover {
   background: var(--secondary-darker);
 }
 
-.c14 + .c1 {
+.c15 + .c2 {
   margin-left: 1rem;
 }
 
-.c11 {
+.c12 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -3053,30 +3133,30 @@ exports[`<List /> should render list photos 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
 }
 
-.c11 > svg {
+.c12 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c11 + .c10 {
+.c12 + .c11 {
   margin: 0 0 0 1rem;
 }
 
-.c11 > svg {
+.c12 > svg {
   margin: 0;
 }
 
-.c11 + .c10 {
+.c12 + .c11 {
   margin: 0;
 }
 
-.c12 {
+.c13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3090,26 +3170,16 @@ exports[`<List /> should render list photos 1`] = `
   padding: 0;
 }
 
-.c12 > li {
+.c13 > li {
   margin: 0 0.3rem;
 }
 
-.c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
+.c4 {
+  margin: 0;
+  padding: 0;
 }
 
-.c0 > p {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3118,15 +3188,30 @@ exports[`<List /> should render list photos 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 2rem;
+}
+
+.c0 > h1 {
+  line-height: 1.8;
   margin: 0;
 }
 
-.c3 {
-  margin: 0;
-  padding: 2rem;
+.c0 > h1 > span {
+  color: var(--gray-2);
+  font-size: 2rem;
+  font-weight: normal;
 }
 
-.c5 {
+.c1 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
+}
+
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3139,48 +3224,48 @@ exports[`<List /> should render list photos 1`] = `
   transition: background 150ms ease-out;
 }
 
-.c5:hover {
+.c6:hover {
   background: var(--gray-5);
 }
 
-.c5 + .c4 {
+.c6 + .c5 {
   border-top: 1px solid var(--secondary);
 }
 
-.c6 {
+.c7 {
   height: 8rem;
 }
 
-.c6 img {
+.c7 img {
   height: 100%;
   object-fit: contain;
   width: 100%;
 }
 
-.c7 {
+.c8 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c8 {
+.c9 {
   color: var(--gray-3);
   font-size: 1.2rem;
 }
 
-.c9 {
+.c10 {
   place-self: center flex-end;
   -webkit-transition: opacity 150ms ease-out;
   transition: opacity 150ms ease-out;
 }
 
-.c9 button {
+.c10 button {
   opacity: 0.5;
   -webkit-transition: opacity 150ms ease-out;
   transition: opacity 150ms ease-out;
 }
 
-.c9 button:hover {
+.c10 button:hover {
   opacity: 1;
 }
 
@@ -3188,8 +3273,19 @@ exports[`<List /> should render list photos 1`] = `
   <div
     class="c0"
   >
+    <h1
+      class="c1"
+    >
+      Your photographies
+       
+      <span>
+        (
+        184
+        )
+      </span>
+    </h1>
     <button
-      class="c1 c2"
+      class="c2 c3"
     >
       Add a new photo
       <svg
@@ -3205,29 +3301,29 @@ exports[`<List /> should render list photos 1`] = `
     </button>
   </div>
   <ul
-    class="c3"
+    class="c4"
   >
     <li
-      class="c4 c5"
+      class="c5 c6"
     >
       <div
-        class="c6"
+        class="c7"
       />
       <div
-        class="c7"
+        class="c8"
       >
         
         <p
-          class="c8"
+          class="c9"
         >
           Février 2019
         </p>
       </div>
       <p
-        class="c9"
+        class="c10"
       >
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Edit"
         >
           <svg
@@ -3243,7 +3339,7 @@ exports[`<List /> should render list photos 1`] = `
           </svg>
         </button>
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Delete"
         >
           <svg
@@ -3261,26 +3357,26 @@ exports[`<List /> should render list photos 1`] = `
       </p>
     </li>
     <li
-      class="c4 c5"
+      class="c5 c6"
     >
       <div
-        class="c6"
+        class="c7"
       />
       <div
-        class="c7"
+        class="c8"
       >
         
         <p
-          class="c8"
+          class="c9"
         >
           Janvier 2019
         </p>
       </div>
       <p
-        class="c9"
+        class="c10"
       >
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Edit"
         >
           <svg
@@ -3296,7 +3392,7 @@ exports[`<List /> should render list photos 1`] = `
           </svg>
         </button>
         <button
-          class="c10 c11"
+          class="c11 c12"
           title="Delete"
         >
           <svg
@@ -3315,11 +3411,11 @@ exports[`<List /> should render list photos 1`] = `
     </li>
   </ul>
   <ul
-    class="c12"
+    class="c13"
   >
     <li>
       <button
-        class="c13 c14"
+        class="c14 c15"
         title="Next page"
       >
         »
@@ -3327,7 +3423,7 @@ exports[`<List /> should render list photos 1`] = `
     </li>
     <li>
       <button
-        class="c13 c14"
+        class="c14 c15"
         title="Last page"
       >
         »»
@@ -3338,13 +3434,13 @@ exports[`<List /> should render list photos 1`] = `
 `;
 
 exports[`<List /> should render loading view 1`] = `
-.c3 {
+.c4 {
   margin: 2rem 0;
   -webkit-animation: eMLfYp 800ms ease-in-out infinite alternate;
   animation: eMLfYp 800ms ease-in-out infinite alternate;
 }
 
-.c3:after {
+.c4:after {
   background: var(--primary);
   border-radius: 50%;
   content: '';
@@ -3354,7 +3450,7 @@ exports[`<List /> should render loading view 1`] = `
   margin: 0 auto;
 }
 
-.c2 {
+.c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -3372,41 +3468,26 @@ exports[`<List /> should render loading view 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
   color: white;
 }
 
-.c2 > svg {
+.c3 > svg {
   margin: 0 -0.3rem 0 0.3rem;
 }
 
-.c2 + .c1 {
+.c3 + .c2 {
   margin: 0 0 0 1rem;
 }
 
-.c2:hover {
+.c3:hover {
   background: var(--primary-lighter);
 }
 
 .c0 {
-  background: var(--gray-4);
-  color: var(--white);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 6rem;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1.3rem 2rem;
-}
-
-.c0 > p {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3415,15 +3496,41 @@ exports[`<List /> should render loading view 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 2rem;
+}
+
+.c0 > h1 {
+  line-height: 1.8;
   margin: 0;
+}
+
+.c0 > h1 > span {
+  color: var(--gray-2);
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.c1 {
+  font-size: 2.4rem;
+  margin: 0 0 3rem;
 }
 
 <div>
   <div
     class="c0"
   >
+    <h1
+      class="c1"
+    >
+      Your photographies
+       
+    </h1>
     <button
-      class="c1 c2"
+      class="c2 c3"
     >
       Add a new photo
       <svg
@@ -3439,7 +3546,7 @@ exports[`<List /> should render loading view 1`] = `
     </button>
   </div>
   <div
-    class="c3"
+    class="c4"
   />
 </div>
 `;

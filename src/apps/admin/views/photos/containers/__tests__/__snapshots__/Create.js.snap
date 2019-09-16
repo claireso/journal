@@ -2,7 +2,7 @@
 
 exports[`<Create /> should render component 1`] = `
 .c0 {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   margin: 0 0 3rem;
 }
 
@@ -38,15 +38,18 @@ exports[`<Create /> should render component 1`] = `
   appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
   padding: 1rem;
   width: 100%;
   font-size: 1.4rem;
+  -webkit-transition: border-color 250ms ease-out;
+  transition: border-color 250ms ease-out;
 }
 
 .c3:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c8 {
@@ -70,6 +73,7 @@ exports[`<Create /> should render component 1`] = `
   background: var(--white);
   border: 1px solid var(--gray-1);
   border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   cursor: pointer;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.4rem;
@@ -78,12 +82,13 @@ exports[`<Create /> should render component 1`] = `
 }
 
 .c9:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c4 {
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   padding: 2rem;
   position: relative;
 }
@@ -145,11 +150,11 @@ exports[`<Create /> should render component 1`] = `
 }
 
 <div>
-  <h1
+  <h2
     class="c0"
   >
     Create a photo
-  </h1>
+  </h2>
   <form
     action=""
     enctype="multipart/form-data"
