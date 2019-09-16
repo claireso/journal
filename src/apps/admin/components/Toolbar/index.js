@@ -6,7 +6,7 @@ const StyledToolbar = styled.div`
   background: var(--gray-4);
   color: var(--white);
   display: flex;
-  height: 6rem;
+  height: var(--toolbar-height);
   justify-content: flex-end;
   padding: 1.3rem 2rem;
 

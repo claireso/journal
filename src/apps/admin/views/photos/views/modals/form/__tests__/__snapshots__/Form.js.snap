@@ -33,15 +33,18 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
   appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
   padding: 1rem;
   width: 100%;
   font-size: 1.4rem;
+  -webkit-transition: border-color 250ms ease-out;
+  transition: border-color 250ms ease-out;
 }
 
 .c2:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c7 {
@@ -65,6 +68,7 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
   background: var(--white);
   border: 1px solid var(--gray-1);
   border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   cursor: pointer;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.4rem;
@@ -73,12 +77,13 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
 }
 
 .c8:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c3 {
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   padding: 2rem;
   position: relative;
 }
@@ -342,15 +347,18 @@ exports[`<Form /> should prefill form with photo data 1`] = `
   appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
   padding: 1rem;
   width: 100%;
   font-size: 1.4rem;
+  -webkit-transition: border-color 250ms ease-out;
+  transition: border-color 250ms ease-out;
 }
 
 .c2:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c8 {
@@ -374,6 +382,7 @@ exports[`<Form /> should prefill form with photo data 1`] = `
   background: var(--white);
   border: 1px solid var(--gray-1);
   border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   cursor: pointer;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.4rem;
@@ -382,12 +391,13 @@ exports[`<Form /> should prefill form with photo data 1`] = `
 }
 
 .c9:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c3 {
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   padding: 2rem;
   position: relative;
 }
@@ -660,15 +670,18 @@ exports[`<Form /> should render form 1`] = `
   appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
   padding: 1rem;
   width: 100%;
   font-size: 1.4rem;
+  -webkit-transition: border-color 250ms ease-out;
+  transition: border-color 250ms ease-out;
 }
 
 .c2:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c7 {
@@ -692,6 +705,7 @@ exports[`<Form /> should render form 1`] = `
   background: var(--white);
   border: 1px solid var(--gray-1);
   border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   cursor: pointer;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.4rem;
@@ -700,12 +714,13 @@ exports[`<Form /> should render form 1`] = `
 }
 
 .c8:focus {
-  box-shadow: 0 0 0 0.3rem #c8e2ff;
+  border-color: var(--gray-2);
 }
 
 .c3 {
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   padding: 2rem;
   position: relative;
 }

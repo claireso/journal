@@ -7,29 +7,29 @@ import { ButtonIcon } from '@admin/components/Buttons'
 import { IconClose } from '@common/components/Icons'
 
 const ModalWrapper = styled.div`
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(43, 44, 44, 0.4);
   bottom: 0;
-  left: 0;
   overflow: auto;
   position: fixed;
+  left: 15rem;
   right: 0;
-  top: 0;
+  top: var(--toolbar-height);
   will-change: opacity;
 `
 
 const ModalInner = styled.div`
   background: var(--white);
-  border: 2rem solid var(--secondary);
-  border-radius: 0.4rem;
-  padding: 4rem;
-  max-width: 69rem;
-  margin: calc(var(--gutter) * 4) auto;
+  box-shadow: 0 0px 11px #898c8e;
+  padding: 3rem;
+  max-width: 45rem;
+  min-height: calc(100vh);
+  margin: 0 0 0 auto;
 `
 
 const ModalCloseButton = styled(ButtonIcon)`
   position: absolute;
   right: 0.5rem;
-  top: 0.5rem;
+  top: 1.5rem;
 `
 
 class Modal extends React.PureComponent {
@@ -102,10 +102,10 @@ class Modal extends React.PureComponent {
             >
               <Transition
                 items={isOpen}
-                from={{ transform: 'translate3d(0, 2rem, 0)' }}
-                enter={{ transform: 'translate3d(0, 0, 0)' }}
-                leave={{ transform: 'translate3d(0, 2rem, 0)' }}
-                config={{ tension: Modal.DEFAULT_SPEED }}
+                from={{ opacity: 0, transform: 'translate3d(4rem, 0, 0)' }}
+                enter={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+                leave={{ opacity: 0, transform: 'translate3d(4rem, 0, 0)' }}
+                config={{ delay: Modal.DEFAULT_SPEED - 150 }}
               >
                 {isOpen =>
                   isOpen &&
