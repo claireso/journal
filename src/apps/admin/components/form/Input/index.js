@@ -9,14 +9,16 @@ const StyledInput = styled.input`
   appearance: none;
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
   padding: 1rem;
   width: 100%;
   font-size: 1.4rem;
+  transition: border-color 250ms ease-out;
 
   &:focus {
-    box-shadow: 0 0 0 0.3rem #c8e2ff;
+    border-color: var(--gray-2);
   }
 `
 

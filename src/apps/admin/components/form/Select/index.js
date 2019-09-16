@@ -23,6 +23,7 @@ const StyledSelect = styled.select`
   background: var(--white);
   border: 1px solid var(--gray-1);
   border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   cursor: pointer;
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 1.4rem;
@@ -30,7 +31,7 @@ const StyledSelect = styled.select`
   padding: 0.8rem 2.6rem 0.8rem 0.8rem;
 
   &:focus {
-    box-shadow: 0 0 0 0.3rem #c8e2ff;
+    border-color: var(--gray-2);
   }
 `
 

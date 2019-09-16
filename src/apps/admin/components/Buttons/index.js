@@ -13,7 +13,7 @@ export const Button = styled.button`
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   transition: background 150ms ease-out;
 
   > svg {

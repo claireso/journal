@@ -8,23 +8,23 @@ exports[`<Modal /> should close component by keyboard 1`] = `<div />`;
 
 exports[`<Modal /> should close component by prop update 1`] = `
 .c0 {
-  background: rgba(0,0,0,0.5);
+  background: rgba(43,44,44,0.4);
   bottom: 0;
-  left: 0;
   overflow: auto;
   position: fixed;
+  left: 15rem;
   right: 0;
-  top: 0;
+  top: var(--toolbar-height);
   will-change: opacity;
 }
 
 .c1 {
   background: var(--white);
-  border: 2rem solid var(--secondary);
-  border-radius: 0.4rem;
-  padding: 4rem;
-  max-width: 69rem;
-  margin: calc(var(--gutter) * 4) auto;
+  box-shadow: 0 0px 11px #898c8e;
+  padding: 3rem;
+  max-width: 45rem;
+  min-height: calc(100vh);
+  margin: 0 0 0 auto;
 }
 
 .c3 {
@@ -45,14 +45,14 @@ exports[`<Modal /> should close component by prop update 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
   position: absolute;
   right: 0.5rem;
-  top: 0.5rem;
+  top: 1.5rem;
 }
 
 .c3 > svg {
@@ -80,7 +80,7 @@ exports[`<Modal /> should close component by prop update 1`] = `
     <div
       class="c1"
       id="modalInner"
-      style="transform: translate3d(0, 2rem, 0);"
+      style="opacity: 0; transform: translate3d(4rem, 0, 0);"
     >
       <button
         class="c2 c3"
@@ -108,23 +108,23 @@ exports[`<Modal /> should close component by prop update 2`] = `<div />`;
 
 exports[`<Modal /> should render component 1`] = `
 .c0 {
-  background: rgba(0,0,0,0.5);
+  background: rgba(43,44,44,0.4);
   bottom: 0;
-  left: 0;
   overflow: auto;
   position: fixed;
+  left: 15rem;
   right: 0;
-  top: 0;
+  top: var(--toolbar-height);
   will-change: opacity;
 }
 
 .c1 {
   background: var(--white);
-  border: 2rem solid var(--secondary);
-  border-radius: 0.4rem;
-  padding: 4rem;
-  max-width: 69rem;
-  margin: calc(var(--gutter) * 4) auto;
+  box-shadow: 0 0px 11px #898c8e;
+  padding: 3rem;
+  max-width: 45rem;
+  min-height: calc(100vh);
+  margin: 0 0 0 auto;
 }
 
 .c3 {
@@ -145,14 +145,14 @@ exports[`<Modal /> should render component 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
   position: absolute;
   right: 0.5rem;
-  top: 0.5rem;
+  top: 1.5rem;
 }
 
 .c3 > svg {
@@ -180,7 +180,7 @@ exports[`<Modal /> should render component 1`] = `
     <div
       class="c1"
       id="modalInner"
-      style="transform: translate3d(0, 2rem, 0);"
+      style="opacity: 0; transform: translate3d(4rem, 0, 0);"
     >
       <button
         class="c2 c3"

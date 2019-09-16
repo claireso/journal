@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Redirect, navigate } from '@reach/router'
 
 import { IconAngleRight } from '@common/components/Icons'
+import Toolbar from '@admin/components/Toolbar'
 
 import FlashGroup from './components/FlashGroup'
 import { AdminTabs } from './components/tabs'
@@ -19,7 +20,7 @@ const Layout = styled.div`
   grid-template-columns: 15rem auto;
   grid-template-rows: 6rem auto;
   grid-template-areas:
-    'title content'
+    'title toolbar'
     'sidebar content';
   min-height: 100vh;
 `
@@ -30,7 +31,10 @@ const Sidebar = styled.div`
 
 const Content = styled.div`
   background: var(--white);
+  border-left: 1px solid var(--gray-1);
+  box-shadow: 0 6px 6px #e0dede;
   grid-area: content;
+  padding: 2rem;
 `
 
 const Title = styled.h1`
@@ -49,14 +53,21 @@ const LinkGoToWebsite = styled(Link)`
 
 const ButtonToSignOut = styled(Button)`
   background: transparent;
-  border: 1px solid var(--gray-3);
+  color: var(--white);
+  border: 1px solid var(--gray-5);
   display: block;
-  margin: 1.5rem auto;
+  line-height: 1;
   max-width: 10rem;
+  padding: 1rem;
 
   &:hover {
     background: var(--gray-5);
+    color: var(--text);
   }
+`
+
+const ToolbarWrapper = styled.div`
+  grid-area: toolbar;
 `
 
 const App = ({ children, messages, ...props }) => {
@@ -74,8 +85,12 @@ const App = ({ children, messages, ...props }) => {
           View website
           <IconAngleRight />
         </LinkGoToWebsite>
-        <ButtonToSignOut onClick={props.signOut}>Sign out</ButtonToSignOut>
       </Sidebar>
+      <ToolbarWrapper>
+        <Toolbar>
+          <ButtonToSignOut onClick={props.signOut}>Sign out</ButtonToSignOut>
+        </Toolbar>
+      </ToolbarWrapper>
       <Content>
         <FlashGroup messages={messages} onClose={props.closeMessage} />
         {children}

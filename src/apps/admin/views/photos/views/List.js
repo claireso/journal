@@ -5,9 +5,9 @@ import Loader from '@common/components/Loader'
 import { IconPlus } from '@common/components/Icons'
 
 import Pager from '@admin/components/Pager'
-import Toolbar from '@admin/components/Toolbar'
-import List from '@admin/components/List'
+import { List, ListHeader } from '@admin/components/List'
 import { PrimaryButton } from '@admin/components/Buttons'
+import { Heading1 } from '@admin/components/Headings'
 
 import withModalEdition from '@admin/hoc/withModalEdition'
 import withNavigate from '@admin/hoc/withNavigate'
@@ -51,7 +51,11 @@ const Photos = props => {
 
   return (
     <React.Fragment>
-      <Toolbar>
+      <ListHeader>
+        <Heading1>
+          Your photographies{' '}
+          {photos.pager && <span>({photos.pager.count})</span>}
+        </Heading1>
         <PrimaryButton
           onClick={ev => {
             ev.preventDefault()
@@ -61,7 +65,7 @@ const Photos = props => {
           Add a new photo
           <IconPlus />
         </PrimaryButton>
-      </Toolbar>
+      </ListHeader>
 
       {photos.isLoading ? (
         <Loader />

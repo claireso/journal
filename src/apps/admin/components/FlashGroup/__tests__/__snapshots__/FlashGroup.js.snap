@@ -19,7 +19,7 @@ exports[`<FlashGroup /> should close flash messages 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
@@ -92,13 +92,8 @@ exports[`<FlashGroup /> should close flash messages 1`] = `
   bottom: 0;
 }
 
-.c0 {
-  position: relative;
-  z-index: 100;
-}
-
 .c0 > div {
-  margin: 0;
+  margin: calc(var(--gutter) * -1) calc(var(--gutter) * -1) var(--gutter);
 }
 
 <div>
@@ -168,7 +163,7 @@ exports[`<FlashGroup /> should render two flash messages 1`] = `
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
@@ -241,13 +236,8 @@ exports[`<FlashGroup /> should render two flash messages 1`] = `
   bottom: 0;
 }
 
-.c0 {
-  position: relative;
-  z-index: 100;
-}
-
 .c0 > div {
-  margin: 0;
+  margin: calc(var(--gutter) * -1) calc(var(--gutter) * -1) var(--gutter);
 }
 
 <div>

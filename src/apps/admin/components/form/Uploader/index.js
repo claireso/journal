@@ -8,6 +8,7 @@ import { IconUpload } from '@common/components/Icons'
 const UploaderWrapper = styled.div`
   border: 1px solid var(--gray-1);
   border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
   padding: 2rem;
   position: relative;
 `
