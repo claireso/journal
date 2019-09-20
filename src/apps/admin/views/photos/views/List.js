@@ -53,8 +53,7 @@ const Photos = props => {
     <React.Fragment>
       <ListHeader>
         <Heading1>
-          Your photographies{' '}
-          {photos.pager && <span>({photos.pager.count})</span>}
+          Your photos {photos.pager && <span>({photos.pager.count})</span>}
         </Heading1>
         <PrimaryButton
           onClick={ev => {

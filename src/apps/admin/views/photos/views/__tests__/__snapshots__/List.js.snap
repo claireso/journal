@@ -463,8 +463,7 @@ exports[`<List /> should display create form 1`] = `
     <h1
       class="c1"
     >
-      Your photographies
-       
+      Your photos 
       <span>
         (
         184
@@ -1173,8 +1172,7 @@ exports[`<List /> should display delete modal 1`] = `
     <h1
       class="c1"
     >
-      Your photographies
-       
+      Your photos 
       <span>
         (
         184
@@ -1845,8 +1843,7 @@ exports[`<List /> should display edit form 1`] = `
     <h1
       class="c1"
     >
-      Your photographies
-       
+      Your photos 
       <span>
         (
         184
@@ -2460,8 +2457,7 @@ exports[`<List /> should not display delete modal 1`] = `
     <h1
       class="c1"
     >
-      Your photographies
-       
+      Your photos 
       <span>
         (
         184
@@ -2868,8 +2864,7 @@ exports[`<List /> should not display edit form 1`] = `
     <h1
       class="c1"
     >
-      Your photographies
-       
+      Your photos 
       <span>
         (
         184
@@ -3276,8 +3271,7 @@ exports[`<List /> should render list photos 1`] = `
     <h1
       class="c1"
     >
-      Your photographies
-       
+      Your photos 
       <span>
         (
         184
@@ -3526,8 +3520,7 @@ exports[`<List /> should render loading view 1`] = `
     <h1
       class="c1"
     >
-      Your photographies
-       
+      Your photos 
     </h1>
     <button
       class="c2 c3"
