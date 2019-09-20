@@ -48,7 +48,8 @@ $ npm run server
 
 By default the application will be running at http://localhost:3000
 
-![](https://user-images.githubusercontent.com/961038/53236483-a69ede80-3694-11e9-9228-2dcbb6812c72.jpg)
 
-![](https://user-images.githubusercontent.com/961038/53236484-a69ede80-3694-11e9-901a-4cd079442def.jpg)
+![](https://user-images.githubusercontent.com/961038/65305127-af03bd00-db82-11e9-9036-88e15de38823.jpg)
+
+![](https://user-images.githubusercontent.com/961038/65305128-af03bd00-db82-11e9-9ccb-abef4a61ef29.jpg)
 
