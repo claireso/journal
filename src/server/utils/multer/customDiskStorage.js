@@ -34,22 +34,25 @@ class CustomDiskStorage {
         file.stream.pipe(outStream)
         outStream.on('error', cb)
         outStream.on('finish', async () => {
-          if (optimizations.quality) {
-            try {
-              const photo = await Jimp.read(finalPath)
+          try {
+            const photo = await Jimp.read(finalPath)
+
+            if (optimizations.quality) {
               await photo.quality(optimizations.quality)
               await photo.write(finalPath)
-            } catch (err) {
-              cb(err)
             }
-          }
 
-          cb(null, {
-            destination: destination,
-            filename: filename,
-            path: finalPath,
-            size: outStream.bytesWritten
-          })
+            cb(null, {
+              destination: destination,
+              filename: filename,
+              path: finalPath,
+              size: outStream.bytesWritten,
+              width: photo.bitmap.width,
+              height: photo.bitmap.height
+            })
+          } catch (err) {
+            cb(err)
+          }
         })
       })
     })

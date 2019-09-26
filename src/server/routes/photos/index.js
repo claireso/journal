@@ -52,10 +52,9 @@ router.post(
   authenticated,
   upload.single('file'),
   catchErrors(async (req, res) => {
-    const filename = req.file && req.file.filename
+    const file = req.file
 
-    //@TODO manage errors
-    if (!filename) {
+    if (!file) {
       res.status(422).json({
         message: 'Photo is required'
       })
@@ -64,7 +63,9 @@ router.post(
 
     const photo = photoModel({
       ...req.body,
-      name: filename
+      name: file.filename,
+      width: file.width,
+      height: file.height
     })
 
     const response = await pool.query(queries.insert_photo(), [
@@ -136,6 +137,7 @@ router.patch(
   upload.single('file'),
   catchErrors(async (req, res) => {
     const { id } = req.params
+    const file = req.file
 
     let response = await pool.query(queries.get_photo(id))
     const photo = response.rows[0]
@@ -145,13 +147,26 @@ router.patch(
       return
     }
 
-    const newPhoto = photoModel(req.body)
-    const filename = req.file && req.file.filename
+    const data = {
+      title: photo.title,
+      description: photo.description,
+      name: photo.name,
+      position: photo.position,
+      portrait: photo.portrait,
+      square: photo.square,
+      updated_at: new Date(),
+      // override with user inputs
+      ...req.body
+    }
 
     // TODO delete current file
-    if (filename) newPhoto.name = filename
+    if (file) {
+      data.name = file.filename
+      data.width = file.width
+      data.height = file.height
+    }
 
-    newPhoto.updated_at = new Date()
+    const newPhoto = photoModel(data)
 
     const fields = Object.entries(newPhoto)
       .map((entry, index) => `${entry[0]}=($${index + 1})`)

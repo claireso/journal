@@ -66,6 +66,7 @@ exports[`<Edit /> should render component 1`] = `
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
   transform: translate(0,-50%) rotate(90deg);
+  pointer-events: none;
 }
 
 .c10 {
@@ -296,36 +297,6 @@ exports[`<Edit /> should render component 1`] = `
         </svg>
       </div>
     </div>
-    <div
-      class="c8"
-    >
-      <label
-        class="c2"
-        for="portrait"
-      >
-        Portrait
-      </label>
-      <input
-        id="portrait"
-        name="portrait"
-        type="checkbox"
-      />
-    </div>
-    <div
-      class="c8"
-    >
-      <label
-        class="c2"
-        for="square"
-      >
-        Square
-      </label>
-      <input
-        id="square"
-        name="square"
-        type="checkbox"
-      />
-    </div>
     <input
       class="c11"
       type="submit"
@@ -424,6 +395,7 @@ exports[`<Edit /> should render error 1`] = `
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
   transform: translate(0,-50%) rotate(90deg);
+  pointer-events: none;
 }
 
 .c11 {
@@ -659,36 +631,6 @@ exports[`<Edit /> should render error 1`] = `
           />
         </svg>
       </div>
-    </div>
-    <div
-      class="c9"
-    >
-      <label
-        class="c3"
-        for="portrait"
-      >
-        Portrait
-      </label>
-      <input
-        id="portrait"
-        name="portrait"
-        type="checkbox"
-      />
-    </div>
-    <div
-      class="c9"
-    >
-      <label
-        class="c3"
-        for="square"
-      >
-        Square
-      </label>
-      <input
-        id="square"
-        name="square"
-        type="checkbox"
-      />
     </div>
     <input
       class="c12"

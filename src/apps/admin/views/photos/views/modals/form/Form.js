@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import Input from '@admin/components/form/Input'
 import Select from '@admin/components/form/Select'
-import Checkbox from '@admin/components/form/Checkbox'
 import Uploader from '@admin/components/form/Uploader'
 import { Group } from '@admin/components/form/components/Group'
 import Label from '@admin/components/form/components/Label'
@@ -69,18 +68,6 @@ class Form extends React.PureComponent {
               label: 'Right'
             }
           ]}
-        />
-
-        <Checkbox
-          name="portrait"
-          label="Portrait"
-          value={photo ? photo.portrait : false}
-        />
-
-        <Checkbox
-          name="square"
-          label="Square"
-          value={photo ? photo.square : false}
         />
 
         <SubmitButton

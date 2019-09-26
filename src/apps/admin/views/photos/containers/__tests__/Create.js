@@ -75,8 +75,6 @@ describe('<Create />', () => {
 
     await waitForElement(() => container.querySelector('img'))
 
-    fireEvent.click(getByLabelText(/portrait/i))
-
     fireEvent.submit(container.querySelector('form'))
 
     const expectedActions = [

@@ -15,6 +15,7 @@ const SelectWrapper = styled.div`
     right: 0.9rem;
     bottom: 0;
     transform: translate(0, -50%) rotate(90deg);
+    pointer-events: none;
   }
 `
 
