@@ -42,8 +42,6 @@ describe('<Form />', () => {
       }
     })
 
-    fireEvent.click(getByLabelText(/portrait/i))
-
     fireEvent.change(container.querySelector('input[type="file"]'), {
       target: {
         files: [new File(['(⌐□_□)'], 'mypicture.jpg', { type: 'image/jpeg' })]
@@ -63,8 +61,6 @@ describe('<Form />', () => {
       'my new photo description'
     )
     expect(dataAsFormData.get('position')).toEqual('center')
-    expect(dataAsFormData.get('portrait')).toBeTruthy()
-    // expect(dataAsFormData.get('file')).toEqual()
   })
 
   test('should display loader instead of submit button', () => {

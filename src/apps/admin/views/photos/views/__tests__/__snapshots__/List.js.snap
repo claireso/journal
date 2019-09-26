@@ -313,6 +313,7 @@ exports[`<List /> should display create form 1`] = `
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
   transform: translate(0,-50%) rotate(90deg);
+  pointer-events: none;
 }
 
 .c29 {
@@ -769,36 +770,6 @@ exports[`<List /> should display create form 1`] = `
               />
             </svg>
           </div>
-        </div>
-        <div
-          class="c27"
-        >
-          <label
-            class="c22"
-            for="portrait"
-          >
-            Portrait
-          </label>
-          <input
-            id="portrait"
-            name="portrait"
-            type="checkbox"
-          />
-        </div>
-        <div
-          class="c27"
-        >
-          <label
-            class="c22"
-            for="square"
-          >
-            Square
-          </label>
-          <input
-            id="square"
-            name="square"
-            type="checkbox"
-          />
         </div>
         <input
           class="c30"
@@ -1686,6 +1657,7 @@ exports[`<List /> should display edit form 1`] = `
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
   transform: translate(0,-50%) rotate(90deg);
+  pointer-events: none;
 }
 
 .c29 {
@@ -2156,36 +2128,6 @@ exports[`<List /> should display edit form 1`] = `
               />
             </svg>
           </div>
-        </div>
-        <div
-          class="c27"
-        >
-          <label
-            class="c21"
-            for="portrait"
-          >
-            Portrait
-          </label>
-          <input
-            id="portrait"
-            name="portrait"
-            type="checkbox"
-          />
-        </div>
-        <div
-          class="c27"
-        >
-          <label
-            class="c21"
-            for="square"
-          >
-            Square
-          </label>
-          <input
-            id="square"
-            name="square"
-            type="checkbox"
-          />
         </div>
         <input
           class="c30"

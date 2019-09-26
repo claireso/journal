@@ -35,6 +35,7 @@ exports[`<Select /> should render select 1`] = `
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
   transform: translate(0,-50%) rotate(90deg);
+  pointer-events: none;
 }
 
 .c3 {

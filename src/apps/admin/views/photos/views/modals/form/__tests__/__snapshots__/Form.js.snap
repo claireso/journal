@@ -59,6 +59,7 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
   transform: translate(0,-50%) rotate(90deg);
+  pointer-events: none;
 }
 
 .c8 {
@@ -274,36 +275,6 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
       </div>
     </div>
     <div
-      class="c6"
-    >
-      <label
-        class="c1"
-        for="portrait"
-      >
-        Portrait
-      </label>
-      <input
-        id="portrait"
-        name="portrait"
-        type="checkbox"
-      />
-    </div>
-    <div
-      class="c6"
-    >
-      <label
-        class="c1"
-        for="square"
-      >
-        Square
-      </label>
-      <input
-        id="square"
-        name="square"
-        type="checkbox"
-      />
-    </div>
-    <div
       class="c9"
     >
       <div
@@ -373,6 +344,7 @@ exports[`<Form /> should prefill form with photo data 1`] = `
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
   transform: translate(0,-50%) rotate(90deg);
+  pointer-events: none;
 }
 
 .c9 {
@@ -598,36 +570,6 @@ exports[`<Form /> should prefill form with photo data 1`] = `
         </svg>
       </div>
     </div>
-    <div
-      class="c7"
-    >
-      <label
-        class="c1"
-        for="portrait"
-      >
-        Portrait
-      </label>
-      <input
-        id="portrait"
-        name="portrait"
-        type="checkbox"
-      />
-    </div>
-    <div
-      class="c7"
-    >
-      <label
-        class="c1"
-        for="square"
-      >
-        Square
-      </label>
-      <input
-        id="square"
-        name="square"
-        type="checkbox"
-      />
-    </div>
     <input
       class="c10"
       type="submit"
@@ -696,6 +638,7 @@ exports[`<Form /> should render form 1`] = `
   -webkit-transform: translate(0,-50%) rotate(90deg);
   -ms-transform: translate(0,-50%) rotate(90deg);
   transform: translate(0,-50%) rotate(90deg);
+  pointer-events: none;
 }
 
 .c8 {
@@ -906,36 +849,6 @@ exports[`<Form /> should render form 1`] = `
           />
         </svg>
       </div>
-    </div>
-    <div
-      class="c6"
-    >
-      <label
-        class="c1"
-        for="portrait"
-      >
-        Portrait
-      </label>
-      <input
-        id="portrait"
-        name="portrait"
-        type="checkbox"
-      />
-    </div>
-    <div
-      class="c6"
-    >
-      <label
-        class="c1"
-        for="square"
-      >
-        Square
-      </label>
-      <input
-        id="square"
-        name="square"
-        type="checkbox"
-      />
     </div>
     <input
       class="c9"
