@@ -51,5 +51,5 @@ By default the application will be running at http://localhost:3000
 
 ![](https://user-images.githubusercontent.com/961038/65306681-44548080-db86-11e9-80d3-d873e3e72b6b.jpg)
 
-![](https://user-images.githubusercontent.com/961038/65306915-d52b5c00-db86-11e9-85b4-56156fe113cc.jpg)
+![](https://user-images.githubusercontent.com/961038/65673229-bcb9b680-e04a-11e9-89ea-2d6b94a3f989.jpg)
 
