@@ -1,6 +1,7 @@
 export const ADD_MESSAGE = 'ADD_MESSAGE'
 export const INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR'
 export const CLOSE_MESSAGE = 'CLOSE_MESSAGE'
+export const CLEAR_ALL_MESSAGES = 'CLEAR_ALL_MESSAGES'
 
 const displayMessage = status => ({ message, key }) => ({
   type: ADD_MESSAGE,
@@ -20,4 +21,8 @@ export const internalServerError = () =>
 export const closeMessage = index => ({
   type: CLOSE_MESSAGE,
   index
+})
+
+export const clearAllMessages = () => ({
+  type: CLEAR_ALL_MESSAGES
 })

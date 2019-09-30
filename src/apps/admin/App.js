@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
@@ -12,7 +12,7 @@ import { AdminTabs } from './components/tabs'
 import Link from './components/Links'
 import { Button } from './components/Buttons'
 
-import { closeMessage } from '@admin/actions/messages'
+import { closeMessage, clearAllMessages } from '@admin/actions/messages'
 import { signOut } from '@admin/actions/user'
 
 const Layout = styled.div`
@@ -74,6 +74,14 @@ const ToolbarWrapper = styled.div`
 `
 
 const App = ({ children, messages, ...props }) => {
+  useEffect(() => {
+    if (messages.length) {
+      props.clearAllMessages()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.location.pathname])
+
+  // Redirect to the view login if user is not logged
   if (!props.user || !props.user.cid) {
     const next = encodeURIComponent(props.location.pathname)
     return <Redirect to={`/admin/login?next=${next}`} noThrow />
@@ -110,7 +118,8 @@ App.propTypes = {
   }),
   messages: PropTypes.array.isRequired,
   closeMessage: PropTypes.func.isRequired,
-  signOut: PropTypes.func.isRequired
+  signOut: PropTypes.func.isRequired,
+  clearAllMessages: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -121,6 +130,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   closeMessage(type) {
     dispatch(closeMessage(type))
+  },
+  clearAllMessages() {
+    dispatch(clearAllMessages())
   },
   signOut() {
     dispatch(signOut())

@@ -31,6 +31,10 @@ export default (state = initialState, action) => {
       return [...state.slice(0, index), ...state.slice(index + 1)]
     }
 
+    case actionTypes.CLEAR_ALL_MESSAGES: {
+      return []
+    }
+
     default:
       return state
   }
