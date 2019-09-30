@@ -173,4 +173,14 @@ describe('reducer messages', () => {
       }
     ])
   })
+
+  test('should delete all messages', () => {
+    const action = {
+      type: actionTypes.CLEAR_ALL_MESSAGES
+    }
+
+    reducer = messagesReducer(reducer, action)
+
+    expect(reducer).toEqual([])
+  })
 })
