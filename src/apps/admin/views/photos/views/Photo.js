@@ -13,7 +13,7 @@ const PhotoWrapper = styled.li`
   display: grid;
   grid-template-columns: 8rem auto 12rem;
   grid-column-gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.4rem;
   transition: background 150ms ease-out;
 
   &:hover {
@@ -41,7 +41,7 @@ const PhotoInner = styled.div`
 
 const PhotoTitle = styled.h2`
   font-size: 1.4rem;
-  margin: 0.5rem 0 1rem;
+  margin: 0.4rem 0 1.2rem;
 `
 
 const PhotoDescription = styled.p`

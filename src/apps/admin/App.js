@@ -46,8 +46,9 @@ const Title = styled.h1`
 `
 
 const LinkGoToWebsite = styled(Link)`
-  border-top: 1px solid var(--gray-5);
+  box-shadow: 0 1px 0 var(--gray-5) inset;
   display: flex;
+  line-height: 1.4;
   padding: 2rem 2rem 2rem 4rem;
 `
 
@@ -58,7 +59,7 @@ const ButtonToSignOut = styled(Button)`
   display: block;
   line-height: 1;
   max-width: 10rem;
-  padding: 1rem;
+  padding: 0.8rem 1.2rem;
 
   &:hover {
     background: var(--gray-5);

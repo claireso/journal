@@ -8,7 +8,8 @@ exports[`<Input /> should render input 1`] = `
 .c1 {
   display: block;
   font-size: 1.6rem;
-  margin: 0 0 1rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
 }
 
 .c2 {
@@ -20,9 +21,10 @@ exports[`<Input /> should render input 1`] = `
   box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
-  padding: 1rem;
+  padding: 0.8rem 1.2rem;
   width: 100%;
   font-size: 1.4rem;
+  line-height: 1.71;
   -webkit-transition: border-color 250ms ease-out;
   transition: border-color 250ms ease-out;
 }

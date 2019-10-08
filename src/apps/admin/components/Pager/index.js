@@ -14,7 +14,7 @@ const PagerWrapper = styled.ul`
   padding: 0;
 
   > li {
-    margin: 0 0.3rem;
+    margin: 0 0.4rem;
   }
 `
 

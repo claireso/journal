@@ -19,7 +19,7 @@ const FlashWrapper = animated(styled.div`
   color: var(--white);
   font-size: 1.4rem;
   margin: 0 0 var(--gutter);
-  padding: 1.5rem;
+  padding: 2rem;
   position: relative;
   text-align: center;
 
@@ -27,7 +27,7 @@ const FlashWrapper = animated(styled.div`
     align-items: center;
     display: flex;
     position: absolute;
-    right: 0;
+    right: 0.6rem;
     top: 0;
     bottom: 0;
   }

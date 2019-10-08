@@ -13,13 +13,14 @@ export const ListHeader = styled.div`
   margin: 0 0 2rem;
 
   > h1 {
-    line-height: 1.8;
+    line-height: 1.835;
     margin: 0;
 
     > span {
       color: var(--gray-2);
       font-size: 2rem;
       font-weight: normal;
+      line-height: 1;
     }
   }
 `

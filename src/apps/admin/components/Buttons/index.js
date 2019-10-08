@@ -12,16 +12,17 @@ export const Button = styled.button`
   display: inline-flex;
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   transition: background 150ms ease-out;
 
   > svg {
-    margin: 0 -0.3rem 0 0.3rem;
+    margin: 0 -0.4rem 0 0.4rem;
   }
 
   & + & {
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 0.8rem;
   }
 `
 
@@ -75,21 +76,23 @@ export const SecondaryButton = styled(Button)`
   }
 
   & + ${StyledPrimaryButton} {
-    margin-left: 1rem;
+    margin-left: 0.8rem;
   }
 `
 
 export const PagerButton = styled(SecondaryButton)`
-  width: 4.4rem;
-  height: 4.4rem;
-  justify-content: center;
   align-items: center;
   font-size: 1.4rem;
+  height: 4.4rem;
+  justify-content: center;
+  padding: 0;
+  width: 4.4rem;
 `
 
 export const ButtonIcon = styled(Button)`
   background: none;
   color: inherit;
+  padding: 0.8rem;
 
   > svg {
     margin: 0;

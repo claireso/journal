@@ -18,8 +18,9 @@ exports[`<PrimaryButton /> should render button 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -27,11 +28,11 @@ exports[`<PrimaryButton /> should render button 1`] = `
 }
 
 .c1 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c1 + .c0 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c1:hover {
@@ -81,8 +82,9 @@ exports[`<PrimaryButton /> should render loader 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -91,11 +93,11 @@ exports[`<PrimaryButton /> should render loader 1`] = `
 }
 
 .c1 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c1 + .c0 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c1:hover {

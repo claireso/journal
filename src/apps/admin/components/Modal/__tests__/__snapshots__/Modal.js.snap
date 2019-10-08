@@ -21,7 +21,7 @@ exports[`<Modal /> should close component by prop update 1`] = `
 .c1 {
   background: var(--white);
   box-shadow: 0 0px 11px #898c8e;
-  padding: 3rem;
+  padding: 2rem;
   max-width: 45rem;
   min-height: calc(100vh);
   margin: 0 0 0 auto;
@@ -44,23 +44,25 @@ exports[`<Modal /> should close component by prop update 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
   position: absolute;
-  right: 0.5rem;
+  right: 1.2rem;
   top: 1.5rem;
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3 > svg {
@@ -121,7 +123,7 @@ exports[`<Modal /> should render component 1`] = `
 .c1 {
   background: var(--white);
   box-shadow: 0 0px 11px #898c8e;
-  padding: 3rem;
+  padding: 2rem;
   max-width: 45rem;
   min-height: calc(100vh);
   margin: 0 0 0 auto;
@@ -144,23 +146,25 @@ exports[`<Modal /> should render component 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
   position: absolute;
-  right: 0.5rem;
+  right: 1.2rem;
   top: 1.5rem;
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3 > svg {

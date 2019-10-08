@@ -20,7 +20,7 @@ const ModalWrapper = styled.div`
 const ModalInner = styled.div`
   background: var(--white);
   box-shadow: 0 0px 11px #898c8e;
-  padding: 3rem;
+  padding: 2rem;
   max-width: 45rem;
   min-height: calc(100vh);
   margin: 0 0 0 auto;
@@ -28,7 +28,7 @@ const ModalInner = styled.div`
 
 const ModalCloseButton = styled(ButtonIcon)`
   position: absolute;
-  right: 0.5rem;
+  right: 1.2rem;
   top: 1.5rem;
 `
 
