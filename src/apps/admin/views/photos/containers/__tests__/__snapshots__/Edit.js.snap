@@ -5,7 +5,7 @@ exports[`<Edit /> should load photo 1`] = `<div />`;
 exports[`<Edit /> should render component 1`] = `
 .c0 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 .c1 {
@@ -31,7 +31,8 @@ exports[`<Edit /> should render component 1`] = `
 .c2 {
   display: block;
   font-size: 1.6rem;
-  margin: 0 0 1rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
 }
 
 .c3 {
@@ -43,9 +44,10 @@ exports[`<Edit /> should render component 1`] = `
   box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
-  padding: 1rem;
+  padding: 0.8rem 1.2rem;
   width: 100%;
   font-size: 1.4rem;
+  line-height: 1.71;
   -webkit-transition: border-color 250ms ease-out;
   transition: border-color 250ms ease-out;
 }
@@ -148,9 +150,10 @@ exports[`<Edit /> should render component 1`] = `
   cursor: pointer;
   display: block;
   font-size: 1.4rem;
-  margin: 3rem auto 0;
+  line-height: 1;
+  margin: 2.8rem auto 0;
   outline: none;
-  padding: 1.5rem 5.5rem;
+  padding: 1.6rem 5.2rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }

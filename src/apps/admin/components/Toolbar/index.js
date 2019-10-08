@@ -8,7 +8,7 @@ const StyledToolbar = styled.div`
   display: flex;
   height: var(--toolbar-height);
   justify-content: flex-end;
-  padding: 1.3rem 2rem;
+  padding: 1.2rem 2rem;
 
   > p {
     align-items: center;

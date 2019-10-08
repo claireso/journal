@@ -15,9 +15,10 @@ export const SubmitButton = styled.input.attrs(() => ({
   cursor: pointer;
   display: block;
   font-size: 1.4rem;
-  margin: 3rem auto 0;
+  line-height: 1;
+  margin: 2.8rem auto 0;
   outline: none;
-  padding: 1.5rem 5.5rem;
+  padding: 1.6rem 5.2rem;
   transition: background 150ms ease-out;
 
   &:hover {
@@ -28,8 +29,8 @@ export const SubmitButton = styled.input.attrs(() => ({
 export const SubmitButtonLoading = styled.div.attrs(() => ({
   children: <Loader />
 }))`
-  margin: 3rem 0 0;
-  padding: 1.8rem 0 1.9rem;
+  margin: 2.8rem 0 0;
+  padding: 1.8rem 0 1.8rem;
 
   ${Loader} {
     margin: 0 auto;

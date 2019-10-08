@@ -18,8 +18,9 @@ exports[`<List /> should display create form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -27,11 +28,11 @@ exports[`<List /> should display create form 1`] = `
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3:hover {
@@ -55,31 +56,33 @@ exports[`<List /> should display create form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
   color: var(--text);
-  width: 4.4rem;
-  height: 4.4rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.4rem;
+  height: 4.4rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0;
+  width: 4.4rem;
 }
 
 .c15 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c15 + .c14 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c15:hover {
@@ -87,7 +90,7 @@ exports[`<List /> should display create form 1`] = `
 }
 
 .c15 + .c2 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c12 {
@@ -107,20 +110,22 @@ exports[`<List /> should display create form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
 }
 
 .c12 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c12 + .c11 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c12 > svg {
@@ -146,7 +151,7 @@ exports[`<List /> should display create form 1`] = `
 }
 
 .c13 > li {
-  margin: 0 0.3rem;
+  margin: 0 0.4rem;
 }
 
 .c4 {
@@ -171,7 +176,7 @@ exports[`<List /> should display create form 1`] = `
 }
 
 .c0 > h1 {
-  line-height: 1.8;
+  line-height: 1.835;
   margin: 0;
 }
 
@@ -179,11 +184,12 @@ exports[`<List /> should display create form 1`] = `
   color: var(--gray-2);
   font-size: 2rem;
   font-weight: normal;
+  line-height: 1;
 }
 
 .c1 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 .c20 {
@@ -205,7 +211,7 @@ exports[`<List /> should display create form 1`] = `
 .c17 {
   background: var(--white);
   box-shadow: 0 0px 11px #898c8e;
-  padding: 3rem;
+  padding: 2rem;
   max-width: 45rem;
   min-height: calc(100vh);
   margin: 0 0 0 auto;
@@ -228,23 +234,25 @@ exports[`<List /> should display create form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
   position: absolute;
-  right: 0.5rem;
+  right: 1.2rem;
   top: 1.5rem;
 }
 
 .c19 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c19 + .c18 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c19 > svg {
@@ -278,7 +286,8 @@ exports[`<List /> should display create form 1`] = `
 .c22 {
   display: block;
   font-size: 1.6rem;
-  margin: 0 0 1rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
 }
 
 .c23 {
@@ -290,9 +299,10 @@ exports[`<List /> should display create form 1`] = `
   box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
-  padding: 1rem;
+  padding: 0.8rem 1.2rem;
   width: 100%;
   font-size: 1.4rem;
+  line-height: 1.71;
   -webkit-transition: border-color 250ms ease-out;
   transition: border-color 250ms ease-out;
 }
@@ -388,9 +398,10 @@ exports[`<List /> should display create form 1`] = `
   cursor: pointer;
   display: block;
   font-size: 1.4rem;
-  margin: 3rem auto 0;
+  line-height: 1;
+  margin: 2.8rem auto 0;
   outline: none;
-  padding: 1.5rem 5.5rem;
+  padding: 1.6rem 5.2rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }
@@ -407,7 +418,7 @@ exports[`<List /> should display create form 1`] = `
   display: grid;
   grid-template-columns: 8rem auto 12rem;
   grid-column-gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }
@@ -800,8 +811,9 @@ exports[`<List /> should display delete modal 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -809,11 +821,11 @@ exports[`<List /> should display delete modal 1`] = `
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3:hover {
@@ -837,8 +849,9 @@ exports[`<List /> should display delete modal 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
@@ -846,11 +859,11 @@ exports[`<List /> should display delete modal 1`] = `
 }
 
 .c22 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c22 + .c14 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c22:hover {
@@ -858,7 +871,7 @@ exports[`<List /> should display delete modal 1`] = `
 }
 
 .c22 + .c2 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c16 {
@@ -878,31 +891,33 @@ exports[`<List /> should display delete modal 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
   color: var(--text);
-  width: 4.4rem;
-  height: 4.4rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.4rem;
+  height: 4.4rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0;
+  width: 4.4rem;
 }
 
 .c16 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c16 + .c15 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c16:hover {
@@ -910,7 +925,7 @@ exports[`<List /> should display delete modal 1`] = `
 }
 
 .c16 + .c2 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c12 {
@@ -930,20 +945,22 @@ exports[`<List /> should display delete modal 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
 }
 
 .c12 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c12 + .c11 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c12 > svg {
@@ -969,7 +986,7 @@ exports[`<List /> should display delete modal 1`] = `
 }
 
 .c13 > li {
-  margin: 0 0.3rem;
+  margin: 0 0.4rem;
 }
 
 .c4 {
@@ -994,7 +1011,7 @@ exports[`<List /> should display delete modal 1`] = `
 }
 
 .c0 > h1 {
-  line-height: 1.8;
+  line-height: 1.835;
   margin: 0;
 }
 
@@ -1002,11 +1019,12 @@ exports[`<List /> should display delete modal 1`] = `
   color: var(--gray-2);
   font-size: 2rem;
   font-weight: normal;
+  line-height: 1;
 }
 
 .c1 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 .c17 {
@@ -1023,7 +1041,7 @@ exports[`<List /> should display delete modal 1`] = `
 .c18 {
   background: var(--white);
   box-shadow: 0 0px 11px #898c8e;
-  padding: 3rem;
+  padding: 2rem;
   max-width: 45rem;
   min-height: calc(100vh);
   margin: 0 0 0 auto;
@@ -1046,23 +1064,25 @@ exports[`<List /> should display delete modal 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
   position: absolute;
-  right: 0.5rem;
+  right: 1.2rem;
   top: 1.5rem;
 }
 
 .c20 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c20 + .c19 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c20 > svg {
@@ -1086,7 +1106,7 @@ exports[`<List /> should display delete modal 1`] = `
   display: grid;
   grid-template-columns: 8rem auto 12rem;
   grid-column-gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }
@@ -1367,8 +1387,9 @@ exports[`<List /> should display edit form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -1376,11 +1397,11 @@ exports[`<List /> should display edit form 1`] = `
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3:hover {
@@ -1404,31 +1425,33 @@ exports[`<List /> should display edit form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
   color: var(--text);
-  width: 4.4rem;
-  height: 4.4rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.4rem;
+  height: 4.4rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0;
+  width: 4.4rem;
 }
 
 .c15 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c15 + .c14 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c15:hover {
@@ -1436,7 +1459,7 @@ exports[`<List /> should display edit form 1`] = `
 }
 
 .c15 + .c2 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c12 {
@@ -1456,20 +1479,22 @@ exports[`<List /> should display edit form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
 }
 
 .c12 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c12 + .c11 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c12 > svg {
@@ -1495,7 +1520,7 @@ exports[`<List /> should display edit form 1`] = `
 }
 
 .c13 > li {
-  margin: 0 0.3rem;
+  margin: 0 0.4rem;
 }
 
 .c4 {
@@ -1520,7 +1545,7 @@ exports[`<List /> should display edit form 1`] = `
 }
 
 .c0 > h1 {
-  line-height: 1.8;
+  line-height: 1.835;
   margin: 0;
 }
 
@@ -1528,11 +1553,12 @@ exports[`<List /> should display edit form 1`] = `
   color: var(--gray-2);
   font-size: 2rem;
   font-weight: normal;
+  line-height: 1;
 }
 
 .c1 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 .c16 {
@@ -1549,7 +1575,7 @@ exports[`<List /> should display edit form 1`] = `
 .c17 {
   background: var(--white);
   box-shadow: 0 0px 11px #898c8e;
-  padding: 3rem;
+  padding: 2rem;
   max-width: 45rem;
   min-height: calc(100vh);
   margin: 0 0 0 auto;
@@ -1572,23 +1598,25 @@ exports[`<List /> should display edit form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
   position: absolute;
-  right: 0.5rem;
+  right: 1.2rem;
   top: 1.5rem;
 }
 
 .c19 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c19 + .c18 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c19 > svg {
@@ -1622,7 +1650,8 @@ exports[`<List /> should display edit form 1`] = `
 .c21 {
   display: block;
   font-size: 1.6rem;
-  margin: 0 0 1rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
 }
 
 .c22 {
@@ -1634,9 +1663,10 @@ exports[`<List /> should display edit form 1`] = `
   box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
-  padding: 1rem;
+  padding: 0.8rem 1.2rem;
   width: 100%;
   font-size: 1.4rem;
+  line-height: 1.71;
   -webkit-transition: border-color 250ms ease-out;
   transition: border-color 250ms ease-out;
 }
@@ -1739,9 +1769,10 @@ exports[`<List /> should display edit form 1`] = `
   cursor: pointer;
   display: block;
   font-size: 1.4rem;
-  margin: 3rem auto 0;
+  line-height: 1;
+  margin: 2.8rem auto 0;
   outline: none;
-  padding: 1.5rem 5.5rem;
+  padding: 1.6rem 5.2rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }
@@ -1758,7 +1789,7 @@ exports[`<List /> should display edit form 1`] = `
   display: grid;
   grid-template-columns: 8rem auto 12rem;
   grid-column-gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }
@@ -2158,8 +2189,9 @@ exports[`<List /> should not display delete modal 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -2167,11 +2199,11 @@ exports[`<List /> should not display delete modal 1`] = `
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3:hover {
@@ -2179,11 +2211,11 @@ exports[`<List /> should not display delete modal 1`] = `
 }
 
 .c17 + .c14 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c17 + .c2 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c16 {
@@ -2203,31 +2235,33 @@ exports[`<List /> should not display delete modal 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
   color: var(--text);
-  width: 4.4rem;
-  height: 4.4rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.4rem;
+  height: 4.4rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0;
+  width: 4.4rem;
 }
 
 .c16 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c16 + .c15 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c16:hover {
@@ -2235,7 +2269,7 @@ exports[`<List /> should not display delete modal 1`] = `
 }
 
 .c16 + .c2 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c12 {
@@ -2255,20 +2289,22 @@ exports[`<List /> should not display delete modal 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
 }
 
 .c12 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c12 + .c11 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c12 > svg {
@@ -2294,7 +2330,7 @@ exports[`<List /> should not display delete modal 1`] = `
 }
 
 .c13 > li {
-  margin: 0 0.3rem;
+  margin: 0 0.4rem;
 }
 
 .c4 {
@@ -2319,7 +2355,7 @@ exports[`<List /> should not display delete modal 1`] = `
 }
 
 .c0 > h1 {
-  line-height: 1.8;
+  line-height: 1.835;
   margin: 0;
 }
 
@@ -2327,11 +2363,12 @@ exports[`<List /> should not display delete modal 1`] = `
   color: var(--gray-2);
   font-size: 2rem;
   font-weight: normal;
+  line-height: 1;
 }
 
 .c1 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 .c6 {
@@ -2342,7 +2379,7 @@ exports[`<List /> should not display delete modal 1`] = `
   display: grid;
   grid-template-columns: 8rem auto 12rem;
   grid-column-gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }
@@ -2573,8 +2610,9 @@ exports[`<List /> should not display edit form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -2582,11 +2620,11 @@ exports[`<List /> should not display edit form 1`] = `
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3:hover {
@@ -2610,31 +2648,33 @@ exports[`<List /> should not display edit form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
   color: var(--text);
-  width: 4.4rem;
-  height: 4.4rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.4rem;
+  height: 4.4rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0;
+  width: 4.4rem;
 }
 
 .c15 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c15 + .c14 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c15:hover {
@@ -2642,7 +2682,7 @@ exports[`<List /> should not display edit form 1`] = `
 }
 
 .c15 + .c2 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c12 {
@@ -2662,20 +2702,22 @@ exports[`<List /> should not display edit form 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
 }
 
 .c12 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c12 + .c11 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c12 > svg {
@@ -2701,7 +2743,7 @@ exports[`<List /> should not display edit form 1`] = `
 }
 
 .c13 > li {
-  margin: 0 0.3rem;
+  margin: 0 0.4rem;
 }
 
 .c4 {
@@ -2726,7 +2768,7 @@ exports[`<List /> should not display edit form 1`] = `
 }
 
 .c0 > h1 {
-  line-height: 1.8;
+  line-height: 1.835;
   margin: 0;
 }
 
@@ -2734,11 +2776,12 @@ exports[`<List /> should not display edit form 1`] = `
   color: var(--gray-2);
   font-size: 2rem;
   font-weight: normal;
+  line-height: 1;
 }
 
 .c1 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 .c6 {
@@ -2749,7 +2792,7 @@ exports[`<List /> should not display edit form 1`] = `
   display: grid;
   grid-template-columns: 8rem auto 12rem;
   grid-column-gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }
@@ -2980,8 +3023,9 @@ exports[`<List /> should render list photos 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -2989,11 +3033,11 @@ exports[`<List /> should render list photos 1`] = `
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3:hover {
@@ -3017,31 +3061,33 @@ exports[`<List /> should render list photos 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
   color: var(--text);
-  width: 4.4rem;
-  height: 4.4rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.4rem;
+  height: 4.4rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0;
+  width: 4.4rem;
 }
 
 .c15 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c15 + .c14 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c15:hover {
@@ -3049,7 +3095,7 @@ exports[`<List /> should render list photos 1`] = `
 }
 
 .c15 + .c2 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c12 {
@@ -3069,20 +3115,22 @@ exports[`<List /> should render list photos 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: none;
   color: inherit;
+  padding: 0.8rem;
 }
 
 .c12 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c12 + .c11 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c12 > svg {
@@ -3108,7 +3156,7 @@ exports[`<List /> should render list photos 1`] = `
 }
 
 .c13 > li {
-  margin: 0 0.3rem;
+  margin: 0 0.4rem;
 }
 
 .c4 {
@@ -3133,7 +3181,7 @@ exports[`<List /> should render list photos 1`] = `
 }
 
 .c0 > h1 {
-  line-height: 1.8;
+  line-height: 1.835;
   margin: 0;
 }
 
@@ -3141,11 +3189,12 @@ exports[`<List /> should render list photos 1`] = `
   color: var(--gray-2);
   font-size: 2rem;
   font-weight: normal;
+  line-height: 1;
 }
 
 .c1 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 .c6 {
@@ -3156,7 +3205,7 @@ exports[`<List /> should render list photos 1`] = `
   display: grid;
   grid-template-columns: 8rem auto 12rem;
   grid-column-gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.4rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }
@@ -3403,8 +3452,9 @@ exports[`<List /> should render loading view 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -3412,11 +3462,11 @@ exports[`<List /> should render loading view 1`] = `
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3:hover {
@@ -3440,7 +3490,7 @@ exports[`<List /> should render loading view 1`] = `
 }
 
 .c0 > h1 {
-  line-height: 1.8;
+  line-height: 1.835;
   margin: 0;
 }
 
@@ -3448,11 +3498,12 @@ exports[`<List /> should render loading view 1`] = `
   color: var(--gray-2);
   font-size: 2rem;
   font-weight: normal;
+  line-height: 1;
 }
 
 .c1 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 <div>

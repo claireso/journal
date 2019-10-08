@@ -12,9 +12,10 @@ const StyledInput = styled.input`
   box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
   outline: none;
-  padding: 1rem;
+  padding: 0.8rem 1.2rem;
   width: 100%;
   font-size: 1.4rem;
+  line-height: 1.71;
   transition: border-color 250ms ease-out;
 
   &:focus {
