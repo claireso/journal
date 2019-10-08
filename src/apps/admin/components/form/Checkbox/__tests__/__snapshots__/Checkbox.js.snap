@@ -20,7 +20,8 @@ exports[`<Checkbox /> should render checkbox 1`] = `
 .c1 {
   display: block;
   font-size: 1.6rem;
-  margin: 0 0 1rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
 }
 
 <div>
@@ -62,7 +63,8 @@ exports[`<Checkbox /> should render checked checkbox 1`] = `
 .c1 {
   display: block;
   font-size: 1.6rem;
-  margin: 0 0 1rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
 }
 
 <div>

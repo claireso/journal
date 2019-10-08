@@ -18,7 +18,7 @@ exports[`<Delete /> should not delete photo 1`] = `
 }
 
 .c9 + .c4 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c6 {
@@ -38,8 +38,9 @@ exports[`<Delete /> should not delete photo 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -48,11 +49,11 @@ exports[`<Delete /> should not delete photo 1`] = `
 }
 
 .c6 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c6 + .c5 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c6:hover {
@@ -84,8 +85,9 @@ exports[`<Delete /> should not delete photo 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
@@ -93,11 +95,11 @@ exports[`<Delete /> should not delete photo 1`] = `
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3:hover {
@@ -105,12 +107,12 @@ exports[`<Delete /> should not delete photo 1`] = `
 }
 
 .c3 + .c4 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c0 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 .c1 {
@@ -164,8 +166,9 @@ exports[`<Delete /> should render component 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--primary);
@@ -173,11 +176,11 @@ exports[`<Delete /> should render component 1`] = `
 }
 
 .c5 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c5 + .c4 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c5:hover {
@@ -201,8 +204,9 @@ exports[`<Delete /> should render component 1`] = `
   display: inline-flex;
   font-family: 'Roboto',Arial,sans-serif;
   font-size: 1.2rem;
+  line-height: 1.3333333;
   outline: none;
-  padding: 1.4rem;
+  padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
   background: var(--secondary);
@@ -210,11 +214,11 @@ exports[`<Delete /> should render component 1`] = `
 }
 
 .c3 > svg {
-  margin: 0 -0.3rem 0 0.3rem;
+  margin: 0 -0.4rem 0 0.4rem;
 }
 
 .c3 + .c2 {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0.8rem;
 }
 
 .c3:hover {
@@ -222,12 +226,12 @@ exports[`<Delete /> should render component 1`] = `
 }
 
 .c3 + .c4 {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 }
 
 .c0 {
   font-size: 2.4rem;
-  margin: 0 0 3rem;
+  margin: 0 0 2.4rem;
 }
 
 .c1 {
