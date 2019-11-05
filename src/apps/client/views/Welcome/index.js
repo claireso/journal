@@ -5,6 +5,7 @@ import { Heading1 } from '../../components/Headings'
 import { PrimaryLink } from '../../components/Links'
 
 const Wrapper = styled.div`
+  grid-column: 1 / -1;
   padding: 6rem 0;
 
   > p {

@@ -16,7 +16,7 @@ const Photos = (props = {}) => {
   return (
     <Fragment>
       {props.photos.map((photo, index) => (
-        <Photo key={index} {...photo} />
+        <Photo key={index} {...photo} row={index + 1} />
       ))}
       <Pager {...props.pager} navigate={navigate} />
     </Fragment>

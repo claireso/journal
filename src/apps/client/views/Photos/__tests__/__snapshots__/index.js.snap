@@ -2,41 +2,22 @@
 
 exports[`<Photos /> should render component 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  margin: 2rem 0;
-  padding: 0;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin: 2rem 0;
-  padding: 0;
-}
-
-.c1 {
-  width: 100%;
-  max-width: 810px;
-}
-
-.c3 {
-  font-size: 1.2rem;
+  grid-row-start: 1;
+  grid-column: 1 / span 6;
+  margin: 0;
 }
 
 .c4 {
+  grid-row-start: 2;
+  grid-column: 1 / span 6;
+  margin: 0;
+}
+
+.c2 {
+  font-size: 1.2rem;
+}
+
+.c3 {
   color: var(--gray-2);
   display: block;
   font-size: 1rem;
@@ -44,7 +25,7 @@ exports[`<Photos /> should render component 1`] = `
   margin: 0.4rem 0 0;
 }
 
-.c2 {
+.c1 {
   background: var(--gray-4);
   position: relative;
   padding-top: calc(0.666667 * 100%);
@@ -52,7 +33,7 @@ exports[`<Photos /> should render component 1`] = `
   margin: 0 0 1rem;
 }
 
-.c7 {
+.c6 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -76,25 +57,25 @@ exports[`<Photos /> should render component 1`] = `
   transition: border-color 150ms ease-out;
 }
 
-.c7:hover {
+.c6:hover {
   border-color: var(--gray-3);
 }
 
-.c6 {
-  margin: 0 0 8.5rem;
+.c5 {
+  grid-column: 1 / -1;
+  margin: 0;
   padding: 0;
   text-align: center;
 }
 
-.c6 > li {
+.c5 > li {
   display: inline-block;
   margin: 0 0.5rem;
 }
 
 @media (min-width:800px) {
   .c0 {
-    margin: 8.5rem 0;
-    padding: 0 8.5rem;
+    grid-column: calc(var(--grid-number-column-large) - 8) / span 8;
   }
 
   .c0 + figure {
@@ -103,13 +84,18 @@ exports[`<Photos /> should render component 1`] = `
 }
 
 @media (min-width:800px) {
-  .c5 {
-    margin: 8.5rem 0;
-    padding: 0 8.5rem;
+  .c4 {
+    grid-column: 3 / span 8;
   }
 
-  .c5 + figure {
+  .c4 + figure {
     margin-top: 20rem;
+  }
+}
+
+@media (min-width:800px) {
+  .c5 {
+    margin: 8.5rem 0;
   }
 }
 
@@ -119,49 +105,41 @@ exports[`<Photos /> should render component 1`] = `
   >
     <div
       class="c1"
+    />
+    <figcaption
+      class="c2"
     >
-      <div
-        class="c2"
-      />
-      <figcaption
+      <span />
+      <span
         class="c3"
       >
-        <span />
-        <span
-          class="c4"
-        >
-          Février 2019
-        </span>
-      </figcaption>
-    </div>
+        Février 2019
+      </span>
+    </figcaption>
   </figure>
   <figure
-    class="c5"
+    class="c4"
   >
     <div
       class="c1"
+    />
+    <figcaption
+      class="c2"
     >
-      <div
-        class="c2"
-      />
-      <figcaption
+      <span />
+      <span
         class="c3"
       >
-        <span />
-        <span
-          class="c4"
-        >
-          Janvier 2019
-        </span>
-      </figcaption>
-    </div>
+        Janvier 2019
+      </span>
+    </figcaption>
   </figure>
   <ul
-    class="c6"
+    class="c5"
   >
     <li>
       <button
-        class="c7"
+        class="c6"
         title="Next page"
       >
         »
@@ -169,7 +147,7 @@ exports[`<Photos /> should render component 1`] = `
     </li>
     <li>
       <button
-        class="c7"
+        class="c6"
         title="Last page"
       >
         »»

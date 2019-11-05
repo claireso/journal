@@ -19,7 +19,11 @@ export default createGlobalStyle`
     --gray-2: #6b6b6b;
     --gray-3: #bfbcbc;
     --gray-4: #edeff5;
-    --container-max-width: 131.5rem;
+
+    --container-max-width: 128rem;
+
+    --grid-number-column-small: 6;
+    --grid-number-column-large: 12;
 
     color: var(--text);
     font-family: "Roboto", Arial, sans-serif;

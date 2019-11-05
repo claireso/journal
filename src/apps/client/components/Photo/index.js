@@ -5,67 +5,100 @@ import styled from 'styled-components'
 import withInViewStatement from '@common/hoc/withInViewStatement'
 import LazyLoadedImage from '@common/components/LazyLoadedImage'
 
-const mapPosition = {
-  center: 'center',
-  left: 'flex-start',
-  right: 'flex-end'
-}
+const PORTRAIT = 'portrait'
+const LANDSCAPE = 'landscape'
+const SQUARE = 'square'
+const SMALL_SCREEN = 'small'
+const LARGE_SCREEN = 'large'
+const POSITION_LEFT = 'left'
+const POSITION_RIGHT = 'right'
+const GRID_COLUMN_NUMBER = 12
 
-const mapSizes = {
-  portrait: {
+const configImages = {
+  [PORTRAIT]: {
     width: 385,
-    height: 578
+    height: 578,
+    cellWidth: {
+      large: 4,
+      small: 5
+    }
   },
-  landscape: {
+  [LANDSCAPE]: {
     width: 810,
-    height: 540
+    height: 540,
+    cellWidth: {
+      large: 8,
+      small: 6
+    }
   },
-  square: {
+  [SQUARE]: {
     width: 578,
-    height: 578
+    height: 578,
+    cellWidth: {
+      large: 5,
+      small: 5
+    }
   }
 }
 
-const getSize = ({ portrait, square } = {}) => {
-  let key = 'landscape'
+const getConfig = ({ portrait, square } = {}) => {
+  let key = LANDSCAPE
 
-  if (portrait) key = 'portrait'
-  if (square) key = 'square'
+  if (portrait) key = PORTRAIT
+  if (square) key = SQUARE
 
-  return mapSizes[key]
+  return configImages[key]
 }
 
 const getRatio = props => {
-  const size = getSize(props)
+  const config = getConfig(props)
 
-  return (size.height / size.width).toFixed(6)
+  return (config.height / config.width).toFixed(6)
 }
 
-const getMaxWidth = props => {
-  const size = getSize(props)
+const getColumnStart = ({ screen, ...props }) => {
+  const config = getConfig(props)
 
-  return `${size.width}px`
+  // On small screen, align left all images
+  if (screen === SMALL_SCREEN) {
+    return 1
+  }
+
+  // On large screen
+  if (props.position === POSITION_LEFT) {
+    return 2
+  }
+
+  if (props.position === POSITION_RIGHT) {
+    return `calc(var(--grid-number-column-large) - ${config.cellWidth[screen]})`
+  }
+
+  // Position center
+  // @FIXME: try to use var(--grid-number-column-large)
+  return (GRID_COLUMN_NUMBER - config.cellWidth[screen]) / 2 + 1
+}
+
+const getColumn = ({ screen, ...props }) => {
+  const config = getConfig(props)
+
+  const columnEnd = config.cellWidth[screen]
+  const columnStart = getColumnStart({ screen, ...props })
+
+  return `${columnStart} / span ${columnEnd}`
 }
 
 const PhotoWrapper = styled.figure`
-  display: flex;
-  justify-content: ${props => mapPosition[props.position]};
-  margin: 2rem 0;
-  padding: 0;
+  grid-row-start: ${props => props.row};
+  grid-column: ${props => getColumn({ ...props, screen: SMALL_SCREEN })};
+  margin: 0;
 
   @media (min-width: 800px) {
-    margin: 8.5rem 0;
-    padding: 0 8.5rem;
+    grid-column: ${props => getColumn({ ...props, screen: LARGE_SCREEN })};
 
     & + figure {
       margin-top: 20rem;
     }
   }
-`
-
-const PhotoInner = styled.div`
-  width: 100%;
-  max-width: ${props => getMaxWidth(props)};
 `
 
 const Title = styled.figcaption`
@@ -104,22 +137,25 @@ const Picture = styled(LazyLoadedImage).attrs(props => ({
 class Photo extends React.PureComponent {
   render() {
     return (
-      <PhotoWrapper position={this.props.position}>
-        <PhotoInner portrait={this.props.portrait} square={this.props.square}>
-          <PictureWrapper
-            portrait={this.props.portrait}
-            square={this.props.square}
-          >
-            {this.props.inView && <Picture name={this.props.name} />}
-          </PictureWrapper>
-          <Title>
-            <span dangerouslySetInnerHTML={{ __html: this.props.title }} />
+      <PhotoWrapper
+        position={this.props.position}
+        portrait={this.props.portrait}
+        square={this.props.square}
+        row={this.props.row}
+      >
+        <PictureWrapper
+          portrait={this.props.portrait}
+          square={this.props.square}
+        >
+          {this.props.inView && <Picture name={this.props.name} />}
+        </PictureWrapper>
+        <Title>
+          <span dangerouslySetInnerHTML={{ __html: this.props.title }} />
 
-            {this.props.description && (
-              <Description>{this.props.description}</Description>
-            )}
-          </Title>
-        </PhotoInner>
+          {this.props.description && (
+            <Description>{this.props.description}</Description>
+          )}
+        </Title>
       </PhotoWrapper>
     )
   }
@@ -128,6 +164,7 @@ class Photo extends React.PureComponent {
 Photo.propTypes = {
   description: PropTypes.string,
   name: PropTypes.string.isRequired,
+  row: PropTypes.number.isRequired,
   portrait: PropTypes.bool.isRequired,
   position: PropTypes.string.isRequired,
   square: PropTypes.bool.isRequired,
