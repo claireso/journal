@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import usePopstate from '@common/hooks/usePopstate'
 import usePhotosReducer from './hooks/usePhotosReducer'
@@ -7,6 +8,10 @@ import usePhotosReducer from './hooks/usePhotosReducer'
 import Loader from '@common/components/Loader'
 import Photos from './views/Photos'
 import Welcome from './views/Welcome'
+
+const LoaderWrapper = styled.div`
+  grid-column: 1 / -1;
+`
 
 const App = props => {
   const initialState = {
@@ -46,7 +51,9 @@ const App = props => {
   usePopstate(onNavigate)
 
   return state.isLoading ? (
-    <Loader />
+    <LoaderWrapper>
+      <Loader />
+    </LoaderWrapper>
   ) : photos && photos.length > 0 ? (
     <Photos photos={photos} pager={pager} />
   ) : (
