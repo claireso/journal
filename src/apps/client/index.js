@@ -12,12 +12,17 @@ import BannerOffline from './components/banners/Offline'
 import BannerNotifications from './components/banners/Notifications'
 
 const Main = styled.main`
+  display: grid;
+  grid-template-columns: repeat(var(--grid-number-column-small), 1fr);
+  grid-gap: 2rem;
   max-width: var(--container-max-width);
-  padding: 0 2rem;
   margin: 0 auto;
+  padding: 2rem;
 
   @media (min-width: 800px) {
-    padding: 0 4rem;
+    grid-gap: 0 2rem;
+    grid-template-columns: repeat(var(--grid-number-column-large), 1fr);
+    padding-top: 4rem;
   }
 `
 
