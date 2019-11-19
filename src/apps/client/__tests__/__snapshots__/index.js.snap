@@ -54,6 +54,34 @@ exports[`<Client /> should render <Loader /> then new page 1`] = `
 `;
 
 exports[`<Client /> should render <Photos /> 1`] = `
+.c7 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 1rem 1.2rem 1.1rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background: white;
+  border: 1px solid var(--gray-1);
+  display: inline-block;
+  font-family: 'Roboto',Arial,sans-serif;
+  width: 4.2rem;
+  color: var(--text);
+  font-size: 1.6rem;
+  font-weight: 700;
+  will-change: border-color;
+  -webkit-transition: border-color 150ms ease-out;
+  transition: border-color 150ms ease-out;
+}
+
+.c7:hover {
+  border-color: var(--gray-3);
+}
+
 .c1 {
   grid-row-start: 1;
   grid-column: 1 / span 6;
@@ -84,34 +112,6 @@ exports[`<Client /> should render <Photos /> 1`] = `
   padding-top: calc(0.666667 * 100%);
   width: 100%;
   margin: 0 0 1rem;
-}
-
-.c7 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 1rem 1.2rem 1.1rem;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  background: white;
-  border: 1px solid var(--gray-1);
-  display: inline-block;
-  font-family: 'Roboto',Arial,sans-serif;
-  width: 4.2rem;
-  color: var(--text);
-  font-size: 1.6rem;
-  font-weight: 700;
-  will-change: border-color;
-  -webkit-transition: border-color 150ms ease-out;
-  transition: border-color 150ms ease-out;
-}
-
-.c7:hover {
-  border-color: var(--gray-3);
 }
 
 .c6 {
