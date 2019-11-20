@@ -7,7 +7,7 @@ import Modal from '@admin/components/Modal'
 /**
  * HOC to open / close the CRUD Modal according url parameters
  */
-export default (WrappedComponent, getModalChildComponent = () => {}) => {
+export default (getModalChildComponent = () => {}) => WrappedComponent => {
   class ComponentWithModalEdition extends React.Component {
     getModal = () => {
       const query = extractQueryFromLocation(this.props.location)

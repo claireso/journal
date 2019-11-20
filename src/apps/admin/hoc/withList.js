@@ -8,7 +8,7 @@ import usePrevious from '@common/hooks/usePrevious'
   - component is mounted
   - user is changing page
 */
-export default (WrappedComponent, loadData = () => {}) => {
+export default (loadData = () => {}) => WrappedComponent => {
   const ComponentWithList = props => {
     const { location } = props
     const previousLocation = usePrevious(location)
