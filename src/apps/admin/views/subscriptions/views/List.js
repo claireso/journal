@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 
 import Loader from '@common/components/Loader'
 
@@ -88,6 +89,8 @@ const getModalChildComponent = (id, action) => {
   return component
 }
 
-export default withNavigate(
-  withModalEdition(withList(Subscriptions, loadData), getModalChildComponent)
-)
+export default compose(
+  withNavigate(),
+  withModalEdition(getModalChildComponent),
+  withList(loadData)
+)(Subscriptions)

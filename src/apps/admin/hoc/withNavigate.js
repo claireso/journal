@@ -7,7 +7,7 @@ import extractQueryFromLocation from '@common/utils/extractQueryFromLocation'
 /**
  * HOC to create a custom 'navigate' property in order to modify the url query string
  */
-export default WrappedComponent => {
+export default () => WrappedComponent => {
   const ComponentWithNavigate = props => {
     const { navigate: originalNavigate, location } = props
 
