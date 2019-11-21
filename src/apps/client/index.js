@@ -6,6 +6,8 @@ import Styles from './Styles'
 
 import { TranslationsProvider } from '@common/context/Translations'
 
+import ErrorBoundary from '@common/components/ErrorBoundary'
+
 import App from './App'
 
 import BannerOffline from './components/banners/Offline'
@@ -31,14 +33,16 @@ const Page = props => {
 
   return (
     <TranslationsProvider translations={translations.client}>
-      <Styles />
+      <ErrorBoundary>
+        <Styles />
 
-      <BannerOffline />
-      <BannerNotifications />
+        <BannerOffline />
+        <BannerNotifications />
 
-      <Main>
-        <App items={items} pager={pager} />
-      </Main>
+        <Main>
+          <App items={items} pager={pager} />
+        </Main>
+      </ErrorBoundary>
     </TranslationsProvider>
   )
 }

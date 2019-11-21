@@ -5,6 +5,7 @@ import loadable from '@loadable/component'
 import Styles from './Styles'
 
 import Loader from '@common/components/Loader'
+import ErrorBoundary from '@common/components/ErrorBoundary'
 
 import App from './App'
 import ScrollUp from './components/ScrollUp'
@@ -28,7 +29,7 @@ const AsyncLogin = loadable(() => import('./views/login/containers/Login'), {
 
 const Admin = () => {
   return (
-    <React.Fragment>
+    <ErrorBoundary>
       <Styles />
       <Router basepath="/admin">
         <ScrollUp default>
@@ -41,7 +42,7 @@ const Admin = () => {
           <AsyncLogin path="login" />
         </ScrollUp>
       </Router>
-    </React.Fragment>
+    </ErrorBoundary>
   )
 }
 
