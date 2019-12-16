@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import usePopstate from '@common/hooks/usePopstate'
+import useHistory from '@common/hooks/useHistory'
 import usePhotosReducer from './hooks/usePhotosReducer'
 
 import Loader from '@common/components/Loader'
@@ -24,31 +24,24 @@ const App = props => {
 
   const { items: photos, pager } = state
 
-  const loadPhotos = useCallback(
-    async page => {
-      actions.setLoading(true)
+  const onNavigate = useCallback(async event => {
+    const page = event.state && event.state.page
 
-      try {
-        await actions.getPhotos(page)
-        actions.setLoading(false)
-      } catch (err) {
-        if (window.location.search !== '') {
-          window.location.href = '/'
-        }
-      }
-    },
-    [actions]
-  )
-
-  const onNavigate = useCallback(
-    event => {
+    try {
       window.scroll(0, 0)
-      loadPhotos(event.state && event.state.page)
-    },
-    [loadPhotos]
-  )
+      actions.setLoading(true)
+      await actions.getPhotos(page)
+      actions.setLoading(false)
+    } catch (err) {
+      if (window.location.search !== '') {
+        // eslint-disable-next-line require-atomic-updates
+        window.location.href = '/'
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  usePopstate(onNavigate)
+  useHistory({ onPopstate: onNavigate })
 
   return state.isLoading ? (
     <LoaderWrapper>

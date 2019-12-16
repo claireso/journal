@@ -1,17 +1,18 @@
 import React, { Fragment, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
+import useHistory from '@common/hooks/useHistory'
+
 import Photo from '../../components/Photo'
 import Pager from '../../components/Pager'
 
 const Photos = (props = {}) => {
-  const navigate = useCallback(page => {
-    const state = { page }
-    window.history.pushState(state, '', `?page=${page}`)
+  const history = useHistory()
 
-    const popStateEvent = new PopStateEvent('popstate', { state })
-    dispatchEvent(popStateEvent)
-  }, [])
+  const navigate = useCallback(
+    page => history.pushState({ page }, '', `?page=${page}`),
+    [history]
+  )
 
   return (
     <Fragment>
