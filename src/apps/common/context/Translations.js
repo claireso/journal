@@ -10,7 +10,7 @@ const TranslationsProvider = ({ children, translations }) => (
 )
 
 TranslationsProvider.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.element,
   translations: PropTypes.object
 }
 

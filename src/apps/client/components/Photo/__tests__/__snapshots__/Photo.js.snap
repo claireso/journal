@@ -2,6 +2,7 @@
 
 exports[`<Photo /> should render photo (landscape center) 1`] = `
 .c0 {
+  grid-row-start: 0;
   grid-column: 1 / span 6;
   margin: 0;
 }
@@ -61,6 +62,7 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
 
 exports[`<Photo /> should render photo (landscape left) 1`] = `
 .c0 {
+  grid-row-start: 0;
   grid-column: 1 / span 6;
   margin: 0;
 }
@@ -120,6 +122,7 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
 
 exports[`<Photo /> should render photo (landscape right) 1`] = `
 .c0 {
+  grid-row-start: 0;
   grid-column: 1 / span 6;
   margin: 0;
 }
@@ -179,6 +182,7 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 
 exports[`<Photo /> should render photo (portrait center) 1`] = `
 .c0 {
+  grid-row-start: 0;
   grid-column: 1 / span 5;
   margin: 0;
 }
@@ -238,6 +242,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 
 exports[`<Photo /> should render photo (square center) 1`] = `
 .c0 {
+  grid-row-start: 0;
   grid-column: 1 / span 5;
   margin: 0;
 }

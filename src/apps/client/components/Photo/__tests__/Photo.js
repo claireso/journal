@@ -4,36 +4,35 @@ import { render } from '@testing-library/react'
 import Photo from '../index'
 
 describe('<Photo />', () => {
+  const renderPhoto = (props = {}) =>
+    render(<Photo {...global.__PHOTO__} row={0} {...props} />)
+
   test('should render photo (landscape center)', () => {
-    const { container } = render(<Photo {...global.__PHOTO__} />)
+    const { container } = renderPhoto()
 
     expect(container).toMatchSnapshot()
   })
 
   test('should render photo (landscape left)', () => {
-    const { container } = render(
-      <Photo {...global.__PHOTO__} position="left" />
-    )
+    const { container } = renderPhoto({ position: 'left' })
 
     expect(container).toMatchSnapshot()
   })
 
   test('should render photo (landscape right)', () => {
-    const { container } = render(
-      <Photo {...global.__PHOTO__} position="right" />
-    )
+    const { container } = renderPhoto({ position: 'right' })
 
     expect(container).toMatchSnapshot()
   })
 
   test('should render photo (portrait center)', () => {
-    const { container } = render(<Photo {...global.__PHOTO__} portrait />)
+    const { container } = renderPhoto({ portrait: true })
 
     expect(container).toMatchSnapshot()
   })
 
   test('should render photo (square center)', () => {
-    const { container } = render(<Photo {...global.__PHOTO__} square />)
+    const { container } = renderPhoto({ square: true })
 
     expect(container).toMatchSnapshot()
   })
