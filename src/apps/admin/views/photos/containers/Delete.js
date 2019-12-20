@@ -37,7 +37,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Delete)
+export default connect(mapStateToProps, mapDispatchToProps)(Delete)
