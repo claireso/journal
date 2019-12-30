@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import useHistory from '@common/hooks/useHistory'
-import usePhotosReducer from './hooks/usePhotosReducer'
+import { usePhotos } from './providers/photosProvider'
 
 import Loader from '@common/components/Loader'
 import Photos from './views/Photos'
@@ -13,14 +12,8 @@ const LoaderWrapper = styled.div`
   grid-column: 1 / -1;
 `
 
-const App = props => {
-  const initialState = {
-    isLoading: false,
-    items: props.items,
-    pager: props.pager
-  }
-
-  const [state, actions] = usePhotosReducer(initialState)
+const App = () => {
+  const [state, actions] = usePhotos()
 
   const { items: photos, pager } = state
 
@@ -52,11 +45,6 @@ const App = props => {
   ) : (
     <Welcome />
   )
-}
-
-App.propTypes = {
-  items: PropTypes.array,
-  pager: PropTypes.object
 }
 
 export default App

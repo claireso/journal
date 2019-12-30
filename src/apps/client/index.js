@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Styles from './Styles'
 
 import { TranslationsProvider } from '@common/context/Translations'
+import { PhotosProvider } from './providers/photosProvider'
 
 import ErrorBoundary from '@common/components/ErrorBoundary'
 
@@ -31,6 +32,12 @@ const Main = styled.main`
 const Page = props => {
   const { translations, items, pager } = props
 
+  const initialState = {
+    isLoading: false,
+    items: items,
+    pager: pager
+  }
+
   return (
     <TranslationsProvider translations={translations.client}>
       <ErrorBoundary>
@@ -40,7 +47,9 @@ const Page = props => {
         <BannerNotifications />
 
         <Main>
-          <App items={items} pager={pager} />
+          <PhotosProvider initialState={initialState}>
+            <App />
+          </PhotosProvider>
         </Main>
       </ErrorBoundary>
     </TranslationsProvider>
