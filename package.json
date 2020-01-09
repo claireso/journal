@@ -13,7 +13,7 @@
     "lint": "eslint src/.",
     "lint:write": "eslint src/. --fix",
     "prettier": "prettier --write \"src/**/*.js\"",
-    "bootstrap": "babel-node scripts/bootstrap.js",
+    "bootstrap": "babel-node scripts/bootstrap.js --config-file ./.babel-server.babelrc",
     "test": "IS_PUSH_ENABLED=true jest --coverage",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
