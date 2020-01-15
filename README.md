@@ -12,38 +12,91 @@ Note: the theme is optimized for pictures with an aspect ratio of 3:2 or 1:1
 
 # Installation:
 
-- Clone the repository
+### Clone the repository
 
-- Install dependencies
+```
+git clone git@github.com:claireso/journal.git
+```
+
+### Install dependencies
 
 ```
 $ npm install
 ```
 
-- Copy config-sample.json and configure your application
+### Copy config-sample.json and configure your application
+
+For that, you need to choose the environment in which you want to run your application (`development`, `production`, `test` etc.)
+
+Example for a development environment:
 
 ```
-$ cp config-sample.json config.json
+$ cp config-sample.json config.development.json
 ```
 
-- Bootstrap the application. it will create and setup the database and create an account for the admin
+Example for a production environment:
 
 ```
-$ npm run bootstrap
+$ cp config-sample.json config.production.json
 ```
 
-Note: if you enable web push notification during the installation, do not forget to update your config file with the public and private key printed in your console
-
-- Build the application
+Example for a test environment:
 
 ```
-$ npm run build
+$ cp config-sample.json config.test.json
 ```
 
-Run your website
+Note: Web push notifications are enable only in a `production` environment
+
+### Bootstrap the application
+
+It will create and setup the database and create an account for the admin
+
+Set `NODE_ENV` as your environment. If you omit to declare your environment, the application will choose your `development` environment by default.
+
+Example for a development environment:
 
 ```
-$ npm run server
+$ NODE_ENV=development npm run bootstrap
+```
+
+Example for a production environment:
+
+```
+$ NODE_ENV=production npm run bootstrap
+```
+
+Example for a test environment:
+
+```
+$ NODE_ENV=test npm run bootstrap
+```
+
+Note: if you enable web push notifications during the installation, do not forget to update your config file with the public and private key printed in your console
+
+### Build and run the application
+
+Set `NODE_ENV` as your environment. If you omit to declare your environment, the application will choose your `development` environment by default.
+
+Example for a development environment:
+
+```
+$ NODE_ENV=development npm run build
+$ NODE_ENV=development npm run server
+```
+
+Example for a production environment:
+
+```
+$ NODE_ENV=production npm run build
+$ NODE_ENV=production npm run server
+```
+
+Example for a test environment:
+
+```
+$ NODE_ENV=test npm run build
+$ NODE_ENV=test npm run server
 ```
 
 By default the application will be running at http://localhost:3000

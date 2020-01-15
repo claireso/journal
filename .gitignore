@@ -1,7 +1,7 @@
 node_modules
 npm-debug.log
 public
-config.json
-htpasswd
+config.*.json
 dist
 coverage
+

@@ -5,8 +5,10 @@ import chalk from 'chalk'
 import promptly from 'promptly'
 import webpush from 'web-push'
 
-import config from '../config'
+import getConfig from '../config'
 import db from '../src/server/db/db'
+
+const config = getConfig()
 
 // create folder
 const createFolder = (folderPath) => {
@@ -46,7 +48,7 @@ const createDatabase = async (databaseName) => {
   if (!databaseName)
     throw new Error('Missing database name in config')
 
-  console.log(chalk.cyan(`Step 1/4 : Creating database "${ databaseName }"...`))
+  console.log(chalk.cyan(`Step 1/4 : Creating database "${databaseName}"...`))
 
   try {
     await pgtools.createdb(
@@ -60,7 +62,7 @@ const createDatabase = async (databaseName) => {
     )
 
     console.log(chalk.green(`Database has been created successfully`))
-  } catch(err) {
+  } catch (err) {
     console.log(chalk.red('Failed: an error has occurred during the creation of the database'))
     throw err
   }
@@ -162,7 +164,7 @@ const createAdminUser = async (client) => {
     console.log(
       chalk.green('Admin user has been created successfully.')
     )
-  } catch(err) {
+  } catch (err) {
     console.log(chalk.red('An error has occured during the admin user creation'))
     throw err
   }
@@ -191,7 +193,7 @@ const bootstrap = (restart) => {
       } else {
         if (restart !== true) {
           // ask to drop database
-          const answer = await promptly.confirm(`Database ${ databaseName } already exists. Do you want do continue?(y/n)`)
+          const answer = await promptly.confirm(`Database ${databaseName} already exists. Do you want do continue?(y/n)`)
 
           if (answer === false) {
             process.exit()

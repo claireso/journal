@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const LoadablePlugin = require('@loadable/webpack-plugin')
 const { InjectManifest } = require('workbox-webpack-plugin')
 
-const config = require('../config.json')
+const config = require('../config.js')()
 
 const ROOT = process.cwd()
 const notificationConfig = config.website.notification
