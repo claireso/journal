@@ -1,6 +1,7 @@
 import webpush from 'web-push'
+import getConfig from '../../../config'
 
-import config from '../../../config'
+const config = getConfig()
 
 // CONSTANTS
 export const NOTIFICATION_NEW_PHOTO = 'NOTIFICATION_NEW_PHOTO'
