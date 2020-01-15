@@ -7,11 +7,13 @@ import admin from './routes/admin'
 import api from './routes/api'
 import client from './routes/client'
 
-import config from '../../config'
+import getConfig from '../../config'
 
 const PORT = process.env.PORT || 3000
 
 const app = express()
+
+const config = getConfig()
 
 app.disable('x-powered-by')
 
