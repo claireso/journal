@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Delete /> should not delete photo 1`] = `
-.c8 {
+.c7 {
   margin: 2rem 0;
-  -webkit-animation: eMLfYp 800ms ease-in-out infinite alternate;
-  animation: eMLfYp 800ms ease-in-out infinite alternate;
+  -webkit-animation: jitEcr 800ms ease-in-out infinite alternate;
+  animation: jitEcr 800ms ease-in-out infinite alternate;
 }
 
-.c8:after {
+.c7:after {
   background: var(--primary);
   border-radius: 50%;
   content: '';
@@ -17,11 +17,7 @@ exports[`<Delete /> should not delete photo 1`] = `
   margin: 0 auto;
 }
 
-.c9 + .c4 {
-  margin: 0 0 0 0.8rem;
-}
-
-.c6 {
+.c5 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -48,23 +44,23 @@ exports[`<Delete /> should not delete photo 1`] = `
   padding: 1.1rem 1rem 1.3rem;
 }
 
-.c6 > svg {
+.c5 > svg {
   margin: 0 -0.4rem 0 0.4rem;
 }
 
-.c6 + .c5 {
+.c5 + .c4 {
   margin: 0 0 0 0.8rem;
 }
 
-.c6:hover {
+.c5:hover {
   background: var(--primary-lighter);
 }
 
-.c6 .c7 {
+.c5 .c6 {
   margin: 0;
 }
 
-.c6 .c7:after {
+.c5 .c6:after {
   background: #fff;
 }
 
@@ -106,7 +102,7 @@ exports[`<Delete /> should not delete photo 1`] = `
   background: var(--secondary-darker);
 }
 
-.c3 + .c4 {
+.c3 + .sc-AykKE {
   margin-left: 0.8rem;
 }
 
@@ -133,15 +129,15 @@ exports[`<Delete /> should not delete photo 1`] = `
     class="c1"
   >
     <button
-      class="c2 c3"
+      class="sc-AykKD c2 c3"
     >
        Cancel 
     </button>
     <button
-      class="c4 c5 c6"
+      class="sc-AykKD sc-AykKE c4 c5"
     >
       <span
-        class="c7 c8"
+        class="c6 c7"
       />
     </button>
   </p>
@@ -252,12 +248,12 @@ exports[`<Delete /> should render component 1`] = `
     class="c1"
   >
     <button
-      class="c2 c3"
+      class="sc-AykKD c2 c3"
     >
        Cancel 
     </button>
     <button
-      class="c4 c5"
+      class="sc-AykKD c4 c5"
     >
        
       Yes

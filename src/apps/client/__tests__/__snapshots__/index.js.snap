@@ -3,8 +3,8 @@
 exports[`<Client /> should render <Loader /> then new page 1`] = `
 .c2 {
   margin: 2rem 0;
-  -webkit-animation: eMLfYp 800ms ease-in-out infinite alternate;
-  animation: eMLfYp 800ms ease-in-out infinite alternate;
+  -webkit-animation: jitEcr 800ms ease-in-out infinite alternate;
+  animation: jitEcr 800ms ease-in-out infinite alternate;
 }
 
 .c2:after {
@@ -28,6 +28,18 @@ exports[`<Client /> should render <Loader /> then new page 1`] = `
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 2rem;
+}
+
+@media (min-width:800px) {
+
+}
+
+@media (min-width:800px) {
+
+}
+
+@media (min-width:800px) {
+
 }
 
 @media (min-width:800px) {
@@ -212,7 +224,7 @@ exports[`<Client /> should render <Photos /> 1`] = `
     >
       <li>
         <button
-          class="c7"
+          class="sc-AykKC c7"
           title="Next page"
         >
           »
@@ -220,7 +232,7 @@ exports[`<Client /> should render <Photos /> 1`] = `
       </li>
       <li>
         <button
-          class="c7"
+          class="sc-AykKC c7"
           title="Last page"
         >
           »»
@@ -289,7 +301,7 @@ exports[`<Client /> should render <Welcome /> 1`] = `
       <p>
         Go to your 
         <a
-          class="c3"
+          class="sc-fzXfLS c3"
           href="/admin"
         >
           admin

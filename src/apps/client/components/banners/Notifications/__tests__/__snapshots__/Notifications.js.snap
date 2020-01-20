@@ -82,7 +82,7 @@ exports[`<Notifications /> should render component 1`] = `
       Enable notifications to be alerted of new publication
     </a>
     <button
-      class="c3"
+      class="sc-AykKC c3"
     >
       <svg
         height="16"
