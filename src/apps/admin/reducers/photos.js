@@ -106,7 +106,11 @@ export default (state = initialState, action) => {
           ...state.items.slice(0, index),
           ...state.items.slice(index + 1)
         ],
-        isProcessing: false
+        isProcessing: false,
+        pager: {
+          ...state.pager,
+          count: state.pager.count - 1
+        }
       }
     }
 

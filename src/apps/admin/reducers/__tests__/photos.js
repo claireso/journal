@@ -628,7 +628,7 @@ describe('reducer photos', () => {
         }
       ],
       pager: {
-        count: 184,
+        count: 183,
         totalPages: 19,
         limit: 10,
         offset: 0,

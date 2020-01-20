@@ -36,8 +36,8 @@ exports[`<Button /> should render button 1`] = `
 exports[`<Button /> should render loader 1`] = `
 .c2 {
   margin: 2rem 0;
-  -webkit-animation: eMLfYp 800ms ease-in-out infinite alternate;
-  animation: eMLfYp 800ms ease-in-out infinite alternate;
+  -webkit-animation: jitEcr 800ms ease-in-out infinite alternate;
+  animation: jitEcr 800ms ease-in-out infinite alternate;
 }
 
 .c2:after {

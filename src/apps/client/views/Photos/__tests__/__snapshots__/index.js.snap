@@ -139,7 +139,7 @@ exports[`<Photos /> should render component 1`] = `
   >
     <li>
       <button
-        class="c6"
+        class="sc-AykKH c6"
         title="Next page"
       >
         »
@@ -147,7 +147,7 @@ exports[`<Photos /> should render component 1`] = `
     </li>
     <li>
       <button
-        class="c6"
+        class="sc-AykKH c6"
         title="Last page"
       >
         »»

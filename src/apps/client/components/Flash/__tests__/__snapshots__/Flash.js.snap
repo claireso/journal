@@ -94,7 +94,7 @@ exports[`<Flash /> should render close button and call props onClose 1`] = `
       Flash message
     </p>
     <button
-      class="c2"
+      class="sc-AykKC c2"
     >
       <svg
         height="16"

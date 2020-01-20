@@ -108,7 +108,7 @@ exports[`<FlashGroup /> should close flash messages 1`] = `
     >
       Success message
       <button
-        class="c2 c3"
+        class="sc-AykKD c2 c3"
       >
         <svg
           height="16"
@@ -128,7 +128,7 @@ exports[`<FlashGroup /> should close flash messages 1`] = `
     >
       Error message
       <button
-        class="c2 c3"
+        class="sc-AykKD c2 c3"
       >
         <svg
           height="16"
@@ -254,7 +254,7 @@ exports[`<FlashGroup /> should render two flash messages 1`] = `
     >
       Success message
       <button
-        class="c2 c3"
+        class="sc-AykKD c2 c3"
       >
         <svg
           height="16"
@@ -274,7 +274,7 @@ exports[`<FlashGroup /> should render two flash messages 1`] = `
     >
       Error message
       <button
-        class="c2 c3"
+        class="sc-AykKD c2 c3"
       >
         <svg
           height="16"

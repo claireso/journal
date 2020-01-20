@@ -104,12 +104,12 @@ exports[`<Delete /> should render component 1`] = `
     class="c1"
   >
     <button
-      class="c2 c3"
+      class="sc-AykKD c2 c3"
     >
        Cancel 
     </button>
     <button
-      class="c4 c5"
+      class="sc-AykKD c4 c5"
     >
        
       Yes

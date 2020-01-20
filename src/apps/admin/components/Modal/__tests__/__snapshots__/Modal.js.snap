@@ -85,7 +85,7 @@ exports[`<Modal /> should close component by prop update 1`] = `
       style="opacity: 0; transform: translate3d(4rem, 0, 0);"
     >
       <button
-        class="c2 c3"
+        class="sc-AykKD sc-AykKI c2 c3"
       >
         <svg
           height="26"
@@ -187,7 +187,7 @@ exports[`<Modal /> should render component 1`] = `
       style="opacity: 0; transform: translate3d(4rem, 0, 0);"
     >
       <button
-        class="c2 c3"
+        class="sc-AykKD sc-AykKI c2 c3"
       >
         <svg
           height="26"
