@@ -16,6 +16,7 @@ export default ({ content = '', config = {}, manifest = {}, styles = '', preload
       <meta name="theme-color" content="#868585"/>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
       <link rel="manifest" href="${manifest['manifest.json']}" />
+      <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png" />
 
       ${ styles}
 
