@@ -202,7 +202,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 .c1 {
   background: var(--gray-4);
   position: relative;
-  padding-top: calc(1.501299 * 100%);
+  padding-top: calc(1.500000 * 100%);
   width: 100%;
   margin: 0 0 1rem;
 }
