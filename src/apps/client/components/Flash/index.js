@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 
 import { IconClose } from '@common/components/Icons'
+import { useTranslations } from '@common/context/Translations'
 
 import { ButtonIcon } from '../Button'
 
@@ -46,6 +47,8 @@ const Flash = ({ status, onClose, children }) => {
     to: { opacity: 1 }
   })
 
+  const translations = useTranslations()
+
   return (
     <FlashWrapper style={styles} status={status}>
       {children}
@@ -55,6 +58,7 @@ const Flash = ({ status, onClose, children }) => {
             event.preventDefault()
             onClose()
           }}
+          aria-label={translations.bannerCloseButton}
         >
           <IconClose />
         </ButtonIcon>
