@@ -16,24 +16,24 @@ const GRID_COLUMN_NUMBER = 12
 
 const configImages = {
   [PORTRAIT]: {
-    width: 385,
-    height: 578,
+    width: 400,
+    height: 600,
     cellWidth: {
       large: 4,
       small: 5
     }
   },
   [LANDSCAPE]: {
-    width: 810,
-    height: 540,
+    width: 820,
+    height: 546.6666,
     cellWidth: {
       large: 8,
       small: 6
     }
   },
   [SQUARE]: {
-    width: 578,
-    height: 578,
+    width: 505,
+    height: 505,
     cellWidth: {
       large: 5,
       small: 5
