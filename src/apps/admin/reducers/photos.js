@@ -42,6 +42,10 @@ export default (state = initialState, action) => {
       return {
         ...state,
         items: [action.response, ...state.items],
+        pager: {
+          ...state.pager,
+          count: state.pager.count + 1
+        },
         error: null,
         isProcessing: false
       }

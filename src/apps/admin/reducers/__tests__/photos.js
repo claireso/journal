@@ -294,7 +294,7 @@ describe('reducer photos', () => {
         }
       ],
       pager: {
-        count: 184,
+        count: 185,
         totalPages: 19,
         limit: 10,
         offset: 0,
@@ -362,7 +362,7 @@ describe('reducer photos', () => {
         }
       ],
       pager: {
-        count: 184,
+        count: 185,
         totalPages: 19,
         limit: 10,
         offset: 0,
@@ -434,7 +434,7 @@ describe('reducer photos', () => {
         }
       ],
       pager: {
-        count: 184,
+        count: 185,
         totalPages: 19,
         limit: 10,
         offset: 0,
@@ -502,7 +502,7 @@ describe('reducer photos', () => {
         }
       ],
       pager: {
-        count: 184,
+        count: 185,
         totalPages: 19,
         limit: 10,
         offset: 0,
@@ -570,7 +570,7 @@ describe('reducer photos', () => {
         }
       ],
       pager: {
-        count: 184,
+        count: 185,
         totalPages: 19,
         limit: 10,
         offset: 0,
@@ -628,7 +628,7 @@ describe('reducer photos', () => {
         }
       ],
       pager: {
-        count: 183,
+        count: 184,
         totalPages: 19,
         limit: 10,
         offset: 0,
