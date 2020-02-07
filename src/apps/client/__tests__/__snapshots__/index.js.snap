@@ -3,8 +3,8 @@
 exports[`<Client /> should render <Loader /> then new page 1`] = `
 .c2 {
   margin: 2rem 0;
-  -webkit-animation: jitEcr 800ms ease-in-out infinite alternate;
-  animation: jitEcr 800ms ease-in-out infinite alternate;
+  -webkit-animation: jgQpwH 800ms ease-in-out infinite alternate;
+  animation: jgQpwH 800ms ease-in-out infinite alternate;
 }
 
 .c2:after {
@@ -224,7 +224,7 @@ exports[`<Client /> should render <Photos /> 1`] = `
     >
       <li>
         <button
-          class="sc-AykKC c7"
+          class="sc-AxjAm c7"
           title="Next page"
         >
           »
@@ -232,7 +232,7 @@ exports[`<Client /> should render <Photos /> 1`] = `
       </li>
       <li>
         <button
-          class="sc-AykKC c7"
+          class="sc-AxjAm c7"
           title="Last page"
         >
           »»
@@ -301,7 +301,7 @@ exports[`<Client /> should render <Welcome /> 1`] = `
       <p>
         Go to your 
         <a
-          class="sc-fzXfLS c3"
+          class="sc-fznyAO c3"
           href="/admin"
         >
           admin

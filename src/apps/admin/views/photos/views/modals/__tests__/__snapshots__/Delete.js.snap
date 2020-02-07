@@ -3,8 +3,8 @@
 exports[`<Delete /> should not delete photo 1`] = `
 .c7 {
   margin: 2rem 0;
-  -webkit-animation: jitEcr 800ms ease-in-out infinite alternate;
-  animation: jitEcr 800ms ease-in-out infinite alternate;
+  -webkit-animation: jgQpwH 800ms ease-in-out infinite alternate;
+  animation: jgQpwH 800ms ease-in-out infinite alternate;
 }
 
 .c7:after {
@@ -102,7 +102,7 @@ exports[`<Delete /> should not delete photo 1`] = `
   background: var(--secondary-darker);
 }
 
-.c3 + .sc-AykKE {
+.c3 + .sc-AxiKw {
   margin-left: 0.8rem;
 }
 
@@ -129,12 +129,12 @@ exports[`<Delete /> should not delete photo 1`] = `
     class="c1"
   >
     <button
-      class="sc-AykKD c2 c3"
+      class="sc-AxirZ c2 c3"
     >
        Cancel 
     </button>
     <button
-      class="sc-AykKD sc-AykKE c4 c5"
+      class="sc-AxirZ sc-AxiKw c4 c5"
     >
       <span
         class="c6 c7"
@@ -248,12 +248,12 @@ exports[`<Delete /> should render component 1`] = `
     class="c1"
   >
     <button
-      class="sc-AykKD c2 c3"
+      class="sc-AxirZ c2 c3"
     >
        Cancel 
     </button>
     <button
-      class="sc-AykKD c4 c5"
+      class="sc-AxirZ c4 c5"
     >
        
       Yes

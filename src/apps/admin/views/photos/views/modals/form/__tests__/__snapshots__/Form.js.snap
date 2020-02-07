@@ -127,8 +127,8 @@ exports[`<Form /> should display loader instead of submit button 1`] = `
 
 .c11 {
   margin: 2rem 0;
-  -webkit-animation: jitEcr 800ms ease-in-out infinite alternate;
-  animation: jitEcr 800ms ease-in-out infinite alternate;
+  -webkit-animation: jgQpwH 800ms ease-in-out infinite alternate;
+  animation: jgQpwH 800ms ease-in-out infinite alternate;
 }
 
 .c11:after {

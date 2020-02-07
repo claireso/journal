@@ -483,7 +483,7 @@ exports[`<List /> should display create form 1`] = `
       </span>
     </h1>
     <button
-      class="sc-AykKD c2 c3"
+      class="sc-AxirZ c2 c3"
     >
       Add a new photo
       <svg
@@ -521,7 +521,7 @@ exports[`<List /> should display create form 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -537,7 +537,7 @@ exports[`<List /> should display create form 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -574,7 +574,7 @@ exports[`<List /> should display create form 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -590,7 +590,7 @@ exports[`<List /> should display create form 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -613,7 +613,7 @@ exports[`<List /> should display create form 1`] = `
   >
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Next page"
       >
         »
@@ -621,7 +621,7 @@ exports[`<List /> should display create form 1`] = `
     </li>
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Last page"
       >
         »»
@@ -639,7 +639,7 @@ exports[`<List /> should display create form 1`] = `
       style="opacity: 0; transform: translate3d(4rem, 0, 0);"
     >
       <button
-        class="sc-AykKD c11 c18 c19"
+        class="sc-AxirZ c11 c18 c19"
       >
         <svg
           height="26"
@@ -1171,7 +1171,7 @@ exports[`<List /> should display delete modal 1`] = `
       </span>
     </h1>
     <button
-      class="sc-AykKD c2 c3"
+      class="sc-AxirZ c2 c3"
     >
       Add a new photo
       <svg
@@ -1209,7 +1209,7 @@ exports[`<List /> should display delete modal 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -1225,7 +1225,7 @@ exports[`<List /> should display delete modal 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -1262,7 +1262,7 @@ exports[`<List /> should display delete modal 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -1278,7 +1278,7 @@ exports[`<List /> should display delete modal 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -1301,7 +1301,7 @@ exports[`<List /> should display delete modal 1`] = `
   >
     <li>
       <button
-        class="sc-AykKD c14 c15 c16"
+        class="sc-AxirZ c14 c15 c16"
         title="Next page"
       >
         »
@@ -1309,7 +1309,7 @@ exports[`<List /> should display delete modal 1`] = `
     </li>
     <li>
       <button
-        class="sc-AykKD c14 c15 c16"
+        class="sc-AxirZ c14 c15 c16"
         title="Last page"
       >
         »»
@@ -1327,7 +1327,7 @@ exports[`<List /> should display delete modal 1`] = `
       style="opacity: 0; transform: translate3d(4rem, 0, 0);"
     >
       <button
-        class="sc-AykKD c11 c19 c20"
+        class="sc-AxirZ c11 c19 c20"
       >
         <svg
           height="26"
@@ -1352,12 +1352,12 @@ exports[`<List /> should display delete modal 1`] = `
         class="c21"
       >
         <button
-          class="sc-AykKD c14 c22"
+          class="sc-AxirZ c14 c22"
         >
            Cancel 
         </button>
         <button
-          class="sc-AykKD c2 c3"
+          class="sc-AxirZ c2 c3"
         >
            
           Yes
@@ -1854,7 +1854,7 @@ exports[`<List /> should display edit form 1`] = `
       </span>
     </h1>
     <button
-      class="sc-AykKD c2 c3"
+      class="sc-AxirZ c2 c3"
     >
       Add a new photo
       <svg
@@ -1892,7 +1892,7 @@ exports[`<List /> should display edit form 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -1908,7 +1908,7 @@ exports[`<List /> should display edit form 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -1945,7 +1945,7 @@ exports[`<List /> should display edit form 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -1961,7 +1961,7 @@ exports[`<List /> should display edit form 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -1984,7 +1984,7 @@ exports[`<List /> should display edit form 1`] = `
   >
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Next page"
       >
         »
@@ -1992,7 +1992,7 @@ exports[`<List /> should display edit form 1`] = `
     </li>
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Last page"
       >
         »»
@@ -2010,7 +2010,7 @@ exports[`<List /> should display edit form 1`] = `
       style="opacity: 0; transform: translate3d(4rem, 0, 0);"
     >
       <button
-        class="sc-AykKD c11 c18 c19"
+        class="sc-AxirZ c11 c18 c19"
       >
         <svg
           height="26"
@@ -2436,7 +2436,7 @@ exports[`<List /> should not display delete modal 1`] = `
       </span>
     </h1>
     <button
-      class="sc-AykKD c2 c3"
+      class="sc-AxirZ c2 c3"
     >
       Add a new photo
       <svg
@@ -2474,7 +2474,7 @@ exports[`<List /> should not display delete modal 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -2490,7 +2490,7 @@ exports[`<List /> should not display delete modal 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -2527,7 +2527,7 @@ exports[`<List /> should not display delete modal 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -2543,7 +2543,7 @@ exports[`<List /> should not display delete modal 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -2566,7 +2566,7 @@ exports[`<List /> should not display delete modal 1`] = `
   >
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Next page"
       >
         »
@@ -2574,7 +2574,7 @@ exports[`<List /> should not display delete modal 1`] = `
     </li>
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Last page"
       >
         »»
@@ -2849,7 +2849,7 @@ exports[`<List /> should not display edit form 1`] = `
       </span>
     </h1>
     <button
-      class="sc-AykKD c2 c3"
+      class="sc-AxirZ c2 c3"
     >
       Add a new photo
       <svg
@@ -2887,7 +2887,7 @@ exports[`<List /> should not display edit form 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -2903,7 +2903,7 @@ exports[`<List /> should not display edit form 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -2940,7 +2940,7 @@ exports[`<List /> should not display edit form 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -2956,7 +2956,7 @@ exports[`<List /> should not display edit form 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -2979,7 +2979,7 @@ exports[`<List /> should not display edit form 1`] = `
   >
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Next page"
       >
         »
@@ -2987,7 +2987,7 @@ exports[`<List /> should not display edit form 1`] = `
     </li>
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Last page"
       >
         »»
@@ -3262,7 +3262,7 @@ exports[`<List /> should render list photos 1`] = `
       </span>
     </h1>
     <button
-      class="sc-AykKD c2 c3"
+      class="sc-AxirZ c2 c3"
     >
       Add a new photo
       <svg
@@ -3300,7 +3300,7 @@ exports[`<List /> should render list photos 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -3316,7 +3316,7 @@ exports[`<List /> should render list photos 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -3353,7 +3353,7 @@ exports[`<List /> should render list photos 1`] = `
         class="c10"
       >
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Edit"
         >
           <svg
@@ -3369,7 +3369,7 @@ exports[`<List /> should render list photos 1`] = `
           </svg>
         </button>
         <button
-          class="sc-AykKD c11 c12"
+          class="sc-AxirZ c11 c12"
           title="Delete"
         >
           <svg
@@ -3392,7 +3392,7 @@ exports[`<List /> should render list photos 1`] = `
   >
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Next page"
       >
         »
@@ -3400,7 +3400,7 @@ exports[`<List /> should render list photos 1`] = `
     </li>
     <li>
       <button
-        class="sc-AykKD sc-AykKG c14 c15"
+        class="sc-AxirZ sc-AxhUy c14 c15"
         title="Last page"
       >
         »»
@@ -3413,8 +3413,8 @@ exports[`<List /> should render list photos 1`] = `
 exports[`<List /> should render loading view 1`] = `
 .c4 {
   margin: 2rem 0;
-  -webkit-animation: jitEcr 800ms ease-in-out infinite alternate;
-  animation: jitEcr 800ms ease-in-out infinite alternate;
+  -webkit-animation: jgQpwH 800ms ease-in-out infinite alternate;
+  animation: jgQpwH 800ms ease-in-out infinite alternate;
 }
 
 .c4:after {
@@ -3508,7 +3508,7 @@ exports[`<List /> should render loading view 1`] = `
       Your photos 
     </h1>
     <button
-      class="sc-AykKD c2 c3"
+      class="sc-AxirZ c2 c3"
     >
       Add a new photo
       <svg
