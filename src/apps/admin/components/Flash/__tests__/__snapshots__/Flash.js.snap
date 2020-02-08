@@ -76,7 +76,7 @@ exports[`<Flash /> should close flash message 1`] = `
   >
     Flash message
     <button
-      class="sc-AykKD c1 c2"
+      class="sc-AxirZ c1 c2"
     >
       <svg
         height="16"

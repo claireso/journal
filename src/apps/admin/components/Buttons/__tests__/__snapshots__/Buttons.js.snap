@@ -41,7 +41,7 @@ exports[`<PrimaryButton /> should render button 1`] = `
 
 <div>
   <button
-    class="sc-AykKD c0 c1"
+    class="sc-AxirZ c0 c1"
   >
     Button
   </button>
@@ -51,8 +51,8 @@ exports[`<PrimaryButton /> should render button 1`] = `
 exports[`<PrimaryButton /> should render loader 1`] = `
 .c3 {
   margin: 2rem 0;
-  -webkit-animation: jitEcr 800ms ease-in-out infinite alternate;
-  animation: jitEcr 800ms ease-in-out infinite alternate;
+  -webkit-animation: jgQpwH 800ms ease-in-out infinite alternate;
+  animation: jgQpwH 800ms ease-in-out infinite alternate;
 }
 
 .c3:after {
@@ -114,7 +114,7 @@ exports[`<PrimaryButton /> should render loader 1`] = `
 
 <div>
   <button
-    class="sc-AykKD sc-AykKE c0 c1"
+    class="sc-AxirZ sc-AxiKw c0 c1"
   >
     <span
       class="c2 c3"
