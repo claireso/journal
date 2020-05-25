@@ -18,10 +18,6 @@
     "analytics": {
       "ga": ""
     },
-    "notification": {
-      "publicKey": "",
-      "privateKey": ""
-    },
     "translations": {
       "client": {
         "bannerOffline": "You are currently offline. Connect to the internet for access to the latest photos",
@@ -32,5 +28,9 @@
         "pushNewPhotoPosted": "New photo posted"
       }
     }
+  },
+  "notifications": {
+    "publicKey": "",
+    "privateKey": ""
   }
 }

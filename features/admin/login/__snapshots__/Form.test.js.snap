@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormLogin /> should render component 1`] = `
+.c0 {
+  margin: 0 0 var(--gutter);
+}
+
+.c1 {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
+}
+
+.c2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid var(--gray-1);
+  border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
+  display: block;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 1.71;
+  -webkit-transition: border-color 250ms ease-out;
+  transition: border-color 250ms ease-out;
+}
+
+.c2:focus {
+  border-color: var(--gray-2);
+}
+
+.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--primary);
+  border: none;
+  border-radius: 3.6rem;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 1.4rem;
+  line-height: 1;
+  margin: 2.8rem auto 0;
+  outline: none;
+  padding: 1.6rem 5.2rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+}
+
+.c3:hover {
+  background: var(--primary-lighter);
+}
+
+<div>
+  <form
+    method="POST"
+  >
+    <div
+      class="c0"
+    >
+      <label
+        class="c1"
+        for="username"
+      >
+        Username
+      </label>
+      <input
+        class="c2"
+        id="username"
+        name="username"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="c0"
+    >
+      <label
+        class="c1"
+        for="password"
+      >
+        Password
+      </label>
+      <input
+        class="c2"
+        id="password"
+        name="password"
+        required=""
+        type="password"
+        value=""
+      />
+    </div>
+    <input
+      class="c3"
+      type="submit"
+      value="Log in"
+    />
+  </form>
+</div>
+`;
+
+exports[`<FormLogin /> should render component in processing status 1`] = `
+.c0 {
+  margin: 0 0 var(--gutter);
+}
+
+.c1 {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
+}
+
+.c2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid var(--gray-1);
+  border-radius: 0.4rem;
+  box-shadow: 1px 1px 3px var(--box-shadow);
+  display: block;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 1.71;
+  -webkit-transition: border-color 250ms ease-out;
+  transition: border-color 250ms ease-out;
+}
+
+.c2:focus {
+  border-color: var(--gray-2);
+}
+
+.c5 {
+  margin: 2rem 0;
+  -webkit-animation: jBcSpD 800ms ease-in-out infinite alternate;
+  animation: jBcSpD 800ms ease-in-out infinite alternate;
+}
+
+.c5:after {
+  background: var(--primary);
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  margin: 0 auto;
+}
+
+.c3 {
+  margin: 2.8rem 0 0;
+  padding: 1.8rem 0 1.8rem;
+}
+
+.c3 .c4 {
+  margin: 0 auto;
+}
+
+<div>
+  <form
+    method="POST"
+  >
+    <div
+      class="c0"
+    >
+      <label
+        class="c1"
+        for="username"
+      >
+        Username
+      </label>
+      <input
+        class="c2"
+        id="username"
+        name="username"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="c0"
+    >
+      <label
+        class="c1"
+        for="password"
+      >
+        Password
+      </label>
+      <input
+        class="c2"
+        id="password"
+        name="password"
+        required=""
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      class="c3"
+    >
+      <div
+        class="c4 c5"
+      />
+    </div>
+  </form>
+</div>
+`;

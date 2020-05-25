@@ -6,7 +6,7 @@ import promptly from 'promptly'
 import webpush from 'web-push'
 
 import getConfig from '../config'
-import db from '../src/server/db/db'
+import { pool } from '../services/db'
 
 const config = getConfig()
 
@@ -45,8 +45,7 @@ const createFolderImg = async () => {
 
 // create database
 const createDatabase = async (databaseName) => {
-  if (!databaseName)
-    throw new Error('Missing database name in config')
+  if (!databaseName) throw new Error('Missing database name in config')
 
   console.log(chalk.cyan(`Step 1/4 : Creating database "${databaseName}"...`))
 
@@ -56,14 +55,18 @@ const createDatabase = async (databaseName) => {
         user: config.db.user,
         password: config.db.password,
         port: config.db.port,
-        host: config.db.host,
+        host: config.db.host
       },
       databaseName
     )
 
     console.log(chalk.green(`Database has been created successfully`))
   } catch (err) {
-    console.log(chalk.red('Failed: an error has occurred during the creation of the database'))
+    console.log(
+      chalk.red(
+        'Failed: an error has occurred during the creation of the database'
+      )
+    )
     throw err
   }
 }
@@ -75,12 +78,14 @@ const dropDatabase = async (databaseName) => {
         user: config.db.user,
         password: config.db.password,
         port: config.db.port,
-        host: config.db.host,
+        host: config.db.host
       },
       databaseName
     )
   } catch (err) {
-    console.log(chalk.red('Failed: an error has occurred during the drop of the database'))
+    console.log(
+      chalk.red('Failed: an error has occurred during the drop of the database')
+    )
     throw err
   }
 }
@@ -90,7 +95,9 @@ const createTable = async (client) => {
   console.log(chalk.cyan(`Step 2/4 : Setup database...`))
 
   try {
-    await client.query(`CREATE TYPE POSITION_TYPE AS ENUM ('left', 'center', 'right')`)
+    await client.query(
+      `CREATE TYPE POSITION_TYPE AS ENUM ('left', 'center', 'right')`
+    )
     await client.query(`
       CREATE TABLE photos (
         ID SERIAL PRIMARY KEY,
@@ -126,7 +133,9 @@ const createTable = async (client) => {
     `)
     console.log(chalk.green(`Tables has been created successfully`))
   } catch (err) {
-    console.log(chalk.red('An error has occured during database table creation'))
+    console.log(
+      chalk.red('An error has occured during database table creation')
+    )
     throw err
   }
 }
@@ -134,7 +143,9 @@ const createTable = async (client) => {
 const enableWebPush = async () => {
   console.log(chalk.cyan(`Step 4/4 : Enable web push notification?`))
   //ask to enable
-  const answer = await promptly.confirm('Do you want to enable web push notification? (Y/n)')
+  const answer = await promptly.confirm(
+    'Do you want to enable web push notification? (Y/n)'
+  )
 
   if (answer === false) return
 
@@ -161,11 +172,11 @@ const createAdminUser = async (client) => {
       )
     `)
 
-    console.log(
-      chalk.green('Admin user has been created successfully.')
-    )
+    console.log(chalk.green('Admin user has been created successfully.'))
   } catch (err) {
-    console.log(chalk.red('An error has occured during the admin user creation'))
+    console.log(
+      chalk.red('An error has occured during the admin user creation')
+    )
     throw err
   }
 }
@@ -174,7 +185,7 @@ const createAdminUser = async (client) => {
 const bootstrap = (restart) => {
   const databaseName = config.db.database
 
-  db.connect(async (err, client, release) => {
+  pool.connect(async (err, client) => {
     try {
       if (err) {
         if (err.code === '3D000') {
@@ -185,15 +196,19 @@ const bootstrap = (restart) => {
           return
         }
 
-        console.log(chalk.red('An error has occured during the connection of the database'))
+        console.log(
+          chalk.red(
+            'An error has occured during the connection of the database'
+          )
+        )
         console.log(err.stack)
         throw err
-        return
-
       } else {
         if (restart !== true) {
           // ask to drop database
-          const answer = await promptly.confirm(`Database ${databaseName} already exists. Do you want do continue?(y/n)`)
+          const answer = await promptly.confirm(
+            `Database ${databaseName} already exists. Do you want do continue?(y/n)`
+          )
 
           if (answer === false) {
             process.exit()
@@ -222,7 +237,9 @@ const bootstrap = (restart) => {
       await enableWebPush()
 
       console.log(
-        chalk.green('Installation has been completed successfully. You can now run your application.')
+        chalk.green(
+          'Installation has been completed successfully. You can now run your application.'
+        )
       )
 
       process.exit()

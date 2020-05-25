@@ -1,1 +1,0 @@
-List of components used by the client

@@ -1,61 +1,24 @@
 {
   "presets": [
-    "@babel/preset-react"
+    "next/babel"
   ],
   "plugins": [
     [
-      "@babel/plugin-proposal-class-properties",
+      "styled-components",
       {
-        "loose": false
+        "ssr": true
       }
     ],
-    "@loadable/babel-plugin",
     [
       "module-resolver",
       {
         "alias": {
-          "@client": "./src/apps/client",
-          "@admin": "./src/apps/admin",
-          "@common": "./src/apps/common",
-          "@server": "./src/server"
+          "@utils": "./utils",
+          "@components": "./components",
+          "@services": "./services",
+          "@features": "./features"
         }
       }
     ]
-  ],
-  "env": {
-    "development": {
-      "plugins": [
-        [
-          "babel-plugin-styled-components",
-          {
-            "ssr": true,
-            "displayName": true
-          }
-        ]
-      ]
-    },
-    "production": {
-      "plugins": [
-        [
-          "babel-plugin-styled-components",
-          {
-            "ssr": true,
-            "displayName": false
-          }
-        ]
-      ]
-    },
-    "test": {
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "node": "current"
-            }
-          },
-        ]
-      ]
-    }
-  }
+  ]
 }
