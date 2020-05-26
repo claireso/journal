@@ -1,4 +1,4 @@
-import Router from 'next/Router'
+import Router from 'next/router'
 
 import { createResourceManager } from '@services/resources/reducer'
 import {

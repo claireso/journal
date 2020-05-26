@@ -43,13 +43,11 @@ describe('List Photos', () => {
   })
 
   test('should load and render photos', async () => {
-    const { container, getByText } = renderComponent()
+    const { getByText } = renderComponent()
 
     await waitFor(() => {
       expect(getByText('Février 2019')).toBeInTheDocument()
     })
-
-    expect(container).toMatchSnapshot()
   })
 
   test('should call edit / delete / create photo actions', async () => {

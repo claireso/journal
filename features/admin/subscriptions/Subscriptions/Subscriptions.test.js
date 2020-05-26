@@ -43,13 +43,11 @@ describe('List Subscriptions', () => {
   })
 
   test('should load and render subscriptions', async () => {
-    const { container, getByText } = renderComponent()
+    const { getByText } = renderComponent()
 
     await waitFor(() => {
       expect(getByText('https://fcm.googleapis.com/')).toBeInTheDocument()
     })
-
-    expect(container).toMatchSnapshot()
   })
 
   test('should delete', async () => {

@@ -27,8 +27,6 @@ describe('Page subscriptions', () => {
     await waitFor(() => {
       expect(getByText('https://fcm.googleapis.com/')).toBeInTheDocument()
     })
-
-    expect(container).toMatchSnapshot()
   })
 
   test('should display modal delete', async () => {
