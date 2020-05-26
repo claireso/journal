@@ -12,7 +12,8 @@
     "start": "next start",
     "lint": "eslint .",
     "prettier": "prettier --write \"./**/*.js\"",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "bootstrap": "babel-node scripts/bootstrap.js"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,8 @@
     "web-push": "3.4.3"
   },
   "devDependencies": {
+    "@babel/core": "7.9.6",
+    "@babel/node": "7.8.7",
     "@testing-library/jest-dom": "5.8.0",
     "@testing-library/react": "10.0.4",
     "@testing-library/react-hooks": "3.2.1",
@@ -59,7 +62,9 @@
     "jest": "26.0.1",
     "jest-fetch-mock": "3.0.3",
     "jest-styled-components": "7.0.2",
+    "pgtools": "0.3.0",
     "prettier": "2.0.5",
+    "promptly": "3.0.3",
     "react-test-renderer": "16.13.1",
     "workbox-cacheable-response": "5.1.3",
     "workbox-core": "5.1.3",

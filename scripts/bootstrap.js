@@ -207,7 +207,7 @@ const bootstrap = (restart) => {
         if (restart !== true) {
           // ask to drop database
           const answer = await promptly.confirm(
-            `Database ${databaseName} already exists. Do you want do continue?(y/n)`
+            `Database ${databaseName} already exists. Do you want do continue?(y/N)`
           )
 
           if (answer === false) {

@@ -1,7 +1,7 @@
 const path = require('path')
 const { InjectManifest } = require('workbox-webpack-plugin')
 
-const config = require('./config/config')()
+const config = require('./config')()
 
 const IS_NOTIFICATIONS_ENABLED = !!(
   config.notifications &&

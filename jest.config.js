@@ -1,5 +1,5 @@
 const path = require('path')
-const config = require('./config/config')()
+const config = require('./config')()
 
 // add custom env (duplicate next.config)
 process.env.website = config.website

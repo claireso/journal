@@ -1,5 +1,5 @@
 import pg from 'pg'
-import getConfig from '../../config/config'
+import getConfig from '../../config'
 
 const config = getConfig()
 
