@@ -1,5 +1,6 @@
 const path = require('path')
 const { InjectManifest } = require('workbox-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 const config = require('./config')()
 
@@ -20,8 +21,8 @@ module.exports = {
     notificationsPrivateKey:
       IS_NOTIFICATIONS_ENABLED && config.notifications.privateKey
   },
-  webpack: (config, options) => {
-    if (!options.isServer) {
+  webpack: (config, { dev, isServer }) => {
+    if (!isServer) {
       config.plugins.push(
         new InjectManifest({
           swSrc: path.resolve(__dirname, 'services', 'serviceworker', 'sw.js'),
@@ -36,6 +37,16 @@ module.exports = {
             'static/': '_next/static/',
             'public/': '_next/public/'
           }
+        })
+      )
+    }
+
+    // gzip assets in production environment
+    if (!isServer && !dev) {
+      config.plugins.push(
+        new CompressionPlugin({
+          algorithm: 'gzip',
+          test: /\.js(\?.*)?$/i
         })
       )
     }
