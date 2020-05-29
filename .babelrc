@@ -4,12 +4,6 @@
   ],
   "plugins": [
     [
-      "styled-components",
-      {
-        "ssr": true
-      }
-    ],
-    [
       "module-resolver",
       {
         "alias": {
@@ -20,5 +14,40 @@
         }
       }
     ]
-  ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "displayName": true
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "displayName": false
+          }
+        ]
+      ]
+    },
+    "test": {
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "displayName": true
+          }
+        ]
+      ]
+    }
+  }
 }
