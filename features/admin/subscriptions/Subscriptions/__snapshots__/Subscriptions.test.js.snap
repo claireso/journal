@@ -48,6 +48,7 @@ exports[`List Subscriptions should render loading view [status - idle] 1`] = `
 .c1 {
   font-size: 2.4rem;
   margin: 0 0 2.4rem;
+  font-weight: 500;
 }
 
 <div>
@@ -118,6 +119,7 @@ exports[`List Subscriptions should render loading view [status - loading] 1`] = 
 .c1 {
   font-size: 2.4rem;
   margin: 0 0 2.4rem;
+  font-weight: 500;
 }
 
 <div>

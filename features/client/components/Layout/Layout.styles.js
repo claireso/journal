@@ -22,7 +22,7 @@ body {
   --grid-number-column-small: 6;
   --grid-number-column-large: 12;
   color: var(--text);
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
   font-size: 16px;
   margin: 0;
 }

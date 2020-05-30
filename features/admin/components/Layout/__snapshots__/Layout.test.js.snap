@@ -55,6 +55,7 @@ exports[`<Layout /> should render component without restricted access 1`] = `
 
 .c1 {
   font-size: 2rem;
+  font-weight: 500;
   grid-area: title;
   line-height: 6rem;
   margin: 0;

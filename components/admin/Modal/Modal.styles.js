@@ -25,5 +25,5 @@ export const ModalInner = styled.div`
 export const ModalCloseButton = styled(ButtonIcon)`
   position: absolute;
   right: 1.2rem;
-  top: 1.5rem;
+  top: 1.2rem;
 `

@@ -6,6 +6,8 @@ export const StyledInput = styled.input`
   border-radius: 0.4rem;
   box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
   outline: none;
   padding: 0.8rem 1.2rem;
   width: 100%;

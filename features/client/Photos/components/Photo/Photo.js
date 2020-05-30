@@ -102,13 +102,13 @@ const PhotoWrapper = styled.figure`
 `
 
 const Title = styled.figcaption`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 `
 
 const Description = styled.span`
   color: var(--gray-2);
   display: block;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-style: italic;
   margin: 0.4rem 0 0;
 `

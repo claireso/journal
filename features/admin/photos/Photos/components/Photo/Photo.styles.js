@@ -31,6 +31,7 @@ export const PhotoInner = styled.div`
 export const PhotoTitle = styled.h2`
   font-size: 1.4rem;
   margin: 0.4rem 0 1.2rem;
+  font-weight: 500;
 `
 
 export const PhotoDescription = styled.p`

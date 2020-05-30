@@ -13,7 +13,8 @@
     "baseUrl": "http://localhost:3000/",
     "meta": {
       "title": "",
-      "description": ""
+      "description": "",
+      "robots": ""
     },
     "analytics": {
       "ga": ""

@@ -27,6 +27,7 @@ export const Content = styled.div`
 
 export const Title = styled.h1`
   font-size: 2rem;
+  font-weight: 500;
   grid-area: title;
   line-height: 6rem;
   margin: 0;

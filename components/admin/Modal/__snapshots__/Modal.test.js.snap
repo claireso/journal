@@ -54,7 +54,7 @@ exports[`<Modal /> should close component by prop update 1`] = `
   padding: 0.8rem;
   position: absolute;
   right: 1.2rem;
-  top: 1.5rem;
+  top: 1.2rem;
 }
 
 .c3 > svg {
@@ -156,7 +156,7 @@ exports[`<Modal /> should render component 1`] = `
   padding: 0.8rem;
   position: absolute;
   right: 1.2rem;
-  top: 1.5rem;
+  top: 1.2rem;
 }
 
 .c3 > svg {

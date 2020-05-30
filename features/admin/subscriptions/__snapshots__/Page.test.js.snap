@@ -48,6 +48,7 @@ exports[`Page subscriptions should load and render subscriptions 1`] = `
 .c1 {
   font-size: 2.4rem;
   margin: 0 0 2.4rem;
+  font-weight: 500;
 }
 
 <div>

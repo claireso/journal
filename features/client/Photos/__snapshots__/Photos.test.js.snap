@@ -54,13 +54,13 @@ exports[`<Photos /> should render component 1`] = `
 }
 
 .c2 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .c3 {
   color: var(--gray-2);
   display: block;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-style: italic;
   margin: 0.4rem 0 0;
 }

@@ -29,7 +29,7 @@ body {
   --toolbar-height: 6rem;
   background: var(--secondary);
   color: var(--text);
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
   font-size: 16px;
   margin: 0;
   min-width: 70rem;
