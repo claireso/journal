@@ -5,24 +5,18 @@ import {
   displaySuccessMessage,
   displayErrorMessage
 } from '@services/messages/reducer'
-import {
-  getPhotos,
-  createPhoto,
-  deletePhoto,
-  editPhoto,
-  getPhoto
-} from '@services/api'
+import * as api from '@services/api'
 
 const PhotosResourceManager = createResourceManager({
   actions: {
     loadResources: {
-      action: getPhotos
+      action: api.getPhotos
     },
     loadResource: {
-      action: getPhoto
+      action: api.getPhoto
     },
     createResource: {
-      action: createPhoto,
+      action: api.createPhoto,
       onSuccess: () => {
         displaySuccessMessage({
           message: 'Your photo has been created successfully',
@@ -39,7 +33,7 @@ const PhotosResourceManager = createResourceManager({
       }
     },
     editResource: {
-      action: editPhoto,
+      action: api.editPhoto,
       onSuccess: () => {
         displaySuccessMessage({
           message: 'Your photo has been updated successfully',
@@ -56,7 +50,7 @@ const PhotosResourceManager = createResourceManager({
       }
     },
     deleteResource: {
-      action: deletePhoto,
+      action: api.deletePhoto,
       onSuccess: () => {
         displaySuccessMessage({
           message: 'Your photo has been deleted successfully',

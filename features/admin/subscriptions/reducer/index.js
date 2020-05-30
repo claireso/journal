@@ -5,15 +5,15 @@ import {
   displaySuccessMessage,
   displayErrorMessage
 } from '@services/messages/reducer'
-import { getSubscriptions, deleteSubscription } from '@services/api'
+import * as api from '@services/api'
 
 const SubscriptionsResourceManager = createResourceManager({
   actions: {
     loadResources: {
-      action: getSubscriptions
+      action: api.getSubscriptions
     },
     deleteResource: {
-      action: deleteSubscription,
+      action: api.deleteSubscription,
       onSuccess: () => {
         displaySuccessMessage({
           message: 'Your subscription has been deleted successfully',
