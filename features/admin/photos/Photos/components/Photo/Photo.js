@@ -15,7 +15,7 @@ class Photo extends React.PureComponent {
       <S.PhotoWrapper>
         <S.PhotoPicture>
           {this.props.inView && (
-            <LazyLoadedImage src={`/img/${this.props.name}`} />
+            <LazyLoadedImage src={`/uploads/${this.props.name}`} />
           )}
         </S.PhotoPicture>
         <S.PhotoInner>

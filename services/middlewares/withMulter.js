@@ -9,7 +9,7 @@ const ALLOWED_MIMETYPES = ['image/jpeg', 'image/png']
 // multer storage configuration
 const storage = customDiskStorage({
   destination(req, file, callback) {
-    callback(null, path.resolve('public', 'img'))
+    callback(null, path.resolve('uploads'))
   },
   filename(req, file, callback) {
     const fieldname = ulid().toLowerCase()

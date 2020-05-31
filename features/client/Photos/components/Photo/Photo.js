@@ -123,7 +123,7 @@ const PictureWrapper = styled.div`
 
 const Picture = styled(LazyLoadedImage).attrs((props) => ({
   alt: '',
-  src: `/img/${props.name}`
+  src: `/uploads/${props.name}`
 }))`
   display: block;
   width: 100%;

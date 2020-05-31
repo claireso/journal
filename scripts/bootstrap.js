@@ -32,14 +32,12 @@ const createFolder = (folderPath) => {
 
 // create folder img
 const createFolderImg = async () => {
-  const dirPublic = path.resolve('public')
-  const dirImg = path.resolve('public', 'img')
+  const dirImg = path.resolve('uploads')
 
   try {
-    await createFolder(dirPublic)
     await createFolder(dirImg)
   } catch (err) {
-    console.log(chalk.red('Failed: img folder cannot be created'))
+    console.log(chalk.red('Failed: uploads folder cannot be created'))
   }
 }
 
