@@ -77,7 +77,26 @@ Note: if you enable web push notifications during the installation, do not forge
 $ npm run dev
 ```
 
+The application will be running at http://localhost:3000
+
+To change the default port of the application, add it to the command as follow:
+
+```
+$ PORT=4000 npm run dev
+```
+
+Don't forget to update the entry 'baseUrl' in your config
+
 ### Build and run the application in a production environment
+
+There are two ways to run the application in a production environment
+
+#### 1 - With a reverse proxy (recommanded)
+
+By default the folder where your photos are uploaded (`uploads`) is not served by the server himself.
+You will need to configure a reverse proxy (with nginx for example)
+
+When your reverse proxy is configured run the commands follow:
 
 ```
 $ npm run build
@@ -92,6 +111,26 @@ To change the default port of the application, add it to the command as follow:
 $ npm run start -- -p 4000
 ```
 
+Don't forget to update the entry 'baseUrl' in your config
+
+#### 2 - With an alternative command
+
+If you can't use a reverse proxy just use the commands follow:
+
+```
+$ npm run build
+$ npm run start:custom
+```
+
+The application will be running at http://localhost:3000
+
+To change the default port of the application, add it to the command as follow:
+
+```
+$ PORT=4000 npm run start:custom
+```
+
+Don't forget to update the entry 'baseUrl' in your config
 
 ![](https://user-images.githubusercontent.com/961038/65306681-44548080-db86-11e9-80d3-d873e3e72b6b.jpg)
 
