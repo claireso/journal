@@ -1,7 +1,15 @@
 node_modules
 npm-debug.log
-public
+
+public/img
+public/sw.js
+public/sw.js.*
+
+uploads
+
 config.*.json
 dist
 coverage
+.next
+.eslintcache
 

@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> should close component by click (background layer) 1`] = `<div />`;
+
+exports[`<Modal /> should close component by click (button close) 1`] = `<div />`;
+
+exports[`<Modal /> should close component by keyboard 1`] = `<div />`;
+
+exports[`<Modal /> should close component by prop update 1`] = `
+.c0 {
+  background: rgba(43,44,44,0.4);
+  bottom: 0;
+  overflow: auto;
+  position: fixed;
+  left: 15rem;
+  right: 0;
+  top: var(--toolbar-height);
+  will-change: opacity;
+}
+
+.c1 {
+  background: var(--white);
+  box-shadow: 0 0px 11px #898c8e;
+  padding: 2rem;
+  max-width: 45rem;
+  min-height: calc(100vh);
+  margin: 0 0 0 auto;
+}
+
+.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.3333333;
+  outline: none;
+  padding: 1.6rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: none;
+  color: inherit;
+  padding: 0.8rem;
+  position: absolute;
+  right: 1.2rem;
+  top: 1.2rem;
+}
+
+.c3 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c3 + .c2 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c3 > svg {
+  margin: 0;
+}
+
+.c3 + .c2 {
+  margin: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    id="modal"
+    style="opacity: 0;"
+  >
+    <div
+      class="c1"
+      id="modalInner"
+      style="opacity: 0; transform: translate3d(4rem, 0, 0);"
+    >
+      <button
+        class="Buttonsstyles__Button-sc-4b7ll8-0 Buttonsstyles__ButtonIcon-sc-4b7ll8-5 c2 c3"
+      >
+        <svg
+          height="26"
+          viewBox="0 0 22 28"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.281 20.656c0 0.391-0.156 0.781-0.438 1.062l-2.125 2.125c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-4.594-4.594-4.594 4.594c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-2.125-2.125c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l4.594-4.594-4.594-4.594c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l2.125-2.125c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l4.594 4.594 4.594-4.594c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l2.125 2.125c0.281 0.281 0.438 0.672 0.438 1.062s-0.156 0.781-0.438 1.062l-4.594 4.594 4.594 4.594c0.281 0.281 0.438 0.672 0.438 1.062z"
+          />
+        </svg>
+      </button>
+      <div>
+        content
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Modal /> should close component by prop update 2`] = `<div />`;
+
+exports[`<Modal /> should render component 1`] = `
+.c0 {
+  background: rgba(43,44,44,0.4);
+  bottom: 0;
+  overflow: auto;
+  position: fixed;
+  left: 15rem;
+  right: 0;
+  top: var(--toolbar-height);
+  will-change: opacity;
+}
+
+.c1 {
+  background: var(--white);
+  box-shadow: 0 0px 11px #898c8e;
+  padding: 2rem;
+  max-width: 45rem;
+  min-height: calc(100vh);
+  margin: 0 0 0 auto;
+}
+
+.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.3333333;
+  outline: none;
+  padding: 1.6rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  background: none;
+  color: inherit;
+  padding: 0.8rem;
+  position: absolute;
+  right: 1.2rem;
+  top: 1.2rem;
+}
+
+.c3 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c3 + .c2 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c3 > svg {
+  margin: 0;
+}
+
+.c3 + .c2 {
+  margin: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    id="modal"
+    style="opacity: 0;"
+  >
+    <div
+      class="c1"
+      id="modalInner"
+      style="opacity: 0; transform: translate3d(4rem, 0, 0);"
+    >
+      <button
+        class="Buttonsstyles__Button-sc-4b7ll8-0 Buttonsstyles__ButtonIcon-sc-4b7ll8-5 c2 c3"
+      >
+        <svg
+          height="26"
+          viewBox="0 0 22 28"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.281 20.656c0 0.391-0.156 0.781-0.438 1.062l-2.125 2.125c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-4.594-4.594-4.594 4.594c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-2.125-2.125c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l4.594-4.594-4.594-4.594c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l2.125-2.125c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l4.594 4.594 4.594-4.594c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l2.125 2.125c0.281 0.281 0.438 0.672 0.438 1.062s-0.156 0.781-0.438 1.062l-4.594 4.594 4.594 4.594c0.281 0.281 0.438 0.672 0.438 1.062z"
+          />
+        </svg>
+      </button>
+      <div>
+        content
+      </div>
+    </div>
+  </div>
+</div>
+`;

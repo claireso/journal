@@ -1,61 +1,37 @@
 {
   "env": {
     "browser": true,
-    "es6": true,
+    "es2020": true,
+    "serviceworker": true,
     "node": true,
     "jest": true
   },
-  "globals": {
-    "workbox": true,
-    "clients": true
-  },
-  "parser": "babel-eslint",
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "prettier"
-  ],
-  "parserOptions": {
-    "ecmaVersion": 8,
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true
-    },
-    "sourceType": "module"
-  },
-  "plugins": [
+    "plugin:react-hooks/recommended",
     "prettier",
-    "react",
-    "react-hooks"
+    "plugin:prettier/recommended"
   ],
-  "settings": {
-    "react": {
-      "version": "16.5.0"
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
     }
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "plugins": [
+    "react"
+  ],
   "rules": {
-    "strict": 0,
-    "indent": [
-      "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "never"
-    ],
-    "prettier/prettier": "error",
+    "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "prettier/prettier": "error"
   }
 }

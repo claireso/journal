@@ -1,23 +1,16 @@
 {
   "presets": [
-    "@babel/preset-react"
+    "next/babel"
   ],
   "plugins": [
-    [
-      "@babel/plugin-proposal-class-properties",
-      {
-        "loose": false
-      }
-    ],
-    "@loadable/babel-plugin",
     [
       "module-resolver",
       {
         "alias": {
-          "@client": "./src/apps/client",
-          "@admin": "./src/apps/admin",
-          "@common": "./src/apps/common",
-          "@server": "./src/server"
+          "@utils": "./utils",
+          "@components": "./components",
+          "@services": "./services",
+          "@features": "./features"
         }
       }
     ]
@@ -26,7 +19,7 @@
     "development": {
       "plugins": [
         [
-          "babel-plugin-styled-components",
+          "styled-components",
           {
             "ssr": true,
             "displayName": true
@@ -37,7 +30,7 @@
     "production": {
       "plugins": [
         [
-          "babel-plugin-styled-components",
+          "styled-components",
           {
             "ssr": true,
             "displayName": false
@@ -46,14 +39,13 @@
       ]
     },
     "test": {
-      "presets": [
+      "plugins": [
         [
-          "@babel/preset-env",
+          "styled-components",
           {
-            "targets": {
-              "node": "current"
-            }
-          },
+            "ssr": true,
+            "displayName": true
+          }
         ]
       ]
     }
