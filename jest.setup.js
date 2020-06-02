@@ -1,11 +1,12 @@
-import 'intersection-observer'
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-styled-components'
-import fetchMock from 'jest-fetch-mock'
+import 'intersection-observer'
+import { enableMocks } from 'jest-fetch-mock'
 
-window.scroll = () => { }
-window.scrollTo = () => { }
-global.fetch = fetchMock
+window.scroll = () => {}
+window.scrollTo = () => {}
+
+enableMocks()
 
 // go offline
 global.goOffline = () => {
@@ -13,7 +14,7 @@ global.goOffline = () => {
     configurable: true,
     get: function () {
       return false
-    },
+    }
   })
 }
 
@@ -23,7 +24,7 @@ global.goOnline = () => {
     configurable: true,
     get: function () {
       return true
-    },
+    }
   })
 }
 
@@ -43,7 +44,12 @@ global.setNotificationPermission = (status = 'default') => {
 global.setNotificationPermission()
 
 // update service worker
-global.setServiceWorker = ({ register, subscribe, ready, getSubscription } = {}) => {
+global.setServiceWorker = ({
+  register,
+  subscribe,
+  ready,
+  getSubscription
+} = {}) => {
   if (!register) {
     register = jest.fn()
   }
@@ -74,9 +80,12 @@ global.setServiceWorker = ({ register, subscribe, ready, getSubscription } = {})
   })
 
   return {
-    register, subscribe, ready, getSubscription
+    register,
+    subscribe,
+    ready,
+    getSubscription
   }
 }
 
 // enable serviceWorker
-setServiceWorker()
+global.setServiceWorker()

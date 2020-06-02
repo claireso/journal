@@ -13,14 +13,11 @@
     "baseUrl": "http://localhost:3000/",
     "meta": {
       "title": "",
-      "description": ""
+      "description": "",
+      "robots": ""
     },
     "analytics": {
       "ga": ""
-    },
-    "notification": {
-      "publicKey": "",
-      "privateKey": ""
     },
     "translations": {
       "client": {
@@ -32,5 +29,9 @@
         "pushNewPhotoPosted": "New photo posted"
       }
     }
+  },
+  "notifications": {
+    "publicKey": "",
+    "privateKey": ""
   }
 }

@@ -1,1 +1,0 @@
-List of all components used by both client and admin
