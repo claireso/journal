@@ -10,7 +10,7 @@ const TranslationsProvider = ({ children, translations }) => (
 )
 
 TranslationsProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   translations: PropTypes.object
 }
 
