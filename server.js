@@ -10,6 +10,8 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
+  server.disable('x-powered-by')
+
   server.use(
     '/uploads',
     express.static(path.join(__dirname, 'uploads'), {
