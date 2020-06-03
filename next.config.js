@@ -12,6 +12,7 @@ const IS_NOTIFICATIONS_ENABLED = !!(
 
 module.exports = {
   poweredByHeader: false,
+  compress: process.env.COMPRESSION === 'enabled',
   env: {
     isProduction: process.env.NODE_ENV === 'production',
     website: config.website,

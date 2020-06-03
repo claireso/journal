@@ -10,7 +10,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "next start",
-    "start:custom": "NODE_ENV=production node server.js",
+    "start:custom": "NODE_ENV=production COMPRESSION=enabled node server.js",
     "lint": "eslint .",
     "lint:write": "eslint . --cache --fix",
     "prettier": "prettier --write \"./**/*.js\"",
