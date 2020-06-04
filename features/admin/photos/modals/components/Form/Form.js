@@ -47,7 +47,7 @@ class Form extends React.PureComponent {
             name="file"
             required={!photo ? true : undefined}
             accept={ALLOWED_MIMETYPES}
-            preview={photo && `/img/${photo.name}`}
+            preview={photo && `/uploads/${photo.name}`}
           />
         </Group>
 
