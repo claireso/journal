@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
-import Modal from '@components/admin/Modal'
+import Modal from '@components/Modal'
 
 /**
  * HOC to open / close the CRUD Modal according url parameters

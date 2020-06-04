@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import emitter from '@services/emitter'
 
-import FlashGroup from '@components/admin/FlashGroup'
+import FlashGroup from '@components/FlashGroup'
 
 import { useMessagesReducer } from '../reducer'
 

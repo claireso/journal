@@ -6,7 +6,7 @@ import * as notifications from '@services/notifications'
 
 import * as S from './Notifications.styles'
 
-import Flash from '@components/client/Flash'
+import Flash from '@components/Flash'
 
 const NotificationBanner = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -69,7 +69,7 @@ const NotificationBanner = () => {
   if (!isVisible) return null
 
   return (
-    <Flash onClose={hideBanner}>
+    <Flash status="default" onClose={hideBanner}>
       <S.ButtonSubscribe onClick={subscribe}>
         {translations.bannerNotifications}
       </S.ButtonSubscribe>

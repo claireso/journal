@@ -30,7 +30,7 @@ export const ErrorBoundaryWrapper = styled.div`
 export const RefreshButton = styled.button`
   appearance: none;
   background: #000;
-  border: 1px solid var(--gray-1);
+  border: 1px solid var(--gray-normal);
   border-radius: 2px;
   cursor: pointer;
   color: #fff;
@@ -46,6 +46,6 @@ export const RefreshButton = styled.button`
   transition: border-color 150ms ease-out;
 
   &:hover {
-    border-color: var(--gray-3);
+    border-color: var(--gray-darker-2);
   }
 `

@@ -12,7 +12,7 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
 }
 
 .c3 {
-  color: var(--gray-2);
+  color: var(--gray-normal);
   display: block;
   font-size: 1.1rem;
   font-style: italic;
@@ -20,7 +20,7 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-4);
+  background: var(--gray-lighter);
   position: relative;
   padding-top: calc(0.666667 * 100%);
   width: 100%;
@@ -72,7 +72,7 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
 }
 
 .c3 {
-  color: var(--gray-2);
+  color: var(--gray-normal);
   display: block;
   font-size: 1.1rem;
   font-style: italic;
@@ -80,7 +80,7 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-4);
+  background: var(--gray-lighter);
   position: relative;
   padding-top: calc(0.666667 * 100%);
   width: 100%;
@@ -132,7 +132,7 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 }
 
 .c3 {
-  color: var(--gray-2);
+  color: var(--gray-normal);
   display: block;
   font-size: 1.1rem;
   font-style: italic;
@@ -140,7 +140,7 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-4);
+  background: var(--gray-lighter);
   position: relative;
   padding-top: calc(0.666667 * 100%);
   width: 100%;
@@ -192,7 +192,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 }
 
 .c3 {
-  color: var(--gray-2);
+  color: var(--gray-normal);
   display: block;
   font-size: 1.1rem;
   font-style: italic;
@@ -200,7 +200,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-4);
+  background: var(--gray-lighter);
   position: relative;
   padding-top: calc(1.500000 * 100%);
   width: 100%;
@@ -252,7 +252,7 @@ exports[`<Photo /> should render photo (square center) 1`] = `
 }
 
 .c3 {
-  color: var(--gray-2);
+  color: var(--gray-normal);
   display: block;
   font-size: 1.1rem;
   font-style: italic;
@@ -260,7 +260,7 @@ exports[`<Photo /> should render photo (square center) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-4);
+  background: var(--gray-lighter);
   position: relative;
   padding-top: calc(1.000000 * 100%);
   width: 100%;

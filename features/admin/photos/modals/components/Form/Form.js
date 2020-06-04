@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Input from '@components/admin/form/Input'
-import Select from '@components/admin/form/Select'
-import Uploader from '@components/admin/form/Uploader'
-import { Group } from '@components/admin/form/Group'
-import Label from '@components/admin/form/Label'
-import SubmitButton from '@components/admin/form/Buttons'
+import Input from '@components/form/Input'
+import Select from '@components/form/Select'
+import Uploader from '@components/form/Uploader'
+import { Group } from '@components/form/Group'
+import Label from '@components/form/Label'
+import SubmitButton from '@components/form/Buttons'
 
 const ALLOWED_MIMETYPES = ['image/jpeg', 'image/png']
 

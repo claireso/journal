@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 import withLayoutAdmin from '@features/admin/hoc/withLayoutAdmin'
 
-import { Heading1 } from '@components/admin/Headings'
-import Box from '@components/admin/Box'
+import { Heading1 } from '@components/Headings'
+import Box from '@components/Box'
 
 import FormLogin from '@features/admin/login/Form'
 

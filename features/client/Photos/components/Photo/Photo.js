@@ -106,7 +106,7 @@ const Title = styled.figcaption`
 `
 
 const Description = styled.span`
-  color: var(--gray-2);
+  color: var(--gray-normal);
   display: block;
   font-size: 1.1rem;
   font-style: italic;
@@ -114,7 +114,7 @@ const Description = styled.span`
 `
 
 const PictureWrapper = styled.div`
-  background: var(--gray-4);
+  background: var(--gray-lighter);
   position: relative;
   padding-top: calc(${(props) => getRatio(props)} * 100%);
   width: 100%;

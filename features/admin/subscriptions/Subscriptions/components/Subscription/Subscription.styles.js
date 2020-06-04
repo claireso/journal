@@ -8,10 +8,10 @@ export const SubscriptionWrapper = styled.li`
   padding: 1.5rem;
   transition: background 100ms ease-out;
   &:hover {
-    background: var(--gray-5);
+    background: var(--secondary-lighter);
   }
   & + & {
-    border-top: 1px solid var(--secondary);
+    border-top: 1px solid var(--secondary-normal);
   }
   dl {
     flex: auto;

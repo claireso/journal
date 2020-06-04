@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
-import Input from '@components/admin/form/Input'
-import SubmitButton from '@components/admin/form/Buttons'
+import Input from '@components/form/Input'
+import SubmitButton from '@components/form/Buttons'
 
 const FormLogin = (props) => {
   const [state, setState] = useState({ username: '', password: '' })
