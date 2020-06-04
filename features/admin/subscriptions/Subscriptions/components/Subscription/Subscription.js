@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import * as S from './Subscription.styles'
 
 import { IconDelete } from '@components/Icons'
-import { ButtonIcon } from '@components/admin/Buttons'
+import { ButtonIcon } from '@components/Buttons'
 
 const Subscription = ({ onDelete, id, ...props }) => {
   const handleDelete = useCallback(() => {

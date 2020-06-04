@@ -10,21 +10,42 @@ html {
 }
 
 body {
-  --text: #333;
-  --primary: #8e44ad;
-  --yellow: #ffe65d;
-  --yellow-darker: #ffdf32;
-  --gray-1: #e2dfdf;
-  --gray-2: #6b6b6b;
-  --gray-3: #bfbcbc;
-  --gray-4: #edeff5;
+  // theme
+  --base-text: 0;
+  --text-normal: hsl(var(--base-text), 0%, 20%);
+
+  --base-primary: 282;
+  --primary-normal: hsl(var(--base-primary), 44%, 47%);
+
+  --base-secondary: 192;
+  --secondary-normal: hsl(var(--base-secondary), 15%, 94%);
+  --secondary-darker: hsl(var(--base-secondary), 15%, 89%);
+
+  --base-yellow: 51;
+  --yellow-normal: hsl(var(--base-yellow), 100%, 68%);
+  --yellow-darker: hsl(var(--base-yellow), 100%, 50%);
+
+  --base-gray: 0;
+  --gray-normal: hsl(var(--base-gray), 0%, 42%);
+  --gray-lighter: hsl(var(--base-gray), 0, 93%);
+
   --container-max-width: 128rem;
   --grid-number-column-small: 6;
   --grid-number-column-large: 12;
-  color: var(--text);
+
+  // flash message
+  --flash-default: var(--yellow-normal);
+  --flash-default-border: var(--yellow-darker);
+  --flash-default-text: var(--text-normal);
+
+  color: var(--text-normal);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
   font-size: 16px;
   margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 `
 

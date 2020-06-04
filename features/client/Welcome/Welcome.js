@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { Heading1 } from '@components/client/Headings'
-import { PrimaryLink } from '@components/client/Links'
+import { Heading1XL as Heading1 } from '@components/Headings'
+import { PrimaryLink } from '@components/Links'
 
 import * as S from './Welcome.styles'
 

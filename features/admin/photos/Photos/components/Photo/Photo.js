@@ -7,7 +7,7 @@ import withInViewStatement from '@utils/hoc/withInViewStatement'
 
 import LazyLoadedImage from '@components/LazyLoadedImage'
 import { IconPencil, IconDelete } from '@components/Icons'
-import { ButtonIcon } from '@components/admin/Buttons'
+import { ButtonIcon } from '@components/Buttons'
 
 class Photo extends React.PureComponent {
   render() {

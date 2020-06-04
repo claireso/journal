@@ -16,7 +16,8 @@ exports[`<FormLogin /> should render component 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 1px solid var(--gray-1);
+  background: var(--form-input-bg);
+  border: 1px solid var(--border-color);
   border-radius: 0.4rem;
   box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
@@ -31,14 +32,14 @@ exports[`<FormLogin /> should render component 1`] = `
 }
 
 .c2:focus {
-  border-color: var(--gray-2);
+  border-color: var(--border-color-focus);
 }
 
 .c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: var(--primary);
+  background: var(--primary-normal);
   border: none;
   border-radius: 3.6rem;
   color: white;
@@ -122,7 +123,8 @@ exports[`<FormLogin /> should render component in processing status 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 1px solid var(--gray-1);
+  background: var(--form-input-bg);
+  border: 1px solid var(--border-color);
   border-radius: 0.4rem;
   box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
@@ -137,7 +139,7 @@ exports[`<FormLogin /> should render component in processing status 1`] = `
 }
 
 .c2:focus {
-  border-color: var(--gray-2);
+  border-color: var(--border-color-focus);
 }
 
 .c5 {
@@ -147,7 +149,7 @@ exports[`<FormLogin /> should render component in processing status 1`] = `
 }
 
 .c5:after {
-  background: var(--primary);
+  background: var(--primary-normal);
   border-radius: 50%;
   content: '';
   display: block;

@@ -4,9 +4,9 @@ import { useRouter } from 'next/router'
 import { useSubscriptionsReducer, ACTION_TYPES } from '../reducer'
 
 import Loader from '@components/Loader'
-import { List, ListHeader } from '@components/admin/List'
-import { Heading1 } from '@components/admin/Headings'
-import Pager from '@components/admin/Pager'
+import { List, ListHeader } from '@components/List'
+import { Heading1 } from '@components/Headings'
+import Pager from '@components/Pager'
 
 import Subscription from './components/Subscription'
 
@@ -31,7 +31,7 @@ const Subscriptions = () => {
     [pathname, query, router]
   )
 
-  const onPageChange = useCallback(({ page }) => navigate({ page }), [navigate])
+  const onPageChange = useCallback((page) => navigate({ page }), [navigate])
 
   const onDelete = useCallback(
     (id) => {

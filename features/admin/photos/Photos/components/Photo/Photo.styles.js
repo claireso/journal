@@ -8,10 +8,10 @@ export const PhotoWrapper = styled.li`
   padding: 1.4rem;
   transition: background 150ms ease-out;
   &:hover {
-    background: var(--gray-5);
+    background: var(--secondary-lighter);
   }
   & + & {
-    border-top: 1px solid var(--secondary);
+    border-top: 1px solid var(--secondary-normal);
   }
 `
 
@@ -35,7 +35,7 @@ export const PhotoTitle = styled.h2`
 `
 
 export const PhotoDescription = styled.p`
-  color: var(--gray-3);
+  color: var(--gray-darker-2);
   font-size: 1.2rem;
 `
 

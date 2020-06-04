@@ -4,32 +4,17 @@ exports[`<Offline /> should not render component 1`] = `<div />`;
 
 exports[`<Offline /> should render component 1`] = `
 .c1 {
-  background: var(--yellow);
-  color: var(--white);
+  background: var(--flash-default);
+  color: var(--flash-default-text);
   font-size: 1.4rem;
   margin: 0 0 var(--gutter);
-  padding: 1.5rem;
+  padding: 2rem;
   position: relative;
   text-align: center;
 }
 
-.c1 button {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
 .c1 + .c0 {
-  border-top: 3px solid var(--yellow-darker);
+  border-top: 3px solid var(--flash-default-border);
 }
 
 <div>

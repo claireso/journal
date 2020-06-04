@@ -8,7 +8,7 @@ exports[`List Subscriptions should render loading view [status - idle] 1`] = `
 }
 
 .c2:after {
-  background: var(--primary);
+  background: var(--primary-normal);
   border-radius: 50%;
   content: '';
   display: block;
@@ -39,7 +39,7 @@ exports[`List Subscriptions should render loading view [status - idle] 1`] = `
 }
 
 .c0 > h1 > span {
-  color: var(--gray-2);
+  color: var(--gray-darker);
   font-size: 2rem;
   font-weight: normal;
   line-height: 1;
@@ -79,7 +79,7 @@ exports[`List Subscriptions should render loading view [status - loading] 1`] = 
 }
 
 .c2:after {
-  background: var(--primary);
+  background: var(--primary-normal);
   border-radius: 50%;
   content: '';
   display: block;
@@ -110,7 +110,7 @@ exports[`List Subscriptions should render loading view [status - loading] 1`] = 
 }
 
 .c0 > h1 > span {
-  color: var(--gray-2);
+  color: var(--gray-darker);
   font-size: 2rem;
   font-weight: normal;
   line-height: 1;
