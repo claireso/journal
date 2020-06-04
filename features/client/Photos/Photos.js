@@ -2,9 +2,11 @@ import { Fragment, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 
-import Pager from '@components/client/Pager'
+import Pager from '@components/Pager'
 
 import Photo from './components/Photo'
+
+import * as S from './Photos.styles'
 
 const Photos = (props = {}) => {
   const navigate = useCallback((page) => {
@@ -17,7 +19,9 @@ const Photos = (props = {}) => {
       {props.photos.map((photo, index) => (
         <Photo key={index} {...photo} row={index + 1} />
       ))}
-      <Pager {...props.pager} navigate={navigate} />
+      <S.PagerWrapper>
+        <Pager {...props.pager} navigate={navigate} />
+      </S.PagerWrapper>
     </Fragment>
   )
 }

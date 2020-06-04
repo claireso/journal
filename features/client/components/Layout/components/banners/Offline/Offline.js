@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useTranslations } from '@utils/hooks/useTranslations'
 
-import Flash from '@components/client/Flash'
+import Flash from '@components/Flash'
 
 import useIsOnline from './hooks/useIsOnline'
 
@@ -12,7 +12,7 @@ const BannerOffline = () => {
 
   if (isOnline) return null
 
-  return <Flash>{translations.bannerOffline}</Flash>
+  return <Flash status="default">{translations.bannerOffline}</Flash>
 }
 
 export default BannerOffline

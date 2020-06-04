@@ -1,7 +1,7 @@
 import { Fragment, memo } from 'react'
 import PropTypes from 'prop-types'
 
-import { Heading2 } from '@components/admin/Headings'
+import { Heading2 } from '@components/Headings'
 
 import Form from '../components/Form'
 

@@ -7,8 +7,8 @@ import * as S from './LayoutAuthenticatedUser.styles'
 
 import Loader from '@components/Loader'
 import { IconAngleRight } from '@components/Icons'
-import Toolbar from '@components/admin/Toolbar'
-import { Tabs, Tab } from '@components/admin/Tabs'
+import Toolbar from '@components/Toolbar'
+import { Tabs, Tab } from '@components/Tabs'
 
 import Messages from '@services/messages/Messages'
 import { useUserReducer } from '@services/user/reducer'

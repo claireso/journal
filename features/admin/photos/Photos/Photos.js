@@ -5,10 +5,10 @@ import { usePhotosReducer, ACTION_TYPES } from '../reducer'
 
 import Loader from '@components/Loader'
 import { IconPlus } from '@components/Icons'
-import { List, ListHeader } from '@components/admin/List'
-import { PrimaryButton } from '@components/admin/Buttons'
-import { Heading1 } from '@components/admin/Headings'
-import Pager from '@components/admin/Pager'
+import { List, ListHeader } from '@components/List'
+import { PrimaryButton } from '@components/Buttons'
+import { Heading1 } from '@components/Headings'
+import Pager from '@components/Pager'
 
 import Photo from './components/Photo'
 
@@ -33,7 +33,7 @@ const Photos = () => {
     [pathname, query, router]
   )
 
-  const onPageChange = ({ page }) => navigate({ page })
+  const onPageChange = (page) => navigate({ page })
 
   const onCreate = useCallback(
     (ev) => {

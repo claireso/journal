@@ -13,7 +13,7 @@ export default styled.div`
   margin: 2rem 0;
   animation: ${pulse} 800ms ease-in-out infinite alternate;
   &:after {
-    background: var(--primary);
+    background: var(--primary-normal);
     border-radius: 50%;
     content: '';
     display: block;

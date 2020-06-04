@@ -1,52 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Messages /> should display error message then close it 1`] = `
-.c3 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.3333333;
-  outline: none;
-  padding: 1.6rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: none;
-  color: inherit;
-  padding: 0.8rem;
-}
-
-.c3 > svg {
-  margin: 0 -0.4rem 0 0.4rem;
-}
-
-.c3 + .c2 {
-  margin: 0 0 0 0.8rem;
-}
-
-.c3 > svg {
-  margin: 0;
-}
-
-.c3 + .c2 {
-  margin: 0;
-}
-
-.c1 {
-  background: var(--error);
-  color: var(--white);
+.c2 {
+  background: var(--flash-error);
+  color: var(--flash-error-text);
   font-size: 1.4rem;
   margin: 0 0 var(--gutter);
   padding: 2rem;
@@ -54,7 +11,33 @@ exports[`<Messages /> should display error message then close it 1`] = `
   text-align: center;
 }
 
-.c1 button {
+.c2 + .c1 {
+  border-top: 3px solid var(--flash-error-border);
+}
+
+.c4 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+  line-height: 1.3333333;
+  padding: 1.6rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  padding: 0 2rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -64,9 +47,21 @@ exports[`<Messages /> should display error message then close it 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: absolute;
-  right: 0.6rem;
+  right: 0;
   top: 0;
   bottom: 0;
+}
+
+.c4 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c4 + .c3 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c4 > svg {
+  margin: 0;
 }
 
 .c0 > div {
@@ -78,12 +73,12 @@ exports[`<Messages /> should display error message then close it 1`] = `
     class="c0"
   >
     <div
-      class="c1"
+      class="c1 c2"
       style="opacity: 0;"
     >
       My error message
       <button
-        class="Buttonsstyles__Button-sc-4b7ll8-0 c2 c3"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c3 c4"
       >
         <svg
           height="16"
@@ -102,52 +97,9 @@ exports[`<Messages /> should display error message then close it 1`] = `
 `;
 
 exports[`<Messages /> should display success message then close it 1`] = `
-.c3 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.3333333;
-  outline: none;
-  padding: 1.6rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: none;
-  color: inherit;
-  padding: 0.8rem;
-}
-
-.c3 > svg {
-  margin: 0 -0.4rem 0 0.4rem;
-}
-
-.c3 + .c2 {
-  margin: 0 0 0 0.8rem;
-}
-
-.c3 > svg {
-  margin: 0;
-}
-
-.c3 + .c2 {
-  margin: 0;
-}
-
-.c1 {
-  background: var(--success);
-  color: var(--white);
+.c2 {
+  background: var(--flash-success);
+  color: var(--flash-success-text);
   font-size: 1.4rem;
   margin: 0 0 var(--gutter);
   padding: 2rem;
@@ -155,7 +107,33 @@ exports[`<Messages /> should display success message then close it 1`] = `
   text-align: center;
 }
 
-.c1 button {
+.c2 + .c1 {
+  border-top: 3px solid var(--flash-success-border);
+}
+
+.c4 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+  line-height: 1.3333333;
+  padding: 1.6rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+  padding: 0 2rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -165,9 +143,21 @@ exports[`<Messages /> should display success message then close it 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: absolute;
-  right: 0.6rem;
+  right: 0;
   top: 0;
   bottom: 0;
+}
+
+.c4 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c4 + .c3 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c4 > svg {
+  margin: 0;
 }
 
 .c0 > div {
@@ -179,12 +169,12 @@ exports[`<Messages /> should display success message then close it 1`] = `
     class="c0"
   >
     <div
-      class="c1"
+      class="c1 c2"
       style="opacity: 0;"
     >
       My success message
       <button
-        class="Buttonsstyles__Button-sc-4b7ll8-0 c2 c3"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c3 c4"
       >
         <svg
           height="16"
@@ -203,97 +193,81 @@ exports[`<Messages /> should display success message then close it 1`] = `
 `;
 
 exports[`<Messages /> should display two messages then edit one 1`] = `
-.c3 {
+.c2 {
+  background: var(--flash-success);
+  color: var(--flash-success-text);
+  font-size: 1.4rem;
+  margin: 0 0 var(--gutter);
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.c2 + .c1 {
+  border-top: 3px solid var(--flash-success-border);
+}
+
+.c5 {
+  background: var(--flash-error);
+  color: var(--flash-error-text);
+  font-size: 1.4rem;
+  margin: 0 0 var(--gutter);
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.c5 + .c1 {
+  border-top: 3px solid var(--flash-error-border);
+}
+
+.c4 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  background: none;
   border: none;
-  border-radius: 0.2rem;
+  color: currentColor;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: 'Roboto',Arial,sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0.2rem;
   font-size: 1.2rem;
   line-height: 1.3333333;
-  outline: none;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
-  background: none;
-  color: inherit;
-  padding: 0.8rem;
+  padding: 0 2rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
-.c3 > svg {
+.c4 > svg {
   margin: 0 -0.4rem 0 0.4rem;
 }
 
-.c3 + .c2 {
+.c4 + .c3 {
   margin: 0 0 0 0.8rem;
 }
 
-.c3 > svg {
+.c4 > svg {
   margin: 0;
-}
-
-.c3 + .c2 {
-  margin: 0;
-}
-
-.c1 {
-  background: var(--success);
-  color: var(--white);
-  font-size: 1.4rem;
-  margin: 0 0 var(--gutter);
-  padding: 2rem;
-  position: relative;
-  text-align: center;
-}
-
-.c1 button {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  right: 0.6rem;
-  top: 0;
-  bottom: 0;
-}
-
-.c4 {
-  background: var(--error);
-  color: var(--white);
-  font-size: 1.4rem;
-  margin: 0 0 var(--gutter);
-  padding: 2rem;
-  position: relative;
-  text-align: center;
-}
-
-.c4 button {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  right: 0.6rem;
-  top: 0;
-  bottom: 0;
 }
 
 .c0 > div {
@@ -305,12 +279,12 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
     class="c0"
   >
     <div
-      class="c1"
+      class="c1 c2"
       style="opacity: 0;"
     >
       My success message
       <button
-        class="Buttonsstyles__Button-sc-4b7ll8-0 c2 c3"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c3 c4"
       >
         <svg
           height="16"
@@ -325,12 +299,12 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
       </button>
     </div>
     <div
-      class="c4"
+      class="c1 c5"
       style="opacity: 0;"
     >
       My error message
       <button
-        class="Buttonsstyles__Button-sc-4b7ll8-0 c2 c3"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c3 c4"
       >
         <svg
           height="16"
@@ -351,15 +325,15 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
 exports[`<Messages /> should display two messages then edit one 2`] = `
 <div>
   <div
-    class="FlashGroupstyles__FlashGroupWrapper-bw8oeg-0 fIhGBZ"
+    class="FlashGroupstyles__FlashGroupWrapper-sc-19ms1oj-0 hMzgqq"
   >
     <div
-      class="Flashstyles__FlashWrapper-sc-10eyr7o-0 kqmykQ"
+      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 lmsVDY"
       style="opacity: 0;"
     >
       My success message edit
       <button
-        class="Buttonsstyles__Button-sc-4b7ll8-0 Buttonsstyles__ButtonIcon-sc-4b7ll8-5 gbJvmJ"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 czJwsl"
       >
         <svg
           height="16"
@@ -374,12 +348,12 @@ exports[`<Messages /> should display two messages then edit one 2`] = `
       </button>
     </div>
     <div
-      class="Flashstyles__FlashWrapper-sc-10eyr7o-0 iNQuMX"
+      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 iQCQmT"
       style="opacity: 0;"
     >
       My error message
       <button
-        class="Buttonsstyles__Button-sc-4b7ll8-0 Buttonsstyles__ButtonIcon-sc-4b7ll8-5 gbJvmJ"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 czJwsl"
       >
         <svg
           height="16"

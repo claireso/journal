@@ -9,25 +9,75 @@ html {
   box-sizing: inherit;
 }
 body {
-  --text: #333;
-  --primary: #8e44ad;
-  --primary-lighter: #9b59b6;
-  --secondary: #ecf0f1;
-  --secondary-darker: #dcdede;
-  --hightlight: #ffe65d;
-  --error: #f00;
-  --success: #23d01c;
-  --white: #fff;
-  --gray-1: #d4d3d3;
-  --gray-2: #999;
-  --gray-3: #464646;
-  --gray-4: #2b2c2c;
-  --gray-5: #fbfcfc;
+  // theme
+  --base-text: 0;
+  --text-normal: hsl(var(--base-text), 0%, 20%);
+
+  --base-primary: 282;
+  --primary-normal: hsl(var(--base-primary), 44%, 47%);
+  --primary-lighter: hsl(var(--base-primary), 44%, 51%);
+  --primary-darker: hsl(var(--base-primary), 44%, 42%);
+
+  --base-secondary: 192;
+  --secondary-normal: hsl(var(--base-secondary), 15%, 94%);
+  --secondary-darker: hsl(var(--base-secondary), 15%, 89%);
+  --secondary-lighter: hsl(var(--base-secondary), 15%, 98%);
+
+  --base-ternary: 51;
+  --ternary-normal: hsl(var(--base-ternary), 100%, 68%);
+
+  --base-error: 0;
+  --error-normal: hsl(var(--base-error), 100%, 50%);
+  --error-darker: hsl(var(--base-error), 100%, 45%);
+
+  --base-success: 118;
+  --success-normal: hsl(var(--base-success), 76%, 46%);
+  --success-darker: hsl(var(--base-success), 76%, 40%);
+
+  --white: hsl(0, 0%, 100%);
+
+  --base-gray: 0;
+  --gray-normal: hsl(var(--base-gray), 1%, 81%); // gray -1
+  --gray-darker: hsl(var(--base-gray), 0%, 60%); // gray 2
+  --gray-darker-2: hsl(var(--base-gray), 0%, 27%); // gray 3
+  --gray-darker-3: hsl(var(--base-gray), 0%, 17%); // gray 4
+
+  --border-color: var(--gray-normal);
+  --border-color-focus: var(--gray-darker);
+
   --box-shadow: #e6e6e6;
+
   --gutter: 2rem;
   --container-max-width: 96rem;
   --toolbar-height: 6rem;
-  background: var(--secondary);
+
+  // components
+  // flash
+  --flash-normal: var(--primary-normal);
+  --flash-border: var(--primary-darker);
+  --flash-success-text: var(--white);
+
+  --flash-success: var(--success-normal);
+  --flash-success-border: var(--success-darker);
+  --flash-success-text: var(--white);
+
+  --flash-error: var(--error-normal);
+  --flash-error-border: var(--error-darker);
+  --flash-error-text: var(--white);
+
+  // tabs
+  --tab-active: var(--ternary-normal);
+  --tab-hover: var(--white);
+  --tab-default: var(--secondary-normal);
+
+  // toolbar
+  --toolbar-bg: var(--gray-darker-3);
+
+  // form
+  --form-input-bg: var(--white);
+
+
+  background: var(--secondary-normal);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
   font-size: 16px;

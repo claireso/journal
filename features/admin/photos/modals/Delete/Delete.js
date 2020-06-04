@@ -1,9 +1,9 @@
 import { Fragment, useCallback, memo } from 'react'
 import PropTypes from 'prop-types'
 
-import { PrimaryButton, SecondaryButton } from '@components/admin/Buttons'
-import { Heading1 } from '@components/admin/Headings'
-import Text from '@components/admin/Text'
+import { PrimaryButton, SecondaryButton } from '@components/Buttons'
+import { Heading1 } from '@components/Headings'
+import Text from '@components/Text'
 
 import { usePhotosReducer } from '../../reducer'
 
