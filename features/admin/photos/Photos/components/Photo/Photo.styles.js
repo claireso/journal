@@ -29,14 +29,14 @@ export const PhotoInner = styled.div`
 `
 
 export const PhotoTitle = styled.h2`
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0.4rem 0 1.2rem;
   font-weight: 500;
 `
 
 export const PhotoDescription = styled.p`
   color: var(--gray-darker-2);
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
 `
 
 export const PhotoTools = styled.p`

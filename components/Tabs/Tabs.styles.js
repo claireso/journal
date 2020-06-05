@@ -14,7 +14,7 @@ export const TabWrapper = styled.li`
     border-radius: 0.2rem 0.2rem 0 0;
     color: var(--text-normal);
     display: block;
-    font-size: 1.4rem;
+    font-size: var(--font-size-normal);
     padding: 2rem 2rem 2rem 4rem;
     text-decoration: none;
     transition: background 150ms ease-out;

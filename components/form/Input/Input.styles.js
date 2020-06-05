@@ -7,12 +7,11 @@ export const StyledInput = styled.input`
   border-radius: 0.4rem;
   box-shadow: 1px 1px 3px var(--box-shadow);
   display: block;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
-    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-family: var(--font-family);
   outline: none;
   padding: 0.8rem 1.2rem;
   width: 100%;
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   line-height: 1.71;
   transition: border-color 250ms ease-out;
   &:focus {

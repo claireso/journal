@@ -9,8 +9,7 @@ export const DefaultButton = styled.button`
   color: currentColor;
   cursor: pointer;
   display: inline-flex;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
-    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-family: var(--font-family);
   outline: none;
   padding: 0;
   margin: 0;
@@ -18,7 +17,7 @@ export const DefaultButton = styled.button`
 
 export const StyledButton = styled(DefaultButton)`
   border-radius: 0.2rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   transition: background 150ms ease-out;

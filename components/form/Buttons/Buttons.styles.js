@@ -12,7 +12,7 @@ export const SubmitButton = styled.input.attrs(() => ({
   color: white;
   cursor: pointer;
   display: block;
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   line-height: 1;
   margin: 2.8rem auto 0;
   outline: none;

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const SubscriptionWrapper = styled.li`
   align-items: center;
   display: flex;
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   list-style: none;
   padding: 1.5rem;
   transition: background 100ms ease-out;

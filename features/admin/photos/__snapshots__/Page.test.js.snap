@@ -29,12 +29,12 @@ exports[`Page photo should load and render photos 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: var(--font-family);
   outline: none;
   padding: 0;
   margin: 0;
   border-radius: 0.2rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
@@ -140,7 +140,7 @@ exports[`Page photo should load and render photos 2`] = `
       </span>
     </h1>
     <button
-      class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__PrimaryButton-jpizpn-2 hFtXQN"
+      class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__PrimaryButton-jpizpn-2 dLlVPE"
     >
       Add a new photo
       <svg
@@ -167,12 +167,12 @@ exports[`Page photo should load and render photos 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: var(--font-family);
   outline: none;
   padding: 0;
   margin: 0;
   border-radius: 0.2rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
@@ -242,7 +242,7 @@ exports[`Page photo should load and render photos 2`] = `
 
 .c5 {
   color: var(--gray-darker-2);
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
 }
 
 .c6 {
@@ -401,12 +401,12 @@ exports[`Page photo should load and render photos 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: var(--font-family);
   outline: none;
   padding: 0;
   margin: 0;
   border-radius: 0.2rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
@@ -417,7 +417,7 @@ exports[`Page photo should load and render photos 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   height: 4.4rem;
   -webkit-box-pack: center;
   -webkit-justify-content: center;

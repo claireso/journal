@@ -37,7 +37,7 @@ export const LinkGoToWebsite = styled.a`
   display: flex;
   align-items: center;
   color: var(--text-normal);
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
 
   box-shadow: 0 1px 0 var(--white) inset;
   line-height: 1.4;

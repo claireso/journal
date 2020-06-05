@@ -20,7 +20,7 @@ export const StyledSelect = styled.select`
   box-shadow: 1px 1px 3px var(--box-shadow);
   cursor: pointer;
   font-family: 'Roboto', Arial, sans-serif;
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   outline: none;
   padding: 0.8rem 2.6rem 0.8rem 0.8rem;
   &:focus {

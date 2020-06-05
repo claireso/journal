@@ -27,14 +27,14 @@ export const UploaderContent = styled.div`
   }
   span {
     display: block;
-    font-size: 1.4rem;
+    font-size: var(--font-size-normal);
     margin: 1rem 0 0;
     text-align: center;
   }
   small {
     color: var(--border-color-focus);
     display: block;
-    font-size: 1.2rem;
+    font-size: var(--font-size-smaller);
     margin: 0.5rem 0 0;
     text-align: center;
   }
@@ -53,7 +53,7 @@ export const UploaderInput = styled.input`
 
 export const UploaderError = styled.div`
   color: var(--error-normal);
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
   margin: 0.8rem 0 0;
   text-align: center;
 `

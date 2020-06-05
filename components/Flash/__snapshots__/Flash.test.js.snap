@@ -4,7 +4,7 @@ exports[`<Flash /> should close flash message 1`] = `
 .c1 {
   background: var(--flash-default);
   color: var(--flash-default-text);
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;
@@ -27,12 +27,12 @@ exports[`<Flash /> should close flash message 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: var(--font-family);
   outline: none;
   padding: 0;
   margin: 0;
   border-radius: 0.2rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
@@ -91,7 +91,7 @@ exports[`<Flash /> should render default flash message 1`] = `
 .c1 {
   background: var(--flash-default);
   color: var(--flash-default-text);
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;
@@ -114,7 +114,7 @@ exports[`<Flash /> should render error flash message 1`] = `
 .c1 {
   background: var(--flash-error);
   color: var(--flash-error-text);
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;
@@ -137,7 +137,7 @@ exports[`<Flash /> should render success flash message 1`] = `
 .c1 {
   background: var(--flash-success);
   color: var(--flash-success-text);
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;

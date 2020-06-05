@@ -4,7 +4,7 @@ exports[`<Messages /> should display error message then close it 1`] = `
 .c2 {
   background: var(--flash-error);
   color: var(--flash-error-text);
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;
@@ -27,12 +27,12 @@ exports[`<Messages /> should display error message then close it 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: var(--font-family);
   outline: none;
   padding: 0;
   margin: 0;
   border-radius: 0.2rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
@@ -100,7 +100,7 @@ exports[`<Messages /> should display success message then close it 1`] = `
 .c2 {
   background: var(--flash-success);
   color: var(--flash-success-text);
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;
@@ -123,12 +123,12 @@ exports[`<Messages /> should display success message then close it 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: var(--font-family);
   outline: none;
   padding: 0;
   margin: 0;
   border-radius: 0.2rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
@@ -196,7 +196,7 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
 .c2 {
   background: var(--flash-success);
   color: var(--flash-success-text);
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;
@@ -210,7 +210,7 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
 .c5 {
   background: var(--flash-error);
   color: var(--flash-error-text);
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;
@@ -233,12 +233,12 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: var(--font-family);
   outline: none;
   padding: 0;
   margin: 0;
   border-radius: 0.2rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
@@ -328,12 +328,12 @@ exports[`<Messages /> should display two messages then edit one 2`] = `
     class="FlashGroupstyles__FlashGroupWrapper-sc-19ms1oj-0 hMzgqq"
   >
     <div
-      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 lmsVDY"
+      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 gxHJQE"
       style="opacity: 0;"
     >
       My success message edit
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 czJwsl"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 gFjvoM"
       >
         <svg
           height="16"
@@ -348,12 +348,12 @@ exports[`<Messages /> should display two messages then edit one 2`] = `
       </button>
     </div>
     <div
-      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 iQCQmT"
+      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 jZTtnz"
       style="opacity: 0;"
     >
       My error message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 czJwsl"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 gFjvoM"
       >
         <svg
           height="16"

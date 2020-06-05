@@ -28,7 +28,7 @@ const getColor = (status) => {
 export const FlashWrapper = animated(styled.div`
   background: ${(props) => getColor(props.status).background};
   color: ${(props) => getColor(props.status).text};
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;

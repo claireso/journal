@@ -49,7 +49,11 @@ body {
 
   --gutter: 2rem;
   --container-max-width: 96rem;
-  --toolbar-height: 6rem;
+
+  // typo
+  --font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  --font-size-normal: 1.4rem;
+  --font-size-smaller: 1.2rem;
 
   // components
   // flash
@@ -72,6 +76,7 @@ body {
 
   // toolbar
   --toolbar-bg: var(--gray-darker-3);
+  --toolbar-height: 6rem;
 
   // form
   --form-input-bg: var(--white);
@@ -79,7 +84,7 @@ body {
 
   background: var(--secondary-normal);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-family: var(--font-family);
   font-size: 16px;
   margin: 0;
   min-width: 70rem;
