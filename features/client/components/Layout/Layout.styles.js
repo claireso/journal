@@ -27,11 +27,18 @@ body {
 
   --base-gray: 0;
   --gray-normal: hsl(var(--base-gray), 0%, 42%);
-  --gray-lighter: hsl(var(--base-gray), 0, 93%);
+  --gray-lighter: hsl(var(--base-gray), 0%, 93%);
 
   --container-max-width: 128rem;
   --grid-number-column-small: 6;
   --grid-number-column-large: 12;
+
+  // typo
+  --font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  --font-size-normal: 1.4rem;
+  --font-size-smaller-1: 1.3rem;
+  --font-size-smaller-2: 1.2rem;
+  --font-size-smaller-3: 1.1rem;
 
   // flash message
   --flash-default: var(--yellow-normal);
@@ -39,7 +46,7 @@ body {
   --flash-default-text: var(--text-normal);
 
   color: var(--text-normal);
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-family: var(--font-family);
   font-size: 16px;
   margin: 0;
 }

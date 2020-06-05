@@ -15,7 +15,7 @@ export const PagerWrapper = styled.ul`
 
 export const PagerButton = styled(SecondaryButton)`
   align-items: center;
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   height: 4.4rem;
   justify-content: center;
   padding: 0;

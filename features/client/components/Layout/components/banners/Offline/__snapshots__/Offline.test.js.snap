@@ -6,7 +6,7 @@ exports[`<Offline /> should render component 1`] = `
 .c1 {
   background: var(--flash-default);
   color: var(--flash-default-text);
-  font-size: 1.4rem;
+  font-size: var(--font-size-normal);
   margin: 0 0 var(--gutter);
   padding: 2rem;
   position: relative;

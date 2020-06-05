@@ -8,13 +8,13 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
 }
 
 .c2 {
-  font-size: 1.3rem;
+  font-size: var(--font-size-smaller-1);
 }
 
 .c3 {
   color: var(--gray-normal);
   display: block;
-  font-size: 1.1rem;
+  font-size: var(--font-size-smaller-3);
   font-style: italic;
   margin: 0.4rem 0 0;
 }
@@ -68,13 +68,13 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
 }
 
 .c2 {
-  font-size: 1.3rem;
+  font-size: var(--font-size-smaller-1);
 }
 
 .c3 {
   color: var(--gray-normal);
   display: block;
-  font-size: 1.1rem;
+  font-size: var(--font-size-smaller-3);
   font-style: italic;
   margin: 0.4rem 0 0;
 }
@@ -128,13 +128,13 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 }
 
 .c2 {
-  font-size: 1.3rem;
+  font-size: var(--font-size-smaller-1);
 }
 
 .c3 {
   color: var(--gray-normal);
   display: block;
-  font-size: 1.1rem;
+  font-size: var(--font-size-smaller-3);
   font-style: italic;
   margin: 0.4rem 0 0;
 }
@@ -188,13 +188,13 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 }
 
 .c2 {
-  font-size: 1.3rem;
+  font-size: var(--font-size-smaller-1);
 }
 
 .c3 {
   color: var(--gray-normal);
   display: block;
-  font-size: 1.1rem;
+  font-size: var(--font-size-smaller-3);
   font-style: italic;
   margin: 0.4rem 0 0;
 }
@@ -248,13 +248,13 @@ exports[`<Photo /> should render photo (square center) 1`] = `
 }
 
 .c2 {
-  font-size: 1.3rem;
+  font-size: var(--font-size-smaller-1);
 }
 
 .c3 {
   color: var(--gray-normal);
   display: block;
-  font-size: 1.1rem;
+  font-size: var(--font-size-smaller-3);
   font-style: italic;
   margin: 0.4rem 0 0;
 }
