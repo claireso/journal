@@ -4,8 +4,8 @@ export const PhotoWrapper = styled.li`
   align-items: center;
   display: grid;
   grid-template-columns: 8rem auto 12rem;
-  grid-column-gap: 1rem;
-  padding: 1.4rem;
+  grid-column-gap: 1.6rem;
+  padding: 2rem;
   transition: background 150ms ease-out;
   &:hover {
     background: var(--secondary-lighter);
@@ -17,10 +17,14 @@ export const PhotoWrapper = styled.li`
 
 export const PhotoPicture = styled.div`
   height: 8rem;
+
   img {
     height: 100%;
     object-fit: contain;
     width: 100%;
+
+    filter: drop-shadow(0 -6px 0 currentColor) drop-shadow(0 6px 0 currentColor)
+      drop-shadow(-6px 0 0 currentColor) drop-shadow(6px 0 0 currentColor);
   }
 `
 

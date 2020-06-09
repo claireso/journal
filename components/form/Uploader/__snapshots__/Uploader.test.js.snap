@@ -5,15 +5,24 @@ exports[`<Uploader /> should change file 1`] = `
   border: 1px solid var(--border-color);
   border-radius: 0.4rem;
   box-shadow: 1px 1px 3px var(--box-shadow);
-  padding: 2rem;
+  overflow: hidden;
   position: relative;
+}
+
+.c1 {
+  background: var(--secondary-normal);
+  padding: 2rem;
 }
 
 .c1 img {
   display: block;
   max-width: 100%;
   max-height: 17rem;
-  margin: 0 auto var(--gutter);
+  margin: 0 auto;
+}
+
+.c2 {
+  padding: 2rem;
 }
 
 .c2 svg {
@@ -95,8 +104,12 @@ exports[`<Uploader /> should render error 1`] = `
   border: 1px solid var(--border-color);
   border-radius: 0.4rem;
   box-shadow: 1px 1px 3px var(--box-shadow);
-  padding: 2rem;
+  overflow: hidden;
   position: relative;
+}
+
+.c1 {
+  padding: 2rem;
 }
 
 .c1 svg {
@@ -183,8 +196,12 @@ exports[`<Uploader /> should render uploader 1`] = `
   border: 1px solid var(--border-color);
   border-radius: 0.4rem;
   box-shadow: 1px 1px 3px var(--box-shadow);
-  padding: 2rem;
+  overflow: hidden;
   position: relative;
+}
+
+.c1 {
+  padding: 2rem;
 }
 
 .c1 svg {
@@ -259,15 +276,24 @@ exports[`<Uploader /> should render uploader with preview 1`] = `
   border: 1px solid var(--border-color);
   border-radius: 0.4rem;
   box-shadow: 1px 1px 3px var(--box-shadow);
-  padding: 2rem;
+  overflow: hidden;
   position: relative;
+}
+
+.c1 {
+  background: var(--secondary-normal);
+  padding: 2rem;
 }
 
 .c1 img {
   display: block;
   max-width: 100%;
   max-height: 17rem;
-  margin: 0 auto var(--gutter);
+  margin: 0 auto;
+}
+
+.c2 {
+  padding: 2rem;
 }
 
 .c2 svg {

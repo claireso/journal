@@ -210,8 +210,8 @@ exports[`Page photo should load and render photos 2`] = `
   align-items: center;
   display: grid;
   grid-template-columns: 8rem auto 12rem;
-  grid-column-gap: 1rem;
-  padding: 1.4rem;
+  grid-column-gap: 1.6rem;
+  padding: 2rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
 }
@@ -232,6 +232,8 @@ exports[`Page photo should load and render photos 2`] = `
   height: 100%;
   object-fit: contain;
   width: 100%;
+  -webkit-filter: drop-shadow(0 -6px 0 currentColor) drop-shadow(0 6px 0 currentColor) drop-shadow(-6px 0 0 currentColor) drop-shadow(6px 0 0 currentColor);
+  filter: drop-shadow(0 -6px 0 currentColor) drop-shadow(0 6px 0 currentColor) drop-shadow(-6px 0 0 currentColor) drop-shadow(6px 0 0 currentColor);
 }
 
 .c4 {
@@ -269,6 +271,7 @@ exports[`Page photo should load and render photos 2`] = `
     >
       <div
         class="c3"
+        style="color: transparent;"
       />
       <div
         class="c4"
@@ -322,6 +325,7 @@ exports[`Page photo should load and render photos 2`] = `
     >
       <div
         class="c3"
+        style="color: transparent;"
       />
       <div
         class="c4"

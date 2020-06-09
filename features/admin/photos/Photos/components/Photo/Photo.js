@@ -13,7 +13,7 @@ class Photo extends React.PureComponent {
   render() {
     return (
       <S.PhotoWrapper>
-        <S.PhotoPicture>
+        <S.PhotoPicture style={{ color: this.props.color || 'transparent' }}>
           {this.props.inView && (
             <LazyLoadedImage src={`/uploads/${this.props.name}`} />
           )}
@@ -52,6 +52,7 @@ Photo.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  color: PropTypes.string,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   inView: PropTypes.bool.isRequired

@@ -74,12 +74,16 @@ exports[`<Photos /> should render component 1`] = `
 }
 
 .c0 {
+  --shadow-width: 6vw;
+  --shadow-width-smaller: 2rem;
   grid-row-start: 1;
   grid-column: 1 / span 6;
   margin: 0;
 }
 
 .c4 {
+  --shadow-width: 6vw;
+  --shadow-width-smaller: 2rem;
   grid-row-start: 2;
   grid-column: 1 / span 6;
   margin: 0;
@@ -98,16 +102,16 @@ exports[`<Photos /> should render component 1`] = `
 }
 
 .c1 {
-  background: var(--gray-lighter);
+  background: currentColor;
   position: relative;
-  padding-top: calc(0.666667 * 100%);
+  padding-top: calc(100% / var(--aspect-ratio));
   width: 100%;
   margin: 0 0 1rem;
 }
 
 .c5 {
   grid-column: 1 / -1;
-  margin: 8.5rem 0;
+  margin: 4.5rem 0;
 }
 
 @media (min-width:800px) {
@@ -130,12 +134,19 @@ exports[`<Photos /> should render component 1`] = `
   }
 }
 
+@media (min-width:800px) {
+  .c5 {
+    margin: 8.5rem 0;
+  }
+}
+
 <div>
   <figure
     class="c0"
   >
     <div
       class="c1"
+      style="--aspect-ratio: 1.5;"
     />
     <figcaption
       class="c2"
@@ -153,6 +164,7 @@ exports[`<Photos /> should render component 1`] = `
   >
     <div
       class="c1"
+      style="--aspect-ratio: 1.5;"
     />
     <figcaption
       class="c2"

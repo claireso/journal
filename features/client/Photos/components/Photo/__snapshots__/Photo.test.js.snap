@@ -2,6 +2,8 @@
 
 exports[`<Photo /> should render photo (landscape center) 1`] = `
 .c0 {
+  --shadow-width: 6vw;
+  --shadow-width-smaller: 2rem;
   grid-row-start: 0;
   grid-column: 1 / span 6;
   margin: 0;
@@ -20,9 +22,9 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-lighter);
+  background: currentColor;
   position: relative;
-  padding-top: calc(0.666667 * 100%);
+  padding-top: calc(100% / var(--aspect-ratio));
   width: 100%;
   margin: 0 0 1rem;
 }
@@ -43,6 +45,7 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
   >
     <div
       class="c1"
+      style="--aspect-ratio: 1.5;"
     />
     <figcaption
       class="c2"
@@ -62,6 +65,8 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
 
 exports[`<Photo /> should render photo (landscape left) 1`] = `
 .c0 {
+  --shadow-width: 6vw;
+  --shadow-width-smaller: 2rem;
   grid-row-start: 0;
   grid-column: 1 / span 6;
   margin: 0;
@@ -80,9 +85,9 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-lighter);
+  background: currentColor;
   position: relative;
-  padding-top: calc(0.666667 * 100%);
+  padding-top: calc(100% / var(--aspect-ratio));
   width: 100%;
   margin: 0 0 1rem;
 }
@@ -103,6 +108,7 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
   >
     <div
       class="c1"
+      style="--aspect-ratio: 1.5;"
     />
     <figcaption
       class="c2"
@@ -122,6 +128,8 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
 
 exports[`<Photo /> should render photo (landscape right) 1`] = `
 .c0 {
+  --shadow-width: 6vw;
+  --shadow-width-smaller: 2rem;
   grid-row-start: 0;
   grid-column: 1 / span 6;
   margin: 0;
@@ -140,9 +148,9 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-lighter);
+  background: currentColor;
   position: relative;
-  padding-top: calc(0.666667 * 100%);
+  padding-top: calc(100% / var(--aspect-ratio));
   width: 100%;
   margin: 0 0 1rem;
 }
@@ -163,6 +171,7 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
   >
     <div
       class="c1"
+      style="--aspect-ratio: 1.5;"
     />
     <figcaption
       class="c2"
@@ -182,6 +191,8 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 
 exports[`<Photo /> should render photo (portrait center) 1`] = `
 .c0 {
+  --shadow-width: 6vw;
+  --shadow-width-smaller: 2rem;
   grid-row-start: 0;
   grid-column: 1 / span 5;
   margin: 0;
@@ -200,9 +211,9 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-lighter);
+  background: currentColor;
   position: relative;
-  padding-top: calc(1.500000 * 100%);
+  padding-top: calc(100% / var(--aspect-ratio));
   width: 100%;
   margin: 0 0 1rem;
 }
@@ -223,6 +234,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
   >
     <div
       class="c1"
+      style="--aspect-ratio: 0.6666666666666666;"
     />
     <figcaption
       class="c2"
@@ -242,6 +254,8 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 
 exports[`<Photo /> should render photo (square center) 1`] = `
 .c0 {
+  --shadow-width: 6vw;
+  --shadow-width-smaller: 2rem;
   grid-row-start: 0;
   grid-column: 1 / span 5;
   margin: 0;
@@ -260,9 +274,9 @@ exports[`<Photo /> should render photo (square center) 1`] = `
 }
 
 .c1 {
-  background: var(--gray-lighter);
+  background: currentColor;
   position: relative;
-  padding-top: calc(1.000000 * 100%);
+  padding-top: calc(100% / var(--aspect-ratio));
   width: 100%;
   margin: 0 0 1rem;
 }
@@ -283,6 +297,7 @@ exports[`<Photo /> should render photo (square center) 1`] = `
   >
     <div
       class="c1"
+      style="--aspect-ratio: 1;"
     />
     <figcaption
       class="c2"
