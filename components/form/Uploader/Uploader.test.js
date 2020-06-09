@@ -35,7 +35,8 @@ describe('<Uploader />', () => {
   })
 
   test('should change file', async () => {
-    const { container } = render(<Uploader {...props} />)
+    const spy = jest.fn()
+    const { container } = render(<Uploader {...props} onChange={spy} />)
 
     const input = container.querySelector('input[type="file"]')
 
@@ -47,6 +48,9 @@ describe('<Uploader />', () => {
 
     await waitFor(() => {
       expect(container.querySelector('img')).toBeInTheDocument()
+      expect(spy).toHaveBeenCalledWith(
+        'data:image/jpeg;base64,KOKMkOKWoV/ilqEp'
+      )
       expect(container).toMatchSnapshot()
     })
   })

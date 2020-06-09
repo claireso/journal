@@ -16,7 +16,7 @@ class Uploader extends React.PureComponent {
   }
 
   handleChange = async (event) => {
-    const { accept } = this.props
+    const { accept, onChange } = this.props
 
     const files = event.target.files
 
@@ -39,6 +39,8 @@ class Uploader extends React.PureComponent {
       const thumbnail = await createThumbnail(file)
 
       this.setState({ preview: thumbnail, error: null })
+
+      onChange && onChange(thumbnail)
     } catch (err) {
       /* eslint-disable */
       console.error(err)
@@ -51,7 +53,7 @@ class Uploader extends React.PureComponent {
     return (
       <S.UploaderWrapper>
         {preview && (
-          <S.UploaderPreview>
+          <S.UploaderPreview backgroundColor={this.props.backgroundPreview}>
             <img src={preview} />
           </S.UploaderPreview>
         )}
@@ -77,7 +79,8 @@ Uploader.propTypes = {
   name: PropTypes.string.isRequired,
   preview: PropTypes.string,
   accept: PropTypes.array,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  onChange: PropTypes.func
 }
 
 export default Uploader

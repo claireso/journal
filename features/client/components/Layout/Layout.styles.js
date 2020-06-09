@@ -49,6 +49,7 @@ body {
   font-family: var(--font-family);
   font-size: 16px;
   margin: 0;
+  overflow-x: hidden;
 }
 
 a {
@@ -59,7 +60,7 @@ a {
 export const Main = styled.main`
   display: grid;
   grid-template-columns: repeat(var(--grid-number-column-small), 1fr);
-  grid-gap: 2rem;
+  grid-gap: 4rem 2rem;
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 2rem;

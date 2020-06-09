@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/claireso/journal#readme",
   "dependencies": {
+    "colorthief": "2.3.0",
     "cookie-session": "1.4.0",
     "date-fns": "2.13.0",
-    "intersection-observer": "0.10.0",
     "isomorphic-unfetch": "3.0.0",
     "jimp": "0.10.3",
     "lodash": "4.17.15",

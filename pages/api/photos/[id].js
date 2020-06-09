@@ -68,6 +68,11 @@ const editPhoto = async (req, res) => {
       ...req.body
     }
 
+    // color value
+    if (req.body.color !== undefined) {
+      data.color = req.body.color || null
+    }
+
     // TODO delete current file
     if (file) {
       data.name = file.filename
@@ -87,7 +92,7 @@ const editPhoto = async (req, res) => {
     )
 
     res.status(200).json(response.rows[0])
-  } catch {
+  } catch (err) {
     res.status(500).send('')
   }
 }

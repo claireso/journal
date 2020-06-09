@@ -104,6 +104,7 @@ const createTable = async (client) => {
         name VARCHAR NOT NULL,
         position POSITION_TYPE DEFAULT 'left',
         portrait BOOLEAN DEFAULT False,
+        color CHAR (7) CHECK (VALUE ~ '^#[A-Fa-f0-9]{6}$'),
         square BOOLEAN DEFAULT False,
         created_at TIMESTAMP with time zone DEFAULT NOW(),
         updated_at TIMESTAMP with time zone DEFAULT NOW()

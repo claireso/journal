@@ -4,20 +4,25 @@ export const UploaderWrapper = styled.div`
   border: 1px solid var(--border-color);
   border-radius: 0.4rem;
   box-shadow: 1px 1px 3px var(--box-shadow);
-  padding: 2rem;
+  overflow: hidden;
   position: relative;
 `
 
 export const UploaderPreview = styled.div`
+  background: ${(props) => props.backgroundColor || 'var(--secondary-normal)'};
+  padding: 2rem;
+
   img {
     display: block;
     max-width: 100%;
     max-height: 17rem;
-    margin: 0 auto var(--gutter);
+    margin: 0 auto;
   }
 `
 
 export const UploaderContent = styled.div`
+  padding: 2rem;
+
   svg {
     display: block;
     width: 2.4rem;

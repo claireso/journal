@@ -22,7 +22,7 @@ export const StyledSelect = styled.select`
   font-family: 'Roboto', Arial, sans-serif;
   font-size: var(--font-size-normal);
   outline: none;
-  padding: 0.8rem 2.6rem 0.8rem 0.8rem;
+  padding: 1.1rem 2.6rem 1.1rem 1.1rem;
   &:focus {
     border-color: var(--border-color-focus);
   }
