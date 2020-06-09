@@ -68,11 +68,6 @@ const editPhoto = async (req, res) => {
       ...req.body
     }
 
-    // color value
-    if (req.body.color !== undefined) {
-      data.color = req.body.color || null
-    }
-
     // TODO delete current file
     if (file) {
       data.name = file.filename

@@ -62,12 +62,12 @@ const Form = (props) => {
           required={!photo ? true : undefined}
           accept={ALLOWED_MIMETYPES}
           preview={photo?.source}
-          onChange={handleOnChangePhoto}
+          onChange={photo && handleOnChangePhoto}
           backgroundPreview={backgroundPreview}
         />
       </Group>
 
-      {colors?.length && (
+      {photo && colors?.length && (
         <Group>
           <Label>Background color</Label>
           <ColorPicker
