@@ -9,6 +9,10 @@ html {
   box-sizing: inherit;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   // theme
   --base-text: 0;
@@ -49,7 +53,6 @@ body {
   font-family: var(--font-family);
   font-size: 16px;
   margin: 0;
-  overflow-x: hidden;
 }
 
 a {
