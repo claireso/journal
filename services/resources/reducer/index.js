@@ -184,7 +184,11 @@ export const createResourceManager = (options = {}) => {
         const action = getAction('loadResources')
 
         try {
-          const response = await action.action(page)
+          let response = await action.action(page)
+
+          if (action.preprocess) {
+            response = action.preprocess(response)
+          }
 
           dispatch({ type: ACTION_LOAD_RESOURCES, response })
 
@@ -205,7 +209,11 @@ export const createResourceManager = (options = {}) => {
         const action = getAction('loadResource')
 
         try {
-          const response = await action.action(id)
+          let response = await action.action(id)
+
+          if (action.preprocess) {
+            response = action.preprocess(response)
+          }
 
           dispatch({ type: ACTION_LOAD_RESOURCE, response })
 
@@ -228,7 +236,11 @@ export const createResourceManager = (options = {}) => {
         const action = getAction('createResource')
 
         try {
-          const response = await action.action(data)
+          let response = await action.action(data)
+
+          if (action.preprocess) {
+            response = action.preprocess(response)
+          }
 
           dispatch({ type: ACTION_ADD_RESOURCE, response })
 
@@ -251,7 +263,11 @@ export const createResourceManager = (options = {}) => {
         const action = getAction('editResource')
 
         try {
-          const response = await action.action(id, data)
+          let response = await action.action(id, data)
+
+          if (action.preprocess) {
+            response = action.preprocess(response)
+          }
 
           dispatch({ type: ACTION_EDIT_RESOURCE, response })
 

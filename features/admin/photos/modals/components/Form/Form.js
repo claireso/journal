@@ -16,9 +16,7 @@ const ALLOWED_MIMETYPES = ['image/jpeg', 'image/png']
 const Form = (props) => {
   const { photo, isProcessing, onSubmit } = props
 
-  const [colors, extractColors] = useColorsExtractor(
-    photo && `/uploads/${photo.name}`
-  )
+  const [colors, extractColors] = useColorsExtractor(photo?.source)
 
   const [backgroundPreview, setBackgroundPreview] = useState(photo?.color)
 
@@ -48,12 +46,12 @@ const Form = (props) => {
       encType="multipart/form-data"
       onSubmit={handleSubmit}
     >
-      <Input name="title" label="Title" value={photo ? photo.title : ''} />
+      <Input name="title" label="Title" value={photo?.title || ''} />
 
       <Input
         name="description"
         label="Description"
-        value={photo ? photo.description : ''}
+        value={photo?.description || ''}
       />
 
       <Group>
@@ -63,7 +61,7 @@ const Form = (props) => {
           name="file"
           required={!photo ? true : undefined}
           accept={ALLOWED_MIMETYPES}
-          preview={photo && `/uploads/${photo.name}`}
+          preview={photo?.source}
           onChange={handleOnChangePhoto}
           backgroundPreview={backgroundPreview}
         />
@@ -83,7 +81,7 @@ const Form = (props) => {
       <Select
         label="Position"
         name="position"
-        value={photo ? photo.position : ''}
+        value={photo?.position || 'left'}
         options={[
           {
             value: 'left',
