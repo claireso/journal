@@ -87,7 +87,7 @@ const editPhoto = async (req, res) => {
     )
 
     res.status(200).json(response.rows[0])
-  } catch {
+  } catch (err) {
     res.status(500).send('')
   }
 }

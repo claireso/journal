@@ -7,16 +7,29 @@ import {
 } from '@services/messages/reducer'
 import * as api from '@services/api'
 
+const modelPhoto = (photo) => ({
+  ...photo,
+  source: `/uploads/${photo.name}`
+})
+
 const PhotosResourceManager = createResourceManager({
   actions: {
     loadResources: {
-      action: api.getPhotos
+      action: api.getPhotos,
+      preprocess: ({ items, pager }) => {
+        return {
+          items: items.map(modelPhoto),
+          pager: pager
+        }
+      }
     },
     loadResource: {
-      action: api.getPhoto
+      action: api.getPhoto,
+      preprocess: (photo) => modelPhoto(photo)
     },
     createResource: {
       action: api.createPhoto,
+      preprocess: (photo) => modelPhoto(photo),
       onSuccess: () => {
         displaySuccessMessage({
           message: 'Your photo has been created successfully',
@@ -34,6 +47,7 @@ const PhotosResourceManager = createResourceManager({
     },
     editResource: {
       action: api.editPhoto,
+      preprocess: (photo) => modelPhoto(photo),
       onSuccess: () => {
         displaySuccessMessage({
           message: 'Your photo has been updated successfully',

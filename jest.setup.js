@@ -1,12 +1,23 @@
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-styled-components'
-import 'intersection-observer'
 import { enableMocks } from 'jest-fetch-mock'
+
+enableMocks()
 
 window.scroll = () => {}
 window.scrollTo = () => {}
 
-enableMocks()
+global.IntersectionObserver = class IntersectionObserver {
+  constructor() {}
+
+  observe() {
+    return null
+  }
+
+  unobserve() {
+    return null
+  }
+}
 
 // go offline
 global.goOffline = () => {
