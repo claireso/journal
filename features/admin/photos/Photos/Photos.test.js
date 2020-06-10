@@ -2,8 +2,10 @@ import { render, waitFor, fireEvent } from '@testing-library/react'
 
 import withTestRouter from '@utils/hoc/withTestRouter'
 
-import { PhotosProvider, INITIAL_STATE } from '../reducer'
+import PhotosReducer from '../reducer'
 import Photos from './Photos'
+
+const { PhotosProvider, INITIAL_STATE } = PhotosReducer
 
 describe('List Photos', () => {
   const renderComponent = (state = INITIAL_STATE, routerProps = {}) => {

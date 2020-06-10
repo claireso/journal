@@ -10,11 +10,9 @@ import ModalCreatePhoto from '@features/admin/photos/modals/Create'
 import ModalEditPhoto from '@features/admin/photos/modals/Edit'
 import ModalDeletePhoto from '@features/admin/photos/modals/Delete'
 
-import {
-  ACTION_TYPES,
-  PhotosProvider,
-  INITIAL_STATE
-} from '@features/admin/photos/reducer'
+import PhotosReducer, { ACTION_TYPES } from '@features/admin/photos/reducer'
+
+const { PhotosProvider, INITIAL_STATE } = PhotosReducer
 
 const Photos = (props) => {
   return (

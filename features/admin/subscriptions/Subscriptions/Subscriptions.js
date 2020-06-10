@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
 
-import { useSubscriptionsReducer, ACTION_TYPES } from '../reducer'
+import SubscriptionsReducer, { ACTION_TYPES } from '../reducer'
 
 import Loader from '@components/Loader'
 import { List, ListHeader } from '@components/List'
@@ -14,7 +14,7 @@ const Subscriptions = () => {
   const [
     { items: subscriptions, pager, ...state },
     { loadResources }
-  ] = useSubscriptionsReducer()
+  ] = SubscriptionsReducer.useSubscriptionsReducer()
   const isLoading = ['idle', 'loading'].includes(state.status)
 
   const router = useRouter()

@@ -5,10 +5,13 @@ import { Heading1 } from '@components/Headings'
 
 import Form from '../components/Form'
 
-import { usePhotosReducer } from '../../reducer'
+import PhotosReducer from '../../reducer'
 
 const Edit = ({ id }) => {
-  const [state, { loadResource, editResource }] = usePhotosReducer()
+  const [
+    state,
+    { loadResource, editResource }
+  ] = PhotosReducer.usePhotosReducer()
 
   const isProcessing = state.status === 'pending'
 
