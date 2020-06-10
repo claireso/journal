@@ -131,7 +131,6 @@ $ PORT=4000 npm run start:custom
 
 Don't forget to update the entry 'baseUrl' in your config
 
-![](https://user-images.githubusercontent.com/961038/65306681-44548080-db86-11e9-80d3-d873e3e72b6b.jpg)
+![](https://user-images.githubusercontent.com/961038/84236772-7fbe2300-aaf8-11ea-9e2e-a63f8c482b8a.jpg)
 
-![](https://user-images.githubusercontent.com/961038/65673229-bcb9b680-e04a-11e9-89ea-2d6b94a3f989.jpg)
-
+![](https://user-images.githubusercontent.com/961038/84236775-8056b980-aaf8-11ea-8479-f15f80a197ac.jpg)
