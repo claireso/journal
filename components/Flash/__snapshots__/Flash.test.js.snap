@@ -69,6 +69,7 @@ exports[`<Flash /> should close flash message 1`] = `
     class="c0 c1"
     style="opacity: 0;"
   >
+    Flash message
     <button
       class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
     >
@@ -106,7 +107,9 @@ exports[`<Flash /> should render default flash message 1`] = `
   <div
     class="c0 c1"
     style="opacity: 0;"
-  />
+  >
+    Flash message
+  </div>
 </div>
 `;
 
@@ -129,7 +132,9 @@ exports[`<Flash /> should render error flash message 1`] = `
   <div
     class="c0 c1"
     style="opacity: 0;"
-  />
+  >
+    Flash message
+  </div>
 </div>
 `;
 
@@ -152,6 +157,8 @@ exports[`<Flash /> should render success flash message 1`] = `
   <div
     class="c0 c1"
     style="opacity: 0;"
-  />
+  >
+    Flash message
+  </div>
 </div>
 `;
