@@ -49,6 +49,22 @@ exports[`<PrimaryButton /> should render button 1`] = `
 `;
 
 exports[`<PrimaryButton /> should render loader 1`] = `
+.c3 {
+  margin: 2rem 0;
+  -webkit-animation: jBcSpD 800ms ease-in-out infinite alternate;
+  animation: jBcSpD 800ms ease-in-out infinite alternate;
+}
+
+.c3:after {
+  background: var(--primary-normal);
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  margin: 0 auto;
+}
+
 .c1 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -73,6 +89,8 @@ exports[`<PrimaryButton /> should render loader 1`] = `
   transition: background 150ms ease-out;
   background: var(--primary-normal);
   color: white;
+  padding: 1.9rem 1.6rem;
+  cursor: default;
 }
 
 .c1 > svg {
@@ -87,11 +105,21 @@ exports[`<PrimaryButton /> should render loader 1`] = `
   background: var(--primary-lighter);
 }
 
+.c1 .c2 {
+  margin: 0;
+}
+
+.c1 .c2:after {
+  background: #fff;
+}
+
 <div>
   <button
-    class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c0 c1"
+    class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__PrimaryButton-jpizpn-2 c0 c1"
   >
-    Button
+    <span
+      class="c2 c3"
+    />
   </button>
 </div>
 `;

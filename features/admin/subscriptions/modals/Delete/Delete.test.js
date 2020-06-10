@@ -58,17 +58,13 @@ describe('<Delete />', () => {
   })
 
   test('should not delete resource', () => {
-    const spyDeleteResource = jest.fn()
-
     SubscriptionsReducer.useSubscriptionsReducer = () => [
       { status: 'pending' },
-      { deleteResource: spyDeleteResource }
+      {}
     ]
 
-    const { getByText } = renderComponent()
+    const { queryByText } = renderComponent()
 
-    fireEvent.click(getByText('Yes'))
-
-    expect(spyDeleteResource).not.toHaveBeenCalled()
+    expect(queryByText('Yes')).toBeNull()
   })
 })

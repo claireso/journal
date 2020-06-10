@@ -56,17 +56,10 @@ describe('<Delete />', () => {
   })
 
   test('should not delete resource', () => {
-    const spyDeleteResource = jest.fn()
+    PhotosReducer.usePhotosReducer = () => [{ status: 'pending' }, {}]
 
-    PhotosReducer.usePhotosReducer = () => [
-      { status: 'pending' },
-      { deleteResource: spyDeleteResource }
-    ]
+    const { queryByText } = renderComponent()
 
-    const { getByText } = renderComponent()
-
-    fireEvent.click(getByText('Yes'))
-
-    expect(spyDeleteResource).not.toHaveBeenCalled()
+    expect(queryByText('Yes')).toBeNull()
   })
 })
