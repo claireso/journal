@@ -77,7 +77,9 @@ exports[`<Delete /> should render component 1`] = `
   background: var(--secondary-darker);
 }
 
-.c3 + .c4 {
+.c3 + .c4,
+.c4 + .c3,
+.c3 + .c3 {
   margin-left: 0.8rem;
 }
 

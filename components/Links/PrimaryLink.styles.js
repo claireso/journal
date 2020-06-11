@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export default styled.a`
+import Link from './Link.styles'
+
+export default styled(Link)`
   color: var(--primary-normal);
 
   &:hover,

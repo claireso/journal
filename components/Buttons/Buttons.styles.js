@@ -63,7 +63,8 @@ export const SecondaryButton = styled(StyledButton)`
     background: var(--secondary-darker);
   }
 
-  & + ${PrimaryButton} {
+  & + ${PrimaryButton}, ${PrimaryButton} + &,
+  & + & {
     margin-left: 0.8rem;
   }
 `

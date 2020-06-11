@@ -57,9 +57,9 @@ body {
 
   // components
   // flash
-  --flash-normal: var(--primary-normal);
-  --flash-border: var(--primary-darker);
-  --flash-success-text: var(--white);
+  --flash-default: var(--primary-normal);
+  --flash-default-border: var(--primary-darker);
+  --flash-default-text: var(--white);
 
   --flash-success: var(--success-normal);
   --flash-success-border: var(--success-darker);

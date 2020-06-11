@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { animated } from 'react-spring'
 
 import { StyledButton } from '../Buttons'
@@ -34,9 +34,11 @@ export const FlashWrapper = animated(styled.div`
   position: relative;
   text-align: center;
 
-  & + & {
-    border-top: 3px solid ${(props) => getColor(props.status).border};
-  }
+  ${(props) =>
+    props.withBorder &&
+    css`
+      border-top: 3px solid ${getColor(props.status).border};
+    `}
 `)
 
 export const FlashButtonClose = styled(StyledButton)`
@@ -50,6 +52,7 @@ export const FlashButtonClose = styled(StyledButton)`
   bottom: 0;
 
   > svg {
+    fill: currentColor;
     margin: 0;
   }
 `
