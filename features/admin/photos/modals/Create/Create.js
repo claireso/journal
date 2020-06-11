@@ -1,14 +1,13 @@
 import { Fragment, memo } from 'react'
-import PropTypes from 'prop-types'
 
 import { Heading2 } from '@components/Headings'
 
 import Form from '../components/Form'
 
-import { usePhotosReducer } from '../../reducer'
+import PhotosReducer from '../../reducer'
 
 const Create = () => {
-  const [state, actions] = usePhotosReducer()
+  const [state, actions] = PhotosReducer.usePhotosReducer()
   const isProcessing = state.status === 'pending'
 
   return (
@@ -17,10 +16,6 @@ const Create = () => {
       <Form onSubmit={actions.createResource} isProcessing={isProcessing} />
     </Fragment>
   )
-}
-
-Create.propTypes = {
-  onClose: PropTypes.func.isRequired
 }
 
 export default memo(Create)

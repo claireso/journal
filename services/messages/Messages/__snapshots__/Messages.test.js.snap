@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Messages /> should display error message then close it 1`] = `
-.c2 {
+.c1 {
   background: var(--flash-error);
   color: var(--flash-error-text);
   font-size: var(--font-size-normal);
@@ -11,11 +11,7 @@ exports[`<Messages /> should display error message then close it 1`] = `
   text-align: center;
 }
 
-.c2 + .c1 {
-  border-top: 3px solid var(--flash-error-border);
-}
-
-.c4 {
+.c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -52,15 +48,16 @@ exports[`<Messages /> should display error message then close it 1`] = `
   bottom: 0;
 }
 
-.c4 > svg {
+.c3 > svg {
   margin: 0 -0.4rem 0 0.4rem;
 }
 
-.c4 + .c3 {
+.c3 + .c2 {
   margin: 0 0 0 0.8rem;
 }
 
-.c4 > svg {
+.c3 > svg {
+  fill: currentColor;
   margin: 0;
 }
 
@@ -73,12 +70,12 @@ exports[`<Messages /> should display error message then close it 1`] = `
     class="c0"
   >
     <div
-      class="c1 c2"
+      class="c1"
       style="opacity: 0;"
     >
       My error message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c3 c4"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
       >
         <svg
           height="16"
@@ -97,7 +94,7 @@ exports[`<Messages /> should display error message then close it 1`] = `
 `;
 
 exports[`<Messages /> should display success message then close it 1`] = `
-.c2 {
+.c1 {
   background: var(--flash-success);
   color: var(--flash-success-text);
   font-size: var(--font-size-normal);
@@ -107,11 +104,7 @@ exports[`<Messages /> should display success message then close it 1`] = `
   text-align: center;
 }
 
-.c2 + .c1 {
-  border-top: 3px solid var(--flash-success-border);
-}
-
-.c4 {
+.c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -148,15 +141,16 @@ exports[`<Messages /> should display success message then close it 1`] = `
   bottom: 0;
 }
 
-.c4 > svg {
+.c3 > svg {
   margin: 0 -0.4rem 0 0.4rem;
 }
 
-.c4 + .c3 {
+.c3 + .c2 {
   margin: 0 0 0 0.8rem;
 }
 
-.c4 > svg {
+.c3 > svg {
+  fill: currentColor;
   margin: 0;
 }
 
@@ -169,12 +163,12 @@ exports[`<Messages /> should display success message then close it 1`] = `
     class="c0"
   >
     <div
-      class="c1 c2"
+      class="c1"
       style="opacity: 0;"
     >
       My success message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c3 c4"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
       >
         <svg
           height="16"
@@ -193,7 +187,7 @@ exports[`<Messages /> should display success message then close it 1`] = `
 `;
 
 exports[`<Messages /> should display two messages then edit one 1`] = `
-.c2 {
+.c1 {
   background: var(--flash-success);
   color: var(--flash-success-text);
   font-size: var(--font-size-normal);
@@ -203,11 +197,7 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
   text-align: center;
 }
 
-.c2 + .c1 {
-  border-top: 3px solid var(--flash-success-border);
-}
-
-.c5 {
+.c4 {
   background: var(--flash-error);
   color: var(--flash-error-text);
   font-size: var(--font-size-normal);
@@ -215,13 +205,10 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
   padding: 2rem;
   position: relative;
   text-align: center;
-}
-
-.c5 + .c1 {
   border-top: 3px solid var(--flash-error-border);
 }
 
-.c4 {
+.c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -258,15 +245,16 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
   bottom: 0;
 }
 
-.c4 > svg {
+.c3 > svg {
   margin: 0 -0.4rem 0 0.4rem;
 }
 
-.c4 + .c3 {
+.c3 + .c2 {
   margin: 0 0 0 0.8rem;
 }
 
-.c4 > svg {
+.c3 > svg {
+  fill: currentColor;
   margin: 0;
 }
 
@@ -279,12 +267,12 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
     class="c0"
   >
     <div
-      class="c1 c2"
+      class="c1"
       style="opacity: 0;"
     >
       My success message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c3 c4"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
       >
         <svg
           height="16"
@@ -299,12 +287,12 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
       </button>
     </div>
     <div
-      class="c1 c5"
+      class="c4"
       style="opacity: 0;"
     >
       My error message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c3 c4"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
       >
         <svg
           height="16"
@@ -328,12 +316,12 @@ exports[`<Messages /> should display two messages then edit one 2`] = `
     class="FlashGroupstyles__FlashGroupWrapper-sc-19ms1oj-0 hMzgqq"
   >
     <div
-      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 gxHJQE"
+      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 eqwHGR"
       style="opacity: 0;"
     >
       My success message edit
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 gFjvoM"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 lnvEBy"
       >
         <svg
           height="16"
@@ -348,12 +336,12 @@ exports[`<Messages /> should display two messages then edit one 2`] = `
       </button>
     </div>
     <div
-      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 jZTtnz"
+      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 iHKoug"
       style="opacity: 0;"
     >
       My error message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 gFjvoM"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 lnvEBy"
       >
         <svg
           height="16"

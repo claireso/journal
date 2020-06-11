@@ -4,34 +4,29 @@ import Flash from './index'
 
 describe('<Flash />', () => {
   test('should render default flash message', () => {
-    const flash = { message: 'Flash message' }
-
-    const { container } = render(<Flash {...flash} />)
+    const { container } = render(<Flash>Flash message</Flash>)
 
     expect(container).toMatchSnapshot()
   })
 
   test('should render success flash message', () => {
-    const flash = { status: 'success', message: 'Flash message' }
-
-    const { container } = render(<Flash {...flash} />)
+    const { container } = render(<Flash status="success">Flash message</Flash>)
 
     expect(container).toMatchSnapshot()
   })
 
   test('should render error flash message', () => {
-    const flash = { status: 'error', message: 'Flash message' }
-
-    const { container } = render(<Flash {...flash} />)
+    const { container } = render(<Flash status="error">Flash message</Flash>)
 
     expect(container).toMatchSnapshot()
   })
 
   test('should close flash message', () => {
-    const flash = { message: 'Flash message' }
     const spyOnClose = jest.fn()
 
-    const { container } = render(<Flash {...flash} onClose={spyOnClose} />)
+    const { container } = render(
+      <Flash onClose={spyOnClose}>Flash message</Flash>
+    )
 
     expect(container).toMatchSnapshot()
 

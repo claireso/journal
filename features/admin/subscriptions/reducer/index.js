@@ -48,8 +48,8 @@ export const ACTION_TYPES = {
   DELETE: 'delete_subscription'
 }
 
-export const {
-  Provider: SubscriptionsProvider,
-  useReducer: useSubscriptionsReducer,
-  INITIAL_STATE
-} = SubscriptionsResourceManager
+export default {
+  SubscriptionsProvider: SubscriptionsResourceManager.Provider,
+  useSubscriptionsReducer: SubscriptionsResourceManager.useReducer,
+  INITIAL_STATE: SubscriptionsResourceManager.INITIAL_STATE
+}

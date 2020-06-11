@@ -101,8 +101,8 @@ export const ACTION_TYPES = {
   DELETE: 'delete_photo'
 }
 
-export const {
-  Provider: PhotosProvider,
-  useReducer: usePhotosReducer,
-  INITIAL_STATE
-} = PhotosResourceManager
+export default {
+  PhotosProvider: PhotosResourceManager.Provider,
+  usePhotosReducer: PhotosResourceManager.useReducer,
+  INITIAL_STATE: PhotosResourceManager.INITIAL_STATE
+}

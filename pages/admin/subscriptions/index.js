@@ -8,11 +8,11 @@ import withModalEdition from '@features/admin/hoc/withModalEdition'
 import ListSubscriptions from '@features/admin/subscriptions/Subscriptions'
 import ModalDeleteSubscription from '@features/admin/subscriptions/modals/Delete'
 
-import {
-  SubscriptionsProvider,
-  INITIAL_STATE,
+import SubscriptionsReducer, {
   ACTION_TYPES
 } from '@features/admin/subscriptions/reducer'
+
+const { SubscriptionsProvider, INITIAL_STATE } = SubscriptionsReducer
 
 const Subscriptions = (props) => {
   return (

@@ -5,10 +5,13 @@ import { PrimaryButton, SecondaryButton } from '@components/Buttons'
 import { Heading1 } from '@components/Headings'
 import Text from '@components/Text'
 
-import { useSubscriptionsReducer } from '../../reducer'
+import SubscriptionsReducer from '../../reducer'
 
 const Delete = (props) => {
-  const [state, { deleteResource }] = useSubscriptionsReducer()
+  const [
+    state,
+    { deleteResource }
+  ] = SubscriptionsReducer.useSubscriptionsReducer()
   const { onClose, id } = props
 
   const isProcessing = state.status === 'pending'

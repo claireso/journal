@@ -3,7 +3,7 @@
 exports[`<Offline /> should not render component 1`] = `<div />`;
 
 exports[`<Offline /> should render component 1`] = `
-.c1 {
+.c0 {
   background: var(--flash-default);
   color: var(--flash-default-text);
   font-size: var(--font-size-normal);
@@ -13,13 +13,9 @@ exports[`<Offline /> should render component 1`] = `
   text-align: center;
 }
 
-.c1 + .c0 {
-  border-top: 3px solid var(--flash-default-border);
-}
-
 <div>
   <div
-    class="c0 c1"
+    class="c0"
     style="opacity: 0;"
   >
     You are currently offline. Connect to the internet for access to the latest photos

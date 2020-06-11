@@ -7,13 +7,13 @@ exports[`<Notifications /> should not render component (user has blocked notific
 exports[`<Notifications /> should not subscribe and hide banner (denied story) 1`] = `<div />`;
 
 exports[`<Notifications /> should render component 1`] = `
-.c2 {
+.c1 {
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2:before {
+.c1:before {
   content: '';
   display: block;
   position: absolute;
@@ -23,11 +23,11 @@ exports[`<Notifications /> should render component 1`] = `
   bottom: 0;
 }
 
-.c2:hover {
+.c1:hover {
   border-bottom: 1px solid currentColor;
 }
 
-.c1 {
+.c0 {
   background: var(--flash-default);
   color: var(--flash-default-text);
   font-size: var(--font-size-normal);
@@ -37,11 +37,7 @@ exports[`<Notifications /> should render component 1`] = `
   text-align: center;
 }
 
-.c1 + .c0 {
-  border-top: 3px solid var(--flash-default-border);
-}
-
-.c4 {
+.c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -78,32 +74,33 @@ exports[`<Notifications /> should render component 1`] = `
   bottom: 0;
 }
 
-.c4 > svg {
+.c3 > svg {
   margin: 0 -0.4rem 0 0.4rem;
 }
 
-.c4 + .c3 {
+.c3 + .c2 {
   margin: 0 0 0 0.8rem;
 }
 
-.c4 > svg {
+.c3 > svg {
+  fill: currentColor;
   margin: 0;
 }
 
 <div>
   <div
-    class="c0 c1"
+    class="c0"
     style="opacity: 0;"
   >
     <a
-      class="c2"
+      class="c1"
       href="#"
       role="button"
     >
       Enable notifications to be alerted of new publication
     </a>
     <button
-      class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c3 c4"
+      class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
     >
       <svg
         height="16"

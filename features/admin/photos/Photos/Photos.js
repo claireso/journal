@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
 
-import { usePhotosReducer, ACTION_TYPES } from '../reducer'
+import PhotosReducer, { ACTION_TYPES } from '../reducer'
 
 import Loader from '@components/Loader'
 import { IconPlus } from '@components/Icons'
@@ -16,7 +16,7 @@ const Photos = () => {
   const [
     { items: photos, pager, ...state },
     { loadResources }
-  ] = usePhotosReducer()
+  ] = PhotosReducer.usePhotosReducer()
   const isLoading = ['idle', 'loading'].includes(state.status)
 
   const router = useRouter()

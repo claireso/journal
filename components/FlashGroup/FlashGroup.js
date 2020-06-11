@@ -16,6 +16,7 @@ const FlashGroup = ({ messages, ...props }) => {
           onClose={props.onClose}
           key={index}
           index={index}
+          withBorder={index > 0}
         >
           {message.message}
         </Flash>

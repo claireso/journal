@@ -2,8 +2,10 @@ import { render, waitFor, fireEvent } from '@testing-library/react'
 
 import withTestRouter from '@utils/hoc/withTestRouter'
 
-import { SubscriptionsProvider, INITIAL_STATE } from '../reducer'
+import SubscriptionsReducer from '../reducer'
 import Subscriptions from './Subscriptions'
+
+const { SubscriptionsProvider, INITIAL_STATE } = SubscriptionsReducer
 
 describe('List Subscriptions', () => {
   const renderComponent = (state = INITIAL_STATE, routerProps = {}) => {

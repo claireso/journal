@@ -77,8 +77,8 @@ class Uploader extends React.PureComponent {
 
 Uploader.propTypes = {
   name: PropTypes.string.isRequired,
+  accept: PropTypes.array.isRequired,
   preview: PropTypes.string,
-  accept: PropTypes.array,
   required: PropTypes.bool,
   onChange: PropTypes.func
 }

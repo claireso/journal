@@ -43,7 +43,8 @@ export const PrimaryButton = styled(StyledButton)`
 export const PrimaryButtonLoading = styled(PrimaryButton).attrs(() => ({
   children: <Loader as="span" />
 }))`
-  padding: 1.1rem 1rem 1.3rem;
+  padding: 1.9rem 1.6rem;
+  cursor: default;
 
   ${Loader} {
     margin: 0;
@@ -62,7 +63,8 @@ export const SecondaryButton = styled(StyledButton)`
     background: var(--secondary-darker);
   }
 
-  & + ${PrimaryButton} {
+  & + ${PrimaryButton}, ${PrimaryButton} + &,
+  & + & {
     margin-left: 0.8rem;
   }
 `
