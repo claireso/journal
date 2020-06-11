@@ -443,7 +443,9 @@ exports[`Page photo should load and render photos 2`] = `
   background: var(--secondary-darker);
 }
 
-.c2 + .c3 {
+.c2 + .c3,
+.c3 + .c2,
+.c2 + .c2 {
   margin-left: 0.8rem;
 }
 

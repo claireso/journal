@@ -6,8 +6,8 @@ const Tab = ({ isActive, children } = {}) => {
 }
 
 Tab.propTypes = {
-  isActive: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  isActive: PropTypes.bool
 }
 
 export default Tab
