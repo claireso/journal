@@ -87,8 +87,8 @@ export const useUserReducer = () => {
       dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_PENDING })
 
       try {
-        await loginUser(data)
-        const user = await getMe()
+        await loginUser(data).ready
+        const user = await getMe().ready
 
         dispatch({ type: ACTION_SET_USER, user })
 
@@ -108,7 +108,7 @@ export const useUserReducer = () => {
 
   const actionLogout = useCallback(async () => {
     try {
-      await logout()
+      await logout().ready
       dispatch({ type: ACTION_SET_USER, undefined })
     } finally {
       Router.push('/admin/login')
@@ -119,7 +119,7 @@ export const useUserReducer = () => {
     dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_PENDING })
 
     try {
-      const user = await getMe()
+      const user = await getMe().ready
 
       dispatch({ type: ACTION_SET_USER, user })
     } catch {

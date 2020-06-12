@@ -10,7 +10,8 @@ import * as api from '@services/api'
 const SubscriptionsResourceManager = createResourceManager({
   actions: {
     loadResources: {
-      action: api.getSubscriptions
+      action: api.getSubscriptions,
+      abortable: true
     },
     deleteResource: {
       action: api.deleteSubscription,

@@ -94,24 +94,34 @@ export const buildRequester = ({ baseUrl, onError } = {}) => {
     }
   }
 
-  const get = request
+  const abortableRequest = (url, data, options = DEFAULT_OPTIONS) => {
+    const controller =
+      typeof window !== 'undefined' ? new window.AbortController() : undefined
+
+    return {
+      abort: () => controller?.abort(),
+      ready: request(url, data, { ...options, signal: controller?.signal })
+    }
+  }
+
+  const get = abortableRequest
 
   const post = (url, body = {}) => {
     const method = 'POST'
 
-    return request(url, body, { method })
+    return abortableRequest(url, body, { method })
   }
 
   const del = (url) => {
     const method = 'DELETE'
 
-    return request(url, undefined, { method })
+    return abortableRequest(url, undefined, { method })
   }
 
   const patch = (url, body = {}) => {
     const method = 'PATCH'
 
-    return request(url, body, { method })
+    return abortableRequest(url, body, { method })
   }
 
   return {
