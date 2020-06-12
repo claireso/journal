@@ -16,6 +16,7 @@ const PhotosResourceManager = createResourceManager({
   actions: {
     loadResources: {
       action: api.getPhotos,
+      abortable: true,
       preprocess: ({ items, pager }) => {
         return {
           items: items.map(modelPhoto),

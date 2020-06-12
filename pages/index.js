@@ -31,10 +31,21 @@ const Homepage = (props) => {
   )
 }
 
+Homepage.currentRequest = undefined
+
 Homepage.getInitialProps = async (context) => {
   try {
+    if (Homepage.currentRequest) {
+      Homepage.currentRequest.abort()
+    }
+
     const { page } = context.query
-    const photos = await getPhotos(page)
+
+    Homepage.currentRequest = getPhotos(page)
+
+    const photos = await Homepage.currentRequest.ready
+
+    Homepage.currentRequest = undefined
 
     return { ...photos }
   } catch (err) {

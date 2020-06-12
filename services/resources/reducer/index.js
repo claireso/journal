@@ -136,9 +136,11 @@ export const createResourceManager = (options = {}) => {
     return context
   }
 
+  const storeRequests = {}
+
   const getAction = (name) => {
-    const actionsOptions = options.actions || {}
-    const action = actionsOptions[name]
+    const actions = options.actions
+    const action = actions && actions[name]
 
     if (!action || !action.action) {
       throw new Error(
@@ -149,28 +151,41 @@ export const createResourceManager = (options = {}) => {
     return action
   }
 
-  const onSuccess = (action) => {
-    if (action.onSuccess) {
-      const message = action.onSuccess()
-      if (message) {
-        message
-      }
+  const processRequest = async (action, actionName, ...args) => {
+    if (action.abortable) {
+      storeRequests[actionName]?.abort()
     }
+
+    const currentRequest = action.action(...args)
+
+    storeRequests[actionName] = currentRequest
+
+    let response = await currentRequest.ready
+
+    if (action.preprocess) {
+      response = action.preprocess(response)
+    }
+
+    return response
   }
 
-  const onError = (action, err) => {
+  const onSuccess = (action) => {
+    action.onSuccess && action.onSuccess()
+  }
+
+  const onError = (err, action, dispatch) => {
+    if (err.name === 'AbortError') return
+
+    dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_ERROR })
+
     if (err?.response?.status === 401) return
 
-    if (action.onError) {
-      const message = action.onError()
-      if (message) {
-        message
-      }
-    }
+    action.onError && action.onError()
   }
 
-  const onEnd = (action) => {
+  const onEnd = (action, actionName) => {
     action.onEnd && action.onEnd()
+    storeRequests[actionName] = undefined
   }
 
   const useResourcesReducer = () => {
@@ -181,24 +196,20 @@ export const createResourceManager = (options = {}) => {
       async (page = 1) => {
         dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_LOADING })
 
-        const action = getAction('loadResources')
+        const actionName = 'loadResources'
+
+        const action = getAction(actionName)
 
         try {
-          let response = await action.action(page)
-
-          if (action.preprocess) {
-            response = action.preprocess(response)
-          }
+          const response = await processRequest(action, actionName, page)
 
           dispatch({ type: ACTION_LOAD_RESOURCES, response })
 
           onSuccess(action)
         } catch (err) {
-          dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_ERROR })
-
-          onError(action, err)
+          onError(err, action, dispatch)
         } finally {
-          onEnd(action)
+          onEnd(action, actionName)
         }
       },
       [dispatch]
@@ -206,24 +217,20 @@ export const createResourceManager = (options = {}) => {
 
     const loadResource = useCallback(
       async (id) => {
-        const action = getAction('loadResource')
+        const actionName = 'loadResource'
+
+        const action = getAction(actionName)
 
         try {
-          let response = await action.action(id)
-
-          if (action.preprocess) {
-            response = action.preprocess(response)
-          }
+          const response = await processRequest(action, actionName, id)
 
           dispatch({ type: ACTION_LOAD_RESOURCE, response })
 
           onSuccess(action)
         } catch (err) {
-          dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_ERROR })
-
-          onError(action, err)
+          onError(err, action, dispatch)
         } finally {
-          onEnd(action)
+          onEnd(action, actionName)
         }
       },
       [dispatch]
@@ -233,24 +240,20 @@ export const createResourceManager = (options = {}) => {
       async (data) => {
         dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_PENDING })
 
-        const action = getAction('createResource')
+        const actionName = 'createResource'
+
+        const action = getAction(actionName)
 
         try {
-          let response = await action.action(data)
-
-          if (action.preprocess) {
-            response = action.preprocess(response)
-          }
+          const response = await processRequest(action, actionName, data)
 
           dispatch({ type: ACTION_ADD_RESOURCE, response })
 
           onSuccess(action)
         } catch (err) {
-          dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_ERROR })
-
-          onError(action, err)
+          onError(err, action, dispatch)
         } finally {
-          onEnd(action)
+          onEnd(action, actionName)
         }
       },
       [dispatch]
@@ -260,24 +263,20 @@ export const createResourceManager = (options = {}) => {
       async (id, data) => {
         dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_PENDING })
 
-        const action = getAction('editResource')
+        const actionName = 'editResource'
+
+        const action = getAction(actionName)
 
         try {
-          let response = await action.action(id, data)
-
-          if (action.preprocess) {
-            response = action.preprocess(response)
-          }
+          const response = await processRequest(action, actionName, id, data)
 
           dispatch({ type: ACTION_EDIT_RESOURCE, response })
 
           onSuccess(action)
         } catch (err) {
-          dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_ERROR })
-
-          onError(action, err)
+          onError(err, action, dispatch)
         } finally {
-          onEnd(action)
+          onEnd(action, actionName)
         }
       },
       [dispatch]
@@ -287,26 +286,24 @@ export const createResourceManager = (options = {}) => {
       async (id) => {
         dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_PENDING })
 
-        const action = getAction('deleteResource')
+        const actionName = 'deleteResource'
+
+        const action = getAction(actionName)
 
         try {
-          await action.action(id)
+          await processRequest(action, actionName, id)
+
           dispatch({ type: ACTION_DELETE_RESOURCE, id })
 
           onSuccess(action)
         } catch (err) {
-          dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_ERROR })
-          onError(action, err)
+          onError(err, action, dispatch)
         } finally {
-          onEnd(action)
+          onEnd(action, actionName)
         }
       },
       [dispatch]
     )
-
-    const test = () => {
-      dispatch({ type: ACTION_UPDATE_STATUS, status: STATUS_ERROR })
-    }
 
     return [
       state,
@@ -315,8 +312,7 @@ export const createResourceManager = (options = {}) => {
         loadResource,
         createResource,
         editResource,
-        deleteResource,
-        test
+        deleteResource
       }
     ]
   }
