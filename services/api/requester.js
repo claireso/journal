@@ -2,37 +2,71 @@ import fetch from 'isomorphic-unfetch'
 
 import logger from '@services/logger'
 
-const DEFAULT_PARAMS = {}
 const DEFAULT_OPTIONS = {
   method: 'GET'
 }
 
+/**
+ * isFormData
+ * @param {any} data
+ */
 const isFormData = (data) => data instanceof FormData
 
-const formatBody = (body) => {
-  if (isFormData(body)) {
-    return body
+/**
+ * buildQuery
+ * Transform object into query string
+ * input: {key: 'value', key2: 'value2'}
+ * output: 'key=value&key2=value2'
+ * @param {object} data
+ */
+const buildQuery = (data) => {
+  return Object.keys(data)
+    .map((key) => key + '=' + data[key])
+    .join('&')
+}
+
+/**
+ * buildBody
+ * @param {object | FormData} body
+ * @return {object | string}
+ */
+const buildBody = (data) => {
+  if (isFormData(data)) {
+    return data
   }
 
-  return JSON.stringify(body)
+  return JSON.stringify(data)
 }
 
 export const buildRequester = ({ baseUrl, onError } = {}) => {
-  const request = async (
-    url,
-    params = DEFAULT_PARAMS,
-    options = DEFAULT_OPTIONS
-  ) => {
-    logger('call api =>', { url, params, options })
+  /**
+   * Request
+   * @param {string} url
+   * @param {object} data (query or body)
+   * @param {object} options
+   * @return {promise}
+   */
+  const request = async (url, data, options = DEFAULT_OPTIONS) => {
+    logger('call api =>', { url, data, options })
 
-    const query = Object.keys(params)
-      .map((key) => key + '=' + params[key])
-      .join('&')
+    let query = undefined
+    let body = undefined
+
+    if (['POST', 'PATCH'].includes(options.method)) {
+      body = data && buildBody(data)
+    } else {
+      query = data && buildQuery(data)
+    }
+
     const completeUrl = `${baseUrl}${url}${query ? '?' + query : ''}`
 
-    if (options.body && !isFormData(options.body)) {
-      options.headers = {
-        'Content-Type': 'application/json'
+    if (body) {
+      options.body = body
+
+      if (!isFormData(body)) {
+        options.headers = {
+          'Content-Type': 'application/json'
+        }
       }
     }
 
@@ -65,22 +99,19 @@ export const buildRequester = ({ baseUrl, onError } = {}) => {
   const post = (url, body = {}) => {
     const method = 'POST'
 
-    const _body = formatBody(body)
-
-    return request(url, undefined, { method, body: _body })
+    return request(url, body, { method })
   }
 
   const del = (url) => {
     const method = 'DELETE'
+
     return request(url, undefined, { method })
   }
 
   const patch = (url, body = {}) => {
     const method = 'PATCH'
 
-    const _body = formatBody(body)
-
-    return request(url, undefined, { method, body: _body })
+    return request(url, body, { method })
   }
 
   return {
