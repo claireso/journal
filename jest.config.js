@@ -4,20 +4,6 @@ module.exports = {
   setupFilesAfterEnv: [path.resolve(__dirname, 'jest.setup.js')],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   globals: {
-    __TRANSLATIONS__: {
-      en: {
-        client: {
-          bannerOffline:
-            'You are currently offline. Connect to the internet for access to the latest photos',
-          bannerNotifications:
-            'Enable notifications to be alerted of new publication',
-          bannerCloseButton: 'Close banner'
-        },
-        admin: {
-          pushNewPhotoPosted: 'New photo posted'
-        }
-      }
-    },
     __PHOTOS__: {
       items: [
         {
