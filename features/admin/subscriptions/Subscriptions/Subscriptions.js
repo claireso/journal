@@ -18,17 +18,23 @@ const Subscriptions = () => {
   const isLoading = ['idle', 'loading'].includes(state.status)
 
   const router = useRouter()
-  const { query, pathname } = router
+  const {
+    query: { page },
+    pathname
+  } = router
 
   useEffect(() => {
-    loadResources(query.page)
-  }, [query.page, loadResources])
+    loadResources(page)
+  }, [page, loadResources])
 
   const navigate = useCallback(
     (params) => {
+      const query = {}
+      if (page) query.page = page
       router.push({ pathname: pathname, query: { ...query, ...params } })
     },
-    [pathname, query, router]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [page]
   )
 
   const onPageChange = useCallback((page) => navigate({ page }), [navigate])
