@@ -12,8 +12,6 @@ import {
   INITIAL_STATE as USER_INITIAL_STATE
 } from '@services/user/reducer'
 
-const config = process.env.website
-
 const AdminLayout = ({ children }) => {
   const { pathname } = useRouter()
 
@@ -23,7 +21,7 @@ const AdminLayout = ({ children }) => {
       <S.GlobalStyles />
 
       <Head>
-        <title>Admin - {config?.meta?.title}</title>
+        <title>Admin - {process.env.NEXT_PUBLIC_WEBSITE_META_TITLE}</title>
         <meta name="robots" content="noindex, nofollow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

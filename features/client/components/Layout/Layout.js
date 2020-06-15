@@ -5,17 +5,15 @@ import Head from 'next/head'
 
 import * as S from './Layout.styles'
 
-import { TranslationsProvider } from '@utils/hooks/useTranslations'
+import { TranslationsProvider } from '@services/translations/hooks/useTranslations'
+import { getTranslations } from '@services/translations'
 
 import Loader from '@components/Loader'
 
 import BannerOffline from './components/banners/Offline'
 import BannerNotifications from './components/banners/Notifications'
 
-const config = process.env.website
-
 const Layout = ({ children }) => {
-  const translations = process.env.website?.translations?.client
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -36,12 +34,18 @@ const Layout = ({ children }) => {
       <S.GlobalStyles />
 
       <Head>
-        <title>{config?.meta?.title}</title>
-        <meta name="description" content={config?.meta?.description} />
+        <title>{process.env.NEXT_PUBLIC_WEBSITE_META_TITLE}</title>
+        <meta
+          name="description"
+          content={process.env.NEXT_PUBLIC_WEBSITE_META_DESCRIPTION}
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="theme-color" content="#868585" />
-        {config?.meta?.robots && (
-          <meta name="robots" content={config.meta.robots} />
+        {process.env.NEXT_PUBLIC_WEBSITE_META_ROBOTS && (
+          <meta
+            name="robots"
+            content={process.env.NEXT_PUBLIC_WEBSITE_META_ROBOTS}
+          />
         )}
         <link
           rel="apple-touch-icon"
@@ -50,11 +54,11 @@ const Layout = ({ children }) => {
         />
         <link rel="manifest" href="/manifest.json" />
 
-        {config?.analytics?.ga && (
+        {process.env.NEXT_PUBLIC_WEBSITE_ANALYTICS_GA && (
           <Fragment>
             <script
               async
-              src={`https://www.googletagmanager.com/gtag/js?id=${config.analytics.ga}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_WEBSITE_ANALYTICS_GA}`}
             ></script>
             <script
               dangerouslySetInnerHTML={{
@@ -62,7 +66,7 @@ const Layout = ({ children }) => {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${config.analytics.ga}');
+                gtag('config', '${process.env.NEXT_PUBLIC_WEBSITE_ANALYTICS_GA}');
                 `
               }}
             />
@@ -70,7 +74,12 @@ const Layout = ({ children }) => {
         )}
       </Head>
 
-      <TranslationsProvider translations={translations}>
+      <TranslationsProvider
+        translations={getTranslations(
+          process.env.NEXT_PUBLIC_WEBSITE_LANGUAGE,
+          'client'
+        )}
+      >
         <BannerOffline />
         <BannerNotifications />
         <S.Main>

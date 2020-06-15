@@ -2,7 +2,7 @@ import urlBase64ToUint8Array from '@utils/urlBase64ToUint8Array'
 
 export default () => {
   const applicationServerKey = urlBase64ToUint8Array(
-    process.env.notificationsPublicKey,
+    process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY,
     self
   )
 

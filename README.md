@@ -22,50 +22,22 @@ git clone git@github.com:claireso/journal.git
 $ npm install
 ```
 
-### Copy config-sample.json and configure your application
+### Configure your application
 
-For that, you need to choose the environment in which you want to run your application (`development`, `production`, `test` etc.)
-
-Example for a development environment:
+Copy `.env` to `.env.local`
 
 ```
-$ cp config-sample.json ./config/config.development.json
+$ cp .env .env.local
 ```
 
-Example for a production environment:
-
-```
-$ cp config-sample.json ./config/config.production.json
-```
-
-Example for a test environment:
-
-```
-$ cp config-sample.json ./config/config.test.json
-```
+Open and edit `.env.local` to configure your application (database, website title...)
 
 ### Bootstrap the application
 
 It will create and setup the database and create an account for the admin
 
-Set `NODE_ENV` as your environment. If you omit to declare your environment, the application will choose your `development` environment by default.
-
-Example for a development environment:
-
 ```
-$ NODE_ENV=development npm run bootstrap
-```
-
-Example for a production environment:
-
-```
-$ NODE_ENV=production npm run bootstrap
-```
-
-Example for a test environment:
-
-```
-$ NODE_ENV=test npm run bootstrap
+$ npm run bootstrap
 ```
 
 Note: if you enable web push notifications during the installation, do not forget to update your config file with the public and private key printed in your console

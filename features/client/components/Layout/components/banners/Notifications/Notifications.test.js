@@ -1,6 +1,7 @@
 import { render, fireEvent, waitFor } from '@testing-library/react'
 
-import { TranslationsProvider } from '@utils/hooks/useTranslations'
+import { TranslationsProvider } from '@services/translations/hooks/useTranslations'
+import { getTranslations } from '@services/translations/'
 import * as notifications from '@services/notifications'
 
 import Notifications from './index'
@@ -8,7 +9,7 @@ import Notifications from './index'
 describe('<Notifications />', () => {
   const renderComponent = () =>
     render(
-      <TranslationsProvider translations={global.__TRANSLATIONS__.client}>
+      <TranslationsProvider translations={getTranslations('en', 'client')}>
         <Notifications />
       </TranslationsProvider>
     )
