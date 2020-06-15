@@ -1,14 +1,15 @@
-import fs from 'fs'
-import path from 'path'
-import pgtools from 'pgtools'
-import chalk from 'chalk'
-import promptly from 'promptly'
-import webpush from 'web-push'
+require('dotenv').config({ path: process.env.CONFIG_FILE || './.env.local' })
 
-import getConfig from '../config'
-import { pool } from '../services/db'
+const fs = require('fs')
+const path = require('path')
+const pgtools = require('pgtools')
+const chalk = require('chalk')
+const promptly = require('promptly')
+const webpush = require('web-push')
 
-const config = getConfig()
+const db = require('../services/db')
+
+const pool = db.pool
 
 // create folder
 const createFolder = (folderPath) => {
@@ -50,10 +51,10 @@ const createDatabase = async (databaseName) => {
   try {
     await pgtools.createdb(
       {
-        user: config.db.user,
-        password: config.db.password,
-        port: config.db.port,
-        host: config.db.host
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        port: process.env.DB_PORT,
+        host: process.env.DB_HOST
       },
       databaseName
     )
@@ -73,10 +74,10 @@ const dropDatabase = async (databaseName) => {
   try {
     await pgtools.dropdb(
       {
-        user: config.db.user,
-        password: config.db.password,
-        port: config.db.port,
-        host: config.db.host
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        port: process.env.DB_PORT,
+        host: process.env.DB_HOST
       },
       databaseName
     )
@@ -153,7 +154,9 @@ const enableWebPush = async () => {
   console.log(
     chalk.gray('Please update your config by adding public and private keys:')
   )
-  console.log(vapidKeys)
+
+  console.log(`NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY="${vapidKeys.publicKey}"`)
+  console.log(`NOTIFICATIONS_PRIVATE_KEY="${vapidKeys.privateKey}"`)
 }
 
 // create admin user
@@ -182,7 +185,7 @@ const createAdminUser = async (client) => {
 
 // start install
 const bootstrap = (restart) => {
-  const databaseName = config.db.database
+  const databaseName = process.env.DB_NAME
 
   pool.connect(async (err, client) => {
     try {

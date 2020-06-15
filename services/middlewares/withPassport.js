@@ -76,7 +76,7 @@ export default (req, res, next) => {
   // does in express.
   cookieSession({
     name: 'journal_session',
-    signed: false,
+    secret: process.env.SESSION_SECRET,
     domain: url.parse(req.url).host,
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
   })(req, res, () =>

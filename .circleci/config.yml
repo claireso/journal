@@ -32,11 +32,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # create config
-      - run:
-          name: Create config
-          command: tee ./config/config.{development,test,production}.json < ./config-sample.json
-
       - persist_to_workspace:
           root: .
           paths:
