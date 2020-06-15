@@ -4,7 +4,7 @@ import Router from 'next/router'
 import { displayErrorMessage } from '../messages/reducer'
 
 const requester = buildRequester({
-  baseUrl: `${process.env.website.baseUrl}api`,
+  baseUrl: `${process.env.NEXT_PUBLIC_WEBSITE_URL}api`,
   onError: {
     unAuthorized: () => {
       Router.push({ pathname: '/admin/login' })

@@ -35,7 +35,7 @@ export default class ErrorBoundary extends React.Component {
               Refresh the page
             </S.RefreshButton>
           </p>
-          {!process.env.isProduction && (
+          {process.env.NODE_ENV !== 'production' && (
             <code>
               {this.state.errorMessage} <br />
               {this.state.errorStack}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useTranslations } from '@utils/hooks/useTranslations'
+import { useTranslations } from '@services/translations/hooks/useTranslations'
 
 import Flash from '@components/Flash'
 

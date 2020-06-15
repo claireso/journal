@@ -12,7 +12,7 @@ import { ExpirationPlugin } from 'workbox-expiration'
 
 import pushService from './sw-push'
 
-const { isNotificationsEnabled } = process.env
+const { IS_NOTIFICATIONS_ENABLED } = process.env
 
 const VERSION = '2'
 
@@ -36,12 +36,12 @@ const WB_MANIFEST = self.__WB_MANIFEST || []
 skipWaiting()
 clientsClaim()
 
-if (isNotificationsEnabled) {
+if (IS_NOTIFICATIONS_ENABLED) {
   pushService()
 }
 
 // USE CACHE ONLY IN PRODUCTION
-if (process.env.isProduction) {
+if (process.env.NODE_ENV === 'production') {
   // precache js files
   precacheAndRoute(WB_MANIFEST)
 

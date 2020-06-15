@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
-import { useTranslations } from '@utils/hooks/useTranslations'
-
+import { useTranslations } from '@services/translations/hooks/useTranslations'
 import * as notifications from '@services/notifications'
 
 import * as S from './Notifications.styles'
@@ -40,7 +39,7 @@ const NotificationBanner = () => {
     // do not display banner if push is not enabled
     // do not display banner in safari
     if (
-      !process.env.isNotificationsEnabled ||
+      !process.env.IS_NOTIFICATIONS_ENABLED ||
       !('serviceWorker' in navigator) ||
       !('Notification' in window) ||
       window.safari // @TODO

@@ -1,15 +1,9 @@
 const path = require('path')
-const config = require('./config')()
-
-// add custom env (duplicate next.config)
-process.env.website = config.website
-process.env.isNotificationsEnabled = true
 
 module.exports = {
   setupFilesAfterEnv: [path.resolve(__dirname, 'jest.setup.js')],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   globals: {
-    __TRANSLATIONS__: config.website.translations,
     __PHOTOS__: {
       items: [
         {

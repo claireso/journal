@@ -1,0 +1,22 @@
+{
+  "en": {
+    "client": {
+      "bannerOffline": "You are currently offline. Connect to the internet for access to the latest photos",
+        "bannerNotifications": "Enable notifications to be alerted of new publication",
+          "bannerCloseButton": "Close banner"
+    },
+    "admin": {
+      "pushNewPhotoPosted": "New photo posted"
+    }
+  },
+  "fr": {
+    "client": {
+      "bannerOffline": "Vous êtes actuellement hors-ligne. Connectez-vous à internet pour avoir accès aux dernières photos",
+        "bannerNotifications": "Activer les notifications pour être alerté.e de nouvelles publications",
+          "bannerCloseButton": "Fermer le message"
+    },
+    "admin": {
+      "pushNewPhotoPosted": "Une nouvelle photo vient d'être publiée"
+    }
+  }
+}

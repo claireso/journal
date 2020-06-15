@@ -1,12 +1,13 @@
 import { render } from '@testing-library/react'
 
-import { TranslationsProvider } from '@utils/hooks/useTranslations'
+import { TranslationsProvider } from '@services/translations/hooks/useTranslations'
+import { getTranslations } from '@services/translations/'
 import Offline from './index'
 
 describe('<Offline />', () => {
   const renderBanner = () =>
     render(
-      <TranslationsProvider translations={global.__TRANSLATIONS__.client}>
+      <TranslationsProvider translations={getTranslations('en', 'client')}>
         <Offline />
       </TranslationsProvider>
     )
