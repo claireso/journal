@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:12
+    container_name: journal_db_dev
+    restart: always
+    ports:
+      - 5432:5432
+    env_file: .env.local
+    volumes:
+      - ./data/db_dev:/var/lib/postgresql/data

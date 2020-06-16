@@ -6,6 +6,7 @@ public/sw.js
 public/sw.js.*
 
 uploads
+data
 
 config.*.json
 dist
@@ -13,4 +14,3 @@ coverage
 .next
 .eslintcache
 .env*.local
-

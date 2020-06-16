@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    image: journal
+    container_name: journal_app
+    restart: always
+    depends_on:
+      - db
+    env_file: .env.local
+    environment:
+      - DB_HOST=db
+    volumes:
+      - ./.env.local
+      - ./data/uploads:/app/uploads
+  db:
+    image: postgres:12
+    container_name: journal_db
+    restart: always
+    env_file: .env.local
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+  server:
+    image: caddy:2
+    container_name: journal_server
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./data/uploads:/usr/share/caddy/uploads
+      - ./data/caddy:/data
