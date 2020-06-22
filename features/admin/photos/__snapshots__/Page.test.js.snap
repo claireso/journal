@@ -95,6 +95,7 @@ exports[`Page photo should load and render photos 1`] = `
   >
     <h1
       class="c1"
+      data-testid="list-heading"
     >
       Your photos 
       <span>
@@ -104,6 +105,7 @@ exports[`Page photo should load and render photos 1`] = `
     </h1>
     <button
       class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
+      data-testid="button-create"
     >
       Add a new photo
       <svg
@@ -131,6 +133,7 @@ exports[`Page photo should load and render photos 2`] = `
   >
     <h1
       class="Headingsstyles__Heading1-sc-1iu4nvl-0 jrAkIu"
+      data-testid="list-heading"
     >
       Your photos 
       <span>
@@ -141,6 +144,7 @@ exports[`Page photo should load and render photos 2`] = `
     </h1>
     <button
       class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__PrimaryButton-jpizpn-2 dLlVPE"
+      data-testid="button-create"
     >
       Add a new photo
       <svg
@@ -268,6 +272,7 @@ exports[`Page photo should load and render photos 2`] = `
   >
     <li
       class="c1 c2"
+      data-testid="photo"
     >
       <div
         class="c3"
@@ -288,6 +293,7 @@ exports[`Page photo should load and render photos 2`] = `
       >
         <button
           class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c7 c8"
+          data-testid="button-edit"
           title="Edit"
         >
           <svg
@@ -304,6 +310,7 @@ exports[`Page photo should load and render photos 2`] = `
         </button>
         <button
           class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c7 c8"
+          data-testid="button-delete"
           title="Delete"
         >
           <svg
@@ -322,6 +329,7 @@ exports[`Page photo should load and render photos 2`] = `
     </li>
     <li
       class="c1 c2"
+      data-testid="photo"
     >
       <div
         class="c3"
@@ -342,6 +350,7 @@ exports[`Page photo should load and render photos 2`] = `
       >
         <button
           class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c7 c8"
+          data-testid="button-edit"
           title="Edit"
         >
           <svg
@@ -358,6 +367,7 @@ exports[`Page photo should load and render photos 2`] = `
         </button>
         <button
           class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c7 c8"
+          data-testid="button-delete"
           title="Delete"
         >
           <svg
@@ -455,6 +465,7 @@ exports[`Page photo should load and render photos 2`] = `
     <li>
       <button
         class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__SecondaryButton-jpizpn-4 c1 c2"
+        data-testid="next-page"
         title="Next page"
       >
         »
@@ -463,6 +474,7 @@ exports[`Page photo should load and render photos 2`] = `
     <li>
       <button
         class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__SecondaryButton-jpizpn-4 c1 c2"
+        data-testid="last-page"
         title="Last page"
       >
         »»

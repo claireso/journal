@@ -30,7 +30,7 @@ export default (getModalChildComponent = () => {}) => (WrappedComponent) => {
     }
 
     return (
-      <Modal isOpen={!!action} onClose={onClose}>
+      <Modal testId="modal" isOpen={!!action} onClose={onClose}>
         {component}
       </Modal>
     )

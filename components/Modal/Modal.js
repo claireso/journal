@@ -70,6 +70,7 @@ class Modal extends React.PureComponent {
           isOpen &&
           ((wrapperStyles) => (
             <S.ModalWrapper
+              data-testid={this.props.testId}
               style={wrapperStyles}
               id="modal"
               onClick={this.handleClick}
@@ -111,7 +112,8 @@ class Modal extends React.PureComponent {
 Modal.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
+  testId: PropTypes.string
 }
 
 export default Modal

@@ -52,7 +52,7 @@ const Subscriptions = () => {
   return (
     <Fragment>
       <ListHeader>
-        <Heading1>
+        <Heading1 data-testid="list-heading">
           Your subscriptions {pager && <span>({pager.count})</span>}
         </Heading1>
       </ListHeader>

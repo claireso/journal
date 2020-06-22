@@ -74,8 +74,10 @@ const Photos = () => {
   return (
     <Fragment>
       <ListHeader>
-        <Heading1>Your photos {pager && <span>({pager.count})</span>}</Heading1>
-        <PrimaryButton onClick={onCreate}>
+        <Heading1 data-testid="list-heading">
+          Your photos {pager && <span>({pager.count})</span>}
+        </Heading1>
+        <PrimaryButton data-testid="button-create" onClick={onCreate}>
           Add a new photo
           <IconPlus />
         </PrimaryButton>

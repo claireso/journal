@@ -68,7 +68,11 @@ const NotificationBanner = () => {
   if (!isVisible) return null
 
   return (
-    <Flash status="default" onClose={hideBanner}>
+    <Flash
+      data-testid="flash-notifications"
+      status="default"
+      onClose={hideBanner}
+    >
       <S.ButtonSubscribe onClick={subscribe}>
         {translations.bannerNotifications}
       </S.ButtonSubscribe>

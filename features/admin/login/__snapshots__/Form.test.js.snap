@@ -73,6 +73,7 @@ exports[`<FormLogin /> should render component 1`] = `
       </label>
       <input
         class="c2"
+        data-testid="username"
         id="username"
         name="username"
         required=""
@@ -91,6 +92,7 @@ exports[`<FormLogin /> should render component 1`] = `
       </label>
       <input
         class="c2"
+        data-testid="password"
         id="password"
         name="password"
         required=""
@@ -100,6 +102,7 @@ exports[`<FormLogin /> should render component 1`] = `
     </div>
     <input
       class="c3"
+      data-testid="submit"
       type="submit"
       value="Log in"
     />
@@ -182,6 +185,7 @@ exports[`<FormLogin /> should render component in processing status 1`] = `
       </label>
       <input
         class="c2"
+        data-testid="username"
         id="username"
         name="username"
         required=""
@@ -200,6 +204,7 @@ exports[`<FormLogin /> should render component in processing status 1`] = `
       </label>
       <input
         class="c2"
+        data-testid="password"
         id="password"
         name="password"
         required=""

@@ -11,6 +11,7 @@ class Photo extends React.PureComponent {
 
     return (
       <S.PhotoWrapper
+        data-testid="photo"
         portrait={portrait}
         square={square}
         position={this.props.position}

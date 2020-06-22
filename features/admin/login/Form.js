@@ -29,6 +29,7 @@ const FormLogin = (props) => {
         autoFocus
         name="username"
         label="Username"
+        testId="username"
         required
         onChange={handleChange}
         value={state.username}
@@ -37,11 +38,16 @@ const FormLogin = (props) => {
         type="password"
         name="password"
         label="Password"
+        testId="password"
         required
         onChange={handleChange}
         value={state.password}
       />
-      <SubmitButton value="Log in" isLoading={props.isProcessing} />
+      <SubmitButton
+        value="Log in"
+        isLoading={props.isProcessing}
+        data-testid="submit"
+      />
     </form>
   )
 }

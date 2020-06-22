@@ -15,7 +15,11 @@ const Pager = ({ navigate, ...props }) => {
     <S.PagerWrapper>
       {items.map((item) => (
         <li key={item.label}>
-          <S.PagerButton title={item.title} onClick={handleClick(item.page)}>
+          <S.PagerButton
+            data-testid={item.testId}
+            title={item.title}
+            onClick={handleClick(item.page)}
+          >
             {item.label}
           </S.PagerButton>
         </li>

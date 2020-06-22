@@ -19,6 +19,7 @@ const Input = ({ onChange, name, ...props }) => {
       <Label htmlFor={name}>{props.label}</Label>
       <S.StyledInput
         id={name}
+        data-testid={props.testId}
         type={props.type || 'text'}
         name={name}
         defaultValue={props.value}
@@ -37,7 +38,8 @@ Input.propTypes = {
   type: PropTypes.string,
   required: PropTypes.bool,
   onChange: PropTypes.func,
-  autoFocus: PropTypes.bool
+  autoFocus: PropTypes.bool,
+  testId: PropTypes.string
 }
 
 export default Input

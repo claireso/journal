@@ -90,6 +90,7 @@ exports[`<Notifications /> should render component 1`] = `
 <div>
   <div
     class="c0"
+    data-testid="flash-notifications"
     style="opacity: 0;"
   >
     <a
