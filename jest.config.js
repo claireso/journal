@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   setupFilesAfterEnv: [path.resolve(__dirname, 'jest.setup.js')],
-  testPathIgnorePatterns: ['/node_modules/', '/.next/', '/cypress'],
+  testPathIgnorePatterns: ['/node_modules/', '/.next/', '/.cypress'],
   globals: {
     __PHOTOS__: {
       items: [
