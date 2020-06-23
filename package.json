@@ -34,7 +34,6 @@
     "colorthief": "2.3.0",
     "cookie-session": "1.4.0",
     "date-fns": "2.14.0",
-    "isomorphic-unfetch": "3.0.0",
     "jimp": "0.13.0",
     "lodash": "4.17.15",
     "mitt": "1.2.0",

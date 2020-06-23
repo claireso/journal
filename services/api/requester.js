@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-unfetch'
-
 import logger from '@services/logger'
 
 const DEFAULT_OPTIONS = {
