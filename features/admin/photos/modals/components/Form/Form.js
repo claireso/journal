@@ -46,9 +46,15 @@ const Form = (props) => {
       encType="multipart/form-data"
       onSubmit={handleSubmit}
     >
-      <Input name="title" label="Title" value={photo?.title || ''} />
+      <Input
+        testId="title"
+        name="title"
+        label="Title"
+        value={photo?.title || ''}
+      />
 
       <Input
+        testId="description"
         name="description"
         label="Description"
         value={photo?.description || ''}
@@ -101,6 +107,7 @@ const Form = (props) => {
       <SubmitButton
         value={photo ? 'Save' : 'Create'}
         isLoading={isProcessing}
+        data-testid="submit"
       />
     </form>
   )

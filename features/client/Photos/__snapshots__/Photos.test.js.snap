@@ -145,6 +145,7 @@ exports[`<Photos /> should render component 1`] = `
 <div>
   <figure
     class="c0"
+    data-testid="photo"
   >
     <div
       class="c1"
@@ -163,6 +164,7 @@ exports[`<Photos /> should render component 1`] = `
   </figure>
   <figure
     class="c4"
+    data-testid="photo"
   >
     <div
       class="c1"
@@ -188,6 +190,7 @@ exports[`<Photos /> should render component 1`] = `
       <li>
         <button
           class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__SecondaryButton-jpizpn-4 c7 c8"
+          data-testid="next-page"
           title="Next page"
         >
           »
@@ -196,6 +199,7 @@ exports[`<Photos /> should render component 1`] = `
       <li>
         <button
           class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__SecondaryButton-jpizpn-4 c7 c8"
+          data-testid="last-page"
           title="Last page"
         >
           »»

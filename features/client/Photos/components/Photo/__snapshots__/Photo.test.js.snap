@@ -42,6 +42,7 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
 <div>
   <figure
     class="c0"
+    data-testid="photo"
   >
     <div
       class="c1"
@@ -105,6 +106,7 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
 <div>
   <figure
     class="c0"
+    data-testid="photo"
   >
     <div
       class="c1"
@@ -168,6 +170,7 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 <div>
   <figure
     class="c0"
+    data-testid="photo"
   >
     <div
       class="c1"
@@ -231,6 +234,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 <div>
   <figure
     class="c0"
+    data-testid="photo"
   >
     <div
       class="c1"
@@ -294,6 +298,7 @@ exports[`<Photo /> should render photo (square center) 1`] = `
 <div>
   <figure
     class="c0"
+    data-testid="photo"
   >
     <div
       class="c1"

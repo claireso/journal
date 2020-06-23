@@ -7,14 +7,19 @@ import { IconClose } from '@components/Icons'
 
 import * as S from './Flash.styles'
 
-const Flash = ({ status, children, onClose, index, withBorder }) => {
+const Flash = ({ status, children, onClose, index, withBorder, ...props }) => {
   const styles = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 }
   })
 
   return (
-    <S.FlashWrapper style={styles} status={status} withBorder={withBorder}>
+    <S.FlashWrapper
+      style={styles}
+      status={status}
+      withBorder={withBorder}
+      {...props}
+    >
       {children}
       {onClose && (
         <S.FlashButtonClose

@@ -57,6 +57,7 @@ exports[`List Subscriptions should render loading view [status - idle] 1`] = `
   >
     <h1
       class="c1"
+      data-testid="list-heading"
     >
       Your subscriptions 
       <span>
@@ -128,6 +129,7 @@ exports[`List Subscriptions should render loading view [status - loading] 1`] = 
   >
     <h1
       class="c1"
+      data-testid="list-heading"
     >
       Your subscriptions 
       <span>

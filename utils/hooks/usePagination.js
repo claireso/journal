@@ -1,19 +1,23 @@
 const PAGER = {
   first: {
     label: '««',
-    title: 'First page'
+    title: 'First page',
+    testId: 'first-page'
   },
   prev: {
     label: '«',
-    title: 'Previous page'
+    title: 'Previous page',
+    testId: 'previous-page'
   },
   next: {
     label: '»',
-    title: 'Next page'
+    title: 'Next page',
+    testId: 'next-page'
   },
   last: {
     label: '»»',
-    title: 'Last page'
+    title: 'Last page',
+    testId: 'last-page'
   }
 }
 
