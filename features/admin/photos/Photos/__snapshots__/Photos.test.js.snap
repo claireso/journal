@@ -95,6 +95,7 @@ exports[`List Photos should render loading view [status - idle] 1`] = `
   >
     <h1
       class="c1"
+      data-testid="list-heading"
     >
       Your photos 
       <span>
@@ -104,6 +105,7 @@ exports[`List Photos should render loading view [status - idle] 1`] = `
     </h1>
     <button
       class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
+      data-testid="button-create"
     >
       Add a new photo
       <svg
@@ -219,6 +221,7 @@ exports[`List Photos should render loading view [status - loading] 1`] = `
   >
     <h1
       class="c1"
+      data-testid="list-heading"
     >
       Your photos 
       <span>
@@ -228,6 +231,7 @@ exports[`List Photos should render loading view [status - loading] 1`] = `
     </h1>
     <button
       class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
+      data-testid="button-create"
     >
       Add a new photo
       <svg

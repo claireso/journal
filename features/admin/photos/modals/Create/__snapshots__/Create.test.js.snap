@@ -182,6 +182,7 @@ exports[`<Create /> should render component 1`] = `
       </label>
       <input
         class="c3"
+        data-testid="title"
         id="title"
         name="title"
         type="text"
@@ -199,6 +200,7 @@ exports[`<Create /> should render component 1`] = `
       </label>
       <input
         class="c3"
+        data-testid="description"
         id="description"
         name="description"
         type="text"
@@ -294,6 +296,7 @@ exports[`<Create /> should render component 1`] = `
     </div>
     <input
       class="c10"
+      data-testid="submit"
       type="submit"
       value="Create"
     />

@@ -13,7 +13,7 @@ const Subscription = ({ onDelete, id, ...props }) => {
   }, [id, onDelete])
 
   return (
-    <S.SubscriptionWrapper>
+    <S.SubscriptionWrapper data-testid="subscription">
       <dl>
         <dt>Created at:</dt>
         <dd>{format(parseISO(props.created_at), 'yyyy-MM-dd HH:mm:ss')}</dd>
@@ -22,7 +22,11 @@ const Subscription = ({ onDelete, id, ...props }) => {
         <dd>{props.subscription.endpoint}</dd>
       </dl>
       <S.SubscriptionTools>
-        <ButtonIcon onClick={handleDelete} title="Revoke">
+        <ButtonIcon
+          onClick={handleDelete}
+          title="Revoke"
+          data-testid="button-revoke"
+        >
           <IconDelete />
         </ButtonIcon>
       </S.SubscriptionTools>

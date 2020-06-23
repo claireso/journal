@@ -57,6 +57,7 @@ exports[`Page subscriptions should load and render subscriptions 1`] = `
   >
     <h1
       class="c1"
+      data-testid="list-heading"
     >
       Your subscriptions 
       <span>

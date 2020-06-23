@@ -12,7 +12,7 @@ import { ButtonIcon } from '@components/Buttons'
 class Photo extends React.PureComponent {
   render() {
     return (
-      <S.PhotoWrapper>
+      <S.PhotoWrapper data-testid="photo">
         <S.PhotoPicture style={{ color: this.props.color || 'transparent' }}>
           {this.props.inView && <LazyLoadedImage src={this.props.source} />}
         </S.PhotoPicture>
@@ -28,12 +28,14 @@ class Photo extends React.PureComponent {
         </S.PhotoInner>
         <S.PhotoTools>
           <ButtonIcon
+            data-testid="button-edit"
             onClick={this.props.onEdit.bind(this, this.props.id)}
             title="Edit"
           >
             <IconPencil />
           </ButtonIcon>
           <ButtonIcon
+            data-testid="button-delete"
             onClick={this.props.onDelete.bind(this, this.props.id)}
             title="Delete"
           >
