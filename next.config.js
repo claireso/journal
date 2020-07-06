@@ -1,6 +1,7 @@
 const path = require('path')
 const { InjectManifest } = require('workbox-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const IS_NOTIFICATIONS_ENABLED = !!(
   process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY &&
@@ -17,6 +18,9 @@ module.exports = {
     if (!isServer) {
       // enable service worker
       config.plugins.push(
+        new CopyWebpackPlugin({
+          patterns: [path.resolve(__dirname, 'public', 'offline.html')]
+        }),
         new InjectManifest({
           swSrc: path.resolve(__dirname, 'services', 'serviceworker', 'sw.js'),
           swDest: path.resolve(__dirname, 'public', 'sw.js'),
