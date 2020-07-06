@@ -14,14 +14,19 @@ const ErrorWrapper = styled.div`
 `
 
 const Homepage = (props) => {
-  const { items: photos, pager, errorStatusCode } = props
+  const { items: photos, pager, hasError, errorStatusCode } = props
 
-  if (errorStatusCode) {
-    return (
-      <ErrorWrapper>
-        <Error statusCode={errorStatusCode} />
-      </ErrorWrapper>
-    )
+  if (hasError) {
+    if (errorStatusCode) {
+      return (
+        <ErrorWrapper>
+          <Error statusCode={errorStatusCode} />
+        </ErrorWrapper>
+      )
+    }
+
+    // if no errorStatusCode, user is offline
+    return null
   }
 
   return photos?.length > 0 ? (
@@ -41,7 +46,7 @@ Homepage.getInitialProps = async (context) => {
 
     const { page } = context.query
 
-    Homepage.currentRequest = getPhotos(page)
+    Homepage.currentRequest = getPhotos(page || 1)
 
     const photos = await Homepage.currentRequest.ready
 
@@ -49,14 +54,15 @@ Homepage.getInitialProps = async (context) => {
 
     return { ...photos }
   } catch (err) {
-    return { errorStatusCode: err?.response?.status }
+    return { hasError: true, errorStatusCode: err?.response?.status }
   }
 }
 
 Homepage.propTypes = {
   items: PropTypes.array,
   pager: PropTypes.object,
-  errorStatusCode: PropTypes.number
+  errorStatusCode: PropTypes.number,
+  hasError: PropTypes.bool
 }
 
 export default withLayout(Homepage)

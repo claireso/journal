@@ -120,7 +120,9 @@ Form.propTypes = {
     name: PropTypes.string,
     position: PropTypes.string,
     portrait: PropTypes.bool,
-    square: PropTypes.bool
+    square: PropTypes.bool,
+    source: PropTypes.string,
+    color: PropTypes.string
   }),
   onSubmit: PropTypes.func,
   isProcessing: PropTypes.bool.isRequired
