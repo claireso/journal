@@ -1,12 +1,7 @@
 import { skipWaiting, clientsClaim } from 'workbox-core'
-import { precacheAndRoute } from 'workbox-precaching'
-import { registerRoute } from 'workbox-routing'
-import {
-  CacheFirst,
-  StaleWhileRevalidate,
-  NetworkOnly,
-  NetworkFirst
-} from 'workbox-strategies'
+import { precacheAndRoute, matchPrecache } from 'workbox-precaching'
+import { registerRoute, setCatchHandler } from 'workbox-routing'
+import { CacheFirst, NetworkFirst } from 'workbox-strategies'
 import { CacheableResponsePlugin } from 'workbox-cacheable-response'
 import { ExpirationPlugin } from 'workbox-expiration'
 
@@ -14,22 +9,14 @@ import pushService from './sw-push'
 
 const { IS_NOTIFICATIONS_ENABLED } = process.env
 
-const VERSION = '2'
+const VERSION = process.env.NEXT_PUBLIC_SERVICEWORKER_VERSION
 
 const CACHE_PREFIX = 'claireso-journal'
 const CACHE_NAME_IMG = `${CACHE_PREFIX}-img-${VERSION}`
 const CACHE_NAME_PAGES = `${CACHE_PREFIX}-pages-${VERSION}`
-const CACHE_NAME_CSS_FONTS = `${CACHE_PREFIX}-google-fonts-stylesheets-${VERSION}`
-const CACHE_NAME_FONTS = `${CACHE_PREFIX}-google-fonts-webfonts-${VERSION}`
 const CACHE_NAME_API = `${CACHE_PREFIX}-api-${VERSION}`
 
-const expectedCaches = [
-  CACHE_NAME_IMG,
-  CACHE_NAME_PAGES,
-  CACHE_NAME_CSS_FONTS,
-  CACHE_NAME_FONTS,
-  CACHE_NAME_API
-]
+const expectedCaches = [CACHE_NAME_IMG, CACHE_NAME_PAGES, CACHE_NAME_API]
 
 const WB_MANIFEST = self.__WB_MANIFEST || []
 
@@ -47,7 +34,7 @@ if (process.env.NODE_ENV === 'production') {
 
   // cache for images
   registerRoute(
-    /.*\.(png|jpg)/,
+    ({ request }) => request.destination === 'image',
     new CacheFirst({
       cacheName: CACHE_NAME_IMG,
       plugins: [
@@ -59,35 +46,9 @@ if (process.env.NODE_ENV === 'production') {
     })
   )
 
-  // cache for fonts
-  registerRoute(
-    /^https:\/\/fonts\.googleapis\.com/,
-    new StaleWhileRevalidate({
-      cacheName: CACHE_NAME_CSS_FONTS
-    })
-  )
-
-  registerRoute(
-    /^https:\/\/fonts\.gstatic\.com/,
-    new CacheFirst({
-      cacheName: CACHE_NAME_FONTS,
-      plugins: [
-        new CacheableResponsePlugin({
-          statuses: [0, 200]
-        }),
-        new ExpirationPlugin({
-          maxAgeSeconds: 60 * 60 * 24 * 365 // 365 Days
-        })
-      ]
-    })
-  )
-
-  // admin: no cache
-  registerRoute(/\/admin\/(.*)/, new NetworkOnly())
-
   // api : cache for endpoint photos
   registerRoute(
-    /\/api\/photos(\?.*)?$/,
+    ({ url }) => url.pathname.startsWith('/api/photos'),
     new NetworkFirst({
       cacheName: CACHE_NAME_API,
       plugins: [
@@ -102,12 +63,10 @@ if (process.env.NODE_ENV === 'production') {
     })
   )
 
-  // api: no cache for others endpoints
-  registerRoute(/\/api\/(.*)/, new NetworkOnly())
-
-  // cache for pages (root / and /page=2)
+  // cache all pages except admin pages
   registerRoute(
-    /\/(\?.*)?$/,
+    ({ request, url }) =>
+      request.destination === 'document' && !url.pathname.startsWith('/admin'),
     new NetworkFirst({
       cacheName: CACHE_NAME_PAGES,
       plugins: [
@@ -121,6 +80,17 @@ if (process.env.NODE_ENV === 'production') {
       ]
     })
   )
+
+  // Fallback when user is offline
+  setCatchHandler(({ event }) => {
+    switch (event.request.destination) {
+      case 'document':
+        return matchPrecache('/offline.html')
+
+      default:
+        return Response.error()
+    }
+  })
 
   // Clean caches when version has been updated
   self.addEventListener('activate', (event) => {
