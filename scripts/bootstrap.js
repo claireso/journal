@@ -51,10 +51,10 @@ const createDatabase = async (databaseName) => {
   try {
     await pgtools.createdb(
       {
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        port: process.env.DB_PORT,
-        host: process.env.DB_HOST
+        user: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASSWORD,
+        port: process.env.POSTGRES_PORT,
+        host: process.env.POSTGRES_HOST
       },
       databaseName
     )
@@ -74,10 +74,10 @@ const dropDatabase = async (databaseName) => {
   try {
     await pgtools.dropdb(
       {
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        port: process.env.DB_PORT,
-        host: process.env.DB_HOST
+        user: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASSWORD,
+        port: process.env.POSTGRES_PORT,
+        host: process.env.POSTGRES_HOST
       },
       databaseName
     )
@@ -185,7 +185,7 @@ const createAdminUser = async (client) => {
 
 // start install
 const bootstrap = (restart) => {
-  const databaseName = process.env.DB_NAME
+  const databaseName = process.env.POSTGRES_DB
 
   pool.connect(async (err, client) => {
     try {
