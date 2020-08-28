@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import ReactDom from 'react-dom'
 
-export default (WrappedComponent) => {
+const withInViewStatement = (WrappedComponent) => {
   const EnhancedComponent = (props) => {
     const [inView, setInView] = useState(false)
     const targetComp = useRef(null)
@@ -39,3 +39,5 @@ export default (WrappedComponent) => {
 
   return EnhancedComponent
 }
+
+export default withInViewStatement

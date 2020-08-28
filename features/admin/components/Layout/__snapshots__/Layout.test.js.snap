@@ -226,7 +226,7 @@ exports[`<Layout /> should render component without restricted access 1`] = `
           class="c4"
         >
           <a
-            href="photos"
+            href="/admin/photos"
           >
             Photos
           </a>
@@ -235,7 +235,7 @@ exports[`<Layout /> should render component without restricted access 1`] = `
           class="c5"
         >
           <a
-            href="subscriptions"
+            href="/admin/subscriptions"
           >
             Subscriptions
           </a>

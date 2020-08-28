@@ -7,7 +7,9 @@ import Modal from '@components/Modal'
  * HOC to open / close the CRUD Modal according url parameters
  */
 
-export default (getModalChildComponent = () => {}) => (WrappedComponent) => {
+const withModalEdition = (getModalChildComponent = () => {}) => (
+  WrappedComponent
+) => {
   const getModal = (router) => {
     const { pathname, query } = router
     const { action } = query
@@ -44,3 +46,5 @@ export default (getModalChildComponent = () => {}) => (WrappedComponent) => {
 
   return ComponentWithModalEdition
 }
+
+export default withModalEdition
