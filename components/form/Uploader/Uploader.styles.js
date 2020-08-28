@@ -59,6 +59,6 @@ export const UploaderInput = styled.input`
 export const UploaderError = styled.div`
   color: var(--error-normal);
   font-size: var(--font-size-smaller);
-  margin: 0.8rem 0 0;
+  margin: 0.8rem 0 2rem;
   text-align: center;
 `
