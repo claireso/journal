@@ -21,7 +21,7 @@ const PAGER = {
   }
 }
 
-export default (pager) => {
+const usePagination = (pager) => {
   const items = Object.entries(PAGER)
     .map(([key, value]) => {
       const page = pager[key]
@@ -35,3 +35,5 @@ export default (pager) => {
 
   return items
 }
+
+export default usePagination

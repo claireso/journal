@@ -1,5 +1,5 @@
 /*eslint no-useless-escape: 0*/
-export default (base64String, ctx) => {
+const urlBase64ToUint8Array = (base64String, ctx) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
   const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/')
 
@@ -11,3 +11,5 @@ export default (base64String, ctx) => {
   }
   return outputArray
 }
+
+export default urlBase64ToUint8Array

@@ -1,6 +1,6 @@
 import urlBase64ToUint8Array from '@utils/urlBase64ToUint8Array'
 
-export default () => {
+const SWPush = () => {
   const applicationServerKey = urlBase64ToUint8Array(
     process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY,
     self
@@ -58,3 +58,5 @@ export default () => {
     )
   })
 }
+
+export default SWPush

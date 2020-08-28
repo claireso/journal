@@ -10,7 +10,7 @@ const rgbToHex = (r, g, b) =>
     })
     .join('')
 
-export default (initialPhoto) => {
+const useColorsExtractor = (initialPhoto) => {
   const [colors, setColors] = useState()
 
   const extractColors = useCallback(
@@ -38,3 +38,5 @@ export default (initialPhoto) => {
 
   return [colors, extractColors]
 }
+
+export default useColorsExtractor
