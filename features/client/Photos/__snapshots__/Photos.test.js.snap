@@ -1,6 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Photos /> should render component 1`] = `
+.c8 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: var(--font-family);
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c9 {
+  border-radius: 0.2rem;
+  font-size: var(--font-size-smaller);
+  line-height: 1.3333333;
+  padding: 1.6rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+}
+
+.c9 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c7 + .c7 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c10 {
+  background: var(--secondary-normal);
+  color: var(--text-normal);
+}
+
+.c10:hover {
+  background: var(--secondary-darker);
+}
+
+.c10 + .Buttonsstyles__PrimaryButton-jpizpn-2,
+.Buttonsstyles__PrimaryButton-jpizpn-2 + .c10,
+.c10 + .c10 {
+  margin-left: 0.8rem;
+}
+
 .c6 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -19,30 +69,7 @@ exports[`<Photos /> should render component 1`] = `
   margin: 0 0.4rem;
 }
 
-.c8 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: none;
-  border: none;
-  color: currentColor;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: var(--font-family);
-  outline: none;
-  padding: 0;
-  margin: 0;
-  border-radius: 0.2rem;
-  font-size: var(--font-size-smaller);
-  line-height: 1.3333333;
-  padding: 1.6rem;
-  -webkit-transition: background 150ms ease-out;
-  transition: background 150ms ease-out;
-  background: var(--secondary-normal);
-  color: var(--text-normal);
+.c11 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -55,24 +82,6 @@ exports[`<Photos /> should render component 1`] = `
   justify-content: center;
   padding: 0;
   width: 4.4rem;
-}
-
-.c8 > svg {
-  margin: 0 -0.4rem 0 0.4rem;
-}
-
-.c8 + .c7 {
-  margin: 0 0 0 0.8rem;
-}
-
-.c8:hover {
-  background: var(--secondary-darker);
-}
-
-.c8 + .Buttonsstyles__PrimaryButton-jpizpn-2,
-.Buttonsstyles__PrimaryButton-jpizpn-2 + .c8,
-.c8 + .c8 {
-  margin-left: 0.8rem;
 }
 
 .c0 {
@@ -189,7 +198,7 @@ exports[`<Photos /> should render component 1`] = `
     >
       <li>
         <button
-          class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__SecondaryButton-jpizpn-4 c7 c8"
+          class="c7 c8 c9 c10 c11"
           data-testid="next-page"
           title="Next page"
         >
@@ -198,7 +207,7 @@ exports[`<Photos /> should render component 1`] = `
       </li>
       <li>
         <button
-          class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__SecondaryButton-jpizpn-4 c7 c8"
+          class="c7 c8 c9 c10 c11"
           data-testid="last-page"
           title="Last page"
         >

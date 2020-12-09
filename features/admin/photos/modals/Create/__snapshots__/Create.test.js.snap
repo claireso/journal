@@ -12,7 +12,6 @@ exports[`<Create /> should render component 1`] = `
 }
 
 .c7 {
-  margin: 0 0 var(--gutter);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -248,7 +247,7 @@ exports[`<Create /> should render component 1`] = `
       </div>
     </div>
     <div
-      class="c7"
+      class="c1 c7"
     >
       <label
         class="c2"

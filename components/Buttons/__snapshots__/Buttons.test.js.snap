@@ -17,31 +17,37 @@ exports[`<PrimaryButton /> should render button 1`] = `
   outline: none;
   padding: 0;
   margin: 0;
+}
+
+.c2 {
   border-radius: 0.2rem;
   font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
+}
+
+.c2 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c0 + .c0 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c3 {
   background: var(--primary-normal);
   color: white;
 }
 
-.c1 > svg {
-  margin: 0 -0.4rem 0 0.4rem;
-}
-
-.c1 + .c0 {
-  margin: 0 0 0 0.8rem;
-}
-
-.c1:hover {
+.c3:hover {
   background: var(--primary-lighter);
 }
 
 <div>
   <button
-    class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c0 c1"
+    class="c0 c1 c2 c3"
   >
     Button
   </button>
@@ -49,13 +55,13 @@ exports[`<PrimaryButton /> should render button 1`] = `
 `;
 
 exports[`<PrimaryButton /> should render loader 1`] = `
-.c3 {
+.c6 {
   margin: 2rem 0;
   -webkit-animation: jBcSpD 800ms ease-in-out infinite alternate;
   animation: jBcSpD 800ms ease-in-out infinite alternate;
 }
 
-.c3:after {
+.c6:after {
   background: var(--primary-normal);
   border-radius: 50%;
   content: '';
@@ -81,44 +87,53 @@ exports[`<PrimaryButton /> should render loader 1`] = `
   outline: none;
   padding: 0;
   margin: 0;
+}
+
+.c2 {
   border-radius: 0.2rem;
   font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
+}
+
+.c2 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c0 + .c0 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c3 {
   background: var(--primary-normal);
   color: white;
+}
+
+.c3:hover {
+  background: var(--primary-lighter);
+}
+
+.c4 {
   padding: 1.9rem 1.6rem;
   cursor: default;
 }
 
-.c1 > svg {
-  margin: 0 -0.4rem 0 0.4rem;
-}
-
-.c1 + .c0 {
-  margin: 0 0 0 0.8rem;
-}
-
-.c1:hover {
-  background: var(--primary-lighter);
-}
-
-.c1 .c2 {
+.c4 .c5 {
   margin: 0;
 }
 
-.c1 .c2:after {
+.c4 .c5:after {
   background: #fff;
 }
 
 <div>
   <button
-    class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__PrimaryButton-jpizpn-2 c0 c1"
+    class="c0 c1 c2 c3 c4"
   >
     <span
-      class="c2 c3"
+      class="c5 c6"
     />
   </button>
 </div>

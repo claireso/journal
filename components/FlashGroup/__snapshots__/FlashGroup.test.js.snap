@@ -1,27 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FlashGroup /> should close flash messages 1`] = `
-.c1 {
-  background: var(--flash-success);
-  color: var(--flash-success-text);
-  font-size: var(--font-size-normal);
-  margin: 0 0 var(--gutter);
-  padding: 2rem;
-  position: relative;
-  text-align: center;
-}
-
-.c4 {
-  background: var(--flash-error);
-  color: var(--flash-error-text);
-  font-size: var(--font-size-normal);
-  margin: 0 0 var(--gutter);
-  padding: 2rem;
-  position: relative;
-  text-align: center;
-  border-top: 3px solid var(--flash-error-border);
-}
-
 .c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -38,12 +17,47 @@ exports[`<FlashGroup /> should close flash messages 1`] = `
   outline: none;
   padding: 0;
   margin: 0;
+}
+
+.c4 {
   border-radius: 0.2rem;
   font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
+}
+
+.c4 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c2 + .c2 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c1 {
+  background: var(--flash-success);
+  color: var(--flash-success-text);
+  font-size: var(--font-size-normal);
+  margin: 0 0 var(--gutter);
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.c6 {
+  background: var(--flash-error);
+  color: var(--flash-error-text);
+  font-size: var(--font-size-normal);
+  margin: 0 0 var(--gutter);
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+  border-top: 3px solid var(--flash-error-border);
+}
+
+.c5 {
   padding: 0 2rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -59,15 +73,7 @@ exports[`<FlashGroup /> should close flash messages 1`] = `
   bottom: 0;
 }
 
-.c3 > svg {
-  margin: 0 -0.4rem 0 0.4rem;
-}
-
-.c3 + .c2 {
-  margin: 0 0 0 0.8rem;
-}
-
-.c3 > svg {
+.c5 > svg {
   fill: currentColor;
   margin: 0;
 }
@@ -86,7 +92,7 @@ exports[`<FlashGroup /> should close flash messages 1`] = `
     >
       Success message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
+        class="c2 c3 c4 c5"
       >
         <svg
           height="16"
@@ -101,12 +107,12 @@ exports[`<FlashGroup /> should close flash messages 1`] = `
       </button>
     </div>
     <div
-      class="c4"
+      class="c6"
       style="opacity: 0;"
     >
       Error message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
+        class="c2 c3 c4 c5"
       >
         <svg
           height="16"
@@ -125,27 +131,6 @@ exports[`<FlashGroup /> should close flash messages 1`] = `
 `;
 
 exports[`<FlashGroup /> should render two flash messages 1`] = `
-.c1 {
-  background: var(--flash-success);
-  color: var(--flash-success-text);
-  font-size: var(--font-size-normal);
-  margin: 0 0 var(--gutter);
-  padding: 2rem;
-  position: relative;
-  text-align: center;
-}
-
-.c4 {
-  background: var(--flash-error);
-  color: var(--flash-error-text);
-  font-size: var(--font-size-normal);
-  margin: 0 0 var(--gutter);
-  padding: 2rem;
-  position: relative;
-  text-align: center;
-  border-top: 3px solid var(--flash-error-border);
-}
-
 .c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -162,12 +147,47 @@ exports[`<FlashGroup /> should render two flash messages 1`] = `
   outline: none;
   padding: 0;
   margin: 0;
+}
+
+.c4 {
   border-radius: 0.2rem;
   font-size: var(--font-size-smaller);
   line-height: 1.3333333;
   padding: 1.6rem;
   -webkit-transition: background 150ms ease-out;
   transition: background 150ms ease-out;
+}
+
+.c4 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c2 + .c2 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c1 {
+  background: var(--flash-success);
+  color: var(--flash-success-text);
+  font-size: var(--font-size-normal);
+  margin: 0 0 var(--gutter);
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.c6 {
+  background: var(--flash-error);
+  color: var(--flash-error-text);
+  font-size: var(--font-size-normal);
+  margin: 0 0 var(--gutter);
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+  border-top: 3px solid var(--flash-error-border);
+}
+
+.c5 {
   padding: 0 2rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -183,15 +203,7 @@ exports[`<FlashGroup /> should render two flash messages 1`] = `
   bottom: 0;
 }
 
-.c3 > svg {
-  margin: 0 -0.4rem 0 0.4rem;
-}
-
-.c3 + .c2 {
-  margin: 0 0 0 0.8rem;
-}
-
-.c3 > svg {
+.c5 > svg {
   fill: currentColor;
   margin: 0;
 }
@@ -210,7 +222,7 @@ exports[`<FlashGroup /> should render two flash messages 1`] = `
     >
       Success message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
+        class="c2 c3 c4 c5"
       >
         <svg
           height="16"
@@ -225,12 +237,12 @@ exports[`<FlashGroup /> should render two flash messages 1`] = `
       </button>
     </div>
     <div
-      class="c4"
+      class="c6"
       style="opacity: 0;"
     >
       Error message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 c2 c3"
+        class="c2 c3 c4 c5"
       >
         <svg
           height="16"
