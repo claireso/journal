@@ -3,6 +3,9 @@
 exports[`<Select /> should render select 1`] = `
 .c0 {
   margin: 0 0 var(--gutter);
+}
+
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,22 +16,22 @@ exports[`<Select /> should render select 1`] = `
   align-items: center;
 }
 
-.c0 > label {
+.c1 > label {
   margin: 0 1rem 0 0;
 }
 
-.c1 {
+.c2 {
   display: block;
   font-size: 1.6rem;
   line-height: 1.5;
   margin: 0 0 1.2rem;
 }
 
-.c2 {
+.c3 {
   position: relative;
 }
 
-.c2 svg {
+.c3 svg {
   position: absolute;
   top: 50%;
   right: 0.9rem;
@@ -39,7 +42,7 @@ exports[`<Select /> should render select 1`] = `
   pointer-events: none;
 }
 
-.c3 {
+.c4 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -54,25 +57,25 @@ exports[`<Select /> should render select 1`] = `
   padding: 1.1rem 2.6rem 1.1rem 1.1rem;
 }
 
-.c3:focus {
+.c4:focus {
   border-color: var(--border-color-focus);
 }
 
 <div>
   <div
-    class="Groupstyles__Group-sc-1x4e7ei-0 c0"
+    class="c0 c1"
   >
     <label
-      class="c1"
+      class="c2"
       for="myselect"
     >
       My select
     </label>
     <div
-      class="c2"
+      class="c3"
     >
       <select
-        class="c3"
+        class="c4"
         id="myselect"
         name="myselect"
         required=""

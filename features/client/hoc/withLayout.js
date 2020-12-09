@@ -1,7 +1,9 @@
 import Layout from '../components/Layout'
 
-export default (WrappedComponent) => {
+const withLayout = (WrappedComponent) => {
   WrappedComponent.Layout = Layout
 
   return WrappedComponent
 }
+
+export default withLayout

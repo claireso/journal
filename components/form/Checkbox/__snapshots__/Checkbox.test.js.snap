@@ -3,6 +3,9 @@
 exports[`<Checkbox /> should render checkbox 1`] = `
 .c0 {
   margin: 0 0 var(--gutter);
+}
+
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,11 +16,11 @@ exports[`<Checkbox /> should render checkbox 1`] = `
   align-items: center;
 }
 
-.c0 > label {
+.c1 > label {
   margin: 0 1rem 0 0;
 }
 
-.c1 {
+.c2 {
   display: block;
   font-size: 1.6rem;
   line-height: 1.5;
@@ -26,10 +29,10 @@ exports[`<Checkbox /> should render checkbox 1`] = `
 
 <div>
   <div
-    class="Groupstyles__Group-sc-1x4e7ei-0 c0"
+    class="c0 c1"
   >
     <label
-      class="c1"
+      class="c2"
       for="checkbox"
     >
       Checkbox
@@ -46,6 +49,9 @@ exports[`<Checkbox /> should render checkbox 1`] = `
 exports[`<Checkbox /> should render checked checkbox 1`] = `
 .c0 {
   margin: 0 0 var(--gutter);
+}
+
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -56,11 +62,11 @@ exports[`<Checkbox /> should render checked checkbox 1`] = `
   align-items: center;
 }
 
-.c0 > label {
+.c1 > label {
   margin: 0 1rem 0 0;
 }
 
-.c1 {
+.c2 {
   display: block;
   font-size: 1.6rem;
   line-height: 1.5;
@@ -69,10 +75,10 @@ exports[`<Checkbox /> should render checked checkbox 1`] = `
 
 <div>
   <div
-    class="Groupstyles__Group-sc-1x4e7ei-0 c0"
+    class="c0 c1"
   >
     <label
-      class="c1"
+      class="c2"
       for="checkbox"
     >
       Checkbox
