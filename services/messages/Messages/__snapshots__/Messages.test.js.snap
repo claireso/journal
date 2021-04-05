@@ -331,15 +331,15 @@ exports[`<Messages /> should display two messages then edit one 1`] = `
 exports[`<Messages /> should display two messages then edit one 2`] = `
 <div>
   <div
-    class="FlashGroupstyles__FlashGroupWrapper-sc-19ms1oj-0 emYBrc"
+    class="FlashGroupstyles__FlashGroupWrapper-sc-19ms1oj-0 lmRPrG"
   >
     <div
-      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 fEbYsL"
+      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 llxCpJ"
       style="opacity: 0;"
     >
       My success message edit
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 hwHktI exYITS hbQRrY"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 ggYYUK fiDUIQ htzhlO"
       >
         <svg
           height="16"
@@ -354,12 +354,12 @@ exports[`<Messages /> should display two messages then edit one 2`] = `
       </button>
     </div>
     <div
-      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 dYLsxu"
+      class="Flashstyles__FlashWrapper-sc-1ueg6b2-0 faNTKc"
       style="opacity: 0;"
     >
       My error message
       <button
-        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 hwHktI exYITS hbQRrY"
+        class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Flashstyles__FlashButtonClose-sc-1ueg6b2-1 ggYYUK fiDUIQ htzhlO"
       >
         <svg
           height="16"
