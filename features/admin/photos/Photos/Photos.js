@@ -13,10 +13,8 @@ import Pager from '@components/Pager'
 import Photo from './components/Photo'
 
 const Photos = () => {
-  const [
-    { items: photos, pager, ...state },
-    { loadResources }
-  ] = PhotosReducer.usePhotosReducer()
+  const [{ items: photos, pager, ...state }, { loadResources }] =
+    PhotosReducer.usePhotosReducer()
   const isLoading = ['idle', 'loading'].includes(state.status)
 
   const router = useRouter()

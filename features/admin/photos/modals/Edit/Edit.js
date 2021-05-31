@@ -8,10 +8,8 @@ import Form from '../components/Form'
 import PhotosReducer from '../../reducer'
 
 const Edit = ({ id }) => {
-  const [
-    state,
-    { loadResource, editResource }
-  ] = PhotosReducer.usePhotosReducer()
+  const [state, { loadResource, editResource }] =
+    PhotosReducer.usePhotosReducer()
 
   const isProcessing = state.status === 'pending'
 
