@@ -4,7 +4,7 @@
   "description": "A self-hosted website to show your photographs",
   "private": true,
   "engines": {
-    "node": "12.x"
+    "node": "14.17.0"
   },
   "scripts": {
     "dev": "node server.js",
