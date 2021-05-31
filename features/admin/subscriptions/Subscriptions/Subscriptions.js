@@ -11,10 +11,8 @@ import Pager from '@components/Pager'
 import Subscription from './components/Subscription'
 
 const Subscriptions = () => {
-  const [
-    { items: subscriptions, pager, ...state },
-    { loadResources }
-  ] = SubscriptionsReducer.useSubscriptionsReducer()
+  const [{ items: subscriptions, pager, ...state }, { loadResources }] =
+    SubscriptionsReducer.useSubscriptionsReducer()
   const isLoading = ['idle', 'loading'].includes(state.status)
 
   const router = useRouter()

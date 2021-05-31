@@ -8,10 +8,8 @@ import Text from '@components/Text'
 import SubscriptionsReducer from '../../reducer'
 
 const Delete = (props) => {
-  const [
-    state,
-    { deleteResource }
-  ] = SubscriptionsReducer.useSubscriptionsReducer()
+  const [state, { deleteResource }] =
+    SubscriptionsReducer.useSubscriptionsReducer()
   const { onClose, id } = props
 
   const isProcessing = state.status === 'pending'
