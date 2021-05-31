@@ -6,9 +6,8 @@ import SubscriptionsReducer from '../../reducer'
 
 const { SubscriptionsProvider, INITIAL_STATE } = SubscriptionsReducer
 
-const {
-  useSubscriptionsReducer: originalUseSubscriptionsReducer
-} = SubscriptionsReducer
+const { useSubscriptionsReducer: originalUseSubscriptionsReducer } =
+  SubscriptionsReducer
 
 describe('<Delete />', () => {
   const props = {
@@ -25,7 +24,8 @@ describe('<Delete />', () => {
   }
 
   afterEach(() => {
-    SubscriptionsReducer.useSubscriptionsReducer = originalUseSubscriptionsReducer
+    SubscriptionsReducer.useSubscriptionsReducer =
+      originalUseSubscriptionsReducer
   })
 
   test('should render component', () => {

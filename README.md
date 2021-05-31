@@ -5,7 +5,7 @@ Note: the theme is optimized for pictures with an aspect ratio of 3:2 or 1:1
 
 # Requirements:
 
-- Node v12
+- Node v14.17.0
 - PostgreSQL
 
 # Installation:

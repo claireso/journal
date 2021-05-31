@@ -10,10 +10,8 @@ import { useMessagesReducer } from '../reducer'
 import useUpdateEffect from './hooks/useUpdateEffect'
 
 const Messages = () => {
-  const [
-    messages,
-    { displayMessage, closeAllMessages, closeMessage }
-  ] = useMessagesReducer()
+  const [messages, { displayMessage, closeAllMessages, closeMessage }] =
+    useMessagesReducer()
   const router = useRouter()
 
   useEffect(() => {
