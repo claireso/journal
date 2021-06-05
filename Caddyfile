@@ -1,0 +1,12 @@
+:80 {
+    root * /usr/share/caddy
+    file_server
+    @not_static {
+        not {
+            file {
+                try_files {path}
+            }
+        }
+    }
+    reverse_proxy @not_static app:3000
+}

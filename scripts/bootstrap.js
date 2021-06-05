@@ -11,7 +11,11 @@ const db = require('../services/db')
 
 const pool = db.pool
 
-// create folder
+/**
+ * Create a folder
+ * @params {string} folderPath
+ * @return Promise
+ */
 const createFolder = (folderPath) => {
   return new Promise((resolve, reject) => {
     fs.exists(folderPath, (exists) => {
@@ -31,7 +35,9 @@ const createFolder = (folderPath) => {
   })
 }
 
-// create folder img
+/**
+ * Create folder for images called `uploads`
+ */
 const createFolderImg = async () => {
   const dirImg = path.resolve('uploads')
 
@@ -42,7 +48,10 @@ const createFolderImg = async () => {
   }
 }
 
-// create database
+/**
+ * Create database
+ * @param {string} databaseName
+ */
 const createDatabase = async (databaseName) => {
   if (!databaseName) throw new Error('Missing database name in config')
 
@@ -51,10 +60,10 @@ const createDatabase = async (databaseName) => {
   try {
     await pgtools.createdb(
       {
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        port: process.env.DB_PORT,
-        host: process.env.DB_HOST
+        user: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASSWORD,
+        port: process.env.POSTGRES_PORT,
+        host: process.env.POSTGRES_HOST
       },
       databaseName
     )
@@ -70,14 +79,18 @@ const createDatabase = async (databaseName) => {
   }
 }
 
+/**
+ * Drop a database
+ * @param {string} databaseName
+ */
 const dropDatabase = async (databaseName) => {
   try {
     await pgtools.dropdb(
       {
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        port: process.env.DB_PORT,
-        host: process.env.DB_HOST
+        user: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASSWORD,
+        port: process.env.POSTGRES_PORT,
+        host: process.env.POSTGRES_HOST
       },
       databaseName
     )
@@ -89,8 +102,11 @@ const dropDatabase = async (databaseName) => {
   }
 }
 
-// create table
-const createTable = async (client) => {
+/**
+ * Create tables for the applications
+ * @param {pool} client
+ */
+const createTables = async (client) => {
   console.log(chalk.cyan(`Step 2/4 : Setup database...`))
 
   try {
@@ -131,35 +147,19 @@ const createTable = async (client) => {
         updated_at TIMESTAMP with time zone DEFAULT NOW()
       )
     `)
-    console.log(chalk.green(`Tables has been created successfully`))
+    console.log(chalk.green(`Tables have been created successfully`))
   } catch (err) {
     console.log(
-      chalk.red('An error has occured during database table creation')
+      chalk.red('An error has occured during database tables creation')
     )
     throw err
   }
 }
 
-const enableWebPush = async () => {
-  console.log(chalk.cyan(`Step 4/4 : Enable web push notification?`))
-  //ask to enable
-  const answer = await promptly.confirm(
-    'Do you want to enable web push notification? (Y/n)'
-  )
-
-  if (answer === false) return
-
-  const vapidKeys = webpush.generateVAPIDKeys()
-
-  console.log(
-    chalk.gray('Please update your config by adding public and private keys:')
-  )
-
-  console.log(`NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY="${vapidKeys.publicKey}"`)
-  console.log(`NOTIFICATIONS_PRIVATE_KEY="${vapidKeys.privateKey}"`)
-}
-
-// create admin user
+/**
+ * Create admin user
+ * @param {pool} client
+ */
 const createAdminUser = async (client) => {
   console.log(chalk.cyan(`Step 3/4 : Create admin user...`))
 
@@ -183,13 +183,58 @@ const createAdminUser = async (client) => {
   }
 }
 
-// start install
+/**
+ * Is database empty ? Check if the database has some tables
+ */
+const isDatabaseEmpty = async (client) => {
+  try {
+    const response = await client.query(`
+    SELECT EXISTS (
+      SELECT FROM pg_tables
+      WHERE  schemaname = 'public'
+      );
+  `)
+
+    return response.rows[0].exists === false
+  } catch (err) {
+    console.log(chalk.red('An error has occured'))
+    throw err
+  }
+}
+
+/**
+ * Enable web push notifications
+ */
+const enableWebPush = async () => {
+  console.log(chalk.cyan(`Step 4/4 : Enable web push notification?`))
+  //ask to enable
+  const answer = await promptly.confirm(
+    'Do you want to enable web push notification? (Y/n)'
+  )
+
+  if (answer === false) return
+
+  const vapidKeys = webpush.generateVAPIDKeys()
+
+  console.log(
+    chalk.gray('Please update your config by adding public and private keys:')
+  )
+
+  console.log(`NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY="${vapidKeys.publicKey}"`)
+  console.log(`NOTIFICATIONS_PRIVATE_KEY="${vapidKeys.privateKey}"`)
+}
+
+/**
+ * Start to boostrap the application
+ * @param {boolean} restart
+ */
 const bootstrap = (restart) => {
-  const databaseName = process.env.DB_NAME
+  const databaseName = process.env.POSTGRES_DB
 
   pool.connect(async (err, client) => {
     try {
       if (err) {
+        // database does not exist
         if (err.code === '3D000') {
           // create database
           await createDatabase(databaseName)
@@ -205,31 +250,34 @@ const bootstrap = (restart) => {
         )
         console.log(err.stack)
         throw err
-      } else {
-        if (restart !== true) {
-          // ask to drop database
-          const answer = await promptly.confirm(
-            `Database ${databaseName} already exists. Do you want do continue?(y/N)`
-          )
-
-          if (answer === false) {
-            process.exit()
-            return
-          }
-
-          // drop database
-          await client.end()
-          await dropDatabase(databaseName)
-          // restart bootstrap
-          bootstrap(true)
-          return
-        }
       }
 
-      //create tables photo / subcriptions / users
-      await createTable(client)
+      const isEmpty = await isDatabaseEmpty(client)
 
-      //create admin user
+      // database already exists
+      if (isEmpty === false && restart !== true) {
+        // ask to drop database
+        const answer = await promptly.confirm(
+          `Database ${databaseName} already exists and is not empty. Do you want do continue?(y/N)`
+        )
+
+        if (answer === false) {
+          process.exit()
+          return
+        }
+
+        // drop database
+        await client.end()
+        await dropDatabase(databaseName)
+        // restart bootstrap
+        bootstrap(true)
+        return
+      }
+
+      // create tables photo / subcriptions / users
+      await createTables(client)
+
+      // create admin user
       await createAdminUser(client)
 
       // create folder img
