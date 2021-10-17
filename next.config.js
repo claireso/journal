@@ -9,9 +9,6 @@ const IS_NOTIFICATIONS_ENABLED = !!(
 )
 
 module.exports = {
-  future: {
-    webpack5: true
-  },
   poweredByHeader: false,
   compress: process.env.COMPRESSION === 'enabled',
   env: {
@@ -51,8 +48,6 @@ module.exports = {
       )
     }
 
-    return {
-      ...config
-    }
+    return config
   }
 }
