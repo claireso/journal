@@ -7,9 +7,9 @@ describe('Login', () => {
   })
 
   it('should not log in user (bad password)', () => {
-    const stub = cy.stub()
+    const spy = cy.spy()
 
-    cy.on('window:alert', stub)
+    cy.on('window:alert', spy)
 
     cy.get('@username')
       .type(Cypress.env('CYPRESS_USER_USERNAME'))
@@ -20,7 +20,7 @@ describe('Login', () => {
     cy.get('@submit')
       .click()
       .then(() => {
-        expect(stub.getCall(0)).to.be.calledWith(
+        expect(spy).to.be.calledWith(
           'Bad username/password. Please retry'
         )
       })
@@ -29,9 +29,9 @@ describe('Login', () => {
   })
 
   it('should not log in user (bad username)', () => {
-    const stub = cy.stub()
+    const spy = cy.spy()
 
-    cy.on('window:alert', stub)
+    cy.on('window:alert', spy)
 
     cy.get('@username').type('fake username')
 
@@ -42,7 +42,7 @@ describe('Login', () => {
     cy.get('@submit')
       .click()
       .then(() => {
-        expect(stub.getCall(0)).to.be.calledWith(
+        expect(spy).to.be.calledWith(
           'Bad username/password. Please retry'
         )
       })

@@ -18,32 +18,30 @@ describe('<Notifications />', () => {
     global.setNotificationPermission()
   })
 
-  test('should render component', (done) => {
+  test('should render component', async () => {
     const spy = jest
       .spyOn(notifications, 'getSubscription')
       .mockImplementation(() => Promise.resolve(null))
 
     const { container } = renderComponent()
 
-    setImmediate(() => {
-      expect(container).toMatchSnapshot()
-      spy.mockRestore()
-      done()
-    })
+    await waitFor(() => expect(spy).toHaveBeenCalled())
+
+    expect(container).toMatchSnapshot()
+    spy.mockRestore()
   })
 
-  test('should not render component (user has already subscribed)', (done) => {
+  test('should not render component (user has already subscribed)', async () => {
     const spy = jest
       .spyOn(notifications, 'getSubscription')
       .mockImplementation(() => Promise.resolve({}))
 
     const { container } = renderComponent()
 
-    setImmediate(() => {
-      expect(container).toMatchSnapshot()
-      spy.mockRestore()
-      done()
-    })
+    await waitFor(() => expect(spy).toHaveBeenCalled())
+
+    expect(container).toMatchSnapshot()
+    spy.mockRestore()
   })
 
   test('should not render component (user has blocked notifications)', () => {
@@ -55,7 +53,7 @@ describe('<Notifications />', () => {
     global.setNotificationPermission()
   })
 
-  test('should subscribe and hide banner', async (done) => {
+  test('should subscribe and hide banner', async () => {
     // mock func subscribe
     const spy = jest
       .spyOn(notifications, 'subscribe')
@@ -74,15 +72,14 @@ describe('<Notifications />', () => {
 
     fireEvent.click(getByText(/^Enable notifications/i))
 
-    setImmediate(() => {
-      expect(container).toMatchSnapshot()
-      spy.mockRestore()
-      spySubscription.mockRestore()
-      done()
-    })
+    await waitFor(() => expect(spy).toHaveBeenCalled())
+
+    expect(container).toMatchSnapshot()
+    spy.mockRestore()
+    spySubscription.mockRestore()
   })
 
-  test('should not subscribe and hide banner (denied story)', async (done) => {
+  test('should not subscribe and hide banner (denied story)', async () => {
     // mock func subscribe
     const spy = jest
       .spyOn(notifications, 'subscribe')
@@ -103,11 +100,10 @@ describe('<Notifications />', () => {
 
     fireEvent.click(getByText(/^Enable notifications/i))
 
-    setImmediate(() => {
-      expect(container).toMatchSnapshot()
-      spy.mockRestore()
-      spySubscription.mockRestore()
-      done()
-    })
+    await waitFor(() => expect(spy).toHaveBeenCalled())
+
+    expect(container).toMatchSnapshot()
+    spy.mockRestore()
+    spySubscription.mockRestore()
   })
 })
