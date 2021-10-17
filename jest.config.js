@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  testEnvironment: 'jsdom',
   setupFilesAfterEnv: [path.resolve(__dirname, 'jest.setup.js')],
   testPathIgnorePatterns: ['/node_modules/', '/.next/', '/.cypress'],
   globals: {

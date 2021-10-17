@@ -45,12 +45,6 @@ exports[`<Photos /> should render component 1`] = `
   background: var(--secondary-darker);
 }
 
-.c10 + .Buttonsstyles__PrimaryButton-jpizpn-2,
-.Buttonsstyles__PrimaryButton-jpizpn-2 + .c10,
-.c10 + .c10 {
-  margin-left: 0.8rem;
-}
-
 .c6 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

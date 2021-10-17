@@ -135,10 +135,10 @@ exports[`Page photo should load and render photos 1`] = `
 exports[`Page photo should load and render photos 2`] = `
 <div>
   <div
-    class="Liststyles__ListHeader-xqxatx-1 ehYbFX"
+    class="Liststyles__ListHeader-sc-xqxatx-1 hgFRvD"
   >
     <h1
-      class="Headingsstyles__Heading1-sc-1iu4nvl-0 jbImhE"
+      class="Headingsstyles__Heading1-sc-1iu4nvl-0 EGZPN"
       data-testid="list-heading"
     >
       Your photos 
@@ -149,7 +149,7 @@ exports[`Page photo should load and render photos 2`] = `
       </span>
     </h1>
     <button
-      class="Buttonsstyles__DefaultButton-jpizpn-0 Buttonsstyles__StyledButton-jpizpn-1 Buttonsstyles__PrimaryButton-jpizpn-2 jBpRyo dDVIpe fkOjtu"
+      class="Buttonsstyles__DefaultButton-sc-jpizpn-0 Buttonsstyles__StyledButton-sc-jpizpn-1 Buttonsstyles__PrimaryButton-sc-jpizpn-2 juGaJM jAaVaC cRlJPy"
       data-testid="button-create"
     >
       Add a new photo
@@ -439,12 +439,6 @@ exports[`Page photo should load and render photos 2`] = `
 
 .c4:hover {
   background: var(--secondary-darker);
-}
-
-.c4 + .c6,
-.c6 + .c4,
-.c4 + .c4 {
-  margin-left: 0.8rem;
 }
 
 .c0 {
