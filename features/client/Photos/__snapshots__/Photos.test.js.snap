@@ -108,10 +108,9 @@ exports[`<Photos /> should render component 1`] = `
 
 .c1 {
   background: currentColor;
-  position: relative;
-  padding-top: calc(100% / var(--aspect-ratio));
   width: 100%;
   margin: 0 0 1rem;
+  aspect-ratio: var(--aspect-ratio);
 }
 
 .c5 {
@@ -136,6 +135,13 @@ exports[`<Photos /> should render component 1`] = `
 
   .c4 + figure {
     margin-top: 20rem;
+  }
+}
+
+@supports (not (aspect-ratio:1 / 1)) and (not (aspect-ratio:3 / 2)) and (not (aspect-ratio:2 / 3)) {
+  .c1 {
+    position: relative;
+    padding-top: calc(100% / var(--aspect-ratio));
   }
 }
 

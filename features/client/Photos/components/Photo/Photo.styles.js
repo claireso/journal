@@ -140,10 +140,15 @@ export const Description = styled.span`
 
 export const PictureWrapper = styled.div`
   background: currentColor;
-  position: relative;
-  padding-top: calc(100% / var(--aspect-ratio));
   width: 100%;
   margin: 0 0 1rem;
+  aspect-ratio: var(--aspect-ratio);
+
+  @supports (not (aspect-ratio: 1 / 1)) and (not (aspect-ratio: 3 / 2)) and
+    (not (aspect-ratio: 2 / 3)) {
+    position: relative;
+    padding-top: calc(100% / var(--aspect-ratio));
+  }
 `
 
 export const Picture = styled(LazyLoadedImage).attrs((props) => ({
@@ -152,9 +157,13 @@ export const Picture = styled(LazyLoadedImage).attrs((props) => ({
 }))`
   display: block;
   width: 100%;
-  height: 100%;
   margin: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
+
+  @supports (not (aspect-ratio: 1 / 1)) and (not (aspect-ratio: 3 / 2)) and
+    (not (aspect-ratio: 2 / 3)) {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 `
