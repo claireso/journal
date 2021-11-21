@@ -12,9 +12,7 @@ describe('Homepage', () => {
     it('should show welcome page', () => {
       cy.visit('/')
       cy.get('[data-testid="welcome-title"]').should('have.length', 1)
-      cy.get('[data-testid="flash-notifications"]').contains(
-        'Enable notifications to be alerted of new publication'
-      )
+      cy.get('[data-testid="flash-notifications"]').contains('Enable notifications to be alerted of new publication')
 
       cy.get('[data-testid="welcome-link-admin"]').click()
 

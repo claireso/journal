@@ -47,9 +47,7 @@ describe('Admin photos', () => {
       cy.get('[data-testid="title"]').type('Photo title')
       cy.get('[data-testid="description"]').type('Photo description')
 
-      cy.get('@modal')
-        .find('input[type="file"]')
-        .attachFile('/uploads/01d6098cjk0csdp0626fx23a99.jpg')
+      cy.get('@modal').find('input[type="file"]').attachFile('/uploads/01d6098cjk0csdp0626fx23a99.jpg')
       cy.get('@modal').find('img').should('have.length', 1)
 
       cy.get('[data-testid="submit"]').click()
@@ -62,9 +60,7 @@ describe('Admin photos', () => {
       cy.get('[data-testid="previous-page"]').should('have.length', 0)
       cy.get('[data-testid="next-page"]').should('have.length', 0)
       cy.get('[data-testid="last-page"]').should('have.length', 0)
-      cy.contains('Your photo has been created successfully').should(
-        'be.visible'
-      )
+      cy.contains('Your photo has been created successfully').should('be.visible')
 
       // edit
       cy.get('[data-testid="button-edit"]').click()
@@ -72,10 +68,7 @@ describe('Admin photos', () => {
       cy.get('[data-testid="modal"]').as('modal')
 
       cy.get('[data-testid="title"]').should('have.value', 'Photo title')
-      cy.get('[data-testid="description"]').should(
-        'have.value',
-        'Photo description'
-      )
+      cy.get('[data-testid="description"]').should('have.value', 'Photo description')
       cy.get('@modal').find('img').should('have.length', 1)
 
       cy.get('[data-testid="title"]').clear().type('Photo title edit')
@@ -83,9 +76,7 @@ describe('Admin photos', () => {
       cy.get('[data-testid="submit"]').click()
 
       cy.get('[data-testid="photo"]').contains('Photo title edit')
-      cy.contains('Your photo has been updated successfully').should(
-        'be.visible'
-      )
+      cy.contains('Your photo has been updated successfully').should('be.visible')
 
       // delete
       cy.get('[data-testid="button-delete"]').click()
@@ -95,9 +86,7 @@ describe('Admin photos', () => {
       cy.get('@modal').contains('Are you sure?')
       cy.get('@modal').find('button').eq(2).click()
 
-      cy.contains('Your photo has been deleted successfully').should(
-        'be.visible'
-      )
+      cy.contains('Your photo has been deleted successfully').should('be.visible')
       cy.get('[data-testid="list-heading"]').contains('Your photos (0)')
 
       cy.get('[data-testid="photo"]').should('have.length', 0)
@@ -143,9 +132,7 @@ describe('Admin photos', () => {
       cy.get('[data-testid="title"]').type('Photo title')
       cy.get('[data-testid="description"]').type('Photo description')
 
-      cy.get('@modal')
-        .find('input[type="file"]')
-        .attachFile('/uploads/01d6098cjk0csdp0626fx23a99.jpg')
+      cy.get('@modal').find('input[type="file"]').attachFile('/uploads/01d6098cjk0csdp0626fx23a99.jpg')
       cy.get('@modal').find('img').should('have.length', 1)
 
       cy.get('[data-testid="submit"]').click()
@@ -153,9 +140,7 @@ describe('Admin photos', () => {
       cy.wait(3000)
 
       cy.get('[data-testid="list-heading"]').contains('Your photos (51)')
-      cy.contains('Your photo has been created successfully').should(
-        'be.visible'
-      )
+      cy.contains('Your photo has been created successfully').should('be.visible')
       cy.url().should('be', '/admin/photos')
 
       // edit
@@ -166,10 +151,7 @@ describe('Admin photos', () => {
       cy.get('[data-testid="modal"]').as('modal')
 
       cy.get('[data-testid="title"]').should('have.value', 'Photo 41')
-      cy.get('[data-testid="description"]').should(
-        'have.value',
-        'Description 41'
-      )
+      cy.get('[data-testid="description"]').should('have.value', 'Description 41')
       cy.get('@modal').find('img').should('have.length', 1)
 
       cy.get('[data-testid="title"]').clear().type('Photo 41 edit')
@@ -177,9 +159,7 @@ describe('Admin photos', () => {
       cy.get('[data-testid="submit"]').click()
 
       cy.get('[data-testid="photo"]').eq(0).contains('Photo 41 edit')
-      cy.contains('Your photo has been updated successfully').should(
-        'be.visible'
-      )
+      cy.contains('Your photo has been updated successfully').should('be.visible')
       cy.url().should('be', '/admin/photos?page=2')
 
       // delete
@@ -190,9 +170,7 @@ describe('Admin photos', () => {
       cy.get('@modal').contains('Are you sure?')
       cy.get('@modal').find('button').eq(2).click()
 
-      cy.contains('Your photo has been deleted successfully').should(
-        'be.visible'
-      )
+      cy.contains('Your photo has been deleted successfully').should('be.visible')
       cy.get('[data-testid="list-heading"]').contains('Your photos (50)')
 
       cy.get('[data-testid="photo"]').should('have.length', 10)

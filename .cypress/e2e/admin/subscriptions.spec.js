@@ -64,9 +64,7 @@ describe('Admin subscriptions', () => {
       cy.get('@modal').contains('Are you sure?')
       cy.get('@modal').find('button').eq(2).click()
 
-      cy.contains('Your subscription has been deleted successfully').should(
-        'be.visible'
-      )
+      cy.contains('Your subscription has been deleted successfully').should('be.visible')
       cy.get('[data-testid="list-heading"]').contains('Your subscriptions (49)')
 
       cy.get('[data-testid="subscription"]').should('have.length', 10)

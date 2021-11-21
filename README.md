@@ -19,7 +19,7 @@ git clone git@github.com:claireso/journal.git
 ### Install dependencies
 
 ```
-$ npm install
+$ npm install --legacy-peer-deps
 ```
 
 ### Configure your application
@@ -106,3 +106,8 @@ Don't forget to update the entry 'baseUrl' in your config
 ![](https://user-images.githubusercontent.com/961038/84236772-7fbe2300-aaf8-11ea-9e2e-a63f8c482b8a.jpg)
 
 ![](https://user-images.githubusercontent.com/961038/84236775-8056b980-aaf8-11ea-8479-f15f80a197ac.jpg)
+
+### TODO
+- [ ] Restore tests (react-testing-library + cypress)
+- [ ] Use middlewares of nextjs12
+- [ ] Fix peer deps (https://github.com/storybookjs/storybook/issues/14619)

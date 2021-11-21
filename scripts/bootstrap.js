@@ -61,11 +61,7 @@ const createDatabase = async (databaseName) => {
 
     console.log(chalk.green(`Database has been created successfully`))
   } catch (err) {
-    console.log(
-      chalk.red(
-        'Failed: an error has occurred during the creation of the database'
-      )
-    )
+    console.log(chalk.red('Failed: an error has occurred during the creation of the database'))
     throw err
   }
 }
@@ -82,9 +78,7 @@ const dropDatabase = async (databaseName) => {
       databaseName
     )
   } catch (err) {
-    console.log(
-      chalk.red('Failed: an error has occurred during the drop of the database')
-    )
+    console.log(chalk.red('Failed: an error has occurred during the drop of the database'))
     throw err
   }
 }
@@ -94,9 +88,7 @@ const createTable = async (client) => {
   console.log(chalk.cyan(`Step 2/4 : Setup database...`))
 
   try {
-    await client.query(
-      `CREATE TYPE POSITION_TYPE AS ENUM ('left', 'center', 'right')`
-    )
+    await client.query(`CREATE TYPE POSITION_TYPE AS ENUM ('left', 'center', 'right')`)
     await client.query(`
       CREATE TABLE photos (
         ID SERIAL PRIMARY KEY,
@@ -133,9 +125,7 @@ const createTable = async (client) => {
     `)
     console.log(chalk.green(`Tables has been created successfully`))
   } catch (err) {
-    console.log(
-      chalk.red('An error has occured during database table creation')
-    )
+    console.log(chalk.red('An error has occured during database table creation'))
     throw err
   }
 }
@@ -143,17 +133,13 @@ const createTable = async (client) => {
 const enableWebPush = async () => {
   console.log(chalk.cyan(`Step 4/4 : Enable web push notification?`))
   //ask to enable
-  const answer = await promptly.confirm(
-    'Do you want to enable web push notification? (Y/n)'
-  )
+  const answer = await promptly.confirm('Do you want to enable web push notification? (Y/n)')
 
   if (answer === false) return
 
   const vapidKeys = webpush.generateVAPIDKeys()
 
-  console.log(
-    chalk.gray('Please update your config by adding public and private keys:')
-  )
+  console.log(chalk.gray('Please update your config by adding public and private keys:'))
 
   console.log(`NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY="${vapidKeys.publicKey}"`)
   console.log(`NOTIFICATIONS_PRIVATE_KEY="${vapidKeys.privateKey}"`)
@@ -176,9 +162,7 @@ const createAdminUser = async (client) => {
 
     console.log(chalk.green('Admin user has been created successfully.'))
   } catch (err) {
-    console.log(
-      chalk.red('An error has occured during the admin user creation')
-    )
+    console.log(chalk.red('An error has occured during the admin user creation'))
     throw err
   }
 }
@@ -198,11 +182,7 @@ const bootstrap = (restart) => {
           return
         }
 
-        console.log(
-          chalk.red(
-            'An error has occured during the connection of the database'
-          )
-        )
+        console.log(chalk.red('An error has occured during the connection of the database'))
         console.log(err.stack)
         throw err
       } else {
@@ -238,11 +218,7 @@ const bootstrap = (restart) => {
       // enable web push
       await enableWebPush()
 
-      console.log(
-        chalk.green(
-          'Installation has been completed successfully. You can now run your application.'
-        )
-      )
+      console.log(chalk.green('Installation has been completed successfully. You can now run your application.'))
 
       process.exit()
     } catch (err) {
