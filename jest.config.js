@@ -1,9 +1,34 @@
 const path = require('path')
 
 module.exports = {
+  rootDir: './src',
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: [path.resolve(__dirname, 'jest.setup.js')],
   testPathIgnorePatterns: ['/node_modules/', '/.next/', '/.cypress'],
+  // temp waiting next swc transforms
+  transform: {
+    '^.+\\.(js|jsx)$': [
+      'babel-jest',
+      {
+        presets: ['next/babel'],
+        plugins: [
+          [
+            'module-resolver',
+            {
+              alias: {
+                '@utils': './src/utils',
+                '@components': './src/components',
+                '@services': './src/services',
+                '@features': './src/features',
+                '@hooks': './src/hooks',
+                '@types': './src/types'
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  },
   globals: {
     __PHOTOS__: {
       items: [
@@ -12,6 +37,7 @@ module.exports = {
           title: '',
           description: 'Février 2019',
           name: '01d2y7jt2j24dv0s82m9xq729d.jpg',
+          source: '01d2y7jt2j24dv0s82m9xq729d.jpg',
           position: 'right',
           portrait: false,
           square: false,
@@ -23,6 +49,7 @@ module.exports = {
           title: '',
           description: 'Janvier 2019',
           name: '01d2tf2h38pwcd953ans2f64p7.jpg',
+          source: '01d2tf2h38pwcd953ans2f64p7.jpg',
           position: 'center',
           portrait: false,
           square: false,
@@ -44,6 +71,7 @@ module.exports = {
       title: 'Single photography',
       description: 'Janvier 2019',
       name: '01d2tf2h38pwcd953ans2f64p7.jpg',
+      source: '01d2tf2h38pwcd953ans2f64p7.jpg',
       position: 'center',
       portrait: false,
       square: false,
