@@ -62,12 +62,7 @@ global.setNotificationPermission = (status = 'default') => {
 global.setNotificationPermission()
 
 // update service worker
-global.setServiceWorker = ({
-  register,
-  subscribe,
-  ready,
-  getSubscription
-} = {}) => {
+global.setServiceWorker = ({ register, subscribe, ready, getSubscription } = {}) => {
   if (!register) {
     register = jest.fn()
   }

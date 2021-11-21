@@ -20,9 +20,7 @@ describe('Login', () => {
     cy.get('@submit')
       .click()
       .then(() => {
-        expect(spy).to.be.calledWith(
-          'Bad username/password. Please retry'
-        )
+        expect(spy).to.be.calledWith('Bad username/password. Please retry')
       })
 
     cy.url().should('include', '/admin/login')
@@ -42,9 +40,7 @@ describe('Login', () => {
     cy.get('@submit')
       .click()
       .then(() => {
-        expect(spy).to.be.calledWith(
-          'Bad username/password. Please retry'
-        )
+        expect(spy).to.be.calledWith('Bad username/password. Please retry')
       })
 
     cy.url().should('include', '/admin/login')
