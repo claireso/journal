@@ -13,6 +13,13 @@ const formatPhoto = (photo) => ({
 
 const PhotosContext = React.createContext()
 
+const initialState = {
+  photos: {},
+  isLoading: true,
+  isProcessing: false,
+  detail: null
+}
+
 const usePhotosContext = () => {
   const context = useContext(PhotosContext)
 
@@ -23,19 +30,15 @@ const usePhotosContext = () => {
   return context
 }
 
-export const PhotosProvider = ({ children }) => {
-  const [state, setState] = useState({
-    photos: {},
-    isLoading: true,
-    isProcessing: false,
-    detail: null
-  })
+export const PhotosProvider = ({ value = initialState, children }) => {
+  const [state, setState] = useState(value)
 
   return <PhotosContext.Provider value={[state, setState]}>{children}</PhotosContext.Provider>
 }
 
 PhotosProvider.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
+  value: PropTypes.object
 }
 
 const usePhotos = () => {
@@ -43,7 +46,9 @@ const usePhotos = () => {
   const [state, setState] = usePhotosContext()
   const { photos, isLoading, isProcessing, detail } = state
 
-  const updateState = (newState) => setState({ ...state, ...newState })
+  const updateState = (newState) => {
+    setState({ ...state, ...newState })
+  }
 
   const loadPhotos = useCallback(async (page = 1) => {
     if (currentRequest) {

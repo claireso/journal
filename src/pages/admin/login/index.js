@@ -7,7 +7,7 @@ import Box from '@components/Box'
 
 import LoginForm from '@features/user/LoginForm'
 
-import { useUser } from '@features/user/useUser'
+import useUser from '@features/user/useUser'
 
 const Wrapper = styled.div`
   align-items: center;
@@ -33,21 +33,6 @@ const Login = () => {
       </main>
     </Wrapper>
   )
-
-  // const [{ status }, actions] = useUserReducer()
-
-  // const isProcessing = status === 'pending'
-
-  // return (
-  //   <Wrapper>
-  //     <main>
-  //       <Box>
-  //         <Heading1>Login</Heading1>
-  //         <FormLogin onSubmit={actions.login} isProcessing={isProcessing} />
-  //       </Box>
-  //     </main>
-  //   </Wrapper>
-  // )
 }
 
 Login.Layout = Layout

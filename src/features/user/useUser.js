@@ -3,6 +3,7 @@ import Router from 'next/router'
 import PropTypes from 'prop-types'
 
 import * as api from '@services/api'
+import logger from '@services/logger'
 
 const UserContext = React.createContext()
 
@@ -29,7 +30,7 @@ UserProvider.propTypes = {
   children: PropTypes.any
 }
 
-export const useUser = () => {
+const useUser = () => {
   const [state, setState] = useUserContext()
 
   const updateState = (nextState) => setState({ ...state, ...nextState })
@@ -67,6 +68,8 @@ export const useUser = () => {
     try {
       await api.logout().ready
       updateState({ user: null })
+    } catch (err) {
+      logger(err)
     } finally {
       Router.push('/admin/login')
     }
@@ -81,3 +84,5 @@ export const useUser = () => {
     }
   ]
 }
+
+export default useUser

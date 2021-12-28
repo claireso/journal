@@ -11,7 +11,7 @@ import Toolbar from '@components/Toolbar'
 import { Tabs, Tab } from '@components/Tabs'
 
 import Messages from '@features/messages/Messages'
-import { useUser, UserProvider } from '@features/user/useUser'
+import useUser, { UserProvider } from '@features/user/useUser'
 import { PhotosProvider } from '@features/photos/usePhotos'
 import { SubscriptionsProvider } from '@features/subscriptions/useSubscriptions'
 import { MessagesProvider } from '@features/messages/useMessages'
