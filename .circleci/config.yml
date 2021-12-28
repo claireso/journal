@@ -6,32 +6,26 @@ executors:
     docker:
       # specify the version you desire here
       - image: circleci/node:14.17.0
-
     working_directory: ~/journal
 
 jobs:
   install:
     executor: my-docker
-
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
       - run:
           name: Install dependencies
-          command: npm install --no-package-lock
-
+          command: npm ci
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
       - persist_to_workspace:
           root: .
           paths:
@@ -39,44 +33,36 @@ jobs:
 
   test:
     executor: my-docker
-
     steps:
       - attach_workspace:
           at: ~/journal
-
       - run:
           name: Run tests
           command: npm test -- --maxWorkers=2
 
   lint:
     executor: my-docker
-
     steps:
       - attach_workspace:
           at: ~/journal
-
       - run:
           name: Run lint
           command: npm run lint
 
   build:
     executor: my-docker
-
     steps:
       - attach_workspace:
           at: ~/journal
-
       - run:
           name: Build application
           command: npm run build
 
   deploy:
     executor: my-docker
-
     steps:
       - attach_workspace:
           at: ~/journal
-
       - run:
           name: Deploy
           command: |
