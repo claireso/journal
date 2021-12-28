@@ -15,11 +15,16 @@
     "plugin:prettier/recommended",
     "plugin:cypress/recommended"
   ],
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
+    },
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": [
+        "next/babel"
+      ]
     }
   },
   "settings": {
