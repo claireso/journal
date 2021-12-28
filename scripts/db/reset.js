@@ -3,7 +3,7 @@ require('dotenv').config({
   path: process.env.CONFIG_FILE || './.env.test.local'
 })
 
-const db = require('../../services/db')
+const db = require('../../src/services/db')
 
 const pool = db.pool
 
