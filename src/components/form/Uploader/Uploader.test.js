@@ -3,27 +3,25 @@ import { render, fireEvent, waitFor } from '@testing-library/react'
 import Uploader from './index'
 
 describe('<Uploader />', () => {
-  const props = {
-    name: 'uploader',
-    accept: ['image/jpeg', 'image/png']
-  }
+  const renderComponent = (props = {}) =>
+    render(<Uploader name="uploader" accept={['image/jpeg', 'image/png']} {...props} />)
 
-  test('should render uploader', () => {
-    const { container } = render(<Uploader {...props} />)
+  it('should render uploader', () => {
+    const { asFragment } = renderComponent()
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render uploader with preview', () => {
-    const { container } = render(<Uploader {...props} preview="file.jpg" />)
+  it('should render uploader with preview', () => {
+    const { asFragment } = renderComponent({ preview: 'file.jpg' })
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render error', () => {
-    const { container } = render(<Uploader {...props} />)
+  it('should render error', () => {
+    const { asFragment } = renderComponent()
 
-    const input = container.querySelector('input[type="file"]')
+    const input = document.querySelector('input[type="file"]')
 
     fireEvent.change(input, {
       target: {
@@ -31,14 +29,15 @@ describe('<Uploader />', () => {
       }
     })
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should change file', async () => {
-    const spy = jest.fn()
-    const { container } = render(<Uploader {...props} onChange={spy} />)
+  it('should change file', async () => {
+    const props = { onChange: jest.fn() }
 
-    const input = container.querySelector('input[type="file"]')
+    const { asFragment } = renderComponent(props)
+
+    const input = document.querySelector('input[type="file"]')
 
     await fireEvent.change(input, {
       target: {
@@ -46,10 +45,8 @@ describe('<Uploader />', () => {
       }
     })
 
-    await waitFor(() => {
-      expect(container.querySelector('img')).toBeInTheDocument()
-      expect(spy).toHaveBeenCalledWith('data:image/jpeg;base64,KOKMkOKWoV/ilqEp')
-      expect(container).toMatchSnapshot()
-    })
+    await waitFor(() => expect(props.onChange).toHaveBeenCalledWith('data:image/jpeg;base64,KOKMkOKWoV/ilqEp'))
+
+    expect(asFragment()).toMatchSnapshot()
   })
 })

@@ -1,19 +1,11 @@
 import { buildRequester } from './requester'
 import Router from 'next/router'
 
-// import { displayErrorMessage } from '../messages/reducer'
-
 const requester = buildRequester({
   baseUrl: `${process.env.NEXT_PUBLIC_WEBSITE_URL}api`,
   onError: {
     unAuthorized: () => {
       Router.push({ pathname: '/admin/login' })
-    },
-    internalServerError: () => {
-      // displayErrorMessage({
-      //   message: 'An error has occured, please retry',
-      //   key: 'INTERNAL_ERROR'
-      // })
     }
   }
 })

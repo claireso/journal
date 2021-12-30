@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Select /> should render select 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   margin: 0 0 var(--gutter);
 }
 
@@ -61,35 +62,34 @@ exports[`<Select /> should render select 1`] = `
   border-color: var(--border-color-focus);
 }
 
-<div>
-  <div
+<div
     class="c0 c1"
   >
     <label
       class="c2"
-      for="myselect"
+      for="position"
     >
-      My select
+      Position
     </label>
     <div
       class="c3"
     >
       <select
         class="c4"
-        id="myselect"
-        name="myselect"
+        id="position"
+        name="position"
         required=""
       >
         <option
-          value="option1"
+          value="left"
         >
-          option 1
+          left
         </option>
         <option
           selected=""
-          value="option2"
+          value="right"
         >
-          option 2
+          right
         </option>
       </select>
       <svg
@@ -104,5 +104,5 @@ exports[`<Select /> should render select 1`] = `
       </svg>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;

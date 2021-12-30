@@ -108,6 +108,6 @@ Don't forget to update the entry 'baseUrl' in your config
 ![](https://user-images.githubusercontent.com/961038/84236775-8056b980-aaf8-11ea-8479-f15f80a197ac.jpg)
 
 ### TODO
-- [ ] Restore tests (react-testing-library + cypress)
+- [ ] Restore tests (cypress)
 - [ ] Use middlewares of nextjs12
 - [ ] Fix peer deps (https://github.com/storybookjs/storybook/issues/14619)

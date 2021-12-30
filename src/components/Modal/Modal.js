@@ -51,22 +51,6 @@ const Modal = ({ testId, children, onClose }) => {
   const wrapper = useRef()
   const content = useRef()
 
-  useEffect(() => {
-    const animations = animationsConfig[isOpen ? 'open' : 'close']
-
-    wrapper.current.animate(animations.wrapper.keyframes, animations.wrapper.timings)
-
-    content.current.animate(animations.content.keyframes, animations.content.timings)
-  }, [isOpen])
-
-  useEffect(() => {
-    document.addEventListener('keydown', onKeyDown)
-
-    return () => {
-      document.removeEventListener('keydown', onKeyDown)
-    }
-  }, [onKeyDown])
-
   const close = useCallback(() => {
     setIsOpen(false)
     setTimeout(() => {
@@ -94,9 +78,35 @@ const Modal = ({ testId, children, onClose }) => {
     [close]
   )
 
+  useEffect(() => {
+    const animations = animationsConfig[isOpen ? 'open' : 'close']
+
+    if (wrapper.current?.animate) {
+      wrapper.current.animate(animations.wrapper.keyframes, animations.wrapper.timings)
+    }
+
+    if (content.current?.animate) {
+      content.current.animate(animations.content.keyframes, animations.content.timings)
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    document.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [onKeyDown])
+
   return (
-    <S.ModalWrapper ref={wrapper} id="modal" data-testid={testId} onClick={onClick} style={{ opacity: 0 }}>
-      <S.ModalInner id="modalInner" ref={content} style={{ opacity: 0, transform: 'translate3d(4rem, 0, 0)' }}>
+    <S.ModalWrapper
+      ref={wrapper}
+      id="modal"
+      data-testid={testId}
+      onClick={onClick}
+      style={animationsConfig.close.wrapper.keyframes[0]}
+    >
+      <S.ModalInner id="modalInner" ref={content} style={animationsConfig.close.content.keyframes[0]}>
         <S.ModalCloseButton onClick={close}>
           <IconClose width="20" height="26" />
         </S.ModalCloseButton>
@@ -111,13 +121,11 @@ const Modal = ({ testId, children, onClose }) => {
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
   onClose: PropTypes.func,
-  isOpen: PropTypes.bool,
   testId: PropTypes.string
 }
 
 Modal.defaultProps = {
   onClose: () => {},
-  isOpen: false,
   testId: ''
 }
 

@@ -8,6 +8,12 @@ let currentRequest = null
 
 const SubscriptionsContext = React.createContext()
 
+const initialState = {
+  subscriptions: {},
+  isLoading: true,
+  isProcessing: false
+}
+
 const useSubscriptionsContext = () => {
   const context = useContext(SubscriptionsContext)
 
@@ -18,18 +24,15 @@ const useSubscriptionsContext = () => {
   return context
 }
 
-export const SubscriptionsProvider = ({ children }) => {
-  const [state, setState] = useState({
-    subscriptions: {},
-    isLoading: true,
-    isProcessing: false
-  })
+export const SubscriptionsProvider = ({ value = initialState, children }) => {
+  const [state, setState] = useState(value)
 
   return <SubscriptionsContext.Provider value={[state, setState]}>{children}</SubscriptionsContext.Provider>
 }
 
 SubscriptionsProvider.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
+  value: PropTypes.object
 }
 
 const useSubscriptions = () => {

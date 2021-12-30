@@ -3,21 +3,17 @@ import { render } from '@testing-library/react'
 import Checkbox from './index'
 
 describe('<Checkbox />', () => {
-  const props = {
-    label: 'Checkbox',
-    value: false,
-    name: 'checkbox'
-  }
+  const renderComponent = (props = {}) => render(<Checkbox label="Checkbox" name="checkbox" value={false} {...props} />)
 
-  test('should render checkbox', () => {
-    const { container } = render(<Checkbox {...props} />)
+  it('should render checkbox', () => {
+    const { asFragment } = renderComponent()
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render checked checkbox', () => {
-    const { container } = render(<Checkbox {...props} value={true} />)
+  it('should render checked checkbox', () => {
+    const { asFragment } = renderComponent({ value: true })
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

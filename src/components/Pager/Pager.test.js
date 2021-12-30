@@ -1,103 +1,93 @@
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 import Pager from './index'
 import { PagerButton } from '../Buttons'
 
-const getPager = (props = {}) => (
-  <Pager {...props}>
-    {({ items, getItemsProps }) =>
-      items.map((item, key) => (
-        <li key={key}>
-          <PagerButton
-            {...getItemsProps({
-              label: item.label,
-              title: item.title,
-              item: item
-            })}
-          />
-        </li>
-      ))
-    }
-  </Pager>
-)
+const renderPager = (props = {}) =>
+  render(
+    <Pager {...props}>
+      {({ items, getItemsProps }) =>
+        items.map((item, key) => (
+          <li key={key}>
+            <PagerButton
+              {...getItemsProps({
+                label: item.label,
+                title: item.title,
+                item: item
+              })}
+            />
+          </li>
+        ))
+      }
+    </Pager>
+  )
 
 describe('<Pager />', () => {
-  test('should not render items', () => {
-    const { container } = render(getPager({ navigate: () => {} }))
+  it('should not render items', () => {
+    const { asFragment } = renderPager({ navigate: () => {} })
 
-    expect(container.querySelector('li')).toBeNull()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render first page', () => {
-    const navigate = jest.fn()
-    const { container, getByTitle } = render(
-      getPager({
-        next: global.__PHOTOS__.pager.next,
-        last: global.__PHOTOS__.pager.last,
-        navigate: navigate
-      })
-    )
+  it('should render first page', () => {
+    const props = {
+      navigate: jest.fn(),
+      next: global.__PHOTOS__.pager.next,
+      last: global.__PHOTOS__.pager.last
+    }
 
-    expect(container.querySelectorAll('li')).toHaveLength(2)
+    const { asFragment } = renderPager(props)
 
-    expect(getByTitle('Next page')).toBeInTheDocument()
-    fireEvent.click(getByTitle('Next page'))
-    expect(navigate).toHaveBeenCalledWith(2)
+    expect(asFragment()).toMatchSnapshot()
 
-    expect(getByTitle('Last page')).toBeInTheDocument()
-    fireEvent.click(getByTitle('Last page'))
-    expect(navigate).toHaveBeenCalledWith(19)
+    fireEvent.click(screen.getByTitle('Next page'))
+    expect(props.navigate).toHaveBeenCalledWith(2)
+
+    fireEvent.click(screen.getByTitle('Last page'))
+    expect(props.navigate).toHaveBeenCalledWith(19)
   })
 
-  test('should render second page', () => {
-    const navigate = jest.fn()
-    const { container, getByTitle } = render(
-      getPager({
-        first: 1,
-        prev: 1,
-        next: global.__PHOTOS__.pager.next,
-        last: global.__PHOTOS__.pager.last,
-        navigate: navigate
-      })
-    )
+  it('should render second page', () => {
+    const props = {
+      navigate: jest.fn(),
+      first: 1,
+      prev: 1,
+      next: global.__PHOTOS__.pager.next,
+      last: global.__PHOTOS__.pager.last
+    }
 
-    expect(container.querySelectorAll('li')).toHaveLength(4)
+    const { asFragment } = renderPager(props)
 
-    expect(getByTitle('First page')).toBeInTheDocument()
-    fireEvent.click(getByTitle('First page'))
-    expect(navigate).toHaveBeenCalledWith(1)
+    expect(asFragment()).toMatchSnapshot()
 
-    expect(getByTitle('Previous page')).toBeInTheDocument()
-    fireEvent.click(getByTitle('Previous page'))
-    expect(navigate).toHaveBeenCalledWith(1)
+    fireEvent.click(screen.getByTitle('First page'))
+    expect(props.navigate).toHaveBeenCalledWith(1)
 
-    expect(getByTitle('Next page')).toBeInTheDocument()
-    fireEvent.click(getByTitle('Next page'))
-    expect(navigate).toHaveBeenCalledWith(2)
+    fireEvent.click(screen.getByTitle('Previous page'))
+    expect(props.navigate).toHaveBeenCalledWith(1)
 
-    expect(getByTitle('Last page')).toBeInTheDocument()
-    fireEvent.click(getByTitle('Last page'))
-    expect(navigate).toHaveBeenCalledWith(19)
+    fireEvent.click(screen.getByTitle('Next page'))
+    expect(props.navigate).toHaveBeenCalledWith(2)
+
+    fireEvent.click(screen.getByTitle('Last page'))
+    expect(props.navigate).toHaveBeenCalledWith(19)
   })
 
-  test('should render last page', () => {
-    const navigate = jest.fn()
-    const { container, getByTitle } = render(
-      getPager({
-        first: 1,
-        prev: 1,
-        navigate: navigate
-      })
-    )
+  it('should render last page', () => {
+    const props = {
+      first: 1,
+      prev: 1,
+      navigate: jest.fn()
+    }
 
-    expect(container.querySelectorAll('li')).toHaveLength(2)
+    const { asFragment } = renderPager(props)
 
-    expect(getByTitle('First page')).toBeInTheDocument()
-    fireEvent.click(getByTitle('First page'))
-    expect(navigate).toHaveBeenCalledWith(1)
+    expect(asFragment()).toMatchSnapshot()
 
-    expect(getByTitle('Previous page')).toBeInTheDocument()
-    fireEvent.click(getByTitle('Previous page'))
-    expect(navigate).toHaveBeenCalledWith(1)
+    fireEvent.click(screen.getByTitle('First page'))
+    expect(props.navigate).toHaveBeenCalledWith(1)
+
+    fireEvent.click(screen.getByTitle('Previous page'))
+    expect(props.navigate).toHaveBeenCalledWith(1)
   })
 })

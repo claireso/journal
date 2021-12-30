@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Input /> should render input 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   margin: 0 0 var(--gutter);
 }
 
@@ -35,23 +36,22 @@ exports[`<Input /> should render input 1`] = `
   border-color: var(--border-color-focus);
 }
 
-<div>
-  <div
+<div
     class="c0"
   >
     <label
       class="c1"
-      for="myinput"
+      for="title"
     >
-      My input
+      Title
     </label>
     <input
       class="c2"
-      id="myinput"
-      name="myinput"
+      id="title"
+      name="title"
       type="text"
-      value="my custom value"
+      value="Titre photo"
     />
   </div>
-</div>
+</DocumentFragment>
 `;
