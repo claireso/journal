@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Notifications /> should not render component (user has already subscribed) 1`] = `<DocumentFragment />`;
+
+exports[`<Notifications /> should not render component (user has blocked notifications) 1`] = `<DocumentFragment />`;
+
+exports[`<Notifications /> should not subscribe and hide banner (denied story) 1`] = `<DocumentFragment />`;
+
+exports[`<Notifications /> should render component 1`] = `
+<DocumentFragment>
+  .c1 {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.c1:hover {
+  border-bottom: 1px solid currentColor;
+}
+
+.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: var(--font-family);
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c4 {
+  border-radius: 0.2rem;
+  font-size: var(--font-size-smaller);
+  line-height: 1.3333333;
+  padding: 1.6rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+}
+
+.c4 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c2 + .c2 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c0 {
+  background: var(--flash-default);
+  color: var(--flash-default-text);
+  font-size: var(--font-size-normal);
+  margin: 0 0 var(--gutter);
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+  opacity: 0;
+}
+
+.c5 {
+  padding: 0 2rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.c5 > svg {
+  fill: currentColor;
+  margin: 0;
+}
+
+<div
+    class="c0"
+    data-testid="flash-notifications"
+  >
+    <a
+      class="c1"
+      href="#"
+      role="button"
+    >
+      Enable notifications to be alerted of new publication
+    </a>
+    <button
+      class="c2 c3 c4 c5"
+    >
+      <svg
+        height="16"
+        viewBox="0 0 22 28"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20.281 20.656c0 0.391-0.156 0.781-0.438 1.062l-2.125 2.125c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-4.594-4.594-4.594 4.594c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-2.125-2.125c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l4.594-4.594-4.594-4.594c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l2.125-2.125c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l4.594 4.594 4.594-4.594c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l2.125 2.125c0.281 0.281 0.438 0.672 0.438 1.062s-0.156 0.781-0.438 1.062l-4.594 4.594 4.594 4.594c0.281 0.281 0.438 0.672 0.438 1.062z"
+        />
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Notifications /> should subscribe and hide banner 1`] = `<DocumentFragment />`;

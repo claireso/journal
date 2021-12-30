@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FormLogin /> should render component 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   margin: 0 0 var(--gutter);
 }
 
@@ -58,8 +59,7 @@ exports[`<FormLogin /> should render component 1`] = `
   background: var(--primary-lighter);
 }
 
-<div>
-  <form
+<form
     method="POST"
   >
     <div
@@ -107,11 +107,12 @@ exports[`<FormLogin /> should render component 1`] = `
       value="Log in"
     />
   </form>
-</div>
+</DocumentFragment>
 `;
 
 exports[`<FormLogin /> should render component in processing status 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   margin: 0 0 var(--gutter);
 }
 
@@ -170,8 +171,7 @@ exports[`<FormLogin /> should render component in processing status 1`] = `
   margin: 0 auto;
 }
 
-<div>
-  <form
+<form
     method="POST"
   >
     <div
@@ -220,5 +220,5 @@ exports[`<FormLogin /> should render component in processing status 1`] = `
       />
     </div>
   </form>
-</div>
+</DocumentFragment>
 `;

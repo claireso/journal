@@ -1,0 +1,90 @@
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+
+import { TranslationsProvider, getTranslations } from '@hooks/useTranslations'
+import * as notifications from '@services/notifications'
+
+import Notifications from './index'
+
+describe('<Notifications />', () => {
+  const renderComponent = () =>
+    render(
+      <TranslationsProvider translations={getTranslations('en', 'client')}>
+        <Notifications />
+      </TranslationsProvider>
+    )
+
+  beforeEach(() => {
+    global.setNotificationPermission()
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
+  it('should render component', async () => {
+    const getSubscription = jest.spyOn(notifications, 'getSubscription').mockImplementation(() => Promise.resolve(null))
+
+    const { asFragment } = renderComponent()
+
+    await waitFor(() => expect(getSubscription).toHaveBeenCalled())
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should not render component (user has already subscribed)', async () => {
+    const getSubscription = jest.spyOn(notifications, 'getSubscription').mockImplementation(() => Promise.resolve({}))
+
+    const { asFragment } = renderComponent()
+
+    await waitFor(() => expect(getSubscription).toHaveBeenCalled())
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should not render component (user has blocked notifications)', () => {
+    global.setNotificationPermission('denied')
+
+    const { asFragment } = renderComponent()
+
+    expect(asFragment()).toMatchSnapshot()
+    global.setNotificationPermission()
+  })
+
+  it('should subscribe and hide banner', async () => {
+    // mock func subscribe
+    const subscribe = jest.spyOn(notifications, 'subscribe').mockImplementation(() => Promise.resolve())
+
+    // mock func getSubscription
+    jest.spyOn(notifications, 'getSubscription').mockImplementation(() => Promise.resolve(null))
+
+    const { asFragment } = renderComponent()
+
+    await waitFor(() => screen.getByText(/^Enable notifications/i))
+
+    fireEvent.click(screen.getByText(/^Enable notifications/i))
+
+    await waitFor(() => expect(subscribe).toHaveBeenCalled())
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should not subscribe and hide banner (denied story)', async () => {
+    // mock func subscribe
+    const subscribe = jest.spyOn(notifications, 'subscribe').mockImplementation(() => Promise.reject())
+
+    // mock func getSubscription
+    jest.spyOn(notifications, 'getSubscription').mockImplementation(() => Promise.resolve(null))
+
+    const { asFragment } = renderComponent()
+
+    await waitFor(() => screen.getByText(/^Enable notifications/i))
+
+    global.setNotificationPermission('denied')
+
+    fireEvent.click(screen.getByText(/^Enable notifications/i))
+
+    await waitFor(() => expect(subscribe).toHaveBeenCalled())
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+})

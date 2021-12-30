@@ -32,6 +32,7 @@ export const FlashWrapper = styled.div`
   padding: 2rem;
   position: relative;
   text-align: center;
+  opacity: 0;
 
   ${(props) =>
     props.withBorder &&

@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 import LoginForm from './LoginForm'
 
@@ -12,35 +12,36 @@ describe('<FormLogin />', () => {
     return render(<LoginForm {...defaultProps} {...props} />)
   }
 
-  test('should render component', () => {
-    const { container } = renderComponent()
+  it('should render component', () => {
+    const { asFragment } = renderComponent()
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render component in processing status', () => {
-    const { container } = renderComponent({ isProcessing: true })
+  it('should render component in processing status', () => {
+    const { asFragment } = renderComponent({ isProcessing: true })
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should call onSubmit function', () => {
-    const spyOnSubmit = jest.fn()
+  it('should call onSubmit function', () => {
+    const props = {
+      onSubmit: jest.fn()
+    }
 
-    const { getByLabelText, getByDisplayValue } = renderComponent({
-      onSubmit: spyOnSubmit
-    })
+    renderComponent(props)
 
-    fireEvent.change(getByLabelText(/username/i), {
+    fireEvent.change(screen.getByLabelText(/username/i), {
       target: { value: 'admin' }
     })
-    fireEvent.change(getByLabelText(/password/i), {
+
+    fireEvent.change(screen.getByLabelText(/password/i), {
       target: { value: 'password' }
     })
 
-    fireEvent.click(getByDisplayValue(/log in/i))
+    fireEvent.click(screen.getByDisplayValue(/log in/i))
 
-    expect(spyOnSubmit).toHaveBeenCalledWith({
+    expect(props.onSubmit).toHaveBeenCalledWith({
       username: 'admin',
       password: 'password'
     })

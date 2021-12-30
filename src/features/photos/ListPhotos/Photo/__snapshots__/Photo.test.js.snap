@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Photo /> should render photo (landscape center) 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   --shadow-width: 6vw;
   --shadow-width-smaller: 2rem;
   grid-row-start: 0;
@@ -45,8 +46,7 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
   }
 }
 
-<div>
-  <figure
+<figure
     class="c0"
     data-testid="photo"
   >
@@ -67,11 +67,12 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
       </span>
     </figcaption>
   </figure>
-</div>
+</DocumentFragment>
 `;
 
 exports[`<Photo /> should render photo (landscape left) 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   --shadow-width: 6vw;
   --shadow-width-smaller: 2rem;
   grid-row-start: 0;
@@ -115,8 +116,7 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
   }
 }
 
-<div>
-  <figure
+<figure
     class="c0"
     data-testid="photo"
   >
@@ -137,11 +137,12 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
       </span>
     </figcaption>
   </figure>
-</div>
+</DocumentFragment>
 `;
 
 exports[`<Photo /> should render photo (landscape right) 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   --shadow-width: 6vw;
   --shadow-width-smaller: 2rem;
   grid-row-start: 0;
@@ -185,8 +186,7 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
   }
 }
 
-<div>
-  <figure
+<figure
     class="c0"
     data-testid="photo"
   >
@@ -207,11 +207,12 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
       </span>
     </figcaption>
   </figure>
-</div>
+</DocumentFragment>
 `;
 
 exports[`<Photo /> should render photo (portrait center) 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   --shadow-width: 6vw;
   --shadow-width-smaller: 2rem;
   grid-row-start: 0;
@@ -255,8 +256,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
   }
 }
 
-<div>
-  <figure
+<figure
     class="c0"
     data-testid="photo"
   >
@@ -277,11 +277,12 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
       </span>
     </figcaption>
   </figure>
-</div>
+</DocumentFragment>
 `;
 
 exports[`<Photo /> should render photo (square center) 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   --shadow-width: 6vw;
   --shadow-width-smaller: 2rem;
   grid-row-start: 0;
@@ -325,8 +326,7 @@ exports[`<Photo /> should render photo (square center) 1`] = `
   }
 }
 
-<div>
-  <figure
+<figure
     class="c0"
     data-testid="photo"
   >
@@ -347,5 +347,5 @@ exports[`<Photo /> should render photo (square center) 1`] = `
       </span>
     </figcaption>
   </figure>
-</div>
+</DocumentFragment>
 `;

@@ -9,6 +9,7 @@ enableMocks()
 
 window.scroll = () => {}
 window.scrollTo = () => {}
+window.alert = () => {}
 
 global.IntersectionObserver = class IntersectionObserver {
   constructor() {}

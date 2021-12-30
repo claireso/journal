@@ -5,33 +5,33 @@ import Photo from './index'
 describe('<Photo />', () => {
   const renderPhoto = (props = {}) => render(<Photo {...global.__PHOTO__} row={0} {...props} />)
 
-  test('should render photo (landscape center)', () => {
-    const { container } = renderPhoto()
+  it('should render photo (landscape center)', () => {
+    const { asFragment } = renderPhoto()
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render photo (landscape left)', () => {
-    const { container } = renderPhoto({ position: 'left' })
+  it('should render photo (landscape left)', () => {
+    const { asFragment } = renderPhoto({ position: 'left' })
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render photo (landscape right)', () => {
-    const { container } = renderPhoto({ position: 'right' })
+  it('should render photo (landscape right)', () => {
+    const { asFragment } = renderPhoto({ position: 'right' })
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render photo (portrait center)', () => {
-    const { container } = renderPhoto({ portrait: true })
+  it('should render photo (portrait center)', () => {
+    const { asFragment } = renderPhoto({ portrait: true })
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render photo (square center)', () => {
-    const { container } = renderPhoto({ square: true })
+  it('should render photo (square center)', () => {
+    const { asFragment } = renderPhoto({ square: true })
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

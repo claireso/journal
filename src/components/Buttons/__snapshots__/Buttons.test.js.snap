@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PrimaryButton /> should render button 1`] = `
-.c1 {
+<DocumentFragment>
+  .c1 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -45,17 +46,17 @@ exports[`<PrimaryButton /> should render button 1`] = `
   background: var(--primary-lighter);
 }
 
-<div>
-  <button
+<button
     class="c0 c1 c2 c3"
   >
     Button
   </button>
-</div>
+</DocumentFragment>
 `;
 
 exports[`<PrimaryButton /> should render loader 1`] = `
-.c6 {
+<DocumentFragment>
+  .c6 {
   margin: 2rem 0;
   -webkit-animation: iAjNNh 800ms ease-in-out infinite alternate;
   animation: iAjNNh 800ms ease-in-out infinite alternate;
@@ -128,13 +129,12 @@ exports[`<PrimaryButton /> should render loader 1`] = `
   background: #fff;
 }
 
-<div>
-  <button
+<button
     class="c0 c1 c2 c3 c4"
   >
     <span
       class="c5 c6"
     />
   </button>
-</div>
+</DocumentFragment>
 `;

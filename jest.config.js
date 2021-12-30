@@ -5,6 +5,13 @@ module.exports = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: [path.resolve(__dirname, 'jest.setup.js')],
   testPathIgnorePatterns: ['/node_modules/', '/.next/', '/.cypress'],
+  // collectCoverageFrom: [
+  //   '**/*.js',
+  //   '!**/coverage/**',
+  //   '!**/pages/api/**',
+  //   '!**/services/db/**',
+  //   '!**/services/middlewares/**',
+  // ],
   // temp waiting next swc transforms
   transform: {
     '^.+\\.(js|jsx)$': [

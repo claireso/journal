@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModalDeleteSubscription /> should render component 1`] = `
+<DocumentFragment>
+  .c0 {
+  font-size: 2.4rem;
+  margin: 0 0 2.4rem;
+  font-weight: 500;
+}
+
+<h1
+    class="c0"
+  >
+    Are you sure?
+  </h1>
+  <p>
+    This action is irreversible
+  </p>
+  .c2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: var(--font-family);
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c3 {
+  border-radius: 0.2rem;
+  font-size: var(--font-size-smaller);
+  line-height: 1.3333333;
+  padding: 1.6rem;
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+}
+
+.c3 > svg {
+  margin: 0 -0.4rem 0 0.4rem;
+}
+
+.c1 + .c1 {
+  margin: 0 0 0 0.8rem;
+}
+
+.c6 {
+  background: var(--primary-normal);
+  color: white;
+}
+
+.c6:hover {
+  background: var(--primary-lighter);
+}
+
+.c4 {
+  background: var(--secondary-normal);
+  color: var(--text-normal);
+}
+
+.c4:hover {
+  background: var(--secondary-darker);
+}
+
+.c4 + .c5,
+.c5 + .c4,
+.c4 + .c4 {
+  margin-left: 0.8rem;
+}
+
+.c0 {
+  text-align: right;
+  font-size: var(--font-size-smaller);
+}
+
+<p
+    class="c0"
+  >
+    <button
+      class="c1 c2 c3 c4"
+    >
+       Cancel 
+    </button>
+    <button
+      class="c1 c5 c2 c3 c6"
+    >
+       Yes 
+    </button>
+  </p>
+</DocumentFragment>
+`;
