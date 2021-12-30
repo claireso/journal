@@ -11,18 +11,18 @@ describe('<Offline />', () => {
       </TranslationsProvider>
     )
 
-  test('should not render component', () => {
-    const { container } = renderBanner()
+  it('should not render component', () => {
+    const { asFragment } = renderBanner()
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render component', () => {
+  it('should render component', () => {
     global.goOffline()
 
-    const { container } = renderBanner()
+    const { asFragment } = renderBanner()
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
 
     global.goOnline()
   })

@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import ColorPicker from './ColorPicker'
 
 describe('<ColorPicker />', () => {
@@ -9,31 +9,31 @@ describe('<ColorPicker />', () => {
 
   const renderComponent = (options) => render(<ColorPicker {...props} {...options} />)
 
-  test('should render component', () => {
-    const { getByText } = renderComponent()
+  it('should render component', () => {
+    renderComponent()
 
-    expect(getByText('Transparent')).toBeInTheDocument()
-    expect(getByText('Color 1')).toBeInTheDocument()
-    expect(getByText('Color 2')).toBeInTheDocument()
-    expect(getByText('Color 3')).toBeInTheDocument()
+    expect(screen.getByText('Transparent')).toBeInTheDocument()
+    expect(screen.getByText('Color 0')).toBeInTheDocument()
+    expect(screen.getByText('Color 1')).toBeInTheDocument()
+    expect(screen.getByText('Color 2')).toBeInTheDocument()
   })
 
-  test('should select a color', () => {
-    const { getByText } = renderComponent()
+  it('should select a color', () => {
+    renderComponent()
 
-    fireEvent.click(getByText('Color 1'))
+    fireEvent.click(screen.getByText('Color 0'))
     expect(props.onSelect).toHaveBeenNthCalledWith(1, '#f00')
 
-    fireEvent.click(getByText('Color 2'))
+    fireEvent.click(screen.getByText('Color 1'))
     expect(props.onSelect).toHaveBeenNthCalledWith(2, '#ccc')
 
-    fireEvent.click(getByText('Color 3'))
+    fireEvent.click(screen.getByText('Color 2'))
     expect(props.onSelect).toHaveBeenNthCalledWith(3, '#eee')
   })
 
-  test('should be rendered with a selected color', () => {
-    const { container } = renderComponent({ selected: '#ccc' })
+  it('should be rendered with a selected color', () => {
+    renderComponent({ selected: '#ccc' })
 
-    expect(container.querySelector('input[checked]').id).toEqual('color-1')
+    expect(screen.getByLabelText('Color 1')).toBeChecked()
   })
 })

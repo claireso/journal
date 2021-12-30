@@ -1,37 +1,35 @@
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 import Flash from './index'
 
 describe('<Flash />', () => {
-  test('should render default flash message', () => {
-    const { container } = render(<Flash>Flash message</Flash>)
+  it('should render default message', () => {
+    const { asFragment } = render(<Flash>Flash message</Flash>)
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render success flash message', () => {
-    const { container } = render(<Flash status="success">Flash message</Flash>)
+  it('should render success message', () => {
+    const { asFragment } = render(<Flash status="success">Flash message</Flash>)
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should render error flash message', () => {
-    const { container } = render(<Flash status="error">Flash message</Flash>)
+  it('should render error message', () => {
+    const { asFragment } = render(<Flash status="error">Flash message</Flash>)
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should close flash message', () => {
-    const spyOnClose = jest.fn()
+  it('should close message', () => {
+    const onClose = jest.fn()
 
-    const { container } = render(<Flash onClose={spyOnClose}>Flash message</Flash>)
+    const { asFragment } = render(<Flash onClose={onClose}>Flash message</Flash>)
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
 
-    const closeButton = container.querySelector('button')
+    fireEvent.click(screen.getByRole('button'))
 
-    fireEvent.click(closeButton)
-
-    expect(spyOnClose).toHaveBeenCalledTimes(1)
+    expect(onClose).toHaveBeenCalledTimes(1)
   })
 })

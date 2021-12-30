@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Flash /> should close flash message 1`] = `
-.c2 {
+exports[`<Flash /> should close message 1`] = `
+<DocumentFragment>
+  .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -68,8 +69,7 @@ exports[`<Flash /> should close flash message 1`] = `
   margin: 0;
 }
 
-<div>
-  <div
+<div
     class="c0"
   >
     Flash message
@@ -88,11 +88,12 @@ exports[`<Flash /> should close flash message 1`] = `
       </svg>
     </button>
   </div>
-</div>
+</DocumentFragment>
 `;
 
-exports[`<Flash /> should render default flash message 1`] = `
-.c2 {
+exports[`<Flash /> should render default message 1`] = `
+<DocumentFragment>
+  .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -159,8 +160,7 @@ exports[`<Flash /> should render default flash message 1`] = `
   margin: 0;
 }
 
-<div>
-  <div
+<div
     class="c0"
   >
     Flash message
@@ -179,11 +179,12 @@ exports[`<Flash /> should render default flash message 1`] = `
       </svg>
     </button>
   </div>
-</div>
+</DocumentFragment>
 `;
 
-exports[`<Flash /> should render error flash message 1`] = `
-.c2 {
+exports[`<Flash /> should render error message 1`] = `
+<DocumentFragment>
+  .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -250,8 +251,7 @@ exports[`<Flash /> should render error flash message 1`] = `
   margin: 0;
 }
 
-<div>
-  <div
+<div
     class="c0"
   >
     Flash message
@@ -270,11 +270,12 @@ exports[`<Flash /> should render error flash message 1`] = `
       </svg>
     </button>
   </div>
-</div>
+</DocumentFragment>
 `;
 
-exports[`<Flash /> should render success flash message 1`] = `
-.c2 {
+exports[`<Flash /> should render success message 1`] = `
+<DocumentFragment>
+  .c2 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -341,8 +342,7 @@ exports[`<Flash /> should render success flash message 1`] = `
   margin: 0;
 }
 
-<div>
-  <div
+<div
     class="c0"
   >
     Flash message
@@ -361,5 +361,5 @@ exports[`<Flash /> should render success flash message 1`] = `
       </svg>
     </button>
   </div>
-</div>
+</DocumentFragment>
 `;

@@ -1,4 +1,4 @@
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 
 import Modal from './index'
 
@@ -11,32 +11,35 @@ describe('<Modal />', () => {
       options
     )
 
-  test('should render component', () => {
-    const { container } = renderComponent({ isOpen: true, onClose: () => {} })
+  it('should render component', () => {
+    const { asFragment } = renderComponent({ isOpen: true, onClose: () => {} })
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should close component by click (button close)', async () => {
+  it('should close component by click (button close)', async () => {
     const props = { isOpen: true, onClose: jest.fn() }
-    const { container } = renderComponent(props)
 
-    fireEvent.click(container.querySelector('button'))
+    renderComponent(props)
+
+    fireEvent.click(screen.getByRole('button'))
 
     await waitFor(() => expect(props.onClose).toHaveBeenCalledTimes(1))
   })
 
-  test('should close component by click (background layer)', async () => {
-    const props = { isOpen: true, onClose: jest.fn() }
-    const { container } = renderComponent(props)
+  it('should close modal by click (background layer)', async () => {
+    const props = { isOpen: true, onClose: jest.fn(), testId: 'modal' }
 
-    fireEvent.click(container.querySelector('div'))
+    renderComponent(props)
+
+    fireEvent.click(screen.getByTestId(props.testId))
 
     await waitFor(() => expect(props.onClose).toHaveBeenCalledTimes(1))
   })
 
-  test('should close component by keyboard', async () => {
+  it('should close component by keyboard', async () => {
     const props = { isOpen: true, onClose: jest.fn() }
+
     renderComponent(props)
 
     fireEvent.keyDown(document, { key: 'Escape', code: 'Escape', charCode: 27 })

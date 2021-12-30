@@ -1,29 +1,23 @@
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 import Input from './index'
 
 describe('<Input />', () => {
-  const props = {
-    label: 'My input',
-    name: 'myinput',
-    value: 'my custom value'
-  }
+  const renderComponent = (props = {}) => render(<Input label="Title" name="title" value="Titre photo" {...props} />)
 
-  test('should render input', () => {
-    const { container } = render(<Input {...props} />)
+  it('should render input', () => {
+    const { asFragment } = renderComponent()
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should call onChange property', () => {
-    const spyOnChange = jest.fn()
+  it('should call onChange property', () => {
+    const props = { onChange: jest.fn() }
 
-    const { getByLabelText } = render(<Input {...props} onChange={spyOnChange} />)
+    renderComponent(props)
 
-    const input = getByLabelText('My input')
+    fireEvent.change(screen.getByLabelText('Title'), { target: { value: 'New title' } })
 
-    fireEvent.change(input, { target: { value: 'My new value' } })
-
-    expect(spyOnChange).toHaveBeenCalledWith('myinput', 'My new value')
+    expect(props.onChange).toHaveBeenCalledWith('title', 'New title')
   })
 })

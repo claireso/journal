@@ -3,25 +3,25 @@ import { render } from '@testing-library/react'
 import Select from './index'
 
 describe('<Select />', () => {
-  test('should render select', () => {
+  it('should render select', () => {
     const props = {
-      label: 'My select',
-      name: 'myselect',
+      label: 'Position',
+      name: 'position',
       options: [
         {
-          label: 'option 1',
-          value: 'option1'
+          label: 'left',
+          value: 'left'
         },
         {
-          label: 'option 2',
-          value: 'option2'
+          label: 'right',
+          value: 'right'
         }
       ],
-      value: 'option2'
+      value: 'right'
     }
 
-    const { container } = render(<Select {...props} />)
+    const { asFragment } = render(<Select {...props} />)
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

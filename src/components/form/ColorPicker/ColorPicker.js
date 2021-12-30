@@ -27,7 +27,7 @@ const ColorPicker = ({ colors, onSelect, selected }) => {
             onChange={handleChange}
             checked={selected === color}
           />
-          <S.Label htmlFor={`color-${index}`} style={{ color: color }}>{`Color ${index + 1}`}</S.Label>
+          <S.Label htmlFor={`color-${index}`} style={{ color: color }}>{`Color ${index}`}</S.Label>
         </Fragment>
       ))}
     </S.Wrapper>

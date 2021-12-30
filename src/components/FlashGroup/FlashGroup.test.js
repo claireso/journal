@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 import FlashGroup from './index'
 
@@ -14,25 +14,27 @@ describe('<FlashGroup />', () => {
     }
   ]
 
-  test('should render two flash messages', () => {
-    const { container } = render(<FlashGroup messages={messages} onClose={() => {}} />)
+  it('should render two messages', () => {
+    const { asFragment } = render(<FlashGroup messages={messages} onClose={() => {}} />)
 
-    expect(container).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  test('should close flash messages', () => {
-    const spyOnClose = jest.fn()
-    const { container } = render(<FlashGroup messages={messages} onClose={spyOnClose} />)
+  it('should close messages', () => {
+    const onClose = jest.fn()
 
-    expect(container).toMatchSnapshot()
+    const { asFragment } = render(<FlashGroup messages={messages} onClose={onClose} />)
 
-    const closeButtons = Array.from(container.querySelectorAll('button'))
+    expect(asFragment()).toMatchSnapshot()
 
-    fireEvent.click(closeButtons[0])
+    const buttons = screen.getAllByRole('button')
 
-    expect(spyOnClose).toHaveBeenNthCalledWith(1, 0)
+    fireEvent.click(buttons[0])
 
-    fireEvent.click(closeButtons[1])
-    expect(spyOnClose).toHaveBeenNthCalledWith(2, 1)
+    expect(onClose).toHaveBeenNthCalledWith(1, 0)
+
+    fireEvent.click(buttons[1])
+
+    expect(onClose).toHaveBeenNthCalledWith(2, 1)
   })
 })

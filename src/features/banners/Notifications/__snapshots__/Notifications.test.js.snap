@@ -1,13 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Notifications /> should not render component (user has already subscribed) 1`] = `<div />`;
+exports[`<Notifications /> should not render component (user has already subscribed) 1`] = `<DocumentFragment />`;
 
-exports[`<Notifications /> should not render component (user has blocked notifications) 1`] = `<div />`;
+exports[`<Notifications /> should not render component (user has blocked notifications) 1`] = `<DocumentFragment />`;
 
-exports[`<Notifications /> should not subscribe and hide banner (denied story) 1`] = `<div />`;
+exports[`<Notifications /> should not subscribe and hide banner (denied story) 1`] = `<DocumentFragment />`;
 
 exports[`<Notifications /> should render component 1`] = `
-.c1 {
+<DocumentFragment>
+  .c1 {
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -94,8 +95,7 @@ exports[`<Notifications /> should render component 1`] = `
   margin: 0;
 }
 
-<div>
-  <div
+<div
     class="c0"
     data-testid="flash-notifications"
   >
@@ -121,7 +121,7 @@ exports[`<Notifications /> should render component 1`] = `
       </svg>
     </button>
   </div>
-</div>
+</DocumentFragment>
 `;
 
-exports[`<Notifications /> should subscribe and hide banner 1`] = `<div />`;
+exports[`<Notifications /> should subscribe and hide banner 1`] = `<DocumentFragment />`;
