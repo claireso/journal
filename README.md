@@ -5,7 +5,7 @@ Note: the theme is optimized for pictures with an aspect ratio of 3:2 or 1:1
 
 # Requirements:
 
-- Node v14.17.0
+- Node v16
 - PostgreSQL
 
 # Installation:
@@ -19,7 +19,7 @@ git clone git@github.com:claireso/journal.git
 ### Install dependencies
 
 ```
-$ npm install --legacy-peer-deps
+$ npm install
 ```
 
 ### Configure your application
