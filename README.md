@@ -5,7 +5,7 @@ Note: the theme is optimized for pictures with an aspect ratio of 3:2 or 1:1
 
 # Requirements:
 
-- Node v14.17.0
+- Node v16
 - PostgreSQL
 
 # Installation:
@@ -19,7 +19,7 @@ git clone git@github.com:claireso/journal.git
 ### Install dependencies
 
 ```
-$ npm install --legacy-peer-deps
+$ npm install
 ```
 
 ### Configure your application
@@ -90,7 +90,7 @@ If you can't use a reverse proxy just use the commands follow:
 
 ```
 $ npm run build
-$ npm run start:custom
+$ npm run start:express
 ```
 
 The application will be running at http://localhost:3000
@@ -98,7 +98,7 @@ The application will be running at http://localhost:3000
 To change the default port of the application, add it to the command as follow:
 
 ```
-$ PORT=4000 npm run start:custom
+$ PORT=4000 npm run start:express
 ```
 
 Don't forget to update the entry 'baseUrl' in your config
@@ -110,4 +110,3 @@ Don't forget to update the entry 'baseUrl' in your config
 ### TODO
 - [ ] Restore tests (cypress)
 - [ ] Use middlewares of nextjs12
-- [ ] Fix peer deps (https://github.com/storybookjs/storybook/issues/14619)
