@@ -1,4 +1,5 @@
 const path = require('path')
+const config = require('../config')
 
 const directory = process.cwd()
 
@@ -8,11 +9,10 @@ module.exports = {
   core: {
     builder: 'webpack5'
   },
-  webpackFinal: async (config, { configType }) => {
-    config.resolve.alias['@utils'] = path.resolve(directory, 'src', 'utils')
-    config.resolve.alias['@components'] = path.resolve(directory, 'src', 'components')
-    config.resolve.alias['@services'] = path.resolve(directory, 'src', 'services')
-    config.resolve.alias['@features'] = path.resolve(directory, 'src', 'features')
+  webpackFinal: async (webpackConfig) => {
+    for (const [alias, directory] of Object.entries(config.alias)) {
+      webpackConfig.resolve.alias[alias] = directory[0]
+    }
 
     return config
   }

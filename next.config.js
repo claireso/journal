@@ -51,10 +51,6 @@ module.exports = {
       )
     }
 
-    ;['utils', 'hooks', 'components', 'services', 'features', 'types'].forEach((directory) => {
-      config.resolve.alias[`@${directory}`] = path.resolve(__dirname, 'src', directory)
-    })
-
     return config
   }
 }
