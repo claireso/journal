@@ -6,10 +6,22 @@ const pgtools = require('pgtools')
 const chalk = require('chalk')
 const promptly = require('promptly')
 const webpush = require('web-push')
+const pg = require('pg')
 
-const db = require('../services/db')
+const pool = new pg.Pool({
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  max: 10,
+  idleTimeoutMillis: 30000
+})
 
-const pool = db.pool
+pool.on('error', (err) => {
+  /* eslint-disable */
+  console.error('idle client error', err.message, err.stack)
+})
 
 // create folder
 const createFolder = (folderPath) => {
