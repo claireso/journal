@@ -15,7 +15,7 @@
     "lint:write": "eslint ./src --cache --fix",
     "prettier": "prettier --write \"./src/**/*.js\"",
     "test": "jest --coverage --passWithNoTests",
-    "bootstrap": "babel-node scripts/bootstrap.js",
+    "bootstrap": "node scripts/bootstrap.js",
     "storybook": "start-storybook -p 6006",
     "db:reset": "babel-node scripts/db/reset.js",
     "db:seed": "babel-node scripts/db/seed.js",
