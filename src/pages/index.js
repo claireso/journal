@@ -43,7 +43,7 @@ const Homepage = () => {
     )
   }
 
-  if (!data) {
+  if (!data.length) {
     return <Welcome />
   }
 
