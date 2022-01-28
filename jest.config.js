@@ -1,4 +1,5 @@
 const path = require('path')
+const config = require('./config')
 
 module.exports = {
   rootDir: './src',
@@ -22,14 +23,7 @@ module.exports = {
           [
             'module-resolver',
             {
-              alias: {
-                '@utils': './src/utils',
-                '@components': './src/components',
-                '@services': './src/services',
-                '@features': './src/features',
-                '@hooks': './src/hooks',
-                '@types': './src/types'
-              }
+              alias: config.alias
             }
           ]
         ]
