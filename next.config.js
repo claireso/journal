@@ -8,6 +8,7 @@ const IS_NOTIFICATIONS_ENABLED = !!(
 )
 
 module.exports = {
+  swcMinify: true,
   poweredByHeader: false,
   compress: process.env.COMPRESSION === 'enabled',
   async redirects() {
@@ -21,6 +22,9 @@ module.exports = {
   },
   env: {
     IS_NOTIFICATIONS_ENABLED: IS_NOTIFICATIONS_ENABLED
+  },
+  experimental: {
+    styledComponents: true
   },
   webpack: (config, { dev, isServer }) => {
     if (!isServer) {
