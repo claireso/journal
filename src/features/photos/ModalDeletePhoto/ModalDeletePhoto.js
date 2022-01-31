@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-import { PrimaryButton, SecondaryButton } from '@components/Buttons'
+import { ButtonPrimary, ButtonSecondary } from '@components/Buttons'
 import { Heading1 } from '@components/Headings'
 import Text from '@components/Text'
 
@@ -21,11 +21,11 @@ const ModalDeletePhoto = ({ onClose, id }) => {
       <Heading1>Are you sure?</Heading1>
       <p>This action is irreversible</p>
       <Text align="right">
-        <SecondaryButton onClick={onCancel}> Cancel </SecondaryButton>
-        <PrimaryButton onClick={onConfirm} isLoading={isProcessing}>
+        <ButtonSecondary onClick={onCancel}> Cancel </ButtonSecondary>
+        <ButtonPrimary onClick={onConfirm} isLoading={isProcessing}>
           {' '}
           Yes{' '}
-        </PrimaryButton>
+        </ButtonPrimary>
       </Text>
     </>
   )

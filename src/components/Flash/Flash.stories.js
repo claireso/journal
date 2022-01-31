@@ -43,3 +43,16 @@ export const Error = () => (
     </div>
   </Fragment>
 )
+
+export const Info = () => (
+  <Fragment>
+    <div>
+      <Flash status="info">Flash message</Flash>
+    </div>
+    <div>
+      <Flash status="info" onClose={action('close message')}>
+        Closable flash message
+      </Flash>
+    </div>
+  </Fragment>
+)

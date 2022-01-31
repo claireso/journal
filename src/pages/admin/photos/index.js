@@ -11,7 +11,7 @@ import ModalEditPhoto from '@features/photos/ModalEditPhoto'
 import { Loader } from '@components/Loader'
 import { IconPlus } from '@components/Icons'
 import { ListHeader } from '@components/List'
-import { PrimaryButton } from '@components/Buttons'
+import { ButtonPrimary } from '@components/Buttons'
 import { Heading1 } from '@components/Headings'
 import Modal from '@components/Modal'
 import Pager from '@components/Pager'
@@ -84,10 +84,10 @@ const Photos = () => {
     <>
       <ListHeader>
         <Heading1 data-testid="list-heading">Your photos {pager && <span>({pager.count})</span>}</Heading1>
-        <PrimaryButton data-testid="button-create" onClick={onClickCreate}>
+        <ButtonPrimary data-testid="button-create" onClick={onClickCreate}>
           Add a new photo
           <IconPlus />
-        </PrimaryButton>
+        </ButtonPrimary>
       </ListHeader>
 
       {isLoading ? (

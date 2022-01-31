@@ -2,80 +2,20 @@
 
 exports[`<Select /> should render select 1`] = `
 <DocumentFragment>
-  .c0 {
-  margin: 0 0 var(--gutter);
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c1 > label {
-  margin: 0 1rem 0 0;
-}
-
-.c2 {
-  display: block;
-  font-size: 1.6rem;
-  line-height: 1.5;
-  margin: 0 0 1.2rem;
-}
-
-.c3 {
-  position: relative;
-}
-
-.c3 svg {
-  position: absolute;
-  top: 50%;
-  right: 0.9rem;
-  bottom: 0;
-  -webkit-transform: translate(0,-50%) rotate(90deg);
-  -ms-transform: translate(0,-50%) rotate(90deg);
-  transform: translate(0,-50%) rotate(90deg);
-  pointer-events: none;
-}
-
-.c4 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: var(--form-input-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
-  box-shadow: 1px 1px 3px var(--box-shadow);
-  cursor: pointer;
-  font-family: 'Roboto',Arial,sans-serif;
-  font-size: var(--font-size-normal);
-  outline: none;
-  padding: 1.1rem 2.6rem 1.1rem 1.1rem;
-}
-
-.c4:focus {
-  border-color: var(--border-color-focus);
-}
-
-<div
-    class="c0 c1"
+  <div
+    class="c-dMoIJA c-TAzET"
   >
     <label
-      class="c2"
+      class="c-iKAemi"
       for="position"
     >
       Position
     </label>
     <div
-      class="c3"
+      class="c-gMvCio"
     >
       <select
-        class="c4"
+        class="c-iGJQuL"
         id="position"
         name="position"
         required=""

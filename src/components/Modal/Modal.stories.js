@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions'
 
 import Modal from './index'
 import Toolbar from '../Toolbar'
-import { PrimaryButton } from '../Buttons'
+import { ButtonPrimary } from '../Buttons'
 
 export default {
   title: 'Modal',
@@ -21,18 +21,20 @@ export const Basic = () => {
   return (
     <Fragment>
       <Toolbar>
-        <PrimaryButton
+        <ButtonPrimary
           onClick={() => {
             setOpen(true)
           }}
           style={{ padding: '10px' }}
         >
           Open modal
-        </PrimaryButton>
+        </ButtonPrimary>
       </Toolbar>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <p>content</p>
-      </Modal>
+      {isOpen && (
+        <Modal onClose={onClose}>
+          <p>content</p>
+        </Modal>
+      )}
     </Fragment>
   )
 }

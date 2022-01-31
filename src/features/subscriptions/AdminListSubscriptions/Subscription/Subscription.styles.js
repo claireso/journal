@@ -1,41 +1,41 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const SubscriptionWrapper = styled.li`
-  align-items: center;
-  display: flex;
-  font-size: var(--font-size-normal);
-  list-style: none;
-  padding: 1.5rem;
-  transition: background 100ms ease-out;
-  &:hover {
-    background: var(--secondary-lighter);
+export const SubscriptionWrapper = styled('li', {
+  alignItems: 'center',
+  display: 'flex',
+  fontSize: '$4',
+  listStyle: 'none',
+  p: '$4',
+  transition: '$background',
+  '&:hover': {
+    background: '$secondary100'
+  },
+  '& + &': {
+    borderTop: '1px solid $secondary200'
+  },
+  dl: {
+    flex: 'auto',
+    m: 0,
+    pr: '$8'
+  },
+  dt: {
+    fontWeight: '$bold',
+    m: '0 0 $1'
+  },
+  dd: {
+    m: '0 0 1rem',
+    wordWrap: 'break-word',
+    wordBreak: 'break-all'
   }
-  & + & {
-    border-top: 1px solid var(--secondary-normal);
-  }
-  dl {
-    flex: auto;
-    margin: 0;
-    padding-right: 4rem;
-  }
-  dt {
-    font-weight: 700;
-    margin: 0 0 0.5rem;
-  }
-  dd {
-    margin: 0 0 1rem;
-    word-wrap: break-word;
-    word-break: break-all;
-  }
-`
+})
 
-export const SubscriptionTools = styled.p`
-  transition: opacity 150ms ease-out;
-  button {
-    opacity: 0.5;
-    transition: opacity 150ms ease-out;
-    &:hover {
-      opacity: 1;
+export const SubscriptionTools = styled('p', {
+  transition: '$opacity',
+  button: {
+    opacity: '0.5',
+    transition: '$opacity',
+    '&:hover': {
+      opacity: 1
     }
   }
-`
+})

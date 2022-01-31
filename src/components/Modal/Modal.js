@@ -99,22 +99,22 @@ const Modal = ({ testId, children, onClose }) => {
   }, [onKeyDown])
 
   return (
-    <S.ModalWrapper
+    <S.Wrapper
       ref={wrapper}
       id="modal"
       data-testid={testId}
       onClick={onClick}
       style={animationsConfig.close.wrapper.keyframes[0]}
     >
-      <S.ModalInner id="modalInner" ref={content} style={animationsConfig.close.content.keyframes[0]}>
-        <S.ModalCloseButton onClick={close}>
+      <S.Inner id="modalInner" ref={content} style={animationsConfig.close.content.keyframes[0]}>
+        <S.ButtonClose onClick={close}>
           <IconClose width="20" height="26" />
-        </S.ModalCloseButton>
+        </S.ButtonClose>
         {React.cloneElement(children, {
           onClose: close
         })}
-      </S.ModalInner>
-    </S.ModalWrapper>
+      </S.Inner>
+    </S.Wrapper>
   )
 }
 

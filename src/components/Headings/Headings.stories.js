@@ -9,7 +9,10 @@ export default {
 export const Basic = () => (
   <Fragment>
     <Headings.Heading1>Heading1</Headings.Heading1>
-    <Headings.Heading1XL>Heading1XL</Headings.Heading1XL>
     <Headings.Heading2>Heading2</Headings.Heading2>
+    <Headings.Heading3>Heading3</Headings.Heading3>
+    <Headings.Heading4>Heading4</Headings.Heading4>
+    <Headings.Heading5>Heading5</Headings.Heading5>
+    <Headings.Heading6>Heading6</Headings.Heading6>
   </Fragment>
 )

@@ -11,7 +11,11 @@ const BannerOffline = () => {
 
   if (isOnline) return null
 
-  return <Flash status="default">{translations.bannerOffline}</Flash>
+  return (
+    <Flash status="info" css={{ mb: 0 }}>
+      {translations.bannerOffline}
+    </Flash>
+  )
 }
 
 export default BannerOffline

@@ -11,10 +11,10 @@ import BannerOffline from '@features/banners/Offline'
 import BannerNotifications from '@features/banners/Notifications'
 
 const Layout = ({ children }) => {
+  S.globalStyles()
+
   return (
     <>
-      <S.GlobalStyles />
-
       <Head>
         <title>{process.env.NEXT_PUBLIC_WEBSITE_META_TITLE}</title>
         <meta name="description" content={process.env.NEXT_PUBLIC_WEBSITE_META_DESCRIPTION} />

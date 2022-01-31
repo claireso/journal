@@ -2,76 +2,18 @@
 
 exports[`<Uploader /> should change file 1`] = `
 <DocumentFragment>
-  .c0 {
-  border: 1px solid var(--border-color);
-  border-radius: 0.4rem;
-  box-shadow: 1px 1px 3px var(--box-shadow);
-  overflow: hidden;
-  position: relative;
-}
-
-.c1 {
-  background: var(--secondary-normal);
-  padding: 2rem;
-}
-
-.c1 img {
-  display: block;
-  max-width: 100%;
-  max-height: 17rem;
-  margin: 0 auto;
-}
-
-.c2 {
-  padding: 2rem;
-}
-
-.c2 svg {
-  display: block;
-  width: 2.4rem;
-  height: 2.4rem;
-  fill: var(--primary-normal);
-  margin: 0 auto;
-}
-
-.c2 span {
-  display: block;
-  font-size: var(--font-size-normal);
-  margin: 1rem 0 0;
-  text-align: center;
-}
-
-.c2 small {
-  color: var(--border-color-focus);
-  display: block;
-  font-size: var(--font-size-smaller);
-  margin: 0.5rem 0 0;
-  text-align: center;
-}
-
-.c3 {
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-}
-
-<div
-    class="c0"
+  <div
+    class="c-iNomHb"
   >
     <div
-      class="c1"
+      class="c-ktAHvd c-ktAHvd-itDbsJ-css"
     >
       <img
         src="data:image/jpeg;base64,KOKMkOKWoV/ilqEp"
       />
     </div>
     <div
-      class="c2"
+      class="c-cpxbDL"
     >
       <svg
         height="16"
@@ -90,7 +32,7 @@ exports[`<Uploader /> should change file 1`] = `
         (only jpg and png)
       </small>
       <input
-        class="c3"
+        class="c-jdaWEC"
         name="uploader"
         type="file"
       />
@@ -101,64 +43,11 @@ exports[`<Uploader /> should change file 1`] = `
 
 exports[`<Uploader /> should render error 1`] = `
 <DocumentFragment>
-  .c0 {
-  border: 1px solid var(--border-color);
-  border-radius: 0.4rem;
-  box-shadow: 1px 1px 3px var(--box-shadow);
-  overflow: hidden;
-  position: relative;
-}
-
-.c1 {
-  padding: 2rem;
-}
-
-.c1 svg {
-  display: block;
-  width: 2.4rem;
-  height: 2.4rem;
-  fill: var(--primary-normal);
-  margin: 0 auto;
-}
-
-.c1 span {
-  display: block;
-  font-size: var(--font-size-normal);
-  margin: 1rem 0 0;
-  text-align: center;
-}
-
-.c1 small {
-  color: var(--border-color-focus);
-  display: block;
-  font-size: var(--font-size-smaller);
-  margin: 0.5rem 0 0;
-  text-align: center;
-}
-
-.c2 {
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-}
-
-.c3 {
-  color: var(--error-normal);
-  font-size: var(--font-size-smaller);
-  margin: 0.8rem 0 2rem;
-  text-align: center;
-}
-
-<div
-    class="c0"
+  <div
+    class="c-iNomHb"
   >
     <div
-      class="c1"
+      class="c-cpxbDL"
     >
       <svg
         height="16"
@@ -177,13 +66,13 @@ exports[`<Uploader /> should render error 1`] = `
         (only jpg and png)
       </small>
       <input
-        class="c2"
+        class="c-jdaWEC"
         name="uploader"
         type="file"
       />
     </div>
     <div
-      class="c3"
+      class="c-kuGdKS"
     >
       This file is not allowed
     </div>
@@ -193,57 +82,11 @@ exports[`<Uploader /> should render error 1`] = `
 
 exports[`<Uploader /> should render uploader 1`] = `
 <DocumentFragment>
-  .c0 {
-  border: 1px solid var(--border-color);
-  border-radius: 0.4rem;
-  box-shadow: 1px 1px 3px var(--box-shadow);
-  overflow: hidden;
-  position: relative;
-}
-
-.c1 {
-  padding: 2rem;
-}
-
-.c1 svg {
-  display: block;
-  width: 2.4rem;
-  height: 2.4rem;
-  fill: var(--primary-normal);
-  margin: 0 auto;
-}
-
-.c1 span {
-  display: block;
-  font-size: var(--font-size-normal);
-  margin: 1rem 0 0;
-  text-align: center;
-}
-
-.c1 small {
-  color: var(--border-color-focus);
-  display: block;
-  font-size: var(--font-size-smaller);
-  margin: 0.5rem 0 0;
-  text-align: center;
-}
-
-.c2 {
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-}
-
-<div
-    class="c0"
+  <div
+    class="c-iNomHb"
   >
     <div
-      class="c1"
+      class="c-cpxbDL"
     >
       <svg
         height="16"
@@ -262,7 +105,7 @@ exports[`<Uploader /> should render uploader 1`] = `
         (only jpg and png)
       </small>
       <input
-        class="c2"
+        class="c-jdaWEC"
         name="uploader"
         type="file"
       />
@@ -273,76 +116,18 @@ exports[`<Uploader /> should render uploader 1`] = `
 
 exports[`<Uploader /> should render uploader with preview 1`] = `
 <DocumentFragment>
-  .c0 {
-  border: 1px solid var(--border-color);
-  border-radius: 0.4rem;
-  box-shadow: 1px 1px 3px var(--box-shadow);
-  overflow: hidden;
-  position: relative;
-}
-
-.c1 {
-  background: var(--secondary-normal);
-  padding: 2rem;
-}
-
-.c1 img {
-  display: block;
-  max-width: 100%;
-  max-height: 17rem;
-  margin: 0 auto;
-}
-
-.c2 {
-  padding: 2rem;
-}
-
-.c2 svg {
-  display: block;
-  width: 2.4rem;
-  height: 2.4rem;
-  fill: var(--primary-normal);
-  margin: 0 auto;
-}
-
-.c2 span {
-  display: block;
-  font-size: var(--font-size-normal);
-  margin: 1rem 0 0;
-  text-align: center;
-}
-
-.c2 small {
-  color: var(--border-color-focus);
-  display: block;
-  font-size: var(--font-size-smaller);
-  margin: 0.5rem 0 0;
-  text-align: center;
-}
-
-.c3 {
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-}
-
-<div
-    class="c0"
+  <div
+    class="c-iNomHb"
   >
     <div
-      class="c1"
+      class="c-ktAHvd c-ktAHvd-itDbsJ-css"
     >
       <img
         src="file.jpg"
       />
     </div>
     <div
-      class="c2"
+      class="c-cpxbDL"
     >
       <svg
         height="16"
@@ -361,7 +146,7 @@ exports[`<Uploader /> should render uploader with preview 1`] = `
         (only jpg and png)
       </small>
       <input
-        class="c3"
+        class="c-jdaWEC"
         name="uploader"
         type="file"
       />

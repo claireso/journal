@@ -1,16 +1,13 @@
-import styled, { css } from 'styled-components'
+import { styled, theme } from '@theme'
 
 import AnimatedImage from '@components/AnimatedImage'
 
-//@TODO Clean code
 const PORTRAIT = 'portrait'
 const LANDSCAPE = 'landscape'
 const SQUARE = 'square'
-const SMALL_SCREEN = 'small'
-const LARGE_SCREEN = 'large'
-const POSITION_LEFT = 'left'
+// const POSITION_LEFT = 'left'
+const POSITION_CENTER = 'center'
 const POSITION_RIGHT = 'right'
-const GRID_COLUMN_NUMBER = 12
 
 const configImages = {
   [PORTRAIT]: {
@@ -33,135 +30,179 @@ const configImages = {
   }
 }
 
-const getConfig = ({ portrait, square } = {}) => {
-  let key = LANDSCAPE
-
-  if (portrait) key = PORTRAIT
-  if (square) key = SQUARE
-
-  return configImages[key]
-}
-
-const getColumnStart = ({ screen, ...props }) => {
-  const config = getConfig(props)
-
-  // On small screen, align left all images
-  if (screen === SMALL_SCREEN) {
-    return 1
-  }
-
-  // On large screen
-  if (props.position === POSITION_LEFT) {
-    return 2
-  }
-
-  if (props.position === POSITION_RIGHT) {
-    return `calc(var(--grid-number-column-large) - ${config.cellWidth[screen]})`
-  }
-
-  // Position center
-  // @FIXME: try to use var(--grid-number-column-large)
-  return (GRID_COLUMN_NUMBER - config.cellWidth[screen]) / 2 + 1
-}
-
-const getColumn = ({ screen, ...props }) => {
-  const config = getConfig(props)
-
-  const columnEnd = config.cellWidth[screen]
-  const columnStart = getColumnStart({ screen, ...props })
-
-  return `${columnStart} / span ${columnEnd}`
-}
-
-export const Figure = styled.figure`
-  --shadow-width: 6vw;
-  --shadow-width-smaller: 2rem;
-
-  grid-row-start: ${(props) => props.row};
-  grid-column: ${(props) => getColumn({ ...props, screen: SMALL_SCREEN })};
-  margin: 0;
-
-  @media (min-width: 800px) {
-    grid-column: ${(props) => getColumn({ ...props, screen: LARGE_SCREEN })};
-    & + figure {
-      margin-top: 20rem;
+const getColumnStart = (position = '', cellWidth) => {
+  switch (position) {
+    case 'center': {
+      return (theme.sizes.gridColumns.value - cellWidth) / 2 + 1
+    }
+    case 'right': {
+      return theme.sizes.gridColumns.value - cellWidth
     }
   }
+}
 
-  // highlight photo
-  ${(props) =>
-    props.color &&
-    css`
-      margin-top: var(--shadow-width-smaller);
+export const Figure = styled('figure', {
+  $$shadowWidth: '6vw',
+  $$shadowWidthXs: '2rem',
+  m: 0,
+  gridColumnStart: 1,
+  gridColumnEnd: `span ${configImages[LANDSCAPE].cellWidth.small}`,
 
-      > div {
-        box-shadow: 0 0 0 var(--shadow-width-smaller) currentColor;
-        margin-bottom: calc(1rem + var(--shadow-width-smaller));
+  '@lg': {
+    gridColumnEnd: `span ${configImages[LANDSCAPE].cellWidth.large}`,
+    gridColumnStart: 2,
+    '& + &': {
+      mt: '20rem'
+    }
+  },
 
-        @media (max-width: 799px) {
-          &:after {
-            background: currentColor;
-            bottom: -2rem;
-            content: '';
-            display: block;
-            left: 100%;
-            position: absolute;
-            top: -2rem;
-            width: 99999px;
+  variants: {
+    position: {},
+    // width of portrait
+    portrait: {
+      true: {
+        gridColumnEnd: `span ${configImages[PORTRAIT].cellWidth.small}`,
+        '@lg': {
+          gridColumnEnd: `span ${configImages[PORTRAIT].cellWidth.large}`
+        }
+      }
+    },
+    // width of square
+    square: {
+      true: {
+        gridColumnEnd: `span ${configImages[SQUARE].cellWidth.small}`,
+        '@lg': {
+          gridColumnEnd: `span ${configImages[SQUARE].cellWidth.large}`
+        }
+      }
+    },
+    // box shadow to highlight pictures
+    withColor: {
+      true: {
+        mt: '$$shadowWidthXs',
+        '> div': {
+          boxShadow: '0 0 0 $$shadowWidthXs currentColor',
+          mb: 'calc(1rem + $$shadowWidthXs)',
+          position: 'relative',
+          '@sm': {
+            '&::after': {
+              background: 'currentColor',
+              bottom: '-$5',
+              content: '',
+              display: 'block',
+              left: '100%',
+              position: 'absolute',
+              top: '-$5',
+              width: '99999px'
+            }
+          }
+        },
+        '@lg': {
+          mt: '$$shadowWidth',
+          '> div': {
+            boxShadow: '0 0 0 $$shadowWidth currentColor',
+            mb: 'calc(1rem + $$shadowWidth)'
+          },
+          'figure + &': {
+            mt: 'calc(20rem + $$shadowWidth)'
           }
         }
       }
+    }
+  },
 
-      @media (min-width: 800px) {
-        margin-top: var(--shadow-width);
-
-        > div {
-          box-shadow: 0 0 0 var(--shadow-width) currentColor;
-          margin-bottom: calc(1rem + var(--shadow-width));
-        }
-
-        figure + & {
-          margin-top: calc(20rem + var(--shadow-width));
+  // start position in grid
+  compoundVariants: [
+    // landscape position center
+    {
+      portrait: false,
+      square: false,
+      position: POSITION_CENTER,
+      '@lg': {
+        gridColumnStart: getColumnStart(POSITION_CENTER, configImages[LANDSCAPE].cellWidth.large)
+      }
+    },
+    // landscape position right
+    {
+      portrait: false,
+      square: false,
+      position: POSITION_RIGHT,
+      '@lg': {
+        gridColumnStart: getColumnStart(POSITION_RIGHT, configImages[LANDSCAPE].cellWidth.large)
+      }
+    },
+    // square position center
+    {
+      square: true,
+      position: POSITION_CENTER,
+      '@lg': {
+        gridColumnStart: getColumnStart(POSITION_CENTER, configImages[SQUARE].cellWidth.large)
+      }
+    },
+    // square position right
+    {
+      square: true,
+      position: POSITION_RIGHT,
+      '@lg': {
+        gridColumnStart: getColumnStart(POSITION_RIGHT, configImages[SQUARE].cellWidth.large)
+      }
+    },
+    // portrait position center
+    {
+      portrait: true,
+      position: POSITION_CENTER,
+      css: {
+        '@lg': {
+          gridColumnStart: getColumnStart(POSITION_CENTER, configImages[PORTRAIT].cellWidth.large)
         }
       }
-    `}
-`
+    },
+    // portrait position right
+    {
+      portrait: true,
+      position: POSITION_RIGHT,
+      css: {
+        '@lg': {
+          gridColumnStart: getColumnStart(POSITION_RIGHT, configImages[PORTRAIT].cellWidth.large)
+        }
+      }
+    }
+  ]
+})
 
-export const Title = styled.figcaption`
-  font-size: var(--font-size-smaller-1);
-`
+export const Title = styled('figcaption', {
+  fontSize: '$3'
+})
 
-export const Description = styled.span`
-  color: var(--gray-normal);
-  display: block;
-  font-size: var(--font-size-smaller-3);
-  font-style: italic;
-  margin: 0.4rem 0 0;
-`
+export const Description = styled('span', {
+  color: '$gray400',
+  display: 'block',
+  fontSize: '$1',
+  fontStyle: 'italic',
+  mt: '$1'
+})
 
-export const PictureWrapper = styled.div`
-  background: currentColor;
-  width: 100%;
-  margin: 0 0 1rem;
-  aspect-ratio: var(--aspect-ratio);
+export const PictureWrapper = styled('div', {
+  background: 'currentColor',
+  width: '100%',
+  margin: '0 0 1rem',
+  aspectRatio: 'var(--aspect-ratio)',
 
-  @supports (not (aspect-ratio: 1 / 1)) and (not (aspect-ratio: 3 / 2)) and (not (aspect-ratio: 2 / 3)) {
-    position: relative;
-    padding-top: calc(100% / var(--aspect-ratio));
+  '@supports (not (aspect-ratio: 1 / 1)) and (not (aspect-ratio: 3 / 2)) and (not (aspect-ratio: 2 / 3))': {
+    position: 'relative',
+    pt: 'calc(100% / var(--aspect-ratio))'
   }
-`
+})
 
-export const Picture = styled(AnimatedImage).attrs(() => ({
-  alt: ''
-}))`
-  display: block;
-  width: 100%;
-  margin: 0;
+export const Picture = styled(AnimatedImage, {
+  display: 'block',
+  width: '100%',
+  m: 0,
 
-  @supports (not (aspect-ratio: 1 / 1)) and (not (aspect-ratio: 3 / 2)) and (not (aspect-ratio: 2 / 3)) {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+  '@supports (not (aspect-ratio: 1 / 1)) and (not (aspect-ratio: 3 / 2)) and (not (aspect-ratio: 2 / 3))': {
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0
   }
-`
+})

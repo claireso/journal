@@ -1,24 +1,20 @@
-import styled, { keyframes } from 'styled-components'
+import { styled, keyframes } from '@theme'
 
-const pulse = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
+const pulse = keyframes({
+  '0%': { opacity: '0' },
+  '100%': { opacity: '1' }
+})
 
-export default styled.div`
-  margin: 2rem 0;
-  animation: ${pulse} 800ms ease-in-out infinite alternate;
-  &:after {
-    background: var(--primary-normal);
-    border-radius: 50%;
-    content: '';
-    display: block;
-    height: 1rem;
-    width: 1rem;
-    margin: 0 auto;
+export default styled('span', {
+  display: 'block',
+  m: '$5 0',
+  animation: `${pulse} 800ms ease-in-out infinite alternate`,
+  '&::after': {
+    background: '$primary100',
+    borderRadius: '50%',
+    content: `''`,
+    display: 'block',
+    size: '1rem',
+    m: '0 auto'
   }
-`
+})

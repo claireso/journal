@@ -12,7 +12,8 @@ export const Basic = () => {
   const messages = [
     { status: 'default', message: 'Default message' },
     { status: 'success', message: 'Success message' },
-    { status: 'error', message: 'Error message' }
+    { status: 'error', message: 'Error message' },
+    { status: 'info', message: 'Info message' }
   ]
 
   return <FlashGroup messages={messages} onClose={action('close message')} />

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { action } from '@storybook/addon-actions'
 
-import { PrimaryButton, SecondaryButton, ButtonIcon } from './index'
+import { ButtonPrimary, ButtonSecondary, ButtonIcon } from './index'
 import * as Icons from '../Icons'
 
 export default {
@@ -10,8 +10,8 @@ export default {
 
 export const Basic = () => (
   <Fragment>
-    <PrimaryButton onClick={action('clicked')}>Primary Button</PrimaryButton>
-    <SecondaryButton onClick={action('clicked')}> Secondary Button</SecondaryButton>
+    <ButtonPrimary onClick={action('clicked')}>Primary Button</ButtonPrimary>
+    <ButtonSecondary onClick={action('clicked')}> Secondary Button</ButtonSecondary>
   </Fragment>
 )
 
@@ -21,4 +21,4 @@ export const WithIcon = () => (
   </ButtonIcon>
 )
 
-export const LoadingButton = () => <PrimaryButton isLoading>Primary Button</PrimaryButton>
+export const LoadingButton = () => <ButtonPrimary isLoading>Primary Button</ButtonPrimary>

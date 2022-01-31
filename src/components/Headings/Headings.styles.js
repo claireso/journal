@@ -1,18 +1,37 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const Heading1 = styled.h1`
-  font-size: 2.4rem;
-  margin: 0 0 2.4rem;
-  font-weight: 500;
-`
+export const Heading1 = styled('h1', {
+  fontSize: '$7',
+  m: '0 0 $5',
+  fontWeight: '$semiBold'
+})
 
-export const Heading1XL = styled.h1`
-  font-size: 3rem;
-  margin: 0 0 3rem;
-`
+export const Heading2 = styled('h2', {
+  fontSize: '$6',
+  m: '0 0 3rem',
+  fontWeight: '$semiBold'
+})
 
-export const Heading2 = styled.h2`
-  font-size: 2.2rem;
-  margin: 0 0 3rem;
-  font-weight: 500;
-`
+export const Heading3 = styled('h3', {
+  fontSize: '$5',
+  m: '0 0 $2',
+  fontWeight: '$semiBold'
+})
+
+export const Heading4 = styled('h4', {
+  fontSize: '$4',
+  m: '0 0 $2',
+  fontWeight: '$semiBold'
+})
+
+export const Heading5 = styled('h5', {
+  fontSize: '$3',
+  m: '0 0 $2',
+  fontWeight: '$semiBold'
+})
+
+export const Heading6 = styled('h6', {
+  fontSize: '$2',
+  m: '0 0 $2',
+  fontWeight: '$semiBold'
+})

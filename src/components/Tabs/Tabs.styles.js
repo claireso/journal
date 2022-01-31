@@ -1,24 +1,33 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const Tabs = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-`
+export const Tabs = styled('ul', {
+  listStyle: 'none',
+  m: 0,
+  p: 0
+})
 
-export const TabWrapper = styled.li`
-  a {
-    background: ${(props) => (props.isActive ? 'var(--tab-active) !important' : 'var(--tab-default)')};
-    border-bottom: none;
-    border-radius: 0.2rem 0.2rem 0 0;
-    color: var(--text-normal);
-    display: block;
-    font-size: var(--font-size-normal);
-    padding: 2rem 2rem 2rem 4rem;
-    text-decoration: none;
-    transition: background 150ms ease-out;
-    &:hover {
-      background: var(--tab-hover);
+export const TabWrapper = styled('li', {
+  a: {
+    background: '$secondary200',
+    borderBottom: 'none',
+    borderRadius: '$1 $1 0 0',
+    color: '$grey100',
+    display: 'block',
+    fontSize: '$4',
+    p: '$5 $5 $5 calc($5*2)',
+    textDecoration: 'none',
+    transition: '$background',
+    '&:hover': {
+      background: '$white'
+    }
+  },
+  variants: {
+    isActive: {
+      true: {
+        a: {
+          background: '$tertiary100 !important'
+        }
+      }
     }
   }
-`
+})

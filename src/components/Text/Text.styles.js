@@ -1,8 +1,12 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export default styled.p.attrs((props) => ({
-  align: props.align || 'left'
-}))`
-  text-align: ${(props) => props.align};
-  font-size: var(--font-size-smaller);
-`
+export const Text = styled('p', {
+  fontSize: '$2',
+  variants: {
+    align: {
+      left: { textAlign: 'left' },
+      center: { textAlign: 'center' },
+      right: { textAlign: 'right' }
+    }
+  }
+})

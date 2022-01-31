@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
-import styled from 'styled-components'
+import { styled } from '@theme'
 
 import { Loader, LoaderWrapper } from '@components/Loader'
 import Pager from '@components/Pager'
@@ -10,14 +10,13 @@ import Welcome from '@features/client/Welcome'
 import usePhotos from '@features/photos/usePhotos'
 import ListPhotos from '@features/photos/ListPhotos'
 
-const PagerWrapper = styled.div`
-  grid-column: 1 / -1;
-  margin: 4.5rem 0;
-
-  @media (min-width: 800px) {
-    margin: 8.5rem 0;
+const PagerWrapper = styled('div', {
+  gridColumn: '1 / -1',
+  m: '4.5rem 0',
+  '@lg': {
+    m: '8.5rem 0'
   }
-`
+})
 
 const Homepage = () => {
   const [{ data, pager, isLoading }, { loadPhotos }] = usePhotos()

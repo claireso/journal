@@ -1,5 +1,5 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export default styled.div`
-  grid-column: 1 / -1;
-`
+export default styled('div', {
+  gridColumn: '1 / -1'
+})

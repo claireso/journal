@@ -1,13 +1,13 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const Group = styled.div`
-  margin: 0 0 var(--gutter);
-`
+export const Group = styled('div', {
+  margin: '0 0 $5'
+})
 
-export const GroupInline = styled(Group)`
-  display: flex;
-  align-items: center;
-  > label {
-    margin: 0 1rem 0 0;
+export const GroupInline = styled(Group, {
+  display: 'flex',
+  alignItems: 'center',
+  '> label': {
+    margin: '0 1rem 0 0'
   }
-`
+})

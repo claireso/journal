@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom/extend-expect'
-import 'jest-styled-components'
 import { enableMocks } from 'jest-fetch-mock'
 import * as dotenv from 'dotenv'
 
