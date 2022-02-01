@@ -1,25 +1,24 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const List = styled.ul`
-  margin: 0;
-  padding: 0;
-`
+export const List = styled('ul', {
+  m: 0,
+  p: 0
+})
 
-export const ListHeader = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0 2rem;
-
-  > h1 {
-    line-height: 1.835;
-    margin: 0;
-
-    > span {
-      color: var(--gray-darker);
-      font-size: 2rem;
-      font-weight: normal;
-      line-height: 1;
+export const ListHeader = styled('div', {
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'space-between',
+  mb: '$5',
+  '> h1': {
+    // @TODO use Heading1/2/3..
+    lineHeight: 1.835,
+    m: 0,
+    '> span': {
+      color: '$gray300',
+      fontSize: '2rem',
+      fontWeight: '$normal',
+      lineHeight: 1
     }
   }
-`
+})

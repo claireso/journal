@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { PrimaryLink } from './index'
+import { LinkPrimary } from './index'
 
 export default {
   title: 'Links'
 }
 
-export const Basic = () => <PrimaryLink href="#">Link</PrimaryLink>
+export const Basic = () => <LinkPrimary href="#">LinkPrimary</LinkPrimary>

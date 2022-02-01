@@ -2,66 +2,21 @@
 
 exports[`<Photo /> should render photo (landscape center) 1`] = `
 <DocumentFragment>
-  .c0 {
-  --shadow-width: 6vw;
-  --shadow-width-smaller: 2rem;
-  grid-row-start: 0;
-  grid-column: 1 / span 6;
-  margin: 0;
-}
-
-.c2 {
-  font-size: var(--font-size-smaller-1);
-}
-
-.c3 {
-  color: var(--gray-normal);
-  display: block;
-  font-size: var(--font-size-smaller-3);
-  font-style: italic;
-  margin: 0.4rem 0 0;
-}
-
-.c1 {
-  background: currentColor;
-  width: 100%;
-  margin: 0 0 1rem;
-  aspect-ratio: var(--aspect-ratio);
-}
-
-@media (min-width:800px) {
-  .c0 {
-    grid-column: 3 / span 8;
-  }
-
-  .c0 + figure {
-    margin-top: 20rem;
-  }
-}
-
-@supports (not (aspect-ratio:1 / 1)) and (not (aspect-ratio:3 / 2)) and (not (aspect-ratio:2 / 3)) {
-  .c1 {
-    position: relative;
-    padding-top: calc(100% / var(--aspect-ratio));
-  }
-}
-
-<figure
-    class="c0"
+  <figure
+    class="c-jmBjsY c-jmBjsY-iiCDtyl-css"
     data-testid="photo"
   >
     <div
-      class="c1"
-      style="--aspect-ratio: 1.5;"
+      class="c-igxWur c-igxWur-ibEeMWi-css"
     />
     <figcaption
-      class="c2"
+      class="c-iMVRpC"
     >
       <span>
         Single photography
       </span>
       <span
-        class="c3"
+        class="c-hTMuHN"
       >
         Janvier 2019
       </span>
@@ -72,66 +27,21 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
 
 exports[`<Photo /> should render photo (landscape left) 1`] = `
 <DocumentFragment>
-  .c0 {
-  --shadow-width: 6vw;
-  --shadow-width-smaller: 2rem;
-  grid-row-start: 0;
-  grid-column: 1 / span 6;
-  margin: 0;
-}
-
-.c2 {
-  font-size: var(--font-size-smaller-1);
-}
-
-.c3 {
-  color: var(--gray-normal);
-  display: block;
-  font-size: var(--font-size-smaller-3);
-  font-style: italic;
-  margin: 0.4rem 0 0;
-}
-
-.c1 {
-  background: currentColor;
-  width: 100%;
-  margin: 0 0 1rem;
-  aspect-ratio: var(--aspect-ratio);
-}
-
-@media (min-width:800px) {
-  .c0 {
-    grid-column: 2 / span 8;
-  }
-
-  .c0 + figure {
-    margin-top: 20rem;
-  }
-}
-
-@supports (not (aspect-ratio:1 / 1)) and (not (aspect-ratio:3 / 2)) and (not (aspect-ratio:2 / 3)) {
-  .c1 {
-    position: relative;
-    padding-top: calc(100% / var(--aspect-ratio));
-  }
-}
-
-<figure
-    class="c0"
+  <figure
+    class="c-jmBjsY c-jmBjsY-iiCDtyl-css"
     data-testid="photo"
   >
     <div
-      class="c1"
-      style="--aspect-ratio: 1.5;"
+      class="c-igxWur c-igxWur-ibEeMWi-css"
     />
     <figcaption
-      class="c2"
+      class="c-iMVRpC"
     >
       <span>
         Single photography
       </span>
       <span
-        class="c3"
+        class="c-hTMuHN"
       >
         Janvier 2019
       </span>
@@ -142,66 +52,21 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
 
 exports[`<Photo /> should render photo (landscape right) 1`] = `
 <DocumentFragment>
-  .c0 {
-  --shadow-width: 6vw;
-  --shadow-width-smaller: 2rem;
-  grid-row-start: 0;
-  grid-column: 1 / span 6;
-  margin: 0;
-}
-
-.c2 {
-  font-size: var(--font-size-smaller-1);
-}
-
-.c3 {
-  color: var(--gray-normal);
-  display: block;
-  font-size: var(--font-size-smaller-3);
-  font-style: italic;
-  margin: 0.4rem 0 0;
-}
-
-.c1 {
-  background: currentColor;
-  width: 100%;
-  margin: 0 0 1rem;
-  aspect-ratio: var(--aspect-ratio);
-}
-
-@media (min-width:800px) {
-  .c0 {
-    grid-column: calc(var(--grid-number-column-large) - 8) / span 8;
-  }
-
-  .c0 + figure {
-    margin-top: 20rem;
-  }
-}
-
-@supports (not (aspect-ratio:1 / 1)) and (not (aspect-ratio:3 / 2)) and (not (aspect-ratio:2 / 3)) {
-  .c1 {
-    position: relative;
-    padding-top: calc(100% / var(--aspect-ratio));
-  }
-}
-
-<figure
-    class="c0"
+  <figure
+    class="c-jmBjsY c-jmBjsY-iiCDtyl-css"
     data-testid="photo"
   >
     <div
-      class="c1"
-      style="--aspect-ratio: 1.5;"
+      class="c-igxWur c-igxWur-ibEeMWi-css"
     />
     <figcaption
-      class="c2"
+      class="c-iMVRpC"
     >
       <span>
         Single photography
       </span>
       <span
-        class="c3"
+        class="c-hTMuHN"
       >
         Janvier 2019
       </span>
@@ -212,66 +77,21 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 
 exports[`<Photo /> should render photo (portrait center) 1`] = `
 <DocumentFragment>
-  .c0 {
-  --shadow-width: 6vw;
-  --shadow-width-smaller: 2rem;
-  grid-row-start: 0;
-  grid-column: 1 / span 5;
-  margin: 0;
-}
-
-.c2 {
-  font-size: var(--font-size-smaller-1);
-}
-
-.c3 {
-  color: var(--gray-normal);
-  display: block;
-  font-size: var(--font-size-smaller-3);
-  font-style: italic;
-  margin: 0.4rem 0 0;
-}
-
-.c1 {
-  background: currentColor;
-  width: 100%;
-  margin: 0 0 1rem;
-  aspect-ratio: var(--aspect-ratio);
-}
-
-@media (min-width:800px) {
-  .c0 {
-    grid-column: 5 / span 4;
-  }
-
-  .c0 + figure {
-    margin-top: 20rem;
-  }
-}
-
-@supports (not (aspect-ratio:1 / 1)) and (not (aspect-ratio:3 / 2)) and (not (aspect-ratio:2 / 3)) {
-  .c1 {
-    position: relative;
-    padding-top: calc(100% / var(--aspect-ratio));
-  }
-}
-
-<figure
-    class="c0"
+  <figure
+    class="c-jmBjsY c-jmBjsY-gxKxyj-portrait-true c-jmBjsY-bHfBnH-cv c-jmBjsY-iiCDtyl-css"
     data-testid="photo"
   >
     <div
-      class="c1"
-      style="--aspect-ratio: 0.6666666666666666;"
+      class="c-igxWur c-igxWur-idhNoZG-css"
     />
     <figcaption
-      class="c2"
+      class="c-iMVRpC"
     >
       <span>
         Single photography
       </span>
       <span
-        class="c3"
+        class="c-hTMuHN"
       >
         Janvier 2019
       </span>
@@ -282,66 +102,21 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 
 exports[`<Photo /> should render photo (square center) 1`] = `
 <DocumentFragment>
-  .c0 {
-  --shadow-width: 6vw;
-  --shadow-width-smaller: 2rem;
-  grid-row-start: 0;
-  grid-column: 1 / span 5;
-  margin: 0;
-}
-
-.c2 {
-  font-size: var(--font-size-smaller-1);
-}
-
-.c3 {
-  color: var(--gray-normal);
-  display: block;
-  font-size: var(--font-size-smaller-3);
-  font-style: italic;
-  margin: 0.4rem 0 0;
-}
-
-.c1 {
-  background: currentColor;
-  width: 100%;
-  margin: 0 0 1rem;
-  aspect-ratio: var(--aspect-ratio);
-}
-
-@media (min-width:800px) {
-  .c0 {
-    grid-column: 4.5 / span 5;
-  }
-
-  .c0 + figure {
-    margin-top: 20rem;
-  }
-}
-
-@supports (not (aspect-ratio:1 / 1)) and (not (aspect-ratio:3 / 2)) and (not (aspect-ratio:2 / 3)) {
-  .c1 {
-    position: relative;
-    padding-top: calc(100% / var(--aspect-ratio));
-  }
-}
-
-<figure
-    class="c0"
+  <figure
+    class="c-jmBjsY c-jmBjsY-gzEPDe-square-true c-jmBjsY-iiCDtyl-css"
     data-testid="photo"
   >
     <div
-      class="c1"
-      style="--aspect-ratio: 1;"
+      class="c-igxWur c-igxWur-ievjdZN-css"
     />
     <figcaption
-      class="c2"
+      class="c-iMVRpC"
     >
       <span>
         Single photography
       </span>
       <span
-        class="c3"
+        class="c-hTMuHN"
       >
         Janvier 2019
       </span>

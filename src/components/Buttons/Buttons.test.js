@@ -1,16 +1,16 @@
 import { render } from '@testing-library/react'
 
-import { PrimaryButton } from './index'
+import { ButtonPrimary } from './index'
 
-describe('<PrimaryButton />', () => {
+describe('<ButtonPrimary />', () => {
   it('should render loader', () => {
-    const { asFragment } = render(<PrimaryButton isLoading>Button</PrimaryButton>)
+    const { asFragment } = render(<ButtonPrimary isLoading>Button</ButtonPrimary>)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should render button', () => {
-    const { asFragment } = render(<PrimaryButton>Button</PrimaryButton>)
+    const { asFragment } = render(<ButtonPrimary>Button</ButtonPrimary>)
 
     expect(asFragment()).toMatchSnapshot()
   })

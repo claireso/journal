@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
 import Layout from '@features/admin/Layout'
 
@@ -9,16 +9,16 @@ import LoginForm from '@features/user/LoginForm'
 
 import useUser from '@features/user/useUser'
 
-const Wrapper = styled.div`
-  align-items: center;
-  display: flex;
-  height: 100vh;
-  > main {
-    width: 100%;
-    padding-top: 0;
-    padding-bottom: 0;
+const Wrapper = styled('div', {
+  alignItems: 'center',
+  display: 'flex',
+  height: '100vh',
+  '> main': {
+    width: '100%',
+    pt: 0,
+    pb: 0
   }
-`
+})
 
 const Login = () => {
   const [{ isProcessing }, { login }] = useUser()

@@ -1,20 +1,20 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const StyledInput = styled.input`
-  appearance: none;
-  background: var(--form-input-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 0.4rem;
-  box-shadow: 1px 1px 3px var(--box-shadow);
-  display: block;
-  font-family: var(--font-family);
-  outline: none;
-  padding: 0.8rem 1.2rem;
-  width: 100%;
-  font-size: var(--font-size-normal);
-  line-height: 1.71;
-  transition: border-color 250ms ease-out;
-  &:focus {
-    border-color: var(--border-color-focus);
+export const StyledInput = styled('input', {
+  appearance: 'none',
+  background: '$white',
+  border: '1px solid $gray200',
+  borderRadius: '$1',
+  boxShadow: '$2',
+  display: 'block',
+  fontFamily: '$sansSerif',
+  outline: 'none',
+  p: '$2 $3',
+  width: '100%',
+  fontSize: '$4',
+  lineHeight: 1.71,
+  transition: '$borderColor',
+  '&:focus': {
+    borderColor: '$gray300'
   }
-`
+})

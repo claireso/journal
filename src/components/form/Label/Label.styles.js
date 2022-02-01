@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const Label = styled.label`
-  display: block;
-  font-size: 1.6rem;
-  line-height: 1.5;
-  margin: 0 0 1.2rem;
-`
+export const Label = styled('label', {
+  display: 'block',
+  fontSize: '$5',
+  lineHeight: '1.5',
+  mb: '$3'
+})

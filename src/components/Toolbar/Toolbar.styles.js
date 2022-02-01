@@ -1,15 +1,15 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const Toolbar = styled.div`
-  background: var(--toolbar-bg);
-  color: var(--white);
-  display: flex;
-  height: var(--toolbar-height);
-  justify-content: flex-end;
-  padding: 1.2rem 2rem;
-  > p {
-    align-items: center;
-    display: flex;
-    margin: 0;
+export const Toolbar = styled('div', {
+  background: '$gray700',
+  color: '$white',
+  display: 'flex',
+  height: '$toolbarHeight',
+  justifyContent: 'flex-end',
+  p: '$3 $5',
+  '> p': {
+    alignItems: 'center',
+    display: 'flex',
+    m: 0
   }
-`
+})

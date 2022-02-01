@@ -1,36 +1,31 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
 import { Loader } from '@components/Loader'
 
-export const SubmitButton = styled.input.attrs(() => ({
-  type: 'submit'
-}))`
-  appearance: none;
-  background: var(--primary-normal);
-  border: none;
-  border-radius: 3.6rem;
-  color: white;
-  cursor: pointer;
-  display: block;
-  font-size: var(--font-size-normal);
-  line-height: 1;
-  margin: 2.8rem auto 0;
-  outline: none;
-  padding: 1.6rem 5.2rem;
-  transition: background 150ms ease-out;
+export const ButtonSubmit = styled('input', {
+  appearance: 'none',
+  background: '$primary100',
+  border: 'none',
+  borderRadius: '$3',
+  color: '$white',
+  cursor: 'pointer',
+  display: 'block',
+  fontSize: '$4',
+  lineHeight: 1,
+  m: '$7 auto 0',
+  outline: 'none',
+  p: '$4 5.2rem',
+  transition: '$background',
 
-  &:hover {
-    background: var(--primary-lighter);
+  '&:hover': {
+    background: '$primary200'
   }
-`
+})
 
-export const SubmitButtonLoading = styled.div.attrs(() => ({
-  children: <Loader />
-}))`
-  margin: 2.8rem 0 0;
-  padding: 1.8rem 0 1.8rem;
-
-  ${Loader} {
-    margin: 0 auto;
+export const ButtonLoading = styled('div', {
+  m: '$7 0 0',
+  py: '1.8rem',
+  [`${Loader}`]: {
+    m: '0 auto'
   }
-`
+})

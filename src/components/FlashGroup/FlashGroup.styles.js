@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const FlashGroupWrapper = styled.div`
-  > div {
-    margin: calc(var(--gutter) * -1) calc(var(--gutter) * -1) var(--gutter);
+export const FlashGroupWrapper = styled('div', {
+  '> div': {
+    margin: '-$5 -$5 $5'
   }
-`
+})
