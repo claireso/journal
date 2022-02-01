@@ -1,23 +1,23 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-import { SecondaryButton } from '../Buttons'
+import { ButtonSecondary } from '../Buttons'
 
-export const PagerWrapper = styled.ul`
-  display: inline-flex;
-  justify-content: center;
-  list-style-type: none;
-  width: 100%;
-  padding: 0;
-  > li {
-    margin: 0 0.4rem;
+export const Wrapper = styled('ul', {
+  display: 'inline-flex',
+  justifyContent: 'center',
+  listStyleType: 'none',
+  width: '100%',
+  p: 0,
+  '> li': {
+    mx: '0.4rem'
   }
-`
+})
 
-export const PagerButton = styled(SecondaryButton)`
-  align-items: center;
-  font-size: var(--font-size-normal);
-  height: 4.4rem;
-  justify-content: center;
-  padding: 0;
-  width: 4.4rem;
-`
+export const Button = styled(ButtonSecondary, {
+  alignItems: 'center',
+  fontSize: '$4',
+  height: '4.4rem',
+  justifyContent: 'center',
+  p: 0,
+  width: '4.4rem'
+})

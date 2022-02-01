@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 
 import { List, ListHeader } from './index'
+import { ButtonPrimary } from '../Buttons'
 
 export default {
   title: 'List'
@@ -9,8 +10,10 @@ export default {
 export const Basic = () => (
   <Fragment>
     <ListHeader>
-      <div>Header left</div>
-      <div>Header right</div>
+      <h1>List header</h1>
+      <div>
+        <ButtonPrimary>Edit photo</ButtonPrimary>
+      </div>
     </ListHeader>
     <List>
       <li>Item</li>

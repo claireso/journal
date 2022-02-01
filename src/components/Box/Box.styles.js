@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export default styled.div`
-  background: var(--white);
-  border-radius: 0.4rem;
-  border: 1px solid var(--gray-normal);
-  box-shadow: 0px 1px 5px var(--box-shadow);
-  margin: 0 auto;
-  max-width: 40rem;
-  padding: calc(var(--gutter) * 2);
-`
+export default styled('div', {
+  background: '$white',
+  borderRadius: '$2',
+  border: '1px solid $gray200',
+  boxShadow: '$1',
+  m: '0 auto',
+  maxWidth: '40rem',
+  p: 'calc($5 *2)'
+})

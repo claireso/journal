@@ -45,7 +45,11 @@ const Uploader = (props) => {
   return (
     <S.UploaderWrapper>
       {preview && (
-        <S.UploaderPreview backgroundColor={props.backgroundPreview}>
+        <S.UploaderPreview
+          css={{
+            background: props.backgroundPreview || '$secondary200'
+          }}
+        >
           <img src={preview} />
         </S.UploaderPreview>
       )}

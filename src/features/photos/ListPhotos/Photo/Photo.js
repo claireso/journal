@@ -18,16 +18,18 @@ const Photo = ({ title, description, source, portrait, position, square, color, 
       portrait={portrait}
       square={square}
       position={position}
-      row={row}
-      color={color}
+      withColor={!!color}
+      css={{
+        gridRowStart: row
+      }}
     >
       <S.PictureWrapper
-        style={{
-          color: color || 'var(--secondary-normal)',
+        css={{
+          color: color || '$secondary200',
           '--aspect-ratio': portrait ? 2 / 3 : square ? 1 / 1 : 3 / 2
         }}
       >
-        {isInView && <S.Picture src={source} />}
+        {isInView && <S.Picture src={source} alt="" />}
       </S.PictureWrapper>
       <S.Title>
         <span dangerouslySetInnerHTML={{ __html: title }} />

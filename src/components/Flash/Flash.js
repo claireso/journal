@@ -20,19 +20,19 @@ const Flash = ({ status, children, onClose, index, withBorder, ...props }) => {
   }, [])
 
   return (
-    <S.FlashWrapper ref={dom} status={status} withBorder={withBorder} {...props}>
+    <S.Wrapper ref={dom} status={status} separator={withBorder} {...props}>
       {children}
       {onClose && (
-        <S.FlashButtonClose
+        <S.ButtonClose
           onClick={(event) => {
             event.preventDefault()
             onClose(index)
           }}
         >
           <IconClose />
-        </S.FlashButtonClose>
+        </S.ButtonClose>
       )}
-    </S.FlashWrapper>
+    </S.Wrapper>
   )
 }
 
@@ -46,7 +46,7 @@ Flash.propTypes = {
 
 Flash.defaultProps = {
   index: 0,
-  status: '',
+  status: 'default',
   onClose: () => {},
   withBorder: false
 }

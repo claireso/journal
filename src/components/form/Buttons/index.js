@@ -1,2 +1,2 @@
 export { default } from './Button'
-export { SubmitButton } from './Buttons.styles'
+export { ButtonSubmit } from './Buttons.styles'

@@ -8,4 +8,4 @@ export default {
   ]
 }
 
-export const Basic = () => <AnimatedImage src={'https://i.picsum.photos/id/100/2500/1656.jpg'} width="100%" />
+export const Basic = () => <AnimatedImage src={'https://picsum.photos/id/100/2500/1656.jpg'} width="100%" />

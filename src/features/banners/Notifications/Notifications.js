@@ -68,8 +68,10 @@ const BannerNotifications = () => {
   if (!isVisible) return null
 
   return (
-    <Flash data-testid="flash-notifications" status="default" onClose={hideBanner}>
-      <S.ButtonSubscribe onClick={subscribe}>{translations.bannerNotifications}</S.ButtonSubscribe>
+    <Flash data-testid="flash-notifications" status="info" onClose={hideBanner} css={{ mb: 0 }}>
+      <S.ButtonSubscribe role="button" href="#" onClick={subscribe}>
+        {translations.bannerNotifications}
+      </S.ButtonSubscribe>
     </Flash>
   )
 }

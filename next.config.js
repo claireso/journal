@@ -24,7 +24,7 @@ module.exports = {
     IS_NOTIFICATIONS_ENABLED: IS_NOTIFICATIONS_ENABLED
   },
   experimental: {
-    styledComponents: true
+    reactRemoveProperties: true
   },
   webpack: (config, { dev, isServer }) => {
     if (!isServer) {

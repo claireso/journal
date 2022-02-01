@@ -14,7 +14,7 @@ const ColorPicker = ({ colors, onSelect, selected }) => {
   return (
     <S.Wrapper>
       <S.Input type="radio" name="color" id="default" value="" onChange={handleChange} checked={!selected} />
-      <S.Label htmlFor="default" style={{ color: 'var(--secondary-normal)' }}>
+      <S.Label htmlFor="default" css={{ color: '$secondary200' }}>
         Transparent
       </S.Label>
       {colors.map((color, index) => (

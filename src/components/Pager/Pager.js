@@ -7,39 +7,39 @@ const Pager = ({ navigate, first, prev, next, last }) => {
   const handleClick = useCallback((page) => () => navigate(page), [navigate])
 
   return (
-    <S.PagerWrapper>
+    <S.Wrapper>
       {first && (
         <li>
-          <S.PagerButton data-testid="first-page" title="First page" onClick={handleClick(first)}>
+          <S.Button data-testid="first-page" title="First page" onClick={handleClick(first)}>
             ««
-          </S.PagerButton>
+          </S.Button>
         </li>
       )}
 
       {prev && (
         <li>
-          <S.PagerButton data-testid="previous-page" title="Previous page" onClick={handleClick(prev)}>
+          <S.Button data-testid="previous-page" title="Previous page" onClick={handleClick(prev)}>
             «
-          </S.PagerButton>
+          </S.Button>
         </li>
       )}
 
       {next && (
         <li>
-          <S.PagerButton data-testid="next-page" title="Next page" onClick={handleClick(next)}>
+          <S.Button data-testid="next-page" title="Next page" onClick={handleClick(next)}>
             »
-          </S.PagerButton>
+          </S.Button>
         </li>
       )}
 
       {last && (
         <li>
-          <S.PagerButton data-testid="last-page" title="Last page" onClick={handleClick(last)}>
+          <S.Button data-testid="last-page" title="Last page" onClick={handleClick(last)}>
             »
-          </S.PagerButton>
+          </S.Button>
         </li>
       )}
-    </S.PagerWrapper>
+    </S.Wrapper>
   )
 }
 

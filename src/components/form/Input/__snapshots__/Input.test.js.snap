@@ -2,51 +2,17 @@
 
 exports[`<Input /> should render input 1`] = `
 <DocumentFragment>
-  .c0 {
-  margin: 0 0 var(--gutter);
-}
-
-.c1 {
-  display: block;
-  font-size: 1.6rem;
-  line-height: 1.5;
-  margin: 0 0 1.2rem;
-}
-
-.c2 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: var(--form-input-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 0.4rem;
-  box-shadow: 1px 1px 3px var(--box-shadow);
-  display: block;
-  font-family: var(--font-family);
-  outline: none;
-  padding: 0.8rem 1.2rem;
-  width: 100%;
-  font-size: var(--font-size-normal);
-  line-height: 1.71;
-  -webkit-transition: border-color 250ms ease-out;
-  transition: border-color 250ms ease-out;
-}
-
-.c2:focus {
-  border-color: var(--border-color-focus);
-}
-
-<div
-    class="c0"
+  <div
+    class="c-dMoIJA"
   >
     <label
-      class="c1"
+      class="c-iKAemi"
       for="title"
     >
       Title
     </label>
     <input
-      class="c2"
+      class="c-hjpsDP"
       id="title"
       name="title"
       type="text"

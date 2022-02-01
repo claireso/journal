@@ -1,3 +1,3 @@
-import Text from './Text.styles'
+import Text from './Text'
 
 export default Text

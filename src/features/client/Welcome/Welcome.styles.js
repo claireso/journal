@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import { styled } from '@theme'
 
-export const Wrapper = styled.div`
-  grid-column: 1 / -1;
-  padding: 6rem 0;
-  > p {
-    font-size: 1.8rem;
+export const Wrapper = styled('div', {
+  gridColumn: '1 / -1',
+  py: '6rem',
+  '> p': {
+    fontSize: '1.8rem'
   }
-`
+})

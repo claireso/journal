@@ -79,10 +79,9 @@ Layout.propTypes = {
 
 const withDocument = (Component) => {
   const Document = (props) => {
+    S.globalStyles()
     return (
       <>
-        <S.GlobalStyles />
-
         <Head>
           <title>Admin - {process.env.NEXT_PUBLIC_WEBSITE_META_TITLE}</title>
           <meta name="robots" content="noindex, nofollow" />

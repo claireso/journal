@@ -11,9 +11,9 @@ module.exports = {
   },
   webpackFinal: async (webpackConfig) => {
     for (const [alias, directory] of Object.entries(config.alias)) {
-      webpackConfig.resolve.alias[alias] = directory[0]
+      webpackConfig.resolve.alias[alias] = directory
     }
 
-    return config
+    return webpackConfig
   }
 }

@@ -11,6 +11,7 @@ module.exports = {
     '@services': path.resolve(__dirname, 'src', 'services'),
     '@features': path.resolve(__dirname, 'src', 'features'),
     '@hooks': path.resolve(__dirname, 'src', 'hooks'),
-    '@types': path.resolve(__dirname, 'src', 'types')
+    '@types': path.resolve(__dirname, 'src', 'types'),
+    '@theme': path.resolve(__dirname, 'src', 'theme')
   }
 }
