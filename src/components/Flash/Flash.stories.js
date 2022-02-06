@@ -4,55 +4,30 @@ import { action } from '@storybook/addon-actions'
 import Flash from './index'
 
 export default {
-  title: 'Flash'
+  title: 'Components/Flash'
 }
 
-export const Basic = () => (
+const Template = (args) => (
   <Fragment>
     <div>
-      <Flash>Flash message</Flash>
+      <Flash status={args.status}>Flash message</Flash>
     </div>
     <div>
-      <Flash onClose={action('close message')}>Closable flash message</Flash>
-    </div>
-  </Fragment>
-)
-
-export const Success = () => (
-  <Fragment>
-    <div>
-      <Flash status="success">Flash message</Flash>
-    </div>
-    <div>
-      <Flash status="success" onClose={action('close message')}>
+      <Flash status={args.status} onClose={action('close message')}>
         Closable flash message
       </Flash>
     </div>
   </Fragment>
 )
 
-export const Error = () => (
-  <Fragment>
-    <div>
-      <Flash status="error">Flash message</Flash>
-    </div>
-    <div>
-      <Flash status="error" onClose={action('close message')}>
-        Closable flash message
-      </Flash>
-    </div>
-  </Fragment>
-)
+export const Basic = Template.bind({})
+Basic.args = {}
 
-export const Info = () => (
-  <Fragment>
-    <div>
-      <Flash status="info">Flash message</Flash>
-    </div>
-    <div>
-      <Flash status="info" onClose={action('close message')}>
-        Closable flash message
-      </Flash>
-    </div>
-  </Fragment>
-)
+export const Success = Template.bind({})
+Success.args = { status: 'success' }
+
+export const Error = Template.bind({})
+Error.args = { status: 'error' }
+
+export const Info = Template.bind({})
+Info.args = { status: 'info' }

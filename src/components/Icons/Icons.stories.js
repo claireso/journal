@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import * as Icons from './index'
 
 export default {
-  title: 'Icons',
+  title: 'Components/Icons',
   decorators: [(storyFn) => <div style={{ display: 'flex', flexDirection: 'column' }}>{storyFn()}</div>]
 }
 

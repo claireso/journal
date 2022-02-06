@@ -4,7 +4,7 @@ import Toolbar from './index'
 import Text from '../Text'
 
 export default {
-  title: 'Toolbar'
+  title: 'Components/Toolbar'
 }
 
 export const Basic = () => (

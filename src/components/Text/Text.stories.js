@@ -3,7 +3,7 @@ import React from 'react'
 import Text from './index'
 
 export default {
-  title: 'Text'
+  title: 'Components/Text'
 }
 
 export const Basic = () => <Text>Text align left</Text>

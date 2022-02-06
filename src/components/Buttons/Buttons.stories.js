@@ -5,7 +5,7 @@ import { ButtonPrimary, ButtonSecondary, ButtonIcon } from './index'
 import * as Icons from '../Icons'
 
 export default {
-  title: 'Buttons'
+  title: 'Components/Buttons'
 }
 
 export const Basic = () => (

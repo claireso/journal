@@ -4,7 +4,7 @@ import { List, ListHeader } from './index'
 import { ButtonPrimary } from '../Buttons'
 
 export default {
-  title: 'List'
+  title: 'Components/List'
 }
 
 export const Basic = () => (

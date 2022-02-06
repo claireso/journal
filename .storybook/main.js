@@ -4,8 +4,10 @@ const config = require('../config')
 const directory = process.cwd()
 
 module.exports = {
-  stories: [path.resolve(directory, 'src/components/**/*.stories.js')],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  stories: [
+    path.resolve(directory, 'src/**/*.stories.js'),
+  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-actions'],
   core: {
     builder: 'webpack5'
   },

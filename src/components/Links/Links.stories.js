@@ -3,7 +3,7 @@ import React from 'react'
 import { LinkPrimary } from './index'
 
 export default {
-  title: 'Links'
+  title: 'Components/Links'
 }
 
 export const Basic = () => <LinkPrimary href="#">LinkPrimary</LinkPrimary>

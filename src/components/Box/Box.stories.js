@@ -3,7 +3,7 @@ import React from 'react'
 import Box from './index'
 
 export default {
-  title: 'Box'
+  title: 'Components/Box'
 }
 
 export const Basic = () => (
