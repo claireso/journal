@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import * as Headings from './index'
 
 export default {
-  title: 'Headings'
+  title: 'Components/Headings'
 }
 
 export const Basic = () => (

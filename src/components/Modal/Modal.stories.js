@@ -6,7 +6,7 @@ import Toolbar from '../Toolbar'
 import { ButtonPrimary } from '../Buttons'
 
 export default {
-  title: 'Modal',
+  title: 'Components/Modal',
   decorators: [(storyFn) => <div style={{ margin: '-8px' }}>{storyFn()}</div>]
 }
 

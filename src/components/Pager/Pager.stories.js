@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import Pager from './index'
 
 export default {
-  title: 'Pager'
+  title: 'Components/Pager'
 }
 
 export const Basic = () => {
