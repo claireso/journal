@@ -1,185 +1,168 @@
-import React, { useState, useContext, useCallback } from 'react'
-import PropTypes from 'prop-types'
+import { useQuery, useMutation, useQueryClient } from 'react-query'
 
 import * as api from '@services/api'
 import useMessages from '@features/messages/useMessages'
-
-let currentRequest = null
 
 const formatPhoto = (photo) => ({
   ...photo,
   source: `/uploads/${photo.name}`
 })
 
-const PhotosContext = React.createContext()
-
 const initialState = {
-  photos: {},
-  isLoading: true,
-  isProcessing: false,
-  detail: null
+  items: [],
+  pager: {}
 }
 
-const usePhotosContext = () => {
-  const context = useContext(PhotosContext)
+const CACHE_KEY_LIST = 'photos'
+const CACHE_KEY_DETAIL = 'photo'
 
-  if (context === undefined) {
-    throw new Error('usePhotosContext must be used within a PhotosProvider')
-  }
-
-  return context
-}
-
-export const PhotosProvider = ({ value = initialState, children }) => {
-  const [state, setState] = useState(value)
-
-  return <PhotosContext.Provider value={[state, setState]}>{children}</PhotosContext.Provider>
-}
-
-PhotosProvider.propTypes = {
-  children: PropTypes.any,
-  value: PropTypes.object
-}
-
-const usePhotos = () => {
+/**
+ * Edit photo
+ * @param {object} filters
+ * @returns
+ */
+export const useEditPhoto = (filters = {}) => {
+  const queryClient = useQueryClient()
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
-  const [state, setState] = usePhotosContext()
-  const { photos, isLoading, isProcessing, detail } = state
 
-  const updateState = (newState) => {
-    setState({ ...state, ...newState })
-  }
+  return useMutation(({ id, data }) => api.editPhoto(id, data), {
+    onSuccess(photo, { id }) {
+      queryClient.setQueryData([CACHE_KEY_DETAIL, id], formatPhoto(photo))
 
-  const loadPhotos = useCallback(async (page = 1) => {
-    if (currentRequest) {
-      currentRequest.abort()
-    }
+      queryClient.setQueryData([CACHE_KEY_LIST, filters], (photos) => ({
+        ...photos,
+        items: photos.items.map((_photo) => {
+          if (_photo.id !== id) return _photo
+          return formatPhoto(photo)
+        })
+      }))
 
-    currentRequest = api.getPhotos(page)
-
-    try {
-      const response = await currentRequest.ready
-      currentRequest = null
-      updateState({
-        photos: {
-          ...response,
-          items: response.items.map(formatPhoto)
-        },
-        isLoading: false
-      })
-    } catch {
-      updateState({
-        isLoading: false
-      })
-    }
-  }, [])
-
-  const deletePhoto = useCallback(async (id) => {
-    try {
-      updateState({ isProcessing: true })
-      await api.deletePhoto(id).ready
-      updateState({
-        isProcessing: false,
-        photos: {
-          items: photos.items.filter((photo) => photo.id !== id),
-          pager: {
-            ...photos.pager,
-            count: photos.pager.count - 1
-          }
-        }
-      })
       displaySuccessMessage({
         key: 'CRUD_PHOTO',
-        message: 'Your photo has been deleted successfully'
+        message: 'Your photo has been updated successfully'
       })
-    } catch {
-      updateState({ isProcessing: false })
+    },
+    onError() {
       displayErrorMessage({
         key: 'CRUD_PHOTO',
         message: 'An error has occured during the deletion. Please retry'
       })
     }
-  }, [])
+  })
+}
 
-  const createPhoto = useCallback(async (data) => {
-    try {
-      updateState({ isProcessing: true })
-      const photo = await api.createPhoto(data).ready
-      updateState({
-        isProcessing: false,
-        photos: {
+/**
+ * Delete photo and update cache
+ * @returns object
+ */
+export const useDeletePhoto = (filters) => {
+  const queryClient = useQueryClient()
+  const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
+
+  return useMutation((id) => api.deletePhoto(id), {
+    onSuccess(data, id) {
+      queryClient.setQueryData([CACHE_KEY_LIST, filters], (photos) => ({
+        items: photos.items.filter((photo) => photo.id !== id),
+        pager: {
+          ...photos.pager,
+          count: photos.pager.count - 1
+        }
+      }))
+      displaySuccessMessage({
+        key: 'CRUD_PHOTO',
+        message: 'Your photo has been deleted successfully'
+      })
+    },
+    onError() {
+      displayErrorMessage({
+        key: 'CRUD_PHOTO',
+        message: 'An error has occured during the deletion. Please retry'
+      })
+    }
+  })
+}
+
+/**
+ * Create photo and update cache
+ * @returns object
+ */
+export const useCreatePhoto = (filters = {}) => {
+  const queryClient = useQueryClient()
+  const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
+
+  return useMutation((data) => api.createPhoto(data), {
+    onSuccess(photo) {
+      if (filters.page === '1') {
+        queryClient.setQueryData([CACHE_KEY_LIST, filters], (photos) => ({
           items: [formatPhoto(photo), ...photos.items],
           pager: {
             ...photos.pager,
             count: photos.pager.count + 1
           }
-        }
-      })
+        }))
+      }
       displaySuccessMessage({
         key: 'CRUD_PHOTO',
         message: 'Your photo has been created successfully'
       })
-    } catch {
-      updateState({ isProcessing: false })
+    },
+    onError() {
       displayErrorMessage({
         key: 'CRUD_PHOTO',
         message: 'An error has occured during the creation. Please retry'
       })
     }
-  }, [])
-
-  const editPhoto = useCallback(async (id, data) => {
-    try {
-      updateState({ isProcessing: true })
-      const photo = await api.editPhoto(id, data).ready
-      updateState({
-        isProcessing: false,
-        photos: {
-          ...photos,
-          items: photos.items.map((_photo) => {
-            if (_photo.id !== id) return _photo
-            return formatPhoto(photo)
-          })
-        }
-      })
-      displaySuccessMessage({
-        key: 'CRUD_PHOTO',
-        message: 'Your photo has been updated successfully'
-      })
-    } catch {
-      updateState({ isProcessing: false })
-      displayErrorMessage({
-        message: 'An error has occured during the update. Please retry',
-        key: 'CRUD_PHOTO'
-      })
-    }
-  }, [])
-
-  const loadPhoto = useCallback(async (id) => {
-    try {
-      const photo = await api.getPhoto(id).ready
-      updateState({ detail: formatPhoto(photo) })
-    } catch {
-      updateState({ detail: null })
-    }
-  }, [])
-
-  return [
-    {
-      data: photos.items,
-      pager: photos.pager,
-      isLoading,
-      isProcessing,
-      detail
-    },
-    {
-      loadPhotos,
-      loadPhoto,
-      deletePhoto,
-      createPhoto,
-      editPhoto
-    }
-  ]
+  })
 }
 
-export default usePhotos
+/**
+ * Fetch photos
+ * @param {object} queries
+ * @param {object} options
+ * @returns object
+ */
+export const usePhotos = (filters = { page: '1' }, options = {}) => {
+  const getPhotos = async ({ signal }) => {
+    const response = await api.getPhotos(filters.page, { signal })
+    return {
+      ...response,
+      items: response.items.map(formatPhoto)
+    }
+  }
+
+  const queryOptions = {
+    placeholderData: initialState,
+    useErrorBoundary: true,
+    ...options
+  }
+
+  return useQuery([CACHE_KEY_LIST, filters], getPhotos, queryOptions)
+}
+
+/**
+ * Fetch photo
+ * @param {number} id photoId
+ * @param {object} options query option
+ * @returns
+ */
+export const usePhoto = (id, options = {}) => {
+  const queryClient = useQueryClient()
+
+  const getPhoto = async ({ signal }) => {
+    const response = await api.getPhoto(id, { signal })
+    return formatPhoto(response)
+  }
+
+  const queryOptions = {
+    initialData: () => {
+      const queries = queryClient.getQueriesData({ active: true })
+      const photoQuery = queries.find(([filters]) => filters[0] === CACHE_KEY_LIST)
+      return photoQuery?.[1]?.items.find((photo) => photo.id === id)
+    },
+    initialDataUpdatedAt: () => queryClient.getQueryState({ active: true })?.dataUpdatedAt,
+    useErrorBoundary: true,
+    ...options
+  }
+
+  return useQuery([CACHE_KEY_DETAIL, id], getPhoto, queryOptions)
+}

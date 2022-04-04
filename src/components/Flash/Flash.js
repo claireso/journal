@@ -47,7 +47,7 @@ Flash.propTypes = {
 Flash.defaultProps = {
   index: 0,
   status: 'default',
-  onClose: () => {},
+  onClose: null,
   withBorder: false
 }
 

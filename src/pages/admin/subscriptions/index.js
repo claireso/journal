@@ -1,10 +1,11 @@
-import { useEffect, useCallback } from 'react'
+import { useCallback } from 'react'
 import { useRouter } from 'next/router'
 
 import Layout from '@features/admin/Layout'
-import useSubscriptions from '@features/subscriptions/useSubscriptions'
 import AdminListSubscriptions from '@features/subscriptions/AdminListSubscriptions'
 import ModalDeleteSubscription from '@features/subscriptions/ModalDeleteSubscription'
+
+import { useSubscriptions, useDeleteSubscription } from '@features/subscriptions/useSubscriptions'
 
 import { Loader } from '@components/Loader'
 import { ListHeader } from '@components/List'
@@ -17,23 +18,19 @@ const ACTION_TYPES = {
 }
 
 const Subscriptions = () => {
-  const [{ data, pager, isLoading }, { loadSubscriptions }] = useSubscriptions()
-
   const router = useRouter()
   let {
-    query: { page, action, id },
+    query: { page = '1', action, id },
     pathname
   } = router
 
-  if (id) {
-    id = Number(id)
-  }
+  id = parseInt(id, 10)
 
-  useEffect(() => {
-    if (router.isReady) {
-      loadSubscriptions(page)
-    }
-  }, [page])
+  const filters = { page }
+
+  const { isFetching, isSuccess, data } = useSubscriptions(filters, { enabled: router.isReady })
+
+  const { mutate: deleteSubscription, isLoading: isDeleting } = useDeleteSubscription(filters)
 
   const navigate = useCallback(
     (params = {}) => {
@@ -46,7 +43,7 @@ const Subscriptions = () => {
   )
 
   const onChangePage = (page) => navigate({ page })
-  const onCloseModal = () => navigate()
+  const onCloseModal = useCallback(() => navigate(), [navigate])
 
   const onClickDelete = useCallback(
     (id) => {
@@ -58,24 +55,43 @@ const Subscriptions = () => {
     [navigate]
   )
 
+  const onDeleteSubscription = useCallback(
+    (subscriptionId) => {
+      deleteSubscription(subscriptionId, {
+        onSettled(data, err) {
+          if (err?.response.status === 401) return
+          onCloseModal()
+        }
+      })
+    },
+    [deleteSubscription, onCloseModal]
+  )
+
   return (
     <>
       <ListHeader>
-        <Heading1 data-testid="list-heading">Your subscriptions {pager && <span>({pager.count})</span>}</Heading1>
+        <Heading1 data-testid="list-heading">
+          Your subscriptions {data.pager && <span>({data.pager.count})</span>}
+        </Heading1>
       </ListHeader>
 
-      {isLoading ? (
-        <Loader />
-      ) : (
+      {isFetching && <Loader />}
+
+      {isSuccess && (
         <>
-          <AdminListSubscriptions subscriptions={data} onDelete={onClickDelete} />
-          <Pager {...pager} navigate={onChangePage} />
+          <AdminListSubscriptions subscriptions={data.items} onDelete={onClickDelete} />
+          <Pager {...data.pager} navigate={onChangePage} />
         </>
       )}
 
       {action === ACTION_TYPES.DELETE && (
         <Modal onClose={onCloseModal}>
-          <ModalDeleteSubscription id={id} />
+          <ModalDeleteSubscription
+            id={id}
+            onConfirm={onDeleteSubscription}
+            onCancel={onCloseModal}
+            isProcessing={isDeleting}
+          />
         </Modal>
       )}
     </>

@@ -1,16 +1,30 @@
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import PropTypes from 'prop-types'
 
 import ErrorBoundary from '@components/ErrorBoundary'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false
+    }
+  }
+})
 
 const App = ({ Component, pageProps }) => {
   const Layout = Component.Layout || (({ children }) => children)
 
   return (
-    <Layout>
-      <ErrorBoundary>
-        <Component {...pageProps} />
-      </ErrorBoundary>
-    </Layout>
+    <QueryClientProvider client={queryClient}>
+      <Layout>
+        <ErrorBoundary>
+          <Component {...pageProps} />
+        </ErrorBoundary>
+      </Layout>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   )
 }
 

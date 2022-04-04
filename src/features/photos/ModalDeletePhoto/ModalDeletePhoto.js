@@ -1,20 +1,14 @@
+import { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import { ButtonPrimary, ButtonSecondary } from '@components/Buttons'
 import { Heading1 } from '@components/Headings'
 import Text from '@components/Text'
 
-import usePhotos from '@features/photos/usePhotos'
-
-const ModalDeletePhoto = ({ onClose, id }) => {
-  const [{ isProcessing }, { deletePhoto }] = usePhotos()
-
-  const onCancel = () => onClose()
-
-  const onConfirm = async () => {
-    await deletePhoto(id)
-    onClose()
-  }
+const ModalDeletePhoto = ({ onCancel, onConfirm, id, isProcessing }) => {
+  const onClickConfirm = useCallback(() => {
+    onConfirm(id)
+  }, [id, onConfirm])
 
   return (
     <>
@@ -22,7 +16,7 @@ const ModalDeletePhoto = ({ onClose, id }) => {
       <p>This action is irreversible</p>
       <Text align="right">
         <ButtonSecondary onClick={onCancel}> Cancel </ButtonSecondary>
-        <ButtonPrimary onClick={onConfirm} isLoading={isProcessing}>
+        <ButtonPrimary onClick={onClickConfirm} isLoading={isProcessing}>
           {' '}
           Yes{' '}
         </ButtonPrimary>
@@ -32,12 +26,16 @@ const ModalDeletePhoto = ({ onClose, id }) => {
 }
 
 ModalDeletePhoto.propTypes = {
-  onClose: PropTypes.func,
-  id: PropTypes.number.isRequired
+  onCancel: PropTypes.func,
+  onConfirm: PropTypes.func,
+  id: PropTypes.number.isRequired,
+  isProcessing: PropTypes.bool
 }
 
 ModalDeletePhoto.defaultProps = {
-  onClose: () => {}
+  onCancel: () => {},
+  onConfirm: () => {},
+  isProcessing: false
 }
 
 export default ModalDeletePhoto
