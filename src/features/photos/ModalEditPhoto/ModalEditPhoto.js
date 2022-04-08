@@ -1,35 +1,22 @@
-import { useEffect, useCallback, memo } from 'react'
+import { useCallback, memo } from 'react'
 import PropTypes from 'prop-types'
 
 import { Heading1 } from '@components/Headings'
-
 import FormPhoto from '../FormPhoto'
-import usePhotos from '@features/photos/usePhotos'
 
-const ModalEditPhoto = ({ id, onClose }) => {
-  const [{ data, detail, isProcessing }, { editPhoto, loadPhoto }] = usePhotos()
+import { usePhoto } from '@features/photos/usePhotos'
 
-  let photo = data?.find((p) => p.id == id)
-
-  if (!photo) {
-    photo = detail?.id == id ? detail : undefined
-  }
-
-  useEffect(() => {
-    if (!photo) {
-      loadPhoto(id)
-    }
-  }, [id, photo, loadPhoto])
+const ModalEditPhoto = ({ id, onSubmit, isProcessing }) => {
+  const { data: photo } = usePhoto(id)
 
   const handleSubmit = useCallback(
-    async (data) => {
-      await editPhoto(id, data)
-      onClose()
+    (data) => {
+      onSubmit({ id: id, data })
     },
-    [id, editPhoto, onClose]
+    [id, onSubmit]
   )
 
-  if (photo === undefined) return null
+  if (!photo) return null
 
   return (
     <>
@@ -41,11 +28,13 @@ const ModalEditPhoto = ({ id, onClose }) => {
 
 ModalEditPhoto.propTypes = {
   id: PropTypes.number.isRequired,
-  onClose: PropTypes.func
+  onSubmit: PropTypes.func,
+  isProcessing: PropTypes.bool
 }
 
 ModalEditPhoto.defaultProps = {
-  onClose: () => {}
+  onSubmit: () => {},
+  isProcessing: false
 }
 
 export default memo(ModalEditPhoto)

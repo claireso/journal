@@ -8,9 +8,6 @@ export const globalStyles = globalCss({
   '*, *:before, *:after': {
     boxSizing: 'inherit'
   },
-  'html, body': {
-    overflowX: 'hidden'
-  },
   a: {
     textDecoration: 'none'
   },
@@ -27,6 +24,7 @@ export const Main = styled('main', {
   gridTemplateColumns: 'repeat($gridColumnsXs, 1fr)',
   gridGap: '$8 $4',
   maxWidth: '$container',
+  overflowX: 'hidden',
   m: '0 auto',
   p: '$4',
   '@lg': {

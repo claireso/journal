@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react'
+import { useCallback } from 'react'
 import { useRouter } from 'next/router'
 import { styled } from '@theme'
 
@@ -7,7 +7,7 @@ import Pager from '@components/Pager'
 
 import Layout from '@features/client/Layout'
 import Welcome from '@features/client/Welcome'
-import usePhotos from '@features/photos/usePhotos'
+import { usePhotos } from '@features/photos/usePhotos'
 import ListPhotos from '@features/photos/ListPhotos'
 
 const PagerWrapper = styled('div', {
@@ -19,22 +19,19 @@ const PagerWrapper = styled('div', {
 })
 
 const Homepage = () => {
-  const [{ data, pager, isLoading }, { loadPhotos }] = usePhotos()
   const router = useRouter()
-  const { page } = router.query
+  const { page = '1' } = router.query
+  const { isFetched, isFetching, data } = usePhotos({ page }, { enabled: router.isReady })
 
-  useEffect(() => {
-    if (router.isReady) {
-      loadPhotos(page)
-    }
-  }, [page])
+  const navigate = useCallback(
+    (page) => {
+      router.push({ pathname: '/', query: { page } })
+      window.scrollTo(0, 0)
+    },
+    [router]
+  )
 
-  const navigate = useCallback((page) => {
-    router.push({ pathname: '/', query: { page } })
-    window.scrollTo(0, 0)
-  }, [])
-
-  if (isLoading) {
+  if (!isFetched || isFetching) {
     return (
       <LoaderWrapper>
         <Loader />
@@ -42,15 +39,15 @@ const Homepage = () => {
     )
   }
 
-  if (!data.length) {
+  if (!data.items.length) {
     return <Welcome />
   }
 
   return (
     <>
-      <ListPhotos photos={data} />
+      <ListPhotos photos={data.items} />
       <PagerWrapper>
-        <Pager navigate={navigate} {...pager} />
+        <Pager navigate={navigate} {...data.pager} />
       </PagerWrapper>
     </>
   )

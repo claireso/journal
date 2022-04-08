@@ -1,56 +1,60 @@
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 import ModalEditPhoto from './ModalEditPhoto'
 
-import { PhotosProvider } from '../usePhotos'
 import { MessagesProvider } from '../../messages/useMessages'
 
 import * as api from '@services/api'
 
 describe('<ModalEditPhoto />', () => {
-  const formatPhoto = (photo) => ({
-    ...photo,
-    source: `/uploads/${photo.source}`
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        cacheTime: Infinity
+      }
+    }
   })
 
-  const renderComponent = ({ detail, ...props } = {}) => {
-    const data = {
-      photos: {
-        items: global.__PHOTOS__.items.map(formatPhoto),
-        pager: global.__PHOTOS__.pager
-      },
-      isLoading: false,
-      isProcessing: false,
-      detail: detail || null
-    }
-
+  const renderComponent = (props = {}) => {
     return render(
-      <MessagesProvider>
-        <PhotosProvider value={data}>
+      <QueryClientProvider client={queryClient}>
+        <MessagesProvider>
           <ModalEditPhoto id={198} {...props} />
-        </PhotosProvider>
-      </MessagesProvider>
+        </MessagesProvider>
+      </QueryClientProvider>
     )
   }
 
   beforeEach(() => {
+    jest.spyOn(api, 'getPhoto').mockImplementation(() => new Promise((resolve) => resolve(global.__PHOTO__)))
     jest.spyOn(api, 'editPhoto')
-    jest.spyOn(api, 'getPhoto')
   })
 
   afterEach(() => {
     jest.clearAllMocks()
+    queryClient.clear()
+  })
+
+  it('should load photo', async () => {
+    const { asFragment } = renderComponent()
+
+    await waitFor(() => expect(api.getPhoto).toHaveBeenCalled())
+
+    expect(api.getPhoto.mock.calls[0][0]).toEqual(198)
+
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('should edit photo', async () => {
     const props = {
-      onClose: jest.fn()
+      onSubmit: jest.fn()
     }
 
-    const { asFragment } = renderComponent(props)
+    renderComponent(props)
 
-    expect(asFragment()).toMatchSnapshot()
-    expect(api.getPhoto).not.toHaveBeenCalled()
+    await waitFor(() => expect(api.getPhoto).toHaveBeenCalled())
 
     fireEvent.change(screen.getByLabelText(/title/i), {
       target: { value: 'Photo title' }
@@ -74,29 +78,6 @@ describe('<ModalEditPhoto />', () => {
 
     const formData = new FormData(document.querySelector('form'))
 
-    expect(api.editPhoto).toHaveBeenCalledWith(198, formData)
-
-    await waitFor(() => expect(props.onClose).toHaveBeenCalled())
-  })
-
-  it('should load photo', () => {
-    const props = {
-      id: 1
-    }
-
-    renderComponent(props)
-
-    expect(api.getPhoto).toHaveBeenCalledWith(1)
-  })
-
-  it('should display detail', () => {
-    const props = {
-      detail: global.__PHOTO__,
-      id: 1
-    }
-
-    const { asFragment } = renderComponent(props)
-
-    expect(asFragment()).toMatchSnapshot()
+    expect(props.onSubmit).toHaveBeenCalledWith({ id: 198, data: formData })
   })
 })

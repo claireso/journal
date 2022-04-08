@@ -4,7 +4,6 @@ import Head from 'next/head'
 import * as S from './Layout.styles'
 
 import { TranslationsProvider, getTranslations } from '@hooks/useTranslations'
-import { PhotosProvider } from '@features/photos/usePhotos'
 import { MessagesProvider } from '@features/messages/useMessages'
 
 import BannerOffline from '@features/banners/Offline'
@@ -50,9 +49,7 @@ const Layout = ({ children }) => {
         <BannerOffline />
         <BannerNotifications />
         <MessagesProvider>
-          <PhotosProvider>
-            <S.Main>{children}</S.Main>
-          </PhotosProvider>
+          <S.Main>{children}</S.Main>
         </MessagesProvider>
       </TranslationsProvider>
 

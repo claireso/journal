@@ -1,28 +1,15 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
-import { PhotosProvider } from '../usePhotos'
 import { MessagesProvider } from '../../messages/useMessages'
 import ModalDeletePhoto from './ModalDeletePhoto'
-
-import * as api from '@services/api'
 
 describe('<ModalDeletePhoto />', () => {
   const renderComponent = (props) =>
     render(
       <MessagesProvider>
-        <PhotosProvider>
-          <ModalDeletePhoto id={188} {...props} />
-        </PhotosProvider>
+        <ModalDeletePhoto id={188} {...props} />
       </MessagesProvider>
     )
-
-  beforeEach(() => {
-    jest.spyOn(api, 'deletePhoto')
-  })
-
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
 
   it('should render component', () => {
     const { asFragment } = renderComponent()
@@ -30,30 +17,27 @@ describe('<ModalDeletePhoto />', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should not delete photo', () => {
+  it('should not delete subscription', () => {
     const props = {
-      onClose: jest.fn()
+      onCancel: jest.fn()
     }
 
     renderComponent(props)
 
     fireEvent.click(screen.getByText('Cancel'))
 
-    expect(props.onClose).toHaveBeenCalled()
-    expect(api.deletePhoto).not.toHaveBeenCalled()
+    expect(props.onCancel).toHaveBeenCalled()
   })
 
-  it('should delete photo', async () => {
+  it('should delete subscription', async () => {
     const props = {
-      onClose: jest.fn()
+      onConfirm: jest.fn()
     }
 
     renderComponent(props)
 
     fireEvent.click(screen.getByText('Yes'))
 
-    expect(api.deletePhoto).toHaveBeenCalledWith(188)
-
-    await waitFor(() => expect(props.onClose).toHaveBeenCalled())
+    expect(props.onConfirm).toHaveBeenCalledWith(188)
   })
 })

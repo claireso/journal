@@ -1,8 +1,8 @@
-import { useEffect, useCallback } from 'react'
+import { useCallback } from 'react'
 import { useRouter } from 'next/router'
 
 import Layout from '@features/admin/Layout'
-import usePhotos from '@features/photos/usePhotos'
+import { usePhotos, useCreatePhoto, useEditPhoto, useDeletePhoto } from '@features/photos/usePhotos'
 import AdminListPhotos from '@features/photos/AdminListPhotos'
 import ModalDeletePhoto from '@features/photos/ModalDeletePhoto'
 import ModalCreatePhoto from '@features/photos/ModalCreatePhoto'
@@ -23,23 +23,24 @@ const ACTION_TYPES = {
 }
 
 const Photos = () => {
-  const [{ data, pager, isLoading }, { loadPhotos }] = usePhotos()
-
   const router = useRouter()
   let {
-    query: { page, action, id },
+    query: { page = '1', action, id },
     pathname
   } = router
 
-  if (id) {
-    id = Number(id)
-  }
+  id = parseInt(id, 10)
 
-  useEffect(() => {
-    if (router.isReady) {
-      loadPhotos(page)
-    }
-  }, [page, loadPhotos])
+  const filters = { page }
+
+  const {
+    isFetching,
+    data: { pager, items }
+  } = usePhotos(filters, { enabled: router.isReady })
+
+  const { mutate: createPhoto, isLoading: isCreating } = useCreatePhoto(filters)
+  const { mutate: editPhoto, isLoading: isEditing } = useEditPhoto(filters)
+  const { mutate: deletePhoto, isLoading: isDeleting } = useDeletePhoto(filters)
 
   const navigate = useCallback(
     (params = {}, options = {}) => {
@@ -51,8 +52,8 @@ const Photos = () => {
     [page]
   )
 
-  const onChangePage = (page) => navigate({ page }, { scroll: true })
-  const onCloseModal = () => navigate()
+  const onChangePage = useCallback((page) => navigate({ page }, { scroll: true }), [navigate])
+  const onCloseModal = useCallback(() => navigate(), [navigate])
 
   const onClickCreate = useCallback(() => {
     navigate({
@@ -80,6 +81,48 @@ const Photos = () => {
     [navigate]
   )
 
+  const onCreatePhoto = useCallback(
+    (data) => {
+      createPhoto(data, {
+        onSuccess() {
+          onCloseModal()
+          if (page !== '1') {
+            onChangePage(1)
+          }
+        },
+        onError(err) {
+          if (err?.response.status === 401) return // @TODO find a better way
+          onCloseModal()
+        }
+      })
+    },
+    [createPhoto, onCloseModal, page, onChangePage]
+  )
+
+  const onEditPhoto = useCallback(
+    (data) => {
+      editPhoto(data, {
+        onSettled(data, err) {
+          if (err?.response.status === 401) return
+          onCloseModal()
+        }
+      })
+    },
+    [editPhoto, onCloseModal]
+  )
+
+  const onDeletePhoto = useCallback(
+    (photoId) => {
+      deletePhoto(photoId, {
+        onSettled(data, err) {
+          if (err?.response.status === 401) return
+          onCloseModal()
+        }
+      })
+    },
+    [deletePhoto, onCloseModal]
+  )
+
   return (
     <>
       <ListHeader>
@@ -90,30 +133,30 @@ const Photos = () => {
         </ButtonPrimary>
       </ListHeader>
 
-      {isLoading ? (
+      {isFetching ? (
         <Loader />
       ) : (
         <>
-          <AdminListPhotos photos={data} onEdit={onClickEdit} onDelete={onClickDelete} />
+          <AdminListPhotos photos={items} onEdit={onClickEdit} onDelete={onClickDelete} />
           <Pager {...pager} navigate={onChangePage} />
         </>
       )}
 
       {action === ACTION_TYPES.CREATE && (
         <Modal onClose={onCloseModal}>
-          <ModalCreatePhoto />
+          <ModalCreatePhoto onSubmit={onCreatePhoto} isProcessing={isCreating} />
         </Modal>
       )}
 
       {action === ACTION_TYPES.EDIT && (
         <Modal onClose={onCloseModal}>
-          <ModalEditPhoto id={id} />
+          <ModalEditPhoto id={id} onSubmit={onEditPhoto} isProcessing={isEditing} />
         </Modal>
       )}
 
       {action === ACTION_TYPES.DELETE && (
         <Modal onClose={onCloseModal}>
-          <ModalDeletePhoto id={id} />
+          <ModalDeletePhoto id={id} onConfirm={onDeletePhoto} isProcessing={isDeleting} />
         </Modal>
       )}
     </>
