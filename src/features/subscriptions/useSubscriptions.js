@@ -1,107 +1,63 @@
-import React, { useState, useContext, useCallback } from 'react'
-import PropTypes from 'prop-types'
+import { useQuery, useQueryClient, useMutation } from 'react-query'
 
 import * as api from '@services/api'
 import useMessages from '@features/messages/useMessages'
 
-let currentRequest = null
-
-const SubscriptionsContext = React.createContext()
-
 const initialState = {
-  subscriptions: {},
-  isLoading: true,
-  isProcessing: false
+  items: [],
+  pager: {}
 }
 
-const useSubscriptionsContext = () => {
-  const context = useContext(SubscriptionsContext)
+const CACHE_KEY_LIST = 'subscriptions'
 
-  if (context === undefined) {
-    throw new Error('useSubscriptionsContext must be used within a SubscriptionsProvider')
+/**
+ * Delete subscription and update cache
+ * @returns object
+ */
+export const useDeleteSubscription = (filters) => {
+  const queryClient = useQueryClient()
+  const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
+
+  return useMutation((id) => api.deleteSubscription(id), {
+    onSuccess(data, id) {
+      queryClient.setQueryData([CACHE_KEY_LIST, filters], (subscriptions) => ({
+        items: subscriptions.items.filter((subscription) => subscription.id !== id),
+        pager: {
+          ...subscriptions.pager,
+          count: subscriptions.pager.count - 1
+        }
+      }))
+      displaySuccessMessage({
+        key: 'CRUD_SUBSCRIPTION',
+        message: 'Your subscription has been deleted successfully'
+      })
+    },
+    onError() {
+      displayErrorMessage({
+        key: 'CRUD_SUBSCRIPTION',
+        message: 'An error has occured during the deletion. Please retry'
+      })
+    }
+  })
+}
+
+/**
+ * Fetch subscriptions
+ * @param {object} queries
+ * @param {object} options
+ * @returns object
+ */
+export const useSubscriptions = (filters = { page: '1' }, options = {}) => {
+  const getSubscriptions = async ({ signal }) => {
+    const response = await api.getSubscriptions(filters.page, { signal })
+    return response
   }
 
-  return context
+  const queryOptions = {
+    placeholderData: initialState,
+    useErrorBoundary: true,
+    ...options
+  }
+
+  return useQuery([CACHE_KEY_LIST, filters], getSubscriptions, queryOptions)
 }
-
-export const SubscriptionsProvider = ({ value = initialState, children }) => {
-  const [state, setState] = useState(value)
-
-  return <SubscriptionsContext.Provider value={[state, setState]}>{children}</SubscriptionsContext.Provider>
-}
-
-SubscriptionsProvider.propTypes = {
-  children: PropTypes.any,
-  value: PropTypes.object
-}
-
-const useSubscriptions = () => {
-  const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
-  const [state, setState] = useSubscriptionsContext()
-  const { subscriptions, isLoading, isProcessing } = state
-
-  const updateState = (newState) => setState({ ...state, ...newState })
-
-  const loadSubscriptions = useCallback(async (page = 1) => {
-    if (currentRequest) {
-      currentRequest.abort()
-    }
-
-    currentRequest = api.getSubscriptions(page)
-
-    try {
-      const response = await currentRequest.ready
-      currentRequest = null
-      updateState({
-        subscriptions: {
-          ...response
-        },
-        isLoading: false
-      })
-    } catch {
-      updateState({ isLoading: false })
-    }
-  }, [])
-
-  const deleteSubscription = useCallback(async (id) => {
-    try {
-      updateState({ isProcessing: true })
-      await api.deleteSubscription(id).ready
-      updateState({
-        isProcessing: false,
-        subscriptions: {
-          items: subscriptions.items.filter((subscription) => subscription.id !== id),
-          pager: {
-            ...subscriptions.pager,
-            count: subscriptions.pager.count - 1
-          }
-        }
-      })
-      displaySuccessMessage({
-        message: 'Your subscription has been deleted successfully',
-        key: 'CRUD_SUBSCRIPTION'
-      })
-    } catch {
-      updateState({ isProcessing: false })
-      displayErrorMessage({
-        message: 'An error has occured during the deletion. Please retry',
-        key: 'CRUD_SUBSCRIPTION'
-      })
-    }
-  }, [])
-
-  return [
-    {
-      data: subscriptions.items,
-      pager: subscriptions.pager,
-      isLoading,
-      isProcessing
-    },
-    {
-      loadSubscriptions,
-      deleteSubscription
-    }
-  ]
-}
-
-export default useSubscriptions

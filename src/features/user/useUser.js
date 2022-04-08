@@ -37,7 +37,7 @@ const useUser = () => {
 
   const getMe = useCallback(async () => {
     try {
-      const user = await api.getMe().ready
+      const user = await api.getMe()
       updateState({ user, isLoading: false })
     } catch {
       updateState({ isLoading: false })
@@ -47,8 +47,8 @@ const useUser = () => {
   const login = useCallback(async (data) => {
     try {
       updateState({ isProcessing: true })
-      await api.login(data).ready
-      const user = await api.getMe().ready
+      await api.login(data)
+      const user = await api.getMe()
 
       updateState({ user, isProcessing: false })
 
@@ -66,7 +66,7 @@ const useUser = () => {
 
   const logout = useCallback(async () => {
     try {
-      await api.logout().ready
+      await api.logout()
       updateState({ user: null })
     } catch (err) {
       logger(err)

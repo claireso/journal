@@ -1,20 +1,14 @@
+import { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import { ButtonPrimary, ButtonSecondary } from '@components/Buttons'
 import { Heading1 } from '@components/Headings'
 import Text from '@components/Text'
 
-import useSubscriptions from '@features/subscriptions/useSubscriptions'
-
-const ModalDeleteSubscription = ({ onClose, id }) => {
-  const [{ isProcessing }, { deleteSubscription }] = useSubscriptions()
-
-  const onCancel = () => onClose()
-
-  const onConfirm = async () => {
-    await deleteSubscription(id)
-    onClose()
-  }
+const ModalDeleteSubscription = ({ onConfirm, onCancel, isProcessing, id }) => {
+  const onClickConfirm = useCallback(() => {
+    onConfirm(id)
+  }, [id, onConfirm])
 
   return (
     <>
@@ -22,7 +16,7 @@ const ModalDeleteSubscription = ({ onClose, id }) => {
       <p>This action is irreversible</p>
       <Text align="right">
         <ButtonSecondary onClick={onCancel}> Cancel </ButtonSecondary>
-        <ButtonPrimary onClick={onConfirm} isLoading={isProcessing}>
+        <ButtonPrimary onClick={onClickConfirm} isLoading={isProcessing}>
           {' '}
           Yes{' '}
         </ButtonPrimary>
@@ -33,11 +27,15 @@ const ModalDeleteSubscription = ({ onClose, id }) => {
 
 ModalDeleteSubscription.propTypes = {
   id: PropTypes.number.isRequired,
-  onClose: PropTypes.func
+  onCancel: PropTypes.func,
+  onConfirm: PropTypes.func,
+  isProcessing: PropTypes.bool
 }
 
 ModalDeleteSubscription.defaultProps = {
-  onClose: () => {}
+  onCancel: () => {},
+  onConfirm: () => {},
+  isProcessing: false
 }
 
 export default ModalDeleteSubscription

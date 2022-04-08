@@ -1,30 +1,17 @@
-import { screen, render, fireEvent, act, waitFor } from '@testing-library/react'
+import { screen, render, fireEvent, act } from '@testing-library/react'
 
 import ModalCreatePhoto from './ModalCreatePhoto'
 
-import { PhotosProvider } from '../usePhotos'
 import { MessagesProvider } from '../../messages/useMessages'
-
-import * as api from '@services/api'
 
 describe('<ModalCreatePhoto />', () => {
   const renderComponent = (props = {}) => {
     return render(
       <MessagesProvider>
-        <PhotosProvider>
-          <ModalCreatePhoto {...props} />
-        </PhotosProvider>
+        <ModalCreatePhoto {...props} />
       </MessagesProvider>
     )
   }
-
-  beforeEach(() => {
-    jest.spyOn(api, 'createPhoto')
-  })
-
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
 
   it('should render component', () => {
     const { asFragment } = renderComponent()
@@ -34,7 +21,7 @@ describe('<ModalCreatePhoto />', () => {
 
   it('should create photo', async () => {
     const props = {
-      onClose: jest.fn()
+      onSubmit: jest.fn()
     }
 
     renderComponent(props)
@@ -64,7 +51,6 @@ describe('<ModalCreatePhoto />', () => {
 
     const formData = new FormData(document.querySelector('form'))
 
-    expect(api.createPhoto).toHaveBeenCalledWith(formData)
-    await waitFor(() => expect(props.onClose).toHaveBeenCalled())
+    expect(props.onSubmit).toHaveBeenCalledWith(formData)
   })
 })

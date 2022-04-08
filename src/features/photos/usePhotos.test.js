@@ -1,34 +1,33 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react-hooks'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-import usePhotos, { PhotosProvider } from './usePhotos'
+import { usePhotos, usePhoto, useCreatePhoto, useDeletePhoto, useEditPhoto } from './usePhotos'
 import { MessagesProvider } from '../messages/useMessages'
+import ErrorBoundary from '@components/ErrorBoundary'
 
 import * as api from '@services/api'
 
 describe('usePhotos', () => {
-  const render = (context = {}) =>
-    renderHook(() => usePhotos(), {
-      wrapper: ({ children }) => (
-        <MessagesProvider>
-          <PhotosProvider value={context.photos}>{children}</PhotosProvider>
-        </MessagesProvider>
-      )
-    })
+  const FILTERS = { page: '1' }
 
-  const renderWithPhotos = () =>
-    render({
-      photos: {
-        photos: {
-          items: global.__PHOTOS__.items.map((photo) => ({ ...photo, source: `/uploads/${photo.source}` })),
-          pager: global.__PHOTOS__.pager
-        },
-        isLoading: false,
-        isProcessing: false,
-        detail: null
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        cacheTime: Infinity
       }
-    })
+    }
+  })
+
+  const wrapper = ({ children }) => (
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <MessagesProvider>{children}</MessagesProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
+  )
 
   const formatPhoto = (photo) => ({
     ...photo,
@@ -36,298 +35,183 @@ describe('usePhotos', () => {
   })
 
   const bindApiError = (method) => {
-    jest.spyOn(api, method).mockImplementation(() => ({
-      ready: new Promise((resolve, reject) => reject(new Error('Server error')))
-    }))
+    jest
+      .spyOn(api, method)
+      .mockImplementation(() => new Promise((resolve, reject) => reject(new Error('Server error'))))
   }
 
   beforeEach(() => {
-    jest.spyOn(api, 'getPhotos').mockImplementation(() => ({
-      ready: new Promise((resolve) => resolve(global.__PHOTOS__))
-    }))
+    jest.spyOn(api, 'getPhotos').mockImplementation(() => new Promise((resolve) => resolve(global.__PHOTOS__)))
 
-    jest.spyOn(api, 'getPhoto').mockImplementation(() => ({
-      ready: new Promise((resolve) => resolve(global.__PHOTO__))
-    }))
+    jest.spyOn(api, 'getPhoto').mockImplementation(() => new Promise((resolve) => resolve(global.__PHOTO__)))
 
-    jest.spyOn(api, 'deletePhoto').mockImplementation((id) => ({
-      ready: new Promise((resolve) => resolve({ id }))
-    }))
+    jest.spyOn(api, 'deletePhoto').mockImplementation((id) => new Promise((resolve) => resolve({ id })))
 
-    jest.spyOn(api, 'createPhoto').mockImplementation((photo) => ({
-      ready: new Promise((resolve) => resolve(photo))
-    }))
+    jest.spyOn(api, 'createPhoto').mockImplementation((photo) => new Promise((resolve) => resolve(photo)))
 
-    jest.spyOn(api, 'editPhoto').mockImplementation((id, photo) => ({
-      ready: new Promise((resolve) => resolve(photo))
-    }))
+    jest.spyOn(api, 'editPhoto').mockImplementation((id, photo) => new Promise((resolve) => resolve(photo)))
   })
 
-  it('should display error `missing MessagesProvider`', () => {
-    const { result } = renderHook(() => usePhotos())
-
-    expect(result.error.message).toEqual('useMessagesContext must be used within a MessagesProvider')
+  afterEach(() => {
+    jest.clearAllMocks()
+    queryClient.clear()
   })
 
-  it('should display error `missing PhotosProvider`', () => {
-    const { result } = renderHook(() => usePhotos(), {
-      wrapper: ({ children }) => <MessagesProvider>{children}</MessagesProvider>
-    })
+  it('should init data', () => {
+    const { result } = renderHook(() => usePhotos(FILTERS, { enabled: false }), { wrapper })
 
-    expect(result.error.message).toEqual('usePhotosContext must be used within a PhotosProvider')
-  })
-
-  it('should init reducer', () => {
-    const { result } = render()
-
-    const [reducer] = result.current
-
-    expect(reducer).toEqual({
-      data: undefined,
-      pager: undefined,
-      isLoading: true,
-      isProcessing: false,
-      detail: null
-    })
+    expect(result.current.data).toEqual({ items: [], pager: {} })
   })
 
   it('should load photos', async () => {
-    const { result, waitForNextUpdate } = render()
+    const { result, waitFor } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    let [reducer, actions] = result.current
+    await waitFor(() => !result.current.isFetching)
 
-    actions.loadPhotos()
-
-    await waitForNextUpdate()
-
-    reducer = result.current[0]
-
-    expect(reducer).toEqual({
-      data: global.__PHOTOS__.items.map(formatPhoto),
-      pager: global.__PHOTOS__.pager,
-      isLoading: false,
-      isProcessing: false,
-      detail: null
-    })
-  })
-
-  it('should not load photos', async () => {
-    bindApiError('getPhotos')
-
-    const { result, waitForNextUpdate } = render()
-
-    let [reducer, actions] = result.current
-
-    actions.loadPhotos()
-
-    await waitForNextUpdate()
-
-    reducer = result.current[0]
-
-    expect(reducer).toEqual({
-      data: undefined,
-      pager: undefined,
-      isLoading: false,
-      isProcessing: false,
-      detail: null
+    expect(result.current.data).toEqual({
+      items: global.__PHOTOS__.items.map(formatPhoto),
+      pager: global.__PHOTOS__.pager
     })
   })
 
   it('should delete photo', async () => {
-    const { result, waitForValueToChange } = renderWithPhotos()
+    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    let [reducer, actions] = result.current
+    await waitForQuery(() => !resultQuery.current.isFetching)
 
-    act(() => {
-      actions.deletePhoto(198)
+    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useDeletePhoto(FILTERS), {
+      wrapper
     })
 
-    await waitForValueToChange(() => {
-      return result.current[0].pager.count
-    })
+    resultMutation.current.mutate(198)
 
-    reducer = result.current[0]
+    await waitForMutation(() => resultMutation.current.isSuccess)
 
-    expect(reducer).toEqual({
-      data: [formatPhoto(global.__PHOTOS__.items[0])],
-      pager: {
-        ...global.__PHOTOS__.pager,
-        count: 183
-      },
-      isLoading: false,
-      isProcessing: false,
-      detail: null
-    })
+    expect(resultQuery.current.data.items).toHaveLength(1)
+    expect(resultQuery.current.data.items[0].id).not.toEqual(198)
+    expect(resultQuery.current.data.pager.count).toEqual(183)
   })
 
   it('should not delete photo', async () => {
+    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+
+    await waitForQuery(() => !resultQuery.current.isFetching)
+
     bindApiError('deletePhoto')
 
-    const { result, waitForValueToChange } = renderWithPhotos()
-
-    let [reducer, actions] = result.current
-
-    act(() => {
-      actions.deletePhoto(198)
+    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useDeletePhoto(FILTERS), {
+      wrapper
     })
 
-    await waitForValueToChange(() => {
-      return result.current[0].isProcessing
-    })
+    resultMutation.current.mutate(198)
 
-    reducer = result.current[0]
+    await waitForMutation(() => resultMutation.current.isError)
 
-    expect(reducer).toEqual({
-      data: global.__PHOTOS__.items.map(formatPhoto),
-      pager: global.__PHOTOS__.pager,
-      isLoading: false,
-      isProcessing: false,
-      detail: null
-    })
+    expect(resultQuery.current.data.items).toHaveLength(2)
+    expect(resultQuery.current.data.pager.count).toEqual(184)
   })
 
   it('should create photo', async () => {
-    const { result, waitForValueToChange } = renderWithPhotos()
+    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    let [reducer, actions] = result.current
+    await waitForQuery(() => !resultQuery.current.isFetching)
 
-    act(() => {
-      actions.createPhoto(global.__PHOTO__)
+    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useCreatePhoto(FILTERS), {
+      wrapper
     })
 
-    await waitForValueToChange(() => {
-      return result.current[0].pager.count
-    })
+    resultMutation.current.mutate(global.__PHOTO__)
 
-    reducer = result.current[0]
+    await waitForMutation(() => resultMutation.current.isSuccess)
 
-    expect(reducer).toEqual({
-      data: [formatPhoto(global.__PHOTO__), ...global.__PHOTOS__.items.map(formatPhoto)],
-      pager: {
-        ...global.__PHOTOS__.pager,
-        count: 185
-      },
-      isLoading: false,
-      isProcessing: false,
-      detail: null
-    })
+    expect(resultQuery.current.data.items).toHaveLength(3)
+    expect(resultQuery.current.data.items[0]).toEqual(formatPhoto(global.__PHOTO__))
+    expect(resultQuery.current.data.pager.count).toEqual(185)
   })
 
   it('should not create photo', async () => {
+    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+
+    await waitForQuery(() => !resultQuery.current.isFetching)
+
     bindApiError('createPhoto')
 
-    const { result, waitForValueToChange } = renderWithPhotos()
-
-    let [reducer, actions] = result.current
-
-    act(() => {
-      actions.createPhoto(global.__PHOTO__)
+    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useCreatePhoto(FILTERS), {
+      wrapper
     })
 
-    await waitForValueToChange(() => {
-      return result.current[0].isProcessing
-    })
+    resultMutation.current.mutate(global.__PHOTO__)
 
-    reducer = result.current[0]
+    await waitForMutation(() => resultMutation.current.isError)
 
-    expect(reducer).toEqual({
-      data: global.__PHOTOS__.items.map(formatPhoto),
-      pager: global.__PHOTOS__.pager,
-      isLoading: false,
-      isProcessing: false,
-      detail: null
-    })
+    expect(resultQuery.current.data.items).toHaveLength(2)
+    expect(resultQuery.current.data.pager.count).toEqual(184)
   })
 
   it('should edit photo', async () => {
-    const { result, waitForValueToChange } = renderWithPhotos()
+    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    let [reducer, actions] = result.current
+    await waitForQuery(() => !resultQuery.current.isFetching)
 
-    act(() => {
-      actions.editPhoto(198, global.__PHOTO__)
+    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useEditPhoto(FILTERS), {
+      wrapper
     })
 
-    await waitForValueToChange(() => {
-      return result.current[0].data
-    })
+    resultMutation.current.mutate({ id: 198, data: global.__PHOTO__ })
 
-    reducer = result.current[0]
+    await waitForMutation(() => resultMutation.current.isSuccess)
 
-    expect(reducer).toEqual({
-      data: [formatPhoto(global.__PHOTOS__.items[0]), formatPhoto(global.__PHOTO__)],
-      pager: global.__PHOTOS__.pager,
-      isLoading: false,
-      isProcessing: false,
-      detail: null
-    })
+    expect(resultQuery.current.data.items).toHaveLength(2)
+    expect(resultQuery.current.data.pager.count).toEqual(184)
+    expect(resultQuery.current.data.items).toEqual([
+      formatPhoto(global.__PHOTOS__.items[0]),
+      formatPhoto(global.__PHOTO__)
+    ])
   })
 
   it('should not edit photo', async () => {
+    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+
+    await waitForQuery(() => !resultQuery.current.isFetching)
+
     bindApiError('editPhoto')
 
-    const { result, waitForValueToChange } = renderWithPhotos()
-
-    let [reducer, actions] = result.current
-
-    act(() => {
-      actions.editPhoto(198, global.__PHOTO__)
+    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useEditPhoto(FILTERS), {
+      wrapper
     })
 
-    await waitForValueToChange(() => {
-      return result.current[0].isProcessing
-    })
+    resultMutation.current.mutate({ id: 198, data: global.__PHOTO__ })
 
-    reducer = result.current[0]
+    await waitForMutation(() => resultMutation.current.isError)
 
-    expect(reducer).toEqual({
-      data: global.__PHOTOS__.items.map(formatPhoto),
-      pager: global.__PHOTOS__.pager,
-      isLoading: false,
-      isProcessing: false,
-      detail: null
-    })
+    expect(resultQuery.current.data.items).toHaveLength(2)
+    expect(resultQuery.current.data.pager.count).toEqual(184)
+    expect(resultQuery.current.data.items).toEqual(global.__PHOTOS__.items.map(formatPhoto))
   })
 
-  it('should load photo', async () => {
-    const { result, waitForNextUpdate } = renderWithPhotos()
+  it('should load photo from cache', async () => {
+    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    let [reducer, actions] = result.current
+    await waitForQuery(() => !resultQuery.current.isFetching)
 
-    actions.loadPhoto(199)
-
-    await waitForNextUpdate()
-
-    reducer = result.current[0]
-
-    expect(reducer).toEqual({
-      data: global.__PHOTOS__.items.map(formatPhoto),
-      pager: global.__PHOTOS__.pager,
-      isLoading: false,
-      isProcessing: false,
-      detail: formatPhoto(global.__PHOTO__)
+    const { result: resultPhoto, waitFor: waitForPhoto } = renderHook(() => usePhoto(198, { enabled: false }), {
+      wrapper
     })
+
+    await waitForPhoto(() => resultPhoto.current.isSuccess)
+
+    expect(resultPhoto.current.data.id).toEqual(198)
   })
 
-  it('should not load photo', async () => {
-    bindApiError('getPhoto')
+  it('should load photo from server', async () => {
+    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    const { result, waitForNextUpdate } = renderWithPhotos()
+    await waitForQuery(() => !resultQuery.current.isFetching)
 
-    let [reducer, actions] = result.current
+    const { result: resultPhoto, waitFor: waitForPhoto } = renderHook(() => usePhoto(1), { wrapper })
 
-    actions.loadPhoto(199)
+    await waitForPhoto(() => resultPhoto.current.isSuccess)
 
-    await waitForNextUpdate()
-
-    reducer = result.current[0]
-
-    expect(reducer).toEqual({
-      data: global.__PHOTOS__.items.map(formatPhoto),
-      pager: global.__PHOTOS__.pager,
-      isLoading: false,
-      isProcessing: false,
-      detail: null
-    })
+    expect(resultPhoto.current.data.id).toEqual(1)
   })
 })

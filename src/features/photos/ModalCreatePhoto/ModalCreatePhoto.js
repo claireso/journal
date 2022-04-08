@@ -4,30 +4,23 @@ import PropTypes from 'prop-types'
 import { Heading2 } from '@components/Headings'
 import FormPhoto from '../FormPhoto'
 
-import usePhotos from '../usePhotos'
-
-const ModalCreatePhoto = ({ onClose }) => {
-  const [{ isProcessing }, { createPhoto }] = usePhotos()
-
-  const handleSubmit = async (data) => {
-    await createPhoto(data)
-    onClose()
-  }
-
+const ModalCreatePhoto = ({ onSubmit, isProcessing }) => {
   return (
     <>
       <Heading2>Create a photo</Heading2>
-      <FormPhoto onSubmit={handleSubmit} isProcessing={isProcessing} />
+      <FormPhoto onSubmit={onSubmit} isProcessing={isProcessing} />
     </>
   )
 }
 
 ModalCreatePhoto.propTypes = {
-  onClose: PropTypes.func
+  onSubmit: PropTypes.func,
+  isProcessing: PropTypes.bool
 }
 
 ModalCreatePhoto.defaultProps = {
-  onClose: () => {}
+  onSubmit: () => {},
+  isProcessing: false
 }
 
 export default memo(ModalCreatePhoto)

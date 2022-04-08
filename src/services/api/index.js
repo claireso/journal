@@ -16,9 +16,9 @@ export const logout = () => requester.post('/logout')
 
 export const getMe = () => requester.get('/me')
 
-export const getPhotos = (page) => requester.get('/photos', { page })
+export const getPhotos = (page, options) => requester.get('/photos', { page }, options)
 
-export const getPhoto = (id) => requester.get(`/photos/${id}`)
+export const getPhoto = (id, options) => requester.get(`/photos/${id}`, options)
 
 export const createPhoto = (data) => requester.post('/photos', data)
 
@@ -26,6 +26,6 @@ export const deletePhoto = (id) => requester.del(`/photos/${id}`)
 
 export const editPhoto = (id, data) => requester.patch(`/photos/${id}`, data)
 
-export const getSubscriptions = (page) => requester.get('/subscriptions', { page: page })
+export const getSubscriptions = (page, options) => requester.get('/subscriptions', { page: page }, options)
 
 export const deleteSubscription = (id) => requester.del(`/subscriptions/${id}`)

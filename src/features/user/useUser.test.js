@@ -14,23 +14,13 @@ describe('useUser', () => {
     })
 
   const bindApiError = (method, err = {}) => {
-    jest.spyOn(api, method).mockImplementation(() => ({
-      ready: new Promise((resolve, reject) => reject(err))
-    }))
+    jest.spyOn(api, method).mockImplementation(() => new Promise((resolve, reject) => reject(err)))
   }
 
   beforeEach(() => {
-    jest.spyOn(api, 'getMe').mockImplementation(() => ({
-      ready: new Promise((resolve) => resolve(global.__USER__))
-    }))
-
-    jest.spyOn(api, 'login').mockImplementation(() => ({
-      ready: new Promise((resolve) => resolve())
-    }))
-
-    jest.spyOn(api, 'logout').mockImplementation(() => ({
-      ready: new Promise((resolve) => resolve())
-    }))
+    jest.spyOn(api, 'getMe').mockImplementation(() => new Promise((resolve) => resolve(global.__USER__)))
+    jest.spyOn(api, 'login').mockImplementation(() => new Promise((resolve) => resolve()))
+    jest.spyOn(api, 'logout').mockImplementation(() => new Promise((resolve) => resolve()))
 
     Router.push = jest.fn()
     jest.spyOn(window, 'alert')
