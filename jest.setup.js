@@ -1,11 +1,8 @@
 import '@testing-library/jest-dom/extend-expect'
-import { enableMocks } from 'jest-fetch-mock'
 import * as dotenv from 'dotenv'
 import { setLogger } from 'react-query'
 
 dotenv.config({ path: './.env.test' })
-
-enableMocks()
 
 window.scroll = () => {}
 window.scrollTo = () => {}
