@@ -1,50 +1,15 @@
 {
-  "env": {
-    "browser": true,
-    "es2020": true,
-    "serviceworker": true,
-    "node": true,
-    "jest": true,
-    "cypress/globals": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
+  "extends":[
+    "next/core-web-vitals",
     "prettier",
     "plugin:prettier/recommended",
     "plugin:cypress/recommended"
   ],
-  "parser": "@babel/eslint-parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "requireConfigFile": false,
-    "babelOptions": {
-      "presets": [
-        "next/babel"
-      ]
-    }
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
   "plugins": [
-    "react",
     "cypress"
   ],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "prettier/prettier": "error",
-    "cypress/no-assigning-return-values": "error",
-    "cypress/no-unnecessary-waiting": "error",
-    "cypress/assertion-before-screenshot": "warn",
-    "cypress/no-force": "warn",
-    "cypress/no-async-tests": "error"
+    "@next/next/no-img-element": "off",
+    "prettier/prettier": "error"
   }
 }

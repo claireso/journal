@@ -1,12 +1,14 @@
 import React from 'react'
 import AnimatedImage from './index'
 
-export default {
+const params = {
   title: 'Components/AnimatedImage',
   decorators: [
     (storyFn) => <div style={{ maxWidth: '500px', display: 'flex', flexDirection: 'column' }}>{storyFn()}</div>
   ]
 }
+
+export default params
 
 const Template = (args) => <AnimatedImage {...args} width="100%" />
 

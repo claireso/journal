@@ -2,9 +2,11 @@ import React from 'react'
 
 import Select from './index'
 
-export default {
+const params = {
   title: 'Form/Select'
 }
+
+export default params
 
 const options = [
   {

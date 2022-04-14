@@ -2,9 +2,11 @@ import React, { Fragment } from 'react'
 
 import * as Headings from './index'
 
-export default {
+const params = {
   title: 'Components/Headings'
 }
+
+export default params
 
 export const Basic = () => (
   <Fragment>

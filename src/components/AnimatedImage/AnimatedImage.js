@@ -25,7 +25,7 @@ const AnimatedImage = ({ src, ...props }) => {
 
   if (!loaded) return null
 
-  return <img ref={dom} src={src} {...props} style={{ opacity: 0 }} />
+  return <img ref={dom} alt="" src={src} {...props} style={{ opacity: 0 }} />
 }
 
 AnimatedImage.propTypes = {

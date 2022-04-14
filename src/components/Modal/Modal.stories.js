@@ -5,10 +5,12 @@ import Modal from './index'
 import Toolbar from '../Toolbar'
 import { ButtonPrimary } from '../Buttons'
 
-export default {
+const params = {
   title: 'Components/Modal',
   decorators: [(storyFn) => <div style={{ margin: '-8px' }}>{storyFn()}</div>]
 }
+
+export default params
 
 export const Basic = () => {
   const [isOpen, setOpen] = useState(false)
