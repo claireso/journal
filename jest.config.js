@@ -15,7 +15,7 @@ module.exports = {
   // ],
   // temp waiting next swc transforms
   transform: {
-    '^.+\\.(js|jsx)$': [
+    '^.+\\.(js|jsx|ts|tsx)$': [
       'babel-jest',
       {
         presets: ['next/babel'],

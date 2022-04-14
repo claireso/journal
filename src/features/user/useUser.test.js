@@ -14,7 +14,13 @@ describe('useUser', () => {
     })
 
   const bindApiError = (method, err = {}) => {
-    jest.spyOn(api, method).mockImplementation(() => new Promise((resolve, reject) => reject(err)))
+    jest.spyOn(api, method).mockImplementation(
+      () =>
+        new Promise((resolve, reject) => {
+          const ApiError = api.getErrorConstructor()
+          reject(new ApiError(err))
+        })
+    )
   }
 
   beforeEach(() => {
@@ -28,12 +34,6 @@ describe('useUser', () => {
 
   afterEach(() => {
     jest.clearAllMocks()
-  })
-
-  it('should display error `missing UserProvider`', () => {
-    const { result } = renderHook(() => useUser())
-
-    expect(result.error.message).toEqual('useUserContext must be used within a UserProvider')
   })
 
   it('should init reducer', () => {
@@ -108,7 +108,7 @@ describe('useUser', () => {
   })
 
   it('should not log in user (error 401)', async () => {
-    bindApiError('login', { response: { status: 401 } })
+    bindApiError('login', { status: 401 })
 
     const { result, waitForNextUpdate } = render()
 
@@ -128,7 +128,7 @@ describe('useUser', () => {
   })
 
   it('should not log in user (error 422)', async () => {
-    bindApiError('login', { response: { status: 422 } })
+    bindApiError('login', { status: 422 })
 
     const { result, waitForNextUpdate } = render()
 
@@ -148,7 +148,7 @@ describe('useUser', () => {
   })
 
   it('should not log in user (error 500)', async () => {
-    bindApiError('login', { response: { status: 500 } })
+    bindApiError('login', { status: 500 })
 
     const { result, waitForNextUpdate } = render()
 

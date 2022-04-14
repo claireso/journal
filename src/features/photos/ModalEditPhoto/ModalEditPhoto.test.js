@@ -44,6 +44,8 @@ describe('<ModalEditPhoto />', () => {
 
     expect(api.getPhoto.mock.calls[0][0]).toEqual(198)
 
+    console.log(asFragment())
+
     expect(asFragment()).toMatchSnapshot()
   })
 

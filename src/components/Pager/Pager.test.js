@@ -41,10 +41,10 @@ describe('<Pager />', () => {
     expect(asFragment()).toMatchSnapshot()
 
     fireEvent.click(screen.getByTitle('Next page'))
-    expect(props.navigate).toHaveBeenCalledWith(2)
+    expect(props.navigate).toHaveBeenCalledWith('2')
 
     fireEvent.click(screen.getByTitle('Last page'))
-    expect(props.navigate).toHaveBeenCalledWith(19)
+    expect(props.navigate).toHaveBeenCalledWith('19')
   })
 
   it('should render second page', () => {
@@ -61,16 +61,16 @@ describe('<Pager />', () => {
     expect(asFragment()).toMatchSnapshot()
 
     fireEvent.click(screen.getByTitle('First page'))
-    expect(props.navigate).toHaveBeenCalledWith(1)
+    expect(props.navigate).toHaveBeenCalledWith('1')
 
     fireEvent.click(screen.getByTitle('Previous page'))
-    expect(props.navigate).toHaveBeenCalledWith(1)
+    expect(props.navigate).toHaveBeenCalledWith('1')
 
     fireEvent.click(screen.getByTitle('Next page'))
-    expect(props.navigate).toHaveBeenCalledWith(2)
+    expect(props.navigate).toHaveBeenCalledWith('2')
 
     fireEvent.click(screen.getByTitle('Last page'))
-    expect(props.navigate).toHaveBeenCalledWith(19)
+    expect(props.navigate).toHaveBeenCalledWith('19')
   })
 
   it('should render last page', () => {
@@ -85,9 +85,9 @@ describe('<Pager />', () => {
     expect(asFragment()).toMatchSnapshot()
 
     fireEvent.click(screen.getByTitle('First page'))
-    expect(props.navigate).toHaveBeenCalledWith(1)
+    expect(props.navigate).toHaveBeenCalledWith('1')
 
     fireEvent.click(screen.getByTitle('Previous page'))
-    expect(props.navigate).toHaveBeenCalledWith(1)
+    expect(props.navigate).toHaveBeenCalledWith('1')
   })
 })
