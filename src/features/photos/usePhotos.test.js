@@ -60,7 +60,7 @@ describe('usePhotos', () => {
   it('should init data', () => {
     const { result } = renderHook(() => usePhotos(FILTERS, { enabled: false }), { wrapper })
 
-    expect(result.current.data).toEqual({ items: [], pager: {} })
+    expect(result.current.data).toEqual({ items: [], pager: { count: 0 } })
   })
 
   it('should load photos', async () => {

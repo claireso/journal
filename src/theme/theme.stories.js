@@ -3,7 +3,7 @@ import { theme } from './index'
 
 console.log({ theme })
 
-export default {
+const params = {
   title: 'Theme',
   parameters: {
     viewMode: 'docs',
@@ -12,6 +12,8 @@ export default {
     }
   }
 }
+
+export default params
 
 const getColors = () => Object.values(theme.colors)
 const getFontSizes = () => Object.values(theme.fontSizes).map((fontSize) => fontSize.value)

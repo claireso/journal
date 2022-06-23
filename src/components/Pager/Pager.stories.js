@@ -3,9 +3,11 @@ import { action } from '@storybook/addon-actions'
 
 import Pager from './index'
 
-export default {
+const params = {
   title: 'Components/Pager'
 }
+
+export default params
 
 export const Basic = () => {
   const data = {

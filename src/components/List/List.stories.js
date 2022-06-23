@@ -3,9 +3,11 @@ import React, { Fragment } from 'react'
 import { List, ListHeader } from './index'
 import { ButtonPrimary } from '../Buttons'
 
-export default {
+const params = {
   title: 'Components/List'
 }
+
+export default params
 
 export const Basic = () => (
   <Fragment>

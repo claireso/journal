@@ -2,9 +2,11 @@ import React from 'react'
 
 import Text from './index'
 
-export default {
+const params = {
   title: 'Components/Text'
 }
+
+export default params
 
 export const Basic = () => <Text>Text align left</Text>
 

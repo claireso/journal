@@ -2,8 +2,10 @@ import React from 'react'
 
 import { Loader } from './index'
 
-export default {
+const params = {
   title: 'Components/Loader'
 }
+
+export default params
 
 export const Basic = () => <Loader />

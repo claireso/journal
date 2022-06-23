@@ -10,12 +10,6 @@ describe('useMessages', () => {
       wrapper: ({ children }) => <MessagesProvider>{children}</MessagesProvider>
     })
 
-  it('should display error `missing MessagesProvider`', () => {
-    const { result } = renderHook(() => useMessages())
-
-    expect(result.error.message).toEqual('useMessagesContext must be used within a MessagesProvider')
-  })
-
   it('should display a success message', async () => {
     const { result } = render()
 
