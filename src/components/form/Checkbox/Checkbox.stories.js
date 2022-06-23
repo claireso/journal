@@ -2,9 +2,11 @@ import React, { Fragment } from 'react'
 
 import Checkbox from './index'
 
-export default {
+const params = {
   title: 'Form/Checkbox'
 }
+
+export default params
 
 export const Basic = () => (
   <Fragment>

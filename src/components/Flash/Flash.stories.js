@@ -3,9 +3,11 @@ import { action } from '@storybook/addon-actions'
 
 import Flash from './index'
 
-export default {
+const params = {
   title: 'Components/Flash'
 }
+
+export default params
 
 const Template = (args) => (
   <Fragment>

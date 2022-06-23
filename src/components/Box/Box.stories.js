@@ -2,9 +2,11 @@ import React from 'react'
 
 import Box from './index'
 
-export default {
+const params = {
   title: 'Components/Box'
 }
+
+export default params
 
 export const Basic = () => (
   <Box>

@@ -3,10 +3,12 @@ import { action } from '@storybook/addon-actions'
 
 import FlashGroup from './index'
 
-export default {
+const params = {
   title: 'Components/FlashGroup',
   decorators: [(storyFn) => <div style={{ padding: '20px' }}>{storyFn()}</div>]
 }
+
+export default params
 
 const Template = (args) => <FlashGroup {...args} onClose={action('close message')} />
 

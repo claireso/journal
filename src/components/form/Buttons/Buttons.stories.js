@@ -2,9 +2,11 @@ import React from 'react'
 
 import SubmitButton from './index'
 
-export default {
+const params = {
   title: 'Form/SubmitButton'
 }
+
+export default params
 
 export const Basic = () => <SubmitButton value="Submit" />
 

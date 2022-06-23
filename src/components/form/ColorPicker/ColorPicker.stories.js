@@ -3,9 +3,11 @@ import { action } from '@storybook/addon-actions'
 
 import ColorPicker from './index'
 
-export default {
+const params = {
   title: 'Form/ColorPicker'
 }
+
+export default params
 
 export const Basic = () => {
   const [selected, setSelected] = useState('')

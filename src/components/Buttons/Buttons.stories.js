@@ -4,9 +4,11 @@ import { action } from '@storybook/addon-actions'
 import { ButtonPrimary, ButtonSecondary, ButtonIcon } from './index'
 import * as Icons from '../Icons'
 
-export default {
+const params = {
   title: 'Components/Buttons'
 }
+
+export default params
 
 export const Basic = () => (
   <Fragment>

@@ -3,9 +3,11 @@ import React from 'react'
 import Toolbar from './index'
 import Text from '../Text'
 
-export default {
+const params = {
   title: 'Components/Toolbar'
 }
+
+export default params
 
 export const Basic = () => (
   <Toolbar>
