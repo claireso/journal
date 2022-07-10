@@ -47,6 +47,15 @@ jobs:
           name: Run lint
           command: npm run lint
 
+  tsc:
+    executor: my-docker
+    steps:
+      - attach_workspace:
+          at: ~/journal
+      - run:
+          name: Run tsc
+          command: npx tsc --noEmit
+
   build:
     executor: my-docker
     steps:
@@ -77,6 +86,9 @@ workflows:
           requires:
             - install
       - lint:
+          requires:
+            - install
+      - tsc:
           requires:
             - install
       - build:
