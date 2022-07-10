@@ -3,7 +3,7 @@
 exports[`<Photo /> should render photo (landscape center) 1`] = `
 <DocumentFragment>
   <figure
-    class="c-jmBjsY c-jmBjsY-iiCDtyl-css"
+    class="c-jmBjsY c-jmBjsY-iVqPaJ-position-center c-jmBjsY-iiCDtyl-css"
     data-testid="photo"
   >
     <div
@@ -53,7 +53,7 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
 exports[`<Photo /> should render photo (landscape right) 1`] = `
 <DocumentFragment>
   <figure
-    class="c-jmBjsY c-jmBjsY-iiCDtyl-css"
+    class="c-jmBjsY c-jmBjsY-gGTwqu-position-right c-jmBjsY-iiCDtyl-css"
     data-testid="photo"
   >
     <div
@@ -78,7 +78,7 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 exports[`<Photo /> should render photo (portrait center) 1`] = `
 <DocumentFragment>
   <figure
-    class="c-jmBjsY c-jmBjsY-gxKxyj-portrait-true c-jmBjsY-bHfBnH-cv c-jmBjsY-iiCDtyl-css"
+    class="c-jmBjsY c-jmBjsY-iVqPaJ-position-center c-jmBjsY-gxKxyj-portrait-true c-jmBjsY-bHfBnH-cv c-jmBjsY-iiCDtyl-css"
     data-testid="photo"
   >
     <div
@@ -103,7 +103,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 exports[`<Photo /> should render photo (square center) 1`] = `
 <DocumentFragment>
   <figure
-    class="c-jmBjsY c-jmBjsY-gzEPDe-square-true c-jmBjsY-iiCDtyl-css"
+    class="c-jmBjsY c-jmBjsY-iVqPaJ-position-center c-jmBjsY-gzEPDe-square-true c-jmBjsY-iiCDtyl-css"
     data-testid="photo"
   >
     <div

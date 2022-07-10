@@ -57,7 +57,19 @@ export const Figure = styled('figure', {
   },
 
   variants: {
-    position: {},
+    position: {
+      // landscape position
+      [POSITION_CENTER]: {
+        '@lg': {
+          gridColumnStart: getColumnStart(POSITION_CENTER, configImages[LANDSCAPE].cellWidth.large)
+        }
+      },
+      [POSITION_RIGHT]: {
+        '@lg': {
+          gridColumnStart: getColumnStart(POSITION_RIGHT, configImages[LANDSCAPE].cellWidth.large)
+        }
+      }
+    },
     // width of portrait
     portrait: {
       true: {
@@ -113,24 +125,6 @@ export const Figure = styled('figure', {
 
   // start position in grid
   compoundVariants: [
-    // landscape position center
-    {
-      portrait: false,
-      square: false,
-      position: POSITION_CENTER,
-      '@lg': {
-        gridColumnStart: getColumnStart(POSITION_CENTER, configImages[LANDSCAPE].cellWidth.large)
-      }
-    },
-    // landscape position right
-    {
-      portrait: false,
-      square: false,
-      position: POSITION_RIGHT,
-      '@lg': {
-        gridColumnStart: getColumnStart(POSITION_RIGHT, configImages[LANDSCAPE].cellWidth.large)
-      }
-    },
     // square position center
     {
       square: true,
