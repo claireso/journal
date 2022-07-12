@@ -2,7 +2,7 @@ import React, { useState, useContext, useCallback } from 'react'
 import Router from 'next/router'
 
 import * as api from '@services/api'
-import logger from '@services/logger'
+import { browser as logger } from '@services/logger'
 
 interface UserProviderProps {
   children: React.ReactNode
@@ -86,7 +86,7 @@ const useUser = (): [State, Actions] => {
       await api.logout()
       updateState({ user: null })
     } catch (err) {
-      logger(err)
+      logger.error(err)
     } finally {
       Router.push('/admin/login')
     }

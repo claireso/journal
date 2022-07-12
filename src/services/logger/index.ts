@@ -1,7 +1,2 @@
-const logger = (...args: any) => {
-  if (['production', 'test'].includes(process.env.NODE_ENV) === false) {
-    console.log(...args)
-  }
-}
-
-export default logger
+export { default as server } from './server'
+export { default as browser } from './browser'
