@@ -1,4 +1,5 @@
 import pg from 'pg'
+import { server as logger } from '@services/logger'
 
 const pool = new pg.Pool({
   user: process.env.DB_USER,
@@ -18,13 +19,15 @@ pool.on('error', (err) => {
 export default {
   query(text, values, callback) {
     // log queries in dev environment
-    if (process.env.NODE_ENV !== 'production') {
-      /* eslint-disable */
-      console.log('query: ', text)
-      if (values) {
-        console.log('query with values: ', values)
-      }
+    const log = {
+      query: text,
     }
+
+    if (values) {
+      log.values = values
+    }
+
+    logger.info(log)
 
     return pool.query(text, values, callback)
   },
