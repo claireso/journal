@@ -1,4 +1,4 @@
-import logger from '@services/logger'
+import { browser as logger } from '@services/logger'
 
 import ApiError from './ApiError'
 
@@ -54,7 +54,11 @@ export const buildRequester = ({ baseUrl, ApiError, onError }: RequesterOptions)
    * @return {promise}
    */
   const request = async (endpoint: RequestInfo, options: RequestInit = {}) => {
-    logger('call api =>', { endpoint, options })
+    logger.info({
+      event: 'callApi',
+      endpoint,
+      options
+    })
 
     if (options.body && !isFormData(options.body)) {
       options.headers = {
