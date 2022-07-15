@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: QA
+    branches: master
+    types: completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    environment: production
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$DROPLET_SSH_KEY" > ~/.ssh/ghactions
+          chmod 600 ~/.ssh/ghactions
+        env:
+          DROPLET_SSH_KEY: ${{ secrets.DROPLET_SSH_KEY }}
+      - name: Deploy
+        env:
+          DROPLET_USER: ${{ secrets.DROPLET_USER }}
+          DROPLET_IP: ${{ secrets.DROPLET_IP }}
+        run: |
+          echo "Start to deploy..."
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/ghactions $DROPLET_USER@$DROPLET_IP "cd ~/journal; sh scripts/deploy.sh;"
