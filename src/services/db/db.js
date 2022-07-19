@@ -1,5 +1,5 @@
 import pg from 'pg'
-import { server as logger } from '@services/logger'
+import logger from '@services/logger'
 
 const pool = new pg.Pool({
   user: process.env.DB_USER,

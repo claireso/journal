@@ -2,7 +2,7 @@ import React, { useState, useContext, useCallback } from 'react'
 import Router from 'next/router'
 
 import * as api from '@services/api'
-import { browser as logger } from '@services/logger'
+import logger from '@services/logger'
 
 interface UserProviderProps {
   children: React.ReactNode
