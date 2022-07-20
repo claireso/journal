@@ -1,4 +1,4 @@
-import { screen, render, fireEvent, act } from '@testing-library/react'
+import { screen, render, fireEvent, act, waitFor } from '@testing-library/react'
 
 import ModalCreatePhoto from './ModalCreatePhoto'
 
@@ -42,6 +42,8 @@ describe('<ModalCreatePhoto />', () => {
         }
       })
     })
+
+    await waitFor(() => expect(screen.getAllByTestId('preview')))
 
     fireEvent.change(screen.getByLabelText(/position/i), {
       target: { value: 'center' }
