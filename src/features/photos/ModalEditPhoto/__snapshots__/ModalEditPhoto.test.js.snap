@@ -62,6 +62,7 @@ exports[`<ModalEditPhoto /> should load photo 1`] = `
       >
         <div
           class="c-ktAHvd c-ktAHvd-itDbsJ-css"
+          data-testid="preview"
         >
           <img
             src="/uploads/01d2tf2h38pwcd953ans2f64p7.jpg"
