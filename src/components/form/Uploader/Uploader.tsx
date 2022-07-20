@@ -64,6 +64,7 @@ const Uploader = (props: UploaderProps) => {
           css={{
             background: props.backgroundPreview || '$secondary200'
           }}
+          data-testid="preview"
         >
           <img src={preview} />
         </S.UploaderPreview>

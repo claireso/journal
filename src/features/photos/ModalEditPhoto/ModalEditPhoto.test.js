@@ -74,6 +74,8 @@ describe('<ModalEditPhoto />', () => {
       })
     })
 
+    await waitFor(() => expect(screen.getAllByTestId('preview')))
+
     fireEvent.change(screen.getByLabelText(/position/i), { target: { value: 'left' } })
 
     fireEvent.click(screen.getByTestId('submit'))
