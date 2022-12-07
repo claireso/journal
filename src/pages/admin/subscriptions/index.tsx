@@ -29,7 +29,7 @@ const Subscriptions = () => {
 
   const subscriptionId = parseInt(id as string, 10)
 
-  const filters = { page: page as string }
+  const filters = { page: (page as string) ?? '1' }
 
   const { isFetching, isSuccess, data } = useSubscriptions(filters, { enabled: router.isReady })
 
@@ -45,7 +45,7 @@ const Subscriptions = () => {
     [page]
   )
 
-  const onChangePage = useCallback((page) => navigate({ page }, { scroll: true }), [navigate])
+  const onChangePage = useCallback((page: string) => navigate({ page }, { scroll: true }), [navigate])
   const onCloseModal = useCallback(() => navigate(), [navigate])
 
   const onClickDelete = useCallback(

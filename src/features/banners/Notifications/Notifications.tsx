@@ -7,12 +7,6 @@ import * as S from './Notifications.styles'
 
 import Flash from '@components/Flash'
 
-// @TODO
-// declare const window: Window &
-//   typeof globalThis & {
-//     safari: any
-//   }
-
 const BannerNotifications = () => {
   const [isVisible, setIsVisible] = useState(false)
   const translations = useTranslations()
@@ -21,7 +15,7 @@ const BannerNotifications = () => {
   const showBanner = useCallback(() => setIsVisible(true), [])
 
   const subscribe = useCallback(
-    async (event) => {
+    async (event: React.MouseEvent<HTMLAnchorElement>) => {
       event && event.preventDefault()
 
       try {
@@ -76,6 +70,7 @@ const BannerNotifications = () => {
   return (
     <Flash data-testid="flash-notifications" status="info" onClose={hideBanner} css={{ mb: 0 }}>
       <S.ButtonSubscribe role="button" href="#" onClick={subscribe}>
+        {/* @ts-ignore */}
         {translations.bannerNotifications}
       </S.ButtonSubscribe>
     </Flash>

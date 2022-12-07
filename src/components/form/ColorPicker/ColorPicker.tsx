@@ -10,8 +10,8 @@ interface ColorPickerProps {
 
 const ColorPicker = ({ colors, onSelect, selected }: ColorPickerProps) => {
   const handleChange = useCallback(
-    (evt) => {
-      onSelect && onSelect(evt.target.value)
+    (evt: React.FormEvent<HTMLInputElement>) => {
+      onSelect && onSelect(evt.currentTarget.value)
     },
     [onSelect]
   )

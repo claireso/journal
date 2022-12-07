@@ -20,11 +20,11 @@ const PagerWrapper = styled('div', {
 
 const Homepage = () => {
   const router = useRouter()
-  const page = router.query?.page as string
+  const page = (router.query?.page as string) ?? '1'
   const { isFetched, isFetching, data } = usePhotos({ page }, { enabled: router.isReady })
 
   const navigate = useCallback(
-    (page) => {
+    (page: string) => {
       router.push({ pathname: '/', query: { page } })
       window.scrollTo(0, 0)
     },

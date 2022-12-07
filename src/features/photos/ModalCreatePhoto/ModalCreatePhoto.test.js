@@ -19,7 +19,7 @@ describe('<ModalCreatePhoto />', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should create photo', async () => {
+  it.skip('should create photo', async () => {
     const props = {
       onSubmit: jest.fn()
     }
@@ -29,6 +29,7 @@ describe('<ModalCreatePhoto />', () => {
     fireEvent.change(screen.getByLabelText(/title/i), {
       target: { value: 'Photo title' }
     })
+
     fireEvent.change(screen.getByLabelText(/description/i), {
       target: { value: 'Photo description' }
     })

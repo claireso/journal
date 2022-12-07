@@ -13,6 +13,7 @@ const BannerOffline = () => {
 
   return (
     <Flash status="info" css={{ mb: 0 }}>
+      {/* @ts-ignore */}
       {translations.bannerOffline}
     </Flash>
   )

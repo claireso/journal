@@ -20,8 +20,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { onChange, name, label, value = '', type = 'text', required = false, autoFocus = false, testId } = props
 
   const handleChange = useCallback(
-    (event) => {
-      onChange && onChange(name, event.target.value)
+    (event: React.FormEvent<HTMLInputElement>) => {
+      onChange && onChange(name, event.currentTarget.value)
     },
     [onChange, name]
   )

@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import { renderHook } from '@testing-library/react-hooks'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { renderHook, waitFor } from '@testing-library/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { usePhotos, usePhoto, useCreatePhoto, useDeletePhoto, useEditPhoto } from './usePhotos'
 import { MessagesProvider } from '../messages/useMessages'
@@ -18,6 +18,11 @@ describe('usePhotos', () => {
         retry: false,
         cacheTime: Infinity
       }
+    },
+    logger: {
+      log: console.log,
+      warn: console.warn,
+      error: () => {}
     }
   })
 
@@ -64,9 +69,9 @@ describe('usePhotos', () => {
   })
 
   it('should load photos', async () => {
-    const { result, waitFor } = renderHook(() => usePhotos(FILTERS), { wrapper })
+    const { result } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    await waitFor(() => !result.current.isFetching)
+    await waitFor(() => expect(result.current.isFetching).toBeFalsy())
 
     expect(result.current.data).toEqual({
       items: global.__PHOTOS__.items.map(formatPhoto),
@@ -75,54 +80,53 @@ describe('usePhotos', () => {
   })
 
   it('should delete photo', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
-    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useDeletePhoto(FILTERS), {
+    const { result: resultMutation } = renderHook(() => useDeletePhoto(FILTERS), {
       wrapper
     })
 
     resultMutation.current.mutate(198)
 
-    await waitForMutation(() => resultMutation.current.isSuccess)
+    await waitFor(() => expect(resultQuery.current.data.items).toHaveLength(1))
 
-    expect(resultQuery.current.data.items).toHaveLength(1)
     expect(resultQuery.current.data.items[0].id).not.toEqual(198)
     expect(resultQuery.current.data.pager.count).toEqual(183)
   })
 
   it('should not delete photo', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
     bindApiError('deletePhoto')
 
-    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useDeletePhoto(FILTERS), {
+    const { result: resultMutation } = renderHook(() => useDeletePhoto(FILTERS), {
       wrapper
     })
 
     resultMutation.current.mutate(198)
 
-    await waitForMutation(() => resultMutation.current.isError)
+    await waitFor(() => expect(resultMutation.current.isError).toBeTruthy())
 
     expect(resultQuery.current.data.items).toHaveLength(2)
     expect(resultQuery.current.data.pager.count).toEqual(184)
   })
 
   it('should create photo', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
-    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useCreatePhoto(FILTERS), {
+    const { result: resultMutation } = renderHook(() => useCreatePhoto(FILTERS), {
       wrapper
     })
 
     resultMutation.current.mutate(global.__PHOTO__)
 
-    await waitForMutation(() => resultMutation.current.isSuccess)
+    await waitFor(() => expect(resultQuery.current.data.items).toHaveLength(3))
 
     expect(resultQuery.current.data.items).toHaveLength(3)
     expect(resultQuery.current.data.items[0]).toEqual(formatPhoto(global.__PHOTO__))
@@ -130,59 +134,60 @@ describe('usePhotos', () => {
   })
 
   it('should not create photo', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
     bindApiError('createPhoto')
 
-    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useCreatePhoto(FILTERS), {
+    const { result: resultMutation } = renderHook(() => useCreatePhoto(FILTERS), {
       wrapper
     })
 
     resultMutation.current.mutate(global.__PHOTO__)
 
-    await waitForMutation(() => resultMutation.current.isError)
+    await waitFor(() => expect(resultMutation.current.isError).toBeTruthy())
 
     expect(resultQuery.current.data.items).toHaveLength(2)
     expect(resultQuery.current.data.pager.count).toEqual(184)
   })
 
   it('should edit photo', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
-    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useEditPhoto(FILTERS), {
+    const { result: resultMutation } = renderHook(() => useEditPhoto(FILTERS), {
       wrapper
     })
 
     resultMutation.current.mutate({ id: 198, data: global.__PHOTO__ })
 
-    await waitForMutation(() => resultMutation.current.isSuccess)
+    await waitFor(() =>
+      expect(resultQuery.current.data.items).toEqual([
+        formatPhoto(global.__PHOTOS__.items[0]),
+        formatPhoto(global.__PHOTO__)
+      ])
+    )
 
     expect(resultQuery.current.data.items).toHaveLength(2)
     expect(resultQuery.current.data.pager.count).toEqual(184)
-    expect(resultQuery.current.data.items).toEqual([
-      formatPhoto(global.__PHOTOS__.items[0]),
-      formatPhoto(global.__PHOTO__)
-    ])
   })
 
   it('should not edit photo', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
     bindApiError('editPhoto')
 
-    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useEditPhoto(FILTERS), {
+    const { result: resultMutation } = renderHook(() => useEditPhoto(FILTERS), {
       wrapper
     })
 
     resultMutation.current.mutate({ id: 198, data: global.__PHOTO__ })
 
-    await waitForMutation(() => resultMutation.current.isError)
+    await waitFor(() => expect(resultMutation.current.isError).toBeTruthy())
 
     expect(resultQuery.current.data.items).toHaveLength(2)
     expect(resultQuery.current.data.pager.count).toEqual(184)
@@ -190,27 +195,27 @@ describe('usePhotos', () => {
   })
 
   it('should load photo from cache', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
-    const { result: resultPhoto, waitFor: waitForPhoto } = renderHook(() => usePhoto(198, { enabled: false }), {
+    const { result: resultPhoto } = renderHook(() => usePhoto(198, { enabled: false }), {
       wrapper
     })
 
-    await waitForPhoto(() => resultPhoto.current.isSuccess)
+    await waitFor(() => expect(resultPhoto.current.isSuccess).toBeTruthy())
 
     expect(resultPhoto.current.data.id).toEqual(198)
   })
 
   it('should load photo from server', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => usePhotos(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
-    const { result: resultPhoto, waitFor: waitForPhoto } = renderHook(() => usePhoto(1), { wrapper })
+    const { result: resultPhoto } = renderHook(() => usePhoto(1), { wrapper })
 
-    await waitForPhoto(() => resultPhoto.current.isSuccess)
+    await waitFor(() => expect(resultPhoto.current.isSuccess).toBeTruthy())
 
     expect(resultPhoto.current.data.id).toEqual(1)
   })

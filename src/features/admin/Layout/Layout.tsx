@@ -46,12 +46,12 @@ const Layout = ({ children }: LayoutProps) => {
         <Tabs>
           <Tab isActive={pathname.includes('photos')}>
             <Link href="photos" passHref>
-              <a>Photos</a>
+              Photos
             </Link>
           </Tab>
           <Tab isActive={pathname.includes('subscriptions')}>
             <Link href="subscriptions" passHref>
-              <a>Subscriptions</a>
+              Subscriptions
             </Link>
           </Tab>
         </Tabs>
