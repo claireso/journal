@@ -1,34 +1,22 @@
-const path = require('path')
+// jest.config.js
+const nextJest = require('next/jest')
 
-module.exports = {
-  rootDir: './src',
+// Providing the path to your Next.js app which will enable loading next.config.js and .env files
+const createJestConfig = nextJest({ dir: './' })
+
+// Any custom config you want to pass to Jest
+const customJestConfig = {
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: [path.resolve(__dirname, 'jest.setup.js')],
-  testPathIgnorePatterns: ['/node_modules/', '/.next/', '/.cypress'],
-  // collectCoverageFrom: [
-  //   '**/*.js',
-  //   '!**/coverage/**',
-  //   '!**/pages/api/**',
-  //   '!**/services/db/**',
-  //   '!**/services/middlewares/**',
-  // ],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  testPathIgnorePatterns: ['/.cypress'],
   moduleNameMapper: {
-    '^@components(.*)$': '<rootDir>/components$1',
-    '^@utils(.*)$': '<rootDir>/utils$1',
-    '^@services(.*)$': '<rootDir>/services$1',
-    '^@features(.*)$': '<rootDir>/features$1',
-    '^@hooks(.*)$': '<rootDir>/hooks$1',
-    '^@types(.*)$': '<rootDir>/types$1',
-    '^@theme(.*)$': '<rootDir>/theme$1'
-  },
-  // temp waiting next swc transforms
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': [
-      'babel-jest',
-      {
-        presets: ['next/babel']
-      }
-    ]
+    '^@components(.*)$': '<rootDir>/src/components$1',
+    '^@utils(.*)$': '<rootDir>/src/utils$1',
+    '^@services(.*)$': '<rootDir>/src/services$1',
+    '^@features(.*)$': '<rootDir>/src/features$1',
+    '^@hooks(.*)$': '<rootDir>/src/hooks$1',
+    '^@types(.*)$': '<rootDir>/src/types$1',
+    '^@theme(.*)$': '<rootDir>/src/theme$1'
   },
   globals: {
     __PHOTOS__: {
@@ -111,3 +99,6 @@ module.exports = {
     }
   }
 }
+
+// createJestConfig is exported in this way to ensure that next/jest can load the Next.js configuration, which is async
+module.exports = createJestConfig(customJestConfig)
