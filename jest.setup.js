@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
 import * as dotenv from 'dotenv'
-import { setLogger } from 'react-query'
 
 dotenv.config({ path: './.env.test' })
 
@@ -100,9 +99,3 @@ global.setServiceWorker = ({ register, subscribe, ready, getSubscription } = {})
 
 // enable serviceWorker
 global.setServiceWorker()
-
-setLogger({
-  log: console.log,
-  warn: console.warn,
-  error: () => {}
-})

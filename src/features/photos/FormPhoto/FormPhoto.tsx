@@ -27,7 +27,7 @@ const Form = (props: FormProps) => {
   const formEl = useRef(null!)
 
   const handleSubmit = useCallback(
-    (event) => {
+    (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
 
       if (isProcessing) return

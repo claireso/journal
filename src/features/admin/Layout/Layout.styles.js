@@ -61,7 +61,7 @@ export const Title = styled('h1', {
   textAlign: 'center'
 })
 
-export const LinkGoToWebsite = styled('a', {
+export const LinkGoToWebsite = styled('span', {
   display: 'flex',
   alignItems: 'center',
   color: '$gray600',

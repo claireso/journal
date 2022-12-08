@@ -32,7 +32,7 @@ const Photos = () => {
 
   const photoId = parseInt(id as string, 10)
 
-  const filters = { page: page as string }
+  const filters = { page: (page as string) ?? '1' }
 
   const { isFetching, isSuccess, data } = usePhotos(filters, { enabled: router.isReady })
 
@@ -50,7 +50,7 @@ const Photos = () => {
     [page]
   )
 
-  const onChangePage = useCallback((page) => navigate({ page }, { scroll: true }), [navigate])
+  const onChangePage = useCallback((page: string) => navigate({ page }, { scroll: true }), [navigate])
   const onCloseModal = useCallback(() => navigate(), [navigate])
 
   const onClickCreate = useCallback(() => {
@@ -60,7 +60,7 @@ const Photos = () => {
   }, [navigate])
 
   const onClickDelete = useCallback(
-    (id) => {
+    (id: number) => {
       navigate({
         action: Action.DELETE,
         id: id
@@ -85,7 +85,7 @@ const Photos = () => {
         onSuccess() {
           onCloseModal()
           if (page !== '1') {
-            onChangePage(1)
+            onChangePage('1')
           }
         },
         onError(err) {

@@ -1,6 +1,6 @@
 import { styled } from '@theme'
 
-export const Link = styled('a', {
+export const Link = styled('span', {
   textDecoration: 'none',
   variants: {
     color: {

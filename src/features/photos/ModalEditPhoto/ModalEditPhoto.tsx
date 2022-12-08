@@ -15,7 +15,7 @@ const ModalEditPhoto = ({ id, onSubmit, isProcessing = false }: ModalEditPhotoPr
   const { data: photo } = usePhoto(id)
 
   const handleSubmit = useCallback(
-    (data) => {
+    (data: FormData) => {
       onSubmit({ id: id, data })
     },
     [id, onSubmit]

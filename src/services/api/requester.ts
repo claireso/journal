@@ -37,7 +37,7 @@ const qs = (data: object) => {
  * @param {object | FormData} body
  * @return {FormData | string}
  */
-const buildBody = (data: RequestData): FormData | string => {
+const buildBody = (data: RequestData) => {
   if (isFormData(data)) {
     return data as FormData
   }
@@ -118,7 +118,7 @@ export const buildRequester = ({ baseUrl, ApiError, onError }: RequesterOptions)
     return request(url, init)
   }
 
-  const patch = <T, U>(url: string, body: U): Promise<T> => {
+  const patch = <T, U extends FormData>(url: string, body: U): Promise<T> => {
     const init = { method: 'PATCH', body: buildBody(body) }
     return request(url, init)
   }

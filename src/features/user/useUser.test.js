@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 import Router from 'next/router'
 
 import useUser, { UserProvider } from './useUser'
@@ -48,13 +48,11 @@ describe('useUser', () => {
   })
 
   it('should get authenticated user', async () => {
-    const { result, waitForNextUpdate } = render()
+    const { result } = render()
 
     let [reducer, actions] = result.current
 
-    actions.getMe()
-
-    await waitForNextUpdate()
+    await act(() => actions.getMe())
 
     reducer = result.current[0]
 
@@ -72,9 +70,7 @@ describe('useUser', () => {
 
     let [reducer, actions] = result.current
 
-    await act(async () => {
-      await actions.getMe()
-    })
+    await act(() => actions.getMe())
 
     reducer = result.current[0]
 
@@ -89,11 +85,7 @@ describe('useUser', () => {
 
     let [reducer, actions] = result.current
 
-    act(() => {
-      actions.login()
-    })
-
-    await waitForNextUpdate()
+    await act(() => actions.login())
 
     reducer = result.current[0]
 
@@ -110,15 +102,11 @@ describe('useUser', () => {
   it('should not log in user (error 401)', async () => {
     bindApiError('login', { status: 401 })
 
-    const { result, waitForNextUpdate } = render()
+    const { result } = render()
 
     let [reducer, actions] = result.current
 
-    act(() => {
-      actions.login()
-    })
-
-    await waitForNextUpdate()
+    await act(() => actions.login())
 
     reducer = result.current[0]
 
@@ -130,15 +118,11 @@ describe('useUser', () => {
   it('should not log in user (error 422)', async () => {
     bindApiError('login', { status: 422 })
 
-    const { result, waitForNextUpdate } = render()
+    const { result } = render()
 
     let [reducer, actions] = result.current
 
-    act(() => {
-      actions.login()
-    })
-
-    await waitForNextUpdate()
+    await act(() => actions.login())
 
     reducer = result.current[0]
 
@@ -150,15 +134,11 @@ describe('useUser', () => {
   it('should not log in user (error 500)', async () => {
     bindApiError('login', { status: 500 })
 
-    const { result, waitForNextUpdate } = render()
+    const { result } = render()
 
     let [reducer, actions] = result.current
 
-    act(() => {
-      actions.login()
-    })
-
-    await waitForNextUpdate()
+    await act(() => actions.login())
 
     reducer = result.current[0]
 
@@ -168,15 +148,11 @@ describe('useUser', () => {
   })
 
   it('should log out user', async () => {
-    const { result, waitForNextUpdate } = render()
+    const { result } = render()
 
     let [reducer, actions] = result.current
 
-    act(() => {
-      actions.login()
-    })
-
-    await waitForNextUpdate()
+    await act(() => actions.login())
 
     reducer = result.current[0]
     actions = result.current[1]
@@ -187,11 +163,7 @@ describe('useUser', () => {
       isProcessing: false
     })
 
-    act(() => {
-      actions.logout()
-    })
-
-    await waitForNextUpdate()
+    await act(() => actions.logout())
 
     reducer = result.current[0]
 
@@ -206,15 +178,11 @@ describe('useUser', () => {
 
   it('should not log out user', async () => {
     bindApiError('logout')
-    const { result, waitForNextUpdate } = render()
+    const { result } = render()
 
     let [reducer, actions] = result.current
 
-    act(() => {
-      actions.login()
-    })
-
-    await waitForNextUpdate()
+    await act(() => actions.login())
 
     reducer = result.current[0]
     actions = result.current[1]
@@ -225,9 +193,7 @@ describe('useUser', () => {
       isProcessing: false
     })
 
-    await act(async () => {
-      await actions.logout()
-    })
+    await act(() => actions.logout())
 
     reducer = result.current[0]
 

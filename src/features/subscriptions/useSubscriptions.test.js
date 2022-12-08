@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import { renderHook } from '@testing-library/react-hooks'
-import { QueryClient, QueryClientProvider } from 'react-query'
+// import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, waitFor } from '@testing-library/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import * as api from '@services/api'
 
@@ -18,6 +19,11 @@ describe('useSubscriptions', () => {
         retry: false,
         cacheTime: Infinity
       }
+    },
+    logger: {
+      log: console.log,
+      warn: console.warn,
+      error: () => {}
     }
   })
 
@@ -54,9 +60,9 @@ describe('useSubscriptions', () => {
   })
 
   it('should load subscriptions', async () => {
-    const { result, waitFor } = renderHook(() => useSubscriptions(FILTERS), { wrapper })
+    const { result } = renderHook(() => useSubscriptions(FILTERS), { wrapper })
 
-    await waitFor(() => !result.current.isFetching)
+    await waitFor(() => expect(result.current.isFetching).toBeFalsy())
 
     expect(result.current.data).toEqual({
       items: global.__SUBSCRIPTIONS__.items,
@@ -65,42 +71,42 @@ describe('useSubscriptions', () => {
   })
 
   it('should delete subscription', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => useSubscriptions(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => useSubscriptions(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
     expect(resultQuery.current.data.items).toHaveLength(1)
     expect(resultQuery.current.data.pager.count).toEqual(184)
 
-    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useDeleteSubscription(FILTERS), {
+    const { result: resultMutation } = renderHook(() => useDeleteSubscription(FILTERS), {
       wrapper
     })
 
     resultMutation.current.mutate(118)
 
-    await waitForMutation(() => resultMutation.current.isSuccess)
+    await waitFor(() => expect(resultMutation.current.isSuccess).toBeTruthy())
 
     expect(resultQuery.current.data.items).toHaveLength(0)
     expect(resultQuery.current.data.pager.count).toEqual(183)
   })
 
   it('should not delete subscription', async () => {
-    const { result: resultQuery, waitFor: waitForQuery } = renderHook(() => useSubscriptions(FILTERS), { wrapper })
+    const { result: resultQuery } = renderHook(() => useSubscriptions(FILTERS), { wrapper })
 
-    await waitForQuery(() => !resultQuery.current.isFetching)
+    await waitFor(() => expect(resultQuery.current.isFetching).toBeFalsy())
 
     expect(resultQuery.current.data.items).toHaveLength(1)
     expect(resultQuery.current.data.pager.count).toEqual(184)
 
     bindApiError('deleteSubscription')
 
-    const { result: resultMutation, waitFor: waitForMutation } = renderHook(() => useDeleteSubscription(FILTERS), {
+    const { result: resultMutation } = renderHook(() => useDeleteSubscription(FILTERS), {
       wrapper
     })
 
     resultMutation.current.mutate(118)
 
-    await waitForMutation(() => resultMutation.current.isError)
+    await waitFor(() => expect(resultMutation.current.isError).toBeTruthy())
 
     expect(resultQuery.current.data.items).toHaveLength(1)
     expect(resultQuery.current.data.pager.count).toEqual(184)

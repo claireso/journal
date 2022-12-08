@@ -59,7 +59,7 @@ const useUser = (): [State, Actions] => {
     }
   }, [])
 
-  const login = useCallback(async (data) => {
+  const login = useCallback(async (data: { username: string; password: string }) => {
     try {
       updateState({ isProcessing: true })
       await api.login(data)

@@ -24,21 +24,25 @@ describe('<Notifications />', () => {
   it('should render component', async () => {
     const getSubscription = jest.spyOn(notifications, 'getSubscription').mockImplementation(() => Promise.resolve(null))
 
-    const { asFragment } = renderComponent()
+    renderComponent()
 
     await waitFor(() => expect(getSubscription).toHaveBeenCalled())
 
-    expect(asFragment()).toMatchSnapshot()
+    await waitFor(() => {
+      expect(screen.getByText('Enable notifications to be alerted of new publication')).toBeInTheDocument()
+    })
   })
 
   it('should not render component (user has already subscribed)', async () => {
     const getSubscription = jest.spyOn(notifications, 'getSubscription').mockImplementation(() => Promise.resolve({}))
 
-    const { asFragment } = renderComponent()
+    renderComponent()
 
     await waitFor(() => expect(getSubscription).toHaveBeenCalled())
 
-    expect(asFragment()).toMatchSnapshot()
+    await waitFor(() => {
+      expect(screen.queryByText('Enable notifications to be alerted of new publication')).not.toBeInTheDocument()
+    })
   })
 
   it('should not render component (user has blocked notifications)', () => {
@@ -57,15 +61,16 @@ describe('<Notifications />', () => {
     // mock func getSubscription
     jest.spyOn(notifications, 'getSubscription').mockImplementation(() => Promise.resolve(null))
 
-    const { asFragment } = renderComponent()
+    renderComponent()
 
     await waitFor(() => screen.getByText(/^Enable notifications/i))
 
     fireEvent.click(screen.getByText(/^Enable notifications/i))
 
     await waitFor(() => expect(subscribe).toHaveBeenCalled())
-
-    expect(asFragment()).toMatchSnapshot()
+    await waitFor(() => {
+      expect(screen.queryByText('Enable notifications to be alerted of new publication')).not.toBeInTheDocument()
+    })
   })
 
   it('should not subscribe and hide banner (denied story)', async () => {
@@ -75,7 +80,7 @@ describe('<Notifications />', () => {
     // mock func getSubscription
     jest.spyOn(notifications, 'getSubscription').mockImplementation(() => Promise.resolve(null))
 
-    const { asFragment } = renderComponent()
+    renderComponent()
 
     await waitFor(() => screen.getByText(/^Enable notifications/i))
 
@@ -85,6 +90,8 @@ describe('<Notifications />', () => {
 
     await waitFor(() => expect(subscribe).toHaveBeenCalled())
 
-    expect(asFragment()).toMatchSnapshot()
+    await waitFor(() => {
+      expect(screen.queryByText('Enable notifications to be alerted of new publication')).not.toBeInTheDocument()
+    })
   })
 })

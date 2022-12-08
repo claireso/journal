@@ -11,7 +11,7 @@ interface PagerProps {
 }
 
 const Pager = ({ navigate, first, prev, next, last }: PagerProps) => {
-  const handleClick = useCallback((page) => () => navigate(`${page}`), [navigate])
+  const handleClick = useCallback((page: number) => () => navigate(`${page}`), [navigate])
 
   return (
     <S.Wrapper>
