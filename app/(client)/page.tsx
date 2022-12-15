@@ -1,11 +1,12 @@
+'use client'
+
 import { useCallback } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter, useSearchParams, redirect } from 'next/navigation'
 import { styled } from '@theme'
 
 import { Loader, LoaderWrapper } from '@components/Loader'
 import Pager from '@components/Pager'
 
-import Layout from '@features/client/Layout'
 import Welcome from '@features/client/Welcome'
 import { usePhotos } from '@features/photos/usePhotos'
 import ListPhotos from '@features/photos/ListPhotos'
@@ -18,14 +19,15 @@ const PagerWrapper = styled('div', {
   }
 })
 
-const Homepage = () => {
+export default function Page() {
   const router = useRouter()
-  const page = (router.query?.page as string) ?? '1'
-  const { isFetched, isFetching, data } = usePhotos({ page }, { enabled: router.isReady })
+  const searchParams = useSearchParams()
+  const page = searchParams.get('page') ?? '1'
+  const { isFetched, isFetching, data } = usePhotos({ page })
 
   const navigate = useCallback(
     (page: string) => {
-      router.push({ pathname: '/', query: { page } })
+      router.push(`/?page=${page}`)
       window.scrollTo(0, 0)
     },
     [router]
@@ -52,7 +54,3 @@ const Homepage = () => {
     </>
   )
 }
-
-Homepage.Layout = Layout
-
-export default Homepage
