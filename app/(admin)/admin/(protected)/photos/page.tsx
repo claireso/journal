@@ -1,9 +1,10 @@
+'use client'
+
 import { useCallback } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 import * as api from '@services/api'
 
-import Layout from '@features/admin/Layout'
 import { usePhotos, useCreatePhoto, useEditPhoto, useDeletePhoto } from '@features/photos/usePhotos'
 import AdminListPhotos from '@features/photos/AdminListPhotos'
 import ModalDeletePhoto from '@features/photos/ModalDeletePhoto'
@@ -26,32 +27,44 @@ enum Action {
 
 const Photos = () => {
   const router = useRouter()
-  const { pathname } = router
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
-  const { action, page, id } = router.query ?? {}
+  const action = searchParams.get('action')
+  const page = searchParams.get('page')
+  const id = searchParams.get('id')
 
   const photoId = parseInt(id as string, 10)
 
   const filters = { page: (page as string) ?? '1' }
 
-  const { isFetching, isSuccess, data } = usePhotos(filters, { enabled: router.isReady })
+  const { isFetching, isSuccess, data } = usePhotos(filters)
 
   const { mutate: createPhoto, isLoading: isCreating } = useCreatePhoto(filters)
   const { mutate: editPhoto, isLoading: isEditing } = useEditPhoto(filters)
   const { mutate: deletePhoto, isLoading: isDeleting } = useDeletePhoto(filters)
 
   const navigate = useCallback(
-    (params: Query = {}, options = {}) => {
+    (params: Query = {}, options?: NavigateOptions) => {
       const query: Query = {}
       if (page) query['page'] = page as string
-      router.push({ pathname: pathname, query: { ...query, ...params } }, undefined, { scroll: false, ...options })
+      if (pathname) {
+        // @ts-ignore
+        const searchParams = new URLSearchParams({ ...query, ...params })
+
+        router.push(`${pathname}?${searchParams.toString()}`)
+
+        if (options?.scroll) {
+          window.scrollTo(0, 0)
+        }
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [page]
   )
 
   const onChangePage = useCallback((page: string) => navigate({ page }, { scroll: true }), [navigate])
-  const onCloseModal = useCallback(() => navigate(), [navigate])
+  const onCloseModal = useCallback((options?: NavigateOptions) => navigate({}, options), [navigate])
 
   const onClickCreate = useCallback(() => {
     navigate({
@@ -83,7 +96,7 @@ const Photos = () => {
     (data: FormData) => {
       createPhoto(data, {
         onSuccess() {
-          onCloseModal()
+          onCloseModal({ scroll: true })
           if (page !== '1') {
             onChangePage('1')
           }
@@ -92,7 +105,7 @@ const Photos = () => {
           if (err instanceof api.getErrorConstructor()) {
             if (err.response.status === 401) return // @TODO find a better way
           }
-          onCloseModal()
+          onCloseModal({ scroll: true })
         }
       })
     },
@@ -106,7 +119,7 @@ const Photos = () => {
           if (err instanceof api.getErrorConstructor()) {
             if (err.response.status === 401) return // @TODO find a better way
           }
-          onCloseModal()
+          onCloseModal({ scroll: true })
         }
       })
     },
@@ -120,7 +133,7 @@ const Photos = () => {
           if (err instanceof api.getErrorConstructor()) {
             if (err.response.status === 401) return // @TODO find a better way
           }
-          onCloseModal()
+          onCloseModal({ scroll: true })
         }
       })
     },
@@ -168,7 +181,5 @@ const Photos = () => {
     </>
   )
 }
-
-Photos.Layout = Layout
 
 export default Photos

@@ -66,7 +66,6 @@ export const useSubscriptions = (filters: Filters = { page: '1' }, options = {})
 
   const queryOptions = {
     placeholderData: initialState,
-    useErrorBoundary: true,
     ...options
   }
 
