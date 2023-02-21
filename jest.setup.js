@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
 import * as dotenv from 'dotenv'
-import { setLogger } from 'react-query'
 
 dotenv.config({ path: './.env.test' })
 
@@ -101,8 +100,22 @@ global.setServiceWorker = ({ register, subscribe, ready, getSubscription } = {})
 // enable serviceWorker
 global.setServiceWorker()
 
-setLogger({
-  log: console.log,
-  warn: console.warn,
-  error: () => {}
+jest.mock('@services/api', () => {
+  // https://github.com/swc-project/swc/issues/3843#issuecomment-1058826971
+  const actualModule = jest.requireActual('./src/services/api')
+
+  return {
+    __esModule: true,
+    ...actualModule
+  }
+})
+
+jest.mock('@services/notifications', () => {
+  // https://github.com/swc-project/swc/issues/3843#issuecomment-1058826971
+  const actualModule = jest.requireActual('./src/services/notifications')
+
+  return {
+    __esModule: true,
+    ...actualModule
+  }
 })

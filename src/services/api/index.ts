@@ -1,16 +1,10 @@
 import { buildRequester } from './requester'
-import Router from 'next/router'
 import ApiError from './ApiError'
 
 const requester = buildRequester({
   baseUrl: `${process.env.NEXT_PUBLIC_WEBSITE_URL}api`,
   // @ts-ignore
-  ApiError: ApiError,
-  onError: {
-    unAuthorized: () => {
-      Router.push({ pathname: '/admin/login' })
-    }
-  }
+  ApiError: ApiError
 })
 
 export const login = (data: { username: string; password: string }) =>

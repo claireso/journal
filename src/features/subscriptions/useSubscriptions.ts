@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient, useMutation, QueryFunctionContext } from 'react-query'
+import { useQuery, useQueryClient, useMutation, QueryFunctionContext } from '@tanstack/react-query'
 
 import * as api from '@services/api'
 import useMessages from '@features/messages/useMessages'
@@ -66,7 +66,6 @@ export const useSubscriptions = (filters: Filters = { page: '1' }, options = {})
 
   const queryOptions = {
     placeholderData: initialState,
-    useErrorBoundary: true,
     ...options
   }
 

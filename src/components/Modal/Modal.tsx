@@ -48,7 +48,7 @@ const animationsConfig = {
 interface ModalProps {
   testId?: string
   children: React.ReactNode
-  onClose: () => void
+  onClose: (options?: NavigateOptions) => void
 }
 
 const Modal = ({ testId = '', children, onClose = () => {} }: ModalProps) => {
@@ -64,8 +64,8 @@ const Modal = ({ testId = '', children, onClose = () => {} }: ModalProps) => {
   }, [onClose])
 
   const onClick = useCallback(
-    (event) => {
-      const target = event.target
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      const target = event.target as HTMLDivElement
 
       if (target.contains(content.current) && !(target.getAttribute('id') === 'modalInner')) {
         close()
@@ -75,8 +75,8 @@ const Modal = ({ testId = '', children, onClose = () => {} }: ModalProps) => {
   )
 
   const onKeyDown = useCallback(
-    (event) => {
-      if (event && event.code === 'Escape') {
+    (event: KeyboardEvent) => {
+      if (event?.code === 'Escape') {
         close()
       }
     },

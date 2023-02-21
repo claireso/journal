@@ -5,10 +5,6 @@ import ApiError from './ApiError'
 type RequesterOptions = {
   baseUrl: string
   ApiError: ApiError
-  onError: {
-    unAuthorized?: () => void
-    internalServerError?: () => void
-  }
 }
 
 type RequestData = {} | FormData
@@ -37,7 +33,7 @@ const qs = (data: object) => {
  * @param {object | FormData} body
  * @return {FormData | string}
  */
-const buildBody = (data: RequestData): FormData | string => {
+const buildBody = (data: RequestData) => {
   if (isFormData(data)) {
     return data as FormData
   }
@@ -45,7 +41,7 @@ const buildBody = (data: RequestData): FormData | string => {
   return JSON.stringify(data)
 }
 
-export const buildRequester = ({ baseUrl, ApiError, onError }: RequesterOptions) => {
+export const buildRequester = ({ baseUrl, ApiError }: RequesterOptions) => {
   /**
    * Request
    * @param {string} url
@@ -75,18 +71,6 @@ export const buildRequester = ({ baseUrl, ApiError, onError }: RequesterOptions)
     } else {
       // @ts-ignore
       const error = new ApiError(response)
-
-      if (onError) {
-        const { status } = error.response
-
-        if (status === 401 && onError.unAuthorized) {
-          onError.unAuthorized()
-        }
-
-        if (status >= 500 && onError.internalServerError) {
-          onError.internalServerError()
-        }
-      }
 
       return Promise.reject(error)
     }
@@ -118,7 +102,7 @@ export const buildRequester = ({ baseUrl, ApiError, onError }: RequesterOptions)
     return request(url, init)
   }
 
-  const patch = <T, U>(url: string, body: U): Promise<T> => {
+  const patch = <T, U extends FormData>(url: string, body: U): Promise<T> => {
     const init = { method: 'PATCH', body: buildBody(body) }
     return request(url, init)
   }

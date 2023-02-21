@@ -51,3 +51,7 @@ declare type Query = {
   action?: Action
   id?: number
 }
+
+declare type NavigateOptions = {
+  scroll?: boolean
+}

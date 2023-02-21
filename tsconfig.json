@@ -21,26 +21,52 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "@utils/*": ["src/utils/*"],
-      "@components/*": ["src/components/*"],
-      "@services/*": ["src/services/*"],
-      "@features/*": ["src/features/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@types": ["src/types"],
-      "@theme": ["src/theme"]
-    }
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@features/*": [
+        "src/features/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@types": [
+        "src/types"
+      ],
+      "@theme": [
+        "src/theme"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
   ],
   "paths": {
-    "*": ["src/types/*"],
-    "@modules/*": ["rest/modules/*"],
-    "@services/*": ["services/*"],
-}
+    "*": [
+      "src/types/*"
+    ],
+    "@modules/*": [
+      "rest/modules/*"
+    ],
+    "@services/*": [
+      "services/*"
+    ]
+  }
 }

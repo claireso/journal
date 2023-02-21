@@ -5,7 +5,7 @@ interface LinkPrimaryProps {
   children: ReactNode
 }
 
-export const LinkPrimary = React.forwardRef<HTMLAnchorElement, LinkPrimaryProps>((props, ref) => (
+export const LinkPrimary = React.forwardRef<HTMLSpanElement, LinkPrimaryProps>((props, ref) => (
   <Link ref={ref} {...props} color="primary" />
 ))
 

@@ -1,14 +1,7 @@
-import { useQuery, useMutation, useQueryClient, QueryFunctionContext } from 'react-query'
+import { useQuery, useMutation, useQueryClient, QueryFunctionContext } from '@tanstack/react-query'
 
 import * as api from '@services/api'
 import useMessages from '@features/messages/useMessages'
-
-// interface State {
-//   items: Photo[]
-//   pager: {
-//     count: number
-//   }
-// }
 
 interface Filters {
   page: string
@@ -181,7 +174,7 @@ export const usePhoto = (id: number, options = {}) => {
   }
 
   const getActivePhotoQuery = () => {
-    const queries = queryClient.getQueriesData<Photos>({ active: true })
+    const queries = queryClient.getQueriesData<Photos>({ type: 'active' })
     const photoQuery = queries.find(([filters]) => filters[0] === CACHE_KEY_LIST)
     return photoQuery
   }
