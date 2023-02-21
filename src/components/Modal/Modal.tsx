@@ -48,7 +48,7 @@ const animationsConfig = {
 interface ModalProps {
   testId?: string
   children: React.ReactNode
-  onClose: () => void
+  onClose: (options?: NavigateOptions) => void
 }
 
 const Modal = ({ testId = '', children, onClose = () => {} }: ModalProps) => {

@@ -1,24 +1,14 @@
-import PropTypes from 'prop-types'
-import Head from 'next/head'
-
-import * as S from './Layout.styles'
-
-import { TranslationsProvider, getTranslations } from '@hooks/useTranslations'
-import { MessagesProvider } from '@features/messages/useMessages'
-
-import BannerOffline from '@features/banners/Offline'
-import BannerNotifications from '@features/banners/Notifications'
+import Layout from './Layout.client'
+import StitchesRegistry from '../StitchesRegistry'
 
 interface LayoutProps {
   children: React.ReactNode
 }
 
-const Layout = ({ children }: LayoutProps) => {
-  S.globalStyles()
-
+export default function RootLayout({ children }: LayoutProps) {
   return (
-    <>
-      <Head>
+    <html lang={process.env.NEXT_PUBLIC_WEBSITE_LANGUAGE}>
+      <head>
         <title>{process.env.NEXT_PUBLIC_WEBSITE_META_TITLE}</title>
         <meta name="description" content={process.env.NEXT_PUBLIC_WEBSITE_META_DESCRIPTION} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -47,19 +37,15 @@ const Layout = ({ children }: LayoutProps) => {
             />
           </>
         )}
-      </Head>
+      </head>
+      <body>
+        <StitchesRegistry>
+          <Layout>{children}</Layout>
+        </StitchesRegistry>
 
-      <TranslationsProvider translations={getTranslations(process.env.NEXT_PUBLIC_WEBSITE_LANGUAGE, 'client')}>
-        <BannerOffline />
-        <BannerNotifications />
-        <MessagesProvider>
-          <S.Main>{children}</S.Main>
-        </MessagesProvider>
-      </TranslationsProvider>
-
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
               navigator.serviceWorker
@@ -73,14 +59,9 @@ const Layout = ({ children }: LayoutProps) => {
             });
           }
       `
-        }}
-      />
-    </>
+          }}
+        />
+      </body>
+    </html>
   )
 }
-
-Layout.propTypes = {
-  children: PropTypes.element
-}
-
-export default Layout
