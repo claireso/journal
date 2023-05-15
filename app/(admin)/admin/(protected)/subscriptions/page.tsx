@@ -26,9 +26,9 @@ const Subscriptions = () => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const action = searchParams.get('action')
-  const page = searchParams.get('page')
-  const id = searchParams.get('id')
+  const action = searchParams?.get('action')
+  const page = searchParams?.get('page')
+  const id = searchParams?.get('id')
 
   const subscriptionId = parseInt(id as string, 10)
 
