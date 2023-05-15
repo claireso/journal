@@ -22,7 +22,7 @@ const PagerWrapper = styled('div', {
 export default function Page() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const page = searchParams.get('page') ?? '1'
+  const page = searchParams?.get('page') ?? '1'
   const { isFetched, isFetching, data } = usePhotos({ page })
 
   const navigate = useCallback(
