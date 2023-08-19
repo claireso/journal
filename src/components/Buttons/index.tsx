@@ -1,3 +1,4 @@
+import React from 'react'
 import * as S from './Buttons.styles'
 import { Loader } from '../Loader'
 
