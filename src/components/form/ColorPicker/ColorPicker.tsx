@@ -1,4 +1,4 @@
-import { Fragment, useCallback } from 'react'
+import React, { Fragment, useCallback } from 'react'
 
 import * as S from './ColorPicker.styles'
 

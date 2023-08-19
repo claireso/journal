@@ -3,13 +3,19 @@ const path = require('path')
 const directory = process.cwd()
 
 module.exports = {
-  stories: [
-    path.resolve(directory, 'src/**/*.stories.js'),
-  ],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-actions'],
-  core: {
-    builder: 'webpack5'
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {
+      builder: {
+        useSWC: true
+      }
+    }
   },
+
+  stories: [path.resolve(directory, 'src/**/*.stories.js')],
+
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-actions'],
+
   webpackFinal: async (webpackConfig) => {
     webpackConfig.resolve.alias = {
       ...webpackConfig.resolve.alias,
@@ -23,5 +29,9 @@ module.exports = {
     }
 
     return webpackConfig
+  },
+
+  docs: {
+    autodocs: true
   }
 }
