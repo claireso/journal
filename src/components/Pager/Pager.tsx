@@ -42,7 +42,7 @@ const Pager = ({ navigate, first, prev, next, last }: PagerProps) => {
       {last && (
         <li>
           <S.Button data-testid="last-page" title="Last page" onClick={handleClick(last)}>
-            »
+            »»
           </S.Button>
         </li>
       )}

@@ -28,7 +28,7 @@ exports[`<Pager /> should render first page 1`] = `
         data-testid="last-page"
         title="Last page"
       >
-        »
+        »»
       </button>
     </li>
   </ul>
@@ -100,7 +100,7 @@ exports[`<Pager /> should render second page 1`] = `
         data-testid="last-page"
         title="Last page"
       >
-        »
+        »»
       </button>
     </li>
   </ul>
