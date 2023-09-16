@@ -30,7 +30,9 @@ export const Main = styled('main', {
   '@lg': {
     gridGap: '0 $5',
     gridTemplateColumns: 'repeat($gridColumns, 1fr)',
-    pt: '$8'
+    pt: '$8',
+    pl: 0,
+    pr: 0
   }
 })
 
