@@ -42,7 +42,7 @@ const getColumnStart = (position = '', cellWidth) => {
 }
 
 export const Figure = styled('figure', {
-  $$shadowWidth: '6vw',
+  $$shadowWidth: '8rem',
   $$shadowWidthXs: '2rem',
   m: 0,
   gridColumnStart: 1,

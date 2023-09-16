@@ -50,7 +50,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       3: '3.6rem'
     },
     sizes: {
-      container: '128rem',
+      container: '124rem',
       toolbarHeight: '6rem',
       gridColumnsXs: '6',
       gridColumns: '12'
