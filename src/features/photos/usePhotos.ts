@@ -7,11 +7,6 @@ interface Filters {
   page: string
 }
 
-const formatPhoto = (photo: Photo): Photo => ({
-  ...photo,
-  source: `/uploads/${photo.name}`
-})
-
 const initialState: Photos = {
   items: [],
   pager: {
@@ -33,7 +28,7 @@ export const useEditPhoto = (filters: Filters = { page: '1' }) => {
 
   return useMutation(({ id, data }: { id: number; data: FormData }): Promise<Photo> => api.editPhoto(id, data), {
     onSuccess(photo, { id }) {
-      queryClient.setQueryData([CACHE_KEY_DETAIL, id], formatPhoto(photo))
+      queryClient.setQueryData([CACHE_KEY_DETAIL, id], photo)
 
       // https://github.com/tannerlinsley/react-query/issues/506
       const photos = queryClient.getQueryData<Photos>([CACHE_KEY_LIST, filters])
@@ -43,7 +38,7 @@ export const useEditPhoto = (filters: Filters = { page: '1' }) => {
           ...photos,
           items: photos.items.map((_photo) => {
             if (_photo.id !== id) return _photo
-            return formatPhoto(photo)
+            return photo
           })
         })
       }
@@ -113,7 +108,7 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
 
         if (photos) {
           queryClient.setQueryData([CACHE_KEY_LIST, filters], {
-            items: [formatPhoto(photo), ...photos.items],
+            items: [photo, ...photos.items],
             pager: {
               ...photos.pager,
               count: photos.pager.count + 1
@@ -146,7 +141,7 @@ export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
     const response = await api.getPhotos(filters.page, { signal })
     return {
       ...response,
-      items: response.items.map(formatPhoto)
+      items: response.items
     }
   }
 
@@ -170,7 +165,7 @@ export const usePhoto = (id: number, options = {}) => {
 
   const getPhoto = async ({ signal }: QueryFunctionContext) => {
     const response = await api.getPhoto(id, { signal })
-    return formatPhoto(response)
+    return response
   }
 
   const getActivePhotoQuery = () => {

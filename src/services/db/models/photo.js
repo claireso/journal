@@ -14,3 +14,5 @@ export default ({ width, height, ...photo } = {}) => ({
   position: photo.position || DEFAULT_POSITION,
   color: photo.color || null
 })
+
+export const formatPhoto = (photo = {}) => ({ ...photo, source: `/uploads/${photo.name}` })

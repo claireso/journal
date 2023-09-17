@@ -8,6 +8,7 @@ import withMulter from '@services/middlewares/withMulter'
 import { pool, queries, models } from '@services/db'
 
 const photoModel = models.photo
+const formatPhoto = models.formatPhoto
 
 // UTILS
 const deleteFile = (fileName) =>
@@ -35,7 +36,7 @@ const getPhoto = async (req, res) => {
       return
     }
 
-    res.status(200).json(photo)
+    res.status(200).json(formatPhoto(photo))
   } catch {
     res.status(500).send('')
   }
@@ -83,7 +84,7 @@ const editPhoto = async (req, res) => {
 
     response = await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
 
-    res.status(200).json(response.rows[0])
+    res.status(200).json(formatPhoto(response.rows[0]))
   } catch (err) {
     res.status(500).send('')
   }

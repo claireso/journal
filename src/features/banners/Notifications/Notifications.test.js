@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 
-import { TranslationsProvider, getTranslations } from '@hooks/useTranslations'
+import { TranslationsProvider } from '@hooks/useTranslations'
 import * as notifications from '@services/notifications'
 
 import Notifications from './index'
@@ -8,7 +8,7 @@ import Notifications from './index'
 describe('<Notifications />', () => {
   const renderComponent = () =>
     render(
-      <TranslationsProvider translations={getTranslations('en', 'client')}>
+      <TranslationsProvider namespace="client">
         <Notifications />
       </TranslationsProvider>
     )
