@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -11,12 +13,14 @@ type Translations = {
 
 interface TranslationsProviderProps {
   children: React.ReactNode
-  translations: Translations
+  namespace: 'client' | 'admin'
 }
 
-export const TranslationsProvider = ({ children, translations }: TranslationsProviderProps) => (
-  <TranslationsContext.Provider value={translations}>{children}</TranslationsContext.Provider>
-)
+export const TranslationsProvider = ({ children, namespace }: TranslationsProviderProps) => {
+  const translations = getTranslations(process.env.NEXT_PUBLIC_WEBSITE_LANGUAGE, namespace)
+
+  return <TranslationsContext.Provider value={translations}>{children}</TranslationsContext.Provider>
+}
 
 TranslationsProvider.propTypes = {
   children: PropTypes.node,

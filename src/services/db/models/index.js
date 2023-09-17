@@ -1,1 +1,1 @@
-export { default as photo } from './photo'
+export { default as photo, formatPhoto } from './photo'

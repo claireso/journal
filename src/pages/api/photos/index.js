@@ -9,19 +9,24 @@ import { sendNotification, NOTIFICATION_NEW_PHOTO, IS_NOTIFICATIONS_ENABLED } fr
 import { pool, queries, models } from '@services/db'
 
 const photoModel = models.photo
+const formatPhoto = models.formatPhoto
 
 // GET ALL PHOTOS
 const getPhotos = async (req, res) => {
-  const response = await pool.query(
-    queries.get_photos({
-      options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
-    })
-  )
+  try {
+    const response = await pool.query(
+      queries.get_photos({
+        options: `OFFSET ${res.pager.offset} LIMIT ${res.pager.limit}`
+      })
+    )
 
-  res.status(200).json({
-    items: response.rows,
-    pager: res.pager
-  })
+    res.status(200).json({
+      items: response.rows.map(formatPhoto),
+      pager: res.pager
+    })
+  } catch {
+    res.status(500).send('')
+  }
 }
 
 // CREATE PHOTO
@@ -44,7 +49,7 @@ const createPhoto = async (req, res) => {
       photo.square
     ])
 
-    res.status(201).send(response.rows[0])
+    res.status(201).send(formatPhoto(response.rows[0]))
 
     // send web-push notification
     if (IS_NOTIFICATIONS_ENABLED) {

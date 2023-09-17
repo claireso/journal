@@ -1,5 +1,12 @@
-import Layout from './Layout.client'
+import GlobalStyles from './GlobalStyles'
 import StitchesRegistry from '../StitchesRegistry'
+import * as S from './Layout.styles'
+
+import { TranslationsProvider } from '@hooks/useTranslations'
+import { MessagesProvider } from '@features/messages/useMessages'
+
+import BannerOffline from '@features/banners/Offline'
+import BannerNotifications from '@features/banners/Notifications'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -40,7 +47,13 @@ export default function RootLayout({ children }: LayoutProps) {
       </head>
       <body>
         <StitchesRegistry>
-          <Layout>{children}</Layout>
+          <TranslationsProvider namespace="client">
+            <BannerOffline />
+            <BannerNotifications />
+            <MessagesProvider>
+              <GlobalStyles>{children}</GlobalStyles>
+            </MessagesProvider>
+          </TranslationsProvider>
         </StitchesRegistry>
 
         <script
