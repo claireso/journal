@@ -34,11 +34,6 @@ describe('usePhotos', () => {
     </ErrorBoundary>
   )
 
-  const formatPhoto = (photo) => ({
-    ...photo,
-    source: `/uploads/${photo.source}`
-  })
-
   const bindApiError = (method) => {
     jest
       .spyOn(api, method)
@@ -74,7 +69,7 @@ describe('usePhotos', () => {
     await waitFor(() => expect(result.current.isFetching).toBeFalsy())
 
     expect(result.current.data).toEqual({
-      items: global.__PHOTOS__.items.map(formatPhoto),
+      items: global.__PHOTOS__.items,
       pager: global.__PHOTOS__.pager
     })
   })
@@ -129,7 +124,7 @@ describe('usePhotos', () => {
     await waitFor(() => expect(resultQuery.current.data.items).toHaveLength(3))
 
     expect(resultQuery.current.data.items).toHaveLength(3)
-    expect(resultQuery.current.data.items[0]).toEqual(formatPhoto(global.__PHOTO__))
+    expect(resultQuery.current.data.items[0]).toEqual(global.__PHOTO__)
     expect(resultQuery.current.data.pager.count).toEqual(185)
   })
 
@@ -163,12 +158,7 @@ describe('usePhotos', () => {
 
     resultMutation.current.mutate({ id: 198, data: global.__PHOTO__ })
 
-    await waitFor(() =>
-      expect(resultQuery.current.data.items).toEqual([
-        formatPhoto(global.__PHOTOS__.items[0]),
-        formatPhoto(global.__PHOTO__)
-      ])
-    )
+    await waitFor(() => expect(resultQuery.current.data.items).toEqual([global.__PHOTOS__.items[0], global.__PHOTO__]))
 
     expect(resultQuery.current.data.items).toHaveLength(2)
     expect(resultQuery.current.data.pager.count).toEqual(184)
@@ -191,7 +181,7 @@ describe('usePhotos', () => {
 
     expect(resultQuery.current.data.items).toHaveLength(2)
     expect(resultQuery.current.data.pager.count).toEqual(184)
-    expect(resultQuery.current.data.items).toEqual(global.__PHOTOS__.items.map(formatPhoto))
+    expect(resultQuery.current.data.items).toEqual(global.__PHOTOS__.items)
   })
 
   it('should load photo from cache', async () => {

@@ -6,7 +6,7 @@ import Offline from './index'
 describe('<Offline />', () => {
   const renderBanner = () =>
     render(
-      <TranslationsProvider translations={getTranslations('en', 'client')}>
+      <TranslationsProvider namespace="client">
         <Offline />
       </TranslationsProvider>
     )
