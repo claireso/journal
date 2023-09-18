@@ -29,7 +29,6 @@ const Pager = ({ pager }: PagerProps) => {
   const navigate = useCallback(
     (page: string) => {
       router.push(`/?page=${page}`)
-      window.scrollTo(0, 0)
     },
     [router]
   )
