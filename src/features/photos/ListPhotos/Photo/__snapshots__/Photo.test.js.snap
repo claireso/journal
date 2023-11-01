@@ -103,7 +103,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 exports[`<Photo /> should render photo (square center) 1`] = `
 <DocumentFragment>
   <figure
-    class="c-bUGSFZ c-bUGSFZ-iVqPaJ-position-center c-bUGSFZ-gzEPDe-square-true c-bUGSFZ-iiCDtyl-css"
+    class="c-bUGSFZ c-bUGSFZ-iVqPaJ-position-center c-bUGSFZ-bQoZHu-square-true c-bUGSFZ-gGTwqu-cv c-bUGSFZ-iiCDtyl-css"
     data-testid="photo"
   >
     <div
