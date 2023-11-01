@@ -24,8 +24,8 @@ const configImages = {
   },
   [SQUARE]: {
     cellWidth: {
-      large: 5,
-      small: 5
+      large: 6,
+      small: 6
     }
   }
 }
@@ -129,16 +129,20 @@ export const Figure = styled('figure', {
     {
       square: true,
       position: POSITION_CENTER,
-      '@lg': {
-        gridColumnStart: getColumnStart(POSITION_CENTER, configImages[SQUARE].cellWidth.large)
+      css: {
+        '@lg': {
+          gridColumnStart: getColumnStart(POSITION_CENTER, configImages[SQUARE].cellWidth.large)
+        }
       }
     },
     // square position right
     {
       square: true,
       position: POSITION_RIGHT,
-      '@lg': {
-        gridColumnStart: getColumnStart(POSITION_RIGHT, configImages[SQUARE].cellWidth.large)
+      css: {
+        '@lg': {
+          gridColumnStart: getColumnStart(POSITION_RIGHT, configImages[SQUARE].cellWidth.large)
+        }
       }
     },
     // portrait position center
