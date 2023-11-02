@@ -11,9 +11,6 @@ module.exports = {
   reactStrictMode: true,
   poweredByHeader: false,
   swcMinify: true,
-  experimental: {
-    appDir: true
-  },
   compiler: {
     reactRemoveProperties: true
   },
