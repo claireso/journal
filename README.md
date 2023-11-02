@@ -5,7 +5,7 @@ Note: the theme is optimized for pictures with an aspect ratio of 3:2 or 1:1
 
 # Requirements:
 
-- Node v16
+- Node v20
 - PostgreSQL
 
 # Installation:
@@ -107,6 +107,3 @@ Don't forget to update the entry 'baseUrl' in your config
 
 ![](https://user-images.githubusercontent.com/961038/84236775-8056b980-aaf8-11ea-8479-f15f80a197ac.jpg)
 
-### TODO
-- [ ] Restore tests (cypress)
-- [ ] Use middlewares of nextjs12
