@@ -7,7 +7,7 @@ import { ExpirationPlugin } from 'workbox-expiration'
 
 import pushService from './sw-push'
 
-const { IS_NOTIFICATIONS_ENABLED } = process.env
+const IS_NOTIFICATIONS_ENABLED = process.env.IS_NOTIFICATIONS_ENABLED === 'true'
 
 const VERSION = process.env.NEXT_PUBLIC_SERVICEWORKER_VERSION
 

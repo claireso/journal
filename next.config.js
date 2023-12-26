@@ -25,7 +25,7 @@ module.exports = {
     ]
   },
   env: {
-    IS_NOTIFICATIONS_ENABLED: IS_NOTIFICATIONS_ENABLED
+    IS_NOTIFICATIONS_ENABLED: String(IS_NOTIFICATIONS_ENABLED)
   },
   webpack: (config, { dev, isServer }) => {
     if (!isServer) {
