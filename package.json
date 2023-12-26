@@ -54,7 +54,6 @@
   },
   "devDependencies": {
     "@babel/core": "7.23.6",
-    "@babel/eslint-parser": "7.23.3",
     "@babel/node": "7.22.19",
     "@next/eslint-plugin-next": "14.0.4",
     "@stitches/react": "1.2.8",
