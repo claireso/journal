@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 import { QueryClient, QueryClientProvider, QueryCache, MutationCache } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import { UserProvider } from '@features/user/useUser'
 import { MessagesProvider } from '@features/messages/useMessages'
 
 import * as api from '@services/api'
@@ -32,7 +31,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
           onError: async (error) => {
             if (error instanceof api.getErrorConstructor()) {
               if (error.response.status === 401) {
-                router.push('/admin/login')
+                router.push('/auth/login')
               }
             }
           }
@@ -41,7 +40,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
           onError: async (error) => {
             if (error instanceof api.getErrorConstructor()) {
               if (error.response.status === 401) {
-                router.push('/admin/login')
+                router.push('/auth/login')
               }
             }
           }
@@ -52,9 +51,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <UserProvider>
-        <MessagesProvider>{children}</MessagesProvider>
-      </UserProvider>
+      <MessagesProvider>{children}</MessagesProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   )

@@ -6,7 +6,6 @@ import FlashGroup from '@components/FlashGroup'
 import useMessages from '@features/messages/useMessages'
 
 const Messages = () => {
-  // const router = useRouter()
   const pathname = usePathname()
   const [messages, { closeMessage, closeAllMessages }] = useMessages()
 

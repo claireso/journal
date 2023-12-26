@@ -7,13 +7,6 @@ const requester = buildRequester({
   ApiError: ApiError
 })
 
-export const login = (data: { username: string; password: string }) =>
-  requester.post<void, { username: string; password: string }>('/login', data)
-
-export const logout = () => requester.post<void>('/logout')
-
-export const getMe = () => requester.get<User>('/me')
-
 export const getPhotos = (page: string, options?: RequestInit) =>
   requester.get<Photos>(
     '/photos',
