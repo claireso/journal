@@ -1,6 +1,4 @@
-import { styled, globalCss } from '@theme'
-
-import { Button } from '@components/Buttons'
+import { globalCss } from '@theme'
 
 export const globalStyles = globalCss({
   html: {
