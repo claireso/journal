@@ -1,9 +1,9 @@
-import withPassport from './withPassport'
+import { getToken } from 'next-auth/jwt'
 
-const withAuth = (req, res, next) => {
-  const user = req.session?.passport?.user
+const withAuth = async (req, res, next) => {
+  const token = await getToken({ req })
 
-  if (!user) {
+  if (!token) {
     res.status(401).send('Unauthorized')
     return
   }
@@ -11,8 +11,4 @@ const withAuth = (req, res, next) => {
   next()
 }
 
-export default (req, res, next) => {
-  withPassport(req, res, () => {
-    withAuth(req, res, next)
-  })
-}
+export default withAuth
