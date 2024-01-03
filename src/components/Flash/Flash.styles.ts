@@ -19,12 +19,12 @@ export const Wrapper = styled('div', {
       },
       error: {
         background: '$error100',
-        color: '$white',
+        color: '$error300',
         borderColor: '$error200'
       },
       success: {
         background: '$success100',
-        color: '$white',
+        color: '$success300',
         borderColor: '$success200'
       },
       info: {

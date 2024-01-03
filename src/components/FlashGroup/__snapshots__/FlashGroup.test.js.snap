@@ -6,7 +6,7 @@ exports[`<FlashGroup /> should close messages 1`] = `
     class="c-jVMhMN"
   >
     <div
-      class="c-fyLyTf c-fyLyTf-eIkjtV-status-success"
+      class="c-fyLyTf c-fyLyTf-bYjkSC-status-success"
     >
       Success message
       <button
@@ -25,7 +25,7 @@ exports[`<FlashGroup /> should close messages 1`] = `
       </button>
     </div>
     <div
-      class="c-fyLyTf c-fyLyTf-epOfjx-status-error c-fyLyTf-bknGQq-separator-true"
+      class="c-fyLyTf c-fyLyTf-fXfFMp-status-error c-fyLyTf-bknGQq-separator-true"
     >
       Error message
       <button
@@ -53,7 +53,7 @@ exports[`<FlashGroup /> should render two messages 1`] = `
     class="c-jVMhMN"
   >
     <div
-      class="c-fyLyTf c-fyLyTf-eIkjtV-status-success"
+      class="c-fyLyTf c-fyLyTf-bYjkSC-status-success"
     >
       Success message
       <button
@@ -72,7 +72,7 @@ exports[`<FlashGroup /> should render two messages 1`] = `
       </button>
     </div>
     <div
-      class="c-fyLyTf c-fyLyTf-epOfjx-status-error c-fyLyTf-bknGQq-separator-true"
+      class="c-fyLyTf c-fyLyTf-fXfFMp-status-error c-fyLyTf-bknGQq-separator-true"
     >
       Error message
       <button
