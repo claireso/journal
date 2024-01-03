@@ -10,6 +10,17 @@ interface BaseList {
   }
 }
 
+declare interface Pager {
+  count: number
+  offset: number
+  limit: number
+  totalPages: number
+  first?: number
+  prev?: number
+  next?: number
+  last?: number
+}
+
 declare interface Photo extends BaseEntity {
   title?: string
   description?: string
@@ -24,8 +35,6 @@ declare interface Photo extends BaseEntity {
 declare interface Photos extends BaseList {
   items: Photo[]
 }
-
-// declare type NewPhoto = Omit<Photo, 'id' | 'created_at' | 'updated_at'>
 
 declare interface Subscription extends BaseEntity {
   subscription: {
