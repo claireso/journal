@@ -1,28 +1,26 @@
+import { NextRequest } from 'next/server'
 import { pool, queries } from '@services/db'
 
-export default (resource) => async (req, res, next) => {
-  let {
-    query: { page }
-  } = req
+const withPagination = (resource: string) => async (request: NextRequest & { pager: Pager }) => {
+  const { searchParams } = new URL(request.url)
+  let page = searchParams.get('page') as string | number
 
-  // cast query into number
   page = Number(page)
 
   if (isNaN(page)) {
     page = 1
   }
 
-  //@TODO try catch
   const response = await pool.query(queries.count(resource))
   const limit = 10
   const count = Number(response.rows[0].count)
   const totalPages = Math.ceil(count / limit)
 
   if ((count > 0 && page > totalPages) || page < 1 || (page > 1 && count == 0)) {
-    return res.status(404).end()
+    return Response.json({}, { status: 404 })
   }
 
-  res.pager = {
+  request.pager = {
     count,
     totalPages,
     limit,
@@ -30,14 +28,14 @@ export default (resource) => async (req, res, next) => {
   }
 
   if (page > 1) {
-    res.pager.prev = page - 1
-    res.pager.first = 1
+    request.pager.prev = page - 1
+    request.pager.first = 1
   }
 
   if (page < totalPages) {
-    res.pager.next = page + 1
-    res.pager.last = totalPages
+    request.pager.next = page + 1
+    request.pager.last = totalPages
   }
-
-  next()
 }
+
+export default withPagination

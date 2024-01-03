@@ -1,7 +1,10 @@
 'use client'
 
+import { Suspense } from 'react'
+
 import { styled } from '@theme'
 import Box from '@components/Box'
+import { Loader } from '@components/Loader'
 
 const Wrapper = styled('div', {
   alignItems: 'center',
@@ -23,7 +26,9 @@ const LayoutAuth = ({ children }: LayoutAuthProps) => {
   return (
     <Wrapper>
       <main>
-        <Box>{children}</Box>
+        <Box>
+          <Suspense fallback={<Loader />}>{children}</Suspense>
+        </Box>
       </main>
     </Wrapper>
   )
