@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { SessionProvider, signOut } from 'next-auth/react'
@@ -7,6 +8,7 @@ import { SessionProvider, signOut } from 'next-auth/react'
 import { IconAngleRight } from '@components/Icons'
 import Toolbar from '@components/Toolbar'
 import { Tabs, Tab } from '@components/Tabs'
+import { Loader } from '@components/Loader'
 
 import Messages from '@features/messages/Messages'
 
@@ -55,7 +57,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
         </S.ToolbarWrapper>
         <S.Content>
           <Messages />
-          {children}
+          <Suspense fallback={<Loader />}>{children}</Suspense>
         </S.Content>
       </S.Layout>
     </SessionProvider>

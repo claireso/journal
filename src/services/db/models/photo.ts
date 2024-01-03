@@ -4,7 +4,7 @@ const DEFAULT_POSITION = 'left'
 const DEFAULT_PORTRAIT = false
 const DEFAULT_SQUARE = false
 
-export default ({ width, height, ...photo } = {}) => ({
+const model = ({ width, height, ...photo }: Partial<Photo> & { width?: number; height?: number } = {}) => ({
   ...photo,
   // override
   title: escape(photo.title),
@@ -15,4 +15,6 @@ export default ({ width, height, ...photo } = {}) => ({
   color: photo.color || null
 })
 
-export const formatPhoto = (photo = {}) => ({ ...photo, source: `/uploads/${photo.name}` })
+export default model
+
+export const formatPhoto = (photo: Partial<Photo> = {}) => ({ ...photo, source: `/uploads/${photo.name}` })
