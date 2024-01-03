@@ -37,7 +37,7 @@ exports[`<Flash /> should render default message 1`] = `
 exports[`<Flash /> should render error message 1`] = `
 <DocumentFragment>
   <div
-    class="c-fyLyTf c-fyLyTf-epOfjx-status-error"
+    class="c-fyLyTf c-fyLyTf-fXfFMp-status-error"
   >
     Flash message
   </div>
@@ -47,7 +47,7 @@ exports[`<Flash /> should render error message 1`] = `
 exports[`<Flash /> should render success message 1`] = `
 <DocumentFragment>
   <div
-    class="c-fyLyTf c-fyLyTf-eIkjtV-status-success"
+    class="c-fyLyTf c-fyLyTf-bYjkSC-status-success"
   >
     Flash message
   </div>

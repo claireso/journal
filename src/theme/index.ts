@@ -20,10 +20,12 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       tertiary100: 'hsl(51, 100%, 68%)',
       tertiary200: 'hsl(51, 100%, 50%)',
       white: 'white',
-      error100: 'hsl(0, 100%, 50%)',
-      error200: 'hsl(0, 100%, 45%)',
-      success100: 'hsl(118, 76%, 46%)',
-      success200: 'hsl(118, 76%, 40%)'
+      error100: 'hsl(360, 67%, 92%)',
+      error200: 'hsl(360, 67%, 88%)',
+      error300: 'hsl(360, 67%, 46%)',
+      success100: 'hsl(133, 35%, 90%)',
+      success200: 'hsl(133, 35%, 80%)',
+      success300: 'hsl(133, 35%, 39%)'
     },
     fonts: {
       sansSerif: '-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'
