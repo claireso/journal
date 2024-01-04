@@ -41,7 +41,7 @@ const BannerNotifications = () => {
     // do not display banner if push is not enabled
     // do not display banner in safari
     if (
-      process.env.IS_NOTIFICATIONS_ENABLED === 'false' ||
+      process.env.NEXT_PUBLIC_IS_NOTIFICATIONS_ENABLED === 'false' ||
       !('serviceWorker' in navigator) ||
       !('Notification' in window) ||
       'safari' in window // @TODO
