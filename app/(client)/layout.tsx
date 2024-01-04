@@ -1,6 +1,7 @@
-import GlobalStyles from './GlobalStyles'
-import StitchesRegistry from '../StitchesRegistry'
-import * as S from './Layout.styles'
+import { type Metadata } from 'next'
+import Script from 'next/script'
+
+import Layout from './Layout.client'
 
 import { TranslationsProvider } from '@hooks/useTranslations'
 import { MessagesProvider } from '@features/messages/useMessages'
@@ -8,73 +9,46 @@ import { MessagesProvider } from '@features/messages/useMessages'
 import BannerOffline from '@features/banners/Offline'
 import BannerNotifications from '@features/banners/Notifications'
 
-interface LayoutProps {
+interface JournalLayoutProps {
   children: React.ReactNode
 }
 
-export default function RootLayout({ children }: LayoutProps) {
+export const metadata: Metadata = {
+  description: process.env.NEXT_PUBLIC_WEBSITE_META_DESCRIPTION ?? '',
+  manifest: '/manifest.json',
+  icons: {
+    apple: [{ url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' }]
+  }
+}
+
+export default function JournalLayout({ children }: JournalLayoutProps) {
   return (
-    <html lang={process.env.NEXT_PUBLIC_WEBSITE_LANGUAGE}>
-      <head>
-        <title>{process.env.NEXT_PUBLIC_WEBSITE_META_TITLE}</title>
-        <meta name="description" content={process.env.NEXT_PUBLIC_WEBSITE_META_DESCRIPTION} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="theme-color" content="#868585" />
-        {process.env.NEXT_PUBLIC_WEBSITE_META_ROBOTS && (
-          <meta name="robots" content={process.env.NEXT_PUBLIC_WEBSITE_META_ROBOTS} />
-        )}
-        <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png" />
-        <link rel="manifest" href="/manifest.json" />
-
-        {process.env.NEXT_PUBLIC_WEBSITE_ANALYTICS_GA && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_WEBSITE_ANALYTICS_GA}`}
-            ></script>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_WEBSITE_ANALYTICS_GA}');
-                `
-              }}
-            />
-          </>
-        )}
-      </head>
-      <body>
-        <StitchesRegistry>
-          <TranslationsProvider namespace="client">
-            <BannerOffline />
-            <BannerNotifications />
-            <MessagesProvider>
-              <GlobalStyles>{children}</GlobalStyles>
-            </MessagesProvider>
-          </TranslationsProvider>
-        </StitchesRegistry>
-
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-          if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-              navigator.serviceWorker
-                .register('/sw.js', {scope: '/'})
-                .then(function(registration) {
-                  console.log('SW registered: ', registration);
-                })
-                .catch(function(registrationError) {
-                  console.log('SW registration failed: ', registrationError);
-                });
-            });
-          }
-      `
-          }}
-        />
-      </body>
-    </html>
+    <TranslationsProvider namespace="client">
+      <BannerOffline />
+      <BannerNotifications />
+      <MessagesProvider>
+        <Layout>{children}</Layout>
+      </MessagesProvider>
+      <Script
+        id="service-worker"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', function() {
+                navigator.serviceWorker
+                  .register('/sw.js', {scope: '/'})
+                  .then(function(registration) {
+                    console.log('SW registered: ', registration);
+                  })
+                  .catch(function(registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                  });
+              });
+            }
+          `
+        }}
+      />
+    </TranslationsProvider>
   )
 }

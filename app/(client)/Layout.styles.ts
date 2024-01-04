@@ -1,23 +1,4 @@
-import { styled, globalCss } from '@theme'
-
-export const globalStyles = globalCss({
-  html: {
-    boxSizing: 'border-box',
-    fontSize: '62.5%'
-  },
-  '*, *:before, *:after': {
-    boxSizing: 'inherit'
-  },
-  a: {
-    textDecoration: 'none'
-  },
-  body: {
-    color: '$gray600',
-    fontFamily: '$sansSerif',
-    fontSize: '16px',
-    m: 0
-  }
-})
+import { styled } from '@theme'
 
 export const Main = styled('main', {
   display: 'grid',
@@ -34,8 +15,4 @@ export const Main = styled('main', {
     pl: 0,
     pr: 0
   }
-})
-
-export const LoaderWrapper = styled('div', {
-  gridColumn: '1 / -1'
 })

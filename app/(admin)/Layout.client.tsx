@@ -1,4 +1,5 @@
 'use client'
+
 import { useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { QueryClient, QueryClientProvider, QueryCache, MutationCache } from '@tanstack/react-query'
@@ -8,15 +9,16 @@ import { MessagesProvider } from '@features/messages/useMessages'
 
 import * as api from '@services/api'
 
-import * as S from './Layout.client.styles'
+import * as S from './Layout.styles'
 
-interface PageLayoutProps {
+interface LayoutProps {
   children: React.ReactNode
 }
 
-const PageLayout = ({ children }: PageLayoutProps) => {
-  S.globalStyles()
+const Layout = ({ children }: LayoutProps) => {
   const router = useRouter()
+
+  S.css()
 
   const queryClient = useMemo(
     () =>
@@ -57,4 +59,4 @@ const PageLayout = ({ children }: PageLayoutProps) => {
   )
 }
 
-export default PageLayout
+export default Layout
