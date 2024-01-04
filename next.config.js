@@ -1,11 +1,11 @@
 const path = require('path')
 const { InjectManifest } = require('workbox-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const IS_NOTIFICATIONS_ENABLED = !!(
-  process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY && process.env.NOTIFICATIONS_PRIVATE_KEY
-)
+// const IS_NOTIFICATIONS_ENABLED = !!(
+//   process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY && process.env.NOTIFICATIONS_PRIVATE_KEY
+// )
+const IS_NOTIFICATIONS_ENABLED = false
 
 module.exports = {
   reactStrictMode: true,
@@ -31,14 +31,6 @@ module.exports = {
     if (!isServer) {
       // enable service worker
       config.plugins.push(
-        // @TODO add offline page to precache
-        // new CopyWebpackPlugin({
-        //   patterns: [
-        //     {
-        //       from: path.resolve(__dirname, "public/offline.html"),
-        //     },
-        //   ],
-        // }),
         new InjectManifest({
           swSrc: path.resolve(__dirname, 'src', 'services', 'serviceworker', 'sw.js'),
           swDest: path.resolve(__dirname, 'public', 'sw.js'),
