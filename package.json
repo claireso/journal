@@ -47,7 +47,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "ulid": "2.3.0",
-    "web-push": "3.6.1"
+    "web-push": "3.6.6"
   },
   "devDependencies": {
     "@babel/core": "7.23.6",

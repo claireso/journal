@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
 
-import { TranslationsProvider, getTranslations } from '@hooks/useTranslations'
+import { TranslationsProvider } from '@hooks/useTranslations'
+import { getTranslations } from '../../../translations'
 import Offline from './index'
 
 describe('<Offline />', () => {
