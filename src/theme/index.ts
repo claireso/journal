@@ -79,7 +79,8 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       background: 'background 150ms ease-out',
       borderColor: 'border-color 250ms ease-out',
       color: 'color 150ms ease',
-      opacity: 'opacity 150ms ease-out'
+      opacity: 'opacity 150ms ease-out',
+      button: 'background 150ms ease-out, color 150ms ease'
     }
   },
   media: {

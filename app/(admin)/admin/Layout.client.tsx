@@ -12,7 +12,7 @@ import { Loader } from '@components/Loader'
 
 import Messages from '@features/messages/Messages'
 
-import * as S from './Layout.client.styles'
+import * as S from './Layout.styles'
 
 interface PageLayoutProps {
   children: React.ReactNode

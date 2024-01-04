@@ -1,6 +1,8 @@
+'use client'
+
 import { globalCss } from '@theme'
 
-export const globalStyles = globalCss({
+export const css = globalCss({
   html: {
     boxSizing: 'border-box',
     fontSize: '62.5%'
@@ -8,22 +10,25 @@ export const globalStyles = globalCss({
   '*, *:before, *:after': {
     boxSizing: 'inherit'
   },
+  a: {
+    textDecoration: 'none'
+  },
   body: {
     color: '$gray600',
     fontFamily: '$sansSerif',
     fontSize: '16px',
     m: 0
-  },
-  main: {
-    maxWidth: '$container',
-    p: '$5*3 $5',
-    m: '0 auto'
-  },
-  svg: {
-    fill: 'currentColor'
-  },
-  a: {
-    textDecoration: 'none',
-    transition: '$color'
   }
 })
+
+interface LayoutProps {
+  children: React.ReactNode
+}
+
+const Layout = ({ children }: LayoutProps) => {
+  css()
+
+  return children
+}
+
+export default Layout
