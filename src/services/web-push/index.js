@@ -1,9 +1,9 @@
 import webpush from 'web-push'
-import { getTranslations } from '@hooks/useTranslations'
+import { getTranslations } from '../../translations'
 
 // CONSTANTS
 export const NOTIFICATION_NEW_PHOTO = 'NOTIFICATION_NEW_PHOTO'
-export const IS_NOTIFICATIONS_ENABLED = process.env.IS_NOTIFICATIONS_ENABLED === 'true'
+export const IS_NOTIFICATIONS_ENABLED = process.env.NEXT_PUBLIC_IS_NOTIFICATIONS_ENABLED === 'true'
 
 const NOTIFICATIONS_PRIVATE_KEY = process.env.NOTIFICATIONS_PRIVATE_KEY
 const NOTIFICATIONS_PUBLIC_KEY = process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY
