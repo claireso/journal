@@ -1,4 +1,5 @@
 import escape from 'lodash/escape'
+import unescape from '@utils/unescape'
 
 const DEFAULT_POSITION = 'left'
 const DEFAULT_PORTRAIT = false
@@ -17,4 +18,9 @@ const model = ({ width, height, ...photo }: Partial<Photo> & { width?: number; h
 
 export default model
 
-export const formatPhoto = (photo: Partial<Photo> = {}) => ({ ...photo, source: `/uploads/${photo.name}` })
+export const formatPhoto = (photo: Partial<Photo> = {}) => ({
+  ...photo,
+  title: unescape(photo.title),
+  description: unescape(photo.description),
+  source: `/uploads/${photo.name}`
+})
