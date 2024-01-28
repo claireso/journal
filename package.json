@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/claireso/journal#readme",
   "dependencies": {
+    "@changesets/cli": "2.27.1",
     "@tanstack/react-query": "4.33.0",
     "@tanstack/react-query-devtools": "4.33.0",
     "colorthief": "2.4.0",
