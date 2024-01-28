@@ -1,8 +1,9 @@
 name: Release
+
 on:
   workflow_run:
     workflows: QA
-    branches: release
+    branches: master
     types: completed
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
