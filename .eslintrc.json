@@ -1,13 +1,5 @@
 {
-  "extends":[
-    "next/core-web-vitals",
-    "prettier",
-    "plugin:prettier/recommended",
-    "plugin:cypress/recommended"
-  ],
-  "plugins": [
-    "cypress"
-  ],
+  "extends": ["next/core-web-vitals", "prettier", "plugin:prettier/recommended"],
   "rules": {
     "@next/next/no-img-element": "off",
     "prettier/prettier": "error"
