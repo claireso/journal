@@ -4,18 +4,15 @@ const directory = process.cwd()
 
 module.exports = {
   framework: {
-    name: '@storybook/react-webpack5',
-    options: {
-      builder: {
-        useSWC: true
-      }
-    }
+    name: '@storybook/react-webpack5'
   },
-
   stories: [path.resolve(directory, 'src/**/*.stories.js')],
-
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-actions'],
-
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-actions',
+    '@storybook/addon-webpack5-compiler-swc'
+  ],
   webpackFinal: async (webpackConfig) => {
     webpackConfig.resolve.alias = {
       ...webpackConfig.resolve.alias,
@@ -25,13 +22,14 @@ module.exports = {
       '@features': path.resolve(directory, 'src', 'features'),
       '@hooks': path.resolve(directory, 'src', 'hooks'),
       '@types': path.resolve(directory, 'src', 'types'),
-      '@theme': path.resolve(directory, 'src', 'theme')
+      '@theme': path.resolve(directory, 'src', 'theme'),
+      // https://github.com/storybookjs/storybook/issues/12016
+      '@storybook/theming': path.dirname(require.resolve('@storybook/theming/package.json'))
     }
 
     return webpackConfig
   },
-
-  docs: {
-    autodocs: true
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
   }
 }
