@@ -1,5 +1,16 @@
 # journal
 
+## 1.2.0
+
+### Minor Changes
+
+- 70d47db: chore: migrate to storybook 8
+- 68454be: chore: migrate to react-query 5
+
+### Patch Changes
+
+- 129c770: Update github actions to use node 20
+
 ## 1.1.2
 
 ### Patch Changes
