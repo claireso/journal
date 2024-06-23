@@ -1,12 +1,10 @@
+import React from 'react'
 import { ColorPalette, ColorItem, Typeset } from '@storybook/addon-docs/blocks'
 import { theme } from './index'
-
-console.log({ theme })
 
 const params = {
   title: 'Theme',
   parameters: {
-    viewMode: 'docs',
     previewTabs: {
       canvas: { hidden: true }
     }

@@ -40,9 +40,9 @@ const Photos = () => {
 
   const { isFetching, isSuccess, data } = usePhotos(filters)
 
-  const { mutate: createPhoto, isLoading: isCreating } = useCreatePhoto(filters)
-  const { mutate: editPhoto, isLoading: isEditing } = useEditPhoto(filters)
-  const { mutate: deletePhoto, isLoading: isDeleting } = useDeletePhoto(filters)
+  const { mutate: createPhoto, isPending: isCreating } = useCreatePhoto(filters)
+  const { mutate: editPhoto, isPending: isEditing } = useEditPhoto(filters)
+  const { mutate: deletePhoto, isPending: isDeleting } = useDeletePhoto(filters)
 
   const navigate = useCallback(
     (params: Query = {}, options?: NavigateOptions) => {

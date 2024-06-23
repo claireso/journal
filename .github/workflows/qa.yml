@@ -7,16 +7,16 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
           echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: npm-cache
         with:
           path: node_modules
@@ -31,16 +31,16 @@ jobs:
     needs: install
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
           echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: npm-cache
         with:
           path: node_modules
@@ -58,16 +58,16 @@ jobs:
     needs: install
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
           echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: npm-cache
         with:
           path: node_modules
@@ -85,16 +85,16 @@ jobs:
     needs: install
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
           echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: npm-cache
         with:
           path: node_modules
@@ -112,16 +112,16 @@ jobs:
     needs: install
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
           echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: npm-cache
         with:
           path: node_modules

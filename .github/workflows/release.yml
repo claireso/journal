@@ -2,9 +2,9 @@ name: Release
 
 on:
   workflow_run:
-    workflows: QA
+    workflows: [QA]
     branches: master
-    types: completed
+    types: [completed]
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -14,13 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           # fetch all history and tags
           fetch-depth: 0
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
@@ -28,7 +28,7 @@ jobs:
         id: npm-cache-dir
         run: |
           echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: npm-cache
         with:
           path: node_modules
