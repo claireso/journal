@@ -26,7 +26,8 @@ export const useEditPhoto = (filters: Filters = { page: '1' }) => {
   const queryClient = useQueryClient()
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
-  return useMutation(({ id, data }: { id: number; data: FormData }): Promise<Photo> => api.editPhoto(id, data), {
+  return useMutation({
+    mutationFn: ({ id, data }: { id: number; data: FormData }): Promise<Photo> => api.editPhoto(id, data),
     onSuccess(photo, { id }) {
       queryClient.setQueryData([CACHE_KEY_DETAIL, id], photo)
 
@@ -65,7 +66,8 @@ export const useDeletePhoto = (filters: Filters = { page: '1' }) => {
   const queryClient = useQueryClient()
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
-  return useMutation((id: number) => api.deletePhoto(id), {
+  return useMutation({
+    mutationFn: (id: number) => api.deletePhoto(id),
     onSuccess(data, id) {
       const photos = queryClient.getQueryData<Photos>([CACHE_KEY_LIST, filters])
 
@@ -101,7 +103,8 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
   const queryClient = useQueryClient()
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
-  return useMutation((data: FormData): Promise<Photo> => api.createPhoto(data), {
+  return useMutation({
+    mutationFn: (data: FormData): Promise<Photo> => api.createPhoto(data),
     onSuccess(photo) {
       if (filters.page === '1') {
         const photos = queryClient.getQueryData<Photos>([CACHE_KEY_LIST, filters])
@@ -132,8 +135,6 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
 
 /**
  * Fetch photos
- * @param {object} queries
- * @param {object} options
  * @returns object
  */
 export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
@@ -151,7 +152,7 @@ export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
     ...options
   }
 
-  return useQuery([CACHE_KEY_LIST, filters], getPhotos, queryOptions)
+  return useQuery({ queryKey: [CACHE_KEY_LIST, filters], queryFn: getPhotos, ...queryOptions })
 }
 
 /**
@@ -192,5 +193,5 @@ export const usePhoto = (id: number, options = {}) => {
     ...options
   }
 
-  return useQuery([CACHE_KEY_DETAIL, id], getPhoto, queryOptions)
+  return useQuery({ queryKey: [CACHE_KEY_DETAIL, id], queryFn: getPhoto, ...queryOptions })
 }

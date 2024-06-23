@@ -35,8 +35,8 @@
   "homepage": "https://github.com/claireso/journal#readme",
   "dependencies": {
     "@stitches/react": "1.2.8",
-    "@tanstack/react-query": "4.33.0",
-    "@tanstack/react-query-devtools": "4.33.0",
+    "@tanstack/react-query": "5.45.1",
+    "@tanstack/react-query-devtools": "5.45.1",
     "colorthief": "2.4.0",
     "date-fns": "3.6.0",
     "jimp": "0.22.12",
