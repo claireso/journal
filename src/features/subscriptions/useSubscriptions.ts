@@ -24,7 +24,8 @@ export const useDeleteSubscription = (filters: Filters) => {
   const queryClient = useQueryClient()
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
-  return useMutation((id: number) => api.deleteSubscription(id), {
+  return useMutation({
+    mutationFn: (id: number) => api.deleteSubscription(id),
     onSuccess(data, id) {
       const subscriptions = queryClient.getQueryData<Subscriptions>([CACHE_KEY_LIST, filters])
 
@@ -69,5 +70,5 @@ export const useSubscriptions = (filters: Filters = { page: '1' }, options = {})
     ...options
   }
 
-  return useQuery([CACHE_KEY_LIST, filters], getSubscriptions, queryOptions)
+  return useQuery({ queryKey: [CACHE_KEY_LIST, filters], queryFn: getSubscriptions, ...queryOptions })
 }

@@ -36,7 +36,7 @@ const Subscriptions = () => {
 
   const { isFetching, isSuccess, data } = useSubscriptions(filters)
 
-  const { mutate: deleteSubscription, isLoading: isDeleting } = useDeleteSubscription(filters)
+  const { mutate: deleteSubscription, isPending: isDeleting } = useDeleteSubscription(filters)
 
   const navigate = useCallback(
     (params: Query = {}, options?: NavigateOptions) => {
