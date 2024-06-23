@@ -1,5 +1,11 @@
 # journal
 
+## 1.2.1
+
+### Patch Changes
+
+- 56ec125: fix: update changeset config to generate tag in CI
+
 ## 1.2.0
 
 ### Minor Changes
