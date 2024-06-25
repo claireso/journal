@@ -2,11 +2,12 @@
 
 import React, { useRef } from 'react'
 
+import { EnhancedPhoto } from '@models'
 import useInView from '@hooks/useInView'
 
 import * as S from './Photo.styles'
 
-interface PhotoProps extends Photo {
+interface PhotoProps extends EnhancedPhoto {
   row: number
 }
 

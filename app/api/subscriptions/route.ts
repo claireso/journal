@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { createRouteHandler, withPagination, withAuth } from '@services/middlewares'
 import { pool, queries } from '@services/db'
-import { Pager, Subscription } from '@models'
+import { Pager, Subscription, SubscriptionSchema } from '@models'
 
 const getAllSubscriptions = async (request: NextRequest & { pager: Pager }) => {
   const response = await pool.query(
@@ -23,10 +23,10 @@ const getAllSubscriptions = async (request: NextRequest & { pager: Pager }) => {
 const createSubscription = async (request: NextRequest) => {
   const body = await request.json()
 
-  const result = Subscription.pick({ subscription: true }).safeParse(body)
+  const result = SubscriptionSchema.pick({ subscription: true }).safeParse(body)
 
   if (!result.success) {
-    return Response.json(result.error.format(), { status: 400 })
+    return Response.json(result.error.format(), { status: 422 })
   }
 
   const response = await pool.query(queries.insert_subscription(), [result.data.subscription])

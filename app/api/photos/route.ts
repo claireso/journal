@@ -1,14 +1,19 @@
 import { NextRequest } from 'next/server'
 import { differenceInMinutes } from 'date-fns'
 import { createRouteHandler, withPagination, withAuth } from '@services/middlewares'
-import { pool, queries, models } from '@services/db'
-import uploadFile from '@utils/uploadFile'
+import { pool, queries } from '@services/db'
 import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } from '@services/web-push'
+import {
+  PhotoRequestSchema,
+  Photo,
+  Subscription,
+  Pager,
+  createPhoto as createPhotoHelper,
+  formatPhoto as formatPhotoHelper
+} from '@models'
+import uploadFile from '@utils/uploadFile'
 
-const formatPhoto = models.formatPhoto
-const photoModel = models.photo
-
-// GET ALL PHOTOS
+// endpoint list photos
 const getAllPhotos = async (request: NextRequest & { pager: Pager }) => {
   const response = await pool.query(
     queries.get_photos({
@@ -18,32 +23,30 @@ const getAllPhotos = async (request: NextRequest & { pager: Pager }) => {
 
   return Response.json(
     {
-      items: response.rows.map(formatPhoto),
+      items: response.rows.map(formatPhotoHelper),
       pager: request.pager
     },
     { status: 200 }
   )
 }
 
-// CREATE PHOTO
+// endpoint POST photo
 const createPhoto = async (request: NextRequest) => {
   const formData = await request.formData()
 
-  const fileToUpload = formData.get('file') as File
-  const file = await uploadFile(fileToUpload)
+  const body = Object.fromEntries(formData)
 
-  const title = formData.get('title') as Photo['title']
-  const description = formData.get('description') as Photo['description']
-  const position = formData.get('position') as Photo['position']
+  const result = PhotoRequestSchema.safeParse(body)
 
-  const photo = photoModel({
-    title,
-    description,
-    position,
-    name: file.filename,
-    width: file.width,
-    height: file.height
-  })
+  if (!result.success) {
+    return Response.json(result.error.format(), { status: 422 })
+  }
+
+  const { file, ...partialPhoto } = result.data
+
+  const uploadedFile = await uploadFile(file)
+
+  const photo = createPhotoHelper(partialPhoto, uploadedFile)
 
   const response = await pool.query(queries.insert_photo(), [
     photo.title,
@@ -60,7 +63,7 @@ const createPhoto = async (request: NextRequest) => {
     let skipNotification = false
 
     if (responseForPreviousPhoto.rowCount === 1) {
-      const previousPhoto = responseForPreviousPhoto.rows[0]
+      const previousPhoto: Photo = responseForPreviousPhoto.rows[0]
       // do not send web push if the previous photo was posted less than 30 minutes ago
       if (differenceInMinutes(new Date(), new Date(previousPhoto.created_at)) < 30) {
         skipNotification = true
@@ -80,11 +83,8 @@ const createPhoto = async (request: NextRequest) => {
     }
   }
 
-  return Response.json(formatPhoto(response.rows[0]), { status: 201 })
+  return Response.json(formatPhotoHelper(response.rows[0]), { status: 201 })
 }
 
-const GET = createRouteHandler(withPagination('photos'), getAllPhotos)
-
-const POST = createRouteHandler(withAuth, createPhoto)
-
-export { GET, POST }
+export const GET = createRouteHandler(withPagination('photos'), getAllPhotos)
+export const POST = createRouteHandler(withAuth, createPhoto)

@@ -1,4 +1,4 @@
-import React, { useCallback, memo } from 'react'
+import React, { useCallback, memo, useMemo } from 'react'
 import { format, parseISO } from 'date-fns'
 
 import * as S from './Subscription.styles'
@@ -12,6 +12,8 @@ interface SubscriptionProps extends TSubscription {
 }
 
 const Subscription = ({ onDelete, id, ...props }: SubscriptionProps) => {
+  const createdAt = props.created_at as unknown
+
   const handleDelete = useCallback(() => {
     onDelete(id)
   }, [id, onDelete])
@@ -20,7 +22,7 @@ const Subscription = ({ onDelete, id, ...props }: SubscriptionProps) => {
     <S.SubscriptionWrapper data-testid="subscription">
       <dl>
         <dt>Created at:</dt>
-        <dd>{format(parseISO(props.created_at), 'yyyy-MM-dd HH:mm:ss')}</dd>
+        <dd>{format(parseISO(createdAt as string), 'yyyy-MM-dd HH:mm:ss')}</dd>
 
         <dt>Endpoint:</dt>
         <dd>{props.subscription.endpoint}</dd>

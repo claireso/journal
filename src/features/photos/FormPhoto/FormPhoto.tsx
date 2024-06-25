@@ -8,12 +8,13 @@ import { Group } from '@components/form/Group'
 import Label from '@components/form/Label'
 import SubmitButton from '@components/form/Buttons'
 
+import { EnhancedPhoto } from '@models'
 import useColorsExtractor from '@hooks/useColorsExtractor'
 
 const ALLOWED_MIMETYPES = ['image/jpeg', 'image/png']
 
 interface FormProps {
-  photo?: Photo
+  photo?: EnhancedPhoto
   isProcessing?: boolean
   onSubmit: (data: FormData) => void
 }

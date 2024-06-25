@@ -1,4 +1,4 @@
-import { Photo, Photos, Subscription, Subscriptions } from '@models'
+import { EnhancedPhoto, Photos, Subscription, Subscriptions } from '@models'
 import { buildRequester } from './requester'
 import ApiError from './ApiError'
 
@@ -20,13 +20,15 @@ export const getPhotos = (page: string, options?: RequestInit) =>
     }
   )
 
-export const getPhoto = (id: Photo['id'], options?: RequestInit) => requester.get<Photo>(`/photos/${id}`, {}, options)
+export const getPhoto = (id: EnhancedPhoto['id'], options?: RequestInit) =>
+  requester.get<EnhancedPhoto>(`/photos/${id}`, {}, options)
 
-export const createPhoto = (data: FormData) => requester.post<Photo, FormData>('/photos', data)
+export const createPhoto = (data: FormData) => requester.post<EnhancedPhoto, FormData>('/photos', data)
 
-export const deletePhoto = (id: Photo['id']) => requester.del<void>(`/photos/${id}`)
+export const deletePhoto = (id: EnhancedPhoto['id']) => requester.del<void>(`/photos/${id}`)
 
-export const editPhoto = (id: Photo['id'], data: FormData) => requester.patch<Photo, FormData>(`/photos/${id}`, data)
+export const editPhoto = (id: EnhancedPhoto['id'], data: FormData) =>
+  requester.patch<EnhancedPhoto, FormData>(`/photos/${id}`, data)
 
 export const getSubscriptions = (page: string, options?: RequestInit) =>
   requester.get<Subscriptions>('/subscriptions', { page: page }, options)
