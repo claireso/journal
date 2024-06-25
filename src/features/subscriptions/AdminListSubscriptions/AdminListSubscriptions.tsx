@@ -1,10 +1,12 @@
 import React from 'react'
 
+import { Subscription as TSubscription } from '@models'
+
 import { List } from '@components/List'
 import Subscription from './Subscription'
 
 interface AdminListSubscriptionsProps {
-  subscriptions: Subscription[]
+  subscriptions: TSubscription[]
   onDelete: (id: number) => void
 }
 

@@ -1,12 +1,12 @@
 import { useCallback, memo } from 'react'
 
+import { usePhoto } from '@features/photos/usePhotos'
 import { Heading1 } from '@components/Headings'
+import { EnhancedPhoto } from '@models'
 import FormPhoto from '../FormPhoto'
 
-import { usePhoto } from '@features/photos/usePhotos'
-
 interface ModalEditPhotoProps {
-  id: number
+  id: EnhancedPhoto['id']
   onSubmit: (data: { id: number; data: FormData }) => void
   isProcessing?: boolean
 }

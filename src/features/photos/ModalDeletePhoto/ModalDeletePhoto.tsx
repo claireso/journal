@@ -1,11 +1,12 @@
 import { useCallback } from 'react'
 
+import { EnhancedPhoto } from '@models'
 import { ButtonPrimary, ButtonSecondary } from '@components/Buttons'
 import { Heading1 } from '@components/Headings'
 import Text from '@components/Text'
 
 interface ModalDeletePhoto {
-  id: number
+  id: EnhancedPhoto['id']
   onCancel: () => void
   onConfirm: (id: number) => void
   isProcessing?: boolean

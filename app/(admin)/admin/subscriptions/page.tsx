@@ -1,8 +1,10 @@
 'use client'
+
 import { useCallback } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 import * as api from '@services/api'
+import { Subscription } from '@models'
 
 import AdminListSubscriptions from '@features/subscriptions/AdminListSubscriptions'
 import ModalDeleteSubscription from '@features/subscriptions/ModalDeleteSubscription'
@@ -53,15 +55,14 @@ const Subscriptions = () => {
         }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [page]
+    [page, pathname, router]
   )
 
   const onChangePage = useCallback((page: string) => navigate({ page }, { scroll: true }), [navigate])
   const onCloseModal = useCallback((options?: NavigateOptions) => navigate({}, options), [navigate])
 
   const onClickDelete = useCallback(
-    (id: number) => {
+    (id: Subscription['id']) => {
       navigate({
         action: Action.DELETE,
         id: id
@@ -71,7 +72,7 @@ const Subscriptions = () => {
   )
 
   const onDeleteSubscription = useCallback(
-    (subscriptionId: number) => {
+    (subscriptionId: Subscription['id']) => {
       deleteSubscription(subscriptionId, {
         onSettled(data, err) {
           if (err instanceof api.getErrorConstructor()) {

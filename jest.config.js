@@ -16,7 +16,8 @@ const customJestConfig = {
     '^@features(.*)$': '<rootDir>/src/features$1',
     '^@hooks(.*)$': '<rootDir>/src/hooks$1',
     '^@types(.*)$': '<rootDir>/src/types$1',
-    '^@theme(.*)$': '<rootDir>/src/theme$1'
+    '^@theme(.*)$': '<rootDir>/src/theme$1',
+    '^@models(.*)$': '<rootDir>/src/models$1'
   },
   globals: {
     __PHOTOS__: {

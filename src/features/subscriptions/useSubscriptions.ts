@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient, useMutation, QueryFunctionContext } from '@tanstack/react-query'
 
+import { Subscriptions, Subscription } from '@models'
 import * as api from '@services/api'
 import useMessages from '@features/messages/useMessages'
 
@@ -25,7 +26,7 @@ export const useDeleteSubscription = (filters: Filters) => {
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
   return useMutation({
-    mutationFn: (id: number) => api.deleteSubscription(id),
+    mutationFn: (id: Subscription['id']) => api.deleteSubscription(id),
     onSuccess(data, id) {
       const subscriptions = queryClient.getQueryData<Subscriptions>([CACHE_KEY_LIST, filters])
 
@@ -55,15 +56,10 @@ export const useDeleteSubscription = (filters: Filters) => {
 
 /**
  * Fetch subscriptions
- * @param {object} queries
- * @param {object} options
- * @returns object
  */
 export const useSubscriptions = (filters: Filters = { page: '1' }, options = {}) => {
-  const getSubscriptions = async ({ signal }: QueryFunctionContext) => {
-    const response = await api.getSubscriptions(filters.page, { signal })
-    return response
-  }
+  const getSubscriptions = async ({ signal }: QueryFunctionContext) =>
+    await api.getSubscriptions(filters.page, { signal })
 
   const queryOptions = {
     placeholderData: initialState,

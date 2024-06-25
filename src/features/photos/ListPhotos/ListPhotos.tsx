@@ -1,15 +1,10 @@
+import { Photos } from '@models'
 import Photo from './Photo'
 import Pager from './Pager'
 
 interface ListPhotosProps {
-  photos: Photo[]
-  pager: {
-    count?: number
-    first?: number
-    prev?: number
-    next?: number
-    last?: number
-  }
+  photos: Photos['items']
+  pager: Photos['pager']
 }
 
 const ListPhotos = ({ photos = [], pager }: ListPhotosProps) => {

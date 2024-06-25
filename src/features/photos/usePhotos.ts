@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient, QueryFunctionContext } from '@tanstack/react-query'
 
 import * as api from '@services/api'
+import { Photos, EnhancedPhoto } from '@models'
 import useMessages from '@features/messages/useMessages'
 
 interface Filters {
@@ -27,7 +28,8 @@ export const useEditPhoto = (filters: Filters = { page: '1' }) => {
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
   return useMutation({
-    mutationFn: ({ id, data }: { id: number; data: FormData }): Promise<Photo> => api.editPhoto(id, data),
+    mutationFn: ({ id, data }: { id: EnhancedPhoto['id']; data: FormData }): Promise<EnhancedPhoto> =>
+      api.editPhoto(id, data),
     onSuccess(photo, { id }) {
       queryClient.setQueryData([CACHE_KEY_DETAIL, id], photo)
 
@@ -104,7 +106,7 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
   return useMutation({
-    mutationFn: (data: FormData): Promise<Photo> => api.createPhoto(data),
+    mutationFn: (data: FormData): Promise<EnhancedPhoto> => api.createPhoto(data),
     onSuccess(photo) {
       if (filters.page === '1') {
         const photos = queryClient.getQueryData<Photos>([CACHE_KEY_LIST, filters])
@@ -135,7 +137,6 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
 
 /**
  * Fetch photos
- * @returns object
  */
 export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
   const getPhotos = async ({ signal }: QueryFunctionContext) => {
@@ -157,9 +158,6 @@ export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
 
 /**
  * Fetch photo
- * @param {number} id photoId
- * @param {object} options query option
- * @returns
  */
 export const usePhoto = (id: number, options = {}) => {
   const queryClient = useQueryClient()
