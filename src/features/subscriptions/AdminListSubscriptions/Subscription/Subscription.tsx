@@ -2,13 +2,13 @@ import React, { useCallback, memo } from 'react'
 import { format, parseISO } from 'date-fns'
 
 import * as S from './Subscription.styles'
+import { Subscription as TSubscription } from '@models'
 
 import { IconDelete } from '@components/Icons'
 import { ButtonIcon } from '@components/Buttons'
 
-interface SubscriptionProps extends Subscription {
-  id: number
-  onDelete: (id: number) => void
+interface SubscriptionProps extends TSubscription {
+  onDelete: (id: TSubscription['id']) => void
 }
 
 const Subscription = ({ onDelete, id, ...props }: SubscriptionProps) => {
