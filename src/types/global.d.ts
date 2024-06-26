@@ -1,7 +1,3 @@
-declare interface User {
-  cid: string
-}
-
 declare type Query = {
   page?: string
   action?: Action
