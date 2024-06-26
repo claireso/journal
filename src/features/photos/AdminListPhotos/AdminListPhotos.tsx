@@ -1,10 +1,11 @@
 import React from 'react'
 
+import { EnhancedPhoto } from '@models'
 import { List } from '@components/List'
 import Photo from './Photo'
 
 interface AdminListPhotos {
-  photos?: Photo[]
+  photos?: EnhancedPhoto[]
   onDelete: (id: number) => void
   onEdit: (id: number) => void
 }

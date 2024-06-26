@@ -2,13 +2,14 @@ import React, { useRef, useCallback } from 'react'
 
 import * as S from './Photo.styles'
 
+import { EnhancedPhoto } from '@models'
 import useInView from '@hooks/useInView'
 
 import AnimatedImage from '@components/AnimatedImage'
 import { IconPencil, IconDelete } from '@components/Icons'
 import { ButtonIcon } from '@components/Buttons'
 
-interface PhotoProps extends Photo {
+interface PhotoProps extends EnhancedPhoto {
   onEdit: (id: number) => void
   onDelete: (id: number) => void
 }

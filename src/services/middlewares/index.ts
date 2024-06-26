@@ -1,5 +1,6 @@
-import logger from '@services/logger'
+import { ZodError } from 'zod'
 import type { NextRequest } from 'next/server'
+import logger from '@services/logger'
 export { default as withPagination } from './withPagination'
 export { default as withAuth } from './withAuth'
 
@@ -13,6 +14,9 @@ export const createRouteHandler = (...middlewares: any[]) => {
         }
       } catch (err) {
         logger.error(err)
+        if (err instanceof ZodError) {
+          return Response.json(err.format(), { status: 422 })
+        }
         return Response.json({ error: 'Internal server error' }, { status: 500 })
       }
     }

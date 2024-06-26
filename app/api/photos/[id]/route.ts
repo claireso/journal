@@ -2,18 +2,16 @@ import path from 'path'
 import { unlink } from 'fs/promises'
 import { NextRequest } from 'next/server'
 import { createRouteHandler, withAuth } from '@services/middlewares'
-import { pool, queries, models } from '@services/db'
+import { pool, queries } from '@services/db'
 import uploadFile from '@utils/uploadFile'
+import { Photo, PhotoRequestSchema, formatPhoto, createPhoto as createPhotoHelper } from '@models'
 
-const photoModel = models.photo
-const formatPhoto = models.formatPhoto
-
-interface Context {
+interface RequestContext {
   params: { id: string }
 }
 
-// Get a photo by id
-const getPhotoById = async (request: NextRequest, { params }: Context) => {
+// endpoint get photo
+const getPhotoById = async (request: NextRequest, { params }: RequestContext) => {
   const id = Number(params.id)
 
   if (isNaN(id)) {
@@ -21,7 +19,7 @@ const getPhotoById = async (request: NextRequest, { params }: Context) => {
   }
 
   const response = await pool.query(queries.get_photo(id))
-  const photo = response.rows[0]
+  const photo: Photo = response.rows[0]
 
   if (photo === undefined) {
     return Response.json({}, { status: 404 })
@@ -30,49 +28,43 @@ const getPhotoById = async (request: NextRequest, { params }: Context) => {
   return Response.json(formatPhoto(photo), { status: 200 })
 }
 
-// Edit a photo
-const editPhoto = async (request: NextRequest, { params }: Context) => {
+// Endpoint edit photo
+const editPhoto = async (request: NextRequest, { params }: RequestContext) => {
   const id = Number(params.id)
-  const formData = await request.formData()
-
-  const fileToUpload = formData.get('file') as File
-
-  const title = formData.get('title') as Photo['title']
-  const description = formData.get('description') as Photo['description']
-  const position = formData.get('position') as Photo['position']
-  const color = formData.get('color') as Photo['color']
 
   if (isNaN(id)) {
     return Response.json({}, { status: 400 })
   }
 
   let response = await pool.query(queries.get_photo(id))
-  const photo = response.rows[0]
+  const photo: Photo = response.rows[0]
 
   if (photo === undefined) {
     return Response.json({}, { status: 404 })
   }
 
-  const data = {
-    title: title ?? photo.title,
-    description: description ?? photo.description,
+  const formData = await request.formData()
+
+  const body = Object.fromEntries(formData)
+
+  const result = PhotoRequestSchema.parse(body)
+
+  const { file, ...partialPhoto } = result
+
+  const data: Partial<Photo> = {
+    title: partialPhoto.title ?? photo.title,
+    description: partialPhoto.description ?? photo.description,
     name: photo.name,
-    position: position ?? photo.position,
+    position: partialPhoto.position ?? photo.position,
     portrait: photo.portrait,
     square: photo.square,
-    color: color ?? photo.color,
+    color: partialPhoto.color ?? photo.color,
     updated_at: new Date()
-  } as any
-
-  // TODO delete current file
-  if (fileToUpload.name) {
-    const file = await uploadFile(fileToUpload)
-    data.name = file.filename
-    data.width = file.width
-    data.height = file.height
   }
 
-  const newPhoto = photoModel(data)
+  const uploadedFile = file.name ? await uploadFile(file) : undefined
+
+  const newPhoto = createPhotoHelper(data, uploadedFile)
 
   const fields = Object.entries(newPhoto)
     .map((entry, index) => `${entry[0]}=($${index + 1})`)
@@ -83,8 +75,8 @@ const editPhoto = async (request: NextRequest, { params }: Context) => {
   return Response.json(formatPhoto(response.rows[0]), { status: 200 })
 }
 
-// Delete a photo
-const deletePhoto = async (request: NextRequest, { params }: Context) => {
+// endpoint delete photo
+const deletePhoto = async (request: NextRequest, { params }: RequestContext) => {
   const id = Number(params.id)
 
   if (isNaN(id)) {
@@ -92,7 +84,7 @@ const deletePhoto = async (request: NextRequest, { params }: Context) => {
   }
 
   const response = await pool.query(queries.get_photo(id))
-  const photo = response.rows[0]
+  const photo: Photo = response.rows[0]
 
   if (photo === undefined) {
     return Response.json({}, { status: 404 })
@@ -107,10 +99,6 @@ const deletePhoto = async (request: NextRequest, { params }: Context) => {
   return Response.json({}, { status: 200 })
 }
 
-const GET = createRouteHandler(getPhotoById)
-
-const PATCH = createRouteHandler(withAuth, editPhoto)
-
-const DELETE = createRouteHandler(withAuth, deletePhoto)
-
-export { GET, PATCH, DELETE }
+export const GET = createRouteHandler(getPhotoById)
+export const PATCH = createRouteHandler(withAuth, editPhoto)
+export const DELETE = createRouteHandler(withAuth, deletePhoto)
