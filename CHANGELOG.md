@@ -1,5 +1,11 @@
 # journal
 
+## 1.3.0
+
+### Minor Changes
+
+- 166017a: feat: add schema validation with zod
+
 ## 1.2.1
 
 ### Patch Changes
