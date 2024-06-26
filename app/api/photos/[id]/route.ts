@@ -47,13 +47,9 @@ const editPhoto = async (request: NextRequest, { params }: RequestContext) => {
 
   const body = Object.fromEntries(formData)
 
-  const result = PhotoRequestSchema.safeParse(body)
+  const result = PhotoRequestSchema.parse(body)
 
-  if (!result.success) {
-    return Response.json(result.error.format(), { status: 422 })
-  }
-
-  const { file, ...partialPhoto } = result.data
+  const { file, ...partialPhoto } = result
 
   const data: Partial<Photo> = {
     title: partialPhoto.title ?? photo.title,
