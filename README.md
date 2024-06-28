@@ -101,9 +101,10 @@ To change the default port of the application, add it to the command as follow:
 $ PORT=4000 npm run start:express
 ```
 
+Note: remove option `output: 'standalone'` from your configuration if you choose this solution
+
 Don't forget to update the entry 'baseUrl' in your config
 
 ![](https://user-images.githubusercontent.com/961038/84236772-7fbe2300-aaf8-11ea-9e2e-a63f8c482b8a.jpg)
 
 ![](https://user-images.githubusercontent.com/961038/84236775-8056b980-aaf8-11ea-8479-f15f80a197ac.jpg)
-

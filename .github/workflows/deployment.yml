@@ -1,0 +1,60 @@
+name: Deploy
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          # fetch all history and tags
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$DROPLET_SSH_KEY" > ~/.ssh/ghactions
+          chmod 600 ~/.ssh/ghactions
+        env:
+          DROPLET_SSH_KEY: ${{ secrets.DROPLET_SSH_KEY }}
+
+      - name: Deploy
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete --exclude=.env.local --exclude=uploads
+          path: .next/standalone/
+          remote_path: ${{ secrets.DROPLET_RSYNC_REMOTE_PATH }}/testrsync/
+          remote_host: ${{ secrets.DROPLET_IP }}
+          remote_port: ${{ secrets.DROPLET_SSH_PORT }}
+          remote_user: ${{ secrets.DROPLET_USER }}
+          remote_key: ${{ secrets.DROPLET_SSH_KEY }}

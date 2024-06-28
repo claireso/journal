@@ -8,6 +8,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const IS_NOTIFICATIONS_ENABLED = false
 
 module.exports = {
+  output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
   swcMinify: true,
