@@ -14,10 +14,11 @@ type Translations = {
 interface TranslationsProviderProps {
   children: React.ReactNode
   namespace: 'client' | 'admin'
+  lang?: string
 }
 
-export const TranslationsProvider = ({ children, namespace }: TranslationsProviderProps) => {
-  const translations = getTranslations(process.env.NEXT_PUBLIC_WEBSITE_LANGUAGE, namespace)
+export const TranslationsProvider = ({ children, namespace, lang }: TranslationsProviderProps) => {
+  const translations = getTranslations(lang ?? 'en', namespace)
 
   return <TranslationsContext.Provider value={translations}>{children}</TranslationsContext.Provider>
 }
