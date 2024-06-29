@@ -38,7 +38,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: NOTIFICATIONS_PUBLIC_KEY=$NOTIFICATIONS_PUBLIC_KEY SERVICEWORKER_VERSION=$SERVICEWORKER_VERSION npm run build
         env:
           NOTIFICATIONS_PUBLIC_KEY: ${{ secrets.NOTIFICATIONS_PUBLIC_KEY }}
           SERVICEWORKER_VERSION: ${{ secrets.SERVICEWORKER_VERSION }}
@@ -51,13 +51,11 @@ jobs:
         env:
           DROPLET_SSH_KEY: ${{ secrets.DROPLET_SSH_KEY }}
 
-      - name: Deploy
-        uses: burnett01/rsync-deployments@7.0.1
-        with:
-          switches: -avr --delete --exclude=.env.local --exclude=uploads --backup --backup-dir=${{ secrets.DROPLET_RSYNC_BACKUP_DIRECTORY }}
-          path: .next/standalone/
-          remote_path: ${{ secrets.DROPLET_RSYNC_APP_DIRECTORY }}
-          remote_host: ${{ secrets.DROPLET_IP }}
-          remote_port: ${{ secrets.DROPLET_SSH_PORT }}
-          remote_user: ${{ secrets.DROPLET_USER }}
-          remote_key: ${{ secrets.DROPLET_SSH_KEY }}
+      - name: Deploy with rsync
+        run: |
+          rsync -avz --delete \
+          -e 'ssh -i ~/.ssh/ghactions -p ${{ secrets.DROPLET_SSH_PORT }} -o StrictHostKeyChecking=no' \
+          --exclude=.env.local \
+          --exclude=uploads \
+          --backup --backup-dir=${{ secrets.DROPLET_RSYNC_BACKUP_DIRECTORY }} \
+          .next/standalone/ ./public ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:${{ secrets.DROPLET_RSYNC_APP_DIRECTORY }}
