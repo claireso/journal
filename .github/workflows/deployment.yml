@@ -51,9 +51,9 @@ jobs:
       - name: Deploy
         uses: burnett01/rsync-deployments@7.0.1
         with:
-          switches: -avzr --delete --exclude=.env.local --exclude=uploads
+          switches: -avr --delete --exclude=.env.local --exclude=uploads --backup --backup-dir=${{ secrets.DROPLET_RSYNC_BACKUP_DIRECTORY }}
           path: .next/standalone/
-          remote_path: ${{ secrets.DROPLET_RSYNC_REMOTE_PATH }}/testrsync/
+          remote_path: ${{ secrets.DROPLET_RSYNC_APP_DIRECTORY }}
           remote_host: ${{ secrets.DROPLET_IP }}
           remote_port: ${{ secrets.DROPLET_SSH_PORT }}
           remote_user: ${{ secrets.DROPLET_USER }}
