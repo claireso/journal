@@ -42,6 +42,8 @@ $ npm run bootstrap
 
 Note: if you enable web push notifications during the installation, do not forget to update your config file with the public and private key printed in your console
 
+Note2: web push notifications are temporarily disabled
+
 ### Run the application in a development environment
 
 ```

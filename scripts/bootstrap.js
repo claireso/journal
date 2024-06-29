@@ -153,7 +153,7 @@ const enableWebPush = async () => {
 
   console.log(chalk.gray('Please update your config by adding public and private keys:'))
 
-  console.log(`NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY="${vapidKeys.publicKey}"`)
+  console.log(`NOTIFICATIONS_PUBLIC_KEY="${vapidKeys.publicKey}"`)
   console.log(`NOTIFICATIONS_PRIVATE_KEY="${vapidKeys.privateKey}"`)
 }
 

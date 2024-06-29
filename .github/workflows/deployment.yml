@@ -39,6 +39,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          NOTIFICATIONS_PUBLIC_KEY: ${{ secrets.NOTIFICATIONS_PUBLIC_KEY }}
+          SERVICEWORKER_VERSION: ${{ secrets.SERVICEWORKER_VERSION }}
 
       - name: Configure SSH
         run: |
