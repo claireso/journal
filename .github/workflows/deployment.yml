@@ -59,3 +59,7 @@ jobs:
           --exclude=uploads \
           --backup --backup-dir=${{ secrets.DROPLET_RSYNC_BACKUP_DIRECTORY }} \
           .next/standalone/ ./public ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:${{ secrets.DROPLET_RSYNC_APP_DIRECTORY }}
+
+          rsync -avz --delete \
+          -e 'ssh -i ~/.ssh/ghactions -p ${{ secrets.DROPLET_SSH_PORT }} -o StrictHostKeyChecking=no' \
+          .next/static/ ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:${{ secrets.DROPLET_RSYNC_APP_DIRECTORY }}/.next/static/
