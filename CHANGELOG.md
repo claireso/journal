@@ -1,5 +1,11 @@
 # journal
 
+## 1.3.1
+
+### Patch Changes
+
+- 1650ed7: Automatic deployment on server when tag has been pushed
+
 ## 1.3.0
 
 ### Minor Changes
