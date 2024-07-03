@@ -1,6 +1,11 @@
 name: QA
 
-on: [push]
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - 'v*'
 
 jobs:
   install:

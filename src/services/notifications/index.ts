@@ -1,6 +1,6 @@
 import urlBase64ToUint8Array from '@utils/urlBase64ToUint8Array'
 
-const NOTIFICATIONS_PUBLIC_KEY = process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY
+const NOTIFICATIONS_PUBLIC_KEY = process.env.NOTIFICATIONS_PUBLIC_KEY
 
 export const areDenied = () => {
   return Notification.permission === 'denied'

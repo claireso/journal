@@ -14,7 +14,7 @@ interface JournalLayoutProps {
 }
 
 export const metadata: Metadata = {
-  description: process.env.NEXT_PUBLIC_WEBSITE_META_DESCRIPTION ?? '',
+  description: process.env.WEBSITE_META_DESCRIPTION ?? '',
   manifest: '/manifest.json',
   icons: {
     apple: [{ url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' }]
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function JournalLayout({ children }: JournalLayoutProps) {
   return (
-    <TranslationsProvider namespace="client">
+    <TranslationsProvider namespace="client" lang={process.env.WEBSITE_LANGUAGE}>
       <BannerOffline />
       <BannerNotifications />
       <MessagesProvider>

@@ -2,8 +2,16 @@ import { EnhancedPhoto, Photos, Subscription, Subscriptions } from '@models'
 import { buildRequester } from './requester'
 import ApiError from './ApiError'
 
+const getRootBaseUrl = () => {
+  if (typeof window === 'undefined') {
+    return process.env.WEBSITE_URL as string
+  }
+
+  return `${window.location.origin}/`
+}
+
 const requester = buildRequester({
-  baseUrl: `${process.env.NEXT_PUBLIC_WEBSITE_URL}api`,
+  baseUrl: `${getRootBaseUrl()}api`,
   // @ts-ignore
   ApiError: ApiError
 })

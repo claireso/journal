@@ -9,8 +9,8 @@ interface LayoutProps {
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | ${process.env.NEXT_PUBLIC_WEBSITE_META_TITLE ?? 'Journal'}`,
-    default: process.env.NEXT_PUBLIC_WEBSITE_META_TITLE ?? 'Journal'
+    template: `%s | ${process.env.WEBSITE_META_TITLE ?? 'Journal'}`,
+    default: process.env.WEBSITE_META_TITLE ?? 'Journal'
   },
   robots: {
     index: false,
@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang={process.env.NEXT_PUBLIC_WEBSITE_LANGUAGE}>
+    <html lang={process.env.WEBSITE_LANGUAGE}>
       <body>
         <StitchesRegistry>
           <Layout>{children}</Layout>
