@@ -1,7 +1,7 @@
 import urlBase64ToUint8Array from '@utils/urlBase64ToUint8Array'
 
 const SWPush = () => {
-  const applicationServerKey = urlBase64ToUint8Array(process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY, self)
+  const applicationServerKey = urlBase64ToUint8Array(NOTIFICATIONS_PUBLIC_KEY, self)
 
   self.addEventListener('push', (event) => {
     if (!event.data) return

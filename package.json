@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "node .next/standalone/server.js",
     "start:express": "NODE_ENV=production COMPRESSION=enabled node server.js",
     "lint": "next lint",
     "lint:write": "next lint --fix",

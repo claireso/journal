@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const { InjectManifest } = require('workbox-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 
@@ -8,6 +9,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const IS_NOTIFICATIONS_ENABLED = false
 
 module.exports = {
+  output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
   swcMinify: true,
@@ -40,6 +42,13 @@ module.exports = {
             /middleware-manifest\.json$/,
             /\/pages\/admin/,
             /\.map$/
+          ],
+          webpackCompilationPlugins: [
+            new webpack.DefinePlugin({
+              IS_NOTIFICATIONS_ENABLED: JSON.stringify(IS_NOTIFICATIONS_ENABLED),
+              SERVICEWORKER_VERSION: JSON.stringify(process.env.SERVICEWORKER_VERSION),
+              NOTIFICATIONS_PUBLIC_KEY: JSON.stringify(process.env.NOTIFICATIONS_PUBLIC_KEY)
+            })
           ]
         })
       )
