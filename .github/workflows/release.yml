@@ -18,12 +18,11 @@ jobs:
         with:
           # fetch all history and tags
           fetch-depth: 0
-
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
@@ -37,11 +36,10 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install
         run: npm ci
-
       - name: Create Release Pull Request
         uses: changesets/action@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
           commit: Release new version
           title: Release new version
