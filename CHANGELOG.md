@@ -1,5 +1,11 @@
 # journal
 
+## 1.3.2
+
+### Patch Changes
+
+- 1b3a65f: Update github workflow
+
 ## 1.3.1
 
 ### Patch Changes
