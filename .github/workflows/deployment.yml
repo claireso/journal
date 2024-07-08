@@ -16,12 +16,11 @@ jobs:
         with:
           # fetch all history and tags
           fetch-depth: 0
-
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
@@ -33,17 +32,14 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
       - name: Install
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
-
       - name: Build
         run: NOTIFICATIONS_PUBLIC_KEY=$NOTIFICATIONS_PUBLIC_KEY SERVICEWORKER_VERSION=$SERVICEWORKER_VERSION npm run build
         env:
           NOTIFICATIONS_PUBLIC_KEY: ${{ secrets.NOTIFICATIONS_PUBLIC_KEY }}
           SERVICEWORKER_VERSION: ${{ secrets.SERVICEWORKER_VERSION }}
-
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
@@ -51,7 +47,6 @@ jobs:
           chmod 600 ~/.ssh/ghactions
         env:
           DROPLET_SSH_KEY: ${{ secrets.DROPLET_SSH_KEY }}
-
       - name: Deploy with rsync and restart application
         run: |
           rsync -az --delete \
