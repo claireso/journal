@@ -1,0 +1,14 @@
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+README.md
+.next
+!.next/static
+!.next/standalone
+.git
+# ignore our custom folder where images are uploaded.
+# the folder 'uploads' will be defined as a volume
+uploads
+# ignore the default .env. The file .env.docker.local will be used in the image
+.env
