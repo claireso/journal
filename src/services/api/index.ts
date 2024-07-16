@@ -4,10 +4,10 @@ import ApiError from './ApiError'
 
 const getRootBaseUrl = () => {
   if (typeof window === 'undefined') {
-    return process.env.WEBSITE_URL as string
+    return (process.env.API_SERVER_URL ?? process.env.NEXT_PUBLIC_API_URL) as string
   }
 
-  return `${window.location.origin}/`
+  return process.env.NEXT_PUBLIC_API_URL as string
 }
 
 const requester = buildRequester({
