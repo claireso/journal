@@ -35,11 +35,26 @@ jobs:
       - name: Install
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Create .env.local
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          file_name: .env.local
+          envkey_DB_NAME: ${{ secrets.DB_NAME }}
+          envkey_DB_USER: ${{ secrets.DB_USER }}
+          envkey_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          envkey_DB_HOST: ${{ secrets.DB_HOST }}
+          envkey_DB_PORT: ${{ secrets.DB_PORT }}
+          envkey_NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          envkey_NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          envkey_WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
+          envkey_WEBSITE_LANGUAGE: ${{ vars.WEBSITE_LANGUAGE }}
+          envkey_WEBSITE_META_TITLE: ${{ vars.WEBSITE_META_TITLE }}
+          envkey_WEBSITE_META_DESCRIPTION: ${{ vars.WEBSITE_META_DESCRIPTION }}
+          envkey_SERVICEWORKER_VERSION: ${{ secrets.SERVICEWORKER_VERSION }}
+          envkey_NOTIFICATIONS_PUBLIC_KEY: ${{ secrets.NOTIFICATIONS_PUBLIC_KEY }}
+          envkey_NOTIFICATIONS_PRIVATE_KEY: ${{ secrets.NOTIFICATIONS_PRIVATE_KEY }}
       - name: Build
-        run: NOTIFICATIONS_PUBLIC_KEY=$NOTIFICATIONS_PUBLIC_KEY SERVICEWORKER_VERSION=$SERVICEWORKER_VERSION npm run build
-        env:
-          NOTIFICATIONS_PUBLIC_KEY: ${{ secrets.NOTIFICATIONS_PUBLIC_KEY }}
-          SERVICEWORKER_VERSION: ${{ secrets.SERVICEWORKER_VERSION }}
+        run: npm run build
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
@@ -51,7 +66,6 @@ jobs:
         run: |
           rsync -az --delete \
           -e 'ssh -i ~/.ssh/ghactions -p ${{ secrets.DROPLET_SSH_PORT }} -o StrictHostKeyChecking=no' \
-          --exclude=.env.local \
           --exclude=uploads \
           --exclude=ecosystem.config.js \
           --exclude=.nvmrc \
