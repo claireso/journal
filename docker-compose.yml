@@ -17,8 +17,14 @@ services:
       - nextjs
     volumes:
       - journal_uploads:/usr/share/nginx/html/uploads
+      - ./certificates:/etc/nginx/ssl
     ports:
-      - 8080:80
+      - 80:80
+      - 443:443
+    env_file:
+      - path: ./.env.docker
+      - path: ./.env.docker.local
+        required: false
 
 volumes:
   journal_uploads:
