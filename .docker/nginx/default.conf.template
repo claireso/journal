@@ -1,3 +1,6 @@
+# Define a cache path for static files
+proxy_cache_path /var/cache/nginx/static_cache levels=1:2 keys_zone=static_cache:10m inactive=7d max_size=1g use_temp_path=on;
+
 upstream nextjs_upstream {
     server nextjs:3000;
 }
@@ -21,9 +24,11 @@ server {
     ssl_certificate_key /etc/nginx/ssl/localhost-key.pem;
 
     gzip on;
-    gzip_proxied any;
     gzip_comp_level 4;
-    gzip_types text/css application/javascript image/svg+xml;
+    gzip_types text/plain text/css application/json application/javascript image/svg+xml text/xml application/xml application/xml+rss;
+    gzip_proxied any;
+    gzip_vary on;
+    gzip_static on;
 
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
@@ -33,8 +38,18 @@ server {
 
     location /uploads {
         try_files $uri =404;
-        gzip_static on;
         add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+
+    location /_next/static {
+        proxy_pass http://nextjs_upstream;
+
+        proxy_cache static_cache;
+        proxy_cache_valid 200 1y;
+        proxy_cache_valid 404 1m;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Proxy-Cache $upstream_cache_status;
     }
 
     location / {
