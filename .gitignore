@@ -16,3 +16,5 @@ coverage
 .eslintcache
 .env*.local
 
+
+certificates

@@ -1,0 +1,31 @@
+services:
+  nextjs:
+    container_name: journal_nextjs
+    image: 'journal/nextjs'
+    build:
+      context: .
+      dockerfile: ./.docker/nextjs/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - journal_uploads:/app/uploads
+  nginx:
+    container_name: journal_nginx
+    image: 'journal/nginx'
+    build:
+      context: ./.docker/nginx
+    depends_on:
+      - nextjs
+    volumes:
+      - journal_uploads:/usr/share/nginx/html/uploads
+      - ./certificates:/etc/nginx/ssl
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - path: ./.env.docker
+      - path: ./.env.docker.local
+        required: false
+
+volumes:
+  journal_uploads:
+    external: true
