@@ -5,6 +5,11 @@ on:
     tags:
       - 'v*'
 
+# allow only one deployment at the same time
+concurrency:
+  group: deployment
+  cancel-in-progress: false
+
 jobs:
   deploy:
     name: Deploy
