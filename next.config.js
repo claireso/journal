@@ -42,13 +42,6 @@ module.exports = {
             /middleware-manifest\.json$/,
             /\/pages\/admin/,
             /\.map$/
-          ],
-          webpackCompilationPlugins: [
-            new webpack.DefinePlugin({
-              IS_NOTIFICATIONS_ENABLED: JSON.stringify(IS_NOTIFICATIONS_ENABLED),
-              SERVICEWORKER_VERSION: JSON.stringify(process.env.SERVICEWORKER_VERSION),
-              NOTIFICATIONS_PUBLIC_KEY: JSON.stringify(process.env.NOTIFICATIONS_PUBLIC_KEY)
-            })
           ]
         })
       )
