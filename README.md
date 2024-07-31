@@ -4,9 +4,10 @@ Note: the theme is optimized for pictures with an aspect ratio of 3:2, 2:3 or 1:
 
 # Requirements:
 
-- PostgreSQL
-- Node v20
-- Docker and Docker compose (if installation with docker is used)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Node v20](https://nodejs.org)
+- [Docker](https://www.docker.com/) and Docker compose (if installation with docker is used)
+- [zx](https://google.github.io/zx/)
 
 # Clone the repository
 
@@ -37,10 +38,10 @@ Open and edit `.env.local` to configure your application (server name, database,
 It will create and setup the database and create an account for the admin
 
 ```
-$ npm run bootstrap
+$ zx scripts/bootstrap.mjs
 ```
 
-Note: if you enable web push notifications during the installation, do not forget to update your config file with the public and private key printed in your console
+Note: if you enable web push notifications during installation, the script will update your configuration in `.env.local`.
 
 Note2: web push notifications are temporarily disabled
 
@@ -133,7 +134,7 @@ Open and edit `.env.docker.local` to configure your application (server name, da
 It will create and setup the database and create an account for the admin
 
 ```
-$ CONFIG_FILE=./env.docker.local npm run bootstrap
+$  zx scripts/bootstrap.mjs --env-file .env.docker.local
 ```
 
 Note: if you enable web push notifications during the installation, do not forget to update your config file with the public and private key printed in your console
