@@ -2,6 +2,7 @@
 node_modules
 npm-debug.log
 .vscode
+tsconfig.tsbuildinfo
 
 public/img
 public/sw.js
