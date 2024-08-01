@@ -273,17 +273,22 @@ async function enableNotification() {
     let content = fs.readFileSync(envFile, 'utf8')
     const publicKeyLine = `NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY="${vapidKeys.publicKey}"`
     const privateKeyLine = `NOTIFICATIONS_PRIVATE_KEY="${vapidKeys.privateKey}"`
+    const subjectKeyLine = `NOTIFICATIONS_SUBJECT="${$.env.WEBSITE_URL}"`
 
     // Update or add VAPID keys
     content = content
       .replace(/NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY=.*/, publicKeyLine)
       .replace(/NOTIFICATIONS_PRIVATE_KEY=.*/, privateKeyLine)
+      .replace(/NOTIFICATIONS_SUBJECT=.*/, subjectKeyLine)
 
     if (!content.includes('NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY=')) {
       content += `\n${publicKeyLine}`
     }
     if (!content.includes('NOTIFICATIONS_PRIVATE_KEY=')) {
       content += `\n${privateKeyLine}`
+    }
+    if (!content.includes('NOTIFICATIONS_SUBJECT=')) {
+      content += `\n${subjectKeyLine}`
     }
 
     fs.writeFileSync(envFile, content, 'utf8')
