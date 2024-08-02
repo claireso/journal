@@ -44,11 +44,11 @@ jobs:
         uses: SpicyPizza/create-envfile@v2.0
         with:
           file_name: .env.local
-          envkey_DB_NAME: ${{ secrets.DB_NAME }}
-          envkey_DB_USER: ${{ secrets.DB_USER }}
-          envkey_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          envkey_DB_HOST: ${{ secrets.DB_HOST }}
-          envkey_DB_PORT: ${{ secrets.DB_PORT }}
+          envkey_POSTGRES_DB: ${{ secrets.DB_NAME }}
+          envkey_POSTGRES_USER: ${{ secrets.DB_USER }}
+          envkey_POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          envkey_POSTGRES_HOST: ${{ secrets.DB_HOST }}
+          envkey_POSTGRES_PORT: ${{ secrets.DB_PORT }}
           envkey_NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
           envkey_WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
           envkey_WEBSITE_LANGUAGE: ${{ vars.WEBSITE_LANGUAGE }}

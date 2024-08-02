@@ -156,29 +156,29 @@ async function createFolder(folder) {
 // and sets up necessary tables and extensions.
 ////////////////////////////////////////////////////////////////
 async function createDatabase() {
-  const { DB_USER, DB_NAME, DB_PASSWORD, DB_HOST, DB_PORT } = $.env
+  const { POSTGRES_USER, POSTGRES_DB, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_PORT } = $.env
 
   try {
     const result =
-      await $`PGPASSWORD=${DB_PASSWORD} psql -h ${DB_HOST} -p ${DB_PORT} -U ${DB_USER} -lqt | cut -d '|' -f 1 | grep -w ${DB_NAME} | wc -l`.nothrow()
+      await $`PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} -lqt | cut -d '|' -f 1 | grep -w ${POSTGRES_DB} | wc -l`.nothrow()
     const existingDatabase = result.text().trim() === '1'
 
     if (existingDatabase) {
-      log.warn(`Database ${DB_NAME} already exists.`)
+      log.warn(`Database ${POSTGRES_DB} already exists.`)
       const confirmed = await confirm('Do you want to continue? (If yes your database will be deleted) (y/n [n]) ')
       if (!confirmed) {
         process.exit(0)
       }
       // drop existing database
-      await $`PGPASSWORD=${DB_PASSWORD} dropdb -h ${DB_HOST} -p ${DB_PORT} -U ${DB_USER} ${DB_NAME}`
-      log.success(`Old database ${DB_NAME} succcessfully deleted`)
+      await $`PGPASSWORD=${POSTGRES_PASSWORD} dropdb -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} ${POSTGRES_DB}`
+      log.success(`Old database ${POSTGRES_DB} succcessfully deleted`)
     }
 
     // create database
-    await $`PGPASSWORD=${DB_PASSWORD} createdb -h ${DB_HOST} -p ${DB_PORT} -U ${DB_USER} ${DB_NAME}`
+    await $`PGPASSWORD=${POSTGRES_PASSWORD} createdb -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} ${POSTGRES_DB}`
 
     // create tables
-    await $`PGPASSWORD=${DB_PASSWORD} psql -h ${DB_HOST} -p ${DB_PORT} -U ${DB_USER} -d ${DB_NAME} -c "
+    await $`PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c "
     CREATE EXTENSION IF NOT EXISTS pgcrypto;
     CREATE EXTENSION IF NOT EXISTS \\"uuid-ossp\\";
     CREATE TYPE POSITION_TYPE AS ENUM ('left', 'center', 'right');
@@ -209,7 +209,7 @@ async function createDatabase() {
       updated_at TIMESTAMP with time zone DEFAULT NOW()
     );
     "`
-    log.success(`Database ${DB_NAME} succcessfully created`)
+    log.success(`Database ${POSTGRES_DB} succcessfully created`)
   } catch (err) {
     log.error(`An error occured during the database creation`)
     console.log(err)
@@ -222,13 +222,13 @@ async function createDatabase() {
 // Prompts for a username and password, then creates an admin user in the database.
 ////////////////////////////////////////////////////////////////
 async function createAdminUser() {
-  const { DB_USER, DB_NAME, DB_PASSWORD, DB_HOST, DB_PORT } = $.env
+  const { POSTGRES_USER, POSTGRES_DB, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_PORT } = $.env
 
   try {
     const username = await question('Enter a username: ')
     const password = await secretQuestion('Enter a password: ')
 
-    await $`PGPASSWORD=${DB_PASSWORD} psql -h ${DB_HOST} -p ${DB_PORT} -U ${DB_USER} -d ${DB_NAME} -c "
+    await $`PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c "
     INSERT INTO users (username, password) VALUES (
       '${username}',
       crypt('${password}', gen_salt('md5'))
