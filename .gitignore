@@ -15,6 +15,7 @@ dist
 coverage
 .next
 .eslintcache
+.env
 .env*.local
 
 
