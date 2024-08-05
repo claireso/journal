@@ -1,4 +1,6 @@
-import { log, confirm, secretQuestion } from '../helpers.mjs'
+import { log, secretQuestion, confirm } from '../helpers.mjs'
+
+const PG_DATA = 'data'
 
 async function install() {
   log.info('4 - Create database')
@@ -6,6 +8,15 @@ async function install() {
 
   log.info('5 - Create admin user')
   await createAdminUser()
+
+  // stop docker image db
+  await $`docker compose down db`
+
+  echo('\n')
+  log.info('6 - Create docker services')
+  // in fine build all images
+  await spinner('Create docker services', () => $`docker compose build --quiet`)
+  log.success(`Docker services succcessfully created`)
 }
 
 export default install
@@ -16,32 +27,30 @@ export default install
 // and sets up necessary tables and extensions.
 ////////////////////////////////////////////////////////////////
 async function createDatabase() {
-  const { POSTGRES_USER, POSTGRES_DB, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_PORT } = $.env
+  const { POSTGRES_USER, POSTGRES_DB } = $.env
 
   try {
-    const result =
-      await $`PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} -lqt | cut -d '|' -f 1 | grep -w ${POSTGRES_DB} | wc -l`.nothrow()
-    const existingDatabase = result.text().trim() === '1'
-
-    if (existingDatabase) {
-      log.warn(`Database ${POSTGRES_DB} already exists.`)
+    // check if folder 'data' is empty
+    // if not, a database already exists, ask confirmation to delete the current database
+    if (fs.readdirSync(PG_DATA).length > 0) {
+      log.warn(`A Database already exists.`)
       const confirmed = await confirm('Do you want to continue? (If yes your database will be deleted) [y/n] ')
       if (!confirmed) {
         process.exit(0)
       }
-      // drop existing database
-      await $`PGPASSWORD=${POSTGRES_PASSWORD} dropdb -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} ${POSTGRES_DB}`
-      log.success(`Old database ${POSTGRES_DB} succcessfully deleted`)
+      fs.emptyDirSync(PG_DATA)
     }
 
-    // create database
-    await $`PGPASSWORD=${POSTGRES_PASSWORD} createdb -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} ${POSTGRES_DB}`
+    // build image journal/db and start a container
+    // docker postgres will initialize postgres user and the database
+    await spinner('Create image database...', () => $`docker compose up db --build --detach --quiet-pull --wait`)
 
     // create tables
-    await $`PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} -d ${POSTGRES_DB} -f ${path.resolve(__dirname, 'setup-database.sql')}`
+    await $`docker compose exec db psql -U ${POSTGRES_USER} -d ${POSTGRES_DB} -f /var/tmp/setup-database.sql`
+
+    echo('\n')
     log.success(`Database ${POSTGRES_DB} succcessfully created`)
   } catch (err) {
-    log.error(`An error occured during the database creation`)
     console.log(err)
     process.exit(1)
   }
@@ -52,18 +61,19 @@ async function createDatabase() {
 // Prompts for a username and password, then creates an admin user in the database.
 ////////////////////////////////////////////////////////////////
 async function createAdminUser() {
-  const { POSTGRES_USER, POSTGRES_DB, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_PORT } = $.env
+  const { POSTGRES_USER, POSTGRES_DB } = $.env
 
   try {
     const username = await question('Enter a username: ')
     const password = await secretQuestion('Enter a password: ')
 
-    await $`PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c "
+    await $`docker compose exec db psql -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c "
     INSERT INTO users (username, password) VALUES (
       '${username}',
       crypt('${password}', gen_salt('md5'))
     )
   "`
+
     log.success(`Admin user successfully created`)
   } catch (err) {
     log.error(`An error occured during the admin user creation`)

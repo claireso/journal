@@ -1,6 +1,7 @@
 #!/usr/bin/env zx
 
 import installStandalone from './mode/standalone.mjs'
+import installDocker from './mode/docker.mjs'
 import { log, confirm, secretQuestion } from './helpers.mjs'
 
 const ENV_FILE = '.env'
@@ -14,7 +15,7 @@ const main = async () => {
   echo(
     chalk.magenta.bold(`/**********************************************\n
 **********************************************\n
-  Welcome to JOURNAL, your own website to publish your beautiful photos\n
+  👋 Welcome to JOURNAL, your own website to publish your beautiful photos.\n
   You are about to install and configure your website.\n
 **********************************************\n
 **********************************************/\n\n`)
@@ -23,20 +24,44 @@ const main = async () => {
   log.info('1 - Check requirements')
   await checkRequirements()
 
+  echo('\n')
+
   log.info('2 - Configure your application')
   await createConfiguration()
 
   await loadEnvFile()
 
-  log.info('3 - Create folder "uploads"')
+  log.info('3 - Create required folders')
   await createFolder('uploads')
+  if ($.env.MODE === MODE.DOCKER) {
+    await createFolder('data')
+    await createFolder('certificates')
+  }
 
   if ($.env.MODE === MODE.STANDALONE) {
     await installStandalone()
   }
 
-  log.success(`Congratulation! You have successfully installed your website`)
-  echo(`You can start your application and visit the url ${chalk.underline($.env.WEBSITE_URL)}`)
+  if ($.env.MODE === MODE.DOCKER) {
+    await installDocker()
+  }
+
+  echo(chalk.magenta.bold(`🎉 Congratulation! You have successfully installed your website`))
+
+  if ($.env.MODE === MODE.STANDALONE) {
+    echo(`You can start your application running 'npm run dev' and visit the url ${chalk.underline($.env.WEBSITE_URL)}`)
+  }
+
+  if ($.env.MODE === MODE.DOCKER) {
+    echo('\n')
+    log.warn(`Last but not least: you will need to generate a SSL certificate to run your application`)
+    echo(
+      `You must generate it into the folder "certificates" and called files "${$.env.SERVER_NAME}.pem" and "${$.env.SERVER_NAME}-key.pem"\n`
+    )
+    echo(
+      `Then, you can start your application running 'docker compose up' and visit the url ${chalk.underline($.env.WEBSITE_URL)}`
+    )
+  }
 }
 
 await main()
@@ -57,15 +82,14 @@ async function checkRequirements() {
     echo('Please install this version and run again the installation')
     process.exit(1)
   }
-  log.success(`Current node version verified (${node})`)
+  log.success(`Node version verified (${node})`)
 
   // check existing .env
   if (fs.existsSync(ENV_FILE)) {
-    log.warn(`A configuration file (.env) already exists.`)
-    if (!(await confirm('Do you want to continue? (y/n [n]) '))) {
+    log.warn(`A configuration file .env already exists.`)
+    if (!(await confirm('Do you want to continue? [y/N] '))) {
       process.exit(0)
     }
-    echo('')
   }
   await fs.copy('.env.sample', ENV_FILE)
 }
@@ -89,27 +113,26 @@ async function createConfiguration() {
   const configuration = {}
 
   // choose installation mode (standalone or docker)
-  if (await confirm('Do you want to use docker to install your website? (y/n) ')) {
+  if (await confirm('Use docker to install your website? [y/n] ')) {
     configuration.MODE = MODE.DOCKER
   } else {
     configuration.MODE = MODE.STANDALONE
   }
 
   // ask info to build all urls (website, api etc)
-  configuration.SERVER_NAME = await question(
-    `Enter the base url of your website: ${chalk.grey('(ie www.journal.com, localhost)')} `
-  )
+  log.subinfo('\nGeneral information:')
+  configuration.SERVER_NAME = await question(`Website base url: ${chalk.grey('(ie www.journal.com, localhost)')} `)
 
   if (configuration.MODE === MODE.STANDALONE) {
-    const PORT = await question(`Enter the port used by your website: ${chalk.grey('(ie 3000)')} `)
-    const PROTOCOLE = (await confirm(`Do you want to use https? (y/n) `)) ? 'https' : 'http'
-    configuration.WEBSITE_URL = `${PROTOCOLE}://${configuration.SERVER_NAME}${PORT ? ':' + PORT : ''}`
+    const PORT = await question(`Website port on running: ${chalk.grey('(ie 3000)')} `)
+    // const PROTOCOLE = (await confirm(`Use https? [y/n] `)) ? 'https' : 'http'
+    configuration.WEBSITE_URL = `http://${configuration.SERVER_NAME}${PORT ? ':' + PORT : ''}`
     configuration.NEXT_PUBLIC_API_URL = configuration.WEBSITE_URL
   }
 
   // ask metadata as title, description
-  configuration.WEBSITE_META_TITLE = await question('Enter the title of your website: ')
-  configuration.WEBSITE_META_DESCRIPTION = await question('Enter the description of your website: ')
+  configuration.WEBSITE_META_TITLE = await question('Website title: ')
+  configuration.WEBSITE_META_DESCRIPTION = await question('Website description: ')
 
   // configure package next auth
   if (configuration.WEBSITE_URL) {
@@ -117,24 +140,33 @@ async function createConfiguration() {
   }
   configuration.NEXTAUTH_SECRET = (await $`openssl rand -base64 32`).text().trim()
 
+  log.subinfo('\nDatabase information:')
   // ask postgres info as postgres user, database, password
-  configuration.POSTGRES_DB = await question(`Enter a database name: ${chalk.grey('(ie journal)')} `)
-  configuration.POSTGRES_USER = await question(`Enter a database user: ${chalk.grey('(ie postgres)')} `)
-  configuration.POSTGRES_PASSWORD = await secretQuestion(`Enter a database password: `)
+  configuration.POSTGRES_DB = await question(`Database name: ${chalk.grey('(ie journal)')} `)
+  configuration.POSTGRES_USER = await question(`Database user: ${chalk.grey('(ie postgres)')} `)
+  configuration.POSTGRES_PASSWORD = await secretQuestion(`Database password: `)
 
   if (configuration.MODE === MODE.STANDALONE) {
-    configuration.POSTGRES_HOST = await question(`Enter a database host: ${chalk.grey('(ie localhost)')} `)
-    configuration.POSTGRES_PORT = await question(`Enter a database port: ${chalk.grey('(ie 5432)')} `)
+    configuration.POSTGRES_HOST = await question(`Database host: ${chalk.grey('(ie localhost)')} `)
+    configuration.POSTGRES_PORT = await question(`Database port: ${chalk.grey('(ie 5432)')} `)
   }
 
+  log.subinfo('\nOther information:')
   // ask to enable webpush notification
-  if (await confirm('Do you want to enable push notification ? (y/n) ')) {
+  if (await confirm('Enable push notification ? [y/n] ')) {
     const vapidKeys = (await $`npx --yes web-push generate-vapid-keys --json`).json()
     configuration.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY = vapidKeys.publicKey
     configuration.NOTIFICATIONS_PRIVATE_KEY = vapidKeys.privateKey
-    if (configuration.WEBSITE_URL) {
-      configuration.NOTIFICATIONS_SUBJECT = configuration.WEBSITE_URL
-    }
+    configuration.NOTIFICATIONS_SUBJECT = `https://${configuration.SERVER_NAME}`
+  }
+
+  // additional env var for a docker installation
+  if (configuration.MODE === MODE.DOCKER) {
+    configuration.WEBSITE_URL = `https://${configuration.SERVER_NAME}`
+    configuration.NEXT_PUBLIC_API_URL = configuration.WEBSITE_URL
+    configuration.API_SERVER_URL = 'https://journal_nginx'
+    configuration.POSTGRES_HOST = 'journal_db'
+    configuration.NODE_TLS_REJECT_UNAUTHORIZED = '0'
   }
 
   // now update the .env file with the information provided by the user
@@ -152,7 +184,8 @@ async function createConfiguration() {
 
   fs.writeFileSync(ENV_FILE, content, 'utf8')
 
-  log.success('Your configuration .env file has been successfully created')
+  echo('\n')
+  log.success('Your configuration has been successfully created')
 }
 
 ////////////////////////////////////////////////////////////////
@@ -165,5 +198,5 @@ async function createFolder(folder) {
   }
 
   fs.ensureDirSync(folder)
-  log.success(`Folder created`)
+  log.success(`Folder "${folder}" created`)
 }

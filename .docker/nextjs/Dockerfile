@@ -16,9 +16,6 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# This will copy the .env.docker -> .env file
-COPY .env.docker .env
-COPY .env.docker.local* .env.production
 
 # Disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1

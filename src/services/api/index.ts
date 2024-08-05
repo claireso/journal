@@ -11,7 +11,7 @@ const getRootBaseUrl = () => {
 }
 
 const requester = buildRequester({
-  baseUrl: `${getRootBaseUrl()}api`,
+  baseUrl: `${getRootBaseUrl()}/api`,
   // @ts-ignore
   ApiError: ApiError
 })

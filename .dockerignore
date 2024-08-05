@@ -7,9 +7,9 @@ README.md
 !.next/static
 !.next/standalone
 .git
-# ignore our custom folder where images are uploaded.
-# the folder 'uploads' will be defined as a volume
+.env.sample
+# ignore our custom folders 'uploads' and 'data
+# the folder 'uploads' and 'data' will be defined as a volume
+# for a docker installation
 uploads
-# ignore the default .env. The file .env.docker.local will be used in the image
-.env
-.env.local
+data
