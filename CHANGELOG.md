@@ -1,5 +1,12 @@
 # journal
 
+## 1.3.3
+
+### Patch Changes
+
+- a5e5575: Improve script installation and installation with Docker
+- dd8b58c: Enable web push notification again
+
 ## 1.3.2
 
 ### Patch Changes
