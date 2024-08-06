@@ -1,4 +1,21 @@
 services:
+  db:
+    container_name: 'journal_db'
+    image: 'journal/db'
+    build:
+      context: .
+      dockerfile: ./.docker/db/Dockerfile
+    restart: unless-stopped
+    shm_size: 128mb
+    env_file:
+      - path: ./.env
+    volumes:
+      - journal_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-d', $POSTGRES_DB, '-U', $POSTGRES_USER]
+      interval: 5s
+      timeout: 10s
+      retries: 5
   nextjs:
     container_name: journal_nextjs
     image: 'journal/nextjs'
@@ -6,6 +23,9 @@ services:
       context: .
       dockerfile: ./.docker/nextjs/Dockerfile
     restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
     volumes:
       - journal_uploads:/app/uploads
   nginx:
@@ -17,15 +37,29 @@ services:
       - nextjs
     volumes:
       - journal_uploads:/usr/share/nginx/html/uploads
-      - ./certificates:/etc/nginx/ssl
+      - journal_certificates:/etc/nginx/ssl
     ports:
       - 80:80
       - 443:443
     env_file:
-      - path: ./.env.docker
-      - path: ./.env.docker.local
-        required: false
+      - path: ./.env
 
 volumes:
   journal_uploads:
-    external: true
+    driver: local
+    driver_opts:
+      type: none
+      device: ./uploads
+      o: bind
+  journal_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./data
+      o: bind
+  journal_certificates:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./certificates
+      o: bind

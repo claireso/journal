@@ -40,15 +40,15 @@ jobs:
       - name: Install
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Create .env.local
+      - name: Create .env
         uses: SpicyPizza/create-envfile@v2.0
         with:
-          file_name: .env.local
-          envkey_DB_NAME: ${{ secrets.DB_NAME }}
-          envkey_DB_USER: ${{ secrets.DB_USER }}
-          envkey_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          envkey_DB_HOST: ${{ secrets.DB_HOST }}
-          envkey_DB_PORT: ${{ secrets.DB_PORT }}
+          file_name: .env
+          envkey_POSTGRES_DB: ${{ secrets.DB_NAME }}
+          envkey_POSTGRES_USER: ${{ secrets.DB_USER }}
+          envkey_POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          envkey_POSTGRES_HOST: ${{ secrets.DB_HOST }}
+          envkey_POSTGRES_PORT: ${{ secrets.DB_PORT }}
           envkey_NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
           envkey_WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
           envkey_WEBSITE_LANGUAGE: ${{ vars.WEBSITE_LANGUAGE }}
@@ -59,6 +59,7 @@ jobs:
           envkey_NEXT_PUBLIC_SERVICEWORKER_VERSION: ${{ secrets.SERVICEWORKER_VERSION }}
           envkey_NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY: ${{ secrets.NOTIFICATIONS_PUBLIC_KEY }}
           envkey_NOTIFICATIONS_PRIVATE_KEY: ${{ secrets.NOTIFICATIONS_PRIVATE_KEY }}
+          envkey_NOTIFICATIONS_SUBJECT: ${{ secrets.NOTIFICATIONS_SUBJECT }}
       - name: Build
         run: npm run build
       - name: Configure SSH
