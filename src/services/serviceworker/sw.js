@@ -7,7 +7,7 @@ import { ExpirationPlugin } from 'workbox-expiration'
 
 import pushService from './sw-push'
 
-const VERSION = SERVICEWORKER_VERSION
+const VERSION = process.env.NEXT_PUBLIC_SERVICEWORKER_VERSION
 
 const CACHE_PREFIX = 'claireso-journal'
 const CACHE_NAME_IMG = `${CACHE_PREFIX}-img-${VERSION}`
@@ -21,7 +21,7 @@ const WB_MANIFEST = self.__WB_MANIFEST || []
 skipWaiting()
 clientsClaim()
 
-if (IS_NOTIFICATIONS_ENABLED === 'true') {
+if (process.env.NEXT_PUBLIC_IS_NOTIFICATIONS_ENABLED === 'true') {
   pushService()
 }
 

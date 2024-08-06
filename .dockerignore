@@ -1,0 +1,15 @@
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+README.md
+.next
+!.next/static
+!.next/standalone
+.git
+.env.sample
+# ignore our custom folders 'uploads' and 'data
+# the folder 'uploads' and 'data' will be defined as a volume
+# for a docker installation
+uploads
+data

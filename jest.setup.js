@@ -1,7 +1,4 @@
 import '@testing-library/jest-dom/jest-globals'
-import * as dotenv from 'dotenv'
-
-dotenv.config({ path: './.env.test' })
 
 window.scroll = () => {}
 window.scrollTo = () => {}

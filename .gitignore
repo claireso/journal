@@ -2,17 +2,20 @@
 node_modules
 npm-debug.log
 .vscode
+tsconfig.tsbuildinfo
 
 public/img
 public/sw.js
 public/sw.js.*
-
-uploads
 
 config.*.json
 dist
 coverage
 .next
 .eslintcache
+.env
 .env*.local
 
+uploads
+data
+certificates
