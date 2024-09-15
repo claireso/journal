@@ -21,9 +21,7 @@ export const getPhotos = (page: string, options?: RequestInit) =>
     '/photos',
     { page },
     {
-      // next: { tags: ['photos'] },
-      // next: { revalidate: 60 },
-      cache: 'no-cache', // @TODO: implementation of on-demand validation
+      next: { tags: ['photos'] },
       ...(options || {})
     }
   )

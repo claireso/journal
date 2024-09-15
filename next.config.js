@@ -15,6 +15,11 @@ module.exports = {
   compiler: {
     reactRemoveProperties: true
   },
+  logging: {
+    fetches: {
+      fullUrl: true
+    }
+  },
   compress: process.env.COMPRESSION === 'enabled',
   async redirects() {
     return [

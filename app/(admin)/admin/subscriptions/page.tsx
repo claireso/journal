@@ -16,6 +16,7 @@ import { ListHeader } from '@components/List'
 import { Heading1 } from '@components/Headings'
 import Modal from '@components/Modal'
 import Pager from '@components/Pager'
+import EmptyZone from '@components/EmptyZone'
 
 enum Action {
   CREATE = 'create',
@@ -36,7 +37,7 @@ const Subscriptions = () => {
 
   const filters = { page: (page as string) ?? '1' }
 
-  const { isFetching, isSuccess, data } = useSubscriptions(filters)
+  const { isFetching, isFetched, isSuccess, data } = useSubscriptions(filters)
 
   const { mutate: deleteSubscription, isPending: isDeleting } = useDeleteSubscription(filters)
 
@@ -95,10 +96,16 @@ const Subscriptions = () => {
 
       {isFetching && <Loader />}
 
-      {isSuccess && (
+      {isFetched && isSuccess && (
         <>
-          <AdminListSubscriptions subscriptions={data.items} onDelete={onClickDelete} />
-          <Pager {...data.pager} navigate={onChangePage} />
+          {data.pager.count === 0 ? (
+            <EmptyZone>No subscription yet.</EmptyZone>
+          ) : (
+            <>
+              <AdminListSubscriptions subscriptions={data.items} onDelete={onClickDelete} />
+              <Pager {...data.pager} navigate={onChangePage} />
+            </>
+          )}
         </>
       )}
 

@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server'
+import { revalidateTag } from 'next/cache'
 import { differenceInMinutes } from 'date-fns'
 import { createRouteHandler, withPagination, withAuth } from '@services/middlewares'
 import { pool, queries } from '@services/db'
@@ -79,6 +80,7 @@ const createPhoto = async (request: NextRequest) => {
     }
   }
 
+  revalidateTag('photos')
   return Response.json(formatPhotoHelper(response.rows[0]), { status: 201 })
 }
 
