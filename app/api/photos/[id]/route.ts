@@ -1,6 +1,7 @@
 import path from 'path'
 import { unlink } from 'fs/promises'
 import { NextRequest } from 'next/server'
+import { revalidateTag, unstable_cache } from 'next/cache'
 import { createRouteHandler, withAuth } from '@services/middlewares'
 import { pool, queries } from '@services/db'
 import uploadFile from '@utils/uploadFile'
@@ -10,6 +11,17 @@ interface RequestContext {
   params: { id: string }
 }
 
+const getCachedPhoto = (id: number) =>
+  unstable_cache(
+    async (id: number) => {
+      return pool.query(queries.get_photo(id))
+    },
+    [],
+    {
+      tags: [`photo_${id}`]
+    }
+  )(id)
+
 // endpoint get photo
 const getPhotoById = async (request: NextRequest, { params }: RequestContext) => {
   const id = Number(params.id)
@@ -18,7 +30,9 @@ const getPhotoById = async (request: NextRequest, { params }: RequestContext) =>
     return Response.json({}, { status: 400 })
   }
 
-  const response = await pool.query(queries.get_photo(id))
+  const response = await getCachedPhoto(id)
+
+  // const response = await pool.query(queries.get_photo(id))
   const photo: Photo = response.rows[0]
 
   if (photo === undefined) {
@@ -36,7 +50,7 @@ const editPhoto = async (request: NextRequest, { params }: RequestContext) => {
     return Response.json({}, { status: 400 })
   }
 
-  let response = await pool.query(queries.get_photo(id))
+  let response = await getCachedPhoto(id)
   const photo: Photo = response.rows[0]
 
   if (photo === undefined) {
@@ -72,6 +86,8 @@ const editPhoto = async (request: NextRequest, { params }: RequestContext) => {
 
   response = await pool.query(queries.update_photo(id, fields), Object.values(newPhoto))
 
+  revalidateTag('photos')
+  revalidateTag(`photo_${id}`)
   return Response.json(formatPhoto(response.rows[0]), { status: 200 })
 }
 
@@ -83,7 +99,7 @@ const deletePhoto = async (request: NextRequest, { params }: RequestContext) => 
     return Response.json({}, { status: 400 })
   }
 
-  const response = await pool.query(queries.get_photo(id))
+  const response = await getCachedPhoto(id)
   const photo: Photo = response.rows[0]
 
   if (photo === undefined) {
@@ -96,6 +112,8 @@ const deletePhoto = async (request: NextRequest, { params }: RequestContext) => 
   // delete photo from database
   await pool.query(queries.delete_photo(id))
 
+  revalidateTag('photos')
+  revalidateTag(`photo_${id}`)
   return Response.json({}, { status: 200 })
 }
 
