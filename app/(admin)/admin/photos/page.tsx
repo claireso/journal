@@ -18,6 +18,7 @@ import { ButtonPrimary } from '@components/Buttons'
 import { Heading1 } from '@components/Headings'
 import Modal from '@components/Modal'
 import Pager from '@components/Pager'
+import EmptyZone from '@components/EmptyZone'
 
 enum Action {
   CREATE = 'create',
@@ -38,7 +39,7 @@ const Photos = () => {
 
   const filters = { page: (page as string) ?? '1' }
 
-  const { isFetching, isSuccess, data } = usePhotos(filters)
+  const { isFetching, isSuccess, isFetched, data } = usePhotos(filters)
 
   const { mutate: createPhoto, isPending: isCreating } = useCreatePhoto(filters)
   const { mutate: editPhoto, isPending: isEditing } = useEditPhoto(filters)
@@ -150,15 +151,19 @@ const Photos = () => {
         </ButtonPrimary>
       </ListHeader>
 
-      {isFetching ? (
-        <Loader />
-      ) : (
-        isSuccess && (
-          <>
-            <AdminListPhotos photos={data.items} onEdit={onClickEdit} onDelete={onClickDelete} />
-            <Pager {...data.pager} navigate={onChangePage} />
-          </>
-        )
+      {isFetching && <Loader />}
+
+      {isFetched && isSuccess && (
+        <>
+          {data.pager.count === 0 ? (
+            <EmptyZone>No photos published yet.</EmptyZone>
+          ) : (
+            <>
+              <AdminListPhotos photos={data.items} onEdit={onClickEdit} onDelete={onClickDelete} />
+              <Pager {...data.pager} navigate={onChangePage} />
+            </>
+          )}
+        </>
       )}
 
       {action === Action.CREATE && (
