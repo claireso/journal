@@ -1,5 +1,12 @@
 # journal
 
+## 1.3.4
+
+### Patch Changes
+
+- 8d696d9: add feedback to user when the database is empty (no published photo - no subscription)
+- 754111d: use next cache to improve performance
+
 ## 1.3.3
 
 ### Patch Changes
