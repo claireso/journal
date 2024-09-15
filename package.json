@@ -10,6 +10,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "node .next/standalone/server.js",
+    "preview": "next start",
     "start:express": "NODE_ENV=production COMPRESSION=enabled node server.js",
     "lint": "next lint",
     "lint:write": "next lint --fix",
