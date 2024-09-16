@@ -1,7 +1,5 @@
 'use client'
 
-import Link from 'next/link'
-
 import * as S from './NotFound.styles'
 
 export default function NotFound() {
@@ -9,7 +7,7 @@ export default function NotFound() {
     <S.Wrapper>
       <S.Title>▸ 404 ◂</S.Title>
       <S.ButtonBack>
-        <Link href="/">Back</Link>
+        <a href="/">Back</a>
       </S.ButtonBack>
     </S.Wrapper>
   )

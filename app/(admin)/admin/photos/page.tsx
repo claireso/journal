@@ -39,7 +39,7 @@ const Photos = () => {
 
   const filters = { page: (page as string) ?? '1' }
 
-  const { isFetching, isSuccess, isFetched, data } = usePhotos(filters)
+  const { isFetching, isSuccess, isFetched, error, data } = usePhotos(filters)
 
   const { mutate: createPhoto, isPending: isCreating } = useCreatePhoto(filters)
   const { mutate: editPhoto, isPending: isEditing } = useEditPhoto(filters)
@@ -141,6 +141,11 @@ const Photos = () => {
     [deletePhoto, onCloseModal]
   )
 
+  if (error?.response.status === 404) {
+    navigate({ page: '1' })
+    return null
+  }
+
   return (
     <>
       <ListHeader>
@@ -174,7 +179,7 @@ const Photos = () => {
 
       {action === Action.EDIT && (
         <Modal onClose={onCloseModal}>
-          <ModalEditPhoto id={photoId} onSubmit={onEditPhoto} isProcessing={isEditing} />
+          <ModalEditPhoto id={photoId} onSubmit={onEditPhoto} onCancel={onCloseModal} isProcessing={isEditing} />
         </Modal>
       )}
 
