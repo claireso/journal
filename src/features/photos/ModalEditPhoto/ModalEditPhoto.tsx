@@ -8,11 +8,12 @@ import FormPhoto from '../FormPhoto'
 interface ModalEditPhotoProps {
   id: EnhancedPhoto['id']
   onSubmit: (data: { id: number; data: FormData }) => void
+  onCancel: () => void
   isProcessing?: boolean
 }
 
-const ModalEditPhoto = ({ id, onSubmit, isProcessing = false }: ModalEditPhotoProps) => {
-  const { data: photo } = usePhoto(id)
+const ModalEditPhoto = ({ id, onSubmit, onCancel, isProcessing = false }: ModalEditPhotoProps) => {
+  const { data: photo, error } = usePhoto(id)
 
   const handleSubmit = useCallback(
     (data: FormData) => {
@@ -21,7 +22,10 @@ const ModalEditPhoto = ({ id, onSubmit, isProcessing = false }: ModalEditPhotoPr
     [id, onSubmit]
   )
 
-  if (!photo) return null
+  if (error?.response.status === 404) {
+    onCancel()
+    return null
+  }
 
   return (
     <>

@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient, QueryFunctionContext } from '@tanstack/react-query'
 
 import * as api from '@services/api'
+import ApiError from '@services/api/ApiError'
 import { Photos, EnhancedPhoto } from '@models'
 import useMessages from '@features/messages/useMessages'
 
@@ -149,7 +150,13 @@ export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
 
   const queryOptions = {
     placeholderData: initialState,
-    useErrorBoundary: true,
+    throwOnError: (err: ApiError) => {
+      // do not throw error for 404 in order to manage redirection in views
+      if (err.response.status === 404) {
+        return false
+      }
+      return true
+    },
     ...options
   }
 
@@ -187,7 +194,13 @@ export const usePhoto = (id: number, options = {}) => {
         return queryClient.getQueryState(cacheKey)?.dataUpdatedAt
       }
     },
-    useErrorBoundary: true,
+    throwOnError: (err: ApiError) => {
+      // do not throw error for 404 in order to manage redirection in views
+      if (err.response.status === 404) {
+        return false
+      }
+      return true
+    },
     ...options
   }
 
