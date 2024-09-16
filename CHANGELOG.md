@@ -1,5 +1,11 @@
 # journal
 
+## 1.3.5
+
+### Patch Changes
+
+- 453948e: Fix pagination (add redirection on 404)
+
 ## 1.3.4
 
 ### Patch Changes
