@@ -3,16 +3,17 @@ import { revalidateTag } from 'next/cache'
 import { differenceInMinutes } from 'date-fns'
 import { createRouteHandler, withPagination, withAuth } from '@services/middlewares'
 import { pool, queries } from '@services/db'
+import logger from '@services/logger'
 import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } from '@services/web-push'
 import {
   PhotoRequestSchema,
   Photo,
+  Media,
   Subscription,
   Pager,
   createPhoto as createPhotoHelper,
   formatPhoto as formatPhotoHelper
 } from '@models'
-import uploadFile from '@utils/uploadFile'
 
 // endpoint list photos
 const getAllPhotos = async (request: NextRequest & { pager: Pager }) => {
@@ -22,9 +23,11 @@ const getAllPhotos = async (request: NextRequest & { pager: Pager }) => {
     })
   )
 
+  const photos: Array<Photo> = response.rows.map(formatPhotoHelper)
+
   return Response.json(
     {
-      items: response.rows.map(formatPhotoHelper),
+      items: photos,
       pager: request.pager
     },
     { status: 200 }
@@ -33,26 +36,41 @@ const getAllPhotos = async (request: NextRequest & { pager: Pager }) => {
 
 // endpoint POST photo
 const createPhoto = async (request: NextRequest) => {
-  const formData = await request.formData()
-
-  const body = Object.fromEntries(formData)
+  const body = await request.json()
 
   const result = PhotoRequestSchema.parse(body)
 
-  const { file, ...partialPhoto } = result
+  // idea: check if it is a good idea to add the check in zod media schema
+  const mediaResponse = await pool.query(queries.get_media(result.media_id))
 
-  const uploadedFile = await uploadFile(file)
+  if (mediaResponse.rowCount === 0) {
+    const message = 'Media is required and must exist'
+    logger.error(message)
+    return Response.json({ message }, { status: 422 })
+  }
 
-  const photo = createPhotoHelper(partialPhoto, uploadedFile)
+  const media: Media = mediaResponse.rows[0]
 
-  const response = await pool.query(queries.insert_photo(), [
-    photo.title,
-    photo.description,
-    photo.name,
-    photo.position,
-    photo.portrait,
-    photo.square
+  const photoByMediaResponse = await pool.query(queries.get_photo_by_media(media.id))
+
+  if (photoByMediaResponse.rowCount === 1) {
+    const message = `Media ${media.id} is already linked to a photo`
+    logger.error(message)
+    return Response.json({ message }, { status: 422 })
+  }
+
+  const data = createPhotoHelper(result)
+
+  const responsePhoto = await pool.query(queries.insert_photo(), [
+    media.name, // set a value for "name" to keep legacy working (a database migration is required in the future)
+    data.title,
+    data.description,
+    data.position,
+    data.color,
+    data.media_id
   ])
+
+  const photo = formatPhotoHelper(responsePhoto.rows[0])
 
   // send web-push notification
   if (IS_NOTIFICATIONS_ENABLED) {
@@ -81,7 +99,7 @@ const createPhoto = async (request: NextRequest) => {
   }
 
   revalidateTag('photos')
-  return Response.json(formatPhotoHelper(response.rows[0]), { status: 201 })
+  return Response.json(photo, { status: 201 })
 }
 
 export const GET = createRouteHandler(withPagination('photos'), getAllPhotos)

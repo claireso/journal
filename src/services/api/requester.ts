@@ -102,7 +102,7 @@ export const buildRequester = ({ baseUrl, ApiError }: RequesterOptions) => {
     return request(url, init)
   }
 
-  const patch = <T, U extends FormData>(url: string, body: U): Promise<T> => {
+  const patch = <T, U extends {}>(url: string, body: U): Promise<T> => {
     const init = { method: 'PATCH', body: buildBody(body) }
     return request(url, init)
   }

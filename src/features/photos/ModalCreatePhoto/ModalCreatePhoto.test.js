@@ -1,15 +1,32 @@
 import { screen, render, fireEvent, act, waitFor } from '@testing-library/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import ModalCreatePhoto from './ModalCreatePhoto'
 
 import { MessagesProvider } from '../../messages/useMessages'
 
 describe('<ModalCreatePhoto />', () => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        cacheTime: Infinity
+      }
+    },
+    logger: {
+      log: console.log,
+      warn: console.warn,
+      error: () => {}
+    }
+  })
+
   const renderComponent = (props = {}) => {
     return render(
-      <MessagesProvider>
-        <ModalCreatePhoto {...props} />
-      </MessagesProvider>
+      <QueryClientProvider client={queryClient}>
+        <MessagesProvider>
+          <ModalCreatePhoto {...props} />
+        </MessagesProvider>
+      </QueryClientProvider>
     )
   }
 

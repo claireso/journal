@@ -26,11 +26,13 @@ const customJestConfig = {
           id: 199,
           title: '',
           description: 'Février 2019',
-          name: '01d2y7jt2j24dv0s82m9xq729d.jpg',
-          source: '/uploads/01d2y7jt2j24dv0s82m9xq729d.jpg',
+          media: {
+            name: '01d2y7jt2j24dv0s82m9xq729d.jpg',
+            source: '/uploads/01d2y7jt2j24dv0s82m9xq729d.jpg',
+            portrait: false,
+            square: false
+          },
           position: 'right',
-          portrait: false,
-          square: false,
           created_at: '2019-02-05T07:05:02.548Z',
           updated_at: '2019-02-05T08:24:09.612Z'
         },
@@ -38,11 +40,13 @@ const customJestConfig = {
           id: 198,
           title: '',
           description: 'Janvier 2019',
-          name: '01d2tf2h38pwcd953ans2f64p7.jpg',
-          source: '/uploads/01d2tf2h38pwcd953ans2f64p7.jpg',
+          media: {
+            name: '01d2tf2h38pwcd953ans2f64p7.jpg',
+            source: '/uploads/01d2tf2h38pwcd953ans2f64p7.jpg',
+            portrait: false,
+            square: false
+          },
           position: 'center',
-          portrait: false,
-          square: false,
           created_at: '2019-02-03T19:59:00.088Z',
           updated_at: '2019-02-03T19:59:00.088Z'
         }
@@ -60,11 +64,13 @@ const customJestConfig = {
       id: 1,
       title: 'Single photography',
       description: 'Janvier 2019',
-      name: '01d2tf2h38pwcd953ans2f64p7.jpg',
-      source: '/uploads/01d2tf2h38pwcd953ans2f64p7.jpg',
+      media: {
+        name: '01d2tf2h38pwcd953ans2f64p7.jpg',
+        source: '/uploads/01d2tf2h38pwcd953ans2f64p7.jpg',
+        portrait: false,
+        square: false
+      },
       position: 'center',
-      portrait: false,
-      square: false,
       created_at: '2019-02-03T19:59:00.088Z',
       updated_at: '2019-02-03T19:59:00.088Z'
     },

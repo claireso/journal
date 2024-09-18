@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient, QueryFunctionContext } from '@ta
 
 import * as api from '@services/api'
 import ApiError from '@services/api/ApiError'
-import { Photos, EnhancedPhoto } from '@models'
+import { Photos, Photo } from '@models'
 import useMessages from '@features/messages/useMessages'
 
 interface Filters {
@@ -29,8 +29,7 @@ export const useEditPhoto = (filters: Filters = { page: '1' }) => {
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
   return useMutation({
-    mutationFn: ({ id, data }: { id: EnhancedPhoto['id']; data: FormData }): Promise<EnhancedPhoto> =>
-      api.editPhoto(id, data),
+    mutationFn: ({ id, data }: { id: Photo['id']; data: Partial<Photo> }): Promise<Photo> => api.editPhoto(id, data),
     onSuccess(photo, { id }) {
       queryClient.setQueryData([CACHE_KEY_DETAIL, id], photo)
 
@@ -55,7 +54,7 @@ export const useEditPhoto = (filters: Filters = { page: '1' }) => {
     onError() {
       displayErrorMessage({
         key: 'CRUD_PHOTO',
-        message: 'An error has occured during the deletion. Please retry'
+        message: 'An error has occured during the update. Please retry'
       })
     }
   })
@@ -107,7 +106,7 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
   return useMutation({
-    mutationFn: (data: FormData): Promise<EnhancedPhoto> => api.createPhoto(data),
+    mutationFn: (data: Partial<Photo>): Promise<Photo> => api.createPhoto(data),
     onSuccess(photo) {
       if (filters.page === '1') {
         const photos = queryClient.getQueryData<Photos>([CACHE_KEY_LIST, filters])

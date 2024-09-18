@@ -78,11 +78,11 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 exports[`<Photo /> should render photo (portrait center) 1`] = `
 <DocumentFragment>
   <figure
-    class="c-bUGSFZ c-bUGSFZ-iVqPaJ-position-center c-bUGSFZ-gxKxyj-portrait-true c-bUGSFZ-bHfBnH-cv c-bUGSFZ-iiCDtyl-css"
+    class="c-bUGSFZ c-bUGSFZ-iVqPaJ-position-center c-bUGSFZ-iiCDtyl-css"
     data-testid="photo"
   >
     <div
-      class="c-igxWur c-igxWur-idhNoZG-css"
+      class="c-igxWur c-igxWur-ibEeMWi-css"
     />
     <figcaption
       class="c-iMVRpC"
@@ -103,11 +103,11 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 exports[`<Photo /> should render photo (square center) 1`] = `
 <DocumentFragment>
   <figure
-    class="c-bUGSFZ c-bUGSFZ-iVqPaJ-position-center c-bUGSFZ-bQoZHu-square-true c-bUGSFZ-gGTwqu-cv c-bUGSFZ-iiCDtyl-css"
+    class="c-bUGSFZ c-bUGSFZ-iVqPaJ-position-center c-bUGSFZ-iiCDtyl-css"
     data-testid="photo"
   >
     <div
-      class="c-igxWur c-igxWur-ievjdZN-css"
+      class="c-igxWur c-igxWur-ibEeMWi-css"
     />
     <figcaption
       class="c-iMVRpC"
