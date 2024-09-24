@@ -1,26 +1,41 @@
 import escape from 'lodash/escape'
 import unescape from '@utils/unescape'
 
-import { Photo, EnhancedPhoto } from './photo'
+import { Photo } from './photo'
+import { formatMedia, formatLegacyMedia } from '../media/helpers'
 
-export const createPhoto = (
-  data: Partial<Photo>,
-  file?: { width: number; height: number; filename: string }
-): Partial<Photo> => ({
-  ...data,
-  name: file?.filename ?? data.name,
-  // override
+export const createPhoto = (data: Partial<Photo>): Partial<Photo> => ({
   title: escape(data.title),
   description: escape(data.description),
-  portrait: file?.width && file.height ? file.width < file.height : data.portrait || false,
-  square: file?.width && file?.height ? file?.width == file?.height : data.square || false,
+  color: data.color || null,
   position: data.position,
-  color: data.color || null
+  media_id: data.media_id,
+  updated_at: new Date()
 })
 
-export const formatPhoto = (photo: Photo): EnhancedPhoto => ({
-  ...photo,
+// DTO Photo
+export const formatPhoto = (photo: any): Photo => ({
+  id: photo.photo_id,
   title: unescape(photo.title),
   description: unescape(photo.description),
-  source: `/uploads/${photo.name}`
+  color: photo.color,
+  position: photo.position,
+  created_at: photo.photo_created_at,
+  updated_at: photo.photo_updated_at,
+  media_id: photo.media_id,
+  media: photo.media_id
+    ? formatMedia({
+        id: photo.media_id,
+        created_at: photo.media_created_at,
+        name: photo.media_name,
+        type: photo.media_type,
+        width: photo.media_width,
+        height: photo.media_height
+      })
+    : formatLegacyMedia({
+        // legacy
+        name: photo.photo_name, // deprecated, moved in media
+        portrait: photo.portrait, // deprecated, moved in media
+        square: photo.square // deprecated, moved in media
+      })
 })

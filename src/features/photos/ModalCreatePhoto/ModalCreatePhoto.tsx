@@ -1,10 +1,11 @@
 import { memo } from 'react'
 
+import { Photo } from '@models'
 import { Heading2 } from '@components/Headings'
 import FormPhoto from '../FormPhoto'
 
 interface ModalCreatePhotoProps {
-  onSubmit: (data: FormData) => void
+  onSubmit: (data: Partial<Photo>) => void
   isProcessing?: boolean
 }
 

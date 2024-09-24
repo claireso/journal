@@ -14,6 +14,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       primary100: 'hsl(282, 44%, 51%)',
       primary200: 'hsl(282, 44%, 47%)',
       primary300: 'hsl(282, 44%, 42%)',
+      primary400: 'hsl(282, 44%, 80%)',
       secondary100: 'hsl(192, 15%,98%)',
       secondary200: 'hsl(192, 15%, 94%)',
       secondary300: 'hsl(192, 15%, 89%)',

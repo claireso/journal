@@ -33,7 +33,7 @@ describe('<Uploader />', () => {
   })
 
   it('should change file', async () => {
-    const props = { onChange: jest.fn() }
+    const props = { onChangeMedia: jest.fn() }
 
     const { asFragment } = renderComponent(props)
 
@@ -45,7 +45,9 @@ describe('<Uploader />', () => {
       }
     })
 
-    await waitFor(() => expect(props.onChange).toHaveBeenCalledWith('data:image/jpeg;base64,KOKMkOKWoV/ilqEp'))
+    await waitFor(() => expect(props.onChangeMedia).toHaveBeenCalled())
+
+    expect(props.onChangeMedia.mock.calls[0][0]).toBeInstanceOf(File)
 
     expect(asFragment()).toMatchSnapshot()
   })

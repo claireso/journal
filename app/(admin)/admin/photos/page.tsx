@@ -19,6 +19,7 @@ import { Heading1 } from '@components/Headings'
 import Modal from '@components/Modal'
 import Pager from '@components/Pager'
 import EmptyZone from '@components/EmptyZone'
+import { Photo } from '@models'
 
 enum Action {
   CREATE = 'create',
@@ -94,7 +95,7 @@ const Photos = () => {
   )
 
   const onCreatePhoto = useCallback(
-    (data: FormData) => {
+    (data: Partial<Photo>) => {
       createPhoto(data, {
         onSuccess() {
           onCloseModal({ scroll: true })
@@ -114,7 +115,7 @@ const Photos = () => {
   )
 
   const onEditPhoto = useCallback(
-    (data: { id: number; data: FormData }) => {
+    (data: { id: number; data: Partial<Photo> }) => {
       editPhoto(data, {
         onSettled(data, err) {
           if (err instanceof api.getErrorConstructor()) {

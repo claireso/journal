@@ -19,8 +19,11 @@ export const Label = styled('label', {
   borderRadius: '50%',
   cursor: 'pointer',
   background: 'currentColor',
-
   'input:checked + &': {
     boxShadow: '0 0 0 3px #fff, 0 0 0 5px currentColor'
+  },
+  'input:disabled + &': {
+    opacity: 0.5,
+    pointerEvents: 'none'
   }
 })
