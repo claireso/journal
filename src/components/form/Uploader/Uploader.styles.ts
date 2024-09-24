@@ -23,8 +23,7 @@ export const UploaderContent = styled('div', {
   svg: {
     display: 'block',
     size: '2.4rem',
-    fill: '$primary100',
-    m: '0 auto'
+    fill: '$primary100'
   },
   span: {
     display: 'block',
@@ -41,6 +40,11 @@ export const UploaderContent = styled('div', {
   }
 })
 
+export const UploaderIcon = styled('div', {
+  size: '2.4rem',
+  m: '0 auto'
+})
+
 export const UploaderInput = styled('input', {
   bottom: 0,
   cursor: 'pointer',
@@ -53,8 +57,9 @@ export const UploaderInput = styled('input', {
 })
 
 export const UploaderError = styled('div', {
-  color: '$error100',
+  background: '$error100',
+  color: '$error300',
   fontSize: '$3',
-  margin: '$2 0 $5',
+  padding: '$3 0 $3',
   textAlign: 'center'
 })

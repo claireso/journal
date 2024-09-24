@@ -1,12 +1,11 @@
 import { z } from 'zod'
 import { EntitySchema } from '../entity'
+import { MediaSchema, LegacyMediaSchema } from '../media'
 
 export const PhotoSchema = EntitySchema.extend({
   title: z.string().optional().default(''),
   description: z.string().optional().default(''),
-  name: z.string(),
   position: z.enum(['left', 'center', 'right']).default('left'),
-  portrait: z.boolean(),
   color: z
     .string()
     .nullable()
@@ -14,12 +13,8 @@ export const PhotoSchema = EntitySchema.extend({
       message: 'Color must be defined as a hex color'
     })
     .default(null),
-  square: z.boolean()
-})
-
-export const EnhancedPhotoSchema = PhotoSchema.extend({
-  source: z.string()
+  media_id: z.number(),
+  media: z.union([MediaSchema, LegacyMediaSchema])
 })
 
 export type Photo = z.infer<typeof PhotoSchema>
-export type EnhancedPhoto = z.infer<typeof EnhancedPhotoSchema>

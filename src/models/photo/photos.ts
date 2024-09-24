@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { PagerSchema } from '../pager'
-import { EnhancedPhotoSchema } from './photo'
+import { PhotoSchema } from './photo'
 
 export const PhotosSchema = z.object({
-  items: z.array(EnhancedPhotoSchema),
+  items: z.array(PhotoSchema),
   pager: PagerSchema
 })
 

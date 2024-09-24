@@ -2,25 +2,30 @@ import { useCallback, memo } from 'react'
 
 import { usePhoto } from '@features/photos/usePhotos'
 import { Heading1 } from '@components/Headings'
-import { EnhancedPhoto } from '@models'
+import { Loader } from '@components/Loader'
+import { Photo } from '@models'
 import FormPhoto from '../FormPhoto'
 
 interface ModalEditPhotoProps {
-  id: EnhancedPhoto['id']
-  onSubmit: (data: { id: number; data: FormData }) => void
+  id: Photo['id']
+  onSubmit: (data: { id: number; data: Partial<Photo> }) => void
   onCancel: () => void
   isProcessing?: boolean
 }
 
 const ModalEditPhoto = ({ id, onSubmit, onCancel, isProcessing = false }: ModalEditPhotoProps) => {
-  const { data: photo, error } = usePhoto(id)
+  const { data: photo, error, isFetched } = usePhoto(id)
 
   const handleSubmit = useCallback(
-    (data: FormData) => {
+    (data: Partial<Photo>) => {
       onSubmit({ id: id, data })
     },
     [id, onSubmit]
   )
+
+  if (!isFetched) {
+    return <Loader />
+  }
 
   if (error?.response.status === 404) {
     onCancel()

@@ -1,79 +1,94 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 
 import { create as createThumbnail } from '@services/thumbnails'
+
 import { IconUpload } from '@components/Icons'
+import Spinner from '@components/Spinner'
 
 import * as S from './Uploader.styles'
 
 interface UploaderProps {
   name: string
   accept: string[]
+  processing: boolean
   preview?: string
   required?: boolean
-  onChange?: (thumbnail: string) => void
-  backgroundPreview?: string | null
+  previewBackgroundColor?: string | null
+  onError: (err: unknown) => void
+  onChangeMedia: (file: File) => void
 }
 
-interface State {
-  preview?: string | null
-  error?: string | null
-}
+const Uploader = ({
+  name,
+  accept,
+  processing,
+  onChangeMedia,
+  preview,
+  required,
+  previewBackgroundColor,
+  onError
+}: UploaderProps) => {
+  const [currentPreview, setCurrentPreview] = useState<string | null>(preview ?? null)
+  const [error, setError] = useState<string | null>(null)
+  const refInput = useRef<HTMLInputElement>(null)
 
-const Uploader = (props: UploaderProps) => {
-  const [{ preview, error }, setState] = useState<State>({ preview: props.preview })
-  const input = useRef<HTMLInputElement>(null)
-
-  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { accept, onChange } = props
-
-    const files = event.target.files
-
-    if (!files || files.length === 0) return
-
-    const file = files[0]
-
-    if (!file) return
-
-    if (!accept.includes(file.type)) {
-      setState({
-        preview: null,
-        error: 'This file is not allowed'
-      })
-      if (input.current) {
-        input.current.value = ''
+  const onChange = useCallback(
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0]
+      if (!file) {
+        return
       }
-      return
-    }
 
-    try {
-      const thumbnail = await createThumbnail(file)
+      if (!accept.includes(file.type)) {
+        setCurrentPreview(null)
+        setError('This file type is not allowed')
+        if (refInput.current) {
+          refInput.current.value = ''
+        }
+        return
+      }
 
-      setState({ preview: thumbnail, error: null })
+      setError(null)
 
-      onChange && onChange(thumbnail)
-    } catch (err) {
-      /* eslint-disable */
-      console.error(err)
-    }
-  }
+      try {
+        const thumbnail = await createThumbnail(file)
+        setCurrentPreview(thumbnail)
+        onChangeMedia(file)
+      } catch (err) {
+        onError(err)
+      }
+    },
+    [accept, onError, onChangeMedia]
+  )
 
   return (
     <S.UploaderWrapper>
-      {preview && (
+      {currentPreview && (
         <S.UploaderPreview
           css={{
-            background: props.backgroundPreview || '$secondary200'
+            background: previewBackgroundColor || '$secondary200',
+            opacity: processing ? 0.5 : 1
           }}
           data-testid="preview"
         >
-          <img src={preview} />
+          <img src={currentPreview} alt="" />
         </S.UploaderPreview>
       )}
       <S.UploaderContent>
-        <IconUpload />
-        <span>Upload new photo</span>
-        <small>(only jpg and png)</small>
-        <S.UploaderInput ref={input} type="file" name={props.name} onChange={handleChange} required={props.required} />
+        <>
+          <S.UploaderIcon>{processing ? <Spinner /> : <IconUpload />}</S.UploaderIcon>
+          <span>Upload new photo</span>
+          <small>(only {accept.join(', ')})</small>
+        </>
+
+        <S.UploaderInput
+          ref={refInput}
+          type="file"
+          name={name}
+          onChange={onChange}
+          required={required}
+          accept={accept.join(',')}
+        />
       </S.UploaderContent>
       {error && <S.UploaderError>{error}</S.UploaderError>}
     </S.UploaderWrapper>

@@ -2,16 +2,16 @@
 
 import React, { useRef } from 'react'
 
-import { EnhancedPhoto } from '@models'
+import { Photo as IPhoto } from '@models'
 import useInView from '@hooks/useInView'
 
 import * as S from './Photo.styles'
 
-interface PhotoProps extends EnhancedPhoto {
+interface PhotoProps extends IPhoto {
   row: number
 }
 
-const Photo = ({ title, description, source, portrait, position, square, color, row }: PhotoProps) => {
+const Photo = ({ title, description, media, position, color, row }: PhotoProps) => {
   const dom = useRef(null)
   const isInView = useInView(dom)
 
@@ -19,8 +19,8 @@ const Photo = ({ title, description, source, portrait, position, square, color, 
     <S.Figure
       ref={dom}
       data-testid="photo"
-      portrait={portrait}
-      square={square}
+      portrait={media.portrait}
+      square={media.square}
       // @ts-ignore
       position={position}
       withColor={!!color}
@@ -31,10 +31,10 @@ const Photo = ({ title, description, source, portrait, position, square, color, 
       <S.PictureWrapper
         css={{
           color: color || '$secondary200',
-          '--aspect-ratio': portrait ? 2 / 3 : square ? 1 / 1 : 3 / 2
+          '--aspect-ratio': media.portrait ? 2 / 3 : media.square ? 1 / 1 : 3 / 2
         }}
       >
-        {isInView && <S.Picture src={source} />}
+        {isInView && <S.Picture src={media.source} />}
       </S.PictureWrapper>
       <S.Title>
         {title && <span dangerouslySetInnerHTML={{ __html: title }} />}

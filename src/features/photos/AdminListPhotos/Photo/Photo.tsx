@@ -2,19 +2,19 @@ import React, { useRef, useCallback } from 'react'
 
 import * as S from './Photo.styles'
 
-import { EnhancedPhoto } from '@models'
+import { Photo as IPhoto } from '@models'
 import useInView from '@hooks/useInView'
 
 import AnimatedImage from '@components/AnimatedImage'
 import { IconPencil, IconDelete } from '@components/Icons'
 import { ButtonIcon } from '@components/Buttons'
 
-interface PhotoProps extends EnhancedPhoto {
+interface PhotoProps extends IPhoto {
   onEdit: (id: number) => void
   onDelete: (id: number) => void
 }
 
-const Photo = ({ id, color, source, title, description, onEdit, onDelete }: PhotoProps) => {
+const Photo = ({ id, color, media, title, description, onEdit, onDelete }: PhotoProps) => {
   const dom = useRef(null)
   const inView = useInView(dom)
 
@@ -24,7 +24,7 @@ const Photo = ({ id, color, source, title, description, onEdit, onDelete }: Phot
   return (
     <S.PhotoWrapper ref={dom} data-testid="photo">
       <S.PhotoPicture style={{ color: color || 'transparent' }}>
-        {inView && <AnimatedImage src={source} />}
+        {inView && <AnimatedImage src={media.source} />}
       </S.PhotoPicture>
       <S.PhotoInner>
         {title && <S.PhotoTitle dangerouslySetInnerHTML={{ __html: title }} />}
