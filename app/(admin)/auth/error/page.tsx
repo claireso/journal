@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation'
 
 import { Heading1 } from '@web/components/Headings'
-import { getAuthError, AUTH_ERRORS_TYPES } from '@web/services/auth/errors'
+import { getAuthError, AUTH_ERRORS_TYPES } from '@infrastructure/auth/errors'
 
 const ErrorPage = () => {
   const searchParams = useSearchParams()

@@ -6,7 +6,7 @@ import { signIn } from 'next-auth/react'
 import { Heading1 } from '@web/components/Headings'
 import Flash from '@web/components/Flash'
 
-import { getAuthError, AUTH_ERRORS_TYPES } from '@web/services/auth/errors'
+import { getAuthError, AUTH_ERRORS_TYPES } from '@infrastructure/auth/errors'
 import LoginForm from '@web/features/user/LoginForm'
 
 const LoginPage = () => {
