@@ -1,6 +1,6 @@
 import CredentialsProvider from 'next-auth/providers/credentials'
 import escape from 'lodash/escape'
-import { pool, queries } from '@web/services/db'
+import { pool, queries } from '@infrastructure/db'
 
 export default CredentialsProvider({
   name: 'Credentials',

@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { pool, queries } from '@web/services/db'
+import { pool, queries } from '@infrastructure/db'
 import { Pager } from '@domain/entities'
 
 const withPagination = (resource: string) => async (request: NextRequest & { pager: Pager }) => {
