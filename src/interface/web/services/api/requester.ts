@@ -1,4 +1,4 @@
-import logger from '@web/services/logger'
+import logger from '@infrastructure/logger'
 
 import ApiError from './ApiError'
 

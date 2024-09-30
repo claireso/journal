@@ -3,7 +3,7 @@ import { revalidateTag } from 'next/cache'
 import { differenceInMinutes } from 'date-fns'
 import { createRouteHandler, withPagination, withAuth } from '@web/services/middlewares'
 import { pool, queries } from '@web/services/db'
-import logger from '@web/services/logger'
+import logger from '@infrastructure/logger'
 import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } from '@web/services/web-push'
 import {
   PhotoRequestSchema,

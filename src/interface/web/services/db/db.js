@@ -1,5 +1,5 @@
 import pg from 'pg'
-import logger from '@web/services/logger'
+import logger from '@infrastructure/logger'
 
 const pool = new pg.Pool({
   user: process.env.POSTGRES_USER,

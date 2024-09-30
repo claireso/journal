@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const { InjectManifest } = require('workbox-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 
@@ -21,6 +20,9 @@ module.exports = {
     }
   },
   compress: process.env.COMPRESSION === 'enabled',
+  experimental: {
+    serverComponentsExternalPackages: ['pino', 'pino-pretty']
+  },
   async redirects() {
     return [
       {

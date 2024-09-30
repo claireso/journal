@@ -1,6 +1,6 @@
 import { ZodError } from 'zod'
 import type { NextRequest } from 'next/server'
-import logger from '@web/services/logger'
+import logger from '@infrastructure/logger'
 export { default as withPagination } from './withPagination'
 export { default as withAuth } from './withAuth'
 

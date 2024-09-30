@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useRef, useState } from 'react'
 
-import logger from '@web/services/logger'
+import logger from '@infrastructure/logger'
 import { Photo } from '@domain/entities'
 
 import Input from '@web/components/form/Input'

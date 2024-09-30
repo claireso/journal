@@ -20,6 +20,7 @@
       "@utils/*": ["src/utils/*"],
       "@types": ["src/types"],
       "@domain/*": ["src/domain/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
       "@web/*": ["src/interface/web/*"]
     },
     "plugins": [
