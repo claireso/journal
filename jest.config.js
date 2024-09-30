@@ -12,8 +12,8 @@ const customJestConfig = {
   moduleNameMapper: {
     '^@utils(.*)$': '<rootDir>/src/utils$1',
     '^@types(.*)$': '<rootDir>/src/types$1',
-    '^@web(.*)$': '<rootDir>/src/interface/web$1',
-    '^@models(.*)$': '<rootDir>/src/models$1'
+    '^@domain(.*)$': '<rootDir>/src/domain$1',
+    '^@web(.*)$': '<rootDir>/src/interface/web$1'
   },
   globals: {
     __PHOTOS__: {

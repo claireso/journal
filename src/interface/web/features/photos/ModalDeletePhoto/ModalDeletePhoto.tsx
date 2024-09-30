@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { Photo } from '@models'
+import { Photo } from '@domain/entities'
 import { ButtonPrimary, ButtonSecondary } from '@web/components/Buttons'
 import { Heading1 } from '@web/components/Headings'
 import Text from '@web/components/Text'

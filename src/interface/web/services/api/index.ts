@@ -1,4 +1,4 @@
-import type { Photos, Subscription, Subscriptions, Media, Photo } from '@models'
+import type { Photos, Subscription, Subscriptions, Media, Photo } from '@domain/entities'
 import { buildRequester } from './requester'
 import ApiError from './ApiError'
 

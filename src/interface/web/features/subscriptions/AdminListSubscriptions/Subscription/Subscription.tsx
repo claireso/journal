@@ -2,7 +2,7 @@ import React, { useCallback, memo, useMemo } from 'react'
 import { format, parseISO } from 'date-fns'
 
 import * as S from './Subscription.styles'
-import { Subscription as TSubscription } from '@models'
+import { Subscription as TSubscription } from '@domain/entities'
 
 import { IconDelete } from '@web/components/Icons'
 import { ButtonIcon } from '@web/components/Buttons'

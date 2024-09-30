@@ -19,7 +19,7 @@ import { Heading1 } from '@web/components/Headings'
 import Modal from '@web/components/Modal'
 import Pager from '@web/components/Pager'
 import EmptyZone from '@web/components/EmptyZone'
-import { Photo } from '@models'
+import { Photo } from '@domain/entities'
 
 enum Action {
   CREATE = 'create',

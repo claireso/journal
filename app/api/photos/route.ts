@@ -13,7 +13,7 @@ import {
   Pager,
   createPhoto as createPhotoHelper,
   formatPhoto as formatPhotoHelper
-} from '@models'
+} from '@domain/entities'
 
 // endpoint list photos
 const getAllPhotos = async (request: NextRequest & { pager: Pager }) => {

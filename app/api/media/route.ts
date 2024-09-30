@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { createRouteHandler, withAuth } from '@web/services/middlewares'
 import { pool, queries } from '@web/services/db'
-import { MediaRequestSchema, Media, formatMedia } from '@models'
+import { MediaRequestSchema, Media, formatMedia } from '@domain/entities'
 import uploadFile from '@utils/uploadFile'
 
 // endpoint POST media

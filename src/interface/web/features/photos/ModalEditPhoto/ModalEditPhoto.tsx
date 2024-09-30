@@ -3,7 +3,7 @@ import { useCallback, memo } from 'react'
 import { usePhoto } from '@web/features/photos/usePhotos'
 import { Heading1 } from '@web/components/Headings'
 import { Loader } from '@web/components/Loader'
-import { Photo } from '@models'
+import { Photo } from '@domain/entities'
 import FormPhoto from '../FormPhoto'
 
 interface ModalEditPhotoProps {

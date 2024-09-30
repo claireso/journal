@@ -19,9 +19,8 @@
     "paths": {
       "@utils/*": ["src/utils/*"],
       "@types": ["src/types"],
-      "@web/*": ["src/interface/web/*"],
-
-      "@models": ["src/models"]
+      "@domain/*": ["src/domain/*"],
+      "@web/*": ["src/interface/web/*"]
     },
     "plugins": [
       {

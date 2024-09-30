@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Photo as IPhoto } from '@models'
+import { Photo as IPhoto } from '@domain/entities'
 import { List } from '@web/components/List'
 import Photo from './Photo'
 

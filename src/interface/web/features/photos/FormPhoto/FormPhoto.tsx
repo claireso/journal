@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useRef, useState } from 'react'
 
 import logger from '@web/services/logger'
-import { Photo } from '@models'
+import { Photo } from '@domain/entities'
 
 import Input from '@web/components/form/Input'
 import Select from '@web/components/form/Select'

@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient, QueryFunctionContext } from '@ta
 
 import * as api from '@web/services/api'
 import ApiError from '@web/services/api/ApiError'
-import { Photos, Photo } from '@models'
+import { Photos, Photo } from '@domain/entities'
 import useMessages from '@web/features/messages/useMessages'
 
 interface Filters {

@@ -10,7 +10,7 @@ import {
   LegacyPhotoRequestSchema,
   formatPhoto as formatPhotoHelper,
   createPhoto as createPhotoHelper
-} from '@models'
+} from '@domain/entities'
 
 interface RequestContext {
   params: { id: string }

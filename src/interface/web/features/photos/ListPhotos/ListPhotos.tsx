@@ -1,4 +1,4 @@
-import { Photos } from '@models'
+import { Photos } from '@domain/entities'
 import Photo from './Photo'
 import Pager from './Pager'
 

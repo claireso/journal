@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react'
 
 import * as S from './Photo.styles'
 
-import { Photo as IPhoto } from '@models'
+import { Photo as IPhoto } from '@domain/entities'
 import useInView from '@web/hooks/useInView'
 
 import AnimatedImage from '@web/components/AnimatedImage'

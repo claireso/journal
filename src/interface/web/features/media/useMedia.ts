@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 
 import * as api from '@web/services/api'
-import type { Media } from '@models'
+import type { Media } from '@domain/entities'
 
 /**
  * Create photo and update cache

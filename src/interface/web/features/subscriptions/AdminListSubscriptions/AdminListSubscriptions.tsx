@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Subscription as TSubscription } from '@models'
+import { Subscription as TSubscription } from '@domain/entities'
 
 import { List } from '@web/components/List'
 import Subscription from './Subscription'

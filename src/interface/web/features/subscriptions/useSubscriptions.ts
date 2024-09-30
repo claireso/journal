@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient, useMutation, QueryFunctionContext } from '@tanstack/react-query'
 
-import { Subscriptions, Subscription } from '@models'
+import { Subscriptions, Subscription } from '@domain/entities'
 import * as api from '@web/services/api'
 import useMessages from '@web/features/messages/useMessages'
 

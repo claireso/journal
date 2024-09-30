@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { createRouteHandler, withPagination, withAuth } from '@web/services/middlewares'
 import { pool, queries } from '@web/services/db'
-import { Pager, Subscription, SubscriptionSchema } from '@models'
+import { Pager, Subscription, SubscriptionSchema } from '@domain/entities'
 
 const getAllSubscriptions = async (request: NextRequest & { pager: Pager }) => {
   const response = await pool.query(

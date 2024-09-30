@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import { pool, queries } from '@web/services/db'
-import { Pager } from '@models'
+import { Pager } from '@domain/entities'
 
 const withPagination = (resource: string) => async (request: NextRequest & { pager: Pager }) => {
   const { searchParams } = new URL(request.url)

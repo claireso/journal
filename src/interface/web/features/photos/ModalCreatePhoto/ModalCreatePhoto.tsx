@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { Photo } from '@models'
+import { Photo } from '@domain/entities'
 import { Heading2 } from '@web/components/Headings'
 import FormPhoto from '../FormPhoto'
 

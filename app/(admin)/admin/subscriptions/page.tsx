@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 import * as api from '@web/services/api'
-import { Subscription } from '@models'
+import { Subscription } from '@domain/entities'
 
 import AdminListSubscriptions from '@web/features/subscriptions/AdminListSubscriptions'
 import ModalDeleteSubscription from '@web/features/subscriptions/ModalDeleteSubscription'

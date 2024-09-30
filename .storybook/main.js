@@ -18,6 +18,7 @@ module.exports = {
       ...webpackConfig.resolve.alias,
       '@utils': path.resolve(directory, 'src', 'utils'),
       '@types': path.resolve(directory, 'src', 'types'),
+      '@domain': path.resolve(directory, 'src', 'domain'),
       '@web': path.resolve(directory, 'src', 'interface', 'web'),
       // https://github.com/storybookjs/storybook/issues/12016
       '@storybook/theming': path.dirname(require.resolve('@storybook/theming/package.json'))

@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 
-import { Photo as IPhoto } from '@models'
+import { Photo as IPhoto } from '@domain/entities'
 import useInView from '@web/hooks/useInView'
 
 import * as S from './Photo.styles'
