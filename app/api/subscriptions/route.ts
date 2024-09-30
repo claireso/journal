@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
-import { createRouteHandler, withPagination, withAuth } from '@services/middlewares'
-import { pool, queries } from '@services/db'
+import { createRouteHandler, withPagination, withAuth } from '@web/services/middlewares'
+import { pool, queries } from '@web/services/db'
 import { Pager, Subscription, SubscriptionSchema } from '@models'
 
 const getAllSubscriptions = async (request: NextRequest & { pager: Pager }) => {

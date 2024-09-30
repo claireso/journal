@@ -1,4 +1,4 @@
-import { styled } from '@theme'
+import { styled } from '@web/theme'
 
 export const Wrapper = styled('div', {
   alignItems: 'center',

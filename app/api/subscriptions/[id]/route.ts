@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
-import { createRouteHandler, withAuth } from '@services/middlewares'
-import { pool, queries } from '@services/db'
+import { createRouteHandler, withAuth } from '@web/services/middlewares'
+import { pool, queries } from '@web/services/db'
 
 interface Context {
   params: { id: string }

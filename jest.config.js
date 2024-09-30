@@ -10,13 +10,9 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testPathIgnorePatterns: ['/.cypress'],
   moduleNameMapper: {
-    '^@components(.*)$': '<rootDir>/src/components$1',
     '^@utils(.*)$': '<rootDir>/src/utils$1',
-    '^@services(.*)$': '<rootDir>/src/services$1',
-    '^@features(.*)$': '<rootDir>/src/features$1',
-    '^@hooks(.*)$': '<rootDir>/src/hooks$1',
     '^@types(.*)$': '<rootDir>/src/types$1',
-    '^@theme(.*)$': '<rootDir>/src/theme$1',
+    '^@web(.*)$': '<rootDir>/src/interface/web$1',
     '^@models(.*)$': '<rootDir>/src/models$1'
   },
   globals: {

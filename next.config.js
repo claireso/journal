@@ -38,7 +38,7 @@ module.exports = {
       // enable service worker
       config.plugins.push(
         new InjectManifest({
-          swSrc: path.resolve(__dirname, 'src', 'services', 'serviceworker', 'sw.js'),
+          swSrc: path.resolve(__dirname, 'src', 'interface', 'web', 'services', 'serviceworker', 'sw.js'),
           swDest: path.resolve(__dirname, 'public', 'sw.js'),
           exclude: [
             'build-manifest.json',

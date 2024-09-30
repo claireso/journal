@@ -1,6 +1,6 @@
 'use client'
 
-import { globalCss } from '@theme'
+import { globalCss } from '@web/theme'
 
 export const css = globalCss({
   html: {

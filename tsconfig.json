@@ -18,12 +18,9 @@
     "jsx": "preserve",
     "paths": {
       "@utils/*": ["src/utils/*"],
-      "@components/*": ["src/components/*"],
-      "@services/*": ["src/services/*"],
-      "@features/*": ["src/features/*"],
-      "@hooks/*": ["src/hooks/*"],
       "@types": ["src/types"],
-      "@theme": ["src/theme"],
+      "@web/*": ["src/interface/web/*"],
+
       "@models": ["src/models"]
     },
     "plugins": [

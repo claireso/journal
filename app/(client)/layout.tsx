@@ -3,11 +3,11 @@ import Script from 'next/script'
 
 import Layout from './Layout.client'
 
-import { TranslationsProvider } from '@hooks/useTranslations'
-import { MessagesProvider } from '@features/messages/useMessages'
+import { TranslationsProvider } from '@web/hooks/useTranslations'
+import { MessagesProvider } from '@web/features/messages/useMessages'
 
-import BannerOffline from '@features/banners/Offline'
-import BannerNotifications from '@features/banners/Notifications'
+import BannerOffline from '@web/features/banners/Offline'
+import BannerNotifications from '@web/features/banners/Notifications'
 
 interface JournalLayoutProps {
   children: React.ReactNode

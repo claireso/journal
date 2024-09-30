@@ -5,12 +5,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { SessionProvider, signOut } from 'next-auth/react'
 
-import { IconAngleRight } from '@components/Icons'
-import Toolbar from '@components/Toolbar'
-import { Tabs, Tab } from '@components/Tabs'
-import { Loader } from '@components/Loader'
+import { IconAngleRight } from '@web/components/Icons'
+import Toolbar from '@web/components/Toolbar'
+import { Tabs, Tab } from '@web/components/Tabs'
+import { Loader } from '@web/components/Loader'
 
-import Messages from '@features/messages/Messages'
+import Messages from '@web/features/messages/Messages'
 
 import * as S from './Layout.styles'
 

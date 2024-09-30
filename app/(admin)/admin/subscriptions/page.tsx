@@ -3,20 +3,20 @@
 import { useCallback } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
-import * as api from '@services/api'
+import * as api from '@web/services/api'
 import { Subscription } from '@models'
 
-import AdminListSubscriptions from '@features/subscriptions/AdminListSubscriptions'
-import ModalDeleteSubscription from '@features/subscriptions/ModalDeleteSubscription'
+import AdminListSubscriptions from '@web/features/subscriptions/AdminListSubscriptions'
+import ModalDeleteSubscription from '@web/features/subscriptions/ModalDeleteSubscription'
 
-import { useSubscriptions, useDeleteSubscription } from '@features/subscriptions/useSubscriptions'
+import { useSubscriptions, useDeleteSubscription } from '@web/features/subscriptions/useSubscriptions'
 
-import { Loader } from '@components/Loader'
-import { ListHeader } from '@components/List'
-import { Heading1 } from '@components/Headings'
-import Modal from '@components/Modal'
-import Pager from '@components/Pager'
-import EmptyZone from '@components/EmptyZone'
+import { Loader } from '@web/components/Loader'
+import { ListHeader } from '@web/components/List'
+import { Heading1 } from '@web/components/Headings'
+import Modal from '@web/components/Modal'
+import Pager from '@web/components/Pager'
+import EmptyZone from '@web/components/EmptyZone'
 
 enum Action {
   CREATE = 'create',

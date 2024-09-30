@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation'
 import { QueryClient, QueryClientProvider, QueryCache, MutationCache } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import { MessagesProvider } from '@features/messages/useMessages'
+import { MessagesProvider } from '@web/features/messages/useMessages'
 
-import * as api from '@services/api'
+import * as api from '@web/services/api'
 
 import * as S from './Layout.styles'
 
