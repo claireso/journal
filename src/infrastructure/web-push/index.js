@@ -1,5 +1,5 @@
 import webpush from 'web-push'
-import { getTranslations } from '../../translations'
+import { getTranslations } from '@infrastructure/translations'
 
 // CONSTANTS
 export const NOTIFICATION_NEW_PHOTO = 'NOTIFICATION_NEW_PHOTO'

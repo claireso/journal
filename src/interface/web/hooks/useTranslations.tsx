@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { getTranslations } from '../translations'
+import { getTranslations } from '@infrastructure/translations'
 
 const TranslationsContext = React.createContext({})
 

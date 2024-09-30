@@ -4,7 +4,7 @@ import { differenceInMinutes } from 'date-fns'
 import { createRouteHandler, withPagination, withAuth } from '@api/middlewares'
 import { pool, queries } from '@infrastructure/db'
 import logger from '@infrastructure/logger'
-import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } from '@web/services/web-push'
+import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } from '@infrastructure/web-push'
 import {
   PhotoRequestSchema,
   Photo,
