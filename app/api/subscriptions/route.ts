@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { createRouteHandler, withPagination, withAuth } from '@web/services/middlewares'
+import { createRouteHandler, withPagination, withAuth } from '@api/middlewares'
 import { pool, queries } from '@infrastructure/db'
 import { Pager, Subscription, SubscriptionSchema } from '@domain/entities'
 

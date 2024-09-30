@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { createRouteHandler, withAuth } from '@web/services/middlewares'
+import { createRouteHandler, withAuth } from '@api/middlewares'
 import { pool, queries } from '@infrastructure/db'
 import { MediaRequestSchema, Media, formatMedia } from '@domain/entities'
 import uploadFile from '@utils/uploadFile'

@@ -2,7 +2,7 @@ import path from 'path'
 import { unlink } from 'fs/promises'
 import { NextRequest } from 'next/server'
 import { revalidateTag, unstable_cache } from 'next/cache'
-import { createRouteHandler, withAuth } from '@web/services/middlewares'
+import { createRouteHandler, withAuth } from '@api/middlewares'
 import { pool, queries } from '@infrastructure/db'
 import {
   Photo,

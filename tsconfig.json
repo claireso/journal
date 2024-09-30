@@ -21,7 +21,8 @@
       "@types": ["src/types"],
       "@domain/*": ["src/domain/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
-      "@web/*": ["src/interface/web/*"]
+      "@web/*": ["src/interface/web/*"],
+      "@api/*": ["src/interface/api/*"]
     },
     "plugins": [
       {

@@ -20,6 +20,7 @@ module.exports = {
       '@types': path.resolve(directory, 'src', 'types'),
       '@domain': path.resolve(directory, 'src', 'domain'),
       '@web': path.resolve(directory, 'src', 'interface', 'web'),
+      '@api': path.resolve(directory, 'src', 'interface', 'api'),
       // https://github.com/storybookjs/storybook/issues/12016
       '@storybook/theming': path.dirname(require.resolve('@storybook/theming/package.json'))
     }

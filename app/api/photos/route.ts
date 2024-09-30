@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { revalidateTag } from 'next/cache'
 import { differenceInMinutes } from 'date-fns'
-import { createRouteHandler, withPagination, withAuth } from '@web/services/middlewares'
+import { createRouteHandler, withPagination, withAuth } from '@api/middlewares'
 import { pool, queries } from '@infrastructure/db'
 import logger from '@infrastructure/logger'
 import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } from '@web/services/web-push'

@@ -13,7 +13,8 @@ const customJestConfig = {
     '^@utils(.*)$': '<rootDir>/src/utils$1',
     '^@types(.*)$': '<rootDir>/src/types$1',
     '^@domain(.*)$': '<rootDir>/src/domain$1',
-    '^@web(.*)$': '<rootDir>/src/interface/web$1'
+    '^@web(.*)$': '<rootDir>/src/interface/web$1',
+    '^@api(.*)$': '<rootDir>/src/interface/api$1'
   },
   globals: {
     __PHOTOS__: {
