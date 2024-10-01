@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient, useMutation, QueryFunctionContext } from '@tanstack/react-query'
 
-import { Subscriptions, Subscription } from '@domain/entities'
+import { SubscriptionsDto } from '@dto'
 import * as api from '@web/services/api'
 import useMessages from '@web/features/messages/useMessages'
 
@@ -8,10 +8,17 @@ interface Filters {
   page: string
 }
 
-const initialState: Subscriptions = {
+const initialState: SubscriptionsDto = {
   items: [],
   pager: {
-    count: 0
+    count: 0,
+    offset: 0,
+    limit: 0,
+    totalPages: 0,
+    first: 0,
+    prev: 0,
+    next: 0,
+    last: 0
   }
 }
 
@@ -26,9 +33,9 @@ export const useDeleteSubscription = (filters: Filters) => {
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
   return useMutation({
-    mutationFn: (id: Subscription['id']) => api.deleteSubscription(id),
+    mutationFn: (id: number) => api.deleteSubscription(id),
     onSuccess(data, id) {
-      const subscriptions = queryClient.getQueryData<Subscriptions>([CACHE_KEY_LIST, filters])
+      const subscriptions = queryClient.getQueryData<SubscriptionsDto>([CACHE_KEY_LIST, filters])
 
       if (subscriptions) {
         queryClient.setQueryData([CACHE_KEY_LIST, filters], {

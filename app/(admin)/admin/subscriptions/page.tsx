@@ -4,7 +4,6 @@ import { useCallback } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 import * as api from '@web/services/api'
-import { Subscription } from '@domain/entities'
 
 import AdminListSubscriptions from '@web/features/subscriptions/AdminListSubscriptions'
 import ModalDeleteSubscription from '@web/features/subscriptions/ModalDeleteSubscription'
@@ -63,7 +62,7 @@ const Subscriptions = () => {
   const onCloseModal = useCallback((options?: NavigateOptions) => navigate({}, options), [navigate])
 
   const onClickDelete = useCallback(
-    (id: Subscription['id']) => {
+    (id: number) => {
       navigate({
         action: Action.DELETE,
         id: id
@@ -73,7 +72,7 @@ const Subscriptions = () => {
   )
 
   const onDeleteSubscription = useCallback(
-    (subscriptionId: Subscription['id']) => {
+    (subscriptionId: number) => {
       deleteSubscription(subscriptionId, {
         onSettled(data, err) {
           if (err instanceof api.getErrorConstructor()) {

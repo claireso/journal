@@ -1,10 +1,7 @@
 import { z } from 'zod'
-import { PagerSchema } from '../pager'
+import { ListSchema } from '../list'
 import { SubscriptionSchema } from './subscription'
 
-export const SubscriptionsSchema = z.object({
-  items: z.array(SubscriptionSchema),
-  pager: PagerSchema
-})
+export const SubscriptionsSchema = ListSchema(z.array(SubscriptionSchema))
 
 export type Subscriptions = z.infer<typeof SubscriptionsSchema>

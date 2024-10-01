@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 
 import * as api from '@web/services/api'
-import type { Media } from '@domain/entities'
+import type { MediaDto } from '@dto'
 
 /**
  * Create photo and update cache
@@ -9,6 +9,6 @@ import type { Media } from '@domain/entities'
  */
 export const useCreateMedia = () => {
   return useMutation({
-    mutationFn: (data: FormData): Promise<Media> => api.createMedia(data)
+    mutationFn: (data: FormData): Promise<MediaDto> => api.createMedia(data)
   })
 }

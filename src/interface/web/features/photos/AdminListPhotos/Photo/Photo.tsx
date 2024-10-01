@@ -2,14 +2,14 @@ import React, { useRef, useCallback } from 'react'
 
 import * as S from './Photo.styles'
 
-import { Photo as IPhoto } from '@domain/entities'
+import { PhotoDto } from '@dto'
 import useInView from '@web/hooks/useInView'
 
 import AnimatedImage from '@web/components/AnimatedImage'
 import { IconPencil, IconDelete } from '@web/components/Icons'
 import { ButtonIcon } from '@web/components/Buttons'
 
-interface PhotoProps extends IPhoto {
+interface PhotoProps extends PhotoDto {
   onEdit: (id: number) => void
   onDelete: (id: number) => void
 }

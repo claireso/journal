@@ -1,10 +1,7 @@
 import { z } from 'zod'
-import { PagerSchema } from '../pager'
+import { ListSchema } from '../list'
 import { PhotoSchema } from './photo'
 
-export const PhotosSchema = z.object({
-  items: z.array(PhotoSchema),
-  pager: PagerSchema
-})
+export const PhotosSchema = ListSchema(z.array(PhotoSchema))
 
 export type Photos = z.infer<typeof PhotosSchema>

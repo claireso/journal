@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { Photo as IPhoto } from '@domain/entities'
+import { PhotosDto } from '@dto'
 import { List } from '@web/components/List'
 import Photo from './Photo'
 
 interface AdminListPhotos {
-  photos?: IPhoto[]
+  photos?: PhotosDto['items']
   onDelete: (id: number) => void
   onEdit: (id: number) => void
 }

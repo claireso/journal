@@ -2,17 +2,24 @@ import { useQuery, useMutation, useQueryClient, QueryFunctionContext } from '@ta
 
 import * as api from '@web/services/api'
 import ApiError from '@web/services/api/ApiError'
-import { Photos, Photo } from '@domain/entities'
+import type { PhotoDto, PhotosDto, PhotoInsertDto, PhotoUpdateDto } from '@dto'
 import useMessages from '@web/features/messages/useMessages'
 
 interface Filters {
   page: string
 }
 
-const initialState: Photos = {
+const initialState: PhotosDto = {
   items: [],
   pager: {
-    count: 0
+    count: 0,
+    offset: 0,
+    limit: 0,
+    totalPages: 0,
+    first: 0,
+    prev: 0,
+    next: 0,
+    last: 0
   }
 }
 
@@ -29,12 +36,12 @@ export const useEditPhoto = (filters: Filters = { page: '1' }) => {
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
   return useMutation({
-    mutationFn: ({ id, data }: { id: Photo['id']; data: Partial<Photo> }): Promise<Photo> => api.editPhoto(id, data),
+    mutationFn: ({ id, data }: { id: number; data: PhotoUpdateDto }): Promise<PhotoDto> => api.editPhoto(id, data),
     onSuccess(photo, { id }) {
       queryClient.setQueryData([CACHE_KEY_DETAIL, id], photo)
 
       // https://github.com/tannerlinsley/react-query/issues/506
-      const photos = queryClient.getQueryData<Photos>([CACHE_KEY_LIST, filters])
+      const photos = queryClient.getQueryData<PhotosDto>([CACHE_KEY_LIST, filters])
 
       if (photos) {
         queryClient.setQueryData([CACHE_KEY_LIST, filters], {
@@ -71,7 +78,7 @@ export const useDeletePhoto = (filters: Filters = { page: '1' }) => {
   return useMutation({
     mutationFn: (id: number) => api.deletePhoto(id),
     onSuccess(data, id) {
-      const photos = queryClient.getQueryData<Photos>([CACHE_KEY_LIST, filters])
+      const photos = queryClient.getQueryData<PhotosDto>([CACHE_KEY_LIST, filters])
 
       if (photos) {
         queryClient.setQueryData([CACHE_KEY_LIST, filters], {
@@ -106,10 +113,10 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
   const [, { displaySuccessMessage, displayErrorMessage }] = useMessages()
 
   return useMutation({
-    mutationFn: (data: Partial<Photo>): Promise<Photo> => api.createPhoto(data),
+    mutationFn: (data: PhotoInsertDto): Promise<PhotoDto> => api.createPhoto(data),
     onSuccess(photo) {
       if (filters.page === '1') {
-        const photos = queryClient.getQueryData<Photos>([CACHE_KEY_LIST, filters])
+        const photos = queryClient.getQueryData<PhotosDto>([CACHE_KEY_LIST, filters])
 
         if (photos) {
           queryClient.setQueryData([CACHE_KEY_LIST, filters], {
@@ -140,11 +147,7 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
  */
 export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
   const getPhotos = async ({ signal }: QueryFunctionContext) => {
-    const response = await api.getPhotos(filters.page, { signal })
-    return {
-      ...response,
-      items: response.items
-    }
+    return await api.getPhotos(filters.page, { signal })
   }
 
   const queryOptions = {
@@ -174,7 +177,7 @@ export const usePhoto = (id: number, options = {}) => {
   }
 
   const getActivePhotoQuery = () => {
-    const queries = queryClient.getQueriesData<Photos>({ type: 'active' })
+    const queries = queryClient.getQueriesData<PhotosDto>({ type: 'active' })
     const photoQuery = queries.find(([filters]) => filters[0] === CACHE_KEY_LIST)
     return photoQuery
   }

@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useRef, useState } from 'react'
 
 import logger from '@infrastructure/logger'
-import { Photo } from '@domain/entities'
+import type { PhotoDto, PhotoInsertDto, PhotoUpdateDto } from '@dto'
 
 import Input from '@web/components/form/Input'
 import Select from '@web/components/form/Select'
@@ -17,13 +17,13 @@ import { useCreateMedia } from '@web/features/media/useMedia'
 
 const ALLOWED_MIMETYPES = ['image/jpeg', 'image/jpg']
 
-interface FormProps {
-  photo?: Photo
+interface FormProps<T> {
+  photo?: PhotoDto
   isProcessing?: boolean
-  onSubmit: (data: Partial<Photo>) => void
+  onSubmit: (data: T) => void
 }
 
-const Form = (props: FormProps) => {
+const Form = <T extends PhotoInsertDto | PhotoUpdateDto>(props: FormProps<T>) => {
   const { photo, isProcessing = false, onSubmit } = props
   const { mutate: createMedia, isPending: isCreatingMedia } = useCreateMedia()
   const [media, setMedia] = useState(photo?.media)
@@ -43,7 +43,7 @@ const Form = (props: FormProps) => {
       const formData = new FormData(formEl.current)
       formData.delete('file')
 
-      const data: Partial<Photo> = Object.fromEntries(formData)
+      const data = Object.fromEntries(formData) as unknown as T
 
       if (media && 'id' in media) {
         data.media_id = media.id
@@ -131,4 +131,5 @@ const Form = (props: FormProps) => {
   )
 }
 
-export default memo(Form)
+// Explicit typing of `memo` to accept generic types
+export default memo(Form) as typeof Form

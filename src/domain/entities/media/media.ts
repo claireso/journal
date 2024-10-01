@@ -1,25 +1,17 @@
 import { z } from 'zod'
 import { EntitySchema } from '../entity'
 
-export const MediaSchema = EntitySchema.extend({
+export enum MediaType {
+  IMAGE = 'image'
+}
+
+export const MediaSchema = EntitySchema.omit({ updated_at: true }).extend({
   name: z.string(),
-  type: z.enum(['image']), // todo: avoid hard code
-  // dto
+  type: z.nativeEnum(MediaType),
   size: z.object({
     width: z.number(),
     height: z.number()
-  }),
-  portrait: z.boolean(),
-  square: z.boolean(),
-  source: z.string()
-})
-
-export const LegacyMediaSchema = MediaSchema.omit({
-  id: true,
-  created_at: true,
-  updated_at: true,
-  size: true
+  })
 })
 
 export type Media = z.infer<typeof MediaSchema>
-export type LegacyMedia = z.infer<typeof LegacyMediaSchema>

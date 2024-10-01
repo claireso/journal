@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
 
-import { Photo } from '@domain/entities'
+import type { PhotoDto } from '@dto'
 import { ButtonPrimary, ButtonSecondary } from '@web/components/Buttons'
 import { Heading1 } from '@web/components/Headings'
 import Text from '@web/components/Text'
 
 interface ModalDeletePhoto {
-  id: Photo['id']
+  id: PhotoDto['id']
   onCancel: () => void
   onConfirm: (id: number) => void
   isProcessing?: boolean

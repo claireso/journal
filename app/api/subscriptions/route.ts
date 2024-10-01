@@ -1,36 +1,32 @@
 import { NextRequest } from 'next/server'
-import { createRouteHandler, withPagination, withAuth } from '@api/middlewares'
-import { pool, queries } from '@infrastructure/db'
-import { Pager, Subscription, SubscriptionSchema } from '@domain/entities'
+import { createRouteHandler, withAuth } from '@api/middlewares'
+import { subscriptionService } from '@ioc/container'
+import { SubscriptionInsertDtoSchema } from '@dto'
 
-const getAllSubscriptions = async (request: NextRequest & { pager: Pager }) => {
-  const response = await pool.query(
-    queries.get_subscriptions({
-      options: `OFFSET ${request.pager.offset} LIMIT ${request.pager.limit}`
-    })
-  )
+const getPaginatedSubscriptions = async (request: NextRequest) => {
+  const { searchParams } = new URL(request.url)
+  let page = searchParams.get('page') as string | number
 
-  return Response.json(
-    {
-      items: response.rows,
-      pager: request.pager
-    },
-    { status: 200 }
-  )
+  page = Number(page)
+
+  if (isNaN(page) || page < 0) {
+    return Response.json({}, { status: 400 })
+  }
+
+  const paginatedSubscriptions = await subscriptionService.getPaginatedSubscriptions(page ?? 1)
+
+  return Response.json(paginatedSubscriptions, { status: 200 })
 }
 
 //@TODO: improve security of this endpoint
 const createSubscription = async (request: NextRequest) => {
   const body = await request.json()
 
-  const result = SubscriptionSchema.pick({ subscription: true }).parse(body)
+  const result = SubscriptionInsertDtoSchema.parse(body)
+  const subscription = await subscriptionService.create(result.subscription)
 
-  const response = await pool.query(queries.insert_subscription(), [result.subscription])
-
-  const { id, ...newSubscription }: Subscription = response.rows[0]
-
-  return Response.json(newSubscription, { status: 201 })
+  return Response.json(subscription, { status: 201 })
 }
 
-export const GET = createRouteHandler(withAuth, withPagination('subscriptions'), getAllSubscriptions)
+export const GET = createRouteHandler(withAuth, getPaginatedSubscriptions)
 export const POST = createRouteHandler(createSubscription)

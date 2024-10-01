@@ -19,6 +19,10 @@ module.exports = {
       '@utils': path.resolve(directory, 'src', 'utils'),
       '@types': path.resolve(directory, 'src', 'types'),
       '@domain': path.resolve(directory, 'src', 'domain'),
+      '@infrastructure': path.resolve(directory, 'src', 'infrastructure'),
+      '@application': path.resolve(directory, 'src', 'application'),
+      '@dto': path.resolve(directory, 'src', 'dto'),
+      '@ioc': path.resolve(directory, 'src', 'ioc'),
       '@web': path.resolve(directory, 'src', 'interface', 'web'),
       '@api': path.resolve(directory, 'src', 'interface', 'api'),
       // https://github.com/storybookjs/storybook/issues/12016

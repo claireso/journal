@@ -1,8 +1,10 @@
-export const find_user_by_username = (username: string, password: string) =>
+export const getUserByCredentials = (username: string, password: string) =>
   `SELECT
     id,
     cid,
-    username
+    username,
+    created_at,
+    updated_at
   FROM
     users
   WHERE

@@ -1,11 +1,17 @@
 import { z } from 'zod'
 import { EntitySchema } from '../entity'
-import { MediaSchema, LegacyMediaSchema } from '../media'
+import { MediaSchema } from '../media'
+
+export enum PhotoPositionType {
+  LEFT = 'left',
+  CENTER = 'center',
+  RIGHT = 'right'
+}
 
 export const PhotoSchema = EntitySchema.extend({
   title: z.string().optional().default(''),
   description: z.string().optional().default(''),
-  position: z.enum(['left', 'center', 'right']).default('left'),
+  position: z.nativeEnum(PhotoPositionType).default(PhotoPositionType.LEFT),
   color: z
     .string()
     .nullable()
@@ -13,8 +19,14 @@ export const PhotoSchema = EntitySchema.extend({
       message: 'Color must be defined as a hex color'
     })
     .default(null),
-  media_id: z.number(),
-  media: z.union([MediaSchema, LegacyMediaSchema])
+  // optional in database due to the legacy
+  // a migration is necessary to make it required
+  media_id: z.number().optional(),
+  media: MediaSchema.optional(),
+  // legacy fields
+  name: z.string(),
+  portrait: z.boolean(),
+  square: z.boolean()
 })
 
 export type Photo = z.infer<typeof PhotoSchema>

@@ -3,12 +3,12 @@ import { useCallback, memo } from 'react'
 import { usePhoto } from '@web/features/photos/usePhotos'
 import { Heading1 } from '@web/components/Headings'
 import { Loader } from '@web/components/Loader'
-import { Photo } from '@domain/entities'
+import type { PhotoDto, PhotoUpdateDto } from '@dto'
 import FormPhoto from '../FormPhoto'
 
 interface ModalEditPhotoProps {
-  id: Photo['id']
-  onSubmit: (data: { id: number; data: Partial<Photo> }) => void
+  id: PhotoDto['id']
+  onSubmit: (data: { id: number; data: PhotoUpdateDto }) => void
   onCancel: () => void
   isProcessing?: boolean
 }
@@ -17,7 +17,7 @@ const ModalEditPhoto = ({ id, onSubmit, onCancel, isProcessing = false }: ModalE
   const { data: photo, error, isFetched } = usePhoto(id)
 
   const handleSubmit = useCallback(
-    (data: Partial<Photo>) => {
+    (data: PhotoUpdateDto) => {
       onSubmit({ id: id, data })
     },
     [id, onSubmit]
@@ -35,7 +35,7 @@ const ModalEditPhoto = ({ id, onSubmit, onCancel, isProcessing = false }: ModalE
   return (
     <>
       <Heading1>Edit photo</Heading1>
-      <FormPhoto onSubmit={handleSubmit} photo={photo} isProcessing={isProcessing} />
+      <FormPhoto<PhotoUpdateDto> onSubmit={handleSubmit} photo={photo} isProcessing={isProcessing} />
     </>
   )
 }

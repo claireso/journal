@@ -1,4 +1,4 @@
-import type { Photos, Subscription, Subscriptions, Media, Photo } from '@domain/entities'
+import type { MediaDto, PhotoDto, PhotosDto, PhotoInsertDto, PhotoUpdateDto, SubscriptionsDto } from '@dto'
 import { buildRequester } from './requester'
 import ApiError from './ApiError'
 
@@ -17,7 +17,7 @@ const requester = buildRequester({
 })
 
 export const getPhotos = (page: string, options?: RequestInit) =>
-  requester.get<Photos>(
+  requester.get<PhotosDto>(
     '/photos',
     { page },
     {
@@ -26,20 +26,20 @@ export const getPhotos = (page: string, options?: RequestInit) =>
     }
   )
 
-export const getPhoto = (id: Photo['id'], options?: RequestInit) => requester.get<Photo>(`/photos/${id}`, {}, options)
+export const getPhoto = (id: number, options?: RequestInit) => requester.get<PhotoDto>(`/photos/${id}`, {}, options)
 
-export const createPhoto = (data: Partial<Photo>) => requester.post<Photo, Partial<Photo>>('/photos', data)
+export const createPhoto = (data: PhotoInsertDto) => requester.post<PhotoDto, PhotoInsertDto>('/photos', data)
 
-export const deletePhoto = (id: Photo['id']) => requester.del<void>(`/photos/${id}`)
+export const deletePhoto = (id: number) => requester.del<void>(`/photos/${id}`)
 
-export const editPhoto = (id: Photo['id'], data: Partial<Photo>) =>
-  requester.patch<Photo, Partial<Photo>>(`/photos/${id}`, data)
+export const editPhoto = (id: number, data: PhotoUpdateDto) =>
+  requester.patch<PhotoDto, PhotoUpdateDto>(`/photos/${id}`, data)
 
 export const getSubscriptions = (page: string, options?: RequestInit) =>
-  requester.get<Subscriptions>('/subscriptions', { page: page }, options)
+  requester.get<SubscriptionsDto>('/subscriptions', { page: page }, options)
 
-export const deleteSubscription = (id: Subscription['id']) => requester.del<void>(`/subscriptions/${id}`)
+export const deleteSubscription = (id: number) => requester.del<void>(`/subscriptions/${id}`)
 
-export const createMedia = (data: FormData) => requester.post<Media, FormData>('/media', data)
+export const createMedia = (data: FormData) => requester.post<MediaDto, FormData>('/media', data)
 
 export const getErrorConstructor = () => ApiError

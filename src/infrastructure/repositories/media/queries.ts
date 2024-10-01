@@ -1,4 +1,4 @@
-export const get_media = (id: number) =>
+export const getMediaById = (id: number) =>
   `SELECT
     id,
     type,
@@ -12,7 +12,7 @@ export const get_media = (id: number) =>
     id=${id}
   `
 
-export const insert_media = () =>
+export const insertMedia = () =>
   `INSERT
     INTO media
     (type, name, width, height)
@@ -21,7 +21,7 @@ export const insert_media = () =>
   RETURNING *
   `
 
-export const delete_media = (id: number) =>
+export const deleteMedia = (id: number) =>
   `DELETE
   FROM
     media

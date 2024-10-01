@@ -1,11 +1,11 @@
 import { memo } from 'react'
 
-import { Photo } from '@domain/entities'
+import type { PhotoInsertDto } from '@dto'
 import { Heading2 } from '@web/components/Headings'
 import FormPhoto from '../FormPhoto'
 
 interface ModalCreatePhotoProps {
-  onSubmit: (data: Partial<Photo>) => void
+  onSubmit: (data: PhotoInsertDto) => void
   isProcessing?: boolean
 }
 
@@ -13,7 +13,7 @@ const ModalCreatePhoto = ({ onSubmit, isProcessing = false }: ModalCreatePhotoPr
   return (
     <>
       <Heading2>Create a photo</Heading2>
-      <FormPhoto onSubmit={onSubmit} isProcessing={isProcessing} />
+      <FormPhoto<PhotoInsertDto> onSubmit={onSubmit} isProcessing={isProcessing} />
     </>
   )
 }

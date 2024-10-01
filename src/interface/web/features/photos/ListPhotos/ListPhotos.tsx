@@ -1,10 +1,10 @@
-import { Photos } from '@domain/entities'
+import type { PhotosDto } from '@dto'
 import Photo from './Photo'
 import Pager from './Pager'
 
 interface ListPhotosProps {
-  photos: Photos['items']
-  pager: Photos['pager']
+  photos: PhotosDto['items']
+  pager: PhotosDto['pager']
 }
 
 const ListPhotos = ({ photos = [], pager }: ListPhotosProps) => {

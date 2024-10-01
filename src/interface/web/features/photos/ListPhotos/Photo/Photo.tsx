@@ -1,13 +1,12 @@
 'use client'
 
 import React, { useRef } from 'react'
-
-import { Photo as IPhoto } from '@domain/entities'
+import type { PhotoDto } from '@dto'
 import useInView from '@web/hooks/useInView'
 
 import * as S from './Photo.styles'
 
-interface PhotoProps extends IPhoto {
+interface PhotoProps extends PhotoDto {
   row: number
 }
 

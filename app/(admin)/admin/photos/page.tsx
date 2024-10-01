@@ -19,7 +19,7 @@ import { Heading1 } from '@web/components/Headings'
 import Modal from '@web/components/Modal'
 import Pager from '@web/components/Pager'
 import EmptyZone from '@web/components/EmptyZone'
-import { Photo } from '@domain/entities'
+import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
 
 enum Action {
   CREATE = 'create',
@@ -95,7 +95,7 @@ const Photos = () => {
   )
 
   const onCreatePhoto = useCallback(
-    (data: Partial<Photo>) => {
+    (data: PhotoInsertDto) => {
       createPhoto(data, {
         onSuccess() {
           onCloseModal({ scroll: true })
@@ -115,7 +115,7 @@ const Photos = () => {
   )
 
   const onEditPhoto = useCallback(
-    (data: { id: number; data: Partial<Photo> }) => {
+    (data: { id: number; data: PhotoUpdateDto }) => {
       editPhoto(data, {
         onSettled(data, err) {
           if (err instanceof api.getErrorConstructor()) {

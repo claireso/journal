@@ -1,4 +1,4 @@
-export const get_photos = ({ options = '' } = {}) =>
+export const getPhotos = (offset: number, limit: number) =>
   `SELECT
     p.id as photo_id,
     p.title,
@@ -22,10 +22,11 @@ export const get_photos = ({ options = '' } = {}) =>
     media m ON p.media_id = m.id
   ORDER BY
     p.created_at DESC
-  ${options}
+  OFFSET ${offset}
+  LIMIT ${limit}
   `
 
-export const insert_photo = () =>
+export const insertPhoto = () =>
   `
     WITH inserted_photo AS (
       INSERT
@@ -56,7 +57,7 @@ export const insert_photo = () =>
     LEFT JOIN media m ON p.media_id = m.id;
   `
 
-export const update_photo = (id: number, fields: string) =>
+export const updatePhoto = (id: number, fields: string) =>
   `
   WITH updated_photo AS (
     UPDATE
@@ -88,7 +89,7 @@ export const update_photo = (id: number, fields: string) =>
   LEFT JOIN media m ON p.media_id = m.id;
   `
 
-export const get_photo = (id: number) =>
+export const getPhotoById = (id: number) =>
   `SELECT
     p.id as photo_id,
     p.title,
@@ -113,29 +114,65 @@ export const get_photo = (id: number) =>
   WHERE
     p.id=${id}`
 
-export const get_photo_by_media = (mediaId: number) =>
+export const getPhotoByMediaId = (mediaId: number) =>
   `SELECT
-    id
+    p.id as photo_id,
+    p.title,
+    p.description,
+    p.name as photo_name,
+    p.position,
+    p.portrait,
+    p.color,
+    p.square,
+    p.updated_at,
+    p.created_at as photo_created_at,
+    m.id as media_id,
+    m.created_at as media_created_at,
+    m.type as media_type,
+    m.name as media_name,
+    m.width as media_width,
+    m.height as media_height
   FROM
-    photos
+    photos p
+  LEFT JOIN
+    media m ON p.media_id = m.id
   WHERE
     media_id=${mediaId}`
 
-export const get_previous_photo = ({ fields = '*' } = {}) =>
+export const getPreviousPhoto = ({ fields = '*' } = {}) =>
   `SELECT
-    ${fields}
+    p.id as photo_id,
+    p.title,
+    p.description,
+    p.name as photo_name,
+    p.position,
+    p.portrait,
+    p.color,
+    p.square,
+    p.updated_at,
+    p.created_at as photo_created_at,
+    m.id as media_id,
+    m.created_at as media_created_at,
+    m.type as media_type,
+    m.name as media_name,
+    m.width as media_width,
+    m.height as media_height
   FROM
-    photos
+    photos p
+  LEFT JOIN
+    media m ON p.media_id = m.id
   ORDER BY
-    created_at
+    photo_created_at
   DESC
   LIMIT 1
   OFFSET 1
   `
 
-export const delete_photo = (id: number) =>
+export const deletePhoto = (id: number) =>
   `DELETE
   FROM
     photos
   WHERE id=${id}
   `
+
+export const count = () => `SELECT COUNT(*) FROM photos`

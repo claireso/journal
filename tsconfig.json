@@ -21,6 +21,9 @@
       "@types": ["src/types"],
       "@domain/*": ["src/domain/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
+      "@application/*": ["src/application/*"],
+      "@dto": ["src/dto"],
+      "@ioc/*": ["src/ioc/*"],
       "@web/*": ["src/interface/web/*"],
       "@api/*": ["src/interface/api/*"]
     },
