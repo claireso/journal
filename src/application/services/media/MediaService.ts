@@ -6,9 +6,11 @@ import uploadFile from '@utils/uploadFile'
 
 export default class MediaService {
   private repository: MediaRepository
+  private logger: unknown
 
-  constructor(repository: MediaRepository) {
+  constructor(repository: MediaRepository, logger: unknown) {
     this.repository = repository
+    this.logger = logger
   }
 
   async create(file: File) {

@@ -2,6 +2,7 @@ import { useQuery, useQueryClient, useMutation, QueryFunctionContext } from '@ta
 
 import { SubscriptionsDto } from '@dto'
 import * as api from '@web/services/api'
+import ApiError from '@web/services/api/ApiError'
 import useMessages from '@web/features/messages/useMessages'
 
 interface Filters {
@@ -70,6 +71,13 @@ export const useSubscriptions = (filters: Filters = { page: '1' }, options = {})
 
   const queryOptions = {
     placeholderData: initialState,
+    throwOnError: (err: ApiError) => {
+      // do not throw error for 404 in order to manage redirection in views
+      if ([404, 400].includes(err.response.status)) {
+        return false
+      }
+      return true
+    },
     ...options
   }
 

@@ -154,7 +154,7 @@ export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
     placeholderData: initialState,
     throwOnError: (err: ApiError) => {
       // do not throw error for 404 in order to manage redirection in views
-      if (err.response.status === 404) {
+      if ([404, 400].includes(err.response.status)) {
         return false
       }
       return true

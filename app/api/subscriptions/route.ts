@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server'
 import { createRouteHandler, withAuth } from '@api/middlewares'
+import { BadRequestError } from '@domain/errors'
 import { subscriptionService } from '@ioc/container'
 import { SubscriptionInsertDtoSchema } from '@dto'
 
@@ -10,7 +11,7 @@ const getPaginatedSubscriptions = async (request: NextRequest) => {
   page = Number(page)
 
   if (isNaN(page) || page < 0) {
-    return Response.json({}, { status: 400 })
+    throw new BadRequestError('Incorrect parameter “page”', { cause: { page } })
   }
 
   const paginatedSubscriptions = await subscriptionService.getPaginatedSubscriptions(page ?? 1)

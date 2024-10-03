@@ -36,7 +36,7 @@ const Subscriptions = () => {
 
   const filters = { page: (page as string) ?? '1' }
 
-  const { isFetching, isFetched, isSuccess, data } = useSubscriptions(filters)
+  const { isFetching, isFetched, isSuccess, data, error } = useSubscriptions(filters)
 
   const { mutate: deleteSubscription, isPending: isDeleting } = useDeleteSubscription(filters)
 
@@ -84,6 +84,11 @@ const Subscriptions = () => {
     },
     [deleteSubscription, onCloseModal]
   )
+
+  if (error && [400, 404].includes(error.response.status)) {
+    navigate({ page: '1' })
+    return null
+  }
 
   return (
     <>

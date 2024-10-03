@@ -142,7 +142,7 @@ const Photos = () => {
     [deletePhoto, onCloseModal]
   )
 
-  if (error?.response.status === 404) {
+  if (error && [400, 404].includes(error.response.status)) {
     navigate({ page: '1' })
     return null
   }

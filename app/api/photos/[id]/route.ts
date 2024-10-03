@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server'
 import { revalidateTag } from 'next/cache'
+import { BadRequestError } from '@domain/errors/errors'
 import { createRouteHandler, withAuth } from '@api/middlewares'
 import { pool as db } from '@infrastructure/db'
 import { mapPhotoToPhotoDto, PhotoUpdateDtoSchema } from '@dto'
@@ -26,7 +27,7 @@ const getPhoto = async (request: NextRequest, { params }: RequestContext) => {
   const id = Number(params.id)
 
   if (isNaN(id)) {
-    return Response.json({}, { status: 400 })
+    throw new BadRequestError('Incorrect parameter “id”', { cause: { photoId: id } })
   }
 
   const photo = await photoService.getById(id)
@@ -40,7 +41,7 @@ const editPhoto = async (request: NextRequest, { params }: RequestContext) => {
   const id = Number(params.id)
 
   if (isNaN(id)) {
-    return Response.json({}, { status: 400 })
+    throw new BadRequestError('Incorrect parameter “id”', { cause: { photoId: id } })
   }
 
   const body = await request.json()
@@ -60,7 +61,7 @@ const deletePhoto = async (request: NextRequest, { params }: RequestContext) => 
   const id = Number(params.id)
 
   if (isNaN(id)) {
-    return Response.json({}, { status: 400 })
+    throw new BadRequestError('Incorrect parameter “id”', { cause: { photoId: id } })
   }
 
   await photoService.delete(id, db)

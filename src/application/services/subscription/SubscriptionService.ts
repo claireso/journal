@@ -1,11 +1,14 @@
+import { NotFoundError } from '@domain/errors/errors'
 import { Pager, Subscriptions } from '@domain/entities'
 import { SubscriptionRepository } from '@domain/repositories'
 
 export default class SubscriptionService {
   private repository: SubscriptionRepository
+  private logger: unknown
 
-  constructor(repository: SubscriptionRepository) {
+  constructor(repository: SubscriptionRepository, logger: unknown) {
     this.repository = repository
+    this.logger = logger
   }
 
   async create(data: any) {
@@ -23,7 +26,7 @@ export default class SubscriptionService {
   async delete(id: number) {
     const subscription = await this.getById(id)
     if (subscription === null) {
-      throw new Error('Not found')
+      throw new NotFoundError(`Subscription not found`, { cause: { subscriptionId: id } })
     }
 
     return this.repository.delete(id)
@@ -36,7 +39,7 @@ export default class SubscriptionService {
     const totalPages = Math.ceil(count / pageSize)
 
     if (page < 1 || (page > 1 && page > totalPages)) {
-      throw new Error('Not found')
+      throw new NotFoundError('Page subscription not found', { cause: { page } })
     }
 
     const offset = (page - 1) * pageSize

@@ -3,14 +3,18 @@ import { SubscriptionRepository } from '@domain/repositories'
 import * as queries from './queries'
 
 export default class SubscriptionRepositoryImpl implements SubscriptionRepository {
-  private database: any // Ceci pourrait être un client Prisma, un ORM ou autre
+  private database: any
+  private logger: any
 
-  constructor(database: any) {
+  constructor(database: any, logger: unknown) {
     this.database = database
+    this.logger = logger
   }
 
   async create(data: any): Promise<Subscription> {
+    this.logger.info({ data }, 'Subscription creation started')
     const result = await this.database.query(queries.insertSubscription(), [data])
+    this.logger.info(result.rows[0], 'Subscription created successfully')
     return result.rows[0]
   }
 
@@ -25,7 +29,9 @@ export default class SubscriptionRepositoryImpl implements SubscriptionRepositor
   }
 
   async delete(id: number): Promise<void> {
+    this.logger.info({ id }, 'Subscription deletion started')
     await this.database.query(queries.deleteSubscription(id))
+    this.logger.info({ id }, 'Subscription deleted successfully')
   }
 
   async getSubscriptions(offset: number, limit: number) {

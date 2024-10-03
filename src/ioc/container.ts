@@ -6,17 +6,28 @@ import {
   PhotoRepositoryImpl
 } from '@infrastructure/repositories'
 import { pool as db } from '@infrastructure/db'
+import { createContextLogger } from '@infrastructure/logger'
 
-const mediaRepository = new MediaRepositoryImpl(db)
-const mediaService = new MediaService(mediaRepository)
+const mediaLogger = createContextLogger('media')
+const mediaRepository = new MediaRepositoryImpl(db, createContextLogger('[Repository] ', mediaLogger))
+const mediaService = new MediaService(mediaRepository, createContextLogger('[Service] ', mediaLogger))
 
-const userReposity = new UserRepositoryImpl(db)
-const userService = new UserService(userReposity)
+const userLogger = createContextLogger('user')
+const userReposity = new UserRepositoryImpl(db, createContextLogger('[Repository] ', userLogger))
+const userService = new UserService(userReposity, createContextLogger('[Service ]', userLogger))
 
-const subscriptionRepository = new SubscriptionRepositoryImpl(db)
-const subscriptionService = new SubscriptionService(subscriptionRepository)
+const subscriptionLogger = createContextLogger('subscription')
+const subscriptionRepository = new SubscriptionRepositoryImpl(
+  db,
+  createContextLogger('[Repository] ', subscriptionLogger)
+)
+const subscriptionService = new SubscriptionService(
+  subscriptionRepository,
+  createContextLogger('[Service] ', subscriptionLogger)
+)
 
-const photoRepository = new PhotoRepositoryImpl(db)
-const photoService = new PhotoService(photoRepository, mediaRepository)
+const photoLogger = createContextLogger('photo')
+const photoRepository = new PhotoRepositoryImpl(db, createContextLogger('[Repository] ', photoLogger))
+const photoService = new PhotoService(photoRepository, mediaRepository, createContextLogger('[Service] ', photoLogger))
 
 export { mediaService, userService, subscriptionService, photoService }

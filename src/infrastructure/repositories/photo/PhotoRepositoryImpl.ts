@@ -5,12 +5,15 @@ import { mapRowToPhoto } from '@domain/entities/photo/mappers'
 
 export default class PhotoRepositoryImpl implements PhotoRepository {
   private database: any
+  private logger: any
 
-  constructor(database: any) {
+  constructor(database: any, logger: any) {
     this.database = database
+    this.logger = logger
   }
 
   async create(data: any): Promise<Photo> {
+    this.logger.info(data, 'Photo creation started')
     const result = await this.database.query(queries.insertPhoto(), [
       data.name,
       data.title,
@@ -19,6 +22,7 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
       data.color,
       data.media_id
     ])
+    this.logger.info(result.rows[0], 'New photo created successfully')
     return mapRowToPhoto(result.rows[0])
   }
 
@@ -27,7 +31,9 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
       .map((entry, index) => `${entry[0]}=($${index + 1})`)
       .join(',')
     const values = Object.values(data)
+    this.logger.info({ id, data }, 'Photo updating started')
     const result = await this.database.query(queries.updatePhoto(id, fields), values)
+    this.logger.info(result.rows[0], 'Photo updated successfully')
     return mapRowToPhoto(result.rows[0])
   }
 
@@ -50,7 +56,9 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
   }
 
   async delete(id: number): Promise<void> {
+    this.logger.info({ id }, 'Photo deletion started')
     await this.database.query(queries.deletePhoto(id))
+    this.logger.info({ id }, 'Photo deleted successfully')
   }
 
   async getPhotos(offset: number, limit: number) {
