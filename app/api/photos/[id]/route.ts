@@ -10,18 +10,6 @@ interface RequestContext {
   params: { id: string }
 }
 
-// const getCachedPhoto = (id: number) =>
-//   unstable_cache(
-//     async (id: number) => {
-//       return photoService.getById(id)
-//       // return pool.query(queries.get_photo(id))
-//     },
-//     [],
-//     {
-//       tags: [`photo_${id}`]
-//     }
-//   )(id)
-
 // endpoint get photo
 const getPhoto = async (request: NextRequest, { params }: RequestContext) => {
   const id = Number(params.id)
@@ -50,9 +38,6 @@ const editPhoto = async (request: NextRequest, { params }: RequestContext) => {
   const photo = await photoService.update(id, result)
   const photoDto = mapPhotoToPhotoDto(photo)
 
-  revalidateTag('photos')
-  revalidateTag(`photo_${id}`)
-
   return Response.json(photoDto, { status: 200 })
 }
 
@@ -66,8 +51,6 @@ const deletePhoto = async (request: NextRequest, { params }: RequestContext) => 
 
   await photoService.delete(id, db)
 
-  revalidateTag('photos')
-  revalidateTag(`photo_${id}`)
   return Response.json({}, { status: 200 })
 }
 

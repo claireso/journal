@@ -21,7 +21,7 @@ export const getPhotos = (page: string, options?: RequestInit) =>
     '/photos',
     { page },
     {
-      next: { tags: ['photos'] },
+      next: { tags: ['photos_pagination'] },
       ...(options || {})
     }
   )

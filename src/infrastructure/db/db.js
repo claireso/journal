@@ -27,7 +27,7 @@ export default {
       log.values = values
     }
 
-    logger.trace(log)
+    logger.debug(log)
 
     return pool.query(text, values, callback)
   },

@@ -1,5 +1,4 @@
 import { NextRequest } from 'next/server'
-import { revalidateTag } from 'next/cache'
 import { differenceInMinutes } from 'date-fns'
 import { BadRequestError } from '@domain/errors'
 import { createRouteHandler, withAuth } from '@api/middlewares'
@@ -50,7 +49,7 @@ const createPhoto = async (request: NextRequest) => {
     if (!skipNotification) {
       const subscriptions = await subscriptionService.getAll()
       subscriptions.map(({ subscription, id }) => {
-        logger.debug(`Send notification (id: ${id})`)
+        logger.info({ id }, `Send notification`)
         return sendNotification(subscription, NOTIFICATION_NEW_PHOTO).catch((err: any) => {
           if (err && [410, 404].includes(err.statusCode)) {
             logger.warn({ err, ctx: { notificationId: id } }, 'Can not send notification')
@@ -62,7 +61,6 @@ const createPhoto = async (request: NextRequest) => {
     }
   }
 
-  revalidateTag('photos')
   return Response.json(photoDto, { status: 201 })
 }
 
