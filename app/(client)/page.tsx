@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation'
 
-import * as api from '@services/api'
-import ApiError from '@services/api/ApiError'
+import * as api from '@web/services/api'
+import ApiError from '@web/services/api/ApiError'
 
-import Welcome from '@features/client/Welcome'
-import ListPhotos from '@features/photos/ListPhotos'
+import Welcome from '@web/features/client/Welcome'
+import ListPhotos from '@web/features/photos/ListPhotos'
 
 interface PageProps {
   searchParams: {

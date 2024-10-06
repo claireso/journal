@@ -97,9 +97,9 @@ global.setServiceWorker = ({ register, subscribe, ready, getSubscription } = {})
 // enable serviceWorker
 global.setServiceWorker()
 
-jest.mock('@services/api', () => {
+jest.mock('@web/services/api', () => {
   // https://github.com/swc-project/swc/issues/3843#issuecomment-1058826971
-  const actualModule = jest.requireActual('./src/services/api')
+  const actualModule = jest.requireActual('./src/interface/web/services/api')
 
   return {
     __esModule: true,
@@ -107,9 +107,9 @@ jest.mock('@services/api', () => {
   }
 })
 
-jest.mock('@services/notifications', () => {
+jest.mock('@web/services/notifications', () => {
   // https://github.com/swc-project/swc/issues/3843#issuecomment-1058826971
-  const actualModule = jest.requireActual('./src/services/notifications')
+  const actualModule = jest.requireActual('./src/interface/web/services/notifications')
 
   return {
     __esModule: true,

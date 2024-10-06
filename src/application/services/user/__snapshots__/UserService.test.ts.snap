@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`application/UserService GET should get user by credentials 1`] = `
+{
+  "cid": "c123",
+  "created_at": 2024-10-05T17:12:40.400Z,
+  "id": 1,
+  "updated_at": 2024-10-05T17:12:40.400Z,
+  "username": "janedoe",
+}
+`;

@@ -5,12 +5,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { SessionProvider, signOut } from 'next-auth/react'
 
-import { IconAngleRight } from '@components/Icons'
-import Toolbar from '@components/Toolbar'
-import { Tabs, Tab } from '@components/Tabs'
-import { Loader } from '@components/Loader'
+import { IconAngleRight } from '@web/components/Icons'
+import Toolbar from '@web/components/Toolbar'
+import { Tabs, Tab } from '@web/components/Tabs'
+import { Loader } from '@web/components/Loader'
 
-import Messages from '@features/messages/Messages'
+import Messages from '@web/features/messages/Messages'
 
 import * as S from './Layout.styles'
 
@@ -33,22 +33,18 @@ const PageLayout = ({ children }: PageLayoutProps) => {
         <S.Sidebar>
           <Tabs>
             <Tab isActive={pathname?.includes('photos')}>
-              <Link href="/admin/photos" passHref>
-                Photos
-              </Link>
+              <Link href="/admin/photos">Photos</Link>
             </Tab>
             <Tab isActive={pathname?.includes('subscriptions')}>
-              <Link href="/admin/subscriptions" passHref>
-                Subscriptions
-              </Link>
+              <Link href="/admin/subscriptions">Subscriptions</Link>
             </Tab>
           </Tabs>
-          <Link href="/" passHref>
+          <a href="/">
             <S.LinkGoToWebsite>
               View website
               <IconAngleRight />
             </S.LinkGoToWebsite>
-          </Link>
+          </a>
         </S.Sidebar>
         <S.ToolbarWrapper>
           <Toolbar>

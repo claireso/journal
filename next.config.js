@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const { InjectManifest } = require('workbox-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 
@@ -21,6 +20,9 @@ module.exports = {
     }
   },
   compress: process.env.COMPRESSION === 'enabled',
+  experimental: {
+    serverComponentsExternalPackages: ['pino', 'pino-pretty']
+  },
   async redirects() {
     return [
       {
@@ -38,7 +40,7 @@ module.exports = {
       // enable service worker
       config.plugins.push(
         new InjectManifest({
-          swSrc: path.resolve(__dirname, 'src', 'services', 'serviceworker', 'sw.js'),
+          swSrc: path.resolve(__dirname, 'src', 'interface', 'web', 'services', 'serviceworker', 'sw.js'),
           swDest: path.resolve(__dirname, 'public', 'sw.js'),
           exclude: [
             'build-manifest.json',

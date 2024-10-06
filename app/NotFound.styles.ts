@@ -1,5 +1,5 @@
-import { styled } from '@theme'
-import { Button } from '@components/Buttons'
+import { styled } from '@web/theme'
+import { Button } from '@web/components/Buttons'
 
 export const Wrapper = styled('div', {
   display: 'flex',

@@ -1,6 +1,6 @@
-import { styled } from '@theme'
+import { styled } from '@web/theme'
 
-import { Button } from '@components/Buttons'
+import { Button } from '@web/components/Buttons'
 
 export const Layout = styled('div', {
   display: 'grid',

@@ -18,13 +18,14 @@
     "jsx": "preserve",
     "paths": {
       "@utils/*": ["src/utils/*"],
-      "@components/*": ["src/components/*"],
-      "@services/*": ["src/services/*"],
-      "@features/*": ["src/features/*"],
-      "@hooks/*": ["src/hooks/*"],
       "@types": ["src/types"],
-      "@theme": ["src/theme"],
-      "@models": ["src/models"]
+      "@domain/*": ["src/domain/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
+      "@application/*": ["src/application/*"],
+      "@dto": ["src/dto"],
+      "@ioc/*": ["src/ioc/*"],
+      "@web/*": ["src/interface/web/*"],
+      "@api/*": ["src/interface/api/*"]
     },
     "plugins": [
       {

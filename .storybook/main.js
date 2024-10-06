@@ -17,12 +17,14 @@ module.exports = {
     webpackConfig.resolve.alias = {
       ...webpackConfig.resolve.alias,
       '@utils': path.resolve(directory, 'src', 'utils'),
-      '@components': path.resolve(directory, 'src', 'components'),
-      '@services': path.resolve(directory, 'src', 'services'),
-      '@features': path.resolve(directory, 'src', 'features'),
-      '@hooks': path.resolve(directory, 'src', 'hooks'),
       '@types': path.resolve(directory, 'src', 'types'),
-      '@theme': path.resolve(directory, 'src', 'theme'),
+      '@domain': path.resolve(directory, 'src', 'domain'),
+      '@infrastructure': path.resolve(directory, 'src', 'infrastructure'),
+      '@application': path.resolve(directory, 'src', 'application'),
+      '@dto': path.resolve(directory, 'src', 'dto'),
+      '@ioc': path.resolve(directory, 'src', 'ioc'),
+      '@web': path.resolve(directory, 'src', 'interface', 'web'),
+      '@api': path.resolve(directory, 'src', 'interface', 'api'),
       // https://github.com/storybookjs/storybook/issues/12016
       '@storybook/theming': path.dirname(require.resolve('@storybook/theming/package.json'))
     }

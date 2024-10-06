@@ -2,8 +2,8 @@
 
 import { Suspense } from 'react'
 
-import Box from '@components/Box'
-import { Loader } from '@components/Loader'
+import Box from '@web/components/Box'
+import { Loader } from '@web/components/Loader'
 
 import * as S from './Layout.styles'
 
