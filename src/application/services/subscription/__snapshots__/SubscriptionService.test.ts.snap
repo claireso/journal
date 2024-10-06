@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`application/SubscriptionService CREATE should create a subscription successfully 1`] = `
+{
+  "created_at": 2024-10-05T17:12:40.400Z,
+  "id": 4,
+  "subscription": {
+    "endpoint": "789",
+    "expirationTime": 1234,
+    "keys": {
+      "auth": "456",
+      "p256dh": "123",
+    },
+  },
+  "updated_at": 2024-10-05T17:12:40.400Z,
+}
+`;
+
+exports[`application/SubscriptionService GET should get a subscription by identifier 1`] = `
+{
+  "created_at": 2024-10-05T17:12:40.400Z,
+  "id": 1,
+  "subscription": {
+    "endpoint": "",
+    "expirationTime": 1234,
+    "keys": {
+      "auth": "",
+      "p256dh": "",
+    },
+  },
+  "updated_at": 2024-10-05T17:12:40.400Z,
+}
+`;
+
+exports[`application/SubscriptionService GET should get all subscriptions 1`] = `
+[
+  {
+    "created_at": 2024-10-05T17:12:40.400Z,
+    "id": 1,
+    "subscription": {
+      "endpoint": "",
+      "expirationTime": 1234,
+      "keys": {
+        "auth": "",
+        "p256dh": "",
+      },
+    },
+    "updated_at": 2024-10-05T17:12:40.400Z,
+  },
+  {
+    "created_at": 2024-10-05T17:12:40.400Z,
+    "id": 2,
+    "subscription": {
+      "endpoint": "",
+      "expirationTime": 1234,
+      "keys": {
+        "auth": "",
+        "p256dh": "",
+      },
+    },
+    "updated_at": 2024-10-05T17:12:40.400Z,
+  },
+  {
+    "created_at": 2024-10-05T17:12:40.400Z,
+    "id": 3,
+    "subscription": {
+      "endpoint": "",
+      "expirationTime": 1234,
+      "keys": {
+        "auth": "",
+        "p256dh": "",
+      },
+    },
+    "updated_at": 2024-10-05T17:12:40.400Z,
+  },
+]
+`;
+
+exports[`application/SubscriptionService GET should get paginated subscriptions 1`] = `
+{
+  "items": [
+    {
+      "created_at": 2024-10-05T17:12:40.400Z,
+      "id": 1,
+      "subscription": {
+        "endpoint": "",
+        "expirationTime": 1234,
+        "keys": {
+          "auth": "",
+          "p256dh": "",
+        },
+      },
+      "updated_at": 2024-10-05T17:12:40.400Z,
+    },
+    {
+      "created_at": 2024-10-05T17:12:40.400Z,
+      "id": 2,
+      "subscription": {
+        "endpoint": "",
+        "expirationTime": 1234,
+        "keys": {
+          "auth": "",
+          "p256dh": "",
+        },
+      },
+      "updated_at": 2024-10-05T17:12:40.400Z,
+    },
+    {
+      "created_at": 2024-10-05T17:12:40.400Z,
+      "id": 3,
+      "subscription": {
+        "endpoint": "",
+        "expirationTime": 1234,
+        "keys": {
+          "auth": "",
+          "p256dh": "",
+        },
+      },
+      "updated_at": 2024-10-05T17:12:40.400Z,
+    },
+  ],
+  "pager": {
+    "count": 3,
+    "limit": 10,
+    "offset": 0,
+    "totalPages": 1,
+  },
+}
+`;

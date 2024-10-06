@@ -1,8 +1,8 @@
 'use client'
 
-import { styled } from '@theme'
-import { Heading1 } from '@components/Headings'
-import { ButtonPrimary } from '@components/Buttons'
+import { styled } from '@web/theme'
+import { Heading1 } from '@web/components/Headings'
+import { ButtonPrimary } from '@web/components/Buttons'
 
 export const ErrorWrapper = styled('div', {
   padding: '$5'

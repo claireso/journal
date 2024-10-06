@@ -60,6 +60,7 @@ jobs:
           envkey_NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY: ${{ secrets.NOTIFICATIONS_PUBLIC_KEY }}
           envkey_NOTIFICATIONS_PRIVATE_KEY: ${{ secrets.NOTIFICATIONS_PRIVATE_KEY }}
           envkey_NOTIFICATIONS_SUBJECT: ${{ secrets.NOTIFICATIONS_SUBJECT }}
+          envkey_LOG_LEVEL: ${{ vars.LOG_LEVEL }}
       - name: Build
         run: npm run build
       - name: Configure SSH

@@ -1,4 +1,4 @@
-import { styled } from '@theme'
+import { styled } from '@web/theme'
 
 export const Main = styled('main', {
   display: 'grid',

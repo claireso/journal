@@ -3,20 +3,19 @@
 import { useCallback } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
-import * as api from '@services/api'
-import { Subscription } from '@models'
+import * as api from '@web/services/api'
 
-import AdminListSubscriptions from '@features/subscriptions/AdminListSubscriptions'
-import ModalDeleteSubscription from '@features/subscriptions/ModalDeleteSubscription'
+import AdminListSubscriptions from '@web/features/subscriptions/AdminListSubscriptions'
+import ModalDeleteSubscription from '@web/features/subscriptions/ModalDeleteSubscription'
 
-import { useSubscriptions, useDeleteSubscription } from '@features/subscriptions/useSubscriptions'
+import { useSubscriptions, useDeleteSubscription } from '@web/features/subscriptions/useSubscriptions'
 
-import { Loader } from '@components/Loader'
-import { ListHeader } from '@components/List'
-import { Heading1 } from '@components/Headings'
-import Modal from '@components/Modal'
-import Pager from '@components/Pager'
-import EmptyZone from '@components/EmptyZone'
+import { Loader } from '@web/components/Loader'
+import { ListHeader } from '@web/components/List'
+import { Heading1 } from '@web/components/Headings'
+import Modal from '@web/components/Modal'
+import Pager from '@web/components/Pager'
+import EmptyZone from '@web/components/EmptyZone'
 
 enum Action {
   CREATE = 'create',
@@ -37,7 +36,7 @@ const Subscriptions = () => {
 
   const filters = { page: (page as string) ?? '1' }
 
-  const { isFetching, isFetched, isSuccess, data } = useSubscriptions(filters)
+  const { isFetching, isFetched, isSuccess, data, error } = useSubscriptions(filters)
 
   const { mutate: deleteSubscription, isPending: isDeleting } = useDeleteSubscription(filters)
 
@@ -63,7 +62,7 @@ const Subscriptions = () => {
   const onCloseModal = useCallback((options?: NavigateOptions) => navigate({}, options), [navigate])
 
   const onClickDelete = useCallback(
-    (id: Subscription['id']) => {
+    (id: number) => {
       navigate({
         action: Action.DELETE,
         id: id
@@ -73,7 +72,7 @@ const Subscriptions = () => {
   )
 
   const onDeleteSubscription = useCallback(
-    (subscriptionId: Subscription['id']) => {
+    (subscriptionId: number) => {
       deleteSubscription(subscriptionId, {
         onSettled(data, err) {
           if (err instanceof api.getErrorConstructor()) {
@@ -85,6 +84,11 @@ const Subscriptions = () => {
     },
     [deleteSubscription, onCloseModal]
   )
+
+  if (error && [400, 404].includes(error.response.status)) {
+    navigate({ page: '1' })
+    return null
+  }
 
   return (
     <>

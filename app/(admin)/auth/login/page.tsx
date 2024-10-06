@@ -3,11 +3,11 @@ import { useCallback } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 
-import { Heading1 } from '@components/Headings'
-import Flash from '@components/Flash'
+import { Heading1 } from '@web/components/Headings'
+import Flash from '@web/components/Flash'
 
-import { getAuthError, AUTH_ERRORS_TYPES } from '@services/auth/errors'
-import LoginForm from '@features/user/LoginForm'
+import { getAuthError, AUTH_ERRORS_TYPES } from '@infrastructure/auth/errors'
+import LoginForm from '@web/features/user/LoginForm'
 
 const LoginPage = () => {
   const searchParams = useSearchParams()

@@ -3,23 +3,23 @@
 import { useCallback } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
-import * as api from '@services/api'
+import * as api from '@web/services/api'
 
-import { usePhotos, useCreatePhoto, useEditPhoto, useDeletePhoto } from '@features/photos/usePhotos'
-import AdminListPhotos from '@features/photos/AdminListPhotos'
-import ModalDeletePhoto from '@features/photos/ModalDeletePhoto'
-import ModalCreatePhoto from '@features/photos/ModalCreatePhoto'
-import ModalEditPhoto from '@features/photos/ModalEditPhoto'
+import { usePhotos, useCreatePhoto, useEditPhoto, useDeletePhoto } from '@web/features/photos/usePhotos'
+import AdminListPhotos from '@web/features/photos/AdminListPhotos'
+import ModalDeletePhoto from '@web/features/photos/ModalDeletePhoto'
+import ModalCreatePhoto from '@web/features/photos/ModalCreatePhoto'
+import ModalEditPhoto from '@web/features/photos/ModalEditPhoto'
 
-import { Loader } from '@components/Loader'
-import { IconPlus } from '@components/Icons'
-import { ListHeader } from '@components/List'
-import { ButtonPrimary } from '@components/Buttons'
-import { Heading1 } from '@components/Headings'
-import Modal from '@components/Modal'
-import Pager from '@components/Pager'
-import EmptyZone from '@components/EmptyZone'
-import { Photo } from '@models'
+import { Loader } from '@web/components/Loader'
+import { IconPlus } from '@web/components/Icons'
+import { ListHeader } from '@web/components/List'
+import { ButtonPrimary } from '@web/components/Buttons'
+import { Heading1 } from '@web/components/Headings'
+import Modal from '@web/components/Modal'
+import Pager from '@web/components/Pager'
+import EmptyZone from '@web/components/EmptyZone'
+import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
 
 enum Action {
   CREATE = 'create',
@@ -95,7 +95,7 @@ const Photos = () => {
   )
 
   const onCreatePhoto = useCallback(
-    (data: Partial<Photo>) => {
+    (data: PhotoInsertDto) => {
       createPhoto(data, {
         onSuccess() {
           onCloseModal({ scroll: true })
@@ -115,7 +115,7 @@ const Photos = () => {
   )
 
   const onEditPhoto = useCallback(
-    (data: { id: number; data: Partial<Photo> }) => {
+    (data: { id: number; data: PhotoUpdateDto }) => {
       editPhoto(data, {
         onSettled(data, err) {
           if (err instanceof api.getErrorConstructor()) {
@@ -142,7 +142,7 @@ const Photos = () => {
     [deletePhoto, onCloseModal]
   )
 
-  if (error?.response.status === 404) {
+  if (error && [400, 404].includes(error.response.status)) {
     navigate({ page: '1' })
     return null
   }

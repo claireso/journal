@@ -59,8 +59,10 @@ jobs:
       - name: Install
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Create directory "uploads"
+        run: mkdir uploads
       - name: Test
-        run: npm t
+        run: npm run test
 
   lint:
     runs-on: ubuntu-22.04
@@ -166,5 +168,6 @@ jobs:
           envkey_NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY: ${{ secrets.NOTIFICATIONS_PUBLIC_KEY }}
           envkey_NOTIFICATIONS_PRIVATE_KEY: ${{ secrets.NOTIFICATIONS_PRIVATE_KEY }}
           envkey_NOTIFICATIONS_SUBJECT: ${{ secrets.NOTIFICATIONS_SUBJECT }}
+          envkey_LOG_LEVEL: ${{ vars.LOG_LEVEL }}
       - name: Build
         run: npm run build
