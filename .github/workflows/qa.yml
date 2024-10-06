@@ -59,8 +59,10 @@ jobs:
       - name: Install
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Create directory "uploads"
+        run: mkdir uploads
       - name: Test
-        run: npm t
+        run: npm run test
 
   lint:
     runs-on: ubuntu-22.04

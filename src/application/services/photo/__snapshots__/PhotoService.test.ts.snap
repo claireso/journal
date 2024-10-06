@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`application/PhotoService CREATE should create a photo successfully 1`] = `
+{
+  "color": null,
+  "created_at": 2024-10-05T17:12:40.400Z,
+  "description": "new photo description",
+  "id": 4,
+  "media": {
+    "created_at": 2024-10-05T17:12:40.400Z,
+    "id": 4,
+    "name": "jkl.jpg",
+    "size": {
+      "height": 1093,
+      "width": 1640,
+    },
+    "type": "image",
+  },
+  "media_id": 4,
+  "name": "jkl.jpg",
+  "portrait": false,
+  "position": "left",
+  "square": false,
+  "title": "new photo",
+  "updated_at": 2024-10-05T17:12:40.400Z,
+}
+`;
+
+exports[`application/PhotoService GET should get a photo by identifier 1`] = `
+{
+  "color": null,
+  "created_at": 2024-10-05T17:12:40.400Z,
+  "description": "",
+  "id": 1,
+  "media": {
+    "created_at": 2024-10-05T17:12:40.400Z,
+    "id": 1,
+    "name": "abc.jpg",
+    "size": {
+      "height": 1093,
+      "width": 1640,
+    },
+    "type": "image",
+  },
+  "media_id": 1,
+  "name": "abc.jpg",
+  "portrait": false,
+  "position": "left",
+  "square": false,
+  "title": "",
+  "updated_at": 2024-10-05T17:12:40.400Z,
+}
+`;
+
+exports[`application/PhotoService GET should get a photo by media identifier 1`] = `
+{
+  "color": null,
+  "created_at": 2024-10-05T17:12:40.400Z,
+  "description": "",
+  "id": 1,
+  "media": {
+    "created_at": 2024-10-05T17:12:40.400Z,
+    "id": 1,
+    "name": "abc.jpg",
+    "size": {
+      "height": 1093,
+      "width": 1640,
+    },
+    "type": "image",
+  },
+  "media_id": 1,
+  "name": "abc.jpg",
+  "portrait": false,
+  "position": "left",
+  "square": false,
+  "title": "",
+  "updated_at": 2024-10-05T17:12:40.400Z,
+}
+`;
+
+exports[`application/PhotoService GET should get paginated photos 1`] = `
+{
+  "items": [
+    {
+      "color": null,
+      "created_at": 2024-10-05T17:12:40.400Z,
+      "description": "",
+      "id": 1,
+      "media": {
+        "created_at": 2024-10-05T17:12:40.400Z,
+        "id": 1,
+        "name": "abc.jpg",
+        "size": {
+          "height": 1093,
+          "width": 1640,
+        },
+        "type": "image",
+      },
+      "media_id": 1,
+      "name": "abc.jpg",
+      "portrait": false,
+      "position": "left",
+      "square": false,
+      "title": "",
+      "updated_at": 2024-10-05T17:12:40.400Z,
+    },
+    {
+      "color": null,
+      "created_at": 2024-10-05T17:12:40.400Z,
+      "description": "",
+      "id": 2,
+      "media": {
+        "created_at": 2024-10-05T17:12:40.400Z,
+        "id": 2,
+        "name": "def.jpg",
+        "size": {
+          "height": 1200,
+          "width": 800,
+        },
+        "type": "image",
+      },
+      "media_id": 2,
+      "name": "def.jpg",
+      "portrait": true,
+      "position": "center",
+      "square": false,
+      "title": "",
+      "updated_at": 2024-10-05T17:12:40.400Z,
+    },
+    {
+      "color": null,
+      "created_at": 2024-10-05T17:12:40.400Z,
+      "description": "",
+      "id": 3,
+      "media": {
+        "created_at": 2024-10-05T17:12:40.400Z,
+        "id": 3,
+        "name": "ghi.jpg",
+        "size": {
+          "height": 800,
+          "width": 800,
+        },
+        "type": "image",
+      },
+      "media_id": 3,
+      "name": "ghi.jpg",
+      "portrait": false,
+      "position": "center",
+      "square": true,
+      "title": "",
+      "updated_at": 2024-10-05T17:12:40.400Z,
+    },
+  ],
+  "pager": {
+    "count": 3,
+    "limit": 10,
+    "offset": 0,
+    "totalPages": 1,
+  },
+}
+`;
+
+exports[`application/PhotoService GET should get the latest created photo 1`] = `
+{
+  "color": null,
+  "created_at": 2024-10-05T17:12:40.400Z,
+  "description": "",
+  "id": 3,
+  "media": {
+    "created_at": 2024-10-05T17:12:40.400Z,
+    "id": 3,
+    "name": "ghi.jpg",
+    "size": {
+      "height": 800,
+      "width": 800,
+    },
+    "type": "image",
+  },
+  "media_id": 3,
+  "name": "ghi.jpg",
+  "portrait": false,
+  "position": "center",
+  "square": true,
+  "title": "",
+  "updated_at": 2024-10-05T17:12:40.400Z,
+}
+`;
+
+exports[`application/PhotoService UPDATE should update photo successfully 1`] = `
+{
+  "color": "#000000",
+  "created_at": 2024-10-05T17:12:40.400Z,
+  "description": "photo description",
+  "id": 1,
+  "media": {
+    "created_at": 2024-10-05T17:12:40.400Z,
+    "id": 1,
+    "name": "abc.jpg",
+    "size": {
+      "height": 1093,
+      "width": 1640,
+    },
+    "type": "image",
+  },
+  "media_id": 1,
+  "name": "abc.jpg",
+  "portrait": false,
+  "position": "right",
+  "square": false,
+  "title": "photo title",
+  "updated_at": Any<Date>,
+}
+`;

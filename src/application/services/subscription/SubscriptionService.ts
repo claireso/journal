@@ -1,6 +1,7 @@
 import { NotFoundError } from '@domain/errors/errors'
 import { Pager, Subscriptions } from '@domain/entities'
 import { SubscriptionRepository } from '@domain/repositories'
+import { SubscriptionInsertDto } from '@dto'
 
 export default class SubscriptionService {
   private repository: SubscriptionRepository
@@ -16,7 +17,13 @@ export default class SubscriptionService {
   }
 
   async getById(id: number) {
-    return this.repository.getById(id)
+    const subscription = await this.repository.getById(id)
+
+    if (subscription === null) {
+      throw new NotFoundError(`Subscription not found`, { cause: { subscriptionId: id } })
+    }
+
+    return subscription
   }
 
   async getAll() {
@@ -25,11 +32,8 @@ export default class SubscriptionService {
 
   async delete(id: number) {
     const subscription = await this.getById(id)
-    if (subscription === null) {
-      throw new NotFoundError(`Subscription not found`, { cause: { subscriptionId: id } })
-    }
 
-    return this.repository.delete(id)
+    return this.repository.delete(subscription.id)
   }
 
   async getPaginatedSubscriptions(page: number) {

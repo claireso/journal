@@ -1,6 +1,7 @@
 import path from 'path'
 import { unlink } from 'fs/promises'
 import { MediaType } from '@domain/entities'
+import { NotFoundError } from '@domain/errors'
 import { MediaRepository } from '@domain/repositories'
 import uploadFile from '@utils/uploadFile'
 
@@ -29,12 +30,21 @@ export default class MediaService {
   }
 
   async getById(id: number) {
-    return this.repository.getById(id)
+    const media = await this.repository.getById(id)
+
+    if (media === null) {
+      throw new NotFoundError(`Not found media`, { cause: { photoId: id } })
+    }
+
+    return media
   }
 
-  async delete(id: number, filename: string) {
+  async delete(id: number) {
+    const media = await this.getById(id)
+
     await this.repository.delete(id)
-    // delete photo from the folder
-    await unlink(path.resolve('uploads', filename))
+
+    // delete media file from the folder
+    await unlink(path.resolve('uploads', media.name))
   }
 }

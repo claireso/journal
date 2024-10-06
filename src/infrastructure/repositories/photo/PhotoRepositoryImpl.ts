@@ -1,5 +1,6 @@
 import { Photo } from '@domain/entities'
 import { PhotoRepository } from '@domain/repositories'
+import { PhotoInsertDto } from '@dto'
 import * as queries from './queries'
 import { mapRowToPhoto } from '@domain/entities/photo/mappers'
 import { revalidateTag, unstable_cache } from 'next/cache'
@@ -13,7 +14,7 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
     this.logger = logger
   }
 
-  async create(data: any): Promise<Photo> {
+  async create(data: PhotoInsertDto & { name: string }): Promise<Photo> {
     this.logger.info(data, 'Photo creation started')
     const result = await this.database.query(queries.insertPhoto(), [
       data.name,

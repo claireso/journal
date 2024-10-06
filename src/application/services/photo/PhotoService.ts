@@ -1,7 +1,8 @@
 import escape from 'lodash/escape'
+import { PhotoRepository, MediaRepository } from '@domain/repositories'
 import { Pager, Photos } from '@domain/entities'
 import { BadRequestError, NotFoundError } from '@domain/errors/errors'
-import { PhotoRepository, MediaRepository } from '@domain/repositories'
+import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
 
 export default class PhotoService {
   private repository: PhotoRepository
@@ -25,7 +26,7 @@ export default class PhotoService {
     }
   }
 
-  async create(data: any) {
+  async create(data: PhotoInsertDto) {
     // check if the media exists
     const media = await this.mediaRepository.getById(data.media_id)
     if (media === null) {
@@ -50,7 +51,7 @@ export default class PhotoService {
     })
   }
 
-  async update(id: number, data: any) {
+  async update(id: number, data: PhotoUpdateDto) {
     const photo = await this.getById(id)
 
     const newPhoto = this._cleanPhotoData({
@@ -131,7 +132,7 @@ export default class PhotoService {
     const totalPages = Math.ceil(count / pageSize)
 
     if (page > totalPages) {
-      throw new NotFoundError('Page Photo not found', { cause: { page } })
+      throw new NotFoundError('Page photo not found', { cause: { page } })
     }
 
     const offset = (page - 1) * pageSize
