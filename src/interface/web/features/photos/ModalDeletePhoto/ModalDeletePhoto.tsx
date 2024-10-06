@@ -19,13 +19,12 @@ const ModalDeletePhoto = ({ onCancel, onConfirm, id, isProcessing = false }: Mod
 
   return (
     <>
-      <Heading1>Are you sure?</Heading1>
-      <p>This action is irreversible</p>
+      <Heading1>Delete photo?</Heading1>
+      <p>This can’t be undone</p>
       <Text align="right">
-        <ButtonSecondary onClick={onCancel}> Cancel </ButtonSecondary>
+        <ButtonSecondary onClick={onCancel}>Cancel</ButtonSecondary>
         <ButtonPrimary onClick={onClickConfirm} isLoading={isProcessing}>
-          {' '}
-          Yes{' '}
+          Delete
         </ButtonPrimary>
       </Text>
     </>

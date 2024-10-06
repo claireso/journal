@@ -36,7 +36,7 @@ describe('<ModalDeletePhoto />', () => {
 
     renderComponent(props)
 
-    fireEvent.click(screen.getByText('Yes'))
+    fireEvent.click(screen.getByText('Delete'))
 
     expect(props.onConfirm).toHaveBeenCalledWith(188)
   })
