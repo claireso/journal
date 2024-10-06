@@ -24,6 +24,7 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
       data.color,
       data.media_id
     ])
+    revalidateTag('photos_pagination_web')
     revalidateTag('photos_pagination')
     revalidateTag('photos_count')
     this.logger.info({ response: result.rows[0] }, 'New photo created successfully')
@@ -39,6 +40,7 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
     const result = await this.database.query(queries.updatePhoto(id, fields), values)
     revalidateTag(`photo_${id}`)
     revalidateTag('photos_pagination')
+    revalidateTag('photos_pagination_web')
     this.logger.info({ response: result.rows[0] }, 'Photo updated successfully')
     return mapRowToPhoto(result.rows[0])
   }
@@ -77,8 +79,10 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
   async delete(id: number): Promise<void> {
     this.logger.info({ id }, 'Photo deletion started')
     await this.database.query(queries.deletePhoto(id))
+    revalidateTag(`photo_${id}`)
     revalidateTag('photos_count')
     revalidateTag('photos_pagination')
+    revalidateTag('photos_pagination_web')
     this.logger.info({ id }, 'Photo deleted successfully')
   }
 
@@ -105,7 +109,7 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
         const result = await this.database.query(queries.count())
         return Number(result.rows[0].count)
       },
-      [],
+      ['photos_count'],
       { tags: ['photos_count'] }
     )()
     this.logger.info({ response }, 'Photos counted successfully')

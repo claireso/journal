@@ -131,7 +131,7 @@ export default class PhotoService {
     const count = await this.repository.countPhotos()
     const totalPages = Math.ceil(count / pageSize)
 
-    if (page > totalPages) {
+    if (page < 1 || (totalPages && page > totalPages)) {
       throw new NotFoundError('Page photo not found', { cause: { page } })
     }
 

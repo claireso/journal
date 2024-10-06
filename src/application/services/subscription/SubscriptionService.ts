@@ -42,7 +42,7 @@ export default class SubscriptionService {
     const count = await this.repository.countSubscriptions()
     const totalPages = Math.ceil(count / pageSize)
 
-    if (page < 1 || (page > 1 && page > totalPages)) {
+    if (page < 1 || (totalPages && page > totalPages)) {
       throw new NotFoundError('Page subscription not found', { cause: { page } })
     }
 

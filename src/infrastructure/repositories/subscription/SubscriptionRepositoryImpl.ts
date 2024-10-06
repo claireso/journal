@@ -88,7 +88,7 @@ export default class SubscriptionRepositoryImpl implements SubscriptionRepositor
         const result = await this.database.query(queries.count())
         return Number(result.rows[0].count)
       },
-      [],
+      ['subscriptions_count'],
       {
         tags: ['subscriptions_count']
       }

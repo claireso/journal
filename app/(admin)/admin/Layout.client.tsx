@@ -33,22 +33,18 @@ const PageLayout = ({ children }: PageLayoutProps) => {
         <S.Sidebar>
           <Tabs>
             <Tab isActive={pathname?.includes('photos')}>
-              <Link href="/admin/photos" passHref>
-                Photos
-              </Link>
+              <Link href="/admin/photos">Photos</Link>
             </Tab>
             <Tab isActive={pathname?.includes('subscriptions')}>
-              <Link href="/admin/subscriptions" passHref>
-                Subscriptions
-              </Link>
+              <Link href="/admin/subscriptions">Subscriptions</Link>
             </Tab>
           </Tabs>
-          <Link href="/" passHref>
+          <a href="/">
             <S.LinkGoToWebsite>
               View website
               <IconAngleRight />
             </S.LinkGoToWebsite>
-          </Link>
+          </a>
         </S.Sidebar>
         <S.ToolbarWrapper>
           <Toolbar>
