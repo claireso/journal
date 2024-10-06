@@ -5,10 +5,10 @@ exports[`<ModalDeletePhoto /> should render component 1`] = `
   <h1
     class="c-eskfFe"
   >
-    Are you sure?
+    Delete photo?
   </h1>
   <p>
-    This action is irreversible
+    This can’t be undone
   </p>
   <p
     class="c-cBLpOj c-cBLpOj-gsXdEb-align-right"
@@ -16,12 +16,12 @@ exports[`<ModalDeletePhoto /> should render component 1`] = `
     <button
       class="c-ggYOOi c-eUyIYb c-eUyIYb-bWIhvO-color-secondary"
     >
-       Cancel 
+      Cancel
     </button>
     <button
       class="c-ggYOOi c-eUyIYb c-eUyIYb-heajzE-color-primary"
     >
-       Yes 
+      Delete
     </button>
   </p>
 </DocumentFragment>

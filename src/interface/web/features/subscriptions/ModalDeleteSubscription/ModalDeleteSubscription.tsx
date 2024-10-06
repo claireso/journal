@@ -18,13 +18,12 @@ const ModalDeleteSubscription = ({ onConfirm, onCancel, isProcessing = false, id
 
   return (
     <>
-      <Heading1>Are you sure?</Heading1>
-      <p>This action is irreversible</p>
+      <Heading1>Delete subscription?</Heading1>
+      <p>This can’t be undone</p>
       <Text align="right">
-        <ButtonSecondary onClick={onCancel}> Cancel </ButtonSecondary>
+        <ButtonSecondary onClick={onCancel}>Cancel</ButtonSecondary>
         <ButtonPrimary onClick={onClickConfirm} isLoading={isProcessing}>
-          {' '}
-          Yes{' '}
+          Delete
         </ButtonPrimary>
       </Text>
     </>
