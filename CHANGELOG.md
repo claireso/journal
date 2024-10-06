@@ -1,5 +1,15 @@
 # journal
 
+## 2.1.0
+
+### Minor Changes
+
+- a2ce2f2: Refactor: hexagonal architecture
+
+### Patch Changes
+
+- c2031fe: refactor: update wording to delete a photo/subscription
+
 ## 2.0.0
 
 ### Major Changes
