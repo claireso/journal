@@ -1,27 +1,39 @@
-'use client'
-import { useCallback } from 'react'
-import { useSearchParams } from 'next/navigation'
-import { signIn } from 'next-auth/react'
+import { redirect } from 'next/navigation'
+import { CredentialsSignin, SignInError } from '@auth/core/errors'
+import { signIn } from '@infrastructure/auth'
+import { getAuthError, AUTH_ERRORS_TYPES } from '@infrastructure/auth/errors'
 
+import LoginForm from '@web/features/user/LoginForm'
 import { Heading1 } from '@web/components/Headings'
 import Flash from '@web/components/Flash'
 
-import { getAuthError, AUTH_ERRORS_TYPES } from '@infrastructure/auth/errors'
-import LoginForm from '@web/features/user/LoginForm'
+const LoginPage = ({ searchParams }: NextPageProps<{}>) => {
+  const { callbackUrl = '/admin/photos', error: errorType } = searchParams
 
-const LoginPage = () => {
-  const searchParams = useSearchParams()
-  const errorType = searchParams?.get('error') as AUTH_ERRORS_TYPES
-  const callbackUrl = searchParams?.get('callbackUrl')
+  const error = getAuthError(errorType as AUTH_ERRORS_TYPES)
 
-  const error = getAuthError(errorType)
+  const authenticate = async (data: FormData) => {
+    'use server'
 
-  const onSignIn = useCallback(
-    (data: { username: string; password: string }) => {
-      signIn('credentials', { ...data, callbackUrl: callbackUrl ?? '/admin/photos' })
-    },
-    [callbackUrl]
-  )
+    try {
+      await signIn('credentials', {
+        username: data.get('username'),
+        password: data.get('password'),
+        redirectTo: callbackUrl as string
+      })
+    } catch (err) {
+      if (err instanceof SignInError) {
+        const params = new URLSearchParams({
+          callbackUrl: callbackUrl as string,
+          error: CredentialsSignin.type
+        })
+        redirect(`?${params}`)
+      }
+      // throw the next redirect from the signIn
+      // https://nextjs.org/docs/app/api-reference/functions/redirect#server-component
+      throw err
+    }
+  }
 
   return (
     <>
@@ -31,7 +43,7 @@ const LoginPage = () => {
         </Flash>
       )}
       <Heading1>Login</Heading1>
-      <LoginForm onSubmit={onSignIn} />
+      <LoginForm action={authenticate} />
     </>
   )
 }

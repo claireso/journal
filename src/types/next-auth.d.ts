@@ -1,8 +1,9 @@
 import NextAuth from 'next-auth'
+import { UserDto } from '@dto'
 
 declare module 'next-auth' {
   interface User {
-    id: number
-    cid: string
+    id: UserDto['id']
+    cid: UserDto['cid']
   }
 }

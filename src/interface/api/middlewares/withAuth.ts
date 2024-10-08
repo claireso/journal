@@ -1,10 +1,9 @@
 import type { NextRequest } from 'next/server'
-import { getToken } from 'next-auth/jwt'
+import { auth } from '@infrastructure/auth'
 
 const withAuth = async (request: NextRequest) => {
-  const token = await getToken({ req: request })
-
-  if (!token) {
+  const session = await auth()
+  if (!session) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 })
   }
 }
