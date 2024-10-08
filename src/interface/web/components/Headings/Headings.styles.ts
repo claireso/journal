@@ -1,6 +1,6 @@
 'use client'
 
-import { styled } from '@web/theme'
+import { styled } from '@web/oldtheme'
 
 export const Heading1 = styled('h1', {
   fontSize: '$7',

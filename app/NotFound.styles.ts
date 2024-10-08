@@ -1,4 +1,4 @@
-import { styled } from '@web/theme'
+import { styled } from '@web/oldtheme'
 import { Button } from '@web/components/Buttons'
 
 export const Wrapper = styled('div', {

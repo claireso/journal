@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import { styled } from '@web/theme'
+import { styled } from '@web/oldtheme'
 import _Pager from '@web/components/Pager'
 
 const PagerWrapper = styled('div', {

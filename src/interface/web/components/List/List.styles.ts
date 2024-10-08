@@ -1,4 +1,4 @@
-import { styled } from '@web/theme'
+import { styled } from '@web/oldtheme'
 
 export const List = styled('ul', {
   m: 0,

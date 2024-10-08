@@ -1,6 +1,6 @@
 'use client'
 
-import { styled } from '@web/theme'
+import { styled } from '@web/oldtheme'
 import { Heading1 } from '@web/components/Headings'
 import { ButtonPrimary } from '@web/components/Buttons'
 

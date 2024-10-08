@@ -1,4 +1,4 @@
-import { styled, keyframes } from '@web/theme'
+import { styled, keyframes } from '@web/oldtheme'
 
 const pulse = keyframes({
   '0%': { opacity: '0' },

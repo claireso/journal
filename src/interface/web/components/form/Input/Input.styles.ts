@@ -1,4 +1,4 @@
-import { styled } from '@web/theme'
+import { styled } from '@web/oldtheme'
 
 export const StyledInput = styled('input', {
   appearance: 'none',

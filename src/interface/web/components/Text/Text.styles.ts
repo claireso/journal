@@ -1,4 +1,4 @@
-import { styled } from '@web/theme'
+import { styled } from '@web/oldtheme'
 
 export const Text = styled('p', {
   fontSize: '$2',

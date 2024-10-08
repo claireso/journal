@@ -1,4 +1,4 @@
-import { globalCss } from '@web/theme'
+import { globalCss } from '@web/oldtheme'
 
 export const css = globalCss({
   main: {

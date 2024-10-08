@@ -1,4 +1,4 @@
-import { styled, theme } from '@web/theme'
+import { styled, theme } from '@web/oldtheme'
 
 import { ButtonIcon } from '../Buttons'
 

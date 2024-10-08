@@ -1,4 +1,4 @@
-import { styled } from '@web/theme'
+import { styled } from '@web/oldtheme'
 
 export const Wrapper = styled('div', {
   gridColumn: '1 / -1',

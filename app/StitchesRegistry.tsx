@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 import { useServerInsertedHTML } from 'next/navigation'
-import { getCssText } from '@web/theme'
+import { getCssText } from '@web/oldtheme'
 
 const StitchesRegistry = ({ children }: { children: React.ReactNode }) => {
   const mounted = useRef(false)

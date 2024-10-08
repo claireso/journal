@@ -1,4 +1,4 @@
-import { styled, keyframes } from '@web/theme'
+import { styled, keyframes } from '@web/oldtheme'
 
 const loop = keyframes({
   '0%': { rotate: '0' },

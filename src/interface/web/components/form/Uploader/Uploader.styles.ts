@@ -1,4 +1,4 @@
-import { styled } from '@web/theme'
+import { styled } from '@web/oldtheme'
 
 export const UploaderWrapper = styled('div', {
   border: '1px solid $gray200',
