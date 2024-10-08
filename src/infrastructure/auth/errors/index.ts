@@ -1,8 +1,8 @@
 export enum AUTH_ERRORS_TYPES {
   'CREDENTIALS_SIGNIN' = 'CredentialsSignin',
-  'ACCESS_DENIED' = 'accessdenied',
-  'VERIFICATION' = 'verification',
-  'DEFAULT' = 'default'
+  'ACCESS_DENIED' = 'AccessDenied',
+  'VERIFICATION' = 'Verification',
+  'DEFAULT' = 'Default'
 }
 
 export const AUTH_ERRORS = {
@@ -28,5 +28,5 @@ export const getAuthError = (errorType: AUTH_ERRORS_TYPES | null) => {
   if (!errorType) {
     return null
   }
-  return AUTH_ERRORS[errorType] ?? AUTH_ERRORS.default
+  return AUTH_ERRORS[errorType] ?? AUTH_ERRORS[AUTH_ERRORS_TYPES.DEFAULT]
 }

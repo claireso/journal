@@ -1,14 +1,8 @@
-'use client'
-
-import { useSearchParams } from 'next/navigation'
-
-import { Heading1 } from '@web/components/Headings'
 import { getAuthError, AUTH_ERRORS_TYPES } from '@infrastructure/auth/errors'
+import { Heading1 } from '@web/components/Headings'
 
-const ErrorPage = () => {
-  const searchParams = useSearchParams()
-  const errorType = searchParams?.get('error') as AUTH_ERRORS_TYPES
-
+const ErrorPage = ({ searchParams }: NextPageProps<{}>) => {
+  const errorType = searchParams.error as AUTH_ERRORS_TYPES
   const error = getAuthError(errorType ?? 'default')
 
   if (!error) {

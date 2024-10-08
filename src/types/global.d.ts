@@ -7,3 +7,8 @@ declare type Query = {
 declare type NavigateOptions = {
   scroll?: boolean
 }
+
+declare type NextPageProps<T> = {
+  params: T
+  searchParams: { [key: string]: string | string[] | undefined }
+}

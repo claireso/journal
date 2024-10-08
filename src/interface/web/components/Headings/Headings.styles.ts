@@ -1,3 +1,5 @@
+'use client'
+
 import { styled } from '@web/theme'
 
 export const Heading1 = styled('h1', {

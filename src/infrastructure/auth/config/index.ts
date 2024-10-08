@@ -1,6 +1,7 @@
-import type { NextAuthOptions } from 'next-auth'
+import type { NextAuthConfig } from 'next-auth'
 
-const options: Partial<NextAuthOptions> = {
+export default {
+  providers: [], /// will be overriden in the main export
   session: {
     strategy: 'jwt',
     // Seconds - How long until an idle session expires and is no longer valid.
@@ -11,7 +12,10 @@ const options: Partial<NextAuthOptions> = {
     signOut: '/auth/signout',
     error: '/auth/error',
     verifyRequest: '/auth/verify-request'
+  },
+  callbacks: {
+    authorized: async ({ auth }) => {
+      return !!auth
+    }
   }
-}
-
-export default options
+} satisfies NextAuthConfig
