@@ -1,7 +1,9 @@
 import { type Metadata, type Viewport } from 'next'
 
 import StitchesRegistry from './StitchesRegistry'
-import Layout from './Layout.client'
+
+// main styles
+import '@web/theme/styles.css'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -33,9 +35,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang={process.env.WEBSITE_LANGUAGE}>
       <body>
-        <StitchesRegistry>
-          <Layout>{children}</Layout>
-        </StitchesRegistry>
+        <StitchesRegistry>{children}</StitchesRegistry>
       </body>
     </html>
   )

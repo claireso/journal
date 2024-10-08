@@ -1,19 +1,23 @@
-const path = require('path')
+import path from 'path'
+import type { StorybookConfig } from '@storybook/react-webpack5'
+import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin'
 
 const directory = process.cwd()
 
-module.exports = {
-  framework: {
-    name: '@storybook/react-webpack5'
-  },
-  stories: [path.resolve(directory, 'src/**/*.stories.js')],
+const config: StorybookConfig = {
+  framework: '@storybook/react-webpack5',
+  stories: [path.resolve(directory, 'src/**/*.stories.{js,ts,tsx}')],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-actions',
-    '@storybook/addon-webpack5-compiler-swc'
+    '@storybook/addon-webpack5-compiler-swc',
+    '@storybook/addon-styling-webpack'
   ],
   webpackFinal: async (webpackConfig) => {
+    webpackConfig.resolve ??= {}
+    webpackConfig.plugins ??= []
+
     webpackConfig.resolve.alias = {
       ...webpackConfig.resolve.alias,
       '@utils': path.resolve(directory, 'src', 'utils'),
@@ -29,9 +33,13 @@ module.exports = {
       '@storybook/theming': path.dirname(require.resolve('@storybook/theming/package.json'))
     }
 
+    webpackConfig.plugins.push(new VanillaExtractPlugin())
+
     return webpackConfig
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript'
   }
 }
+
+export default config
