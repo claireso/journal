@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> should render select 1`] = `
+<DocumentFragment>
+  <div
+    class="styles__12zyxsm3 styles_layerStyle__12zyxsm0 styles_wrapper_inline_true__12zyxsm4 styles_layerStyle__12zyxsm1"
+  >
+    <label
+      class="styles_layerStyle__17qmo0z0"
+      for="position"
+    >
+      Position
+    </label>
+    <div
+      class="styles_layerStyle__1v4xt870"
+    >
+      <select
+        class="styles_layerStyle__1v4xt871"
+        id="position"
+        name="position"
+        required=""
+      >
+        <option
+          value="left"
+        >
+          left
+        </option>
+        <option
+          selected=""
+          value="right"
+        >
+          right
+        </option>
+      </select>
+      <div
+        class="styles_layerStyle__1v4xt872"
+      >
+        <svg
+          aria-hidden="true"
+          class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_sm__19o76jub styles_layerStyle__19o76ju2 styles_icon_variant_default__19o76juh styles_layerStyle__19o76ju8"
+          data-slot="icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

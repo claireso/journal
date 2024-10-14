@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> should render component 1`] = `
+<DocumentFragment>
+  <div
+    class="styles_layerStyle__f6ptmm0"
+    data-testid=""
+    id="modal"
+    style="opacity: 0;"
+  >
+    <div
+      class="styles_layerStyle__f6ptmm1"
+      id="modalInner"
+      style="opacity: 0; transform: translate3d(4rem, 0, 0);"
+    >
+      <div
+        class="styles__188a5vq2 styles_layerStyle__188a5vq0 styles_toolbar_variant_neutral__188a5vq3 styles_layerStyle__188a5vq1"
+      >
+        <h2
+          class="styles_layerStyle__pkh2681"
+        >
+          Modal title
+        </h2>
+        <button
+          class="styles__1mdc28jf styles_layerStyle__1mdc28j0 styles_button_variant_dark__1mdc28jj styles_layerStyle__1mdc28j4 styles_button_size_sm__1mdc28jk styles_layerStyle__1mdc28j5"
+        >
+          <svg
+            aria-hidden="true"
+            class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_sm__19o76jub styles_layerStyle__19o76ju2 styles_icon_variant_default__19o76juh styles_layerStyle__19o76ju8"
+            data-slot="icon"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 18 18 6M6 6l12 12"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="styles_layerStyle__f6ptmm2"
+      >
+        <div>
+          content
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

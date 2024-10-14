@@ -1,6 +1,7 @@
 import React, { Fragment, useCallback } from 'react'
 
-import * as S from './ColorPicker.styles'
+import { tokens } from '@web/theme/core/tokens.css'
+import * as cls from './styles.css'
 
 interface ColorPickerProps {
   colors: string[]
@@ -18,8 +19,9 @@ const ColorPicker = ({ colors, onSelect, selected, disabled }: ColorPickerProps)
   )
 
   return (
-    <S.Wrapper>
-      <S.Input
+    <div className={cls.wrapper}>
+      <input
+        className={cls.input}
         type="radio"
         name="color"
         id="default"
@@ -28,12 +30,13 @@ const ColorPicker = ({ colors, onSelect, selected, disabled }: ColorPickerProps)
         checked={!selected && !disabled}
         disabled={disabled}
       />
-      <S.Label htmlFor="default" css={{ color: '$secondary200' }}>
+      <label className={cls.label} htmlFor="default" style={{ color: tokens.colors.neutral['2extralight'] }}>
         Transparent
-      </S.Label>
+      </label>
       {colors.map((color, index) => (
         <Fragment key={index}>
-          <S.Input
+          <input
+            className={cls.input}
             type="radio"
             name="color"
             id={`color-${index}`}
@@ -42,10 +45,10 @@ const ColorPicker = ({ colors, onSelect, selected, disabled }: ColorPickerProps)
             checked={selected === color}
             disabled={disabled}
           />
-          <S.Label htmlFor={`color-${index}`} style={{ color: color }}>{`Color ${index}`}</S.Label>
+          <label className={cls.label} htmlFor={`color-${index}`} style={{ color: color }}>{`Color ${index}`}</label>
         </Fragment>
       ))}
-    </S.Wrapper>
+    </div>
   )
 }
 

@@ -2,23 +2,29 @@
 
 import { useFormStatus } from 'react-dom'
 import Input from '@web/components/form/Input'
-import SubmitButton from '@web/components/form/Buttons'
+import { ButtonPrimary } from '@web/components/Buttons'
 
 interface LoginFormProps {
   action: (payload: FormData) => any
 }
 
-const FormSubmitButton = () => {
+const SubmitButton = () => {
   const { pending } = useFormStatus()
-  return <SubmitButton value="Log in" isLoading={pending} />
+  return (
+    <>
+      <ButtonPrimary size="lg" block loading={pending}>
+        Log in
+      </ButtonPrimary>
+    </>
+  )
 }
 
 const LoginForm = ({ action }: LoginFormProps) => {
   return (
     <form action={action}>
-      <Input autoFocus name="username" label="Username" testId="username" required />
-      <Input type="password" name="password" label="Password" testId="password" required />
-      <FormSubmitButton />
+      <Input autoFocus name="username" label="Username" required />
+      <Input type="password" name="password" label="Password" required />
+      <SubmitButton />
     </form>
   )
 }

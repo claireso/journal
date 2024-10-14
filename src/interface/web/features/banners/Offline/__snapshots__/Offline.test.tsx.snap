@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Offline /> should not render component 1`] = `<DocumentFragment />`;
+
+exports[`<Offline /> should render component 1`] = `
+<DocumentFragment>
+  <div
+    class="styles__6gti4e6 styles_layerStyle__6gti4e0 styles_wrapper_status_info__6gti4ea styles_layerStyle__6gti4e4"
+  >
+    You are currently offline. Connect to the internet for access to the latest photos
+  </div>
+</DocumentFragment>
+`;

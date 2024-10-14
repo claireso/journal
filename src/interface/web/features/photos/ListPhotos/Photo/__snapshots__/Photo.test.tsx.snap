@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Photo /> should render photo (landscape center) 1`] = `
+<DocumentFragment>
+  <figure
+    class="styles__3b5bfuc styles_layerStyle__3b5bfu0 styles_figure_landscape_true__3b5bfud styles_layerStyle__3b5bfu1 styles_figure_position_center__3b5bfuh styles_layerStyle__3b5bfu6"
+    style="grid-row-start: 0;"
+  >
+    <div
+      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
+    />
+    <figcaption
+      class="styles_layerStyle__3b5bfut"
+    >
+      <span
+        class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+      >
+        <span>
+          Single photography
+        </span>
+      </span>
+      <span
+        class="styles_text__kgzpwem styles_text_size_xs__kgzpweo styles_layerStyle__kgzpwe1 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg styles_text_italic_true__kgzpwez styles_layerStyle__kgzpwec"
+      >
+        <span>
+          Janvier 2019
+        </span>
+      </span>
+    </figcaption>
+  </figure>
+</DocumentFragment>
+`;
+
+exports[`<Photo /> should render photo (landscape left) 1`] = `
+<DocumentFragment>
+  <figure
+    class="styles__3b5bfuc styles_layerStyle__3b5bfu0 styles_figure_landscape_true__3b5bfud styles_layerStyle__3b5bfu1 styles_figure_position_left__3b5bfug styles_layerStyle__3b5bfu4"
+    style="grid-row-start: 0;"
+  >
+    <div
+      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
+    />
+    <figcaption
+      class="styles_layerStyle__3b5bfut"
+    >
+      <span
+        class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+      >
+        <span>
+          Single photography
+        </span>
+      </span>
+      <span
+        class="styles_text__kgzpwem styles_text_size_xs__kgzpweo styles_layerStyle__kgzpwe1 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg styles_text_italic_true__kgzpwez styles_layerStyle__kgzpwec"
+      >
+        <span>
+          Janvier 2019
+        </span>
+      </span>
+    </figcaption>
+  </figure>
+</DocumentFragment>
+`;
+
+exports[`<Photo /> should render photo (landscape right) 1`] = `
+<DocumentFragment>
+  <figure
+    class="styles__3b5bfuc styles_layerStyle__3b5bfu0 styles_figure_landscape_true__3b5bfud styles_layerStyle__3b5bfu1 styles_figure_position_right__3b5bfui styles_layerStyle__3b5bfu7"
+    style="grid-row-start: 0;"
+  >
+    <div
+      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
+    />
+    <figcaption
+      class="styles_layerStyle__3b5bfut"
+    >
+      <span
+        class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+      >
+        <span>
+          Single photography
+        </span>
+      </span>
+      <span
+        class="styles_text__kgzpwem styles_text_size_xs__kgzpweo styles_layerStyle__kgzpwe1 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg styles_text_italic_true__kgzpwez styles_layerStyle__kgzpwec"
+      >
+        <span>
+          Janvier 2019
+        </span>
+      </span>
+    </figcaption>
+  </figure>
+</DocumentFragment>
+`;
+
+exports[`<Photo /> should render photo (portrait center) 1`] = `
+<DocumentFragment>
+  <figure
+    class="styles__3b5bfuc styles_layerStyle__3b5bfu0 styles_figure_landscape_true__3b5bfud styles_layerStyle__3b5bfu1 styles_figure_position_center__3b5bfuh styles_layerStyle__3b5bfu6"
+    style="grid-row-start: 0;"
+  >
+    <div
+      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
+    />
+    <figcaption
+      class="styles_layerStyle__3b5bfut"
+    >
+      <span
+        class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+      >
+        <span>
+          Single photography
+        </span>
+      </span>
+      <span
+        class="styles_text__kgzpwem styles_text_size_xs__kgzpweo styles_layerStyle__kgzpwe1 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg styles_text_italic_true__kgzpwez styles_layerStyle__kgzpwec"
+      >
+        <span>
+          Janvier 2019
+        </span>
+      </span>
+    </figcaption>
+  </figure>
+</DocumentFragment>
+`;
+
+exports[`<Photo /> should render photo (square center) 1`] = `
+<DocumentFragment>
+  <figure
+    class="styles__3b5bfuc styles_layerStyle__3b5bfu0 styles_figure_landscape_true__3b5bfud styles_layerStyle__3b5bfu1 styles_figure_position_center__3b5bfuh styles_layerStyle__3b5bfu6"
+    style="grid-row-start: 0;"
+  >
+    <div
+      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
+    />
+    <figcaption
+      class="styles_layerStyle__3b5bfut"
+    >
+      <span
+        class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+      >
+        <span>
+          Single photography
+        </span>
+      </span>
+      <span
+        class="styles_text__kgzpwem styles_text_size_xs__kgzpweo styles_layerStyle__kgzpwe1 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg styles_text_italic_true__kgzpwez styles_layerStyle__kgzpwec"
+      >
+        <span>
+          Janvier 2019
+        </span>
+      </span>
+    </figcaption>
+  </figure>
+</DocumentFragment>
+`;

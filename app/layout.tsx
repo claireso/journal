@@ -1,7 +1,5 @@
 import { type Metadata, type Viewport } from 'next'
 
-import StitchesRegistry from './StitchesRegistry'
-
 // main styles
 import '@web/theme/styles.css'
 
@@ -34,9 +32,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang={process.env.WEBSITE_LANGUAGE}>
-      <body>
-        <StitchesRegistry>{children}</StitchesRegistry>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

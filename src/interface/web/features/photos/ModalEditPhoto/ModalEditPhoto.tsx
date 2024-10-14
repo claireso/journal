@@ -32,12 +32,7 @@ const ModalEditPhoto = ({ id, onSubmit, onCancel, isProcessing = false }: ModalE
     return null
   }
 
-  return (
-    <>
-      <Heading1>Edit photo</Heading1>
-      <FormPhoto<PhotoUpdateDto> onSubmit={handleSubmit} photo={photo} isProcessing={isProcessing} />
-    </>
-  )
+  return <FormPhoto<PhotoUpdateDto> onSubmit={handleSubmit} photo={photo} isProcessing={isProcessing} />
 }
 
 export default memo(ModalEditPhoto)

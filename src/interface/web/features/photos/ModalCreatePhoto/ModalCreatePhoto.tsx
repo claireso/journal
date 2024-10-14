@@ -10,12 +10,7 @@ interface ModalCreatePhotoProps {
 }
 
 const ModalCreatePhoto = ({ onSubmit, isProcessing = false }: ModalCreatePhotoProps) => {
-  return (
-    <>
-      <Heading2>Create a photo</Heading2>
-      <FormPhoto<PhotoInsertDto> onSubmit={onSubmit} isProcessing={isProcessing} />
-    </>
-  )
+  return <FormPhoto<PhotoInsertDto> onSubmit={onSubmit} isProcessing={isProcessing} />
 }
 
 export default memo(ModalCreatePhoto)

@@ -1,24 +1,19 @@
 'use client'
 import React, { useCallback } from 'react'
 
-import { Group } from '../Group'
+import Group from '../Group'
 import Label from '../Label'
 
-import * as S from './Input.styles'
+import * as cls from './styles.css'
 
-interface InputProps {
+interface InputProps extends Omit<React.ComponentProps<'input'>, 'onChange'> {
   name: string
   label: string
-  testId?: string
-  type?: string
-  value?: string
-  required?: boolean
-  autoFocus?: boolean
   onChange?: (name: string, value: string) => void
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { onChange, name, label, value = '', type = 'text', required = false, autoFocus = false, testId } = props
+  const { onChange, name, label, value = '', type = 'text', required = false, autoFocus = false } = props
 
   const handleChange = useCallback(
     (event: React.FormEvent<HTMLInputElement>) => {
@@ -30,10 +25,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return (
     <Group>
       <Label htmlFor={name}>{label}</Label>
-      <S.StyledInput
+      <input
         ref={ref}
+        className={cls.input}
         id={name}
-        data-testid={testId}
         type={type}
         name={name}
         defaultValue={value}

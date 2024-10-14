@@ -1,6 +1,5 @@
 import fs from 'fs'
 import { Jimp } from 'jimp'
-import { MediaType } from '@domain/entities'
 import { MediaRepository } from '@domain/repositories'
 import MediaRepositoryInMemoryImpl from '@infrastructure/repositories/media/MediaRepositoryInMemoryImpl'
 import MediaService from './MediaService'

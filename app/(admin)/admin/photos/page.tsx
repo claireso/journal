@@ -12,14 +12,17 @@ import ModalCreatePhoto from '@web/features/photos/ModalCreatePhoto'
 import ModalEditPhoto from '@web/features/photos/ModalEditPhoto'
 
 import { Loader } from '@web/components/Loader'
-import { IconPlus } from '@web/components/Icons'
-import { ListHeader } from '@web/components/List'
+import Text from '@web/components/Text'
+import Icon from '@web/components/Icons'
+import Toolbar from '@web/components/Toolbar'
 import { ButtonPrimary } from '@web/components/Buttons'
-import { Heading1 } from '@web/components/Headings'
+import { Heading2 } from '@web/components/Headings'
 import Modal from '@web/components/Modal'
 import Pager from '@web/components/Pager'
 import EmptyZone from '@web/components/EmptyZone'
 import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
+
+import * as cls from './styles.css'
 
 enum Action {
   CREATE = 'create',
@@ -40,7 +43,7 @@ const Photos = () => {
 
   const filters = { page: (page as string) ?? '1' }
 
-  const { isFetching, isSuccess, isFetched, error, data } = usePhotos(filters)
+  const { isSuccess, isFetched, error, data } = usePhotos(filters)
 
   const { mutate: createPhoto, isPending: isCreating } = useCreatePhoto(filters)
   const { mutate: editPhoto, isPending: isEditing } = useEditPhoto(filters)
@@ -149,15 +152,22 @@ const Photos = () => {
 
   return (
     <>
-      <ListHeader>
-        <Heading1 data-testid="list-heading">Your photos {data?.pager && <span>({data.pager.count})</span>}</Heading1>
-        <ButtonPrimary data-testid="button-create" onClick={onClickCreate}>
-          Add a new photo
-          <IconPlus />
+      <Toolbar className={cls.header}>
+        <Heading2>
+          Your photos{' '}
+          {data?.pager && (
+            <Text as="span" color="neutral">
+              ({data.pager.count})
+            </Text>
+          )}
+        </Heading2>
+        <ButtonPrimary onClick={onClickCreate}>
+          <span className={cls.buttonCreateText}>Add a new photo</span>
+          <Icon name="plus" size="sm" />
         </ButtonPrimary>
-      </ListHeader>
+      </Toolbar>
 
-      {isFetching && <Loader />}
+      {!isFetched && <Loader />}
 
       {isFetched && isSuccess && (
         <>
@@ -173,19 +183,19 @@ const Photos = () => {
       )}
 
       {action === Action.CREATE && (
-        <Modal onClose={onCloseModal}>
+        <Modal title="Create a photo" onClose={onCloseModal}>
           <ModalCreatePhoto onSubmit={onCreatePhoto} isProcessing={isCreating} />
         </Modal>
       )}
 
       {action === Action.EDIT && (
-        <Modal onClose={onCloseModal}>
+        <Modal title="Edit photo" onClose={onCloseModal}>
           <ModalEditPhoto id={photoId} onSubmit={onEditPhoto} onCancel={onCloseModal} isProcessing={isEditing} />
         </Modal>
       )}
 
       {action === Action.DELETE && (
-        <Modal onClose={onCloseModal}>
+        <Modal title="Delete photo?" onClose={onCloseModal}>
           <ModalDeletePhoto id={photoId} onConfirm={onDeletePhoto} onCancel={onCloseModal} isProcessing={isDeleting} />
         </Modal>
       )}

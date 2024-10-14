@@ -1,3 +1,3 @@
-import Box from './Box.styles'
+import Box from './Box'
 
 export default Box

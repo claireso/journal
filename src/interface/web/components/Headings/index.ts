@@ -1,1 +1,1 @@
-export * from './Headings.styles'
+export * from './Headings'
