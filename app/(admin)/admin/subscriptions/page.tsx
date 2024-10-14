@@ -10,12 +10,15 @@ import ModalDeleteSubscription from '@web/features/subscriptions/ModalDeleteSubs
 
 import { useSubscriptions, useDeleteSubscription } from '@web/features/subscriptions/useSubscriptions'
 
+import Text from '@web/components/Text'
 import { Loader } from '@web/components/Loader'
-import { ListHeader } from '@web/components/List'
-import { Heading1 } from '@web/components/Headings'
+import Toolbar from '@web/components/Toolbar'
+import { Heading2 } from '@web/components/Headings'
 import Modal from '@web/components/Modal'
 import Pager from '@web/components/Pager'
 import EmptyZone from '@web/components/EmptyZone'
+
+import * as cls from './styles.css'
 
 enum Action {
   CREATE = 'create',
@@ -36,7 +39,7 @@ const Subscriptions = () => {
 
   const filters = { page: (page as string) ?? '1' }
 
-  const { isFetching, isFetched, isSuccess, data, error } = useSubscriptions(filters)
+  const { isFetched, isSuccess, data, error } = useSubscriptions(filters)
 
   const { mutate: deleteSubscription, isPending: isDeleting } = useDeleteSubscription(filters)
 
@@ -92,13 +95,18 @@ const Subscriptions = () => {
 
   return (
     <>
-      <ListHeader>
-        <Heading1 data-testid="list-heading">
-          Your subscriptions {data?.pager && <span>({data.pager.count})</span>}
-        </Heading1>
-      </ListHeader>
+      <Toolbar className={cls.header}>
+        <Heading2 data-testid="list-heading">
+          Your subscriptions{' '}
+          {data?.pager && (
+            <Text as="span" color="neutral">
+              ({data.pager.count})
+            </Text>
+          )}
+        </Heading2>
+      </Toolbar>
 
-      {isFetching && <Loader />}
+      {!isFetched && <Loader />}
 
       {isFetched && isSuccess && (
         <>
@@ -114,7 +122,7 @@ const Subscriptions = () => {
       )}
 
       {action === Action.DELETE && (
-        <Modal onClose={onCloseModal}>
+        <Modal title="Delete subscription?" onClose={onCloseModal}>
           <ModalDeleteSubscription
             id={subscriptionId}
             onConfirm={onDeleteSubscription}

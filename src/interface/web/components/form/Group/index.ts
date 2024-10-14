@@ -1,1 +1,3 @@
-export { Group, GroupInline } from './Group.styles'
+import Group from './Group'
+
+export default Group

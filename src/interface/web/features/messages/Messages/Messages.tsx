@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
@@ -6,8 +8,8 @@ import FlashGroup from '@web/components/FlashGroup'
 import useMessages from '@web/features/messages/useMessages'
 
 const Messages = () => {
-  const pathname = usePathname()
   const [messages, { closeMessage, closeAllMessages }] = useMessages()
+  const pathname = usePathname()
 
   useEffect(() => {
     messages?.length && closeAllMessages()

@@ -16,15 +16,11 @@ const requester = buildRequester({
   ApiError: ApiError
 })
 
-export const getPhotos = (page: string, options?: RequestInit) =>
-  requester.get<PhotosDto>(
-    '/photos',
-    { page },
-    {
-      next: { tags: ['photos_pagination_web'] },
-      ...(options || {})
-    }
-  )
+export const getPhotos = (data: { page: string; limit?: number }, options?: RequestInit) =>
+  requester.get<PhotosDto>('/photos', data, {
+    next: { tags: ['photos_pagination_web'] },
+    ...(options || {})
+  })
 
 export const getPhoto = (id: number, options?: RequestInit) => requester.get<PhotoDto>(`/photos/${id}`, {}, options)
 

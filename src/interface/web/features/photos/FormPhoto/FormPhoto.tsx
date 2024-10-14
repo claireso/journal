@@ -7,13 +7,15 @@ import Input from '@web/components/form/Input'
 import Select from '@web/components/form/Select'
 import Uploader from '@web/components/form/Uploader'
 import ColorPicker from '@web/components/form/ColorPicker'
-import { Group } from '@web/components/form/Group'
+import Group from '@web/components/form/Group'
 import Label from '@web/components/form/Label'
-import SubmitButton from '@web/components/form/Buttons'
 import Flash from '@web/components/Flash'
+import { ButtonPrimary } from '@web/components/Buttons'
 
 import useColorsExtractor from '@web/hooks/useColorsExtractor'
 import { useCreateMedia } from '@web/features/media/useMedia'
+
+import * as cls from './styles.css'
 
 const ALLOWED_MIMETYPES = ['image/jpeg', 'image/jpg']
 
@@ -75,9 +77,9 @@ const Form = <T extends PhotoInsertDto | PhotoUpdateDto>(props: FormProps<T>) =>
 
   return (
     <form ref={formEl} method="POST" action="" encType="multipart/form-data" onSubmit={handleSubmit}>
-      <Input testId="title" name="title" label="Title" value={photo?.title || ''} />
+      <Input name="title" label="Title" value={photo?.title || ''} />
 
-      <Input testId="description" name="description" label="Description" value={photo?.description || ''} />
+      <Input name="description" label="Description" value={photo?.description || ''} />
 
       <Group>
         <Label htmlFor="file">Photo</Label>
@@ -126,7 +128,11 @@ const Form = <T extends PhotoInsertDto | PhotoUpdateDto>(props: FormProps<T>) =>
         ]}
       />
 
-      <SubmitButton value={photo ? 'Save' : 'Create'} isLoading={isProcessing} data-testid="submit" />
+      <div className={cls.submit}>
+        <ButtonPrimary type="submit" loading={isProcessing} size="lg">
+          {photo ? 'Save' : 'Create'}
+        </ButtonPrimary>
+      </div>
     </form>
   )
 }

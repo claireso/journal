@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/jest-globals'
+import '@vanilla-extract/css/disableRuntimeStyles'
 
 window.scroll = () => {}
 window.scrollTo = () => {}

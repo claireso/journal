@@ -1,1 +1,3 @@
-export { Toolbar as default } from './Toolbar.styles'
+import Toolbar from './Toolbar'
+
+export default Toolbar

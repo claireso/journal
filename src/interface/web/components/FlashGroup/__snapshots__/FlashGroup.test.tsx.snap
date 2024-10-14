@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FlashGroup /> should close messages 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="styles__6gti4e6 styles_layerStyle__6gti4e0 styles_wrapper_status_success__6gti4e9 styles_layerStyle__6gti4e3"
+    >
+      Success message
+      <button
+        class="styles_layerStyle__6gti4ec"
+      >
+        <svg
+          aria-hidden="true"
+          class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_md__19o76juc styles_layerStyle__19o76ju3 styles_icon_variant_default__19o76juh styles_layerStyle__19o76ju8"
+          data-slot="icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 18 18 6M6 6l12 12"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="styles__6gti4e6 styles_layerStyle__6gti4e0 styles_wrapper_status_error__6gti4e8 styles_layerStyle__6gti4e2 styles_wrapper_separator_true__6gti4eb styles_layerStyle__6gti4e5"
+    >
+      Error message
+      <button
+        class="styles_layerStyle__6gti4ec"
+      >
+        <svg
+          aria-hidden="true"
+          class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_md__19o76juc styles_layerStyle__19o76ju3 styles_icon_variant_default__19o76juh styles_layerStyle__19o76ju8"
+          data-slot="icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 18 18 6M6 6l12 12"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<FlashGroup /> should render two messages 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="styles__6gti4e6 styles_layerStyle__6gti4e0 styles_wrapper_status_success__6gti4e9 styles_layerStyle__6gti4e3"
+    >
+      Success message
+      <button
+        class="styles_layerStyle__6gti4ec"
+      >
+        <svg
+          aria-hidden="true"
+          class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_md__19o76juc styles_layerStyle__19o76ju3 styles_icon_variant_default__19o76juh styles_layerStyle__19o76ju8"
+          data-slot="icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 18 18 6M6 6l12 12"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="styles__6gti4e6 styles_layerStyle__6gti4e0 styles_wrapper_status_error__6gti4e8 styles_layerStyle__6gti4e2 styles_wrapper_separator_true__6gti4eb styles_layerStyle__6gti4e5"
+    >
+      Error message
+      <button
+        class="styles_layerStyle__6gti4ec"
+      >
+        <svg
+          aria-hidden="true"
+          class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_md__19o76juc styles_layerStyle__19o76ju3 styles_icon_variant_default__19o76juh styles_layerStyle__19o76ju8"
+          data-slot="icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 18 18 6M6 6l12 12"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

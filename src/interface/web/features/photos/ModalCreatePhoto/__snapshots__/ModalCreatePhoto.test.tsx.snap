@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModalCreatePhoto /> should render component 1`] = `
+<DocumentFragment>
+  <form
+    action=""
+    enctype="multipart/form-data"
+    method="POST"
+  >
+    <div
+      class="styles__12zyxsm3 styles_layerStyle__12zyxsm0 styles_wrapper_inline_false__12zyxsm5 styles_layerStyle__12zyxsm2"
+    >
+      <label
+        class="styles_layerStyle__17qmo0z0"
+        for="title"
+      >
+        Title
+      </label>
+      <input
+        class="styles_layerStyle__1d6x3p80"
+        id="title"
+        name="title"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="styles__12zyxsm3 styles_layerStyle__12zyxsm0 styles_wrapper_inline_false__12zyxsm5 styles_layerStyle__12zyxsm2"
+    >
+      <label
+        class="styles_layerStyle__17qmo0z0"
+        for="description"
+      >
+        Description
+      </label>
+      <input
+        class="styles_layerStyle__1d6x3p80"
+        id="description"
+        name="description"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="styles__12zyxsm3 styles_layerStyle__12zyxsm0 styles_wrapper_inline_false__12zyxsm5 styles_layerStyle__12zyxsm2"
+    >
+      <label
+        class="styles_layerStyle__17qmo0z0"
+        for="file"
+      >
+        Photo
+      </label>
+      <div
+        class="styles_layerStyle__xxgli80"
+      >
+        <div>
+          <div
+            class="styles_layerStyle__xxgli86"
+          >
+            <svg
+              aria-hidden="true"
+              class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_lg__19o76jud styles_layerStyle__19o76ju4 styles_icon_variant_primary__19o76juf styles_layerStyle__19o76ju6"
+              data-slot="icon"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span
+              class="styles_text__kgzpwem styles_text_size_base__kgzpweq styles_layerStyle__kgzpwe3 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+            >
+              Upload new photo
+            </span>
+            <span
+              class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+            >
+              (only image/jpeg, image/jpg)
+            </span>
+          </div>
+          <input
+            accept="image/jpeg,image/jpg"
+            class="styles_layerStyle__xxgli87"
+            name="file"
+            required=""
+            type="file"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="styles__12zyxsm3 styles_layerStyle__12zyxsm0 styles_wrapper_inline_true__12zyxsm4 styles_layerStyle__12zyxsm1"
+    >
+      <label
+        class="styles_layerStyle__17qmo0z0"
+        for="position"
+      >
+        Position
+      </label>
+      <div
+        class="styles_layerStyle__1v4xt870"
+      >
+        <select
+          class="styles_layerStyle__1v4xt871"
+          id="position"
+          name="position"
+          required=""
+        >
+          <option
+            selected=""
+            value="left"
+          >
+            Left
+          </option>
+          <option
+            value="center"
+          >
+            Center
+          </option>
+          <option
+            value="right"
+          >
+            Right
+          </option>
+        </select>
+        <div
+          class="styles_layerStyle__1v4xt872"
+        >
+          <svg
+            aria-hidden="true"
+            class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_sm__19o76jub styles_layerStyle__19o76ju2 styles_icon_variant_default__19o76juh styles_layerStyle__19o76ju8"
+            data-slot="icon"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      class="styles_layerStyle__1g5jao10"
+    >
+      <button
+        class="styles__1mdc28jf styles_layerStyle__1mdc28j0 styles_button_variant_primary__1mdc28jh styles_layerStyle__1mdc28j2 styles_button_size_lg__1mdc28jm styles_layerStyle__1mdc28j7"
+        type="submit"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
+`;

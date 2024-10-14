@@ -2,7 +2,6 @@ import React from 'react'
 
 import type { SubscriptionsDto } from '@dto'
 
-import { List } from '@web/components/List'
 import Subscription from './Subscription'
 
 interface AdminListSubscriptionsProps {
@@ -12,11 +11,11 @@ interface AdminListSubscriptionsProps {
 
 const AdminListSubscriptions = ({ subscriptions, onDelete }: AdminListSubscriptionsProps) => {
   return (
-    <List>
+    <ul>
       {subscriptions.map((subscription) => (
         <Subscription key={subscription.id} {...subscription} onDelete={onDelete} />
       ))}
-    </List>
+    </ul>
   )
 }
 

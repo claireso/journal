@@ -1,7 +1,6 @@
-'use client'
-
 import Box from '@web/components/Box'
-import * as S from './Layout.styles'
+
+import * as cls from './styles.css'
 
 interface AuthLayoutProps {
   children: React.ReactNode
@@ -9,11 +8,9 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <S.Wrapper>
-      <main>
-        <Box>{children}</Box>
-      </main>
-    </S.Wrapper>
+    <main className={cls.main}>
+      <Box className={cls.content}>{children}</Box>
+    </main>
   )
 }
 

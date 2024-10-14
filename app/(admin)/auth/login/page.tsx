@@ -7,6 +7,8 @@ import LoginForm from '@web/features/user/LoginForm'
 import { Heading1 } from '@web/components/Headings'
 import Flash from '@web/components/Flash'
 
+import * as cls from './styles.css'
+
 const LoginPage = ({ searchParams }: NextPageProps<{}>) => {
   const { callbackUrl = '/admin/photos', error: errorType } = searchParams
 
@@ -38,11 +40,11 @@ const LoginPage = ({ searchParams }: NextPageProps<{}>) => {
   return (
     <>
       {error && (
-        <Flash status="error" css={{ margin: 0, position: 'fixed', top: 0, left: 0, width: '100%' }}>
+        <Flash className={cls.flash} status="error">
           {error.message}
         </Flash>
       )}
-      <Heading1>Login</Heading1>
+      <Heading1 className={cls.heading}>Login</Heading1>
       <LoginForm action={authenticate} />
     </>
   )

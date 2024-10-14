@@ -36,12 +36,11 @@
   },
   "homepage": "https://github.com/claireso/journal#readme",
   "dependencies": {
-    "@stitches/react": "1.2.8",
+    "@heroicons/react": "2.1.5",
     "@tanstack/react-query": "5.51.16",
     "@tanstack/react-query-devtools": "5.51.16",
     "@vanilla-extract/css": "1.16.0",
     "@vanilla-extract/recipes": "0.5.5",
-    "@vanilla-extract/sprinkles": "1.6.3",
     "colorthief": "2.4.0",
     "date-fns": "3.6.0",
     "jimp": "1.6.0",

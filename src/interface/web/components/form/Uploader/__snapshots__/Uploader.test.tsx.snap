@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Uploader /> should change file 1`] = `
+<DocumentFragment>
+  <div
+    class="styles_layerStyle__xxgli80"
+  >
+    <div
+      class="styles__xxgli83 styles_layerStyle__xxgli81"
+    >
+      <img
+        alt=""
+        class="styles_layerStyle__xxgli85"
+        src="data:image/jpeg;base64,KOKMkOKWoV/ilqEp"
+      />
+    </div>
+    <div>
+      <div
+        class="styles_layerStyle__xxgli86"
+      >
+        <svg
+          aria-hidden="true"
+          class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_lg__19o76jud styles_layerStyle__19o76ju4 styles_icon_variant_primary__19o76juf styles_layerStyle__19o76ju6"
+          data-slot="icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span
+          class="styles_text__kgzpwem styles_text_size_base__kgzpweq styles_layerStyle__kgzpwe3 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+        >
+          Upload new photo
+        </span>
+        <span
+          class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+        >
+          (only image/jpeg, image/png)
+        </span>
+      </div>
+      <input
+        accept="image/jpeg,image/png"
+        class="styles_layerStyle__xxgli87"
+        name="uploader"
+        type="file"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Uploader /> should render error 1`] = `
+<DocumentFragment>
+  <div
+    class="styles_layerStyle__xxgli80"
+  >
+    <div>
+      <div
+        class="styles_layerStyle__xxgli86"
+      >
+        <svg
+          aria-hidden="true"
+          class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_lg__19o76jud styles_layerStyle__19o76ju4 styles_icon_variant_primary__19o76juf styles_layerStyle__19o76ju6"
+          data-slot="icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span
+          class="styles_text__kgzpwem styles_text_size_base__kgzpweq styles_layerStyle__kgzpwe3 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+        >
+          Upload new photo
+        </span>
+        <span
+          class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+        >
+          (only image/jpeg, image/png)
+        </span>
+      </div>
+      <input
+        accept="image/jpeg,image/png"
+        class="styles_layerStyle__xxgli87"
+        name="uploader"
+        type="file"
+      />
+    </div>
+    <div
+      class="styles__6gti4e6 styles_layerStyle__6gti4e0 styles_wrapper_status_error__6gti4e8 styles_layerStyle__6gti4e2"
+    >
+      This file type is not allowed
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Uploader /> should render uploader 1`] = `
+<DocumentFragment>
+  <div
+    class="styles_layerStyle__xxgli80"
+  >
+    <div>
+      <div
+        class="styles_layerStyle__xxgli86"
+      >
+        <svg
+          aria-hidden="true"
+          class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_lg__19o76jud styles_layerStyle__19o76ju4 styles_icon_variant_primary__19o76juf styles_layerStyle__19o76ju6"
+          data-slot="icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span
+          class="styles_text__kgzpwem styles_text_size_base__kgzpweq styles_layerStyle__kgzpwe3 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+        >
+          Upload new photo
+        </span>
+        <span
+          class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+        >
+          (only image/jpeg, image/png)
+        </span>
+      </div>
+      <input
+        accept="image/jpeg,image/png"
+        class="styles_layerStyle__xxgli87"
+        name="uploader"
+        type="file"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Uploader /> should render uploader with preview 1`] = `
+<DocumentFragment>
+  <div
+    class="styles_layerStyle__xxgli80"
+  >
+    <div
+      class="styles__xxgli83 styles_layerStyle__xxgli81"
+    >
+      <img
+        alt=""
+        class="styles_layerStyle__xxgli85"
+        src="file.jpg"
+      />
+    </div>
+    <div>
+      <div
+        class="styles_layerStyle__xxgli86"
+      >
+        <svg
+          aria-hidden="true"
+          class="styles__19o76ju9 styles_layerStyle__19o76ju0 styles_icon_size_lg__19o76jud styles_layerStyle__19o76ju4 styles_icon_variant_primary__19o76juf styles_layerStyle__19o76ju6"
+          data-slot="icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span
+          class="styles_text__kgzpwem styles_text_size_base__kgzpweq styles_layerStyle__kgzpwe3 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+        >
+          Upload new photo
+        </span>
+        <span
+          class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_neutral__kgzpwex styles_layerStyle__kgzpwea styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
+        >
+          (only image/jpeg, image/png)
+        </span>
+      </div>
+      <input
+        accept="image/jpeg,image/png"
+        class="styles_layerStyle__xxgli87"
+        name="uploader"
+        type="file"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
