@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-interface AnimatedImage {
+type ImageProps = Omit<React.ComponentProps<'img'>, 'alt' | 'src'>
+
+interface AnimatedImage extends ImageProps {
   src: string
 }
 

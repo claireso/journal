@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 
-import { ButtonPrimary, ButtonSecondary } from '@web/components/Buttons'
-import { Heading1 } from '@web/components/Headings'
-import Text from '@web/components/Text'
+import { ButtonDanger, ButtonSecondary } from '@web/components/Buttons'
+
+import * as cls from './styles.css'
 
 interface ModalDeleteSubscriptionProps {
   id: number
@@ -18,14 +18,15 @@ const ModalDeleteSubscription = ({ onConfirm, onCancel, isProcessing = false, id
 
   return (
     <>
-      <Heading1>Delete subscription?</Heading1>
       <p>This can’t be undone</p>
-      <Text align="right">
-        <ButtonSecondary onClick={onCancel}>Cancel</ButtonSecondary>
-        <ButtonPrimary onClick={onClickConfirm} isLoading={isProcessing}>
+      <div className={cls.confirm}>
+        <ButtonSecondary size="lg" onClick={onCancel}>
+          Cancel
+        </ButtonSecondary>
+        <ButtonDanger size="lg" onClick={onClickConfirm} loading={isProcessing}>
           Delete
-        </ButtonPrimary>
-      </Text>
+        </ButtonDanger>
+      </div>
     </>
   )
 }

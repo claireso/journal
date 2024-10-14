@@ -9,16 +9,12 @@ import { MessagesProvider } from '@web/features/messages/useMessages'
 
 import * as api from '@web/services/api'
 
-import * as S from './Layout.styles'
-
 interface LayoutProps {
   children: React.ReactNode
 }
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter()
-
-  S.css()
 
   const queryClient = useMemo(
     () =>

@@ -1,7 +1,7 @@
 import { type Metadata } from 'next'
 import Script from 'next/script'
 
-import Layout from './Layout.client'
+import * as cls from './styles.css'
 
 import { TranslationsProvider } from '@web/hooks/useTranslations'
 import { MessagesProvider } from '@web/features/messages/useMessages'
@@ -27,7 +27,7 @@ export default function JournalLayout({ children }: JournalLayoutProps) {
       <BannerOffline />
       <BannerNotifications />
       <MessagesProvider>
-        <Layout>{children}</Layout>
+        <main className={cls.main}>{children}</main>
       </MessagesProvider>
       <Script
         id="service-worker"

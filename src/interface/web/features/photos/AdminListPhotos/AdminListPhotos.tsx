@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { PhotosDto } from '@dto'
-import { List } from '@web/components/List'
 import Photo from './Photo'
+
+import * as cls from './styles.css'
 
 interface AdminListPhotos {
   photos?: PhotosDto['items']
@@ -12,11 +13,11 @@ interface AdminListPhotos {
 
 const AdminListPhotos = ({ photos = [], onDelete, onEdit }: AdminListPhotos) => {
   return (
-    <List>
+    <ul className={cls.list}>
       {photos.map((photo) => (
         <Photo key={photo.id} {...photo} onDelete={onDelete} onEdit={onEdit} />
       ))}
-    </List>
+    </ul>
   )
 }
 

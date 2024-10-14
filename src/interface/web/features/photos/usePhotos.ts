@@ -147,7 +147,7 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
  */
 export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
   const getPhotos = async ({ signal }: QueryFunctionContext) => {
-    return await api.getPhotos(filters.page, { signal })
+    return await api.getPhotos({ page: filters.page, limit: 20 }, { signal })
   }
 
   const queryOptions = {

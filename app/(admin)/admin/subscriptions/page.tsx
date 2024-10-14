@@ -11,11 +11,13 @@ import ModalDeleteSubscription from '@web/features/subscriptions/ModalDeleteSubs
 import { useSubscriptions, useDeleteSubscription } from '@web/features/subscriptions/useSubscriptions'
 
 import { Loader } from '@web/components/Loader'
-import { ListHeader } from '@web/components/List'
-import { Heading1 } from '@web/components/Headings'
+import Toolbar from '@web/components/Toolbar'
+import { Heading2 } from '@web/components/Headings'
 import Modal from '@web/components/Modal'
 import Pager from '@web/components/Pager'
 import EmptyZone from '@web/components/EmptyZone'
+
+import * as cls from './styles.css.ts'
 
 enum Action {
   CREATE = 'create',
@@ -92,11 +94,11 @@ const Subscriptions = () => {
 
   return (
     <>
-      <ListHeader>
-        <Heading1 data-testid="list-heading">
+      <Toolbar className={cls.header}>
+        <Heading2 data-testid="list-heading">
           Your subscriptions {data?.pager && <span>({data.pager.count})</span>}
-        </Heading1>
-      </ListHeader>
+        </Heading2>
+      </Toolbar>
 
       {isFetching && <Loader />}
 
@@ -114,7 +116,7 @@ const Subscriptions = () => {
       )}
 
       {action === Action.DELETE && (
-        <Modal onClose={onCloseModal}>
+        <Modal title="Delete subscription?" onClose={onCloseModal}>
           <ModalDeleteSubscription
             id={subscriptionId}
             onConfirm={onDeleteSubscription}

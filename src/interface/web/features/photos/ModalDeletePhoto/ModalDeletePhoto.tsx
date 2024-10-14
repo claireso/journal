@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
 
 import type { PhotoDto } from '@dto'
-import { ButtonPrimary, ButtonSecondary } from '@web/components/Buttons'
-import { Heading1 } from '@web/components/Headings'
-import Text from '@web/components/Text'
+import { ButtonDanger, ButtonSecondary } from '@web/components/Buttons'
+
+import * as cls from './styles.css'
 
 interface ModalDeletePhoto {
   id: PhotoDto['id']
@@ -19,14 +19,15 @@ const ModalDeletePhoto = ({ onCancel, onConfirm, id, isProcessing = false }: Mod
 
   return (
     <>
-      <Heading1>Delete photo?</Heading1>
       <p>This can’t be undone</p>
-      <Text align="right">
-        <ButtonSecondary onClick={onCancel}>Cancel</ButtonSecondary>
-        <ButtonPrimary onClick={onClickConfirm} isLoading={isProcessing}>
+      <div className={cls.confirm}>
+        <ButtonSecondary size="lg" onClick={onCancel}>
+          Cancel
+        </ButtonSecondary>
+        <ButtonDanger size="lg" onClick={onClickConfirm} loading={isProcessing}>
           Delete
-        </ButtonPrimary>
-      </Text>
+        </ButtonDanger>
+      </div>
     </>
   )
 }

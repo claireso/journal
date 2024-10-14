@@ -14,7 +14,7 @@ interface PageProps {
 
 async function fetchPhotos(page?: string) {
   try {
-    return await api.getPhotos(page ?? '1')
+    return await api.getPhotos({ page: page ?? '1' })
   } catch (err) {
     if (err instanceof ApiError) {
       if (err.response.status === 404) {
