@@ -1,5 +1,11 @@
 # journal
 
+## 2.2.0
+
+### Minor Changes
+
+- ed35d31: New admin user interface
+
 ## 2.1.0
 
 ### Minor Changes
