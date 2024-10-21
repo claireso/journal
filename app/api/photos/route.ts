@@ -11,6 +11,7 @@ import logger from '@infrastructure/logger'
 const getPaginatedPhotos = async (request: NextRequest) => {
   const { searchParams } = new URL(request.url)
   let page = searchParams.get('page') as string | number
+  let limit = searchParams.get('limit') as string | number
 
   page = Number(page)
 
@@ -18,7 +19,14 @@ const getPaginatedPhotos = async (request: NextRequest) => {
     throw new BadRequestError('Incorrect search parameter “page”', { cause: { page } })
   }
 
-  const paginatedPhotos = await photoService.getPaginatedPhotos(page ?? 1)
+  if (limit) {
+    limit = Number(limit)
+    if (isNaN(limit) || limit < 1) {
+      throw new BadRequestError('Incorrect search parameter “limit”', { cause: { limit } })
+    }
+  }
+
+  const paginatedPhotos = await photoService.getPaginatedPhotos(page ?? 1, limit as number)
   const paginatedPhotosDto = mapPhotosToPhotosDto(paginatedPhotos)
 
   return Response.json(paginatedPhotosDto, { status: 200 })

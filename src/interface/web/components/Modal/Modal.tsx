@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconClose } from '@web/components/Icons'
+import Toolbar from '../Toolbar'
+import { Heading2 } from '../Headings'
+import Icon from '@web/components/Icons'
 
-import * as S from './Modal.styles'
+import * as cls from './styles.css'
+import { ButtonDark } from '../Buttons'
 
 const ANIMATION_DURATION = 300
 
@@ -47,11 +50,12 @@ const animationsConfig = {
 
 interface ModalProps {
   testId?: string
+  title: string
   children: React.ReactNode
   onClose: (options?: NavigateOptions) => void
 }
 
-const Modal = ({ testId = '', children, onClose = () => {} }: ModalProps) => {
+const Modal = ({ testId = '', title, children, onClose = () => {} }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(true)
   const wrapper = useRef<HTMLDivElement>(null)
   const content = useRef<HTMLDivElement>(null)
@@ -104,20 +108,24 @@ const Modal = ({ testId = '', children, onClose = () => {} }: ModalProps) => {
   }, [onKeyDown])
 
   return (
-    <S.Wrapper
+    <div
+      className={cls.wrapper}
       ref={wrapper}
       id="modal"
       data-testid={testId}
       onClick={onClick}
       style={animationsConfig.close.wrapper.keyframes[0]}
     >
-      <S.Inner id="modalInner" ref={content} style={animationsConfig.close.content.keyframes[0]}>
-        <S.ButtonClose onClick={close}>
-          <IconClose width="20" height="26" />
-        </S.ButtonClose>
-        {children}
-      </S.Inner>
-    </S.Wrapper>
+      <div className={cls.inner} id="modalInner" ref={content} style={animationsConfig.close.content.keyframes[0]}>
+        <Toolbar variant="neutral">
+          <Heading2>{title}</Heading2>
+          <ButtonDark onClick={close} size="sm">
+            <Icon name="close" size="sm" />
+          </ButtonDark>
+        </Toolbar>
+        <div className={cls.content}>{children}</div>
+      </div>
+    </div>
   )
 }
 

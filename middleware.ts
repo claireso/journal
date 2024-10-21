@@ -1,8 +1,6 @@
-import { withAuth } from 'next-auth/middleware'
-import authOptions from '@infrastructure/auth/options'
+import NextAuth from 'next-auth'
+import authConfig from '@infrastructure/auth/config'
 
-export default withAuth({
-  pages: authOptions.pages
-})
+export const { auth: middleware } = NextAuth(authConfig)
 
 export const config = { matcher: ['/admin/:subpath*'] }

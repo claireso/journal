@@ -1,24 +1,23 @@
-'use client'
-
 import Link from 'next/link'
 
 import { Heading1 } from '@web/components/Headings'
-import { LinkPrimary } from '@web/components/Links'
+import { default as CustomLink } from '@web/components/Links'
+import Text from '@web/components/Text'
 
-import * as S from './Welcome.styles'
+import * as cls from './styles.css'
 
 const Welcome = () => {
   return (
-    <S.Wrapper>
+    <div className={cls.wrapper}>
       <Heading1 data-testid="welcome-title">Welcome to your Journal 🎉</Heading1>
-      <p>
+      <Text size="lg">
         Go to your{' '}
-        <Link href="/admin" passHref>
-          <LinkPrimary data-testid="welcome-link-admin">admin</LinkPrimary>
+        <Link href="/admin" passHref legacyBehavior>
+          <CustomLink variant="primary">admin</CustomLink>
         </Link>{' '}
         to publish your first photo
-      </p>
-    </S.Wrapper>
+      </Text>
+    </div>
   )
 }
 

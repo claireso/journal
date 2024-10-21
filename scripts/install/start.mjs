@@ -136,9 +136,9 @@ async function createConfiguration() {
 
   // configure package next auth
   if (configuration.WEBSITE_URL) {
-    configuration.NEXTAUTH_URL = configuration.WEBSITE_URL
+    configuration.AUTH_URL = configuration.WEBSITE_URL
   }
-  configuration.NEXTAUTH_SECRET = (await $`openssl rand -base64 32`).text().trim()
+  configuration.AUTH_SECRET = (await $`openssl rand -base64 32`).text().trim()
 
   log.subinfo('\nDatabase information:')
   // ask postgres info as postgres user, database, password

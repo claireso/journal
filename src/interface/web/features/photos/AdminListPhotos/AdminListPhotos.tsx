@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { PhotosDto } from '@dto'
-import { List } from '@web/components/List'
 import Photo from './Photo'
+
+import * as cls from './styles.css'
 
 interface AdminListPhotos {
   photos?: PhotosDto['items']
@@ -10,13 +11,23 @@ interface AdminListPhotos {
   onEdit: (id: number) => void
 }
 
+const PHOTOS_BY_LINE = 4
+
 const AdminListPhotos = ({ photos = [], onDelete, onEdit }: AdminListPhotos) => {
+  const count = photos.length
+  const modulo = count % PHOTOS_BY_LINE
+  const countGhostItems = modulo > 0 ? PHOTOS_BY_LINE - (count % PHOTOS_BY_LINE) : 0
   return (
-    <List>
+    <ul className={cls.list}>
       {photos.map((photo) => (
-        <Photo key={photo.id} {...photo} onDelete={onDelete} onEdit={onEdit} />
+        <li key={photo.id} className={cls.listItem}>
+          <Photo {...photo} onDelete={onDelete} onEdit={onEdit} />
+        </li>
       ))}
-    </List>
+      {Array.from(Array(countGhostItems)).map((_, index) => (
+        <li key={`ghost-${index}`} className={cls.listItem} />
+      ))}
+    </ul>
   )
 }
 

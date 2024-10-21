@@ -1,12 +1,3 @@
-import React, { ReactNode } from 'react'
-import { Link } from './Link.styles'
+import Link from './Link'
 
-interface LinkPrimaryProps {
-  children: ReactNode
-}
-
-export const LinkPrimary = React.forwardRef<HTMLSpanElement, LinkPrimaryProps>((props, ref) => (
-  <Link ref={ref} {...props} color="primary" />
-))
-
-LinkPrimary.displayName = 'LinkPrimary'
+export default Link

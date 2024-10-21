@@ -2,16 +2,9 @@
 
 import { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import { styled } from '@web/theme'
 import _Pager from '@web/components/Pager'
 
-const PagerWrapper = styled('div', {
-  gridColumn: '1 / -1',
-  m: '4.5rem 0',
-  '@lg': {
-    m: '8.5rem 0'
-  }
-})
+import * as cls from './styles.css'
 
 interface PagerProps {
   pager: {
@@ -34,9 +27,9 @@ const Pager = ({ pager }: PagerProps) => {
   )
 
   return (
-    <PagerWrapper>
+    <div className={cls.wrapper}>
       <_Pager navigate={navigate} {...pager}></_Pager>
-    </PagerWrapper>
+    </div>
   )
 }
 

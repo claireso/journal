@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModalDeletePhoto /> should render component 1`] = `
+<DocumentFragment>
+  <p>
+    This can’t be undone
+  </p>
+  <div
+    class="styles_layerStyle__ulchk90"
+  >
+    <button
+      class="styles__1mdc28jf styles_layerStyle__1mdc28j0 styles_button_variant_neutral__1mdc28jg styles_layerStyle__1mdc28j1 styles_button_size_lg__1mdc28jm styles_layerStyle__1mdc28j7"
+    >
+      Cancel
+    </button>
+    <button
+      class="styles__1mdc28jf styles_layerStyle__1mdc28j0 styles_button_variant_danger__1mdc28ji styles_layerStyle__1mdc28j3 styles_button_size_lg__1mdc28jm styles_layerStyle__1mdc28j7"
+    >
+      Delete
+    </button>
+  </div>
+</DocumentFragment>
+`;

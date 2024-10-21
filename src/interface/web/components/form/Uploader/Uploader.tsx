@@ -2,10 +2,13 @@ import React, { useState, useRef, useCallback } from 'react'
 
 import { create as createThumbnail } from '@web/services/thumbnails'
 
-import { IconUpload } from '@web/components/Icons'
 import Spinner from '@web/components/Spinner'
+import Text from '@web/components/Text'
+import Icon from '@web/components/Icons'
+import Flash from '@web/components/Flash'
 
-import * as S from './Uploader.styles'
+import { tokens } from '@web/theme/core/tokens.css'
+import * as cls from './styles.css'
 
 interface UploaderProps {
   name: string
@@ -62,26 +65,28 @@ const Uploader = ({
   )
 
   return (
-    <S.UploaderWrapper>
+    <div className={cls.wrapper}>
       {currentPreview && (
-        <S.UploaderPreview
-          css={{
-            background: previewBackgroundColor || '$secondary200',
-            opacity: processing ? 0.5 : 1
+        <div
+          className={cls.preview({ processing })}
+          style={{
+            background: previewBackgroundColor || tokens.colors.neutral['2extralight']
           }}
-          data-testid="preview"
         >
-          <img src={currentPreview} alt="" />
-        </S.UploaderPreview>
+          <img className={cls.previewImage} src={currentPreview} alt="" />
+        </div>
       )}
-      <S.UploaderContent>
-        <>
-          <S.UploaderIcon>{processing ? <Spinner /> : <IconUpload />}</S.UploaderIcon>
-          <span>Upload new photo</span>
-          <small>(only {accept.join(', ')})</small>
-        </>
+      <div>
+        <div className={cls.content}>
+          {processing ? <Spinner variant="primary" /> : <Icon name="upload" size="lg" variant="primary" />}
+          <Text as="span">Upload new photo</Text>
+          <Text as="span" size="sm" color="neutral">
+            (only {accept.join(', ')})
+          </Text>
+        </div>
 
-        <S.UploaderInput
+        <input
+          className={cls.input}
           ref={refInput}
           type="file"
           name={name}
@@ -89,9 +94,9 @@ const Uploader = ({
           required={required}
           accept={accept.join(',')}
         />
-      </S.UploaderContent>
-      {error && <S.UploaderError>{error}</S.UploaderError>}
-    </S.UploaderWrapper>
+      </div>
+      {error && <Flash status="error">{error}</Flash>}
+    </div>
   )
 }
 

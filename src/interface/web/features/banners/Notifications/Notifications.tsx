@@ -5,8 +5,9 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useTranslations } from '@web/hooks/useTranslations'
 import * as notifications from '@web/services/notifications'
 
-import * as S from './Notifications.styles'
+import * as cls from './styles.css'
 
+import Link from '@web/components/Links'
 import Flash from '@web/components/Flash'
 
 const BannerNotifications = () => {
@@ -70,11 +71,10 @@ const BannerNotifications = () => {
   if (!isVisible) return null
 
   return (
-    <Flash data-testid="flash-notifications" status="info" onClose={hideBanner} css={{ mb: 0 }}>
-      <S.ButtonSubscribe role="button" href="#" onClick={subscribe}>
-        {/* @ts-ignore */}
-        {translations.bannerNotifications}
-      </S.ButtonSubscribe>
+    <Flash status="info" onClose={hideBanner}>
+      <Link className={cls.link} role="button" href="#" onClick={subscribe}>
+        {translations.bannerNotifications as string}
+      </Link>
     </Flash>
   )
 }

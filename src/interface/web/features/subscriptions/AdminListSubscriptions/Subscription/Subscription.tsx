@@ -1,11 +1,15 @@
 import React, { useCallback, memo, useMemo } from 'react'
-import { format, parseISO } from 'date-fns'
 
-import * as S from './Subscription.styles'
 import type { SubscriptionDto } from '@dto'
+import { formatDateTime } from '@utils/date'
 
-import { IconDelete } from '@web/components/Icons'
-import { ButtonIcon } from '@web/components/Buttons'
+import Text from '@web/components/Text'
+import { ButtonDanger } from '@web/components/Buttons'
+import * as cls from './styles.css'
+import Icon from '@web/components/Icons'
+
+// import { IconDelete } from '@web/components/Icons'
+// import { ButtonIcon } from '@web/components/Buttons'
 
 interface SubscriptionProps extends SubscriptionDto {
   onDelete: (id: number) => void
@@ -19,20 +23,31 @@ const Subscription = ({ onDelete, id, ...props }: SubscriptionProps) => {
   }, [id, onDelete])
 
   return (
-    <S.SubscriptionWrapper data-testid="subscription">
-      <dl>
-        <dt>Created at:</dt>
-        <dd>{format(parseISO(createdAt as string), 'yyyy-MM-dd HH:mm:ss')}</dd>
+    <li className={cls.wrapper}>
+      <div className={cls.content}>
+        <Text as="span" weight="semibold">
+          Created at:{' '}
+          <Text weight="normal" as="span">
+            {formatDateTime(createdAt)}
+          </Text>
+        </Text>
+        <Text as="span" weight="semibold">
+          Endpoint:{' '}
+          <Text className={cls.url} weight="normal" as="span">
+            {props.subscription.endpoint}
+          </Text>
+        </Text>
+      </div>
 
-        <dt>Endpoint:</dt>
-        <dd>{props.subscription.endpoint}</dd>
-      </dl>
-      <S.SubscriptionTools>
-        <ButtonIcon onClick={handleDelete} title="Revoke" data-testid="button-revoke">
+      <div>
+        <ButtonDanger onClick={handleDelete}>
+          Delete <Icon name="trash" />
+        </ButtonDanger>
+        {/* <ButtonIcon onClick={handleDelete} title="Revoke" data-testid="button-revoke">
           <IconDelete />
-        </ButtonIcon>
-      </S.SubscriptionTools>
-    </S.SubscriptionWrapper>
+        </ButtonIcon> */}
+      </div>
+    </li>
   )
 }
 

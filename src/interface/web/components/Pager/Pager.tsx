@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react'
 
-import * as S from './Pager.styles'
+import { ButtonDark } from '../Buttons'
+
+import * as cls from './styles.css'
 
 interface PagerProps {
   navigate: (page: string) => void
@@ -14,39 +16,39 @@ const Pager = ({ navigate, first, prev, next, last }: PagerProps) => {
   const handleClick = useCallback((page: number) => () => navigate(`${page}`), [navigate])
 
   return (
-    <S.Wrapper>
+    <ul className={cls.wrapper}>
       {first && (
         <li>
-          <S.Button data-testid="first-page" title="First page" onClick={handleClick(first)}>
+          <ButtonDark title="First page" onClick={handleClick(first)}>
             ««
-          </S.Button>
+          </ButtonDark>
         </li>
       )}
 
       {prev && (
         <li>
-          <S.Button data-testid="previous-page" title="Previous page" onClick={handleClick(prev)}>
+          <ButtonDark title="Previous page" onClick={handleClick(prev)}>
             «
-          </S.Button>
+          </ButtonDark>
         </li>
       )}
 
       {next && (
         <li>
-          <S.Button data-testid="next-page" title="Next page" onClick={handleClick(next)}>
+          <ButtonDark title="Next page" onClick={handleClick(next)}>
             »
-          </S.Button>
+          </ButtonDark>
         </li>
       )}
 
       {last && (
         <li>
-          <S.Button data-testid="last-page" title="Last page" onClick={handleClick(last)}>
+          <ButtonDark title="Last page" onClick={handleClick(last)}>
             »»
-          </S.Button>
+          </ButtonDark>
         </li>
       )}
-    </S.Wrapper>
+    </ul>
   )
 }
 
