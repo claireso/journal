@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> should render input 1`] = `
+<DocumentFragment>
+  <div
+    class="styles__12zyxsm3 styles_layerStyle__12zyxsm0 styles_wrapper_inline_false__12zyxsm5 styles_layerStyle__12zyxsm2"
+  >
+    <label
+      class="styles_layerStyle__17qmo0z0"
+      for="title"
+    >
+      Title
+    </label>
+    <input
+      class="styles_layerStyle__1d6x3p80"
+      id="title"
+      name="title"
+      type="text"
+      value="Titre photo"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -78,16 +78,11 @@ export const useDeletePhoto = (filters: Filters = { page: '1' }) => {
   return useMutation({
     mutationFn: (id: number) => api.deletePhoto(id),
     onSuccess(data, id) {
-      const photos = queryClient.getQueryData<PhotosDto>([CACHE_KEY_LIST, filters])
+      queryClient.invalidateQueries({ queryKey: [CACHE_KEY_DETAIL, id] })
 
+      const photos = queryClient.getQueryData<PhotosDto>([CACHE_KEY_LIST, filters])
       if (photos) {
-        queryClient.setQueryData([CACHE_KEY_LIST, filters], {
-          items: photos.items.filter((photo) => photo.id !== id),
-          pager: {
-            ...photos.pager,
-            count: photos.pager.count - 1
-          }
-        })
+        queryClient.invalidateQueries({ queryKey: [CACHE_KEY_LIST] })
       }
 
       displaySuccessMessage({
@@ -119,13 +114,8 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
         const photos = queryClient.getQueryData<PhotosDto>([CACHE_KEY_LIST, filters])
 
         if (photos) {
-          queryClient.setQueryData([CACHE_KEY_LIST, filters], {
-            items: [photo, ...photos.items],
-            pager: {
-              ...photos.pager,
-              count: photos.pager.count + 1
-            }
-          })
+          queryClient.invalidateQueries({ queryKey: [CACHE_KEY_LIST] })
+          queryClient.setQueryData([CACHE_KEY_DETAIL, photo.id], photo)
         }
       }
       displaySuccessMessage({
@@ -147,7 +137,7 @@ export const useCreatePhoto = (filters: Filters = { page: '1' }) => {
  */
 export const usePhotos = (filters: Filters = { page: '1' }, options = {}) => {
   const getPhotos = async ({ signal }: QueryFunctionContext) => {
-    return await api.getPhotos(filters.page, { signal })
+    return await api.getPhotos({ page: filters.page, limit: 20 }, { signal })
   }
 
   const queryOptions = {

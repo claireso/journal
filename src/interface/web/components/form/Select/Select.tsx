@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { IconAngleRight } from '@web/components/Icons'
+import Icon from '@web/components/Icons'
 
-import { GroupInline } from '../Group'
+import Group from '../Group'
 import Label from '../Label'
 
-import * as S from './Select.styles'
+import * as cls from './styles.css'
 
 interface Option {
   label: string
@@ -21,10 +21,10 @@ interface SelectProps {
 
 const Select = ({ name, label, value, options }: SelectProps) => {
   return (
-    <GroupInline>
+    <Group inline>
       <Label htmlFor={name}>{label}</Label>
-      <S.SelectWrapper>
-        <S.StyledSelect id={name} name={name} defaultValue={value} required>
+      <div className={cls.wrapper}>
+        <select className={cls.select} id={name} name={name} defaultValue={value} required>
           {options.map((option, index) => {
             return (
               <option key={index} value={option.value}>
@@ -32,10 +32,12 @@ const Select = ({ name, label, value, options }: SelectProps) => {
               </option>
             )
           })}
-        </S.StyledSelect>
-        <IconAngleRight />
-      </S.SelectWrapper>
-    </GroupInline>
+        </select>
+        <div className={cls.icon}>
+          <Icon name="arrow-down" size="sm" />
+        </div>
+      </div>
+    </Group>
   )
 }
 

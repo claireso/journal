@@ -1,11 +1,6 @@
-'use client'
-
-import { Suspense } from 'react'
-
 import Box from '@web/components/Box'
-import { Loader } from '@web/components/Loader'
 
-import * as S from './Layout.styles'
+import * as cls from './styles.css'
 
 interface AuthLayoutProps {
   children: React.ReactNode
@@ -13,13 +8,9 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <S.Wrapper>
-      <main>
-        <Box>
-          <Suspense fallback={<Loader />}>{children}</Suspense>
-        </Box>
-      </main>
-    </S.Wrapper>
+    <main className={cls.main}>
+      <Box className={cls.content}>{children}</Box>
+    </main>
   )
 }
 

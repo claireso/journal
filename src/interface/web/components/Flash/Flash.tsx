@@ -1,18 +1,20 @@
+'use client'
+
 import React, { useEffect, useRef } from 'react'
-import type * as Stitches from '@stitches/react'
 
-import { IconClose } from '@web/components/Icons'
+import Icon from '../Icons'
 
-import * as S from './Flash.styles'
+import type { FlashVariants } from './styles.css'
+import * as cls from './styles.css'
+import joinCls from '@utils/joinCls'
 
-interface FlashProps {
-  status: 'default' | 'success' | 'error' | 'info'
+type FlashProps = {
   children: React.ReactNode
   index?: number
   withBorder?: boolean
   onClose?: ((index: number) => void) | null
-  css?: Stitches.CSS
-}
+  className?: string
+} & FlashVariants
 
 const Flash = ({
   status = 'default',
@@ -20,7 +22,7 @@ const Flash = ({
   onClose = null,
   index = 0,
   withBorder = false,
-  ...props
+  className
 }: FlashProps) => {
   const dom = useRef<HTMLDivElement>(null)
 
@@ -36,19 +38,20 @@ const Flash = ({
   }, [])
 
   return (
-    <S.Wrapper ref={dom} status={status} separator={withBorder} {...props}>
+    <div ref={dom} className={joinCls([cls.wrapper({ status, separator: withBorder }), className])}>
       {children}
       {onClose && (
-        <S.ButtonClose
+        <button
+          className={cls.buttonClose}
           onClick={(event) => {
             event.preventDefault()
             onClose(index)
           }}
         >
-          <IconClose />
-        </S.ButtonClose>
+          <Icon name="close" />
+        </button>
       )}
-    </S.Wrapper>
+    </div>
   )
 }
 

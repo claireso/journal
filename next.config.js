@@ -1,12 +1,15 @@
 const path = require('path')
 const { InjectManifest } = require('workbox-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
 
 const IS_NOTIFICATIONS_ENABLED = !!(
   process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY && process.env.NOTIFICATIONS_PRIVATE_KEY
 )
 
-module.exports = {
+const withVanillaExtract = createVanillaExtractPlugin()
+
+const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
@@ -66,3 +69,5 @@ module.exports = {
     return config
   }
 }
+
+module.exports = withVanillaExtract(nextConfig)

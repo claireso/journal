@@ -125,8 +125,8 @@ export default class PhotoService {
     }
   }
 
-  async getPaginatedPhotos(page: number) {
-    const pageSize = 10
+  async getPaginatedPhotos(page: number, limit?: number) {
+    const pageSize = limit || 10
 
     const count = await this.repository.countPhotos()
     const totalPages = Math.ceil(count / pageSize)

@@ -1,33 +1,30 @@
-import { useRef } from 'react'
+'use client'
 
+import { useFormStatus } from 'react-dom'
 import Input from '@web/components/form/Input'
-import SubmitButton from '@web/components/form/Buttons'
+import { ButtonPrimary } from '@web/components/Buttons'
 
 interface LoginFormProps {
-  onSubmit: (data: { username: string; password: string }) => void
-  isProcessing?: boolean
+  action: (payload: FormData) => any
 }
 
-const LoginForm = ({ onSubmit, isProcessing = false }: LoginFormProps) => {
-  const username = useRef<HTMLInputElement>(null!)
-  const password = useRef<HTMLInputElement>(null!)
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-
-    if (isProcessing) return
-
-    onSubmit({
-      username: username.current.value,
-      password: password.current.value
-    })
-  }
-
+const SubmitButton = () => {
+  const { pending } = useFormStatus()
   return (
-    <form onSubmit={handleSubmit} method="POST">
-      <Input ref={username} autoFocus name="username" label="Username" testId="username" required />
-      <Input ref={password} type="password" name="password" label="Password" testId="password" required />
-      <SubmitButton value="Log in" isLoading={isProcessing} data-testid="submit" />
+    <>
+      <ButtonPrimary size="lg" block loading={pending}>
+        Log in
+      </ButtonPrimary>
+    </>
+  )
+}
+
+const LoginForm = ({ action }: LoginFormProps) => {
+  return (
+    <form action={action}>
+      <Input autoFocus name="username" label="Username" required />
+      <Input type="password" name="password" label="Password" required />
+      <SubmitButton />
     </form>
   )
 }

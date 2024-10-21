@@ -1,27 +1,34 @@
 import React from 'react'
-import * as S from './Buttons.styles'
-import { Loader } from '../Loader'
+import Button, { ButtonProps } from './Button'
 
-interface ButtonPrimaryProps {
-  children: React.ReactNode
-  isLoading?: boolean
-  onClick?: () => void
-  title?: string
+export const ButtonPrimary = ({ children, ...props }: Omit<ButtonProps, 'variant'>) => {
+  return (
+    <Button variant="primary" {...props}>
+      {children}
+    </Button>
+  )
 }
 
-export const ButtonPrimary = ({ isLoading = false, ...props }: ButtonPrimaryProps) => {
-  if (isLoading) {
-    return (
-      <S.ButtonLoading color="primary">
-        <Loader />
-      </S.ButtonLoading>
-    )
-  }
-  return <S.Button color="primary" {...props} />
+export const ButtonNeutral = ({ children, ...props }: Omit<ButtonProps, 'variant'>) => {
+  return (
+    <Button variant="neutral" {...props}>
+      {children}
+    </Button>
+  )
 }
 
-export const ButtonSecondary = (props: Omit<ButtonPrimaryProps, 'isLoading'>) => (
-  <S.Button color="secondary" {...props} />
-)
-export const ButtonIcon = S.ButtonIcon
-export const Button = S.Button
+export const ButtonDanger = ({ children, ...props }: Omit<ButtonProps, 'variant'>) => {
+  return (
+    <Button variant="danger" {...props}>
+      {children}
+    </Button>
+  )
+}
+
+export const ButtonDark = ({ children, ...props }: Omit<ButtonProps, 'variant'>) => {
+  return (
+    <Button variant="dark" {...props}>
+      {children}
+    </Button>
+  )
+}
