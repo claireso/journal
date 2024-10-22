@@ -11,7 +11,7 @@ interface AdminListPhotos {
   onEdit: (id: number) => void
 }
 
-const PHOTOS_BY_LINE = 4
+const PHOTOS_BY_LINE = 6
 
 const AdminListPhotos = ({ photos = [], onDelete, onEdit }: AdminListPhotos) => {
   const count = photos.length
