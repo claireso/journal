@@ -1,4 +1,4 @@
-import { pagesStyle, tokens, px } from '@web/theme'
+import { pagesStyle, responsiveStyle, tokens, px } from '@web/theme'
 
 export const main = pagesStyle({
   display: 'flex',
@@ -9,5 +9,10 @@ export const main = pagesStyle({
 })
 
 export const content = pagesStyle({
-  minWidth: '44rem'
+  width: '100%',
+  ...responsiveStyle({
+    sm: {
+      minWidth: '44rem'
+    }
+  })
 })

@@ -300,7 +300,7 @@ const borders = {
 const layout = {
   admin: {
     sidebar: {
-      default: '8rem',
+      default: '6.8rem',
       lg: '22rem'
     }
   }

@@ -8,7 +8,8 @@ export const responsiveStyle = ({
   md,
   lg,
   xl,
-  extraXl
+  extraXl,
+  wide
 }: {
   xs?: StyleRule
   sm?: StyleRule
@@ -16,6 +17,7 @@ export const responsiveStyle = ({
   lg?: StyleRule
   xl?: StyleRule
   extraXl?: StyleRule
+  wide?: StyleRule
 }) => ({
   '@media': {
     ...(xs && { [`screen`]: xs }),
@@ -23,6 +25,7 @@ export const responsiveStyle = ({
     ...(md && { [`screen and (min-width: ${breakpoints.get('md')})`]: md }),
     ...(lg && { [`screen and (min-width: ${breakpoints.get('lg')})`]: lg }),
     ...(xl && { [`screen and (min-width: ${breakpoints.get('xl')})`]: xl }),
-    ...(extraXl && { [`screen and (min-width: ${breakpoints.get('2xl')})`]: extraXl })
+    ...(extraXl && { [`screen and (min-width: ${breakpoints.get('2xl')})`]: extraXl }),
+    ...(wide && { [`screen and (min-width: ${breakpoints.get('3xl')})`]: wide })
   }
 })

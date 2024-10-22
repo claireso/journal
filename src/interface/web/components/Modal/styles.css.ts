@@ -20,7 +20,7 @@ export const wrapper = cmpStyles({
 
 export const inner = cmpStyles({
   boxShadow: '0 0px 11px #898c8e',
-  maxWidth: '45rem',
+  maxWidth: '50rem',
   minHeight: 'calc(100vh)',
   background: tokens.colors.white,
   overflow: 'hidden',
