@@ -23,8 +23,13 @@ export const sidebarHeader = pagesStyle({
   justifyContent: 'center',
   WebkitFontSmoothing: 'antialiased',
   minHeight: '77px',
-  ...px('size-3'),
-  ...py('size-4')
+  ...px('size-2'),
+  ...py('size-4'),
+  ...responsiveStyle({
+    lg: {
+      ...px('size-3')
+    }
+  })
 })
 
 export const sidebarTitle = pagesStyle({
@@ -38,16 +43,26 @@ export const sidebarTitle = pagesStyle({
 
 export const sidebarContent = pagesStyle({
   flexGrow: 1,
-  ...px('size-3'),
-  ...py('size-8')
+  ...py('size-8'),
+  ...px('size-2'),
+  ...responsiveStyle({
+    lg: {
+      ...px('size-3')
+    }
+  })
 })
 
 export const sidebarFooter = pagesStyle({
   display: 'flex',
   flexDirection: 'column',
   ...gapY('size-3'),
-  ...px('size-3'),
-  ...py('size-4')
+  ...px('size-2'),
+  ...py('size-4'),
+  ...responsiveStyle({
+    lg: {
+      ...px('size-3')
+    }
+  })
 })
 
 export const content = pagesStyle({
@@ -69,6 +84,12 @@ export const content = pagesStyle({
 })
 
 export const messages = pagesStyle({
-  marginLeft: `calc(${tokens.sizes['size-8']}*-1)`,
-  marginRight: `calc(${tokens.sizes['size-8']}*-1)`
+  marginLeft: `calc(${tokens.sizes['size-4']}*-1)`,
+  marginRight: `calc(${tokens.sizes['size-4']}*-1)`,
+  ...responsiveStyle({
+    sm: {
+      marginLeft: `calc(${tokens.sizes['size-8']}*-1)`,
+      marginRight: `calc(${tokens.sizes['size-8']}*-1)`
+    }
+  })
 })

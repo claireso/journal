@@ -1,4 +1,3 @@
-import { style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 import { pagesStyle, responsiveStyle, tokens, p, radius, gapX } from '@web/theme'
 
@@ -6,11 +5,10 @@ export const link = recipe({
   base: pagesStyle({
     display: 'flex',
     alignItems: 'center',
-    // lineHeight: 1.3,
     transition: 'background 150ms ease-out, border 150ms ease-out',
     color: tokens.colors.white,
-    ...p('size-4'),
     ...radius('size-2'),
+    ...p('size-3.5'),
     ...gapX('size-2')
   }),
   variants: {
