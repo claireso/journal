@@ -10,7 +10,7 @@ const LoginForm = ({ action }: LoginFormProps) => {
     <form action={action}>
       <Input autoFocus name="username" label="Username" required />
       <Input type="password" name="password" label="Password" required />
-      <ButtonSubmit size="lg" block>
+      <ButtonSubmit variant="primary" size="lg" block>
         Log in
       </ButtonSubmit>
     </form>
