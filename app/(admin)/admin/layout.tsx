@@ -38,7 +38,9 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         <div className={cls.messages}>
           <Messages />
         </div>
-        <Suspense>{children}</Suspense>
+        {/* TODO check if regression here! */}
+        {/* <Suspense>{children}</Suspense> */}
+        {children}
       </div>
     </SessionProvider>
   )

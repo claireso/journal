@@ -1,6 +1,6 @@
 import { ZodError } from 'zod'
 import type { NextRequest } from 'next/server'
-import { JournalError, BadRequestError, NotFoundError, UnprocessableEntityError } from '@domain/errors/errors'
+import { JournalError, BadRequestError, NotFoundError, UnauthorizedError } from '@domain/errors/errors'
 import logger from '@infrastructure/logger'
 
 export { default as withAuth } from './withAuth'
@@ -27,6 +27,11 @@ export const createRouteHandler = (...middlewares: any[]) => {
           if (err instanceof NotFoundError) {
             logger.warn({ err, ctx: err.cause })
             return Response.json({ message: err.message }, { status: 404 })
+          }
+
+          if (err instanceof UnauthorizedError) {
+            logger.warn({ err, ctx: err.cause })
+            return Response.json({ message: err.message }, { status: 401 })
           }
         }
         logger.error(err)

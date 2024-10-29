@@ -1,6 +1,8 @@
 import React from 'react'
 import Button, { ButtonProps } from './Button'
 
+export { default as Button } from './Button'
+
 export const ButtonPrimary = ({ children, ...props }: Omit<ButtonProps, 'variant'>) => {
   return (
     <Button variant="primary" {...props}>
