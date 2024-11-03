@@ -1,14 +1,29 @@
-import { useMutation } from '@tanstack/react-query'
+import { useCallback, useState } from 'react'
 
-import * as api from '@web/services/api'
-import type { MediaDto } from '@dto'
+import { type MediaDto, type LegacyMediaDto } from '@dto'
+import { createMediaAction } from '@infrastructure/actions'
 
-/**
- * Create photo and update cache
- * @returns object
- */
-export const useCreateMedia = () => {
-  return useMutation({
-    mutationFn: (data: FormData): Promise<MediaDto> => api.createMedia(data)
-  })
+export const useCreateMedia = (initialMedia?: MediaDto | LegacyMediaDto) => {
+  const [media, setMedia] = useState(initialMedia)
+  const [error, setError] = useState<string | null>(null)
+  const [processing, setProcessing] = useState(false)
+
+  const createMedia = useCallback(async (file: File) => {
+    const formData = new FormData()
+    formData.append('file', file)
+
+    setError(null)
+    setProcessing(true)
+
+    try {
+      const newMedia = await createMediaAction(formData)
+      setMedia(newMedia)
+    } catch {
+      setError('An error has occured during the upload. Please retry')
+    } finally {
+      setProcessing(false)
+    }
+  }, [])
+
+  return [{ media, processing, error }, createMedia] as const
 }

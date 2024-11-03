@@ -1,16 +1,22 @@
 import { memo } from 'react'
 
-import type { PhotoInsertDto } from '@dto'
-import { Heading2 } from '@web/components/Headings'
+import { PhotoInsertDto } from '@dto'
+import AdminModal from '@web/features/modal/AdminModal'
+import { createPhotoAction } from '@infrastructure/actions'
 import FormPhoto from '../FormPhoto'
 
-interface ModalCreatePhotoProps {
-  onSubmit: (data: PhotoInsertDto) => void
-  isProcessing?: boolean
-}
+interface ModalCreatePhotoProps {}
 
-const ModalCreatePhoto = ({ onSubmit, isProcessing = false }: ModalCreatePhotoProps) => {
-  return <FormPhoto<PhotoInsertDto> onSubmit={onSubmit} isProcessing={isProcessing} />
+const ModalCreatePhoto = ({}: ModalCreatePhotoProps) => {
+  return (
+    <AdminModal title="Create photo">
+      <FormPhoto<PhotoInsertDto>
+        action={createPhotoAction}
+        successMessage={{ key: 'CRUD_PHOTO', message: 'Your photo has been created successfully' }}
+        errorMessage={{ key: 'CRUD_PHOTO', message: 'An error has occured during the creation. Please retry' }}
+      />
+    </AdminModal>
+  )
 }
 
 export default memo(ModalCreatePhoto)

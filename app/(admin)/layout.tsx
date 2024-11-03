@@ -1,11 +1,11 @@
 import { type Metadata } from 'next'
 
-import Layout from './Layout.client'
+import { MessagesProvider } from '@web/features/messages/useMessages'
 
 export const metadata: Metadata = {
   title: 'Admin'
 }
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return <Layout>{children}</Layout>
+  return <MessagesProvider>{children}</MessagesProvider>
 }

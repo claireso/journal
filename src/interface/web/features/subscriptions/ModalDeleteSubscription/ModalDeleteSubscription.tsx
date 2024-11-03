@@ -34,7 +34,8 @@ const ModalDeleteSubscription = ({ id }: ModalDeleteSubscriptionProps) => {
   const onDelete = useCallback(async () => {
     await deleteAction(id)
     closeModal()
-  }, [id, closeModal, deleteAction])
+    router.refresh()
+  }, [id, closeModal, deleteAction, router])
 
   return (
     <AdminModal title="Delete subscription?">
