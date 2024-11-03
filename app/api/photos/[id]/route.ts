@@ -1,5 +1,4 @@
 import { NextRequest } from 'next/server'
-import { revalidateTag } from 'next/cache'
 import { BadRequestError } from '@domain/errors/errors'
 import { createRouteHandler, withAuth } from '@api/middlewares'
 import { pool as db } from '@infrastructure/db'

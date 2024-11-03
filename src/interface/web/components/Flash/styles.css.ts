@@ -1,5 +1,5 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
-import { cmpStyles, p, px, tokens } from '@web/theme'
+import { cmpStyles, p, px, py, tokens } from '@web/theme'
 
 export const wrapper = recipe({
   base: cmpStyles({
@@ -7,7 +7,8 @@ export const wrapper = recipe({
     textAlign: 'center',
     opacity: 0,
     fontSize: tokens.fonts.size.sm,
-    ...p('size-5')
+    ...py('size-5'),
+    ...px('size-8')
   }),
   variants: {
     status: {
@@ -51,7 +52,7 @@ export const buttonClose = cmpStyles({
   display: 'flex',
   alignItems: 'center',
   position: 'absolute',
-  right: 0,
+  right: tokens.sizes['size-3'],
   top: 0,
   bottom: 0,
   ...px('size-5')

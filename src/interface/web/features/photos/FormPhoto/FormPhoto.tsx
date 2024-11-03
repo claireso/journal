@@ -1,82 +1,93 @@
-import React, { memo, useCallback, useRef, useState } from 'react'
+'use client'
+
+import React, { memo, useCallback, useEffect, useState } from 'react'
+import { useFormState } from 'react-dom'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import logger from '@infrastructure/logger'
 import type { PhotoDto, PhotoInsertDto, PhotoUpdateDto } from '@dto'
 
+import Flash from '@web/components/Flash'
 import Input from '@web/components/form/Input'
 import Select from '@web/components/form/Select'
 import Uploader from '@web/components/form/Uploader'
 import ColorPicker from '@web/components/form/ColorPicker'
 import Group from '@web/components/form/Group'
 import Label from '@web/components/form/Label'
-import Flash from '@web/components/Flash'
-import { ButtonPrimary } from '@web/components/Buttons'
+import ButtonSubmit from '@web/components/form/ButtonSubmit'
 
 import useColorsExtractor from '@web/hooks/useColorsExtractor'
 import { useCreateMedia } from '@web/features/media/useMedia'
+import useMessages, { Message } from '@web/features/messages/useMessages'
 
 import * as cls from './styles.css'
 
 const ALLOWED_MIMETYPES = ['image/jpeg', 'image/jpg']
 
-interface FormProps<T> {
-  photo?: PhotoDto
-  isProcessing?: boolean
-  onSubmit: (data: T) => void
+enum Status {
+  IDLE = 'idle',
+  SUCCESS = 'success',
+  ERROR = 'error'
 }
 
-const Form = <T extends PhotoInsertDto | PhotoUpdateDto>(props: FormProps<T>) => {
-  const { photo, isProcessing = false, onSubmit } = props
-  const { mutate: createMedia, isPending: isCreatingMedia } = useCreateMedia()
-  const [media, setMedia] = useState(photo?.media)
-  const [mediaError, setMediaError] = useState<string | null>(null)
+type FormState<T> = { status: Status.IDLE } | { status: Status.SUCCESS; item: T } | { status: Status.ERROR }
 
-  const [colors] = useColorsExtractor(media?.source)
+interface FormProps<T> {
+  photo?: PhotoDto
+  successMessage: Omit<Message, 'status'>
+  errorMessage: Omit<Message, 'status'>
+  action: (prevState: FormState<T>, data: FormData) => Promise<FormState<T>>
+}
+
+const initialState: FormState<undefined> = {
+  status: Status.IDLE
+}
+
+const Form = <T extends PhotoInsertDto | PhotoUpdateDto>({
+  photo,
+  action,
+  successMessage,
+  errorMessage
+}: FormProps<T>) => {
+  const [state, formAction] = useFormState(action, initialState)
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const [previewBackground, setPreviewBackground] = useState<string | null | undefined>(photo?.color)
+  const [, { displayErrorMessage, displaySuccessMessage }] = useMessages()
+  const [{ media, processing: mediaProcessing, error: mediaError }, createMedia] = useCreateMedia(photo?.media)
+  const [colors] = useColorsExtractor(media?.source)
 
-  const formEl = useRef(null!)
-
-  const handleSubmit = useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault()
-
-      if (isProcessing || isCreatingMedia || mediaError) return
-
-      const formData = new FormData(formEl.current)
-      formData.delete('file')
-
-      const data = Object.fromEntries(formData) as unknown as T
-
-      if (media && 'id' in media) {
-        data.media_id = media.id
+  useEffect(() => {
+    if (state.status !== Status.IDLE) {
+      if (state.status === Status.SUCCESS) {
+        displaySuccessMessage(successMessage)
       }
+      if (state.status === Status.ERROR) {
+        displayErrorMessage(errorMessage)
+      }
+      const newSearchParams = new URLSearchParams(searchParams.toString())
+      newSearchParams.delete('action')
+      newSearchParams.delete('id')
+      // redirect to the first page after photo creation
+      if (!photo) {
+        newSearchParams.delete('page')
+      }
+      router.push(`?${newSearchParams.toString()}`)
+      // NOTE: use refresh to make a new request to the server, re-fetching data requests, and re-rendering Server Components
+      router.refresh()
+    }
+  }, [state.status, router, searchParams, photo])
 
-      onSubmit && onSubmit(data)
+  const onChangeMedia = useCallback(
+    async (file: File) => {
+      setPreviewBackground(null)
+      await createMedia(file)
     },
-    [isProcessing, isCreatingMedia, mediaError, onSubmit, formEl, media]
+    [createMedia]
   )
 
-  const onChangeMedia = (file: File) => {
-    const formData = new FormData()
-    formData.append('file', file)
-
-    setMediaError(null)
-    setPreviewBackground(null)
-
-    createMedia(formData, {
-      onSuccess(media) {
-        setMedia(media)
-        setPreviewBackground(null)
-      },
-      onError(err) {
-        setMediaError('An error has occured during the upload. Please retry')
-        logger.error(err)
-      }
-    })
-  }
-
   return (
-    <form ref={formEl} method="POST" action="" encType="multipart/form-data" onSubmit={handleSubmit}>
+    <form action={formAction}>
       <Input name="title" label="Title" value={photo?.title || ''} />
 
       <Input name="description" label="Description" value={photo?.description || ''} />
@@ -90,7 +101,7 @@ const Form = <T extends PhotoInsertDto | PhotoUpdateDto>(props: FormProps<T>) =>
           accept={ALLOWED_MIMETYPES}
           preview={media?.source}
           previewBackgroundColor={previewBackground}
-          processing={isCreatingMedia}
+          processing={mediaProcessing}
           onChangeMedia={onChangeMedia}
           onError={logger.error}
         />
@@ -100,7 +111,7 @@ const Form = <T extends PhotoInsertDto | PhotoUpdateDto>(props: FormProps<T>) =>
         <Group>
           <Label>Background color</Label>
           <ColorPicker
-            disabled={isCreatingMedia}
+            disabled={mediaProcessing}
             colors={colors}
             onSelect={setPreviewBackground}
             selected={previewBackground}
@@ -128,10 +139,14 @@ const Form = <T extends PhotoInsertDto | PhotoUpdateDto>(props: FormProps<T>) =>
         ]}
       />
 
+      {/* hidden fields: photo id and photo media id */}
+      {!!photo?.id && <input type="hidden" name="id" value={photo.id} />}
+      {!!(media && 'id' in media) && <input type="hidden" name="media_id" value={media.id} />}
+
       <div className={cls.submit}>
-        <ButtonPrimary type="submit" loading={isProcessing} size="lg">
+        <ButtonSubmit size="lg" variant="primary" disabled={mediaProcessing || !!mediaError}>
           {photo ? 'Save' : 'Create'}
-        </ButtonPrimary>
+        </ButtonSubmit>
       </div>
     </form>
   )

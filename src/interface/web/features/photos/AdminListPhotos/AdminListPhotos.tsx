@@ -1,30 +1,38 @@
 import React from 'react'
-
-import { PhotosDto } from '@dto'
-
+import { getPaginatedPhotos } from '@interface/controllers'
 import TablePager from '@web/components/TablePager'
 import Photo from './Photo'
 
 import * as cls from './styles.css'
 
 interface AdminListPhotos {
-  photos?: PhotosDto['items']
-  onDelete: (id: number) => void
-  onEdit: (id: number) => void
+  page: string
 }
 
 const PHOTOS_BY_LINE = 6
 
-const AdminListPhotos = ({ photos = [], onDelete, onEdit }: AdminListPhotos) => {
+const fetchPhotos = async ({ page }: { page: string }) => {
+  try {
+    return await getPaginatedPhotos({ page, limit: '24' })
+  } catch (err) {
+    throw err
+  }
+}
+
+const AdminListPhotos = async ({ page }: AdminListPhotos) => {
+  const { pager, items: photos } = await fetchPhotos({ page })
+
   const count = photos.length
   const modulo = count % PHOTOS_BY_LINE
   const countGhostItems = modulo > 0 ? PHOTOS_BY_LINE - (count % PHOTOS_BY_LINE) : 0
+
   return (
     <>
+      <TablePager align="right" {...pager} />
       <ul className={cls.list}>
         {photos.map((photo) => (
           <li key={photo.id} className={cls.listItem}>
-            <Photo {...photo} onDelete={onDelete} onEdit={onEdit} />
+            <Photo {...photo} />
           </li>
         ))}
         {Array.from(Array(countGhostItems)).map((_, index) => (
@@ -35,4 +43,4 @@ const AdminListPhotos = ({ photos = [], onDelete, onEdit }: AdminListPhotos) => 
   )
 }
 
-export default React.memo(AdminListPhotos)
+export default AdminListPhotos
