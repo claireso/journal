@@ -4,7 +4,7 @@ import { mapPhotosToPhotosDto } from '@dto'
 import { photoService } from '@ioc/container'
 import { BadRequestError } from '@domain/errors'
 
-const getPaginatedPhotos = async ({ page, limit }: { page: string; limit: string }) => {
+const getPaginatedPhotos = async ({ page, limit }: { page: string; limit?: string }) => {
   const intPage = Number(page)
   let intLimit = 24
 
