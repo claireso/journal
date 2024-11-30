@@ -7,7 +7,7 @@ import { withAuth } from '@api/middlewares'
 import logger from '@infrastructure/logger'
 
 // todo manage errors
-export default async function editPhotoAction<T>(prevState: T, data: FormData): Promise<T> {
+export default async function editPhoto<T>(prevState: T, data: FormData): Promise<T> {
   try {
     // check user authentification
     // todo: use a kind of compose function ?
@@ -17,6 +17,7 @@ export default async function editPhotoAction<T>(prevState: T, data: FormData): 
     if (isNaN(id)) {
       throw new BadRequestError('Incorrect parameter “id”', { cause: { photoId: data.get('id') } })
     }
+
     data.delete('id')
 
     const body = Object.fromEntries(data.entries())

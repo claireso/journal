@@ -4,7 +4,7 @@ import { withAuth } from '@api/middlewares'
 import { mediaService } from '@ioc/container'
 import { mapMediatoMediaDto, MediaInsertDtoSchema } from '@dto'
 
-const createMediaAction = async (data: FormData) => {
+const createMedia = async (data: FormData) => {
   try {
     await withAuth()
     const body = Object.fromEntries(data)
@@ -17,4 +17,4 @@ const createMediaAction = async (data: FormData) => {
   }
 }
 
-export default createMediaAction
+export default createMedia

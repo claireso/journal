@@ -1,4 +1,4 @@
-import { loginAction } from '@infrastructure/actions'
+import { login } from '@application/usecases'
 import { getAuthError, AUTH_ERRORS_TYPES } from '@infrastructure/auth/errors'
 
 import LoginForm from '@web/features/user/LoginForm'
@@ -10,7 +10,7 @@ import * as cls from './styles.css'
 const LoginPage = ({ searchParams }: NextPageProps<{}>) => {
   const { callbackUrl = '/admin/photos', error: errorType } = searchParams
 
-  const loginWithCallbackUrlAction = loginAction.bind(null, callbackUrl as string)
+  const loginWithCallbackUrlAction = login.bind(null, callbackUrl as string)
   const error = getAuthError(errorType as AUTH_ERRORS_TYPES)
 
   return (

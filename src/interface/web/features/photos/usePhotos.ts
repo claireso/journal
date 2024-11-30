@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { deletePhotoAction } from '@infrastructure/actions'
+import { deletePhoto } from '@application/usecases'
 import useMessages from '@web/features/messages/useMessages'
 
 /**
@@ -18,7 +18,7 @@ export const useDeletePhoto = () => {
           return
         }
         setProcessing(true)
-        await deletePhotoAction(id)
+        await deletePhoto(id)
         displaySuccessMessage({
           key: 'CRUD_PHOTO',
           message: 'Your photo has been deleted successfully'

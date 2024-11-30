@@ -5,7 +5,7 @@ import { subscriptionService } from '@ioc/container'
 import { withAuth } from '@api/middlewares'
 
 // todo manage errors
-export default async function deleteSubscriptionAction(subscriptionId: string) {
+export default async function deleteSubscription(subscriptionId: string) {
   try {
     // check user authentification
     // todo: use a kind of compose function ?

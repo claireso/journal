@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { deleteSubscriptionAction } from '@infrastructure/actions'
+import { deleteSubscription } from '@application/usecases'
 import useMessages from '@web/features/messages/useMessages'
 
 /**
@@ -19,7 +19,7 @@ export const useDeleteSubscription = () => {
           return
         }
         setProcessing(true)
-        await deleteSubscriptionAction(id)
+        await deleteSubscription(id)
         displaySuccessMessage({
           key: 'CRUD_SUBSCRIPTION',
           message: 'Your subscription has been deleted successfully'
