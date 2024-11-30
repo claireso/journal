@@ -1,5 +1,5 @@
 import React from 'react'
-import { getPaginatedPhotos } from '@interface/controllers'
+import { getPaginatedPhotos } from '@application/usecases'
 import TablePager from '@web/components/TablePager'
 import Photo from './Photo'
 

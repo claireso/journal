@@ -6,7 +6,7 @@ import { photoService } from '@ioc/container'
 import { withAuth } from '@api/middlewares'
 
 // todo manage errors
-export default async function deletePhotoAction(photoId: string) {
+export default async function deletePhoto(photoId: string) {
   try {
     // check user authentification
     // todo: use a kind of compose function ?

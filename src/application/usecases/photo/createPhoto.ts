@@ -8,7 +8,7 @@ import { withAuth } from '@api/middlewares'
 import logger from '@infrastructure/logger'
 
 // todo manage errors
-export default async function createPhotoAction<T>(prevState: T, data: FormData): Promise<T> {
+export default async function createPhoto<T>(prevState: T, data: FormData): Promise<T> {
   try {
     // check user authentification
     // todo: use a kind of compose function ?

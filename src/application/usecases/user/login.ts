@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import { CredentialsSignin, SignInError } from '@auth/core/errors'
 import { signIn } from '@infrastructure/auth'
 
-export default async function loginAction(callbackUrl: string, data: FormData) {
+export default async function login(callbackUrl: string, data: FormData) {
   try {
     await signIn('credentials', {
       username: data.get('username'),

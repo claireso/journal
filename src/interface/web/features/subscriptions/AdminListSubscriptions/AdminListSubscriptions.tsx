@@ -2,7 +2,7 @@ import React from 'react'
 import { redirect } from 'next/navigation'
 
 import { BadRequestError, NotFoundError } from '@domain/errors'
-import { getPaginatedSubscriptions } from '@interface/controllers'
+import { getPaginatedSubscriptions } from '@application/usecases'
 
 import EmptyZone from '@web/components/EmptyZone'
 import Pager from '@web/components/Pager'

@@ -4,8 +4,7 @@ import type { PhotoUpdateDto } from '@dto'
 import FormPhoto from '../FormPhoto'
 import AdminModal from '@web/features/modal/AdminModal'
 
-import { getPhoto } from '@interface/controllers'
-import { editPhotoAction } from '@infrastructure/actions'
+import { getPhoto, editPhoto } from '@application/usecases'
 
 interface ModalEditPhotoProps {
   photoId: string
@@ -27,7 +26,7 @@ const ModalEditPhoto = async ({ photoId }: ModalEditPhotoProps) => {
     <AdminModal title="Edit photo">
       <FormPhoto<PhotoUpdateDto>
         photo={photo}
-        action={editPhotoAction}
+        action={editPhoto}
         successMessage={{ key: 'CRUD_PHOTO', message: 'Your photo has been updated successfully' }}
         errorMessage={{ key: 'CRUD_PHOTO', message: 'An error has occured during the update. Please retry' }}
       />
