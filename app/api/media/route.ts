@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { createRouteHandler, withAuth } from '@api/middlewares'
+import { createRouteHandler, withAuth } from '@infrastructure/middlewares'
 import { mediaService } from '@ioc/container'
 import { mapMediatoMediaDto, MediaInsertDtoSchema } from '@dto'
 

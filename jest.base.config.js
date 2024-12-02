@@ -8,8 +8,7 @@ module.exports = {
     '^@application(.*)$': '<rootDir>/src/application$1',
     '^@dto(.*)$': '<rootDir>/src/dto$1',
     '^@ioc(.*)$': '<rootDir>/src/ioc$1',
-    '^@web(.*)$': '<rootDir>/src/interface/web$1',
-    '^@api(.*)$': '<rootDir>/src/interface/api$1'
+    '^@web(.*)$': '<rootDir>/src/interface/web$1'
   },
   globals: {
     __PHOTOS__: {

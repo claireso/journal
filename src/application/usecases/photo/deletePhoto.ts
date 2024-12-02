@@ -1,17 +1,14 @@
 'use server'
 
+import pipeAsync from '@utils/pipeAsync'
 import { pool as db } from '@infrastructure/db'
 import { BadRequestError } from '@domain/errors'
 import { photoService } from '@ioc/container'
-import { withAuth } from '@api/middlewares'
+import { withAuth } from '@infrastructure/middlewares'
 
 // todo manage errors
-export default async function deletePhoto(photoId: string) {
+async function deletePhoto(photoId: string) {
   try {
-    // check user authentification
-    // todo: use a kind of compose function ?
-    await withAuth()
-
     const id = Number(photoId)
 
     if (isNaN(id)) {
@@ -24,3 +21,5 @@ export default async function deletePhoto(photoId: string) {
     throw err
   }
 }
+
+export default pipeAsync(withAuth, deletePhoto)

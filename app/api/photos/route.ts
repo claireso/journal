@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { differenceInMinutes } from 'date-fns'
 import { BadRequestError } from '@domain/errors'
-import { createRouteHandler, withAuth } from '@api/middlewares'
+import { createRouteHandler, withAuth } from '@infrastructure/middlewares'
 import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } from '@infrastructure/web-push'
 import { mapPhotoToPhotoDto, mapPhotosToPhotosDto, PhotoInsertDtoSchema } from '@dto'
 import { photoService, subscriptionService } from '@ioc/container'
