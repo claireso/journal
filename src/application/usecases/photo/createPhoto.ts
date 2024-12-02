@@ -1,19 +1,16 @@
 'use server'
 
 import { differenceInMinutes } from 'date-fns'
+import pipeAsync from '@utils/pipeAsync'
 import { photoService, subscriptionService } from '@ioc/container'
 import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } from '@infrastructure/web-push'
 import { mapPhotoToPhotoDto, PhotoInsertDtoSchema } from '@dto'
-import { withAuth } from '@api/middlewares'
+import { withAuth } from '@infrastructure/middlewares'
 import logger from '@infrastructure/logger'
 
 // todo manage errors
-export default async function createPhoto<T>(prevState: T, data: FormData): Promise<T> {
+async function createPhoto<T>(prevState: T, data: FormData): Promise<T> {
   try {
-    // check user authentification
-    // todo: use a kind of compose function ?
-    await withAuth()
-
     const body = Object.fromEntries(data.entries())
 
     const result = PhotoInsertDtoSchema.parse(body)
@@ -58,3 +55,5 @@ export default async function createPhoto<T>(prevState: T, data: FormData): Prom
     } as T
   }
 }
+
+export default pipeAsync(withAuth, createPhoto)

@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { createRouteHandler, withAuth } from '@api/middlewares'
+import { createRouteHandler, withAuth } from '@infrastructure/middlewares'
 import { subscriptionService } from '@ioc/container'
 
 interface Context {

@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import { BadRequestError } from '@domain/errors/errors'
-import { createRouteHandler, withAuth } from '@api/middlewares'
+import { createRouteHandler, withAuth } from '@infrastructure/middlewares'
 import { pool as db } from '@infrastructure/db'
 import { mapPhotoToPhotoDto, PhotoUpdateDtoSchema } from '@dto'
 import { photoService } from '@ioc/container'

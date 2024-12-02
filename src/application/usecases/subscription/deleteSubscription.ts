@@ -1,16 +1,13 @@
 'use server'
 
+import pipeAsync from '@utils/pipeAsync'
 import { BadRequestError } from '@domain/errors'
 import { subscriptionService } from '@ioc/container'
-import { withAuth } from '@api/middlewares'
+import { withAuth } from '@infrastructure/middlewares'
 
 // todo manage errors
-export default async function deleteSubscription(subscriptionId: string) {
+async function deleteSubscription(subscriptionId: string) {
   try {
-    // check user authentification
-    // todo: use a kind of compose function ?
-    await withAuth()
-
     const id = Number(subscriptionId)
 
     if (isNaN(id)) {
@@ -23,3 +20,5 @@ export default async function deleteSubscription(subscriptionId: string) {
     throw err
   }
 }
+
+export default pipeAsync(withAuth, deleteSubscription)

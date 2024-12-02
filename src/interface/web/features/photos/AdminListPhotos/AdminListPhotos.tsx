@@ -1,6 +1,7 @@
 import React from 'react'
 import { getPaginatedPhotos } from '@application/usecases'
 import TablePager from '@web/components/TablePager'
+import EmptyZone from '@web/components/EmptyZone'
 import Photo from './Photo'
 
 import * as cls from './styles.css'
@@ -13,7 +14,7 @@ const PHOTOS_BY_LINE = 6
 
 const fetchPhotos = async ({ page }: { page: string }) => {
   try {
-    return await getPaginatedPhotos({ page, limit: '24' })
+    return await getPaginatedPhotos({ page })
   } catch (err) {
     throw err
   }
@@ -25,6 +26,10 @@ const AdminListPhotos = async ({ page }: AdminListPhotos) => {
   const count = photos.length
   const modulo = count % PHOTOS_BY_LINE
   const countGhostItems = modulo > 0 ? PHOTOS_BY_LINE - (count % PHOTOS_BY_LINE) : 0
+
+  if (count === 0) {
+    return <EmptyZone>No photo yet.</EmptyZone>
+  }
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { createRouteHandler, withAuth } from '@api/middlewares'
+import { createRouteHandler, withAuth } from '@infrastructure/middlewares'
 import { BadRequestError } from '@domain/errors'
 import { subscriptionService } from '@ioc/container'
 import { SubscriptionInsertDtoSchema } from '@dto'
