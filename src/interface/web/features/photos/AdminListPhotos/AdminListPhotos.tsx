@@ -1,5 +1,8 @@
 import React from 'react'
+import { redirect } from 'next/navigation'
+import logger from '@infrastructure/logger'
 import { getPaginatedPhotos } from '@application/usecases'
+import { BadRequestError, NotFoundError } from '@domain/errors'
 import TablePager from '@web/components/TablePager'
 import EmptyZone from '@web/components/EmptyZone'
 import Photo from './Photo'
@@ -16,6 +19,10 @@ const fetchPhotos = async ({ page }: { page: string }) => {
   try {
     return await getPaginatedPhotos({ page })
   } catch (err) {
+    if (err instanceof NotFoundError || err instanceof BadRequestError) {
+      redirect('?')
+    }
+    logger.error({ err, ctx: `Admin photos, can not get page "${page}"` })
     throw err
   }
 }

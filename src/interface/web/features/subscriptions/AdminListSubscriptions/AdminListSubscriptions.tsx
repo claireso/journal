@@ -2,6 +2,7 @@ import React from 'react'
 import { redirect } from 'next/navigation'
 
 import { BadRequestError, NotFoundError } from '@domain/errors'
+import logger from '@infrastructure/logger'
 import { getPaginatedSubscriptions } from '@application/usecases'
 
 import EmptyZone from '@web/components/EmptyZone'
@@ -20,6 +21,7 @@ const fetchSubscription = async (page: string) => {
     if (err instanceof NotFoundError || err instanceof BadRequestError) {
       redirect('?')
     }
+    logger.error({ err, ctx: `Admin subscriptions, can not get page "${page}"` })
     throw err
   }
 }
