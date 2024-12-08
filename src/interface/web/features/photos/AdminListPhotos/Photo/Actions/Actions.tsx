@@ -24,7 +24,7 @@ const Actions = ({ photoId }: ActionsProps) => {
       newSearchParams.set('action', action)
       newSearchParams.set('id', String(photoId))
 
-      router.push(`?${newSearchParams.toString()}`)
+      router.push(`?${newSearchParams.toString()}`, { scroll: false })
     },
     [router, searchParams, photoId]
   )
