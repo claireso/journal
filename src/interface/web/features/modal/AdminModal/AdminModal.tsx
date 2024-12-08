@@ -19,7 +19,7 @@ const AdminModal = ({ title, children }: AdminModalProps) => {
     newSearchParams.delete('action')
     newSearchParams.delete('id')
     // todo: keep the page parameter
-    router.push(`?${newSearchParams.toString()}`)
+    router.push(`?${newSearchParams.toString()}`, { scroll: false })
   }, [router, searchParams])
 
   return (

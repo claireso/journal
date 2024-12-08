@@ -15,7 +15,7 @@ const ButtonCreatePhoto = () => {
   const onClick = useCallback(() => {
     const newSearchParams = new URLSearchParams(searchParams.toString())
     newSearchParams.set('action', AdminAction.CREATE)
-    router.push(`?${newSearchParams.toString()}`)
+    router.push(`?${newSearchParams.toString()}`, { scroll: false })
   }, [router, searchParams])
 
   return (
