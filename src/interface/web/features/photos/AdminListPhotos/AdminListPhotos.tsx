@@ -3,8 +3,8 @@ import { redirect } from 'next/navigation'
 import logger from '@infrastructure/logger'
 import { getPaginatedPhotos } from '@application/usecases'
 import { BadRequestError, NotFoundError } from '@domain/errors'
-import TablePager from '@web/components/TablePager'
 import EmptyZone from '@web/components/EmptyZone'
+import Pager from '@web/features/pagination/Pager'
 import Photo from './Photo'
 
 import * as cls from './styles.css'
@@ -40,7 +40,6 @@ const AdminListPhotos = async ({ page }: AdminListPhotos) => {
 
   return (
     <>
-      <TablePager align="right" {...pager} />
       <ul className={cls.list}>
         {photos.map((photo) => (
           <li key={photo.id} className={cls.listItem}>
@@ -51,6 +50,7 @@ const AdminListPhotos = async ({ page }: AdminListPhotos) => {
           <li key={`ghost-${index}`} className={cls.listItem} />
         ))}
       </ul>
+      <Pager layout="numeric" pager={pager} />
     </>
   )
 }
