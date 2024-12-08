@@ -20,11 +20,15 @@ const Button = ({
   block = false,
   loading = false,
   outline = false,
+  disabled = false,
   className,
   ...props
 }: ButtonProps) => {
   return (
-    <button className={joinCls([cls.button({ variant, size, block, loading, outline }), className])} {...props}>
+    <button
+      className={joinCls([cls.button({ variant, size, block, loading, outline, disabled }), className])}
+      {...props}
+    >
       {loading ? <Spinner variant="currentcolor" size={size} /> : children}
     </button>
   )

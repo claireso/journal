@@ -6,8 +6,7 @@ import logger from '@infrastructure/logger'
 import { getPaginatedSubscriptions } from '@application/usecases'
 
 import EmptyZone from '@web/components/EmptyZone'
-import Pager from '@web/components/Pager'
-import TablePager from '@web/components/TablePager'
+import Pager from '@web/features/pagination/Pager'
 import Subscription from './Subscription'
 
 interface AdminListSubscriptionsProps {
@@ -35,13 +34,12 @@ const AdminListSubscriptions = async ({ page }: AdminListSubscriptionsProps) => 
 
   return (
     <>
-      <TablePager align="right" {...pager} />
       <ul>
         {subscriptions.map((subscription) => (
           <Subscription key={subscription.id} {...subscription} />
         ))}
       </ul>
-      <Pager {...pager} navigate={() => {}} />
+      <Pager layout="numeric" pager={pager} />
     </>
   )
 }
