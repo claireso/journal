@@ -5,7 +5,7 @@ import { useFormState } from 'react-dom'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import logger from '@infrastructure/logger'
-import type { PhotoDto, PhotoInsertDto, PhotoUpdateDto } from '@dto'
+import type { PhotoDto } from '@dto'
 
 import Flash from '@web/components/Flash'
 import Input from '@web/components/form/Input'
@@ -24,31 +24,32 @@ import * as cls from './styles.css'
 
 const ALLOWED_MIMETYPES = ['image/jpeg', 'image/jpg']
 
-enum Status {
-  IDLE = 'idle',
-  SUCCESS = 'success',
-  ERROR = 'error'
-}
+const FormActionStateStatus = {
+  IDLE: 'idle',
+  SUCCESS: 'success',
+  ERROR: 'error'
+} as const
 
-type FormState<T> = { status: Status.IDLE } | { status: Status.SUCCESS; item: T } | { status: Status.ERROR }
+// enum Status {
+//   IDLE = 'idle',
+//   SUCCESS = 'success',
+//   ERROR = 'error'
+// }
 
-interface FormProps<T> {
+// type FormState<T> = { status: Status.IDLE } | { status: Status.SUCCESS; item: T } | { status: Status.ERROR }
+
+interface FormProps {
   photo?: PhotoDto
   successMessage: Omit<Message, 'status'>
   errorMessage: Omit<Message, 'status'>
-  action: (prevState: FormState<T>, data: FormData) => Promise<FormState<T>>
+  action: (prevState: FormActionState<PhotoDto>, data: FormData) => Promise<FormActionState<PhotoDto>>
 }
 
-const initialState: FormState<undefined> = {
-  status: Status.IDLE
+const initialState: FormActionState<PhotoDto> = {
+  status: FormActionStateStatus.IDLE
 }
 
-const Form = <T extends PhotoInsertDto | PhotoUpdateDto>({
-  photo,
-  action,
-  successMessage,
-  errorMessage
-}: FormProps<T>) => {
+const Form = ({ photo, action, successMessage, errorMessage }: FormProps) => {
   const [state, formAction] = useFormState(action, initialState)
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -58,11 +59,11 @@ const Form = <T extends PhotoInsertDto | PhotoUpdateDto>({
   const [colors] = useColorsExtractor(media?.source)
 
   useEffect(() => {
-    if (state.status !== Status.IDLE) {
-      if (state.status === Status.SUCCESS) {
+    if (state.status !== FormActionStateStatus.IDLE) {
+      if (state.status === FormActionStateStatus.SUCCESS) {
         displaySuccessMessage(successMessage)
       }
-      if (state.status === Status.ERROR) {
+      if (state.status === FormActionStateStatus.ERROR) {
         displayErrorMessage(errorMessage)
       }
       const newSearchParams = new URLSearchParams(searchParams.toString())
@@ -153,4 +154,4 @@ const Form = <T extends PhotoInsertDto | PhotoUpdateDto>({
 }
 
 // Explicit typing of `memo` to accept generic types
-export default memo(Form) as typeof Form
+export default memo(Form)

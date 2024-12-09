@@ -22,4 +22,4 @@ async function deletePhoto(photoId: string) {
   }
 }
 
-export default pipeAsync(withAuth, deletePhoto)
+export default pipeAsync<void>(withAuth, deletePhoto)

@@ -17,21 +17,9 @@ const nextConfig = {
   compiler: {
     reactRemoveProperties: true
   },
-  logging: {
-    fetches: {
-      fullUrl: true
-    }
-  },
   compress: process.env.COMPRESSION === 'enabled',
   experimental: {
     serverComponentsExternalPackages: ['pino', 'pino-pretty']
-  },
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    // ignoreBuildErrors: true
   },
   async redirects() {
     return [

@@ -24,7 +24,7 @@ const ModalEditPhoto = async ({ photoId }: ModalEditPhotoProps) => {
 
   return (
     <AdminModal title="Edit photo">
-      <FormPhoto<PhotoUpdateDto>
+      <FormPhoto
         photo={photo}
         action={editPhoto}
         successMessage={{ key: 'CRUD_PHOTO', message: 'Your photo has been updated successfully' }}

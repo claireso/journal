@@ -3,7 +3,7 @@
 import pipeAsync from '@utils/pipeAsync'
 import { withAuth } from '@infrastructure/middlewares'
 import { mediaService } from '@ioc/container'
-import { mapMediatoMediaDto, MediaInsertDtoSchema } from '@dto'
+import { mapMediatoMediaDto, MediaInsertDtoSchema, MediaDto } from '@dto'
 
 const createMedia = async (data: FormData) => {
   try {
@@ -17,4 +17,4 @@ const createMedia = async (data: FormData) => {
   }
 }
 
-export default pipeAsync(withAuth, createMedia)
+export default pipeAsync<MediaDto>(withAuth, createMedia)

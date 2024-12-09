@@ -1,14 +1,14 @@
 'use server'
 
 import pipeAsync from '@utils/pipeAsync'
-import { PhotoUpdateDtoSchema, mapPhotoToPhotoDto } from '@dto'
+import { PhotoDto, PhotoUpdateDtoSchema, mapPhotoToPhotoDto } from '@dto'
 import { BadRequestError } from '@domain/errors'
 import { photoService } from '@ioc/container'
 import { withAuth } from '@infrastructure/middlewares'
 import logger from '@infrastructure/logger'
 
 // todo manage errors
-async function editPhoto<T>(prevState: T, data: FormData): Promise<T> {
+async function editPhoto(prevState: FormActionState<PhotoDto>, data: FormData) {
   try {
     const id = Number(data.get('id'))
     if (isNaN(id)) {
@@ -26,13 +26,13 @@ async function editPhoto<T>(prevState: T, data: FormData): Promise<T> {
     return {
       status: 'success',
       item: photoDto
-    } as T
+    }
   } catch (err) {
     logger.error(err)
     return {
       status: 'error'
-    } as T
+    }
   }
 }
 
-export default pipeAsync(withAuth, editPhoto)
+export default pipeAsync<FormActionState<PhotoDto>>(withAuth, editPhoto)
