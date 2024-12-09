@@ -3,7 +3,7 @@
 exports[`<ButtonPrimary /> should render button 1`] = `
 <DocumentFragment>
   <button
-    class="styles__1mdc28jf styles_layerStyle__1mdc28j0 styles_button_variant_primary__1mdc28jh styles_layerStyle__1mdc28j2 styles_button_size_md__1mdc28jl styles_layerStyle__1mdc28j6"
+    class="styles__1mdc28jh styles_layerStyle__1mdc28j0 styles_button_variant_primary__1mdc28jj styles_layerStyle__1mdc28j2 styles_button_size_md__1mdc28jn styles_layerStyle__1mdc28j6"
   >
     Button
   </button>
@@ -13,7 +13,7 @@ exports[`<ButtonPrimary /> should render button 1`] = `
 exports[`<ButtonPrimary /> should render loader 1`] = `
 <DocumentFragment>
   <button
-    class="styles__1mdc28jf styles_layerStyle__1mdc28j0 styles_button_variant_primary__1mdc28jh styles_layerStyle__1mdc28j2 styles_button_size_md__1mdc28jl styles_layerStyle__1mdc28j6 styles_button_loading_true__1mdc28jo styles_layerStyle__1mdc28j9"
+    class="styles__1mdc28jh styles_layerStyle__1mdc28j0 styles_button_variant_primary__1mdc28jj styles_layerStyle__1mdc28j2 styles_button_size_md__1mdc28jn styles_layerStyle__1mdc28j6 styles_button_loading_true__1mdc28jq styles_layerStyle__1mdc28j9"
   >
     <div
       class="styles__4787ng9 styles_layerStyle__4787ng1 styles_spinner_variant_currentcolor__4787ngc styles_layerStyle__4787ng4 styles_spinner_size_md__4787nge styles_layerStyle__4787ng6"
