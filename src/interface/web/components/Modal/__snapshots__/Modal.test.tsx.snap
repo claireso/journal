@@ -22,7 +22,7 @@ exports[`<Modal /> should render component 1`] = `
           Modal title
         </h2>
         <button
-          class="styles__1mdc28jf styles_layerStyle__1mdc28j0 styles_button_variant_dark__1mdc28jj styles_layerStyle__1mdc28j4 styles_button_size_sm__1mdc28jk styles_layerStyle__1mdc28j5"
+          class="styles__1mdc28jh styles_layerStyle__1mdc28j0 styles_button_variant_dark__1mdc28jl styles_layerStyle__1mdc28j4 styles_button_size_sm__1mdc28jm styles_layerStyle__1mdc28j5"
         >
           <svg
             aria-hidden="true"
