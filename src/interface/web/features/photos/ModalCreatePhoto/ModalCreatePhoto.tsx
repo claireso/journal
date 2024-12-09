@@ -10,7 +10,7 @@ interface ModalCreatePhotoProps {}
 const ModalCreatePhoto = ({}: ModalCreatePhotoProps) => {
   return (
     <AdminModal title="Create photo">
-      <FormPhoto<PhotoInsertDto>
+      <FormPhoto
         action={createPhoto}
         successMessage={{ key: 'CRUD_PHOTO', message: 'Your photo has been created successfully' }}
         errorMessage={{ key: 'CRUD_PHOTO', message: 'An error has occured during the creation. Please retry' }}

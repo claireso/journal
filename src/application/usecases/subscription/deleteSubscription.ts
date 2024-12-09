@@ -21,4 +21,4 @@ async function deleteSubscription(subscriptionId: string) {
   }
 }
 
-export default pipeAsync(withAuth, deleteSubscription)
+export default pipeAsync<void>(withAuth, deleteSubscription)

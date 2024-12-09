@@ -1,7 +1,9 @@
-type AsyncFn<T extends any[], R> = (...args: T) => Promise<R>
+type Args = any[]
 
-function pipeAsync<T extends any[], R>(...fns: AsyncFn<any[], unknown>[]): (...args: T) => Promise<R> {
-  return async function (...args: T): Promise<R> {
+type AsyncFn<R> = (...args: Args) => Promise<R>
+
+function pipeAsync<R>(...fns: AsyncFn<unknown>[]): (...args: any[]) => Promise<R> {
+  return async function (...args: Args): Promise<R> {
     let result: unknown
 
     for (const fn of fns) {
