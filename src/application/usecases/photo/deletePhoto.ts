@@ -5,8 +5,8 @@ import { pool as db } from '@infrastructure/db'
 import { BadRequestError } from '@domain/errors'
 import { photoService } from '@ioc/container'
 import { withAuth } from '@infrastructure/middlewares'
+import logger from '@infrastructure/logger'
 
-// todo manage errors
 async function deletePhoto(photoId: string) {
   try {
     const id = Number(photoId)
@@ -17,7 +17,7 @@ async function deletePhoto(photoId: string) {
 
     await photoService.delete(id, db)
   } catch (err) {
-    // TODO log error
+    logger.error(err)
     throw err
   }
 }

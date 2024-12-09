@@ -19,8 +19,6 @@ const Pager = ({ pager, layout }: PagerProps) => {
     [router]
   )
 
-  console.log({ pager })
-
   return <_Pager navigate={navigate} layout={layout} {...pager} />
 }
 

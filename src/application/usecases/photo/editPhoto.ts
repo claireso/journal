@@ -7,7 +7,6 @@ import { photoService } from '@ioc/container'
 import { withAuth } from '@infrastructure/middlewares'
 import logger from '@infrastructure/logger'
 
-// todo manage errors
 async function editPhoto(prevState: FormActionState<PhotoDto>, data: FormData) {
   try {
     const id = Number(data.get('id'))

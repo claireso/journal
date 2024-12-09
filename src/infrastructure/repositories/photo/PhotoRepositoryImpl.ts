@@ -28,7 +28,6 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
   }
 
   async update(id: number, data: any = {}): Promise<Photo> {
-    console.log('UPDATE REPO =================')
     const fields = Object.entries(data)
       .map((entry, index) => `${entry[0]}=($${index + 1})`)
       .join(',')

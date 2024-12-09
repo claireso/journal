@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { SessionProvider } from 'next-auth/react'
 
 import Text from '@web/components/Text'
@@ -38,8 +37,6 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         <div className={cls.messages}>
           <Messages />
         </div>
-        {/* TODO check if regression here! */}
-        {/* <Suspense>{children}</Suspense> */}
         {children}
       </div>
     </SessionProvider>
