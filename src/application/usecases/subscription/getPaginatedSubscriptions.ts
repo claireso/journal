@@ -1,7 +1,10 @@
 'use server'
 
+import pipeAsync from '@utils/pipeAsync'
 import { BadRequestError } from '@domain/errors'
 import { subscriptionService } from '@ioc/container'
+import { withAuth } from '@infrastructure/middlewares'
+import { SubscriptionsDto } from '@dto'
 
 // TODO add param limit
 const getPaginatedSubscriptions = async ({ page }: { page: string }) => {
@@ -16,4 +19,4 @@ const getPaginatedSubscriptions = async ({ page }: { page: string }) => {
   return paginatedSubscriptions
 }
 
-export default getPaginatedSubscriptions
+export default pipeAsync<SubscriptionsDto>(withAuth, getPaginatedSubscriptions)

@@ -30,14 +30,6 @@ const FormActionStateStatus = {
   ERROR: 'error'
 } as const
 
-// enum Status {
-//   IDLE = 'idle',
-//   SUCCESS = 'success',
-//   ERROR = 'error'
-// }
-
-// type FormState<T> = { status: Status.IDLE } | { status: Status.SUCCESS; item: T } | { status: Status.ERROR }
-
 interface FormProps {
   photo?: PhotoDto
   successMessage: Omit<Message, 'status'>

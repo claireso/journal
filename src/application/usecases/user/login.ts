@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation'
 import { CredentialsSignin, SignInError } from '@auth/core/errors'
 import { signIn } from '@infrastructure/auth'
+import logger from '@infrastructure/logger'
 
 export default async function login(callbackUrl: string, data: FormData) {
   try {
@@ -21,6 +22,7 @@ export default async function login(callbackUrl: string, data: FormData) {
     }
     // throw the next redirect from the signIn
     // https://nextjs.org/docs/app/api-reference/functions/redirect#server-component
+    logger.error(err)
     throw err
   }
 }

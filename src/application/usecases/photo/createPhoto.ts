@@ -8,7 +8,6 @@ import { mapPhotoToPhotoDto, PhotoDto, PhotoInsertDtoSchema } from '@dto'
 import { withAuth } from '@infrastructure/middlewares'
 import logger from '@infrastructure/logger'
 
-// todo manage errors
 async function createPhoto(prevState: FormActionState<PhotoDto>, data: FormData) {
   try {
     const body = Object.fromEntries(data.entries())

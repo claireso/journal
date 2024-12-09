@@ -4,6 +4,7 @@ import pipeAsync from '@utils/pipeAsync'
 import { BadRequestError } from '@domain/errors'
 import { subscriptionService } from '@ioc/container'
 import { withAuth } from '@infrastructure/middlewares'
+import logger from '@infrastructure/logger'
 
 // todo manage errors
 async function deleteSubscription(subscriptionId: string) {
@@ -16,7 +17,7 @@ async function deleteSubscription(subscriptionId: string) {
 
     await subscriptionService.delete(id)
   } catch (err) {
-    // TODO log error
+    logger.error(err)
     throw err
   }
 }
