@@ -6,8 +6,9 @@ export const getSubscriptions = ({ options = '' } = {}) =>
     updated_at
   FROM
     subscriptions
-  ORDER BY id
-  DESC ${options}`
+  ORDER BY
+    id DESC
+  ${options}`
 
 export const insertSubscription = () =>
   `INSERT
