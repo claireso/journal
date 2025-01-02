@@ -1,0 +1,5 @@
+---
+'journal': minor
+---
+
+Update dependencies
