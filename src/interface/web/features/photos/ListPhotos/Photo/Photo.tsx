@@ -15,7 +15,7 @@ interface PhotoProps extends PhotoDto {
 }
 
 const Photo = ({ title, description, media, position, color, row }: PhotoProps) => {
-  const dom = useRef(null)
+  const dom = useRef<HTMLElement>(null!)
   const isInView = useInView(dom)
 
   return (

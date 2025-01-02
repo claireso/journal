@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useContext } from 'react'
-import PropTypes from 'prop-types'
 
 export interface Message {
   key?: string
@@ -40,10 +39,6 @@ const useMessagesContext = () => {
   }
 
   return context
-}
-
-MessagesProvider.propTypes = {
-  children: PropTypes.any
 }
 
 const useMessages = (): [Message[], Actions] => {

@@ -6,12 +6,6 @@ import Welcome from '@web/features/client/Welcome'
 import ListPhotos from '@web/features/photos/ListPhotos'
 import { BadRequestError, NotFoundError } from '@domain/errors'
 
-interface PageProps {
-  searchParams: {
-    page?: string
-  }
-}
-
 async function fetchPhotos(page?: string) {
   try {
     return await getPaginatedPhotos({ page: page ?? '1', limit: '10' })
@@ -23,8 +17,10 @@ async function fetchPhotos(page?: string) {
   }
 }
 
-export default async function Page({ searchParams }: PageProps) {
-  const data = await fetchPhotos(searchParams.page)
+export default async function Page({ searchParams }: NextPageProps<{}>) {
+  const { page } = await searchParams
+
+  const data = await fetchPhotos(page as string)
 
   if (!data.items.length) {
     return <Welcome />

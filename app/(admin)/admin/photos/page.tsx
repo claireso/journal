@@ -13,7 +13,7 @@ import * as cls from './styles.css'
 interface PhotosProps {}
 
 const PagePhotos = async ({ params, searchParams }: NextPageProps<PhotosProps>) => {
-  const { action, page, id: photoId } = searchParams
+  const { action, page, id: photoId } = await searchParams
 
   return (
     <>

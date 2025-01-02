@@ -9,8 +9,8 @@ declare type NavigateOptions = {
 }
 
 declare type NextPageProps<T> = {
-  params: T
-  searchParams: { [key: string]: string | string[] | undefined }
+  params: Promise<T>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 declare type FormActionState<T> = { status: 'idle' } | { status: 'success'; item: T } | { status: 'error' }

@@ -17,7 +17,7 @@ type MediaProps = PhotoDto['media'] & {
 }
 
 const Media = ({ source, color, children }: MediaProps) => {
-  const dom = useRef(null)
+  const dom = useRef<HTMLDivElement>(null!)
   const inView = useInView(dom)
 
   return (
