@@ -1,5 +1,11 @@
 # journal
 
+## 2.2.1
+
+### Patch Changes
+
+- 5d24d8b: Fix: Sort photos correctly by adding a secondary sorting criterion
+
 ## 2.2.0
 
 ### Minor Changes
