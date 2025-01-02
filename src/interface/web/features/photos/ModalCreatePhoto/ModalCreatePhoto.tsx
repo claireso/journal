@@ -1,6 +1,5 @@
 import { memo } from 'react'
 
-import { PhotoInsertDto } from '@dto'
 import { createPhoto } from '@application/usecases'
 import AdminModal from '@web/features/modal/AdminModal'
 import FormPhoto from '../FormPhoto'

@@ -11,7 +11,7 @@ import * as cls from './styles.css'
 interface SubscriptionsProps {}
 
 const PageSubscriptions = async ({ params, searchParams }: NextPageProps<SubscriptionsProps>) => {
-  const { action, page, id: subscriptionId } = searchParams
+  const { action, page, id: subscriptionId } = await searchParams
 
   return (
     <>

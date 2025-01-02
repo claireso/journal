@@ -14,11 +14,11 @@ export default async function login(callbackUrl: string, data: FormData) {
     })
   } catch (err) {
     if (err instanceof SignInError) {
-      const params = new URLSearchParams({
+      const searchParams = new URLSearchParams({
         callbackUrl: callbackUrl as string,
         error: CredentialsSignin.type
       })
-      redirect(`?${params}`)
+      redirect(`/auth/login?${searchParams.toString()}`)
     }
     // throw the next redirect from the signIn
     // https://nextjs.org/docs/app/api-reference/functions/redirect#server-component

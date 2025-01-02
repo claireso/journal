@@ -1,7 +1,9 @@
-const path = require('path')
-const { InjectManifest } = require('workbox-webpack-plugin')
-const CompressionPlugin = require('compression-webpack-plugin')
-const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
+import path from 'path'
+import { InjectManifest } from 'workbox-webpack-plugin'
+import CompressionPlugin from 'compression-webpack-plugin'
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
+
+import type { NextConfig } from 'next'
 
 const IS_NOTIFICATIONS_ENABLED = !!(
   process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY && process.env.NOTIFICATIONS_PRIVATE_KEY
@@ -9,18 +11,15 @@ const IS_NOTIFICATIONS_ENABLED = !!(
 
 const withVanillaExtract = createVanillaExtractPlugin()
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
-  swcMinify: true,
   compiler: {
     reactRemoveProperties: true
   },
   compress: process.env.COMPRESSION === 'enabled',
-  experimental: {
-    serverComponentsExternalPackages: ['pino', 'pino-pretty']
-  },
+  serverExternalPackages: ['pino', 'pino-pretty'],
   async redirects() {
     return [
       {

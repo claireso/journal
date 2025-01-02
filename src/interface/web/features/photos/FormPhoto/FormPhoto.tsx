@@ -1,7 +1,6 @@
 'use client'
 
-import React, { memo, useCallback, useEffect, useState } from 'react'
-import { useFormState } from 'react-dom'
+import React, { memo, useCallback, useEffect, useState, useActionState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import logger from '@infrastructure/logger'
@@ -42,7 +41,7 @@ const initialState: FormActionState<PhotoDto> = {
 }
 
 const Form = ({ photo, action, successMessage, errorMessage }: FormProps) => {
-  const [state, formAction] = useFormState(action, initialState)
+  const [state, formAction] = useActionState(action, initialState)
   const router = useRouter()
   const searchParams = useSearchParams()
   const [previewBackground, setPreviewBackground] = useState<string | null | undefined>(photo?.color)
@@ -145,5 +144,4 @@ const Form = ({ photo, action, successMessage, errorMessage }: FormProps) => {
   )
 }
 
-// Explicit typing of `memo` to accept generic types
 export default memo(Form)
