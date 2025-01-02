@@ -21,7 +21,8 @@ export const getPhotos = (offset: number, limit: number) =>
   LEFT JOIN
     media m ON p.media_id = m.id
   ORDER BY
-    p.created_at DESC
+    p.created_at DESC,
+    p.id DESC
   OFFSET ${offset}
   LIMIT ${limit}
   `
@@ -162,8 +163,8 @@ export const getPreviousPhoto = ({ fields = '*' } = {}) =>
   LEFT JOIN
     media m ON p.media_id = m.id
   ORDER BY
-    photo_created_at
-  DESC
+    p.created_at DESC,
+    p.id DESC
   LIMIT 1
   OFFSET 1
   `
