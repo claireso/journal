@@ -1,10 +1,10 @@
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
-import * as api from '@web/services/api'
-import ApiError from '@web/services/api/ApiError'
+import { getPaginatedPhotos } from '@application/usecases'
 
 import Welcome from '@web/features/client/Welcome'
 import ListPhotos from '@web/features/photos/ListPhotos'
+import { BadRequestError, NotFoundError } from '@domain/errors'
 
 interface PageProps {
   searchParams: {
@@ -14,15 +14,10 @@ interface PageProps {
 
 async function fetchPhotos(page?: string) {
   try {
-    return await api.getPhotos({ page: page ?? '1' })
+    return await getPaginatedPhotos({ page: page ?? '1', limit: '10' })
   } catch (err) {
-    if (err instanceof ApiError) {
-      if (err.response.status === 404) {
-        notFound()
-      }
-      // with next@15 we will be able to use unstable_rethrow
-      // unstable_rethrow(err)
-      throw new ApiError(err.response)
+    if (err instanceof BadRequestError || err instanceof NotFoundError) {
+      redirect('?')
     }
     throw new Error()
   }

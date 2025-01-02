@@ -1,38 +1,37 @@
-import { useCallback, memo } from 'react'
+import { memo } from 'react'
 
-import { usePhoto } from '@web/features/photos/usePhotos'
-import { Heading1 } from '@web/components/Headings'
-import { Loader } from '@web/components/Loader'
-import type { PhotoDto, PhotoUpdateDto } from '@dto'
+import type { PhotoUpdateDto } from '@dto'
 import FormPhoto from '../FormPhoto'
+import AdminModal from '@web/features/modal/AdminModal'
+
+import { getPhoto, editPhoto } from '@application/usecases'
 
 interface ModalEditPhotoProps {
-  id: PhotoDto['id']
-  onSubmit: (data: { id: number; data: PhotoUpdateDto }) => void
-  onCancel: () => void
-  isProcessing?: boolean
+  photoId: string
 }
 
-const ModalEditPhoto = ({ id, onSubmit, onCancel, isProcessing = false }: ModalEditPhotoProps) => {
-  const { data: photo, error, isFetched } = usePhoto(id)
+const fetchPhoto = async (id: string) => {
+  try {
+    return await getPhoto(id)
+  } catch (err) {
+    // TODO: 404
+    throw err
+  }
+}
 
-  const handleSubmit = useCallback(
-    (data: PhotoUpdateDto) => {
-      onSubmit({ id: id, data })
-    },
-    [id, onSubmit]
+const ModalEditPhoto = async ({ photoId }: ModalEditPhotoProps) => {
+  const photo = await fetchPhoto(photoId)
+
+  return (
+    <AdminModal title="Edit photo">
+      <FormPhoto
+        photo={photo}
+        action={editPhoto}
+        successMessage={{ key: 'CRUD_PHOTO', message: 'Your photo has been updated successfully' }}
+        errorMessage={{ key: 'CRUD_PHOTO', message: 'An error has occured during the update. Please retry' }}
+      />
+    </AdminModal>
   )
-
-  if (!isFetched) {
-    return <Loader />
-  }
-
-  if (error?.response.status === 404) {
-    onCancel()
-    return null
-  }
-
-  return <FormPhoto<PhotoUpdateDto> onSubmit={handleSubmit} photo={photo} isProcessing={isProcessing} />
 }
 
 export default memo(ModalEditPhoto)

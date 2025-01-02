@@ -1,5 +1,4 @@
-'use client'
-import React, { useCallback } from 'react'
+import React from 'react'
 
 import Group from '../Group'
 import Label from '../Label'
@@ -9,18 +8,10 @@ import * as cls from './styles.css'
 interface InputProps extends Omit<React.ComponentProps<'input'>, 'onChange'> {
   name: string
   label: string
-  onChange?: (name: string, value: string) => void
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { onChange, name, label, value = '', type = 'text', required = false, autoFocus = false } = props
-
-  const handleChange = useCallback(
-    (event: React.FormEvent<HTMLInputElement>) => {
-      onChange && onChange(name, event.currentTarget.value)
-    },
-    [onChange, name]
-  )
+  const { name, label, value = '', type = 'text', required = false, autoFocus = false } = props
 
   return (
     <Group>
@@ -33,7 +24,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         name={name}
         defaultValue={value}
         required={required}
-        onChange={handleChange}
         autoFocus={autoFocus}
       />
     </Group>

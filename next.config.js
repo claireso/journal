@@ -17,11 +17,6 @@ const nextConfig = {
   compiler: {
     reactRemoveProperties: true
   },
-  logging: {
-    fetches: {
-      fullUrl: true
-    }
-  },
   compress: process.env.COMPRESSION === 'enabled',
   experimental: {
     serverComponentsExternalPackages: ['pino', 'pino-pretty']

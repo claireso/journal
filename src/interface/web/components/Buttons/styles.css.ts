@@ -78,6 +78,13 @@ export const button = recipe({
         border: '1px solid transparent',
         background: 'transparent'
       })
+    },
+    disabled: {
+      true: cmpStyles({
+        cursor: 'default',
+        pointerEvents: 'none',
+        opacity: 0.6
+      })
     }
   },
   compoundVariants: [
@@ -137,6 +144,17 @@ export const button = recipe({
           background: tokens.colors.neutral.extradark,
           borderColor: tokens.colors.neutral.extradark
         }
+      })
+    },
+    {
+      variants: {
+        variant: 'dark',
+        outline: false,
+        disabled: true
+      },
+      style: cmpStyles({
+        opacity: 1,
+        background: tokens.colors.neutral.light
       })
     }
   ],
