@@ -1,6 +1,6 @@
 'use client'
 
-import React, { memo, useCallback, useEffect, useState, useActionState } from 'react'
+import React, { memo, useCallback, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import logger from '@infrastructure/logger'
@@ -23,25 +23,14 @@ import * as cls from './styles.css'
 
 const ALLOWED_MIMETYPES = ['image/jpeg', 'image/jpg']
 
-const FormActionStateStatus = {
-  IDLE: 'idle',
-  SUCCESS: 'success',
-  ERROR: 'error'
-} as const
-
 interface FormProps {
   photo?: PhotoDto
   successMessage: Omit<Message, 'status'>
   errorMessage: Omit<Message, 'status'>
-  action: (prevState: FormActionState<PhotoDto>, data: FormData) => Promise<FormActionState<PhotoDto>>
-}
-
-const initialState: FormActionState<PhotoDto> = {
-  status: FormActionStateStatus.IDLE
+  action: (data: FormData) => Promise<void>
 }
 
 const Form = ({ photo, action, successMessage, errorMessage }: FormProps) => {
-  const [state, formAction] = useActionState(action, initialState)
   const router = useRouter()
   const searchParams = useSearchParams()
   const [previewBackground, setPreviewBackground] = useState<string | null | undefined>(photo?.color)
@@ -49,33 +38,33 @@ const Form = ({ photo, action, successMessage, errorMessage }: FormProps) => {
   const [{ media, processing: mediaProcessing, error: mediaError }, createMedia] = useCreateMedia(photo?.media)
   const [colors] = useColorsExtractor(media?.source)
 
-  useEffect(() => {
-    if (state.status !== FormActionStateStatus.IDLE) {
-      if (state.status === FormActionStateStatus.SUCCESS) {
-        displaySuccessMessage(successMessage)
-      }
-      if (state.status === FormActionStateStatus.ERROR) {
-        displayErrorMessage(errorMessage)
-      }
-      const newSearchParams = new URLSearchParams(searchParams.toString())
-      newSearchParams.delete('action')
-      newSearchParams.delete('id')
-      // redirect to the first page after photo creation
-      if (!photo) {
-        newSearchParams.delete('page')
-      }
-      router.push(`?${newSearchParams.toString()}`)
-      // NOTE: use refresh to make a new request to the server, re-fetching data requests, and re-rendering Server Components
-      router.refresh()
-    }
-  }, [state.status, router, searchParams, photo])
-
   const onChangeMedia = useCallback(
     async (file: File) => {
       setPreviewBackground(null)
       await createMedia(file)
     },
     [createMedia]
+  )
+
+  const formAction = useCallback(
+    async (formData: FormData) => {
+      try {
+        await action(formData)
+        displaySuccessMessage(successMessage)
+      } catch {
+        displayErrorMessage(errorMessage)
+      } finally {
+        const newSearchParams = new URLSearchParams(searchParams.toString())
+        newSearchParams.delete('action')
+        newSearchParams.delete('id')
+        // redirect to the first page after photo creation
+        if (!photo) {
+          newSearchParams.delete('page')
+        }
+        router.push(`?${newSearchParams.toString()}`)
+      }
+    },
+    [action, displayErrorMessage, displaySuccessMessage, errorMessage, successMessage, searchParams, router, photo]
   )
 
   return (
