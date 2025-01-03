@@ -21,7 +21,7 @@ async function editPhoto(data: FormData) {
 
     await photoService.update(id, result)
   } catch (err) {
-    logger.error({ err, data: Object.fromEntries(data.entries()) }, 'Could not update photo')
+    logger.error(err, 'Could not update photo')
     throw err
   }
 }

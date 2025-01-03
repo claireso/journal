@@ -43,7 +43,7 @@ async function createPhoto(data: FormData) {
       }
     }
   } catch (err) {
-    logger.error(err, 'Could not create new photo')
+    logger.error(err, 'Could not create photo')
     throw err
   }
 }

@@ -1,3 +1,4 @@
+import { unstable_cache, revalidateTag } from 'next/cache'
 import { Subscription } from '@domain/entities'
 import { SubscriptionRepository } from '@domain/repositories'
 import * as queries from './queries'
@@ -5,6 +6,7 @@ import * as queries from './queries'
 export default class SubscriptionRepositoryImpl implements SubscriptionRepository {
   private database: any
   private logger: any
+  static cacheLifeTime: number = 3600 * 24 * 4 // 4 days
 
   constructor(database: any, logger: unknown) {
     this.database = database
@@ -14,46 +16,102 @@ export default class SubscriptionRepositoryImpl implements SubscriptionRepositor
   async create(data: any): Promise<Subscription> {
     this.logger.info({ data }, 'Subscription creation started')
     const result = await this.database.query(queries.insertSubscription(), [data])
-    this.logger.info({ response: result.rows[0] }, 'Subscription created successfully')
+    revalidateTag('list_subscriptions')
+    revalidateTag('list_all_subscriptions')
+    revalidateTag('list_subscriptions_count')
+    this.logger.info('Subscription created successfully')
+    this.logger.debug({ response: result.rows[0] })
     return result.rows[0]
   }
 
   async getById(id: number): Promise<Subscription | null> {
     this.logger.info({ id }, 'Subscription getting started')
-    const result = await this.database.query(queries.getSubscriptionById(id))
-    const response = result.rows[0] || null
-    this.logger.info(response, 'Subscription retrieved successfully')
+
+    const response = await unstable_cache(
+      async (id: number) => {
+        const result = await this.database.query(queries.getSubscriptionById(id))
+        return result.rows[0] || null
+      },
+      [],
+      {
+        tags: [`subscription_${id}`],
+        revalidate: SubscriptionRepositoryImpl.cacheLifeTime
+      }
+    )(id)
+
+    this.logger.info('Subscription retrieved successfully')
+    this.logger.debug({ response })
     return response
   }
 
   async getAll(): Promise<Subscription[]> {
     this.logger.info('Subscriptions getting started')
-    const result = await this.database.query(queries.getSubscriptions())
-    const response = result.rows
-    this.logger.info({ response }, 'Subscriptions retrieved successfully')
+
+    const response = await unstable_cache(
+      async () => {
+        const result = await this.database.query(queries.getSubscriptions())
+        return result.rows
+      },
+      [],
+      {
+        tags: ['list_all_subscriptions'],
+        revalidate: SubscriptionRepositoryImpl.cacheLifeTime
+      }
+    )()
+
+    this.logger.info('Subscriptions retrieved successfully')
+    this.logger.debug({ response })
     return response
   }
 
   async delete(id: number): Promise<void> {
     this.logger.info({ id }, 'Subscription deletion started')
     await this.database.query(queries.deleteSubscription(id))
-    this.logger.info({ id }, 'Subscription deleted successfully')
+    revalidateTag('list_subscriptions')
+    revalidateTag('list_all_subscriptions')
+    revalidateTag('list_subscriptions_count')
+    revalidateTag(`subscription_${id}`)
+    this.logger.info('Subscription deleted successfully')
   }
 
-  async getSubscriptions(offset: number, limit: number) {
+  async getSubscriptions(offset: number, limit: number): Promise<Subscription[]> {
     this.logger.info({ offset, limit }, 'Subscriptions page getting started')
-    const options = `OFFSET ${offset} LIMIT ${limit}`
-    const result = await this.database.query(queries.getSubscriptions({ options }))
-    const response = result.rows
-    this.logger.info({ response }, 'Subscriptions page retrieved successfully')
+
+    const response = await unstable_cache(
+      async (offset, limit) => {
+        const options = `OFFSET ${offset} LIMIT ${limit}`
+        const result = await this.database.query(queries.getSubscriptions({ options }))
+        return result.rows
+      },
+      [],
+      {
+        tags: ['list_subscriptions'],
+        revalidate: SubscriptionRepositoryImpl.cacheLifeTime
+      }
+    )(offset, limit)
+
+    this.logger.info('Subscriptions page retrieved successfully')
+    this.logger.debug({ response })
     return response
   }
 
   async countSubscriptions(): Promise<number> {
     this.logger.info('Subscriptions count started')
-    const result = await this.database.query(queries.count())
-    const response = Number(result.rows[0].count)
-    this.logger.info({ response }, 'Subscriptions counted successfully')
+
+    const response = await unstable_cache(
+      async () => {
+        const result = await this.database.query(queries.count())
+        return Number(result.rows[0].count)
+      },
+      ['list_subscriptions_count'],
+      {
+        tags: ['list_subscriptions_count'],
+        revalidate: SubscriptionRepositoryImpl.cacheLifeTime
+      }
+    )()
+
+    this.logger.info('Subscriptions counted successfully')
+    this.logger.debug({ response })
     return response
   }
 }

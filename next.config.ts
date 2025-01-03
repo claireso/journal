@@ -20,12 +20,6 @@ const nextConfig: NextConfig = {
   },
   compress: process.env.COMPRESSION === 'enabled',
   serverExternalPackages: ['pino', 'pino-pretty'],
-  // experimental: {
-  //   staleTimes: {
-  //     dynamic: 30,
-  //     static: 180
-  //   }
-  // },
   async redirects() {
     return [
       {

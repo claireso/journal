@@ -14,7 +14,7 @@ const createMedia = async (data: FormData) => {
     const mediaDto = mapMediatoMediaDto(media)
     return mediaDto
   } catch (err) {
-    logger.error(err)
+    logger.error(err, 'Could not create media')
     throw err
   }
 }
