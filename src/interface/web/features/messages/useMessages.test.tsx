@@ -11,6 +11,7 @@ describe('useMessages', () => {
   it('should display a success message', async () => {
     const { result } = render()
 
+    // eslint-disable-next-line
     let [messages, actions] = result.current
 
     act(() => {
@@ -31,6 +32,7 @@ describe('useMessages', () => {
   it('should display an error message', async () => {
     const { result } = render()
 
+    // eslint-disable-next-line
     let [messages, actions] = result.current
 
     act(() => {
@@ -90,6 +92,7 @@ describe('useMessages', () => {
   it('should close a message', () => {
     const { result } = render()
 
+    // eslint-disable-next-line
     let [messages, actions] = result.current
 
     act(() => {

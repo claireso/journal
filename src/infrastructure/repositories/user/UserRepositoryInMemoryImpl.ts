@@ -16,7 +16,7 @@ export default class UserRepositoryInMemoryImpl implements UserRepository {
     ]
   }
 
-  async getByCredentials(username: string, password: string): Promise<User | null> {
+  async getByCredentials(username: string): Promise<User | null> {
     const user = this.users.find((user) => user.username === username)
     return user || null
   }

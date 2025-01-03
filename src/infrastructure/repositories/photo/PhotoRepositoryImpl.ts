@@ -1,15 +1,20 @@
 import { unstable_cache, revalidateTag } from 'next/cache'
 import { Photo } from '@domain/entities'
 import { PhotoRepository } from '@domain/repositories'
-import { PhotoInsertDto } from '@dto'
+import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
 import * as queries from './queries'
 import { mapRowToPhoto } from '@domain/entities/photo/mappers'
 
+// @TODO improve type
+
 export default class PhotoRepositoryImpl implements PhotoRepository {
+  // eslint-disable-next-line
   private database: any
+  // eslint-disable-next-line
   private logger: any
   static cacheLifeTime: number = 3600 * 24 * 4 // 4 days
 
+  // eslint-disable-next-line
   constructor(database: any, logger: any) {
     this.database = database
     this.logger = logger
@@ -32,7 +37,7 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
     return mapRowToPhoto(result.rows[0])
   }
 
-  async update(id: number, data: any = {}): Promise<Photo> {
+  async update(id: number, data: PhotoUpdateDto): Promise<Photo> {
     const fields = Object.entries(data)
       .map((entry, index) => `${entry[0]}=($${index + 1})`)
       .join(',')

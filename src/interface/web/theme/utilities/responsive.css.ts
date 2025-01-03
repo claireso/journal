@@ -1,5 +1,4 @@
 import type { StyleRule } from '@vanilla-extract/css'
-import { style } from '@vanilla-extract/css'
 import { default as breakpoints } from '../core/breakpoints.css'
 
 export const responsiveStyle = ({

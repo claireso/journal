@@ -1,7 +1,9 @@
 import { getAuthError, AUTH_ERRORS_TYPES } from '@infrastructure/auth/errors'
 import { Heading1 } from '@web/components/Headings'
 
-const ErrorPage = async ({ searchParams }: NextPageProps<{}>) => {
+type ErrorPageProps = object
+
+const ErrorPage = async ({ searchParams }: NextPageProps<ErrorPageProps>) => {
   const { error: errorType } = await searchParams
   const error = getAuthError((errorType as AUTH_ERRORS_TYPES) ?? 'default')
 

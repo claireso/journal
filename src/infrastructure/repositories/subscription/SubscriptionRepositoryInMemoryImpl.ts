@@ -1,5 +1,6 @@
 import { Subscription } from '@domain/entities'
 import { SubscriptionRepository } from '@domain/repositories'
+import { SubscriptionInsertDto } from '@dto'
 
 export default class SubscriptionRepositoryInMemoryImpl implements SubscriptionRepository {
   private subscriptions: Subscription[]
@@ -48,7 +49,7 @@ export default class SubscriptionRepositoryInMemoryImpl implements SubscriptionR
     ]
   }
 
-  async create(data: any): Promise<Subscription> {
+  async create(data: SubscriptionInsertDto): Promise<Subscription> {
     const lastSubscription = this.subscriptions.at(-1) as Subscription
     const newSubscription = {
       id: lastSubscription.id + 1,

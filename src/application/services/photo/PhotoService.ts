@@ -7,15 +7,15 @@ import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
 export default class PhotoService {
   private repository: PhotoRepository
   private mediaRepository: MediaRepository
-  private logger: any
+  private logger: unknown
 
-  constructor(repository: PhotoRepository, mediaRepository: MediaRepository, logger: any) {
+  constructor(repository: PhotoRepository, mediaRepository: MediaRepository, logger: unknown) {
     this.repository = repository
     this.mediaRepository = mediaRepository
     this.logger = logger
   }
 
-  private _cleanPhotoData(data: any) {
+  private _cleanPhotoData(data: PhotoInsertDto | PhotoUpdateDto) {
     return {
       title: escape(data.title),
       description: escape(data.description),
@@ -63,7 +63,7 @@ export default class PhotoService {
     })
 
     // The media will be updated
-    if (newPhoto.media_id !== photo.media_id) {
+    if (newPhoto.media_id && newPhoto.media_id !== photo.media_id) {
       // check if the media exists
       const media = await this.mediaRepository.getById(newPhoto.media_id)
       if (media === null) {
@@ -102,6 +102,7 @@ export default class PhotoService {
     return this.repository.getPreviousPhoto()
   }
 
+  // eslint-disable-next-line
   async delete(id: number, db: any) {
     const photo = await this.getById(id)
 

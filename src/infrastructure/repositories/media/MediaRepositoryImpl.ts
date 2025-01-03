@@ -4,10 +4,13 @@ import { MediaRepository } from '@domain/repositories'
 import * as queries from './queries'
 
 export default class MediaRepositoryImpl implements MediaRepository {
+  // eslint-disable-next-line
   private database: any
+  // eslint-disable-next-line
   private logger: any
   static cacheLifeTime: number = 3600 * 24 * 4 // 4 days
 
+  // eslint-disable-next-line
   constructor(database: any, logger: any) {
     this.database = database
     this.logger = logger

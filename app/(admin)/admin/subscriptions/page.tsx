@@ -8,9 +8,9 @@ import { AdminAction } from '@utils/constant'
 
 import * as cls from './styles.css'
 
-interface SubscriptionsProps {}
+type SubscriptionsProps = object
 
-const PageSubscriptions = async ({ params, searchParams }: NextPageProps<SubscriptionsProps>) => {
+const PageSubscriptions = async ({ searchParams }: NextPageProps<SubscriptionsProps>) => {
   const { action, page, id: subscriptionId } = await searchParams
 
   return (

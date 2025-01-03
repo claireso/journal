@@ -32,6 +32,7 @@ async function createPhoto(data: FormData) {
         const subscriptions = await subscriptionService.getAll()
         subscriptions.map(({ subscription, id }) => {
           logger.info({ id }, `Send notification`)
+          // eslint-disable-next-line
           return sendNotification(subscription, NOTIFICATION_NEW_PHOTO).catch((err: any) => {
             if (err && [410, 404].includes(err.statusCode)) {
               logger.warn({ err, ctx: { notificationId: id } }, 'Can not send notification')

@@ -17,7 +17,9 @@ async function fetchPhotos(page?: string) {
   }
 }
 
-export default async function Page({ searchParams }: NextPageProps<{}>) {
+type PageProps = object
+
+export default async function Page({ searchParams }: NextPageProps<PageProps>) {
   const { page } = await searchParams
 
   const data = await fetchPhotos(page as string)

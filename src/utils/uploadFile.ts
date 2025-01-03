@@ -25,6 +25,7 @@ const uploadFile = async (file: File, options: Options = {}) => {
   const buffer = Buffer.from(bytes)
 
   const photo = await Jimp.fromBuffer(buffer)
+  // eslint-disable-next-line
   // @ts-ignore
   await photo.write(filepath, { quality })
 
