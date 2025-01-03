@@ -17,7 +17,7 @@ async function deletePhoto(photoId: string) {
 
     await photoService.delete(id, db)
   } catch (err) {
-    logger.error(err)
+    logger.error(err, 'Could not delete photo')
     throw err
   }
 }

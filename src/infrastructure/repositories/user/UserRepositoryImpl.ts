@@ -14,7 +14,8 @@ export default class UserRepositoryImpl implements UserRepository {
   async getByCredentials(username: string, password: string): Promise<User | null> {
     this.logger.info({ username }, 'User authentication started')
     const result = await this.database.query(queries.getUserByCredentials(username, password))
-    this.logger.info(result.rows[0], 'User authenticated successfully')
+    this.logger.info('User authenticated successfully')
+    this.logger.debug({ response: result.rows[0] })
     return result.rows[0] || null
   }
 }

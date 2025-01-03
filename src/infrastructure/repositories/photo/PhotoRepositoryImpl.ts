@@ -1,3 +1,4 @@
+import { unstable_cache, revalidateTag } from 'next/cache'
 import { Photo } from '@domain/entities'
 import { PhotoRepository } from '@domain/repositories'
 import { PhotoInsertDto } from '@dto'
@@ -7,6 +8,7 @@ import { mapRowToPhoto } from '@domain/entities/photo/mappers'
 export default class PhotoRepositoryImpl implements PhotoRepository {
   private database: any
   private logger: any
+  static cacheLifeTime: number = 3600 * 24 * 4 // 4 days
 
   constructor(database: any, logger: any) {
     this.database = database
@@ -23,7 +25,10 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
       data.color,
       data.media_id
     ])
-    this.logger.info({ response: result.rows[0] }, 'New photo created successfully')
+    revalidateTag('list_photos')
+    revalidateTag('list_photos_count')
+    this.logger.info('New photo created successfully')
+    this.logger.debug({ response: result.rows[0] })
     return mapRowToPhoto(result.rows[0])
   }
 
@@ -34,16 +39,31 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
     const values = Object.values(data)
     this.logger.info({ id, data }, 'Photo updating started')
     const result = await this.database.query(queries.updatePhoto(id, fields), values)
-    this.logger.info({ response: result.rows[0] }, 'Photo updated successfully')
+    revalidateTag('list_photos')
+    revalidateTag(`photo_${id}`)
+    this.logger.info('Photo updated successfully')
+    this.logger.debug({ response: result.rows[0] })
     return mapRowToPhoto(result.rows[0])
   }
 
   async getById(id: number): Promise<Photo | null> {
     this.logger.info({ id }, 'Photo getting started')
-    const result = await this.database.query(queries.getPhotoById(id))
-    const row = result.rows[0]
-    const response = row ? mapRowToPhoto(row) : null
-    this.logger.info({ response }, 'Photo retrieved successfully')
+
+    const response = await unstable_cache(
+      async (id: number) => {
+        const result = await this.database.query(queries.getPhotoById(id))
+        const row = result.rows[0]
+        return row ? mapRowToPhoto(row) : null
+      },
+      [],
+      {
+        tags: [`photo_${id}`],
+        revalidate: PhotoRepositoryImpl.cacheLifeTime
+      }
+    )(id)
+
+    this.logger.info('Photo retrieved successfully')
+    this.logger.debug({ response })
     return response
   }
 
@@ -51,35 +71,66 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
     this.logger.info({ mediaId }, 'Photo getting by mediaId started')
     const result = await this.database.query(queries.getPhotoByMediaId(mediaId))
     const row = result.rows[0]
-    this.logger.info({ response: row }, 'Photo retrieved by mediaId successfully')
+    this.logger.info('Photo retrieved by mediaId successfully')
+    this.logger.debug({ response: row })
     return row ? mapRowToPhoto(row) : null
   }
 
   async getPreviousPhoto(): Promise<Photo | null> {
+    this.logger.info('Previous photo getting started')
     const result = await this.database.query(queries.getPreviousPhoto())
     const row = result.rows[0]
+    this.logger.info('Previous photo retrieved successfully')
+    this.logger.debug({ response: row })
     return row ? mapRowToPhoto(row) : null
   }
 
   async delete(id: number): Promise<void> {
     this.logger.info({ id }, 'Photo deletion started')
     await this.database.query(queries.deletePhoto(id))
-    this.logger.info({ id }, 'Photo deleted successfully')
+    revalidateTag('list_photos')
+    revalidateTag('list_photos_count')
+    revalidateTag(`photo_${id}`)
+    this.logger.info('Photo deleted successfully')
   }
 
-  async getPhotos(offset: number, limit: number) {
+  async getPhotos(offset: number, limit: number): Promise<Photo[]> {
     this.logger.info({ offset, limit }, 'Photos page getting started')
-    const result = await this.database.query(queries.getPhotos(offset, limit))
-    const response = result.rows.map(mapRowToPhoto)
-    this.logger.info({ response }, 'Photos page retrieved successfully')
+
+    const response = await unstable_cache(
+      async (offset: number, limit: number) => {
+        const result = await this.database.query(queries.getPhotos(offset, limit))
+        return result.rows.map(mapRowToPhoto)
+      },
+      [],
+      {
+        tags: ['list_photos'],
+        revalidate: PhotoRepositoryImpl.cacheLifeTime
+      }
+    )(offset, limit)
+
+    this.logger.info('Photos page retrieved successfully')
+    this.logger.debug({ response })
     return response
   }
 
   async countPhotos(): Promise<number> {
     this.logger.info('Photos count started')
-    const result = await this.database.query(queries.count())
-    const response = Number(result.rows[0].count)
-    this.logger.info({ response }, 'Photos counted successfully')
+
+    const response = await unstable_cache(
+      async () => {
+        const result = await this.database.query(queries.count())
+        return Number(result.rows[0].count)
+      },
+      ['list_photos_count'],
+      {
+        tags: ['list_photos_count'],
+        revalidate: PhotoRepositoryImpl.cacheLifeTime
+      }
+    )()
+
+    this.logger.info('Photos counted successfully')
+    this.logger.debug({ response })
     return response
   }
 }

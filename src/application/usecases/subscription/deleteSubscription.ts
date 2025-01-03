@@ -17,7 +17,7 @@ async function deleteSubscription(subscriptionId: string) {
 
     await subscriptionService.delete(id)
   } catch (err) {
-    logger.error(err)
+    logger.error(err, 'Could not delete subscription')
     throw err
   }
 }

@@ -4,18 +4,17 @@ import { differenceInMinutes } from 'date-fns'
 import pipeAsync from '@utils/pipeAsync'
 import { photoService, subscriptionService } from '@ioc/container'
 import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } from '@infrastructure/web-push'
-import { mapPhotoToPhotoDto, PhotoDto, PhotoInsertDtoSchema } from '@dto'
+import { PhotoInsertDtoSchema } from '@dto'
 import { withAuth } from '@infrastructure/middlewares'
 import logger from '@infrastructure/logger'
 
-async function createPhoto(prevState: FormActionState<PhotoDto>, data: FormData) {
+async function createPhoto(data: FormData) {
   try {
     const body = Object.fromEntries(data.entries())
 
     const result = PhotoInsertDtoSchema.parse(body)
 
-    const photo = await photoService.create(result)
-    const photoDto = mapPhotoToPhotoDto(photo)
+    await photoService.create(result)
 
     // send web-push notification
     if (IS_NOTIFICATIONS_ENABLED) {
@@ -43,16 +42,10 @@ async function createPhoto(prevState: FormActionState<PhotoDto>, data: FormData)
         })
       }
     }
-    return {
-      status: 'success',
-      item: photoDto
-    }
   } catch (err) {
-    logger.error(err)
-    return {
-      status: 'error'
-    }
+    logger.error(err, 'Could not create photo')
+    throw err
   }
 }
 
-export default pipeAsync<FormActionState<PhotoDto>>(withAuth, createPhoto)
+export default pipeAsync<void>(withAuth, createPhoto)

@@ -22,7 +22,7 @@ export default async function login(callbackUrl: string, data: FormData) {
     }
     // throw the next redirect from the signIn
     // https://nextjs.org/docs/app/api-reference/functions/redirect#server-component
-    logger.error(err)
+    logger.error(err, 'Could not sign in user')
     throw err
   }
 }
