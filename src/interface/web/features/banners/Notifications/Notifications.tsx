@@ -19,12 +19,12 @@ const BannerNotifications = () => {
 
   const subscribe = useCallback(
     async (event: React.MouseEvent<HTMLAnchorElement>) => {
-      event && event.preventDefault()
+      event?.preventDefault()
 
       try {
         await notifications.subscribe()
         hideBanner()
-      } catch (err) {
+      } catch {
         // user decline
         if (notifications.areDenied()) {
           hideBanner()

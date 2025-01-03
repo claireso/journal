@@ -10,8 +10,9 @@ const NOTIFICATIONS_PUBLIC_KEY = process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KE
 
 const translations = getTranslations(process.env.WEBSITE_LANGUAGE, 'admin')
 
-IS_NOTIFICATIONS_ENABLED &&
+if (IS_NOTIFICATIONS_ENABLED) {
   webpush.setVapidDetails(process.env.NOTIFICATIONS_SUBJECT, NOTIFICATIONS_PUBLIC_KEY, NOTIFICATIONS_PRIVATE_KEY)
+}
 
 export const sendNotification = (subscription, key = '') => {
   const payload = {}

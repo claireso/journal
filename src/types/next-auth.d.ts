@@ -1,4 +1,3 @@
-import NextAuth from 'next-auth'
 import { UserDto } from '@dto'
 
 declare module 'next-auth' {

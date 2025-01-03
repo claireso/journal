@@ -3,10 +3,13 @@ import { UserRepository } from '@domain/repositories'
 import * as queries from './queries'
 
 export default class UserRepositoryImpl implements UserRepository {
+  // eslint-disable-next-line
   private database: any
+  // eslint-disable-next-line
   private logger: any
 
-  constructor(database: any, logger: unknown) {
+  // eslint-disable-next-line
+  constructor(database: any, logger: any) {
     this.database = database
     this.logger = logger
   }

@@ -5,7 +5,9 @@ import logger from '@infrastructure/logger'
 
 export { default as withAuth } from './withAuth'
 
+// eslint-disable-next-line
 export const createRouteHandler = (...middlewares: any[]) => {
+  // eslint-disable-next-line
   return async (request: NextRequest, context: any) => {
     for (const middleware of middlewares) {
       try {

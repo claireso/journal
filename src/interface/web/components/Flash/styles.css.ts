@@ -1,5 +1,5 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
-import { cmpStyles, p, px, py, tokens } from '@web/theme'
+import { cmpStyles, px, py, tokens } from '@web/theme'
 
 export const wrapper = recipe({
   base: cmpStyles({

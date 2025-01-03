@@ -1,19 +1,23 @@
 import { unstable_cache, revalidateTag } from 'next/cache'
 import { Subscription } from '@domain/entities'
+import { SubscriptionInsertDto } from '@dto'
 import { SubscriptionRepository } from '@domain/repositories'
 import * as queries from './queries'
 
 export default class SubscriptionRepositoryImpl implements SubscriptionRepository {
+  // eslint-disable-next-line
   private database: any
+  // eslint-disable-next-line
   private logger: any
   static cacheLifeTime: number = 3600 * 24 * 4 // 4 days
 
-  constructor(database: any, logger: unknown) {
+  // eslint-disable-next-line
+  constructor(database: any, logger: any) {
     this.database = database
     this.logger = logger
   }
 
-  async create(data: any): Promise<Subscription> {
+  async create(data: SubscriptionInsertDto): Promise<Subscription> {
     this.logger.info({ data }, 'Subscription creation started')
     const result = await this.database.query(queries.insertSubscription(), [data])
     revalidateTag('list_subscriptions')

@@ -7,7 +7,9 @@ import Flash from '@web/components/Flash'
 
 import * as cls from './styles.css'
 
-const LoginPage = async ({ searchParams }: NextPageProps<{}>) => {
+type LoginPageProps = object
+
+const LoginPage = async ({ searchParams }: NextPageProps<LoginPageProps>) => {
   const { callbackUrl = '/admin/photos', error: errorType } = await searchParams
 
   const loginWithCallbackUrlAction = login.bind(null, callbackUrl as string)

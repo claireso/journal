@@ -1,5 +1,6 @@
 import type { Media } from './media'
 
+// eslint-disable-next-line
 export const mapRowToMedia = (data: any): Media => ({
   id: data.id,
   created_at: data.created_at,

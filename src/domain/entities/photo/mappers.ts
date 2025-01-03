@@ -1,6 +1,7 @@
 import type { Photo } from './photo'
 import { mapRowToMedia } from '../media'
 
+// eslint-disable-next-line
 export const mapRowToPhoto = (data: any): Photo => ({
   id: data.photo_id,
   title: data.title,

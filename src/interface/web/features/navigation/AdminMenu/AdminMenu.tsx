@@ -6,9 +6,7 @@ import MenuLink from './MenuLink'
 
 import * as cls from './styles.css'
 
-interface AdminMenuProps {}
-
-const AdminMenu = (props: AdminMenuProps) => {
+const AdminMenu = () => {
   return (
     <ul className={cls.list}>
       <li>

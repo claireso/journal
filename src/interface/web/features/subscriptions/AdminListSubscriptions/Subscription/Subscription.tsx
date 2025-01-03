@@ -8,7 +8,7 @@ import ButtonDelete from './ButtonDelete'
 
 import * as cls from './styles.css'
 
-interface SubscriptionProps extends SubscriptionDto {}
+type SubscriptionProps = SubscriptionDto
 
 const Subscription = ({ id, ...props }: SubscriptionProps) => {
   const createdAt = props.created_at

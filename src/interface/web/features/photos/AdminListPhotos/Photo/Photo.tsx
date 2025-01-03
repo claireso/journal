@@ -10,7 +10,7 @@ import Actions from './Actions'
 
 import Text from '@web/components/Text'
 
-interface PhotoProps extends PhotoDto {}
+type PhotoProps = PhotoDto
 
 const Photo = ({ id, color, media, title, description, created_at }: PhotoProps) => {
   return (

@@ -4,9 +4,7 @@ import { createPhoto } from '@application/usecases'
 import AdminModal from '@web/features/modal/AdminModal'
 import FormPhoto from '../FormPhoto'
 
-interface ModalCreatePhotoProps {}
-
-const ModalCreatePhoto = ({}: ModalCreatePhotoProps) => {
+const ModalCreatePhoto = () => {
   return (
     <AdminModal title="Create photo">
       <FormPhoto

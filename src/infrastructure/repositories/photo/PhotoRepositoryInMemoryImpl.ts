@@ -1,7 +1,7 @@
-import { PhotoInsertDto } from '@dto'
+import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
 import { MediaType, Photo, PhotoPositionType } from '@domain/entities'
 import { PhotoRepository } from '@domain/repositories'
-import { mapRowToMedia, mapRowToPhoto } from '@domain/entities'
+import { mapRowToPhoto } from '@domain/entities'
 
 export default class PhotoRepositoryInMemoryImpl implements PhotoRepository {
   private photos: Photo[]
@@ -107,7 +107,7 @@ export default class PhotoRepositoryInMemoryImpl implements PhotoRepository {
     return newPhoto
   }
 
-  async update(id: number, data: any = {}): Promise<Photo> {
+  async update(id: number, data: PhotoUpdateDto): Promise<Photo> {
     this.photos = this.photos.map((photo) => {
       if (photo.id !== id) {
         return { ...photo }
