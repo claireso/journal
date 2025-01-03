@@ -7,7 +7,7 @@ const customJestConfig = {
   ...baseConfig,
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  testMatch: ['<rootDir>/src/interface/web/**/*.test.{js,ts,tsx}']
+  testMatch: ['<rootDir>/src/interface/web/**/*.test.{js,ts,tsx}', '<rootDir>/src/utils/**/*.test.{js,ts}']
 }
 
 module.exports = async (...args) => {

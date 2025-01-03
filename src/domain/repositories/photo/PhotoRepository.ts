@@ -1,8 +1,8 @@
-import { Photo, Photos } from '@domain/entities'
+import { Photo } from '@domain/entities'
 
 export interface PhotoRepository {
-  create(photo: any): Promise<Photo>
-  update(id: number, photo: any): Promise<Photo>
+  create(photo: object & { name: string }): Promise<Photo>
+  update(id: number, photo: object): Promise<Photo>
   getById(id: number): Promise<Photo | null>
   getByMediaId(mediaId: number): Promise<Photo | null>
   getPreviousPhoto(): Promise<Photo | null>

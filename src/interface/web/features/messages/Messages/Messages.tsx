@@ -12,7 +12,9 @@ const Messages = () => {
   const pathname = usePathname()
 
   useEffect(() => {
-    messages?.length && closeAllMessages()
+    if (messages?.length) {
+      closeAllMessages()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 

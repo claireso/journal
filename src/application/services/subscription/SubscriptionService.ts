@@ -1,7 +1,6 @@
 import { NotFoundError } from '@domain/errors/errors'
 import { Pager, Subscriptions } from '@domain/entities'
 import { SubscriptionRepository } from '@domain/repositories'
-import { SubscriptionInsertDto } from '@dto'
 
 export default class SubscriptionService {
   private repository: SubscriptionRepository
@@ -12,7 +11,7 @@ export default class SubscriptionService {
     this.logger = logger
   }
 
-  async create(data: any) {
+  async create(data: object) {
     return this.repository.create(data)
   }
 

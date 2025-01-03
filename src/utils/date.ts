@@ -1,9 +1,9 @@
-import { format, parseISO } from 'date-fns'
+import { format } from 'date-fns'
 
-export const formatDate = (dateString: unknown) => {
-  return format(parseISO(dateString as string), 'yyyy-MM-dd')
+export const formatDate = (dateString: Date) => {
+  return format(dateString, 'yyyy-MM-dd')
 }
 
-export const formatDateTime = (dateString: unknown) => {
-  return format(parseISO(dateString as string), 'yyyy-MM-dd HH:mm:ss')
+export const formatDateTime = (dateString: Date) => {
+  return format(dateString, 'yyyy-MM-dd HH:mm:ss')
 }

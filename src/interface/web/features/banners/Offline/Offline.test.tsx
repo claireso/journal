@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 // @ts-nocheck
 import { render } from '@testing-library/react'
 

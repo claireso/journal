@@ -1,5 +1,5 @@
 import { recipe } from '@vanilla-extract/recipes'
-import { pagesStyle, responsiveStyle, tokens, gapY, m, mb, mt } from '@web/theme'
+import { pagesStyle, responsiveStyle, tokens, gapY, m, mb } from '@web/theme'
 
 const PORTRAIT = 'portrait'
 const LANDSCAPE = 'landscape'

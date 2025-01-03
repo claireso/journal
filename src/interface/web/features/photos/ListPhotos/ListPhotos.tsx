@@ -1,6 +1,8 @@
 import type { PhotosDto } from '@dto'
 import Photo from './Photo'
-import Pager from './Pager'
+import Pager from '@web/features/pagination/Pager'
+
+import * as cls from './styles.css'
 
 interface ListPhotosProps {
   photos: PhotosDto['items']
@@ -13,7 +15,9 @@ const ListPhotos = ({ photos = [], pager }: ListPhotosProps) => {
       {photos.map((photo, index) => (
         <Photo key={photo.id} {...photo} row={index + 1} />
       ))}
-      <Pager pager={pager} />
+      <div className={cls.listPhotosPager}>
+        <Pager pager={pager} />
+      </div>
     </>
   )
 }

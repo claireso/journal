@@ -20,6 +20,9 @@ export const listItem = pagesStyle({
     },
     xl: {
       flex: '1 0 23%'
+    },
+    wide: {
+      flex: '1 0 15%'
     }
   })
 })

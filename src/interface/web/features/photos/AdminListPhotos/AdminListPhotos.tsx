@@ -1,34 +1,58 @@
 import React from 'react'
-
-import { PhotosDto } from '@dto'
+import { redirect } from 'next/navigation'
+import logger from '@infrastructure/logger'
+import { getPaginatedPhotos } from '@application/usecases'
+import { BadRequestError, NotFoundError } from '@domain/errors'
+import EmptyZone from '@web/components/EmptyZone'
+import Pager from '@web/features/pagination/Pager'
 import Photo from './Photo'
 
 import * as cls from './styles.css'
 
 interface AdminListPhotos {
-  photos?: PhotosDto['items']
-  onDelete: (id: number) => void
-  onEdit: (id: number) => void
+  page: string
 }
 
-const PHOTOS_BY_LINE = 4
+const PHOTOS_BY_LINE = 6
 
-const AdminListPhotos = ({ photos = [], onDelete, onEdit }: AdminListPhotos) => {
+const fetchPhotos = async ({ page }: { page: string }) => {
+  try {
+    return await getPaginatedPhotos({ page })
+  } catch (err) {
+    if (err instanceof NotFoundError || err instanceof BadRequestError) {
+      redirect('?')
+    }
+    logger.error({ err, ctx: `Admin photos, can not get page "${page}"` })
+    throw err
+  }
+}
+
+const AdminListPhotos = async ({ page }: AdminListPhotos) => {
+  const { pager, items: photos } = await fetchPhotos({ page })
+
   const count = photos.length
   const modulo = count % PHOTOS_BY_LINE
   const countGhostItems = modulo > 0 ? PHOTOS_BY_LINE - (count % PHOTOS_BY_LINE) : 0
+
+  if (count === 0) {
+    return <EmptyZone>No photo yet.</EmptyZone>
+  }
+
   return (
-    <ul className={cls.list}>
-      {photos.map((photo) => (
-        <li key={photo.id} className={cls.listItem}>
-          <Photo {...photo} onDelete={onDelete} onEdit={onEdit} />
-        </li>
-      ))}
-      {Array.from(Array(countGhostItems)).map((_, index) => (
-        <li key={`ghost-${index}`} className={cls.listItem} />
-      ))}
-    </ul>
+    <>
+      <ul className={cls.list}>
+        {photos.map((photo) => (
+          <li key={photo.id} className={cls.listItem}>
+            <Photo {...photo} />
+          </li>
+        ))}
+        {Array.from(Array(countGhostItems)).map((_, index) => (
+          <li key={`ghost-${index}`} className={cls.listItem} />
+        ))}
+      </ul>
+      <Pager layout="numeric" pager={pager} />
+    </>
   )
 }
 
-export default React.memo(AdminListPhotos)
+export default AdminListPhotos

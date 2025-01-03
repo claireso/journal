@@ -140,7 +140,7 @@ export const getPhotoByMediaId = (mediaId: number) =>
   WHERE
     media_id=${mediaId}`
 
-export const getPreviousPhoto = ({ fields = '*' } = {}) =>
+export const getPreviousPhoto = () =>
   `SELECT
     p.id as photo_id,
     p.title,

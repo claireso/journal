@@ -7,13 +7,13 @@ export const PhotoInsertDtoSchema = PhotoSchema.pick({
   position: true,
   color: true
 }).extend({
-  media_id: z.number()
+  media_id: z.coerce.number()
 })
 
 export type PhotoInsertDto = z.infer<typeof PhotoInsertDtoSchema>
 
 export const PhotoUpdateDtoSchema = PhotoInsertDtoSchema.extend({
-  media_id: z.number().optional()
+  media_id: z.coerce.number().optional()
 })
 
 export type PhotoUpdateDto = z.infer<typeof PhotoUpdateDtoSchema>

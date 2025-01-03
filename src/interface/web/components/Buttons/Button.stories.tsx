@@ -12,6 +12,8 @@ const meta: Meta<typeof Button> = {
     onClick: action('clicked'),
     loading: false,
     block: false,
+    outline: false,
+    disabled: false,
     size: 'md'
   }
 }

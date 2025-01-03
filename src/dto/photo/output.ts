@@ -14,6 +14,7 @@ const PhotoDtoSchema = PhotoSchema.omit({
 
 export type PhotoDto = z.infer<typeof PhotoDtoSchema>
 
+// eslint-disable-next-line
 const PhotosDtoSchema = PhotosSchema.pick({
   pager: true
 }).extend({

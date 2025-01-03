@@ -1,26 +1,17 @@
-import React, { useCallback, memo, useMemo } from 'react'
+import React from 'react'
 
 import type { SubscriptionDto } from '@dto'
 import { formatDateTime } from '@utils/date'
 
 import Text from '@web/components/Text'
-import { ButtonDanger } from '@web/components/Buttons'
+import ButtonDelete from './ButtonDelete'
+
 import * as cls from './styles.css'
-import Icon from '@web/components/Icons'
 
-// import { IconDelete } from '@web/components/Icons'
-// import { ButtonIcon } from '@web/components/Buttons'
+type SubscriptionProps = SubscriptionDto
 
-interface SubscriptionProps extends SubscriptionDto {
-  onDelete: (id: number) => void
-}
-
-const Subscription = ({ onDelete, id, ...props }: SubscriptionProps) => {
-  const createdAt = props.created_at as unknown
-
-  const handleDelete = useCallback(() => {
-    onDelete(id)
-  }, [id, onDelete])
+const Subscription = ({ id, ...props }: SubscriptionProps) => {
+  const createdAt = props.created_at
 
   return (
     <li className={cls.wrapper}>
@@ -40,15 +31,10 @@ const Subscription = ({ onDelete, id, ...props }: SubscriptionProps) => {
       </div>
 
       <div>
-        <ButtonDanger onClick={handleDelete}>
-          Delete <Icon name="trash" />
-        </ButtonDanger>
-        {/* <ButtonIcon onClick={handleDelete} title="Revoke" data-testid="button-revoke">
-          <IconDelete />
-        </ButtonIcon> */}
+        <ButtonDelete id={id} />
       </div>
     </li>
   )
 }
 
-export default memo(Subscription)
+export default Subscription

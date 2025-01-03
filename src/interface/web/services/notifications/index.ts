@@ -46,7 +46,7 @@ export const subscribe = async (registration?: ServiceWorkerRegistration) => {
 export const getRegistration = async () => {
   try {
     return await navigator.serviceWorker.ready
-  } catch (err) {
+  } catch {
     throw new Error('Notifications: can not get registration')
   }
 }
@@ -58,7 +58,7 @@ export const getSubscription = async () => {
       const subscription = await registration.pushManager.getSubscription()
       return subscription
     }
-  } catch (err) {
+  } catch {
     throw new Error('Notifications: can not get subscription')
   }
 }

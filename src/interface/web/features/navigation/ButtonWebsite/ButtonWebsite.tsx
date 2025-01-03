@@ -4,9 +4,7 @@ import Icon from '@web/components/Icons'
 
 import * as cls from './styles.css'
 
-interface ButtonWebsiteProps {}
-
-const ButtonWebsite = (props: ButtonWebsiteProps) => {
+const ButtonWebsite = () => {
   const websiteAction = async () => {
     'use server'
     redirect('/')

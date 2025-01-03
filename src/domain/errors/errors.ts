@@ -24,3 +24,10 @@ export class UnprocessableEntityError extends JournalError {
     super(message, options)
   }
 }
+
+// HTTP 401
+export class UnauthorizedError extends JournalError {
+  constructor(message: string, options?: ErrorOptions) {
+    super(message, options)
+  }
+}

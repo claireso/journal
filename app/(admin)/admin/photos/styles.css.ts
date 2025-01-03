@@ -20,3 +20,14 @@ export const buttonCreateText = pagesStyle({
     }
   })
 })
+
+export const flashError = pagesStyle({
+  position: 'relative',
+  top: tokens.sizes['size-4']
+})
+
+export const buttonErrorReset = pagesStyle({
+  color: 'inherit',
+  textDecoration: 'underline',
+  textUnderlineOffset: tokens.sizes['size-1']
+})
