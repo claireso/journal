@@ -1,5 +1,18 @@
 # journal
 
+## 2.3.0
+
+### Minor Changes
+
+- 4db3b91: implement a caching strategy
+- 2755cd4: Update dependencies
+- 2d32a67: Next.js updated to version 15
+- 1c7690e: Rewrite admin with react server components
+
+### Patch Changes
+
+- fbeb097: Admin: improve user interface on mobile and widescreen displays
+
 ## 2.2.1
 
 ### Patch Changes
