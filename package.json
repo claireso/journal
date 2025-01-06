@@ -1,6 +1,6 @@
 {
   "name": "journal",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "A self-hosted website to show your photographs",
   "private": true,
   "engines": {
