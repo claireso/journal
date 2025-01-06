@@ -9,7 +9,6 @@ Note: The theme is optimized for pictures with an aspect ratio of 3:2, 2:3, or 1
 - [Next.js](https://vercel.com/frameworks/nextjs)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Vanilla Extract](https://vanilla-extract.style/)
-- [Tanstack Query](https://tanstack.com/query)
 - [Zod](https://zod.dev/)
 - [Jest](https://jestjs.io/)
 - [Testing Library](https://testing-library.com/)
