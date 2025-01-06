@@ -1,5 +1,11 @@
 # journal
 
+## 2.4.0
+
+### Minor Changes
+
+- bdf6e2b: Use node 22
+
 ## 2.3.0
 
 ### Minor Changes
