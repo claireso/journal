@@ -14,7 +14,7 @@ Note: The theme is optimized for pictures with an aspect ratio of 3:2, 2:3, or 1
 - [Testing Library](https://testing-library.com/)
 
 # Requirements for installation:
-- [Node v20](https://nodejs.org)
+- [Node v22](https://nodejs.org)
 - [zx](https://google.github.io/zx/)
 - [PostgreSQL](https://www.postgresql.org/) (for standalone installation)
 - [Docker](https://www.docker.com/) (for Docker installation)
