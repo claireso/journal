@@ -1,6 +1,22 @@
+// IMPORTANT: This file is built outside of Next.js using esbuild.
+// It is compiled separately using esbuild before being included in the Next.js application.
+// For more details on how to build this file, make sure to check the 'npm build:sw' command.
+
 import urlBase64ToUint8Array from '@utils/urlBase64ToUint8Array'
 
-const SWPush = () => {
+declare const self: ServiceWorkerGlobalScope & { __WB_MANIFEST: unknown[] }
+
+const CACHE_PREFIX = 'claireso-journal'
+
+self.addEventListener('install', function (event) {
+  event.waitUntil(self.skipWaiting())
+})
+self.addEventListener('activate', function (event) {
+  event.waitUntil(self.clients.claim())
+})
+
+// Enable web push notifications
+if (process.env.NOTIFICATIONS_ENABLED) {
   const applicationServerKey = urlBase64ToUint8Array(process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY, self)
 
   self.addEventListener('push', (event) => {
@@ -24,7 +40,11 @@ const SWPush = () => {
         const tab = clientList.find((client) => !client.url.includes('/admin/'))
 
         if (tab) {
+          // eslint-disable-next-line
+          // @ts-ignore
           tab.navigate(self.origin)
+          // eslint-disable-next-line
+          // @ts-ignore
           return tab.focus()
         }
 
@@ -35,6 +55,8 @@ const SWPush = () => {
 
   // renew subscription on subscription expiration
   self.addEventListener('pushsubscriptionchange', (event) => {
+    // eslint-disable-next-line
+    // @ts-ignore
     event.waitUntil(
       self.registration.pushManager
         .subscribe({
@@ -42,7 +64,7 @@ const SWPush = () => {
           applicationServerKey: applicationServerKey
         })
         .then((subscription) => {
-          return fetch('/subscriptions', {
+          return fetch('/api/subscriptions', {
             method: 'post',
             headers: {
               'Content-type': 'application/json'
@@ -56,4 +78,20 @@ const SWPush = () => {
   })
 }
 
-export default SWPush
+// USE CACHE (legacy) ONLY IN PRODUCTION
+if (process.env.NODE_ENV === 'production') {
+  // Clean all caches
+  self.addEventListener('activate', (event: ExtendableEvent) => {
+    event.waitUntil(
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames
+            .filter((cacheName) => cacheName.startsWith(CACHE_PREFIX))
+            .map((cacheName) => {
+              return caches.delete(cacheName)
+            })
+        )
+      })
+    )
+  })
+}
