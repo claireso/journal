@@ -6,7 +6,6 @@ import { subscriptionService } from '@ioc/container'
 import { withAuth } from '@infrastructure/middlewares'
 import logger from '@infrastructure/logger'
 
-// todo manage errors
 async function deleteSubscription(subscriptionId: string) {
   try {
     const id = Number(subscriptionId)

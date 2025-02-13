@@ -16,7 +16,7 @@ export default class SubscriptionRepositoryInMemoryImpl implements SubscriptionR
             p256dh: '',
             auth: ''
           },
-          endpoint: '',
+          endpoint: 'https://fcm.googleapis.com/fcm/send/1',
           expirationTime: 1234
         }
       },
@@ -29,7 +29,7 @@ export default class SubscriptionRepositoryInMemoryImpl implements SubscriptionR
             p256dh: '',
             auth: ''
           },
-          endpoint: '',
+          endpoint: 'https://fcm.googleapis.com/fcm/send/2',
           expirationTime: 1234
         }
       },
@@ -42,7 +42,7 @@ export default class SubscriptionRepositoryInMemoryImpl implements SubscriptionR
             p256dh: '',
             auth: ''
           },
-          endpoint: '',
+          endpoint: 'https://fcm.googleapis.com/fcm/send/3',
           expirationTime: 1234
         }
       }
@@ -70,8 +70,8 @@ export default class SubscriptionRepositoryInMemoryImpl implements SubscriptionR
     return this.subscriptions
   }
 
-  async delete(id: number): Promise<void> {
-    this.subscriptions = this.subscriptions.filter((subscription) => subscription.id !== id)
+  async delete(subscription: Subscription): Promise<void> {
+    this.subscriptions = this.subscriptions.filter((_subscription) => _subscription.id !== subscription.id)
   }
 
   async getSubscriptions(offset: number, limit: number) {
@@ -81,5 +81,10 @@ export default class SubscriptionRepositoryInMemoryImpl implements SubscriptionR
 
   async countSubscriptions(): Promise<number> {
     return this.subscriptions.length
+  }
+
+  async getSubscriptionByEndpoint(endpoint: string): Promise<Subscription | null> {
+    const subscription = this.subscriptions.find((_subscription) => _subscription.subscription.endpoint === endpoint)
+    return subscription ?? null
   }
 }

@@ -20,11 +20,13 @@ export default class SubscriptionRepositoryImpl implements SubscriptionRepositor
   async create(data: SubscriptionInsertDto): Promise<Subscription> {
     this.logger.info({ data }, 'Subscription creation started')
     const result = await this.database.query(queries.insertSubscription(), [data])
+    const subscription = result.rows[0]
     revalidateTag('list_subscriptions')
     revalidateTag('list_all_subscriptions')
     revalidateTag('list_subscriptions_count')
+    revalidateTag(`subscription_${subscription.subscription.endpoint}`)
     this.logger.info('Subscription created successfully')
-    this.logger.debug({ response: result.rows[0] })
+    this.logger.debug({ response: subscription })
     return result.rows[0]
   }
 
@@ -68,13 +70,14 @@ export default class SubscriptionRepositoryImpl implements SubscriptionRepositor
     return response
   }
 
-  async delete(id: number): Promise<void> {
-    this.logger.info({ id }, 'Subscription deletion started')
-    await this.database.query(queries.deleteSubscription(id))
+  async delete(subscription: Subscription): Promise<void> {
+    this.logger.info({ id: subscription.id }, 'Subscription deletion started')
+    await this.database.query(queries.deleteSubscription(subscription.id))
     revalidateTag('list_subscriptions')
     revalidateTag('list_all_subscriptions')
     revalidateTag('list_subscriptions_count')
-    revalidateTag(`subscription_${id}`)
+    revalidateTag(`subscription_${subscription.id}`)
+    revalidateTag(`subscription_${subscription.subscription.endpoint}`)
     this.logger.info('Subscription deleted successfully')
   }
 
@@ -115,6 +118,26 @@ export default class SubscriptionRepositoryImpl implements SubscriptionRepositor
     )()
 
     this.logger.info('Subscriptions counted successfully')
+    this.logger.debug({ response })
+    return response
+  }
+
+  async getSubscriptionByEndpoint(endpoint: string): Promise<Subscription | null> {
+    this.logger.info({ endpoint }, 'Subscription getting started')
+
+    const response = await unstable_cache(
+      async (endpoint: string) => {
+        const result = await this.database.query(queries.getSubscriptionByEndpoint(endpoint))
+        return result.rows[0] || null
+      },
+      [],
+      {
+        tags: [`subscription_${endpoint}`],
+        revalidate: SubscriptionRepositoryImpl.cacheLifeTime
+      }
+    )(endpoint)
+
+    this.logger.info('Subscription retrieved successfully')
     this.logger.debug({ response })
     return response
   }

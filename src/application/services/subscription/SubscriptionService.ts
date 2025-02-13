@@ -32,7 +32,7 @@ export default class SubscriptionService {
   async delete(id: number) {
     const subscription = await this.getById(id)
 
-    return this.repository.delete(subscription.id)
+    return this.repository.delete(subscription)
   }
 
   async getPaginatedSubscriptions(page: number) {
@@ -70,5 +70,15 @@ export default class SubscriptionService {
       items: subscriptions,
       pager
     } as Subscriptions
+  }
+
+  async getSubscriptionByEndpoint(endpoint: string) {
+    const registration = await this.repository.getSubscriptionByEndpoint(endpoint)
+
+    if (!registration) {
+      throw new NotFoundError('Subscription not found', { cause: { endpoint } })
+    }
+
+    return registration
   }
 }

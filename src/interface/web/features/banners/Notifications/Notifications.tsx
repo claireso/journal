@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 
 import { useTranslations } from '@web/hooks/useTranslations'
 import * as notifications from '@web/services/notifications'
+import { getSubscription } from '@application/usecases'
 
 import * as cls from './styles.css'
 
@@ -58,8 +59,27 @@ const BannerNotifications = () => {
     // check if user has already subscribed
     notifications
       .getSubscription()
-      .then((subscription) => {
+      .then(async (subscription) => {
         if (!subscription) {
+          showBanner()
+          return
+        }
+
+        // check if subscription is valid
+        if (!notifications.isSubscriptionValid(subscription)) {
+          // if not valid unsubscribe the user and renew the subscription
+          await subscription.unsubscribe()
+          await notifications.subscribe()
+          return
+        }
+
+        try {
+          const remoteSubscription = await getSubscription({ endpoint: subscription.endpoint })
+          if (!remoteSubscription) {
+            await subscription.unsubscribe()
+            showBanner()
+          }
+        } catch {
           showBanner()
         }
       })
