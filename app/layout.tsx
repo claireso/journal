@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     template: `%s | ${process.env.WEBSITE_META_TITLE ?? 'Journal'}`,
     default: process.env.WEBSITE_META_TITLE ?? 'Journal'
   },
+  icons: {
+    icon: '/icons/icon-192-2.png',
+    apple: [{ url: '/icons/icon-192-2.png', sizes: '192x192', type: 'image/png' }]
+  },
   robots: {
     index: false,
     follow: false,
@@ -24,7 +28,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#868585',
+  themeColor: '#297373',
   width: 'device-width',
   initialScale: 1
 }

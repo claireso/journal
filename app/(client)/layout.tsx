@@ -15,10 +15,7 @@ interface JournalLayoutProps {
 
 export const metadata: Metadata = {
   description: process.env.WEBSITE_META_DESCRIPTION ?? '',
-  manifest: '/manifest.json',
-  icons: {
-    apple: [{ url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' }]
-  }
+  manifest: '/manifest.json'
 }
 
 export default function JournalLayout({ children }: JournalLayoutProps) {
