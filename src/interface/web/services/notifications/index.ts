@@ -1,4 +1,6 @@
+import logger from '@infrastructure/logger'
 import urlBase64ToUint8Array from '@utils/urlBase64ToUint8Array'
+import arrayBufferToUrlBase64 from '@utils/arrayBufferToUrlBase64'
 
 const NOTIFICATIONS_PUBLIC_KEY = process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY
 
@@ -18,7 +20,7 @@ export const subscribe = async (registration?: ServiceWorkerRegistration) => {
   try {
     if (!NOTIFICATIONS_PUBLIC_KEY) return
 
-    const convertedPushPublicKey = urlBase64ToUint8Array(NOTIFICATIONS_PUBLIC_KEY, window)
+    const applicationServerKey = urlBase64ToUint8Array(NOTIFICATIONS_PUBLIC_KEY, window)
 
     if (!registration) {
       registration = await getRegistration()
@@ -26,7 +28,7 @@ export const subscribe = async (registration?: ServiceWorkerRegistration) => {
 
     const subscription = await registration.pushManager.subscribe({
       userVisibleOnly: true,
-      applicationServerKey: convertedPushPublicKey
+      applicationServerKey: applicationServerKey
     })
 
     await fetch('/api/subscriptions', {
@@ -39,7 +41,7 @@ export const subscribe = async (registration?: ServiceWorkerRegistration) => {
       })
     })
   } catch (err) {
-    console.log(err)
+    logger.error(err)
   }
 }
 
@@ -61,4 +63,16 @@ export const getSubscription = async () => {
   } catch {
     throw new Error('Notifications: can not get subscription')
   }
+}
+
+// a subscription is valid if its applicationServerKey is the same of the application notifications public key defined in environment variable
+export const isSubscriptionValid = (subscription: PushSubscription): boolean => {
+  const { applicationServerKey } = subscription.options
+  if (!applicationServerKey) {
+    return false
+  }
+
+  const applicationServerKeyString = arrayBufferToUrlBase64(applicationServerKey)
+
+  return applicationServerKeyString === NOTIFICATIONS_PUBLIC_KEY
 }

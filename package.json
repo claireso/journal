@@ -74,6 +74,7 @@
     "@types/node": "22.10.5",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
+    "@types/web-push": "3.6.4",
     "@vanilla-extract/jest-transform": "1.1.12",
     "@vanilla-extract/next-plugin": "2.4.8",
     "@vanilla-extract/webpack-plugin": "2.3.16",
