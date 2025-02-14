@@ -4,8 +4,17 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 
 import { TranslationsProvider } from '@web/hooks/useTranslations'
 import * as notifications from '@web/services/notifications'
+import SubscriptionRepositoryInMemoryImpl from '@infrastructure/repositories/subscription/SubscriptionRepositoryInMemoryImpl'
 
 import Notifications from './index'
+
+jest.mock('@application/usecases', () => ({
+  getSubscription: async () => {
+    const repository = new SubscriptionRepositoryInMemoryImpl()
+    return await repository.getById(1)
+  }
+}))
+notifications.isSubscriptionValid = jest.fn().mockReturnValue(true)
 
 describe('<Notifications />', () => {
   const renderComponent = () =>

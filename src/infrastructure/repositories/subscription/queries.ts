@@ -29,6 +29,17 @@ export const getSubscriptionById = (id: number) =>
   WHERE
     id=${id}
   `
+
+export const getSubscriptionByEndpoint = (endpoint: string) =>
+  `SELECT
+    id,
+    subscription,
+    created_at,
+    updated_at
+  FROM subscriptions
+  WHERE
+    subscription->>'endpoint' = '${endpoint}'
+  `
 export const deleteSubscription = (id: number) => `DELETE FROM subscriptions WHERE id=${id}`
 
 export const count = () => `SELECT COUNT(*) FROM subscriptions`

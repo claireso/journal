@@ -64,6 +64,22 @@ describe('application/SubscriptionService', () => {
       //assert
       expect(subscriptions).toMatchSnapshot()
     })
+    it('should get subscription by endpoint', async () => {
+      // arrange
+      const endpoint = 'https://fcm.googleapis.com/fcm/send/1'
+      // act
+      const subscription = await subscriptionService.getSubscriptionByEndpoint(endpoint)
+      //assert
+      expect(subscription).toMatchSnapshot()
+    })
+    it('should not get subscription by endpoint', async () => {
+      // arrange
+      const endpoint = 'https://fcm.googleapis.com/fcm/send/1000'
+      // act
+      const promise = subscriptionService.getSubscriptionByEndpoint(endpoint)
+      //assert
+      expect(promise).rejects.toThrow('Subscription not found')
+    })
   })
 
   describe('DELETE', () => {

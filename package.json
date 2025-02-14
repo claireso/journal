@@ -7,8 +7,10 @@
     "node": "22"
   },
   "scripts": {
-    "dev": "node server.js",
-    "build": "next build",
+    "dev": "concurrently \"npm run dev:sw\" \"node server.js\"",
+    "build": "npm run build:sw && next build",
+    "build:sw": "NODE_ENV=production node scripts/build/serviceworker.mjs",
+    "dev:sw": "WATCH=true node scripts/build/serviceworker.mjs",
     "start": "node .next/standalone/server.js",
     "preview": "next start",
     "start:express": "NODE_ENV=production COMPRESSION=enabled node server.js",
@@ -72,6 +74,7 @@
     "@types/node": "22.10.5",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
+    "@types/web-push": "3.6.4",
     "@vanilla-extract/jest-transform": "1.1.12",
     "@vanilla-extract/next-plugin": "2.4.8",
     "@vanilla-extract/webpack-plugin": "2.3.16",
@@ -79,7 +82,7 @@
     "babel-plugin-module-resolver": "5.0.2",
     "babel-plugin-react-remove-properties": "0.3.0",
     "compression-webpack-plugin": "11.1.0",
-    "copy-webpack-plugin": "12.0.2",
+    "concurrently": "9.1.2",
     "cypress": "9.5.4",
     "cypress-file-upload": "5.0.8",
     "eslint": "9.17.0",
@@ -97,13 +100,6 @@
     "react-test-renderer": "19.0.0",
     "storybook": "8.4.7",
     "typescript": "5.7.2",
-    "typescript-eslint": "8.19.0",
-    "workbox-cacheable-response": "7.3.0",
-    "workbox-core": "7.3.0",
-    "workbox-expiration": "7.3.0",
-    "workbox-precaching": "7.3.0",
-    "workbox-routing": "7.3.0",
-    "workbox-strategies": "7.3.0",
-    "workbox-webpack-plugin": "7.3.0"
+    "typescript-eslint": "8.19.0"
   }
 }

@@ -15,10 +15,7 @@ interface JournalLayoutProps {
 
 export const metadata: Metadata = {
   description: process.env.WEBSITE_META_DESCRIPTION ?? '',
-  manifest: '/manifest.json',
-  icons: {
-    apple: [{ url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' }]
-  }
+  manifest: '/manifest.json'
 }
 
 export default function JournalLayout({ children }: JournalLayoutProps) {
@@ -37,7 +34,7 @@ export default function JournalLayout({ children }: JournalLayoutProps) {
             if ('serviceWorker' in navigator) {
               window.addEventListener('load', function() {
                 navigator.serviceWorker
-                  .register('/sw.js', {scope: '/'})
+                  .register('/sw.js', {scope: '/', updateViaCache: 'none'})
                   .then(function(registration) {
                     console.log('SW registered: ', registration);
                   })
