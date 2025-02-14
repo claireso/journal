@@ -1,5 +1,13 @@
 # journal
 
+## 2.5.0
+
+### Minor Changes
+
+- c4f9362: feat(notification): rework the workflow of a subscription
+
+  _Note: it is recommended to generate new public and private notification keys_
+
 ## 2.4.0
 
 ### Minor Changes
