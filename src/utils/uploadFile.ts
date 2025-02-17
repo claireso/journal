@@ -1,9 +1,9 @@
 import path from 'path'
 import { ulid } from 'ulid'
-import { Jimp } from 'jimp'
+import sharp from 'sharp'
 
 const DEFAULT_DIRECTORY = path.resolve('uploads')
-const DEFAULT_QUALITY = 70
+const DEFAULT_QUALITY = 80
 
 interface Options {
   directory?: string
@@ -18,21 +18,23 @@ const uploadFile = async (file: File, options: Options = {}) => {
   }
 
   const extension = path.extname(file.name)
-  const filename = `${ulid().toLowerCase()}${extension}`
+  const filename = `sharp-${ulid().toLowerCase()}${extension}`
   const filepath = `${directory}/${filename}`
 
-  const bytes = await file.arrayBuffer()
-  const buffer = Buffer.from(bytes)
+  const buffer = await file.arrayBuffer()
 
-  const photo = await Jimp.fromBuffer(buffer)
-  // eslint-disable-next-line
-  // @ts-ignore
-  await photo.write(filepath, { quality })
+  const imageMetada = await sharp(buffer).metadata()
+
+  await sharp(buffer)
+    .jpeg({
+      quality
+    })
+    .toFile(filepath)
 
   return {
     filename: filename,
-    width: photo.bitmap.width,
-    height: photo.bitmap.height
+    width: imageMetada.width as number,
+    height: imageMetada.height as number
   }
 }
 

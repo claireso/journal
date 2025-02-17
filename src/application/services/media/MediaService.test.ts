@@ -1,5 +1,6 @@
 import fs from 'fs'
-import { Jimp } from 'jimp'
+// import { Jimp } from 'jimp'
+import sharp from 'sharp'
 import { MediaRepository } from '@domain/repositories'
 import MediaRepositoryInMemoryImpl from '@infrastructure/repositories/media/MediaRepositoryInMemoryImpl'
 import MediaService from './MediaService'
@@ -8,10 +9,12 @@ describe('application/MediaService', () => {
   let mediaRepository: MediaRepository
   let mediaService: MediaService
 
-  const fakeImage = new Jimp({ width: 3, height: 3, color: 0xffffffff })
-
   const createFakeImageFile = async () => {
-    const buffer = await fakeImage.getBuffer('image/jpeg')
+    const buffer = await sharp({
+      create: { width: 3, height: 3, channels: 4, background: { r: 255, g: 0, b: 0 } }
+    })
+      .jpeg()
+      .toBuffer()
     const blob = new Blob([buffer], { type: 'image/jpeg' })
     const file = new File([blob], 'test.jpg', { type: 'image/jpeg' })
 
