@@ -2,7 +2,7 @@
 
 import NextImage, { ImageProps } from 'next/image'
 import React, { useCallback } from 'react'
-import joinCls from '@utils/joinCls'
+import clsx from '@utils/clsx'
 
 import * as cls from './AnimatedImage.css'
 
@@ -20,7 +20,7 @@ const AnimatedImage = ({ src, className, width, height, alt, unoptimized }: Imag
     <NextImage
       src={`${process.env.NEXT_PUBLIC_WEBSITE_URL}${src}`}
       loading="lazy"
-      className={joinCls([cls.picture, className])}
+      className={clsx([cls.picture, className])}
       alt={alt}
       style={{
         opacity: 0

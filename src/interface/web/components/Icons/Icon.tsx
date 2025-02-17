@@ -15,7 +15,7 @@ import {
 
 import type { IconVariants } from './styles.css'
 import * as cls from './styles.css'
-import joinCls from '@utils/joinCls'
+import clsx from '@utils/clsx'
 
 const iconEntries = [
   ['photo', PhotoIcon],
@@ -47,7 +47,7 @@ const Icon = ({ name, size = 'md', variant = 'default', className = '' }: IconPr
     throw new Error(`The icon "${name}" does not exist`)
   }
 
-  return <IconComponent className={joinCls([cls.icon({ size, variant }), className])} />
+  return <IconComponent className={clsx([cls.icon({ size, variant }), className])} />
 }
 
 export default Icon

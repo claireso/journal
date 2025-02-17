@@ -6,7 +6,7 @@ import Icon from '../Icons'
 
 import type { FlashVariants } from './styles.css'
 import * as cls from './styles.css'
-import joinCls from '@utils/joinCls'
+import clsx from '@utils/clsx'
 
 type FlashProps = {
   children: React.ReactNode
@@ -38,7 +38,7 @@ const Flash = ({
   }, [])
 
   return (
-    <div ref={dom} className={joinCls([cls.wrapper({ status, separator: withBorder }), className])}>
+    <div ref={dom} className={clsx([cls.wrapper({ status, separator: withBorder }), className])}>
       {children}
       {onClose && (
         <button
