@@ -1,5 +1,5 @@
 import { recipe } from '@vanilla-extract/recipes'
-import { pagesStyle, responsiveStyle, tokens, gapY, m, mb } from '@web/theme'
+import { pagesStyle, responsiveStyle, tokens, gapY, mb } from '@web/theme'
 
 const PORTRAIT = 'portrait'
 const LANDSCAPE = 'landscape'
@@ -196,28 +196,10 @@ export const figure = recipe({
 
 export const pictureWrapper = recipe({
   base: pagesStyle({
-    vars: {
-      '--aspect-ratio': '3/2'
-    },
-    aspectRatio: 'var(--aspect-ratio)',
     background: 'currentcolor',
     ...mb('size-2')
   }),
   variants: {
-    portrait: {
-      true: pagesStyle({
-        vars: {
-          '--aspect-ratio': '2/3'
-        }
-      })
-    },
-    square: {
-      true: pagesStyle({
-        vars: {
-          '--aspect-ratio': '1/1'
-        }
-      })
-    },
     highlight: {
       true: pagesStyle({
         boxShadow: '0 0 0 2rem currentColor',
@@ -249,12 +231,6 @@ export const pictureWrapper = recipe({
       })
     }
   }
-})
-
-export const picture = pagesStyle({
-  display: 'block',
-  width: '100%',
-  ...m('size-0')
 })
 
 export const figcaption = pagesStyle({

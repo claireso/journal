@@ -10,5 +10,6 @@ export const pictureWrapper = pagesStyle({
 })
 
 export const picture = pagesStyle({
-  objectFit: 'contain'
+  objectFit: 'contain',
+  height: '100%'
 })
