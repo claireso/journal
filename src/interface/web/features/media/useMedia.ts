@@ -8,12 +8,18 @@ export const useCreateMedia = (initialMedia?: MediaDto | LegacyMediaDto) => {
   const [error, setError] = useState<string | null>(null)
   const [processing, setProcessing] = useState(false)
 
-  const createMedia = useCallback(async (file: File) => {
-    const formData = new FormData()
-    formData.append('file', file)
-
+  const createMedia = useCallback(async (file: File): Promise<void> => {
     setError(null)
     setProcessing(true)
+
+    if (file.size > 1024 * 1024) {
+      setError('File size exceeds the limit (> 1MB). Please retry')
+      setProcessing(false)
+      return
+    }
+
+    const formData = new FormData()
+    formData.append('file', file)
 
     try {
       const newMedia = await createMediaAction(formData)
