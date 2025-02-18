@@ -6,7 +6,8 @@ import type { NextConfig } from 'next'
 const IS_NOTIFICATIONS_ENABLED = !!(
   process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY && process.env.NOTIFICATIONS_PRIVATE_KEY
 )
-const websiteUrl = new URL(process.env.WEBSITE_URL ?? '')
+
+const websiteUrl = new URL(process.env.WEBSITE_URL ?? 'http://localhost')
 
 const withVanillaExtract = createVanillaExtractPlugin()
 
@@ -50,6 +51,7 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_WEBSITE_URL: String(process.env.WEBSITE_URL)
   },
   images: {
+    unoptimized: process.env.MODE === 'docker',
     remotePatterns: [
       {
         protocol: websiteUrl.protocol.replace(':', '') as 'http' | 'https',
