@@ -1,38 +1,38 @@
-import React, { useState, useEffect, useRef } from 'react'
+'use client'
 
-type ImageProps = Omit<React.ComponentProps<'img'>, 'alt' | 'src'>
+import NextImage, { ImageProps } from 'next/image'
+import React, { useCallback } from 'react'
+import clsx from '@utils/clsx'
 
-interface AnimatedImage extends ImageProps {
-  src: string
-}
+import * as cls from './AnimatedImage.css'
 
-const AnimatedImage = ({ src, ...props }: AnimatedImage) => {
-  const [loaded, setLoaded] = useState(false)
-  const dom = useRef<HTMLImageElement>(null)
+const AnimatedImage = ({ src, className, width, height, alt, unoptimized }: ImageProps) => {
+  const onLoad = useCallback((event: React.SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.animate([{ opacity: 0 }, { opacity: 1 }], {
+      duration: 2000,
+      delay: 50,
+      easing: 'cubic-bezier(.17,.67,.21,.97)',
+      fill: 'forwards'
+    })
+  }, [])
 
-  useEffect(() => {
-    const img = new Image()
-    img.src = src
-
-    img.onload = () => setLoaded(true)
-  }, [src])
-
-  useEffect(() => {
-    if (!loaded) return
-
-    if (dom.current) {
-      dom.current.animate([{ opacity: 0 }, { opacity: 1 }], {
-        duration: 2000,
-        delay: 50,
-        easing: 'cubic-bezier(.17,.67,.21,.97)',
-        fill: 'forwards'
-      })
-    }
-  }, [loaded])
-
-  if (!loaded) return null
-
-  return <img ref={dom} alt="" src={src} {...props} style={{ opacity: 0 }} />
+  return (
+    <NextImage
+      src={`${process.env.NEXT_PUBLIC_WEBSITE_URL}${src}`}
+      loading="lazy"
+      className={clsx([cls.picture, className])}
+      alt={alt}
+      style={{
+        opacity: 0
+      }}
+      quality={80}
+      onLoad={onLoad}
+      width={width}
+      height={height}
+      // fallback for legacy media
+      unoptimized={unoptimized ?? (!width || !height)}
+    />
+  )
 }
 
 export default AnimatedImage

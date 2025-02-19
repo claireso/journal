@@ -7,10 +7,22 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
     style="grid-row-start: 0;"
   >
     <div
-      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
-    />
+      class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+    >
+      <img
+        alt=""
+        class="AnimatedImage_layerStyle__9h1n2s0"
+        data-nimg="1"
+        decoding="async"
+        height="2"
+        loading="lazy"
+        src="undefined/uploads/01d2tf2h38pwcd953ans2f64p7.jpg"
+        style="color: transparent; opacity: 0;"
+        width="3"
+      />
+    </div>
     <figcaption
-      class="styles_layerStyle__3b5bfut"
+      class="styles_layerStyle__3b5bfuo"
     >
       <span
         class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
@@ -38,10 +50,22 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
     style="grid-row-start: 0;"
   >
     <div
-      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
-    />
+      class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+    >
+      <img
+        alt=""
+        class="AnimatedImage_layerStyle__9h1n2s0"
+        data-nimg="1"
+        decoding="async"
+        height="2"
+        loading="lazy"
+        src="undefined/uploads/01d2tf2h38pwcd953ans2f64p7.jpg"
+        style="color: transparent; opacity: 0;"
+        width="3"
+      />
+    </div>
     <figcaption
-      class="styles_layerStyle__3b5bfut"
+      class="styles_layerStyle__3b5bfuo"
     >
       <span
         class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
@@ -69,10 +93,22 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
     style="grid-row-start: 0;"
   >
     <div
-      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
-    />
+      class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+    >
+      <img
+        alt=""
+        class="AnimatedImage_layerStyle__9h1n2s0"
+        data-nimg="1"
+        decoding="async"
+        height="2"
+        loading="lazy"
+        src="undefined/uploads/01d2tf2h38pwcd953ans2f64p7.jpg"
+        style="color: transparent; opacity: 0;"
+        width="3"
+      />
+    </div>
     <figcaption
-      class="styles_layerStyle__3b5bfut"
+      class="styles_layerStyle__3b5bfuo"
     >
       <span
         class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
@@ -96,14 +132,26 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
 exports[`<Photo /> should render photo (portrait center) 1`] = `
 <DocumentFragment>
   <figure
-    class="styles__3b5bfuc styles_layerStyle__3b5bfu0 styles_figure_landscape_true__3b5bfud styles_layerStyle__3b5bfu1 styles_figure_position_center__3b5bfuh styles_layerStyle__3b5bfu6"
+    class="styles__3b5bfuc styles_layerStyle__3b5bfu0 styles_figure_portrait_true__3b5bfue styles_layerStyle__3b5bfu2 styles_figure_position_center__3b5bfuh styles_layerStyle__3b5bfu8"
     style="grid-row-start: 0;"
   >
     <div
-      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
-    />
+      class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+    >
+      <img
+        alt=""
+        class="AnimatedImage_layerStyle__9h1n2s0"
+        data-nimg="1"
+        decoding="async"
+        height="3"
+        loading="lazy"
+        src="undefined/uploads/01d2tf2h38pwcd953ans2f64p7.jpg"
+        style="color: transparent; opacity: 0;"
+        width="2"
+      />
+    </div>
     <figcaption
-      class="styles_layerStyle__3b5bfut"
+      class="styles_layerStyle__3b5bfuo"
     >
       <span
         class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"
@@ -127,14 +175,26 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
 exports[`<Photo /> should render photo (square center) 1`] = `
 <DocumentFragment>
   <figure
-    class="styles__3b5bfuc styles_layerStyle__3b5bfu0 styles_figure_landscape_true__3b5bfud styles_layerStyle__3b5bfu1 styles_figure_position_center__3b5bfuh styles_layerStyle__3b5bfu6"
+    class="styles__3b5bfuc styles_layerStyle__3b5bfu0 styles_figure_square_true__3b5bfuf styles_layerStyle__3b5bfu3 styles_figure_position_center__3b5bfuh styles_layerStyle__3b5bfua"
     style="grid-row-start: 0;"
   >
     <div
-      class="styles__3b5bfuo styles_layerStyle__3b5bfuk"
-    />
+      class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+    >
+      <img
+        alt=""
+        class="AnimatedImage_layerStyle__9h1n2s0"
+        data-nimg="1"
+        decoding="async"
+        height="1"
+        loading="lazy"
+        src="undefined/uploads/01d2tf2h38pwcd953ans2f64p7.jpg"
+        style="color: transparent; opacity: 0;"
+        width="1"
+      />
+    </div>
     <figcaption
-      class="styles_layerStyle__3b5bfut"
+      class="styles_layerStyle__3b5bfuo"
     >
       <span
         class="styles_text__kgzpwem styles_text_size_sm__kgzpwep styles_layerStyle__kgzpwe2 styles_text_color_base__kgzpwev styles_layerStyle__kgzpwe8 styles_text_weight_normal__kgzpwe13 styles_layerStyle__kgzpweg"

@@ -1,6 +1,6 @@
 import React from 'react'
 import * as cls from './styles.css'
-import joinCls from '@utils/joinCls'
+import clsx from '@utils/clsx'
 
 interface BoxProps extends React.ComponentProps<'div'> {
   children: React.ReactNode
@@ -8,7 +8,7 @@ interface BoxProps extends React.ComponentProps<'div'> {
 
 const Box = ({ children, className, ...props }: BoxProps) => {
   return (
-    <div className={joinCls([cls.wrapper, className])} {...props}>
+    <div className={clsx([cls.wrapper, className])} {...props}>
       {children}
     </div>
   )

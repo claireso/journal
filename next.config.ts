@@ -7,6 +7,8 @@ const IS_NOTIFICATIONS_ENABLED = !!(
   process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY && process.env.NOTIFICATIONS_PRIVATE_KEY
 )
 
+const websiteUrl = new URL(process.env.WEBSITE_URL ?? 'http://localhost')
+
 const withVanillaExtract = createVanillaExtractPlugin()
 
 const nextConfig: NextConfig = {
@@ -45,7 +47,19 @@ const nextConfig: NextConfig = {
     ]
   },
   env: {
-    NEXT_PUBLIC_IS_NOTIFICATIONS_ENABLED: String(IS_NOTIFICATIONS_ENABLED)
+    NEXT_PUBLIC_IS_NOTIFICATIONS_ENABLED: String(IS_NOTIFICATIONS_ENABLED),
+    NEXT_PUBLIC_WEBSITE_URL: String(process.env.WEBSITE_URL)
+  },
+  images: {
+    unoptimized: process.env.MODE === 'docker',
+    remotePatterns: [
+      {
+        protocol: websiteUrl.protocol.replace(':', '') as 'http' | 'https',
+        hostname: websiteUrl.hostname,
+        port: websiteUrl.port,
+        pathname: '/uploads/**'
+      }
+    ]
   },
   webpack: (config, { dev, isServer }) => {
     if (!isServer && !dev) {

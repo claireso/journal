@@ -1,5 +1,5 @@
 import React from 'react'
-import joinCls from '@utils/joinCls'
+import clsx from '@utils/clsx'
 
 import type { TextVariants } from './styles.css'
 import * as cls from './styles.css'
@@ -19,7 +19,7 @@ const Text = <T extends React.ElementType>({
   className = ''
 }: TextProps<T>) => {
   const Tag = as || 'p'
-  return <Tag className={joinCls([cls.text({ size, color, italic, weight }), className])}>{children}</Tag>
+  return <Tag className={clsx([cls.text({ size, color, italic, weight }), className])}>{children}</Tag>
 }
 
 export default Text

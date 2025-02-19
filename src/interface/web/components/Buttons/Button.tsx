@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import joinCls from '@utils/joinCls'
+import clsx from '@utils/clsx'
 import Spinner from '../Spinner'
 
 import type { ButtonVariants } from './styles.css'
@@ -25,10 +25,7 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <button
-      className={joinCls([cls.button({ variant, size, block, loading, outline, disabled }), className])}
-      {...props}
-    >
+    <button className={clsx([cls.button({ variant, size, block, loading, outline, disabled }), className])} {...props}>
       {loading ? <Spinner variant="currentcolor" size={size} /> : children}
     </button>
   )
