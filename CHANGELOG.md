@@ -1,5 +1,13 @@
 # journal
 
+## 2.6.0
+
+### Minor Changes
+
+- ec76fc4: feat: use next to optimize images
+
+  _Note: not available in Docker for the moment_
+
 ## 2.5.0
 
 ### Minor Changes
