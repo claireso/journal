@@ -1,5 +1,11 @@
 # journal
 
+## 2.6.1
+
+### Patch Changes
+
+- afe9bf4: Update dependencies
+
 ## 2.6.0
 
 ### Minor Changes
