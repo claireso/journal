@@ -14,7 +14,7 @@ export const SubscriptionSchema = EntitySchema.extend({
         return validPushDomains.some((domain) => endpoint.startsWith(domain))
       },
       {
-        message: 'Subscription endpoint is not supported'
+        error: 'Subscription endpoint is not supported'
       }
     ),
     expirationTime: z.number().nullable(),

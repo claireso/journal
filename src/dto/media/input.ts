@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const MediaInsertDtoSchema = z.object({
   file: z.instanceof(File).refine((file) => ['image/jpeg', 'image/jpg'].includes(file.type), {
-    message: 'Only image/jpeg and image/jpg are allowed'
+    error: 'Only image/jpeg and image/jpg are allowed'
   })
 })
 

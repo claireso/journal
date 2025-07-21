@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Photo /> should render photo (landscape center) 1`] = `
 <DocumentFragment>
@@ -8,6 +8,7 @@ exports[`<Photo /> should render photo (landscape center) 1`] = `
   >
     <div
       class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+      style="color: var(--colors-neutral-2extralight__1bt7iag2z);"
     >
       <img
         alt=""
@@ -51,6 +52,7 @@ exports[`<Photo /> should render photo (landscape left) 1`] = `
   >
     <div
       class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+      style="color: var(--colors-neutral-2extralight__1bt7iag2z);"
     >
       <img
         alt=""
@@ -94,6 +96,7 @@ exports[`<Photo /> should render photo (landscape right) 1`] = `
   >
     <div
       class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+      style="color: var(--colors-neutral-2extralight__1bt7iag2z);"
     >
       <img
         alt=""
@@ -137,6 +140,7 @@ exports[`<Photo /> should render photo (portrait center) 1`] = `
   >
     <div
       class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+      style="color: var(--colors-neutral-2extralight__1bt7iag2z);"
     >
       <img
         alt=""
@@ -180,6 +184,7 @@ exports[`<Photo /> should render photo (square center) 1`] = `
   >
     <div
       class="styles__3b5bfum styles_layerStyle__3b5bfuk"
+      style="color: var(--colors-neutral-2extralight__1bt7iag2z);"
     >
       <img
         alt=""

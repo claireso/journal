@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 import ColorPicker from './ColorPicker'
 
@@ -16,12 +16,11 @@ type Story = StoryObj<typeof ColorPicker>
 export const Basic: Story = {
   render(args) {
     const { disabled } = args
-    // eslint-disable-next-line
+
     const [selected, setSelected] = useState('')
 
     const colors = ['#342d2d', '#d6c9ce', '#a3868d', '#b7b2b5', '#c58c50', '#c45c74']
 
-    // eslint-disable-next-line
     const onSelect = useCallback(
       (color: string) => {
         setSelected(color)
