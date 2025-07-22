@@ -7,7 +7,7 @@ export enum MediaType {
 
 export const MediaSchema = EntitySchema.omit({ updated_at: true }).extend({
   name: z.string(),
-  type: z.nativeEnum(MediaType),
+  type: z.enum(MediaType),
   size: z.object({
     width: z.number(),
     height: z.number()

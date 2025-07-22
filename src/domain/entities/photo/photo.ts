@@ -11,12 +11,12 @@ export enum PhotoPositionType {
 export const PhotoSchema = EntitySchema.extend({
   title: z.string().optional().default(''),
   description: z.string().optional().default(''),
-  position: z.nativeEnum(PhotoPositionType).default(PhotoPositionType.LEFT),
+  position: z.enum(PhotoPositionType).default(PhotoPositionType.LEFT),
   color: z
     .string()
     .nullable()
     .refine((val) => val === null || val === '' || (val.startsWith('#') && val.length === 7), {
-      message: 'Color must be defined as a hex color'
+      error: 'Color must be defined as a hex color'
     })
     .default(null),
   // optional in database due to the legacy

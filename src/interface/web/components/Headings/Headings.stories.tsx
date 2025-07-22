@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 import * as Headings from './Headings'
 

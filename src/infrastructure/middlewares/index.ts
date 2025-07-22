@@ -1,4 +1,4 @@
-import { ZodError } from 'zod'
+import z, { ZodError } from 'zod'
 import type { NextRequest } from 'next/server'
 import { JournalError, BadRequestError, NotFoundError, UnauthorizedError } from '@domain/errors/errors'
 import logger from '@infrastructure/logger'
@@ -18,7 +18,7 @@ export const createRouteHandler = (...middlewares: any[]) => {
       } catch (err) {
         if (err instanceof ZodError) {
           logger.warn({ err, ctx: err.cause })
-          return Response.json(err.format(), { status: 422 })
+          return Response.json(z.flattenError(err), { status: 422 })
         }
 
         if (err instanceof JournalError) {

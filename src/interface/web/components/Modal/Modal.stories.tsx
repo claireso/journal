@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useCallback } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
+import { action } from 'storybook/actions'
 
 import Modal from './Modal'
 import Toolbar from '../Toolbar'
@@ -16,9 +16,8 @@ type Story = StoryObj<typeof Modal>
 
 export const Primary: Story = {
   render() {
-    // eslint-disable-next-line
     const [isOpen, setOpen] = useState(false)
-    // eslint-disable-next-line
+
     const onClose = useCallback(() => {
       setOpen(false)
       action('on close')()

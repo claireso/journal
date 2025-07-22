@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Uploader /> should change file 1`] = `
 <DocumentFragment>
@@ -7,6 +7,7 @@ exports[`<Uploader /> should change file 1`] = `
   >
     <div
       class="styles__xxgli83 styles_layerStyle__xxgli81"
+      style="background: var(--colors-neutral-2extralight__1bt7iag2z);"
     >
       <img
         alt=""
@@ -162,6 +163,7 @@ exports[`<Uploader /> should render uploader with preview 1`] = `
   >
     <div
       class="styles__xxgli83 styles_layerStyle__xxgli81"
+      style="background: var(--colors-neutral-2extralight__1bt7iag2z);"
     >
       <img
         alt=""
