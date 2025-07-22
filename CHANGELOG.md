@@ -1,5 +1,11 @@
 # journal
 
+## 2.7.0
+
+### Minor Changes
+
+- 671b93c: Update dependencies
+
 ## 2.6.1
 
 ### Patch Changes
@@ -70,7 +76,6 @@
 - 9f2ff9c: New feature: The selection of a background color is now available during the creation of the photo
 
   Breaking changes:
-
   - creation of the table `media` is needed
   - creation of column `media_id` is needed
 
