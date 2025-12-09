@@ -1,5 +1,11 @@
 # journal
 
+## 2.7.1
+
+### Patch Changes
+
+- 8aad549: Bump next (security)
+
 ## 2.7.0
 
 ### Minor Changes
