@@ -14,7 +14,7 @@ describe('application/MediaService', () => {
     })
       .jpeg()
       .toBuffer()
-    const blob = new Blob([buffer], { type: 'image/jpeg' })
+    const blob = new Blob([new Uint8Array(buffer)], { type: 'image/jpeg' })
     const file = new File([blob], 'test.jpg', { type: 'image/jpeg' })
 
     return file
