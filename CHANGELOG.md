@@ -1,5 +1,11 @@
 # journal
 
+## 2.7.2
+
+### Patch Changes
+
+- af3a040: Bump next (security)
+
 ## 2.7.1
 
 ### Patch Changes
