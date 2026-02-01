@@ -1,5 +1,5 @@
 import { login } from '@application/usecases'
-import { getAuthError, AUTH_ERRORS_TYPES } from '@infrastructure/auth/errors'
+import { getAuthError, AUTH_ERROR_TYPES } from '@infrastructure/auth/errors'
 
 import LoginForm from '@web/features/user/LoginForm'
 import { Heading1 } from '@web/components/Headings'
@@ -13,7 +13,7 @@ const LoginPage = async ({ searchParams }: NextPageProps<LoginPageProps>) => {
   const { callbackUrl = '/admin/photos', error: errorType } = await searchParams
 
   const loginWithCallbackUrlAction = login.bind(null, callbackUrl as string)
-  const error = getAuthError(errorType as AUTH_ERRORS_TYPES)
+  const error = getAuthError(errorType as unknown as AUTH_ERROR_TYPES)
 
   return (
     <>

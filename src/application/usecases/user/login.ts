@@ -1,28 +1,29 @@
 'use server'
 
+import { auth } from '@infrastructure/auth'
+
 import { redirect } from 'next/navigation'
-import { CredentialsSignin, SignInError } from '@auth/core/errors'
-import { signIn } from '@infrastructure/auth'
-import logger from '@infrastructure/logger'
+import { APIError } from 'better-auth/api'
 
 export default async function login(callbackUrl: string, data: FormData) {
   try {
-    await signIn('credentials', {
-      username: data.get('username'),
-      password: data.get('password'),
-      redirectTo: callbackUrl as string
+    await auth.api.signinWithCredentials({
+      body: {
+        username: data.get('username') as string,
+        password: data.get('password') as string
+      }
     })
+    redirect(callbackUrl)
   } catch (err) {
-    if (err instanceof SignInError) {
+    if (err instanceof APIError) {
       const searchParams = new URLSearchParams({
         callbackUrl: callbackUrl as string,
-        error: CredentialsSignin.type
+        error: err.status as string
       })
       redirect(`/auth/login?${searchParams.toString()}`)
     }
     // throw the next redirect from the signIn
     // https://nextjs.org/docs/app/api-reference/functions/redirect#server-component
-    logger.error(err, 'Could not sign in user')
     throw err
   }
 }

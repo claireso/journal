@@ -25,7 +25,8 @@
       "@dto": ["src/dto"],
       "@ioc/*": ["src/ioc/*"],
       "@web/*": ["src/interface/web/*"],
-      "@interface/*": ["src/interface/*"]
+      "@interface/*": ["src/interface/*"],
+      "@lib/*": ["src/lib/*"]
     },
     "plugins": [
       {
