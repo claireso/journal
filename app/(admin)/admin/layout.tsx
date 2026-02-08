@@ -1,9 +1,13 @@
-import { SessionProvider } from 'next-auth/react'
+import { headers } from 'next/headers'
+import { redirect } from 'next/navigation'
+
+import { logout } from '@application/usecases'
+import { auth } from '@infrastructure/auth'
 
 import Text from '@web/components/Text'
 
 import AdminMenu from '@web/features/navigation/AdminMenu'
-import LogoutButton from '@web/features/user/LogoutButton'
+import LogoutForm from '@web/features/user/LogoutForm'
 import Messages from '@web/features/messages/Messages'
 import ButtonWebsite from '@web/features/navigation/ButtonWebsite'
 
@@ -13,12 +17,17 @@ interface AdminLayoutProps {
   children: React.ReactNode
 }
 
-const AdminLayout = ({ children }: AdminLayoutProps) => {
+const AdminLayout = async ({ children }: AdminLayoutProps) => {
+  const session = await auth.api.getSession({
+    headers: await headers()
+  })
+
+  if (!session) {
+    redirect('/auth/login')
+  }
+
   return (
-    <SessionProvider
-      // Re-fetch session every 5 minutes
-      refetchInterval={5 * 60}
-    >
+    <>
       <div className={cls.sidebar}>
         <div className={cls.sidebarHeader}>
           <Text size="2xl" as="span" weight="semibold" color="light">
@@ -30,7 +39,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         </div>
         <div className={cls.sidebarFooter}>
           <ButtonWebsite />
-          <LogoutButton />
+          <LogoutForm action={logout} />
         </div>
       </div>
       <div className={cls.content}>
@@ -39,7 +48,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         </div>
         {children}
       </div>
-    </SessionProvider>
+    </>
   )
 }
 
