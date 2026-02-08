@@ -134,7 +134,7 @@ async function createConfiguration() {
   configuration.WEBSITE_META_TITLE = await question('Website title: ')
   configuration.WEBSITE_META_DESCRIPTION = await question('Website description: ')
 
-  // configure package next auth
+  // configure package better auth
   if (configuration.WEBSITE_URL) {
     configuration.BETTER_AUTH_URL = configuration.WEBSITE_URL
   }
