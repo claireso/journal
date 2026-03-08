@@ -1,4 +1,3 @@
-import CompressionPlugin from 'compression-webpack-plugin'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 
 import type { NextConfig } from 'next'
@@ -61,19 +60,6 @@ const nextConfig: NextConfig = {
         pathname: '/uploads/**'
       }
     ]
-  },
-  webpack: (config, { dev, isServer }) => {
-    if (!isServer && !dev) {
-      // gzip assets in production environment
-      config.plugins.push(
-        new CompressionPlugin({
-          algorithm: 'gzip',
-          test: /\.js(\?.*)?$/i
-        })
-      )
-    }
-
-    return config
   }
 }
 
