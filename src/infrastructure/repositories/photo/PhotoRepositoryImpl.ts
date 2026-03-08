@@ -30,8 +30,8 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
       data.color,
       data.media_id
     ])
-    revalidateTag('list_photos')
-    revalidateTag('list_photos_count')
+    revalidateTag('list_photos', 'max')
+    revalidateTag('list_photos_count', 'max')
     this.logger.info('New photo created successfully')
     this.logger.debug({ response: result.rows[0] })
     return mapRowToPhoto(result.rows[0])
@@ -44,8 +44,8 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
     const values = Object.values(data)
     this.logger.info({ id, data }, 'Photo updating started')
     const result = await this.database.query(queries.updatePhoto(id, fields), values)
-    revalidateTag('list_photos')
-    revalidateTag(`photo_${id}`)
+    revalidateTag('list_photos', 'max')
+    revalidateTag(`photo_${id}`, 'max')
     this.logger.info('Photo updated successfully')
     this.logger.debug({ response: result.rows[0] })
     return mapRowToPhoto(result.rows[0])
@@ -93,9 +93,9 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
   async delete(id: number): Promise<void> {
     this.logger.info({ id }, 'Photo deletion started')
     await this.database.query(queries.deletePhoto(id))
-    revalidateTag('list_photos')
-    revalidateTag('list_photos_count')
-    revalidateTag(`photo_${id}`)
+    revalidateTag('list_photos', 'max')
+    revalidateTag('list_photos_count', 'max')
+    revalidateTag(`photo_${id}`, 'max')
     this.logger.info('Photo deleted successfully')
   }
 

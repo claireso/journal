@@ -52,6 +52,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     unoptimized: process.env.MODE === 'docker',
+    dangerouslyAllowLocalIP: process.env.NODE_ENV === 'development',
     remotePatterns: [
       {
         protocol: websiteUrl.protocol.replace(':', '') as 'http' | 'https',

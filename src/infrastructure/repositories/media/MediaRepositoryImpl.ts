@@ -53,7 +53,7 @@ export default class MediaRepositoryImpl implements MediaRepository {
   async delete(id: number): Promise<void> {
     this.logger.info({ id }, 'Media deletion started')
     await this.database.query(queries.deleteMedia(id))
-    revalidateTag(`media_${id}`)
+    revalidateTag(`media_${id}`, 'max')
     this.logger.info('Media deleted successfully')
   }
 }

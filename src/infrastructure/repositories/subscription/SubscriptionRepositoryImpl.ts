@@ -21,10 +21,10 @@ export default class SubscriptionRepositoryImpl implements SubscriptionRepositor
     this.logger.info({ data }, 'Subscription creation started')
     const result = await this.database.query(queries.insertSubscription(), [data])
     const subscription = result.rows[0]
-    revalidateTag('list_subscriptions')
-    revalidateTag('list_all_subscriptions')
-    revalidateTag('list_subscriptions_count')
-    revalidateTag(`subscription_${subscription.subscription.endpoint}`)
+    revalidateTag('list_subscriptions', 'max')
+    revalidateTag('list_all_subscriptions', 'max')
+    revalidateTag('list_subscriptions_count', 'max')
+    revalidateTag(`subscription_${subscription.subscription.endpoint}`, 'max')
     this.logger.info('Subscription created successfully')
     this.logger.debug({ response: subscription })
     return result.rows[0]
@@ -73,11 +73,11 @@ export default class SubscriptionRepositoryImpl implements SubscriptionRepositor
   async delete(subscription: Subscription): Promise<void> {
     this.logger.info({ id: subscription.id }, 'Subscription deletion started')
     await this.database.query(queries.deleteSubscription(subscription.id))
-    revalidateTag('list_subscriptions')
-    revalidateTag('list_all_subscriptions')
-    revalidateTag('list_subscriptions_count')
-    revalidateTag(`subscription_${subscription.id}`)
-    revalidateTag(`subscription_${subscription.subscription.endpoint}`)
+    revalidateTag('list_subscriptions', 'max')
+    revalidateTag('list_all_subscriptions', 'max')
+    revalidateTag('list_subscriptions_count', 'max')
+    revalidateTag(`subscription_${subscription.id}`, 'max')
+    revalidateTag(`subscription_${subscription.subscription.endpoint}`, 'max')
     this.logger.info('Subscription deleted successfully')
   }
 
