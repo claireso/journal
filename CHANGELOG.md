@@ -1,5 +1,11 @@
 # journal
 
+## 4.0.0
+
+### Major Changes
+
+- cccb4ec: Next@16 migration (new cache api)
+
 ## 3.0.0
 
 ### Major Changes
