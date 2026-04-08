@@ -1,6 +1,7 @@
 'use server'
 
 import { after } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { WebPushError } from 'web-push'
 import { differenceInMinutes } from 'date-fns'
 import pipeAsync from '@utils/pipeAsync'
@@ -9,6 +10,14 @@ import { IS_NOTIFICATIONS_ENABLED, sendNotification, NOTIFICATION_NEW_PHOTO } fr
 import { PhotoInsertDtoSchema } from '@dto'
 import { withAuth } from '@infrastructure/middlewares'
 import logger from '@infrastructure/logger'
+import { cacheLife, cacheTag } from 'next/cache'
+
+const cachedGetAllSubscriptions = async () => {
+  'use cache'
+  cacheTag('subscription_list_all')
+  cacheLife({ revalidate: 3600 * 24 * 4 })
+  return subscriptionService.getAll()
+}
 
 async function createPhoto(data: FormData) {
   try {
@@ -17,6 +26,8 @@ async function createPhoto(data: FormData) {
     const result = PhotoInsertDtoSchema.parse(body)
 
     await photoService.create(result)
+    revalidatePath('/admin/photos')
+    revalidatePath('/')
 
     // https://nextjs.org/docs/app/api-reference/functions/after
     after(async () => {
@@ -33,7 +44,7 @@ async function createPhoto(data: FormData) {
         }
 
         if (!skipNotification) {
-          const subscriptions = await subscriptionService.getAll()
+          const subscriptions = await cachedGetAllSubscriptions()
 
           for (const subscription of subscriptions) {
             logger.info({ id: subscription.id }, `Send notification`)

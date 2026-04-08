@@ -4,11 +4,19 @@ import { NotFoundError } from '@domain/errors'
 import logger from '@infrastructure/logger'
 import { subscriptionService } from '@ioc/container'
 import { SubscriptionDto, SubscriptionRequestDtoSchema } from '@dto'
+import { cacheTag, cacheLife } from 'next/cache'
+
+const cachedGetSubscription = async (endpoint: string) => {
+  'use cache'
+  cacheTag(`subscription_${endpoint}`)
+  cacheLife({ revalidate: 3600 * 24 * 4 })
+  return subscriptionService.getSubscriptionByEndpoint(endpoint)
+}
 
 const getSubscription = async (params: { endpoint: string }): Promise<SubscriptionDto['subscription'] | null> => {
   try {
     const { endpoint } = SubscriptionRequestDtoSchema.parse(params)
-    const subscription = await subscriptionService.getSubscriptionByEndpoint(endpoint)
+    const subscription = await cachedGetSubscription(endpoint)
     return subscription.subscription
   } catch (err) {
     // log only internal server error

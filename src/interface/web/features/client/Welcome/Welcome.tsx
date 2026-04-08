@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { Heading1 } from '@web/components/Headings'
-import { default as CustomLink } from '@web/components/Links'
+import * as clsLink from '@web/components/Links/styles.css'
 import Text from '@web/components/Text'
 
 import * as cls from './styles.css'
@@ -12,8 +12,8 @@ const Welcome = () => {
       <Heading1 data-testid="welcome-title">Welcome to your Journal 🎉</Heading1>
       <Text size="lg">
         Go to your{' '}
-        <Link href="/admin" passHref legacyBehavior>
-          <CustomLink variant="primary">admin</CustomLink>
+        <Link href="/admin" className={clsLink.link({ variant: 'primary' })}>
+          admin
         </Link>{' '}
         to publish your first photo
       </Text>

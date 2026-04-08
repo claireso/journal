@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import pipeAsync from '@utils/pipeAsync'
 import { PhotoUpdateDtoSchema } from '@dto'
 import { BadRequestError } from '@domain/errors'
@@ -20,6 +21,8 @@ async function editPhoto(data: FormData) {
     const result = PhotoUpdateDtoSchema.parse(body)
 
     await photoService.update(id, result)
+    revalidatePath('/admin/photos')
+    revalidatePath('/')
   } catch (err) {
     logger.error(err, 'Could not update photo')
     throw err

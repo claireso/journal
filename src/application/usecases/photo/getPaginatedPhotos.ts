@@ -1,8 +1,17 @@
 'use server'
 
+import { cacheTag, cacheLife } from 'next/cache'
+
 import { mapPhotosToPhotosDto } from '@dto'
 import { photoService } from '@ioc/container'
 import { BadRequestError } from '@domain/errors'
+
+const cachedGetPaginatedPhotos = async (page: number, limit: number) => {
+  'use cache'
+  cacheTag(`photo_list`)
+  cacheLife({ revalidate: 3600 * 24 * 4 })
+  return photoService.getPaginatedPhotos(page, limit)
+}
 
 const getPaginatedPhotos = async ({ page, limit }: { page: string; limit?: string }) => {
   const intPage = Number(page)
@@ -19,7 +28,7 @@ const getPaginatedPhotos = async ({ page, limit }: { page: string; limit?: strin
     }
   }
 
-  const paginatedPhotos = await photoService.getPaginatedPhotos(intPage ?? 1, intLimit)
+  const paginatedPhotos = await cachedGetPaginatedPhotos(intPage ?? 1, intLimit)
   const paginatedPhotosDto = mapPhotosToPhotosDto(paginatedPhotos)
 
   return paginatedPhotosDto

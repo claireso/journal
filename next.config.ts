@@ -1,4 +1,3 @@
-import CompressionPlugin from 'compression-webpack-plugin'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 
 import type { NextConfig } from 'next'
@@ -15,6 +14,7 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
+  cacheComponents: true,
   compiler: {
     reactRemoveProperties: true
   },
@@ -51,7 +51,9 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_WEBSITE_URL: String(process.env.WEBSITE_URL)
   },
   images: {
+    dangerouslyAllowLocalIP: process.env.NODE_ENV === 'development',
     unoptimized: process.env.MODE === 'docker',
+    qualities: [75, 80],
     remotePatterns: [
       {
         protocol: websiteUrl.protocol.replace(':', '') as 'http' | 'https',
@@ -60,19 +62,6 @@ const nextConfig: NextConfig = {
         pathname: '/uploads/**'
       }
     ]
-  },
-  webpack: (config, { dev, isServer }) => {
-    if (!isServer && !dev) {
-      // gzip assets in production environment
-      config.plugins.push(
-        new CompressionPlugin({
-          algorithm: 'gzip',
-          test: /\.js(\?.*)?$/i
-        })
-      )
-    }
-
-    return config
   }
 }
 

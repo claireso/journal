@@ -1,4 +1,4 @@
-import { unstable_cache, revalidateTag } from 'next/cache'
+import { revalidateTag } from 'next/cache'
 import { Photo } from '@domain/entities'
 import { PhotoRepository } from '@domain/repositories'
 import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
@@ -12,7 +12,6 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
   private database: any
   // eslint-disable-next-line
   private logger: any
-  static cacheLifeTime: number = 3600 * 24 * 4 // 4 days
 
   // eslint-disable-next-line
   constructor(database: any, logger: any) {
@@ -30,8 +29,7 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
       data.color,
       data.media_id
     ])
-    revalidateTag('list_photos')
-    revalidateTag('list_photos_count')
+    revalidateTag('photo_list', 'max')
     this.logger.info('New photo created successfully')
     this.logger.debug({ response: result.rows[0] })
     return mapRowToPhoto(result.rows[0])
@@ -44,8 +42,8 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
     const values = Object.values(data)
     this.logger.info({ id, data }, 'Photo updating started')
     const result = await this.database.query(queries.updatePhoto(id, fields), values)
-    revalidateTag('list_photos')
-    revalidateTag(`photo_${id}`)
+    revalidateTag('photo_list', 'max')
+    revalidateTag(`photo_${id}`, 'max')
     this.logger.info('Photo updated successfully')
     this.logger.debug({ response: result.rows[0] })
     return mapRowToPhoto(result.rows[0])
@@ -54,18 +52,9 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
   async getById(id: number): Promise<Photo | null> {
     this.logger.info({ id }, 'Photo getting started')
 
-    const response = await unstable_cache(
-      async (id: number) => {
-        const result = await this.database.query(queries.getPhotoById(id))
-        const row = result.rows[0]
-        return row ? mapRowToPhoto(row) : null
-      },
-      [],
-      {
-        tags: [`photo_${id}`],
-        revalidate: PhotoRepositoryImpl.cacheLifeTime
-      }
-    )(id)
+    const result = await this.database.query(queries.getPhotoById(id))
+    const row = result.rows[0]
+    const response = row ? mapRowToPhoto(row) : null
 
     this.logger.info('Photo retrieved successfully')
     this.logger.debug({ response })
@@ -93,26 +82,16 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
   async delete(id: number): Promise<void> {
     this.logger.info({ id }, 'Photo deletion started')
     await this.database.query(queries.deletePhoto(id))
-    revalidateTag('list_photos')
-    revalidateTag('list_photos_count')
-    revalidateTag(`photo_${id}`)
+    revalidateTag('photo_list', 'max')
+    revalidateTag(`photo_${id}`, 'max')
     this.logger.info('Photo deleted successfully')
   }
 
   async getPhotos(offset: number, limit: number): Promise<Photo[]> {
     this.logger.info({ offset, limit }, 'Photos page getting started')
 
-    const response = await unstable_cache(
-      async (offset: number, limit: number) => {
-        const result = await this.database.query(queries.getPhotos(offset, limit))
-        return result.rows.map(mapRowToPhoto)
-      },
-      [],
-      {
-        tags: ['list_photos'],
-        revalidate: PhotoRepositoryImpl.cacheLifeTime
-      }
-    )(offset, limit)
+    const result = await this.database.query(queries.getPhotos(offset, limit))
+    const response = result.rows.map(mapRowToPhoto)
 
     this.logger.info('Photos page retrieved successfully')
     this.logger.debug({ response })
@@ -122,17 +101,8 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
   async countPhotos(): Promise<number> {
     this.logger.info('Photos count started')
 
-    const response = await unstable_cache(
-      async () => {
-        const result = await this.database.query(queries.count())
-        return Number(result.rows[0].count)
-      },
-      ['list_photos_count'],
-      {
-        tags: ['list_photos_count'],
-        revalidate: PhotoRepositoryImpl.cacheLifeTime
-      }
-    )()
+    const result = await this.database.query(queries.count())
+    const response = Number(result.rows[0].count)
 
     this.logger.info('Photos counted successfully')
     this.logger.debug({ response })

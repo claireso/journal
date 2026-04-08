@@ -1,5 +1,7 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
+
 import pipeAsync from '@utils/pipeAsync'
 import { pool as db } from '@infrastructure/db'
 import { BadRequestError } from '@domain/errors'
@@ -16,6 +18,8 @@ async function deletePhoto(photoId: string) {
     }
 
     await photoService.delete(id, db)
+    revalidatePath('/admin/photos')
+    revalidatePath('/')
   } catch (err) {
     logger.error(err, 'Could not delete photo')
     throw err
