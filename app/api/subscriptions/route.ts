@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { createRouteHandler } from '@infrastructure/middlewares'
 import { subscriptionService } from '@ioc/container'
 import { SubscriptionInsertDtoSchema } from '@dto'
@@ -9,6 +10,8 @@ const createSubscription = async (request: NextRequest) => {
 
   const result = SubscriptionInsertDtoSchema.parse(body)
   const subscription = await subscriptionService.create(result.subscription)
+
+  revalidatePath('/admin/subscriptions')
 
   return Response.json(subscription, { status: 201 })
 }

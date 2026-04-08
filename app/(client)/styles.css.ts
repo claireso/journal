@@ -22,3 +22,7 @@ export const main = pagesStyle({
     }
   })
 })
+
+export const loaderWrapper = pagesStyle({
+  gridColumn: '1 / -1'
+})

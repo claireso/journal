@@ -1,5 +1,7 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
+
 import pipeAsync from '@utils/pipeAsync'
 import { BadRequestError } from '@domain/errors'
 import { subscriptionService } from '@ioc/container'
@@ -15,6 +17,8 @@ async function deleteSubscription(subscriptionId: string) {
     }
 
     await subscriptionService.delete(id)
+    revalidatePath('/admin/subscriptions')
+    revalidatePath('/')
   } catch (err) {
     logger.error(err, 'Could not delete subscription')
     throw err

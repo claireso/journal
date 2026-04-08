@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { type Metadata } from 'next'
 import Script from 'next/script'
 
@@ -8,6 +9,7 @@ import { MessagesProvider } from '@web/features/messages/useMessages'
 
 import BannerOffline from '@web/features/banners/Offline'
 import BannerNotifications from '@web/features/banners/Notifications'
+import { Loader } from '@web/components/Loader'
 
 interface JournalLayoutProps {
   children: React.ReactNode
@@ -24,24 +26,32 @@ export default function JournalLayout({ children }: JournalLayoutProps) {
       <BannerOffline />
       <BannerNotifications />
       <MessagesProvider>
-        <main className={cls.main}>{children}</main>
+        <main className={cls.main}>
+          <Suspense
+            fallback={
+              <div className={cls.loaderWrapper}>
+                <Loader />
+              </div>
+            }
+          >
+            {children}
+          </Suspense>
+        </main>
       </MessagesProvider>
       <Script
         id="service-worker"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             if ('serviceWorker' in navigator) {
-              window.addEventListener('load', function() {
-                navigator.serviceWorker
-                  .register('/sw.js', {scope: '/', updateViaCache: 'none'})
-                  .then(function(registration) {
-                    console.log('SW registered: ', registration);
-                  })
-                  .catch(function(registrationError) {
-                    console.log('SW registration failed: ', registrationError);
-                  });
-              });
+              navigator.serviceWorker
+                .register('/sw.js', {scope: '/', updateViaCache: 'none'})
+                .then(function(registration) {
+                  console.log('SW registered: ', registration);
+                })
+                .catch(function(registrationError) {
+                  console.log('SW registration failed: ', registrationError);
+                });
             }
           `
         }}

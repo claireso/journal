@@ -33,8 +33,7 @@ const ModalDeletePhoto = ({ photoId }: ModalDeletePhoto) => {
   const onConfirm = useCallback(async () => {
     await deletePhoto(photoId)
     closeModal()
-    router.refresh()
-  }, [closeModal, photoId, deletePhoto, router])
+  }, [closeModal, photoId, deletePhoto])
 
   return (
     <AdminModal title="Delete photo?">
