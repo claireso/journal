@@ -51,8 +51,9 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_WEBSITE_URL: String(process.env.WEBSITE_URL)
   },
   images: {
-    unoptimized: process.env.MODE === 'docker',
     dangerouslyAllowLocalIP: process.env.NODE_ENV === 'development',
+    unoptimized: process.env.MODE === 'docker',
+    qualities: [75, 80],
     remotePatterns: [
       {
         protocol: websiteUrl.protocol.replace(':', '') as 'http' | 'https',

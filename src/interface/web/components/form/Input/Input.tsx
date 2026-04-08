@@ -10,8 +10,8 @@ interface InputProps extends Omit<React.ComponentProps<'input'>, 'onChange'> {
   label: string
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { name, label, value = '', type = 'text', required = false, autoFocus = false } = props
+const Input = (props: InputProps) => {
+  const { name, label, value = '', type = 'text', required = false, autoFocus = false, ref } = props
 
   return (
     <Group>
@@ -28,8 +28,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       />
     </Group>
   )
-})
-
-Input.displayName = 'Input'
+}
 
 export default Input

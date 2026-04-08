@@ -6,10 +6,8 @@ import * as cls from './styles.css'
 
 type LinkProps = React.ComponentProps<'a'> & LinkVariants
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(({ variant = 'default', className, ...props }, ref) => (
+const Link = ({ variant = 'default', className, ref, ...props }: LinkProps) => (
   <a ref={ref} className={clsx([cls.link({ variant }), className])} {...props} />
-))
-
-Link.displayName = 'Link'
+)
 
 export default Link
