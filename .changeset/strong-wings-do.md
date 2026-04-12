@@ -1,0 +1,5 @@
+---
+'journal': patch
+---
+
+Update dependencies

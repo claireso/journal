@@ -1,7 +1,7 @@
 import { revalidateTag } from 'next/cache'
-import { Photo } from '@domain/entities'
-import { PhotoRepository } from '@domain/repositories'
-import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
+import { type Photo } from '@domain/entities'
+import { type PhotoRepository } from '@domain/repositories'
+import { type PhotoInsertDto, type PhotoUpdateDto } from '@dto'
 import * as queries from './queries'
 import { mapRowToPhoto } from '@domain/entities/photo/mappers'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import NextImage, { ImageProps } from 'next/image'
+import NextImage, { type ImageProps } from 'next/image'
 import React, { useCallback } from 'react'
 import clsx from '@utils/clsx'
 

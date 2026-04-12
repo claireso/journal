@@ -1,4 +1,4 @@
-import { UserRepository } from '@domain/repositories'
+import { type UserRepository } from '@domain/repositories'
 
 export default class MediaService {
   private repository: UserRepository

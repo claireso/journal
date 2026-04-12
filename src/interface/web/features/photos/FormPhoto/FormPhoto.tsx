@@ -17,7 +17,7 @@ import ButtonSubmit from '@web/components/form/ButtonSubmit'
 
 import useColorsExtractor from '@web/hooks/useColorsExtractor'
 import { useCreateMedia } from '@web/features/media/useMedia'
-import useMessages, { Message } from '@web/features/messages/useMessages'
+import useMessages, { type Message } from '@web/features/messages/useMessages'
 
 import * as cls from './styles.css'
 

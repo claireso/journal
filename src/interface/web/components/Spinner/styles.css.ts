@@ -1,5 +1,5 @@
 import { keyframes } from '@vanilla-extract/css'
-import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
+import { recipe, type RecipeVariants } from '@vanilla-extract/recipes'
 import { cmpStyles, tokens, square } from '@web/theme'
 
 const loop = keyframes({

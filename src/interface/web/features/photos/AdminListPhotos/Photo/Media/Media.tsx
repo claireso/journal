@@ -1,8 +1,8 @@
 'use client'
 
-import React, { ComponentProps } from 'react'
+import React, { type ComponentProps } from 'react'
 
-import { PhotoDto } from '@dto'
+import { type PhotoDto } from '@dto'
 import AnimatedImage from '@web/components/AnimatedImage'
 import { tokens } from '@web/theme/core/tokens.css'
 

@@ -4,7 +4,7 @@ import pipeAsync from '@utils/pipeAsync'
 import { BadRequestError } from '@domain/errors'
 import { subscriptionService } from '@ioc/container'
 import { withAuth } from '@infrastructure/middlewares'
-import { SubscriptionsDto } from '@dto'
+import { type SubscriptionsDto } from '@dto'
 import { cacheTag, cacheLife } from 'next/cache'
 
 const cachedGetPaginatedSubscriptions = async (page: number) => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Button, { ButtonProps } from './Button'
+import Button, { type ButtonProps } from './Button'
 
 export { default as Button } from './Button'
 

@@ -1,5 +1,5 @@
-import { Media, MediaType, mapRowToMedia } from '@domain/entities'
-import { MediaRepository } from '@domain/repositories'
+import { type Media, MediaType, mapRowToMedia } from '@domain/entities'
+import { type MediaRepository } from '@domain/repositories'
 
 export default class MediaRepositoryInMemoryImpl implements MediaRepository {
   private media: Media[]

@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as cls from './styles.css'
 
-import { PhotoDto } from '@dto'
+import { type PhotoDto } from '@dto'
 import { formatDate } from '@utils/date'
 
 import Media from './Media'

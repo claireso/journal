@@ -1,5 +1,5 @@
-import { User } from '@domain/entities'
-import { UserRepository } from '@domain/repositories'
+import { type User } from '@domain/entities'
+import { type UserRepository } from '@domain/repositories'
 
 export default class UserRepositoryInMemoryImpl implements UserRepository {
   private users: User[]

@@ -2,11 +2,11 @@
 
 import { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import type { Pager } from '@domain/entities'
+import type { Pager as PagerEntity } from '@domain/entities'
 import _Pager from '@web/components/Pager'
 
 interface PagerProps extends Pick<React.ComponentProps<typeof _Pager>, 'layout'> {
-  pager: Pager
+  pager: PagerEntity
 }
 
 const Pager = ({ pager, layout }: PagerProps) => {

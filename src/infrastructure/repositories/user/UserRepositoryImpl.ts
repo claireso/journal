@@ -1,5 +1,5 @@
-import { User } from '@domain/entities'
-import { UserRepository } from '@domain/repositories'
+import { type User } from '@domain/entities'
+import { type UserRepository } from '@domain/repositories'
 import * as queries from './queries'
 
 export default class UserRepositoryImpl implements UserRepository {

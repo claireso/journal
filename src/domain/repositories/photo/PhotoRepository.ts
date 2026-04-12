@@ -1,4 +1,4 @@
-import { Photo } from '@domain/entities'
+import { type Photo } from '@domain/entities'
 
 export interface PhotoRepository {
   create(photo: object & { name: string }): Promise<Photo>

@@ -2,7 +2,7 @@ import path from 'path'
 import { unlink } from 'fs/promises'
 import { MediaType } from '@domain/entities'
 import { NotFoundError } from '@domain/errors'
-import { MediaRepository } from '@domain/repositories'
+import { type MediaRepository } from '@domain/repositories'
 import uploadFile from '@utils/uploadFile'
 
 export default class MediaService {
