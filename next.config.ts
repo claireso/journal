@@ -8,7 +8,9 @@ const IS_NOTIFICATIONS_ENABLED = !!(
 
 const websiteUrl = new URL(process.env.WEBSITE_URL ?? 'http://localhost')
 
-const withVanillaExtract = createVanillaExtractPlugin()
+const withVanillaExtract = createVanillaExtractPlugin({
+  unstable_turbopack: { mode: 'auto' }
+})
 
 const nextConfig: NextConfig = {
   output: 'standalone',

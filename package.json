@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "concurrently \"npm run dev:sw\" \"node server.js\"",
-    "build": "npm run build:sw && next build --webpack",
+    "build": "npm run build:sw && next build",
     "build:sw": "NODE_ENV=production node scripts/build/serviceworker.mjs",
     "dev:sw": "WATCH=true node scripts/build/serviceworker.mjs",
     "start": "node .next/standalone/server.js",
