@@ -4,7 +4,7 @@
   "description": "A self-hosted website to show your photographs",
   "private": true,
   "engines": {
-    "node": "22"
+    "node": "24"
   },
   "scripts": {
     "dev": "concurrently \"npm run dev:sw\" \"node server.js\"",
@@ -68,7 +68,7 @@
     "@testing-library/react": "16.3.2",
     "@types/jest": "30.0.0",
     "@types/lodash": "4.17.24",
-    "@types/node": "22.10.5",
+    "@types/node": "24.12.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/web-push": "3.6.4",
