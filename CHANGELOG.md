@@ -1,5 +1,15 @@
 # journal
 
+## 5.0.0
+
+### Major Changes
+
+- 9470c23: Update node to version 24
+
+### Patch Changes
+
+- 9470c23: Update dependencies
+
 ## 4.0.0
 
 ### Major Changes
