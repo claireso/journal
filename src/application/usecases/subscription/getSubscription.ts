@@ -3,7 +3,7 @@
 import { NotFoundError } from '@domain/errors'
 import logger from '@infrastructure/logger'
 import { subscriptionService } from '@ioc/container'
-import { SubscriptionDto, SubscriptionRequestDtoSchema } from '@dto'
+import { type SubscriptionDto, SubscriptionRequestDtoSchema } from '@dto'
 import { cacheTag, cacheLife } from 'next/cache'
 
 const cachedGetSubscription = async (endpoint: string) => {

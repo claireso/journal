@@ -1,4 +1,4 @@
-import { UserRepository } from '@domain/repositories'
+import { type UserRepository } from '@domain/repositories'
 import UserRepositoryInMemoryImpl from '@infrastructure/repositories/user/UserRepositoryInMemoryImpl'
 import UserService from './UserService'
 

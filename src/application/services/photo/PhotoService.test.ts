@@ -1,5 +1,5 @@
 import { PhotoPositionType } from '@domain/entities'
-import { MediaRepository, PhotoRepository } from '@domain/repositories'
+import { type MediaRepository, type PhotoRepository } from '@domain/repositories'
 import PhotoRepositoryInMemoryImpl from '@infrastructure/repositories/photo/PhotoRepositoryInMemoryImpl'
 import MediaRepositoryInMemoryImpl from '@infrastructure/repositories/media/MediaRepositoryInMemoryImpl'
 import PhotoService from './PhotoService'

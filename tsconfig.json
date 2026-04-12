@@ -1,72 +1,37 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "webworker"
-    ],
+    "target": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext", "webworker"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "noImplicitAny": true,
     "incremental": true,
-    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "jsx": "react-jsx",
     "paths": {
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@types": [
-        "src/types"
-      ],
-      "@domain/*": [
-        "src/domain/*"
-      ],
-      "@infrastructure/*": [
-        "src/infrastructure/*"
-      ],
-      "@application/*": [
-        "src/application/*"
-      ],
-      "@dto": [
-        "src/dto"
-      ],
-      "@ioc/*": [
-        "src/ioc/*"
-      ],
-      "@web/*": [
-        "src/interface/web/*"
-      ],
-      "@interface/*": [
-        "src/interface/*"
-      ]
+      "@utils/*": ["./src/utils/*"],
+      "@types": ["./src/types"],
+      "@domain/*": ["./src/domain/*"],
+      "@infrastructure/*": ["./src/infrastructure/*"],
+      "@application/*": ["./src/application/*"],
+      "@dto": ["./src/dto"],
+      "@ioc/*": ["./src/ioc/*"],
+      "@web/*": ["./src/interface/web/*"],
+      "@interface/*": ["./src/interface/*"]
     },
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "types": [
-      "@testing-library/jest-dom"
-    ]
+    "types": ["@testing-library/jest-dom"],
+    "esModuleInterop": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react'
+import React, { type ComponentProps } from 'react'
 import type { PhotoDto } from '@dto'
 
 import AnimatedImage from '@web/components/AnimatedImage'

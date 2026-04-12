@@ -1,6 +1,6 @@
-import { Subscription } from '@domain/entities'
-import { SubscriptionRepository } from '@domain/repositories'
-import { SubscriptionInsertDto } from '@dto'
+import { type Subscription } from '@domain/entities'
+import { type SubscriptionRepository } from '@domain/repositories'
+import { type SubscriptionInsertDto } from '@dto'
 
 export default class SubscriptionRepositoryInMemoryImpl implements SubscriptionRepository {
   private subscriptions: Subscription[]

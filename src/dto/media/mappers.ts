@@ -1,5 +1,5 @@
-import { Media, MediaType } from '@domain/entities'
-import { MediaDto, LegacyMediaDto } from './output'
+import { type Media, MediaType } from '@domain/entities'
+import { type MediaDto, type LegacyMediaDto } from './output'
 
 const toSourceDTO = (source: string) => `/uploads/${source}`
 

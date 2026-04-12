@@ -1,8 +1,8 @@
 import escape from 'lodash/escape'
-import { PhotoRepository, MediaRepository } from '@domain/repositories'
-import { Pager, Photos } from '@domain/entities'
+import { type PhotoRepository, type MediaRepository } from '@domain/repositories'
+import { type Pager, type Photos } from '@domain/entities'
 import { BadRequestError, NotFoundError } from '@domain/errors/errors'
-import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
+import { type PhotoInsertDto, type PhotoUpdateDto } from '@dto'
 
 export default class PhotoService {
   private repository: PhotoRepository

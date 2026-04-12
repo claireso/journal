@@ -1,4 +1,4 @@
-import { SubscriptionRepository } from '@domain/repositories'
+import { type SubscriptionRepository } from '@domain/repositories'
 import SubscriptionRepositoryInMemoryImpl from '@infrastructure/repositories/subscription/SubscriptionRepositoryInMemoryImpl'
 import SubscriptionService from './SubscriptionService'
 

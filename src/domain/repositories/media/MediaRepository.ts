@@ -1,4 +1,4 @@
-import { Media } from '@domain/entities'
+import { type Media } from '@domain/entities'
 
 export interface MediaRepository {
   create(data: Pick<Media, 'type' | 'name' | 'size'>): Promise<Media>

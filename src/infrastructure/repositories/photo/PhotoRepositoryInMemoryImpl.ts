@@ -1,6 +1,6 @@
-import { PhotoInsertDto, PhotoUpdateDto } from '@dto'
-import { MediaType, Photo, PhotoPositionType } from '@domain/entities'
-import { PhotoRepository } from '@domain/repositories'
+import { type PhotoInsertDto, type PhotoUpdateDto } from '@dto'
+import { MediaType, type Photo, PhotoPositionType } from '@domain/entities'
+import { type PhotoRepository } from '@domain/repositories'
 import { mapRowToPhoto } from '@domain/entities'
 
 export default class PhotoRepositoryInMemoryImpl implements PhotoRepository {

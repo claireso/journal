@@ -1,6 +1,6 @@
 import fs from 'fs'
 import sharp from 'sharp'
-import { MediaRepository } from '@domain/repositories'
+import { type MediaRepository } from '@domain/repositories'
 import MediaRepositoryInMemoryImpl from '@infrastructure/repositories/media/MediaRepositoryInMemoryImpl'
 import MediaService from './MediaService'
 

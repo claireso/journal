@@ -1,5 +1,5 @@
-import { Media, mapRowToMedia } from '@domain/entities'
-import { MediaRepository } from '@domain/repositories'
+import { type Media, mapRowToMedia } from '@domain/entities'
+import { type MediaRepository } from '@domain/repositories'
 import * as queries from './queries'
 
 export default class MediaRepositoryImpl implements MediaRepository {
