@@ -62,8 +62,7 @@ export default class SubscriptionRepositoryImpl implements SubscriptionRepositor
   async getSubscriptions(offset: number, limit: number): Promise<Subscription[]> {
     this.logger.info({ offset, limit }, 'Subscriptions page getting started')
 
-    const options = `OFFSET ${offset} LIMIT ${limit}`
-    const result = await this.database.query(queries.getSubscriptions({ options }))
+    const result = await this.database.query(queries.getSubscriptionsPage(offset, limit))
     const response = result.rows
 
     this.logger.info('Subscriptions page retrieved successfully')
