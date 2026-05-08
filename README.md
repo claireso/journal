@@ -6,6 +6,7 @@ the freedom and control that comes from self-hosting.
 Note: The theme is optimized for pictures with an aspect ratio of 3:2, 2:3, or 1:1.
 
 # Technical Stack
+
 - [Next.js](https://vercel.com/frameworks/nextjs)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Vanilla Extract](https://vanilla-extract.style/)
@@ -14,11 +15,11 @@ Note: The theme is optimized for pictures with an aspect ratio of 3:2, 2:3, or 1
 - [Testing Library](https://testing-library.com/)
 
 # Requirements for installation:
+
 - [Node v22](https://nodejs.org)
 - [zx](https://google.github.io/zx/)
 - [PostgreSQL](https://www.postgresql.org/) (for standalone installation)
 - [Docker](https://www.docker.com/) (for Docker installation)
-
 
 # Installation
 
@@ -65,7 +66,8 @@ $ PORT=4000 npm run dev
 ```
 
 Note:
-  - don't forget to update your `.env`
+
+- don't forget to update your `.env`
 
 #### Build and run the application in a production environment
 
@@ -92,7 +94,8 @@ $ npm run start -- -p 4000
 ```
 
 Note:
-  - don't forget to update your `.env`
+
+- don't forget to update your `.env`
 
 ##### 2 - With express
 
@@ -112,8 +115,9 @@ $ PORT=4000 npm run start:express
 ```
 
 Note:
-  - remove option `output: 'standalone'` from `next.config.js`
-  - don't forget to update your `.env`
+
+- remove option `output: 'standalone'` from `next.config.js`
+- don't forget to update your `.env`
 
 ### Launch with Docker
 
@@ -121,12 +125,54 @@ The installation created all necessary Docker images.
 To launch the application, run `docker compose up` and visit https://localhost.
 
 Note:
-  - With Docker, HTTPS is used. You will need to generate SSL certificates in the `certificates` folder.
+
+- With Docker, HTTPS is used. You will need to generate SSL certificates in the `certificates` folder.
   Files must be named `${SERVER_NAME}.pem` and `${SERVER_NAME}-key.pem` (the same SERVER_NAME in your .env).
-  - You can use [Next.js to generate certificates](https://vercel.com/guides/access-nextjs-localhost-https-certificate-self-signed) to launch the application in your local environment
-
-
+- You can use [Next.js to generate certificates](https://vercel.com/guides/access-nextjs-localhost-https-certificate-self-signed) to launch the application in your local environment
 
 ![Image](https://github.com/user-attachments/assets/a8abb698-de2f-45ae-9f5a-c51301b56cc2)
 
 ![Image](https://github.com/user-attachments/assets/9d05b457-0f60-46b0-9fe9-da5af1bb9c45)
+
+# Observability with BetterStack (optional)
+
+Journal can optionally send logs and traces to [BetterStack](https://betterstack.com/) and expose a health check endpoint for uptime monitoring. All variables below are optional — the application runs normally without them.
+
+## Logging
+
+Add the following variables to your `.env` to forward structured logs to BetterStack Logs:
+
+| Variable                     | Description                                                                       |
+| ---------------------------- | --------------------------------------------------------------------------------- |
+| `BETTER_STACK_SOURCE_TOKEN`  | Source token from your BetterStack Logs source                                    |
+| `BETTER_STACK_INGESTING_URL` | Ingestion endpoint                                                                |
+
+When `BETTER_STACK_SOURCE_TOKEN` or `BETTER_STACK_INGESTING_URL` is not set, logs are only printed to stdout.
+
+## Tracing
+
+Add the following variables to enable OpenTelemetry tracing exported to BetterStack:
+
+| Variable                      | Description                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------------------- |
+| `OTEL_SERVICE_NAME`           | Service name shown in traces (e.g. `journal`). Setting this variable enables tracing. |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP endpoint (e.g. `https://in.logs.betterstack.com`)                                |
+| `OTEL_EXPORTER_OTLP_HEADERS`  | Authentication header (e.g. `Authorization=Bearer <token>`)                           |
+
+## Health check endpoint
+
+The application exposes a `GET /api/health` endpoint for uptime monitoring. It verifies database connectivity and returns a JSON status.
+
+The endpoint is protected by a Bearer token to prevent public access:
+
+| Variable                          | Description                                                          |
+| --------------------------------- | -------------------------------------------------------------------- |
+| `BETTER_STACK_HEALTH_CHECK_TOKEN` | Secret token — requests must include `Authorization: Bearer <token>` |
+
+Successful response:
+
+```json
+{ "status": "ok", "checks": { "db": "ok" } }
+```
+
+Configure your BetterStack uptime monitor to call `GET /api/health` with the header `Authorization: Bearer <your-token>`. The monitor should expect an HTTP `200` response.

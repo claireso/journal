@@ -1,5 +1,5 @@
-export const getMediaById = (id: number) =>
-  `SELECT
+export const getMediaById = (id: number) => ({
+  text: `SELECT
     id,
     type,
     name,
@@ -9,8 +9,10 @@ export const getMediaById = (id: number) =>
   FROM
     media
   WHERE
-    id=${id}
-  `
+    id=$1
+  `,
+  values: [id]
+})
 
 export const insertMedia = () =>
   `INSERT
@@ -21,9 +23,11 @@ export const insertMedia = () =>
   RETURNING *
   `
 
-export const deleteMedia = (id: number) =>
-  `DELETE
+export const deleteMedia = (id: number) => ({
+  text: `DELETE
   FROM
     media
-  WHERE id=${id}
-  `
+  WHERE id=$1
+  `,
+  values: [id]
+})

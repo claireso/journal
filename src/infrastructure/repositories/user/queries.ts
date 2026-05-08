@@ -1,5 +1,5 @@
-export const getUserByCredentials = (username: string, password: string) =>
-  `SELECT
+export const getUserByCredentials = (username: string, password: string) => ({
+  text: `SELECT
     id,
     cid,
     username,
@@ -8,6 +8,8 @@ export const getUserByCredentials = (username: string, password: string) =>
   FROM
     users
   WHERE
-    username='${username}'
+    username=$1
     AND
-    password=crypt('${password}', password)`
+    password=crypt($2, password)`,
+  values: [username, password]
+})

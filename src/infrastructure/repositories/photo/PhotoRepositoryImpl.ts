@@ -36,12 +36,11 @@ export default class PhotoRepositoryImpl implements PhotoRepository {
   }
 
   async update(id: number, data: PhotoUpdateDto): Promise<Photo> {
-    const fields = Object.entries(data)
-      .map((entry, index) => `${entry[0]}=($${index + 1})`)
-      .join(',')
-    const values = Object.values(data)
+    const entries = Object.entries(data)
+    const fields = entries.map(([key], index) => `${key}=($${index + 1})`).join(',')
+    const values = [...Object.values(data), id]
     this.logger.info({ id, data }, 'Photo updating started')
-    const result = await this.database.query(queries.updatePhoto(id, fields), values)
+    const result = await this.database.query(queries.updatePhoto(fields, entries.length + 1), values)
     revalidateTag('photo_list', 'max')
     revalidateTag(`photo_${id}`, 'max')
     this.logger.info('Photo updated successfully')

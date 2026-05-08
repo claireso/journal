@@ -1,4 +1,4 @@
-export const getSubscriptions = ({ options = '' } = {}) =>
+export const getSubscriptions = () =>
   `SELECT
     id,
     subscription,
@@ -8,7 +8,23 @@ export const getSubscriptions = ({ options = '' } = {}) =>
     subscriptions
   ORDER BY
     id DESC
-  ${options}`
+  `
+
+export const getSubscriptionsPage = (offset: number, limit: number) => ({
+  text: `SELECT
+    id,
+    subscription,
+    created_at,
+    updated_at
+  FROM
+    subscriptions
+  ORDER BY
+    id DESC
+  OFFSET $1
+  LIMIT $2
+  `,
+  values: [offset, limit]
+})
 
 export const insertSubscription = () =>
   `INSERT
@@ -19,27 +35,34 @@ export const insertSubscription = () =>
     RETURNING *
   `
 
-export const getSubscriptionById = (id: number) =>
-  `SELECT
+export const getSubscriptionById = (id: number) => ({
+  text: `SELECT
     id,
     subscription,
     created_at,
     updated_at
   FROM subscriptions
   WHERE
-    id=${id}
-  `
+    id=$1
+  `,
+  values: [id]
+})
 
-export const getSubscriptionByEndpoint = (endpoint: string) =>
-  `SELECT
+export const getSubscriptionByEndpoint = (endpoint: string) => ({
+  text: `SELECT
     id,
     subscription,
     created_at,
     updated_at
   FROM subscriptions
   WHERE
-    subscription->>'endpoint' = '${endpoint}'
-  `
-export const deleteSubscription = (id: number) => `DELETE FROM subscriptions WHERE id=${id}`
+    subscription->>'endpoint' = $1
+  `,
+  values: [endpoint]
+})
+export const deleteSubscription = (id: number) => ({
+  text: `DELETE FROM subscriptions WHERE id=$1`,
+  values: [id]
+})
 
 export const count = () => `SELECT COUNT(*) FROM subscriptions`

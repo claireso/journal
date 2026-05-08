@@ -1,5 +1,5 @@
-export const getPhotos = (offset: number, limit: number) =>
-  `SELECT
+export const getPhotos = (offset: number, limit: number) => ({
+  text: `SELECT
     p.id as photo_id,
     p.title,
     p.description,
@@ -23,9 +23,11 @@ export const getPhotos = (offset: number, limit: number) =>
   ORDER BY
     p.created_at DESC,
     p.id DESC
-  OFFSET ${offset}
-  LIMIT ${limit}
-  `
+  OFFSET $1
+  LIMIT $2
+  `,
+  values: [offset, limit]
+})
 
 export const insertPhoto = () =>
   `
@@ -58,7 +60,7 @@ export const insertPhoto = () =>
     LEFT JOIN media m ON p.media_id = m.id;
   `
 
-export const updatePhoto = (id: number, fields: string) =>
+export const updatePhoto = (fields: string, idIndex: number) =>
   `
   WITH updated_photo AS (
     UPDATE
@@ -66,7 +68,7 @@ export const updatePhoto = (id: number, fields: string) =>
     SET
       ${fields}
     WHERE
-      id=${id}
+      id=$${idIndex}
     RETURNING *
   )
   SELECT
@@ -90,8 +92,8 @@ export const updatePhoto = (id: number, fields: string) =>
   LEFT JOIN media m ON p.media_id = m.id;
   `
 
-export const getPhotoById = (id: number) =>
-  `SELECT
+export const getPhotoById = (id: number) => ({
+  text: `SELECT
     p.id as photo_id,
     p.title,
     p.description,
@@ -113,10 +115,12 @@ export const getPhotoById = (id: number) =>
   LEFT JOIN
     media m ON p.media_id = m.id
   WHERE
-    p.id=${id}`
+    p.id=$1`,
+  values: [id]
+})
 
-export const getPhotoByMediaId = (mediaId: number) =>
-  `SELECT
+export const getPhotoByMediaId = (mediaId: number) => ({
+  text: `SELECT
     p.id as photo_id,
     p.title,
     p.description,
@@ -138,7 +142,9 @@ export const getPhotoByMediaId = (mediaId: number) =>
   LEFT JOIN
     media m ON p.media_id = m.id
   WHERE
-    media_id=${mediaId}`
+    media_id=$1`,
+  values: [mediaId]
+})
 
 export const getPreviousPhoto = () =>
   `SELECT
@@ -169,11 +175,13 @@ export const getPreviousPhoto = () =>
   OFFSET 1
   `
 
-export const deletePhoto = (id: number) =>
-  `DELETE
+export const deletePhoto = (id: number) => ({
+  text: `DELETE
   FROM
     photos
-  WHERE id=${id}
-  `
+  WHERE id=$1
+  `,
+  values: [id]
+})
 
 export const count = () => `SELECT COUNT(*) FROM photos`

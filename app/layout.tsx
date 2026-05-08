@@ -1,4 +1,5 @@
 import { type Metadata, type Viewport } from 'next'
+import Script from 'next/script'
 
 // main styles
 import '@web/theme/styles.css'
@@ -34,9 +35,28 @@ export const viewport: Viewport = {
 }
 
 export default function RootLayout({ children }: LayoutProps) {
+  const isProduction = process.env.NODE_ENV === 'production'
   return (
     <html lang={process.env.WEBSITE_LANGUAGE}>
-      <body>{children}</body>
+      <body>
+        {process.env.BETTER_STACK_CLIENT_SOURCE_TOKEN && (
+          <Script
+            id="better-stack"
+            strategy="beforeInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `!function(b,e,t,r){
+            b[t]=b[t]||function(...args){(b[t].q=b[t].q||[]).push(args)};
+            b[t].l=+new Date;
+            var s=e.createElement('script'); s.async=1; s.crossOrigin='anonymous';
+            s.src='https://betterstack.net/b.js?t='+r;
+            (e.head||e.getElementsByTagName('head')[0]).appendChild(s);
+          }(window,document,'betterstack','${process.env.BETTER_STACK_CLIENT_SOURCE_TOKEN ?? ''}');
+          betterstack('init', { environment: ${isProduction ? '"production"' : '"development"'} });`
+            }}
+          />
+        )}
+        {children}
+      </body>
     </html>
   )
 }
