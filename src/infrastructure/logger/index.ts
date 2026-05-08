@@ -1,3 +1,5 @@
+'server-only'
+
 import { trace } from '@opentelemetry/api'
 import pino, { type Logger, type TransportTargetOptions } from 'pino'
 
@@ -34,10 +36,6 @@ function buildTransport() {
 const logger = pino({
   name: 'main',
   level: process.env.LOG_LEVEL || 'info',
-  browser: {
-    asObject: true,
-    disabled: isProduction
-  },
   formatters: {
     log(object) {
       const ctx = trace.getActiveSpan()?.spanContext()

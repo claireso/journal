@@ -3,7 +3,6 @@
 import React, { memo, useCallback, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import logger from '@infrastructure/logger'
 import type { PhotoDto } from '@dto'
 
 import Flash from '@web/components/Flash'
@@ -84,7 +83,7 @@ const Form = ({ photo, action, successMessage, errorMessage }: FormProps) => {
           previewBackgroundColor={previewBackground}
           processing={mediaProcessing}
           onChangeMedia={onChangeMedia}
-          onError={logger.error}
+          onError={console.error}
         />
       </Group>
 

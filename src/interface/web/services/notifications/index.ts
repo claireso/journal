@@ -1,4 +1,3 @@
-import logger from '@infrastructure/logger'
 import urlBase64ToUint8Array from '@utils/urlBase64ToUint8Array'
 import arrayBufferToUrlBase64 from '@utils/arrayBufferToUrlBase64'
 
@@ -41,7 +40,7 @@ export const subscribe = async (registration?: ServiceWorkerRegistration) => {
       })
     })
   } catch (err) {
-    logger.error(err)
+    console.error(err)
   }
 }
 
