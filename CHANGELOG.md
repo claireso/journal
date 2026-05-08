@@ -1,5 +1,11 @@
 # journal
 
+## 5.1.2
+
+### Patch Changes
+
+- d693e61: Fix BetterStack log transport resolution in standalone mode
+
 ## 5.1.1
 
 ### Patch Changes
