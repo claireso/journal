@@ -1,5 +1,11 @@
 # journal
 
+## 5.1.1
+
+### Patch Changes
+
+- 2d10059: Fix Pino transport resolution in standalone mode and remove server logger from client bundle.
+
 ## 5.1.0
 
 ### Minor Changes
