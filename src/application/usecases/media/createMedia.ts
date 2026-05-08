@@ -8,7 +8,8 @@ import { mapMediatoMediaDto, MediaInsertDtoSchema, type MediaDto } from '@dto'
 
 const createMedia = async (data: FormData) => {
   try {
-    const body = Object.fromEntries(data)
+    const body = Object.fromEntries(data.entries())
+
     const { file } = MediaInsertDtoSchema.parse(body)
     const media = await mediaService.create(file)
     const mediaDto = mapMediatoMediaDto(media)
