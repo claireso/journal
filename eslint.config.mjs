@@ -14,8 +14,7 @@ const eslintConfig = [
       'server.js',
       'jest.config.js',
       'jest.node.config.js',
-      'jest.base.config.js',
-      'logtail.transport.js'
+      'jest.base.config.js'
     ]
   },
   ...nextConfig,
