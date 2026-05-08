@@ -1,5 +1,11 @@
 # journal
 
+## 5.1.0
+
+### Minor Changes
+
+- af53c79: Add optional BetterStack observability: structured logging via Pino, OpenTelemetry tracing, and a Bearer-protected health check endpoint for uptime monitoring.
+
 ## 5.0.0
 
 ### Major Changes
