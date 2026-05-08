@@ -21,7 +21,10 @@ const nextConfig: NextConfig = {
     reactRemoveProperties: true
   },
   compress: process.env.COMPRESSION === 'enabled',
-  serverExternalPackages: ['pino', 'pino-pretty', '@logtail/pino'],
+  serverExternalPackages: ['pino', 'pino-pretty', 'pino-abstract-transport', '@logtail/node'],
+  outputFileTracingIncludes: {
+    '/**': ['./logtail.transport.js']
+  },
   async redirects() {
     return [
       {
