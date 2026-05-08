@@ -46,7 +46,7 @@ jobs:
           file_name: .env
           envkey_BETTER_AUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           envkey_BETTER_AUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          envkey_BETTER_STACK_CLIENT_SOURCE_TOKEN: ${{secrets.envkey_BETTER_STACK_CLIENT_SOURCE_TOKEN}}
+          envkey_BETTER_STACK_CLIENT_SOURCE_TOKEN: ${{secrets.BETTER_STACK_CLIENT_SOURCE_TOKEN}}
           envkey_BETTER_STACK_HEALTH_CHECK_TOKEN: ${{secrets.BETTER_STACK_HEALTH_CHECK_TOKEN}}
           envkey_BETTER_STACK_INGESTING_URL: ${{secrets.BETTER_STACK_INGESTING_URL}}
           envkey_BETTER_STACK_SOURCE_TOKEN: ${{secrets.BETTER_STACK_SOURCE_TOKEN}}
