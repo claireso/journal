@@ -1,5 +1,6 @@
-'server-only'
+import 'server-only'
 
+import path from 'path'
 import { trace } from '@opentelemetry/api'
 import pino, { type Logger, type TransportTargetOptions } from 'pino'
 
@@ -22,7 +23,7 @@ function buildTransport() {
 
   if (process.env.BETTER_STACK_SOURCE_TOKEN && process.env.BETTER_STACK_INGESTING_URL) {
     targets.push({
-      target: '@logtail/pino',
+      target: path.join(process.cwd(), 'logtail.transport.js'),
       options: {
         sourceToken: process.env.BETTER_STACK_SOURCE_TOKEN,
         options: { endpoint: process.env.BETTER_STACK_INGESTING_URL }
@@ -36,6 +37,7 @@ function buildTransport() {
 const logger = pino({
   name: 'main',
   level: process.env.LOG_LEVEL || 'info',
+  enabled: !isTest,
   formatters: {
     log(object) {
       const ctx = trace.getActiveSpan()?.spanContext()
@@ -43,14 +45,11 @@ const logger = pino({
       return { ...object, trace_id: ctx.traceId, span_id: ctx.spanId, trace_flags: ctx.traceFlags }
     }
   },
-  transport: buildTransport(),
-  enabled: !isTest
+  transport: buildTransport()
 })
 
 export const createContextLogger = (name: string, context?: Logger) => {
-  if (!context) {
-    return logger.child({ name })
-  }
+  if (!context) return logger.child({ name })
   return context.child({}, { msgPrefix: name })
 }
 
