@@ -1,5 +1,11 @@
 # journal
 
+## 5.1.3
+
+### Patch Changes
+
+- 154c7b9: Replace pino transport with direct stream to avoid worker thread resolution issues
+
 ## 5.1.2
 
 ### Patch Changes
