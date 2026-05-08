@@ -17,7 +17,7 @@ pool.on('error', (err) => {
 })
 
 export default {
-  query(text, values, callback) {
+  query(text, values) {
     // log queries in dev environment
     const log = {
       query: text
@@ -29,7 +29,7 @@ export default {
 
     logger.debug(log)
 
-    return pool.query(text, values, callback)
+    return pool.query(text, values)
   },
   connect(fn) {
     return pool.connect(fn)

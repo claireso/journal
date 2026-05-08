@@ -40,7 +40,6 @@
   "dependencies": {
     "@heroicons/react": "2.2.0",
     "@logtail/pino": "0.5.8",
-    "@opentelemetry/instrumentation-pg": "0.68.0",
     "@vanilla-extract/css": "1.20.1",
     "@vanilla-extract/recipes": "0.5.7",
     "@vercel/otel": "2.1.2",
