@@ -1,4 +1,5 @@
 import { registerOTel } from '@vercel/otel'
+import { PgInstrumentation } from '@opentelemetry/instrumentation-pg'
 
 export function register() {
   if (
@@ -10,6 +11,7 @@ export function register() {
   }
 
   registerOTel({
-    serviceName: process.env.OTEL_SERVICE_NAME
+    serviceName: process.env.OTEL_SERVICE_NAME,
+    instrumentations: [new PgInstrumentation()]
   })
 }

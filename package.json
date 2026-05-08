@@ -41,6 +41,7 @@
     "@heroicons/react": "2.2.0",
     "@logtail/node": "0.5.8",
     "@opentelemetry/api": "1.9.1",
+    "@opentelemetry/instrumentation-pg": "0.69.0",
     "@vanilla-extract/css": "1.20.1",
     "@vanilla-extract/recipes": "0.5.7",
     "@vercel/otel": "2.1.2",
