@@ -8,11 +8,12 @@ export const auth = betterAuth({
     nextCookies() // keep last
   ],
   session: {
+    expiresIn: 60 * 60,
     cookieCache: {
       enabled: true,
-      maxAge: 60 * 60, // 1 hour
+      maxAge: 60 * 60,
       strategy: 'jwt',
-      refreshCache: true,
+      refreshCache: { updateAge: 5 * 60 }, // refresh when less than 5 min remain
       version: '1'
     }
   },
