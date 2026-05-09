@@ -46,7 +46,7 @@ export const credentials = () =>
             user: sessionUser
           }
 
-          await setSessionCookie(ctx, sessionData, true)
+          await setSessionCookie(ctx, sessionData, false)
 
           return ctx.json({
             token: session.token,
