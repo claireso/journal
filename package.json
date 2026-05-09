@@ -45,7 +45,7 @@
     "@vanilla-extract/css": "1.20.1",
     "@vanilla-extract/recipes": "0.5.7",
     "@vercel/otel": "2.1.2",
-    "better-auth": "1.6.2",
+    "better-auth": "1.6.9",
     "colorthief": "3.3.1",
     "date-fns": "4.1.0",
     "lodash": "4.18.1",
