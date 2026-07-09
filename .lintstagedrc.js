@@ -1,9 +1,9 @@
-// eslint-disable-next-line
+// oxlint-disable-next-line
 const path = require('path')
 
-const buildEslintCommand = (filenames) =>
-  `eslint --fix ${filenames.map((f) => path.relative(process.cwd(), f)).join(' ')}`
+const buildLintCommand = (filenames) =>
+  `oxlint --fix ${filenames.map((f) => path.relative(process.cwd(), f)).join(' ')}`
 
 module.exports = {
-  '*.{js,jsx,ts,tsx}': [buildEslintCommand]
+  '*.{js,jsx,ts,tsx}': [buildLintCommand, 'prettier --write']
 }

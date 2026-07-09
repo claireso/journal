@@ -16,8 +16,10 @@ type Story = StoryObj<typeof Modal>
 
 export const Primary: Story = {
   render() {
+    // oxlint-disable-next-line react-hooks/rules-of-hooks
     const [isOpen, setOpen] = useState(false)
 
+    // oxlint-disable-next-line react-hooks/rules-of-hooks
     const onClose = useCallback(() => {
       setOpen(false)
       action('on close')()
