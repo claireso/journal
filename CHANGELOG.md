@@ -1,5 +1,11 @@
 # journal
 
+## 5.1.6
+
+### Patch Changes
+
+- 51b3238: Update dependencies
+
 ## 5.1.5
 
 ### Patch Changes
@@ -67,6 +73,7 @@
   Better-auth is a more secure and feature-rich authentication library than next-auth. The migration will enable the upgrade to Next.js 16 in the future.
 
   To update your instance of Journal, replace the old environment variables with the new ones:
+
   - `AUTH_URL` replaced with `BETTER_AUTH_URL`
   - `AUTH_SECRET` replaced with `BETTER_AUTH_SECRET`
 
@@ -158,6 +165,7 @@
 - 9f2ff9c: New feature: The selection of a background color is now available during the creation of the photo
 
   Breaking changes:
+
   - creation of the table `media` is needed
   - creation of column `media_id` is needed
 
