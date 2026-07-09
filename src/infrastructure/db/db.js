@@ -1,4 +1,5 @@
 import pg from 'pg'
+
 import logger from '@infrastructure/logger'
 
 const pool = new pg.Pool({

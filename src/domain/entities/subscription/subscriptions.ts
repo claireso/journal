@@ -1,6 +1,7 @@
 import { z } from 'zod'
-import { SubscriptionSchema } from './subscription'
+
 import { PagerSchema } from '../pager'
+import { SubscriptionSchema } from './subscription'
 
 export const SubscriptionsSchema = z.object({
   items: z.array(SubscriptionSchema),

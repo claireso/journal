@@ -1,7 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 import React, { useState, useCallback } from 'react'
 import { action } from 'storybook/actions'
-
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 import ColorPicker from './ColorPicker'
 

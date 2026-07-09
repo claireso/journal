@@ -1,10 +1,9 @@
 import React, { type ComponentProps } from 'react'
-import type { PhotoDto } from '@dto'
 
+import type { PhotoDto } from '@dto'
 import AnimatedImage from '@web/components/AnimatedImage'
 import Text from '@web/components/Text'
 import { tokens } from '@web/theme/core/tokens.css'
-
 import * as cls from './styles.css'
 
 interface PhotoProps extends PhotoDto {

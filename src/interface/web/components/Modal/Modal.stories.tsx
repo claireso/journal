@@ -1,10 +1,10 @@
-import React, { Fragment, useState, useCallback } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-webpack5'
+import React, { Fragment, useState, useCallback } from 'react'
 import { action } from 'storybook/actions'
 
-import Modal from './Modal'
-import Toolbar from '../Toolbar'
 import { ButtonNeutral } from '../Buttons'
+import Toolbar from '../Toolbar'
+import Modal from './Modal'
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',

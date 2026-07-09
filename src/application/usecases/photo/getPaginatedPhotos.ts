@@ -2,9 +2,9 @@
 
 import { cacheTag, cacheLife } from 'next/cache'
 
+import { BadRequestError } from '@domain/errors'
 import { mapPhotosToPhotosDto } from '@dto'
 import { photoService } from '@ioc/container'
-import { BadRequestError } from '@domain/errors'
 
 const cachedGetPaginatedPhotos = async (page: number, limit: number) => {
   'use cache'

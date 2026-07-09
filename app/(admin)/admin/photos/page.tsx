@@ -1,13 +1,11 @@
-import Toolbar from '@web/components/Toolbar'
+import { AdminAction } from '@utils/constant'
 import { Heading2 } from '@web/components/Headings'
-
+import Toolbar from '@web/components/Toolbar'
 import AdminListPhotos from '@web/features/photos/AdminListPhotos'
+import ButtonCreatePhoto from '@web/features/photos/ButtonCreatePhoto'
 import ModalCreatePhoto from '@web/features/photos/ModalCreatePhoto'
 import ModalDeletePhoto from '@web/features/photos/ModalDeletePhoto'
 import ModalEditPhoto from '@web/features/photos/ModalEditPhoto'
-import ButtonCreatePhoto from '@web/features/photos/ButtonCreatePhoto'
-import { AdminAction } from '@utils/constant'
-
 import * as cls from './styles.css'
 
 type PhotosProps = object

@@ -1,7 +1,7 @@
 import { PhotoPositionType } from '@domain/entities'
 import { type MediaRepository, type PhotoRepository } from '@domain/repositories'
-import PhotoRepositoryInMemoryImpl from '@infrastructure/repositories/photo/PhotoRepositoryInMemoryImpl'
 import MediaRepositoryInMemoryImpl from '@infrastructure/repositories/media/MediaRepositoryInMemoryImpl'
+import PhotoRepositoryInMemoryImpl from '@infrastructure/repositories/photo/PhotoRepositoryInMemoryImpl'
 import PhotoService from './PhotoService'
 
 describe('application/PhotoService', () => {

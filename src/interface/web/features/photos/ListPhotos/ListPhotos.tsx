@@ -1,7 +1,6 @@
 import type { PhotosDto } from '@dto'
-import Photo from './Photo'
 import Pager from '@web/features/pagination/Pager'
-
+import Photo from './Photo'
 import * as cls from './styles.css'
 
 interface ListPhotosProps {

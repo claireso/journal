@@ -1,10 +1,9 @@
 import 'server-only'
-
-import { Writable } from 'stream'
-import { trace } from '@opentelemetry/api'
 import { Logtail } from '@logtail/node'
+import { trace } from '@opentelemetry/api'
 import pino, { multistream, type Logger } from 'pino'
 import pretty from 'pino-pretty'
+import { Writable } from 'stream'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const isTest = process.env.NODE_ENV === 'test'

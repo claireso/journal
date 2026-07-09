@@ -1,10 +1,9 @@
-import React from 'react'
 import { redirect } from 'next/navigation'
+import React from 'react'
 
+import { getPaginatedSubscriptions } from '@application/usecases'
 import { BadRequestError, NotFoundError } from '@domain/errors'
 import logger from '@infrastructure/logger'
-import { getPaginatedSubscriptions } from '@application/usecases'
-
 import EmptyZone from '@web/components/EmptyZone'
 import Pager from '@web/features/pagination/Pager'
 import Subscription from './Subscription'

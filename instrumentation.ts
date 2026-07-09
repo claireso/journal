@@ -1,5 +1,5 @@
-import { registerOTel } from '@vercel/otel'
 import { PgInstrumentation } from '@opentelemetry/instrumentation-pg'
+import { registerOTel } from '@vercel/otel'
 
 export function register() {
   if (

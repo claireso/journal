@@ -1,6 +1,6 @@
 import React from 'react'
-import clsx from '@utils/clsx'
 
+import clsx from '@utils/clsx'
 import type { LinkVariants } from './styles.css'
 import * as cls from './styles.css'
 

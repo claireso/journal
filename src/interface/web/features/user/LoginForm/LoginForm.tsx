@@ -1,5 +1,5 @@
-import Input from '@web/components/form/Input'
 import ButtonSubmit from '@web/components/form/ButtonSubmit'
+import Input from '@web/components/form/Input'
 
 interface LoginFormProps {
   action: (payload: FormData) => void

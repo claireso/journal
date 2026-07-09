@@ -1,8 +1,7 @@
 'use client'
 
-import { Heading1 } from '@web/components/Headings'
 import { ButtonPrimary } from '@web/components/Buttons'
-
+import { Heading1 } from '@web/components/Headings'
 import * as cls from './error-styles.css'
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {

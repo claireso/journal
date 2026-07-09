@@ -1,23 +1,20 @@
 'use client'
 
-import React, { memo, useCallback, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import React, { memo, useCallback, useState } from 'react'
 
 import type { PhotoDto } from '@dto'
-
 import Flash from '@web/components/Flash'
-import Input from '@web/components/form/Input'
-import Select from '@web/components/form/Select'
-import Uploader from '@web/components/form/Uploader'
+import ButtonSubmit from '@web/components/form/ButtonSubmit'
 import ColorPicker from '@web/components/form/ColorPicker'
 import Group from '@web/components/form/Group'
+import Input from '@web/components/form/Input'
 import Label from '@web/components/form/Label'
-import ButtonSubmit from '@web/components/form/ButtonSubmit'
-
-import useColorsExtractor from '@web/hooks/useColorsExtractor'
+import Select from '@web/components/form/Select'
+import Uploader from '@web/components/form/Uploader'
 import { useCreateMedia } from '@web/features/media/useMedia'
 import useMessages, { type Message } from '@web/features/messages/useMessages'
-
+import useColorsExtractor from '@web/hooks/useColorsExtractor'
 import * as cls from './styles.css'
 
 const ALLOWED_MIMETYPES = ['image/jpeg', 'image/jpg']

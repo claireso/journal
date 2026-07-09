@@ -10,6 +10,28 @@
   "bracketSameLine": false,
   "arrowParens": "always",
   "sortPackageJson": false,
+  "sortImports": {
+    "internalPattern": [
+      "@domain/",
+      "@infrastructure/",
+      "@application/",
+      "@dto",
+      "@ioc/",
+      "@web/",
+      "@interface/",
+      "@utils/",
+      "@types"
+    ],
+    "partitionByNewline": false,
+    "newlinesBetween": false,
+    "groups": [
+      ["builtin", "external"],
+      { "newlinesBetween": true },
+      "internal",
+      ["parent", "sibling", "index"],
+      "unknown"
+    ]
+  },
   "ignorePatterns": [
     ".next",
     "node_modules",

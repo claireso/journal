@@ -1,14 +1,11 @@
 import React from 'react'
 
-import * as cls from './styles.css'
-
 import { type PhotoDto } from '@dto'
 import { formatDate } from '@utils/date'
-
-import Media from './Media'
-import Actions from './Actions'
-
 import Text from '@web/components/Text'
+import Actions from './Actions'
+import Media from './Media'
+import * as cls from './styles.css'
 
 type PhotoProps = PhotoDto
 

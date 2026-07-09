@@ -1,9 +1,9 @@
 'use server'
 
-import { auth } from '@infrastructure/auth'
-
-import { redirect } from 'next/navigation'
 import { APIError } from 'better-auth/api'
+import { redirect } from 'next/navigation'
+
+import { auth } from '@infrastructure/auth'
 
 export default async function login(callbackUrl: string, data: FormData) {
   try {

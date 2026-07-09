@@ -1,10 +1,8 @@
 import React from 'react'
 
 import Icon from '@web/components/Icons'
-
 import Group from '../Group'
 import Label from '../Label'
-
 import * as cls from './styles.css'
 
 interface Option {

@@ -1,8 +1,9 @@
-import { NextRequest } from 'next/server'
 import { revalidatePath } from 'next/cache'
+import { NextRequest } from 'next/server'
+
+import { SubscriptionInsertDtoSchema } from '@dto'
 import { createRouteHandler } from '@infrastructure/middlewares'
 import { subscriptionService } from '@ioc/container'
-import { SubscriptionInsertDtoSchema } from '@dto'
 
 //@TODO: improve security of this endpoint
 const createSubscription = async (request: NextRequest) => {

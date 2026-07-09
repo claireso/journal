@@ -1,13 +1,11 @@
 'use client'
 
-import { useCallback } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-
-import { useDeletePhoto } from '../usePhotos'
+import { useCallback } from 'react'
 
 import { ButtonDanger, ButtonNeutral } from '@web/components/Buttons'
 import AdminModal from '@web/features/modal/AdminModal'
-
+import { useDeletePhoto } from '../usePhotos'
 import * as cls from './styles.css'
 
 interface ModalDeletePhoto {

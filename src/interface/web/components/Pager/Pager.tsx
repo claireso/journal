@@ -4,7 +4,6 @@ import React, { useCallback } from 'react'
 
 import { ButtonDark } from '../Buttons'
 import Text from '../Text'
-
 import * as cls from './styles.css'
 
 const Layouts = {

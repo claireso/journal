@@ -1,5 +1,6 @@
-import z, { ZodError } from 'zod'
 import type { NextRequest } from 'next/server'
+import z, { ZodError } from 'zod'
+
 import { JournalError, BadRequestError, NotFoundError, UnauthorizedError } from '@domain/errors/errors'
 import logger from '@infrastructure/logger'
 

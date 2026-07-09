@@ -1,6 +1,7 @@
-import { auth } from '@infrastructure/auth'
 import { headers } from 'next/headers'
+
 import { UnauthorizedError } from '@domain/errors'
+import { auth } from '@infrastructure/auth'
 
 const withAuth = async () => {
   const session = await auth.api.getSession({

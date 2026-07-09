@@ -1,7 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 import React, { Fragment } from 'react'
 import { action } from 'storybook/actions'
-
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 import Flash from './Flash'
 

@@ -1,12 +1,12 @@
 import { MediaService, PhotoService, SubscriptionService, UserService } from '@application/services'
+import { pool as db } from '@infrastructure/db'
+import { createContextLogger } from '@infrastructure/logger'
 import {
   MediaRepositoryImpl,
   UserRepositoryImpl,
   SubscriptionRepositoryImpl,
   PhotoRepositoryImpl
 } from '@infrastructure/repositories'
-import { pool as db } from '@infrastructure/db'
-import { createContextLogger } from '@infrastructure/logger'
 
 const mediaLogger = createContextLogger('media')
 const mediaRepository = new MediaRepositoryImpl(db, createContextLogger('[Repository] ', mediaLogger))

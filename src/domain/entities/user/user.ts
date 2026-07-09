@@ -1,4 +1,5 @@
 import { z } from 'zod'
+
 import { EntitySchema } from '../entity'
 
 export const UserSchema = EntitySchema.extend({

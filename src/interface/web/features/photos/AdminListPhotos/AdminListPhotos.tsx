@@ -1,12 +1,12 @@
-import React from 'react'
 import { redirect } from 'next/navigation'
-import logger from '@infrastructure/logger'
+import React from 'react'
+
 import { getPaginatedPhotos } from '@application/usecases'
 import { BadRequestError, NotFoundError } from '@domain/errors'
+import logger from '@infrastructure/logger'
 import EmptyZone from '@web/components/EmptyZone'
 import Pager from '@web/features/pagination/Pager'
 import Photo from './Photo'
-
 import * as cls from './styles.css'
 
 interface AdminListPhotos {

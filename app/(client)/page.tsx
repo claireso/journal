@@ -1,10 +1,9 @@
 import { redirect } from 'next/navigation'
 
 import { getPaginatedPhotos } from '@application/usecases'
-
+import { BadRequestError, NotFoundError } from '@domain/errors'
 import Welcome from '@web/features/client/Welcome'
 import ListPhotos from '@web/features/photos/ListPhotos'
-import { BadRequestError, NotFoundError } from '@domain/errors'
 
 async function fetchPhotos(page?: string) {
   try {

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import clsx from '@utils/clsx'
-
 import type { ToolbarVariants } from './styles.css'
 import * as cls from './styles.css'
 

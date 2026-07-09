@@ -1,10 +1,8 @@
 import { login } from '@application/usecases'
 import { getAuthError, AUTH_ERROR_TYPES } from '@infrastructure/auth/errors'
-
-import LoginForm from '@web/features/user/LoginForm'
-import { Heading1 } from '@web/components/Headings'
 import Flash from '@web/components/Flash'
-
+import { Heading1 } from '@web/components/Headings'
+import LoginForm from '@web/features/user/LoginForm'
 import * as cls from './styles.css'
 
 type LoginPageProps = object

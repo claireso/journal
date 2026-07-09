@@ -1,6 +1,6 @@
-import unescape from '@utils/unescape'
-import { mapMediatoMediaDto, mapLegacyMediatoLegacyMediaDto } from '@dto'
 import type { Photo, Photos } from '@domain/entities'
+import { mapMediatoMediaDto, mapLegacyMediatoLegacyMediaDto } from '@dto'
+import unescape from '@utils/unescape'
 import type { PhotoDto, PhotosDto } from './output'
 
 export const mapPhotoToPhotoDto = (photo: Photo): PhotoDto => ({

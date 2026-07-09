@@ -1,11 +1,10 @@
-import React from 'react'
 import Link from 'next/link'
-
 import { useSelectedLayoutSegment } from 'next/navigation'
+import React from 'react'
 
-import * as cls from './styles.css'
 import type { IconName } from '@web/components/Icons'
 import Icon from '@web/components/Icons'
+import * as cls from './styles.css'
 
 interface MenuLinkProps {
   slug: string

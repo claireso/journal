@@ -2,8 +2,8 @@
 
 import NextImage, { type ImageProps } from 'next/image'
 import React, { useCallback } from 'react'
-import clsx from '@utils/clsx'
 
+import clsx from '@utils/clsx'
 import * as cls from './AnimatedImage.css'
 
 const AnimatedImage = ({ src, className, width, height, alt, unoptimized }: ImageProps) => {

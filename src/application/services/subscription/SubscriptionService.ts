@@ -1,5 +1,5 @@
-import { NotFoundError } from '@domain/errors/errors'
 import { type Pager, type Subscriptions } from '@domain/entities'
+import { NotFoundError } from '@domain/errors/errors'
 import { type SubscriptionRepository } from '@domain/repositories'
 
 export default class SubscriptionService {

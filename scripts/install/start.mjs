@@ -1,8 +1,8 @@
 #!/usr/bin/env zx
 
-import installStandalone from './mode/standalone.mjs'
-import installDocker from './mode/docker.mjs'
 import { log, confirm, secretQuestion } from './helpers.mjs'
+import installDocker from './mode/docker.mjs'
+import installStandalone from './mode/standalone.mjs'
 
 const ENV_FILE = '.env'
 const MODE = {

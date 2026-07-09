@@ -1,9 +1,9 @@
 'use client'
 
-import Modal from '@web/components/Modal'
 import { useRouter, useSearchParams } from 'next/navigation'
-
 import React, { useCallback } from 'react'
+
+import Modal from '@web/components/Modal'
 
 interface AdminModalProps {
   title: string

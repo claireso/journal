@@ -2,11 +2,11 @@
 
 import { revalidatePath } from 'next/cache'
 
-import pipeAsync from '@utils/pipeAsync'
 import { BadRequestError } from '@domain/errors'
-import { subscriptionService } from '@ioc/container'
-import { withAuth } from '@infrastructure/middlewares'
 import logger from '@infrastructure/logger'
+import { withAuth } from '@infrastructure/middlewares'
+import { subscriptionService } from '@ioc/container'
+import pipeAsync from '@utils/pipeAsync'
 
 async function deleteSubscription(subscriptionId: string) {
   try {

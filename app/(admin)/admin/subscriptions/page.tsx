@@ -1,11 +1,8 @@
-import Toolbar from '@web/components/Toolbar'
+import { AdminAction } from '@utils/constant'
 import { Heading2 } from '@web/components/Headings'
-
+import Toolbar from '@web/components/Toolbar'
 import AdminListSubscriptions from '@web/features/subscriptions/AdminListSubscriptions'
 import ModalDeleteSubscription from '@web/features/subscriptions/ModalDeleteSubscription'
-
-import { AdminAction } from '@utils/constant'
-
 import * as cls from './styles.css'
 
 type SubscriptionsProps = object

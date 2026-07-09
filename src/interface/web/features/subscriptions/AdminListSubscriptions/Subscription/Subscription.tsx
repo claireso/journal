@@ -2,10 +2,8 @@ import React from 'react'
 
 import type { SubscriptionDto } from '@dto'
 import { formatDateTime } from '@utils/date'
-
 import Text from '@web/components/Text'
 import ButtonDelete from './ButtonDelete'
-
 import * as cls from './styles.css'
 
 type SubscriptionProps = SubscriptionDto

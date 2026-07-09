@@ -2,12 +2,11 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import Toolbar from '../Toolbar'
-import { Heading2 } from '../Headings'
 import Icon from '@web/components/Icons'
-
-import * as cls from './styles.css'
 import { ButtonDark } from '../Buttons'
+import { Heading2 } from '../Headings'
+import Toolbar from '../Toolbar'
+import * as cls from './styles.css'
 
 const ANIMATION_DURATION = 300
 

@@ -1,5 +1,6 @@
 import type { StyleRule, GlobalStyleRule } from '@vanilla-extract/css'
 import { style } from '@vanilla-extract/css'
+
 import * as layers from '../core/layers.css'
 
 const layerStyle = (layer: string) => (styles: StyleRule) =>

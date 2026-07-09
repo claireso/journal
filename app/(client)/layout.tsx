@@ -1,15 +1,13 @@
-import { Suspense } from 'react'
 import { type Metadata } from 'next'
 import Script from 'next/script'
+import { Suspense } from 'react'
 
-import * as cls from './styles.css'
-
-import { TranslationsProvider } from '@web/hooks/useTranslations'
-import { MessagesProvider } from '@web/features/messages/useMessages'
-
-import BannerOffline from '@web/features/banners/Offline'
-import BannerNotifications from '@web/features/banners/Notifications'
 import { Loader } from '@web/components/Loader'
+import BannerNotifications from '@web/features/banners/Notifications'
+import BannerOffline from '@web/features/banners/Offline'
+import { MessagesProvider } from '@web/features/messages/useMessages'
+import { TranslationsProvider } from '@web/hooks/useTranslations'
+import * as cls from './styles.css'
 
 interface JournalLayoutProps {
   children: React.ReactNode

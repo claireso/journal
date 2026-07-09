@@ -2,7 +2,6 @@ import React from 'react'
 
 import Group from '../Group'
 import Label from '../Label'
-
 import * as cls from './styles.css'
 
 interface InputProps extends Omit<React.ComponentProps<'input'>, 'onChange'> {

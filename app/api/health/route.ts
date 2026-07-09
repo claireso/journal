@@ -1,6 +1,7 @@
-import { pool } from '@infrastructure/db'
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
+
+import { pool } from '@infrastructure/db'
 
 export async function GET() {
   const token = process.env.BETTER_STACK_HEALTH_CHECK_TOKEN

@@ -2,14 +2,12 @@
 
 import React, { useState, useEffect, useCallback } from 'react'
 
+import { getSubscription } from '@application/usecases'
+import Flash from '@web/components/Flash'
+import Link from '@web/components/Links'
 import { useTranslations } from '@web/hooks/useTranslations'
 import * as notifications from '@web/services/notifications'
-import { getSubscription } from '@application/usecases'
-
 import * as cls from './styles.css'
-
-import Link from '@web/components/Links'
-import Flash from '@web/components/Flash'
 
 const BannerNotifications = () => {
   const [isVisible, setIsVisible] = useState(false)

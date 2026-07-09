@@ -1,6 +1,6 @@
 import path from 'path'
-import { ulid } from 'ulid'
 import sharp, { type Metadata, type OutputInfo } from 'sharp'
+import { ulid } from 'ulid'
 
 const DEFAULT_DIRECTORY = path.resolve('uploads')
 const DEFAULT_QUALITY = 80

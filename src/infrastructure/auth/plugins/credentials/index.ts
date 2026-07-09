@@ -1,9 +1,9 @@
 import type { BetterAuthPlugin, User } from 'better-auth'
 import { APIError, createAuthEndpoint } from 'better-auth/api'
 import { setSessionCookie } from 'better-auth/cookies'
+import escape from 'lodash/escape'
 import * as z from 'zod'
 
-import escape from 'lodash/escape'
 import { AUTH_ERROR_TYPES } from '@infrastructure/auth/errors'
 import { userService } from '@ioc/container'
 

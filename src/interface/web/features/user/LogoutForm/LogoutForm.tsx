@@ -2,7 +2,6 @@ import React from 'react'
 
 import { ButtonNeutral } from '@web/components/Buttons'
 import Icon from '@web/components/Icons'
-
 import * as cls from './styles.css'
 
 interface LogoutFormProps {

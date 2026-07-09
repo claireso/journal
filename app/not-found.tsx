@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
+
 import { ButtonDark } from '@web/components/Buttons'
 import Icon from '@web/components/Icons'
-
 import * as cls from './notfound-styles.css'
 
 export default function NotFound() {

@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { Heading1 } from '@web/components/Headings'
 import * as clsLink from '@web/components/Links/styles.css'
 import Text from '@web/components/Text'
-
 import * as cls from './styles.css'
 
 const Welcome = () => {

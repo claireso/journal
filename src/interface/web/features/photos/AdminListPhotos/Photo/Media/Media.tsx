@@ -5,7 +5,6 @@ import React, { type ComponentProps } from 'react'
 import { type PhotoDto } from '@dto'
 import AnimatedImage from '@web/components/AnimatedImage'
 import { tokens } from '@web/theme/core/tokens.css'
-
 import * as cls from './styles.css'
 
 type MediaProps = PhotoDto['media'] & {
