@@ -1,9 +1,10 @@
 'use server'
 
-import { BadRequestError } from '@domain/errors'
-import { photoService } from '@ioc/container'
-import { mapPhotoToPhotoDto } from '@dto'
 import { cacheLife, cacheTag } from 'next/cache'
+
+import { BadRequestError } from '@domain/errors'
+import { mapPhotoToPhotoDto } from '@dto'
+import { photoService } from '@ioc/container'
 
 const cachedGetPhoto = async (id: number) => {
   'use cache'

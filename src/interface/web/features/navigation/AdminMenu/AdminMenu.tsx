@@ -3,7 +3,6 @@
 import React from 'react'
 
 import MenuLink from './MenuLink'
-
 import * as cls from './styles.css'
 
 const AdminMenu = () => {

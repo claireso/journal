@@ -2,10 +2,9 @@
 
 import React from 'react'
 
-import { useTranslations } from '@web/hooks/useTranslations'
-import useIsOnline from '@web/hooks/useIsOnline'
-
 import Flash from '@web/components/Flash'
+import useIsOnline from '@web/hooks/useIsOnline'
+import { useTranslations } from '@web/hooks/useTranslations'
 
 const BannerOffline = () => {
   const isOnline = useIsOnline()

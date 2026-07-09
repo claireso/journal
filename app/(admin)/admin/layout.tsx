@@ -3,14 +3,11 @@ import { redirect } from 'next/navigation'
 
 import { logout } from '@application/usecases'
 import { auth } from '@infrastructure/auth'
-
 import Text from '@web/components/Text'
-
-import AdminMenu from '@web/features/navigation/AdminMenu'
-import LogoutForm from '@web/features/user/LogoutForm'
 import Messages from '@web/features/messages/Messages'
+import AdminMenu from '@web/features/navigation/AdminMenu'
 import ButtonWebsite from '@web/features/navigation/ButtonWebsite'
-
+import LogoutForm from '@web/features/user/LogoutForm'
 import * as cls from './styles.css'
 
 interface AdminLayoutProps {

@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
+
 import { ButtonNeutral } from '@web/components/Buttons'
 import Icon from '@web/components/Icons'
-
 import * as cls from './styles.css'
 
 const ButtonWebsite = () => {

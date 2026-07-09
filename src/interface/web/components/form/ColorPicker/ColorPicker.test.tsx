@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+
 import ColorPicker from './ColorPicker'
 
 describe('<ColorPicker />', () => {

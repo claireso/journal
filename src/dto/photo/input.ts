@@ -1,4 +1,5 @@
 import { z } from 'zod'
+
 import { PhotoSchema } from '@domain/entities'
 
 export const PhotoInsertDtoSchema = PhotoSchema.pick({

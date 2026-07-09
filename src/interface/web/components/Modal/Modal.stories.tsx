@@ -1,10 +1,10 @@
-import React, { Fragment, useState, useCallback } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-webpack5'
+import React, { Fragment, useState, useCallback } from 'react'
 import { action } from 'storybook/actions'
 
-import Modal from './Modal'
-import Toolbar from '../Toolbar'
 import { ButtonNeutral } from '../Buttons'
+import Toolbar from '../Toolbar'
+import Modal from './Modal'
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
@@ -16,8 +16,10 @@ type Story = StoryObj<typeof Modal>
 
 export const Primary: Story = {
   render() {
+    // oxlint-disable-next-line react-hooks/rules-of-hooks
     const [isOpen, setOpen] = useState(false)
 
+    // oxlint-disable-next-line react-hooks/rules-of-hooks
     const onClose = useCallback(() => {
       setOpen(false)
       action('on close')()

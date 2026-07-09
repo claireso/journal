@@ -1,7 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 import React, { useState, useCallback } from 'react'
 import { action } from 'storybook/actions'
-
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 import ColorPicker from './ColorPicker'
 
@@ -17,10 +16,12 @@ export const Basic: Story = {
   render(args) {
     const { disabled } = args
 
+    // oxlint-disable-next-line react-hooks/rules-of-hooks
     const [selected, setSelected] = useState('')
 
     const colors = ['#342d2d', '#d6c9ce', '#a3868d', '#b7b2b5', '#c58c50', '#c45c74']
 
+    // oxlint-disable-next-line react-hooks/rules-of-hooks
     const onSelect = useCallback(
       (color: string) => {
         setSelected(color)

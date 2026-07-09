@@ -1,5 +1,4 @@
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
-
 import type { NextConfig } from 'next'
 
 const IS_NOTIFICATIONS_ENABLED = !!(

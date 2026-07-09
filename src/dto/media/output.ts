@@ -1,4 +1,5 @@
 import { z } from 'zod'
+
 import { MediaSchema } from '@domain/entities'
 
 export const MediaDtoSchema = MediaSchema.extend({

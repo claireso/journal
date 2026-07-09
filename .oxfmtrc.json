@@ -1,0 +1,45 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 120,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "always",
+  "sortPackageJson": false,
+  "sortImports": {
+    "internalPattern": [
+      "@domain/",
+      "@infrastructure/",
+      "@application/",
+      "@dto",
+      "@ioc/",
+      "@web/",
+      "@interface/",
+      "@utils/",
+      "@types"
+    ],
+    "partitionByNewline": false,
+    "newlinesBetween": false,
+    "groups": [
+      ["builtin", "external"],
+      { "newlinesBetween": true },
+      "internal",
+      ["parent", "sibling", "index"],
+      "unknown"
+    ]
+  },
+  "ignorePatterns": [
+    ".next",
+    "node_modules",
+    "public",
+    "coverage",
+    "next-env.d.ts",
+    "package-lock.json",
+    ".claude",
+    "**/*.md"
+  ]
+}

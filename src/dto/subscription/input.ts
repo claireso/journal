@@ -1,4 +1,5 @@
 import { z } from 'zod'
+
 import { SubscriptionSchema } from '@domain/entities'
 
 export const SubscriptionInsertDtoSchema = SubscriptionSchema.pick({

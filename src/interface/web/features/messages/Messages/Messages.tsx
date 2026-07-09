@@ -1,10 +1,9 @@
 'use client'
 
-import React, { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import React, { useEffect } from 'react'
 
 import FlashGroup from '@web/components/FlashGroup'
-
 import useMessages from '@web/features/messages/useMessages'
 
 const Messages = () => {

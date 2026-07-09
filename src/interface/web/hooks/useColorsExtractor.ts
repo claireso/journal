@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
 import { getPaletteSync } from 'colorthief'
+import { useState, useEffect, useCallback } from 'react'
 
 const useColorsExtractor = (initialPhoto?: string) => {
   const [colors, setColors] = useState<string[]>([])

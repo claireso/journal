@@ -1,7 +1,8 @@
 import { revalidateTag } from 'next/cache'
+
 import { type Subscription } from '@domain/entities'
-import { type SubscriptionInsertDto } from '@dto'
 import { type SubscriptionRepository } from '@domain/repositories'
+import { type SubscriptionInsertDto } from '@dto'
 import * as queries from './queries'
 
 export default class SubscriptionRepositoryImpl implements SubscriptionRepository {

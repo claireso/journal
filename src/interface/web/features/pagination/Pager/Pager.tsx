@@ -1,7 +1,8 @@
 'use client'
 
-import { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
+import { useCallback } from 'react'
+
 import type { Pager as PagerEntity } from '@domain/entities'
 import _Pager from '@web/components/Pager'
 

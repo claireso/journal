@@ -1,5 +1,6 @@
-import path from 'path'
 import { unlink } from 'fs/promises'
+import path from 'path'
+
 import { MediaType } from '@domain/entities'
 import { NotFoundError } from '@domain/errors'
 import { type MediaRepository } from '@domain/repositories'

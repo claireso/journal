@@ -1,9 +1,8 @@
 import { memo } from 'react'
 
-import FormPhoto from '../FormPhoto'
-import AdminModal from '@web/features/modal/AdminModal'
-
 import { getPhoto, editPhoto } from '@application/usecases'
+import AdminModal from '@web/features/modal/AdminModal'
+import FormPhoto from '../FormPhoto'
 
 interface ModalEditPhotoProps {
   photoId: string

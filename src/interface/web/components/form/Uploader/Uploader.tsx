@@ -1,12 +1,10 @@
 import React, { useState, useRef, useCallback } from 'react'
 
-import { create as createThumbnail } from '@web/services/thumbnails'
-
+import Flash from '@web/components/Flash'
+import Icon from '@web/components/Icons'
 import Spinner from '@web/components/Spinner'
 import Text from '@web/components/Text'
-import Icon from '@web/components/Icons'
-import Flash from '@web/components/Flash'
-
+import { create as createThumbnail } from '@web/services/thumbnails'
 import { tokens } from '@web/theme/core/tokens.css'
 import * as cls from './styles.css'
 

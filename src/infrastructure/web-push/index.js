@@ -1,4 +1,5 @@
 import webpush from 'web-push'
+
 import { getTranslations } from '@infrastructure/translations'
 
 // CONSTANTS

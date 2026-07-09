@@ -1,10 +1,10 @@
 'use server'
 
-import pipeAsync from '@utils/pipeAsync'
-import { withAuth } from '@infrastructure/middlewares'
-import logger from '@infrastructure/logger'
-import { mediaService } from '@ioc/container'
 import { mapMediatoMediaDto, MediaInsertDtoSchema, type MediaDto } from '@dto'
+import logger from '@infrastructure/logger'
+import { withAuth } from '@infrastructure/middlewares'
+import { mediaService } from '@ioc/container'
+import pipeAsync from '@utils/pipeAsync'
 
 const createMedia = async (data: FormData) => {
   try {

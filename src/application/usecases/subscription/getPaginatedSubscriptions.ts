@@ -1,11 +1,12 @@
 'use server'
 
-import pipeAsync from '@utils/pipeAsync'
-import { BadRequestError } from '@domain/errors'
-import { subscriptionService } from '@ioc/container'
-import { withAuth } from '@infrastructure/middlewares'
-import { type SubscriptionsDto } from '@dto'
 import { cacheTag, cacheLife } from 'next/cache'
+
+import { BadRequestError } from '@domain/errors'
+import { type SubscriptionsDto } from '@dto'
+import { withAuth } from '@infrastructure/middlewares'
+import { subscriptionService } from '@ioc/container'
+import pipeAsync from '@utils/pipeAsync'
 
 const cachedGetPaginatedSubscriptions = async (page: number) => {
   'use cache'

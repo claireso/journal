@@ -4,7 +4,6 @@ import React from 'react'
 
 import clsx from '@utils/clsx'
 import Spinner from '../Spinner'
-
 import type { ButtonVariants } from './styles.css'
 import * as cls from './styles.css'
 

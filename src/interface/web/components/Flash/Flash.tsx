@@ -2,11 +2,10 @@
 
 import React, { useEffect, useRef } from 'react'
 
+import clsx from '@utils/clsx'
 import Icon from '../Icons'
-
 import type { FlashVariants } from './styles.css'
 import * as cls from './styles.css'
-import clsx from '@utils/clsx'
 
 type FlashProps = {
   children: React.ReactNode

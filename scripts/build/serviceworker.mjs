@@ -1,5 +1,5 @@
-import esbuild from 'esbuild'
 import dotenv from '@next/env'
+import esbuild from 'esbuild'
 
 const { loadEnvConfig } = dotenv
 

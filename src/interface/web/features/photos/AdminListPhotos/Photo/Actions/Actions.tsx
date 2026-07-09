@@ -1,13 +1,11 @@
 'use client'
 
-import React, { useCallback } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-
-import { ButtonDark, ButtonDanger } from '@web/components/Buttons'
-import Icon from '@web/components/Icons'
+import React, { useCallback } from 'react'
 
 import { AdminAction } from '@utils/constant'
-
+import { ButtonDark, ButtonDanger } from '@web/components/Buttons'
+import Icon from '@web/components/Icons'
 import * as cls from './styles.css'
 
 interface ActionsProps {

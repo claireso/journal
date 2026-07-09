@@ -1,6 +1,7 @@
 import React from 'react'
-import * as cls from './styles.css'
+
 import clsx from '@utils/clsx'
+import * as cls from './styles.css'
 
 interface BoxProps extends React.ComponentProps<'div'> {
   children: React.ReactNode

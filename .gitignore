@@ -2,7 +2,7 @@
 node_modules
 npm-debug.log
 debug-storybook.log
-.vscode
+.zed
 tsconfig.tsbuildinfo
 
 public/img

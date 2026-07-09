@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
-import { type MediaDto, type LegacyMediaDto } from '@dto'
 import { createMedia as createMediaAction } from '@application/usecases'
+import { type MediaDto, type LegacyMediaDto } from '@dto'
 
 export const useCreateMedia = (initialMedia?: MediaDto | LegacyMediaDto) => {
   const [media, setMedia] = useState(initialMedia)

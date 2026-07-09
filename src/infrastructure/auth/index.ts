@@ -1,6 +1,7 @@
 import { betterAuth } from 'better-auth'
-import { credentials } from './plugins/credentials'
 import { nextCookies } from 'better-auth/next-js'
+
+import { credentials } from './plugins/credentials'
 
 export const auth = betterAuth({
   plugins: [

@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   PhotoIcon,
   BellAlertIcon,
@@ -12,10 +11,11 @@ import {
   GlobeAltIcon,
   ArrowRightStartOnRectangleIcon
 } from '@heroicons/react/24/outline'
+import React from 'react'
 
+import clsx from '@utils/clsx'
 import type { IconVariants } from './styles.css'
 import * as cls from './styles.css'
-import clsx from '@utils/clsx'
 
 const iconMap = {
   photo: PhotoIcon,

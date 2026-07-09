@@ -1,12 +1,13 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import pipeAsync from '@utils/pipeAsync'
-import { PhotoUpdateDtoSchema } from '@dto'
+
 import { BadRequestError } from '@domain/errors'
-import { photoService } from '@ioc/container'
-import { withAuth } from '@infrastructure/middlewares'
+import { PhotoUpdateDtoSchema } from '@dto'
 import logger from '@infrastructure/logger'
+import { withAuth } from '@infrastructure/middlewares'
+import { photoService } from '@ioc/container'
+import pipeAsync from '@utils/pipeAsync'
 
 async function editPhoto(data: FormData) {
   try {

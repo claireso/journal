@@ -1,5 +1,4 @@
 import Box from '@web/components/Box'
-
 import * as cls from './styles.css'
 
 interface AuthLayoutProps {

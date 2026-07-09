@@ -1,6 +1,6 @@
 export enum AUTH_ERROR_TYPES {
-  'UNAUTHORIZED' = 401,
-  'DEFAULT' = 500
+  UNAUTHORIZED = 401,
+  DEFAULT = 500
 }
 
 export const AUTH_ERRORS = {

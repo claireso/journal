@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect } from 'react'
-import Flash from '@web/components/Flash'
 
+import Flash from '@web/components/Flash'
 import * as cls from './styles.css'
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {

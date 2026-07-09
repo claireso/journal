@@ -2,12 +2,12 @@
 
 import { revalidatePath } from 'next/cache'
 
-import pipeAsync from '@utils/pipeAsync'
-import { pool as db } from '@infrastructure/db'
 import { BadRequestError } from '@domain/errors'
-import { photoService } from '@ioc/container'
-import { withAuth } from '@infrastructure/middlewares'
+import { pool as db } from '@infrastructure/db'
 import logger from '@infrastructure/logger'
+import { withAuth } from '@infrastructure/middlewares'
+import { photoService } from '@ioc/container'
+import pipeAsync from '@utils/pipeAsync'
 
 async function deletePhoto(photoId: string) {
   try {

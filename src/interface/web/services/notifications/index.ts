@@ -1,5 +1,5 @@
-import urlBase64ToUint8Array from '@utils/urlBase64ToUint8Array'
 import arrayBufferToUrlBase64 from '@utils/arrayBufferToUrlBase64'
+import urlBase64ToUint8Array from '@utils/urlBase64ToUint8Array'
 
 const NOTIFICATIONS_PUBLIC_KEY = process.env.NEXT_PUBLIC_NOTIFICATIONS_PUBLIC_KEY
 
