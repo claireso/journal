@@ -10,11 +10,15 @@ concurrency:
   group: deployment
   cancel-in-progress: false
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-22.04
     environment: 'production'
+    timeout-minutes: 20
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -22,26 +26,11 @@ jobs:
           # fetch all history and tags
           fetch-depth: 0
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        run: |
-          echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4
-        id: npm-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm ci
+          persist-credentials: false
+      - name: Setup Node & install dependencies
+        uses: ./.github/actions/setup-node-deps
       - name: Create .env
-        uses: SpicyPizza/create-envfile@v2.0
+        uses: SpicyPizza/create-envfile@ace6d4f5d7802b600276c23ca417e669f1a06f6f # v2.0
         with:
           file_name: .env
           envkey_BETTER_AUTH_URL: ${{ secrets.NEXTAUTH_URL }}

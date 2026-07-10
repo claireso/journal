@@ -1,0 +1,21 @@
+name: Setup Node & install dependencies
+description: Sets up Node.js, restores the npm cache, and installs dependencies if the cache missed.
+
+runs:
+  using: composite
+  steps:
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: '.nvmrc'
+    - uses: actions/cache@v4
+      id: npm-cache
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install
+      if: steps.npm-cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: npm ci --no-audit --no-fund
