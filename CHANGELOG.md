@@ -1,5 +1,11 @@
 # journal
 
+## 5.1.7
+
+### Patch Changes
+
+- b094a8c: ci: fix release workflow triggering after a failed QA run, dedupe GitHub Actions setup steps into a composite action, and harden checkout/token handling
+
 ## 5.1.6
 
 ### Patch Changes
