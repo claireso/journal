@@ -26,6 +26,7 @@ jobs:
           # fetch all history and tags
           fetch-depth: 0
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          persist-credentials: false
       - name: Setup Node & install dependencies
         uses: ./.github/actions/setup-node-deps
       - name: Create .env
