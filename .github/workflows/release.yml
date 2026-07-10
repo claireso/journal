@@ -25,24 +25,12 @@ jobs:
           # fetch all history and tags
           fetch-depth: 0
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-      - uses: actions/cache@v4
-        id: npm-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Setup Node & install dependencies
+        uses: ./.github/actions/setup-node-deps
       - name: Create directory "uploads"
         run: mkdir uploads
       - name: Create Release Pull Request
-        uses: changesets/action@v1
+        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
