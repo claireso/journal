@@ -1,5 +1,11 @@
 # journal
 
+## 5.1.8
+
+### Patch Changes
+
+- 5d9da54: Update dependencies to fix security vulnerabilities
+
 ## 5.1.7
 
 ### Patch Changes
