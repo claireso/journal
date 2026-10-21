@@ -1,5 +1,11 @@
 # journal
 
+## 5.1.9
+
+### Patch Changes
+
+- 27c6417: ci: update GitHub Actions and fix release tag publishing
+
 ## 5.1.8
 
 ### Patch Changes
