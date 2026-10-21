@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   cacheComponents: true,
+  partialPrefetching: true,
   compiler: {
     reactRemoveProperties: true
   },
