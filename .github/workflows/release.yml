@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # fetch all history and tags
           fetch-depth: 0
@@ -30,10 +30,9 @@ jobs:
       - name: Create directory "uploads"
         run: mkdir uploads
       - name: Create Release Pull Request
-        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+        uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
-          commit: Release new version
-          title: Release new version
-          publish: npx changeset tag
+          github-token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          commit-message: Release new version
+          pr-title: Release new version
+          publish-script: npx changeset git-tag
